@@ -1,0 +1,74 @@
+A data type describes the kind of value a variable holds. 
+    For example, a number, a piece of text, or a list of items.
+
+Python is a dynamically-typed language like JavaScript, 
+    meaning you don't need to explicitly declare types for variables. 
+    The language knows what data type a variable is based on what you assign to it.
+- But it can lead to unexpected bugs because type errors are detected only when a program runs, 
+    not when the program compiles.
+
+Example: 
+    name = 'John Doe' # Python knows this is a string
+    age = 25 # Python knows this is an integer
+
+Compiling means the computer checks your code in advance and prepares it to run.
+    Can catch type errors before the program even starts.
+
+Most common data types: 
+    Integer: A whole number without decimals, for example, 10 or -5.
+                my_integer_var = 10
+                print('Integer:', my_integer_var) # Integer: 10
+
+    Float: A number with a decimal point, like 4.41 or -0.4.
+            my_float_var = 4.50
+            print('Float:', my_float_var) # Float: 4.5
+
+    String: A sequence of characters enclosed in single or double quotation marks like 'Hello world!'.
+            my_string_var = 'hello'
+            print('String:', my_string_var) # String: hello
+
+    Boolean: A true or false type, written as True or False.
+                my_boolean_var = True
+                print('Boolean:', my_boolean_var) # Boolean: True
+
+    Set: An unordered collection of unique elements, like {0.5, 4, 'apple'}.
+            my_set_var = {7, 'hello', 8.5}
+            print('Set:', my_set_var) # Set: {7, 'hello', 8.5}
+
+    Dictionary: A collection of key-value pairs enclosed in curly braces, like {'name': 'John Doe', 'age': 28}.
+                my_dictionary_var = {'name': 'Alice', 'age': 25}
+                print('Dictionary:', my_dictionary_var) # Dictionary: {'name': 'Alice', 'age': 25}
+
+    Tuple: An immutable ordered collection, enclosed in parentheses, like ('apple', 4.5, 7).
+            my_tuple_var = (7, 'hello', 8.5)
+            print('Tuple:', my_tuple_var) # Tuple: (7, 'hello', 8.5)
+
+    Range: A sequence of numbers, often used in loops, for example, range(5).
+            my_range_var = range(5)
+            print('Range:', my_range_var) # Range: range(0, 5)
+
+    List: An ordered collection of elements that supports different data types.
+            my_list = [22, 'Hello world', 3.14, True]
+            print(my_list) # [22, 'Hello world', 3.14, True]
+
+    None: A special value that represents the absence of a value.
+            my_none_var = None
+            print('None:', my_none_var) # None: None
+
+To get the data type of a variable, you can use the type() function:
+
+            my_var_1 = 'Hello world'
+            my_var_2 = 21
+
+            print(type(my_var_1)) # <class 'str'>
+            print(type (my_var_2)) # <class 'int'>
+
+The built-in "isinstance()" function lets you check if a variable matches a specific data type. 
+    It takes in an object and the type you want to check it against, then returns a boolean. 
+    Here are some examples:
+
+                    isinstance('Hello world', str) # True
+                    isinstance(True, bool) # True
+                    isinstance(42, int) # True
+                    isinstance('John Doe', int) # False
+

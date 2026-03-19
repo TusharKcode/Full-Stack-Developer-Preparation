@@ -1,0 +1,67 @@
+In JS, two types of scopes
+-Global Scope: Scope outside the outermost function attached to the window. 
+    In simple means anything which is outside declare and initialized and that is globally available.
+- Local Scope: Inside the function being executed. Also known as Function Scope.
+    In simple means variable can only be accessible from inside function. If not inside function, show ReferenceError.
+- Block Scope: let and const vaiables can be accessible from inside block only, "var" keyword not applicable.
+
+JS has a function-level-scope
+ES6 has introduced two new keywords- 'let' and 'const', to declare block-scoped variables. 
+When a variable is declared using 'const' or 'let', it is visible only inside the particular block in which it is declared.
+--> const is a signal that the identifier won’t be reassigned
+--> let is a signal that the variable may be reassigned
+
+In JavaScript an attempt to access a variable before its declaration results in a ReferenceError.
+
+"Thread of execution"
+JS is single-threaded language. Single sequential flow of control.
+It is a synchronous language with asynchronous capabilities.
+A thread has call stack & memory
+
+"The Call Stack"
+Manages Execution context
+Stacks are LIFO - Last In First Out
+
+"Execution context"
+- When u run any JavaScript, a special environment is created to handle the transformation & execution of code.
+    In simple means, an environment in which our code is executed and evaluated.
+This is called Execution context. Contains currently rnnning code.
+There is Global Execution context (default) & Function Execution context.
+--> JS engine creates Global Execution context before it starts to execute the code.
+--> New Execution context gets created every time a function is executed.
+
+"Execution Stack"
+- Known as Calling Stack, with LIFO (Last In First Out) structure, used to store all execution context created 
+    during code execution.
+
+"Hoisting"
+- A process where the interpreter appears to move the declaration of functions and variables to the top of their 
+    scope prior to execution of code.
+JS only hoist declaration not initialization, variable will be undefined until line reached where it is initialized.
+- Due to "var" hoisting happens, with "let" and "const" it doesn't.
+- "var" cannot used function expression in hoisting.
+
+"Scoping"
+- The scope is a region of the program where a variable can be accessed. In other words, scope determines the 
+    accessibility/visibility of a variable.
+
+
+
+'var' variable lifecycle
+
+var x               -->   Declaration
+                                        "both are Creation Phase"
+x = undefined       -->   Initialize
+
+x = 10              -->   Assign        "is Execution Phase"
+
+
+'let' variable lifecycle
+
+let x               -->   Declaration   "is Creation Phase"
+
+                        (Temporal dead zone) - Not Accessible 
+
+x = undefined       -->   Initialize
+                                        "both are Execution Phase"
+x = 10              -->   Assign        

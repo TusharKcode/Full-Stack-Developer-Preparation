@@ -1,0 +1,26 @@
+In Python, variables are like a labelled box for storing and referencing data of different types. 
+
+Declare variables in Python, you assign a value to an identifier with the assignment (=) operator.
+
+example: name = 'John Doe' // variable "name" holds the value 'John Doe', is a string
+         age = 25
+
+String: a series of characters used to represent text and are written with 'single' or "double quotes".
+
+
+Some important rules:
+- Variable names can only start with a letter or an underscore (_), not a number.
+- only contain alphanumeric characters (a-z, A-Z, 0-9) and underscores (_).
+- case-sensitive — age, Age, and AGE are all considered unique.
+- Variable names cannot be one of Python's reserved keywords such as if, class, or def.
+    means cannot use words that have a special and predefined meaning.
+
+    If any of these rules break: It will throw SyntaxError (invalid syntax).
+
+
+The pound symbol (#) is called a comment. 
+->    # This is a single-line comment
+->    # This is a
+        # multi-line
+        # comment
+

@@ -1,0 +1,48 @@
+"Inheritance" refers to passing down characteristics from a parent to a child so that a new piece of
+    code can reuse and build upon the features of an existing one. 
+    JavaScript implements inheritance by using objects. 
+    Each object has an internal link to another object called its "Prototype".
+    That prototype object has a prototype of its own, and so on until an object is reached with null
+    as its prototype. 
+    By definition, null has no prototype and acts as the final link in this "prototype chain".
+
+"Prototype"
+- JS is Prototype based language, Function is also an Object in JS.
+- Object -> Object.prototype -> null/"result". This is Prototype Chain.
+- In JavaScript, almost every object is automatically linked to a "master template" 
+    called "Object.prototype".
+
+JavaScript uses prototypes to:
+    - Share methods between objects
+    - Implement inheritance
+    - Reduce memory usage
+
+Example code: This is old way to use "proto" n JS
+const animal = {
+    eats: true          //Created an object called "animal". It has one property: "eats"
+}
+
+const dogs = {
+    barks: true     // Created another object called "dogs". It only knows how to bark
+                    // If we ask dog if it eats, it would say "I don't know" (undefined).
+}
+
+dogs.__proto__ = animal // So, we are telling JS "If I ask dogs for something it doesn't have, 
+                            go look inside animal and see if it's there."
+
+console.log(dogs.eats)  // JavaScript looks at the dogs object. It sees barks, 
+                            but it doesn't see eats. 
+                            Instead of giving up, it follows the __proto__ link up to animal, 
+                            finds eats: true, and uses that.
+
+- In modern coding, we usually use Object.setPrototypeOf() or Object.create() 
+    instead of writing __proto__ directly, but the logic remains exactly the same!
+
+Example: Modern Syntax instead of using "__proto__"
+    const Animal = {
+        eats: true
+    }
+    const dogs = Object.create(Animal)
+    dogs.barks = true
+
+    console.log(dogs.eats)

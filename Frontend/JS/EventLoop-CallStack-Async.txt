@@ -1,0 +1,104 @@
+"Synchronous Tasks": Executed immediately on the call stack 
+                        (e.g., function calls, variable declarations).
+
+"Asynchronous Tasks":  non-blocking operation that runs in the background, 
+            allowing the main program to continue executing other code while waiting for a result
+
+"Call Stack"
+- JS engine (hosting enviroment like browser) is a single threaded interpreter comprise of Heap 
+    and Single Call Stack, browser provides web APIs, DOM, AJAX and Timers.
+
+- Call Stack is primarily used for function invocation (call) 
+- Call Stack is single, function execution done at a single time from top to bottom
+- It is Synchronous
+- It is data structuure that uses LIFO (Last In First Out) principle to temporarily store and 
+    manage function invocation / call.
+- Function invocation creates a stack frame occupies temporary memory.
+
+
+"Web APIs"
+- DOM APIs -> It provides a structured representation of a webpage, allowing JavaScript to access 
+            and manipulate elements, attributes, and content dynamically, creating interactive 
+            user interfaces.
+
+- The "DOM API" for HTML and XML documents
+    The "Fetch API" for networking
+    The "Web Storage API" for client-side data
+- A "Web API" is an application programming interface for the Web.
+    "Browser API" can extend the functionality of a web browser.
+    "Server API" can extend the functionality of a web server.
+
+
+"Callback Queue" -> also known as Task queue, is a waiting area for callback function from asynchronous
+    operations (like times/user events) that are ready to execute.
+    It has lower priority than the Microtask Queue (which handles Promises).
+    Need: We need Callback queue to enable non-blocking behavior Prevents Freezing, Orderly Execution
+            and Handles Events.
+            As JS is single-threaded (only one thing can happen at a time), 
+            it cannot pause current operations to run long tasks. So Callback queue gives those delayed
+            tasks a place to stay while the main program continue for running.
+    Example: When a customer's order is ready, they move to the pickup line (Callback Queue). 
+            As soon as the Cashier (Call Stack) is free, 
+            the next customer from the pickup line is served. 
+
+"Starvation" can occur when there are many microtask but call back queue doesn't get a chance to execute.
+
+"Microtask Queue": are task with higher priority, handles asynchronous operations efficiently.
+                Executed after the current synchronous code but before the next event loop cycle.
+            Commonly created using Promise callbacks (‘then’, ‘catch’, ‘finally’), ‘process.nextTick’ in Node.js, 
+                and the ‘MutationObserver’ API.
+
+"Macrotask Queue": are with Lower priority, Executed in the next event loop cycle, after microtasks.
+                Examples: ‘setTimeout’, ‘setInterval’, ‘I/O operations’, and ‘user input events’.
+
+"Event Loop": is responsible for managing the execution of code, collecting and processing events, 
+                and executing queued tasks.
+            Example: The event loop is like a manager that ensures tasks are completed in the right order, 
+                    depending on their type and urgency.
+
+Call Stack:
+- JavaScript executes code using a Call Stack, which tracks the currently executing function.
+- Main function (the entire script) is automatically added to the call stack.
+- Functions are added to the call stack when called and removed once executed.
+- JavaScript is single-threaded, meaning only one task is processed in the call stack at a time.
+
+
+Asynchronous Behavior:
+- Though JavaScript is single-threaded, it achieves non-blocking behavior using Node APIs for 
+    asynchronous tasks like setTimeout, database calls, etc.
+- These APIs handle long-running tasks in the background, allowing other synchronous code to execute.
+
+
+Callback Queue:
+- After an asynchronous task is complete, its callback is added to the Callback Queue.
+- The Event Loop checks whether the Call Stack is empty and, if so, pushes callbacks from the queue 
+    to the call stack.
+    Example: setTimeout(() => console.log('Hello'), 0) will be executed after the synchronous code 
+        finishes, despite the 0ms timeout.
+
+
+Event Loop:
+- Event Loop continuously checks if the call stack is empty.
+- It then processes tasks from the Callback Queue or Microtask Queue (like Promise callbacks).
+
+Microtask Queue:
+- Microtasks are usually created by promises.
+- When a promise is resolved or rejected, the corresponding .then() or .catch() handler is added to
+     the Microtask Queue.
+- Microtasks have higher priority than Macrotasks (like setTimeout callbacks).
+- Before handling any macrotasks from the callback queue, the event loop checks and clears 
+    the Microtask Queue.
+
+
+Execution Order:
+- Promises and async functions utilize the microtask queue for their resolution/rejection handlers.
+    Example:
+        Promises' .then() callbacks run before setTimeout callbacks, even if the timeout is 0ms.
+
+Summary of Execution Order:
+- Synchronous code executes first (added to the call stack).
+- Once the call stack is empty, Microtasks (e.g., resolved promises) are handled.
+- After the microtask queue is cleared, Macrotasks (e.g., setTimeout, I/O callbacks) are 
+    processed from the Callback Queue.
+- This explains why promises' .then() callbacks are executed before setTimeout callbacks, 
+    even with a 0ms timeout, and how JavaScript manages non-blocking operations effectively.

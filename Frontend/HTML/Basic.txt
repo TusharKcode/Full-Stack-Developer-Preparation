@@ -1,0 +1,7 @@
+HEAD <html> - of a HTML Document is a part which is not diplayed in the web browser when page is loaded.
+            - It contains metadata information such as title, links, etc.
+            - Provide fundamental page structure by defining headings and paragraphs.
+            - We have 3 types of List: unordered / ordered / description list.
+            - Links also known as HyperLinks
+            - Images <img>/<figure> to add images to a webpage.
+            - Video/Audio <video>/<audio>

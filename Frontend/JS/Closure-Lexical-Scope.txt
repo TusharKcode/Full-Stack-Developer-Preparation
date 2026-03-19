@@ -1,0 +1,65 @@
+"Scope chain" refers to the fact that parent scope does not have access to the variables 
+    inside its children's scope, but the children's scope does have access to the variables 
+    present in its parent scopes.
+
+
+"Closure"
+- A closure is the combination of a function and the lexical environment (scope) that 
+    was in effect when the function was declared. 
+    This means an inner function can access its own variables, variables of the outer function, 
+    and global variables.
+
+- closures do not store static values. Instead, they store references to the variables present inside 
+    the scope chain. Variables declared inside a closure are not garbage collected.
+
+- Closures exist primarily to support a feature called lexical scoping in languages where 
+    functions can be passed around like data (first-class functions).
+
+- Characteristics of Closures -> Even if the outer function ceases to exist, a closure still has 
+                                    access to its parent variables.
+                              -> Closures do not have access to their outer function’s args parameter
+
+- "Lexical Scope" dictates which variables a function can access, and 
+  "Closure" ensures those variables are available for the function to use later, 
+    regardless of where the function is executed.
+
+By Normal Example:
+function init(){
+    var name = "Tushar"
+    function displayName(){
+        console.log(name)
+    }
+    // name = "Kumar"
+    return displayName
+}
+let myName = init()
+myName()
+
+By Nested function:
+function returnFunc(){
+    const x = () => {
+        let a = 1;
+        console.log(a)
+
+        const y = ()  => {
+            let a = 2
+            console.log(a)
+
+            const z = ()  => {
+                let a = 3
+                console.log(a)    
+            }
+            z()
+        }
+        a = 999
+        y()
+    }
+    return x
+}
+
+let a = returnFunc()
+a()
+
+
+- Using "lexical scoping", the JS parser knows how to resolve variables present in its current scope 
+    or in fact knows how to resolve variables present in the nested functions.
