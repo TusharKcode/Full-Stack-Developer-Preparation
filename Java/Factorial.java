@@ -23,5 +23,7 @@ public class Factorial {
         } else{
             System.out.println(".X....X....X.");
         }
+
+        scnFac.close();
     }
 }

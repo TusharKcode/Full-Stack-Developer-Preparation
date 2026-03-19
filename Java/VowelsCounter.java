@@ -10,6 +10,7 @@ public class VowelsCounter{
         Counter c = new Counter(sc.nextLine().toLowerCase().trim());
         c.vowelCounter();
     }
+    sc.close();
     }
 }
 class Counter{
@@ -42,7 +43,5 @@ class Counter{
         for (Map.Entry<Character, Integer> m : map.entrySet()) {
             System.out.println(m.getKey()+" appeared "+m.getValue()+ " time");            
         }
-
     }
-
 }

@@ -17,5 +17,7 @@ public class ReverseString {
 
         System.out.println("User Input String: " + userInput);
         System.out.println("String to reeverse: " + revStr);
+
+        scRev.close();
     }
 }
