@@ -1,0 +1,48 @@
+"Promise"
+- The Promise Object represent the eventual completion (or failure) of an asynchronous operation 
+    and its resulting value.
+
+Promise States: 
+    - pending: initial state, neither fulfilled nor rejected.
+    - fulfilled: operation completed successfully.
+    - rejected: operation failed.
+
+"then()"takes two arguments, one callback function for success and another for failure.
+    Both are optional, so you can add a callback function for success or failure only.
+
+Two callbacks:
+                Success	=> resolve(value)
+                Error   => reject(value)
+        A promise can resolve or reject only once.
+
+Promises are consumed using methods attached to the promise object:
+".then(onFulfilled, onRejected)":
+- This method attaches handlers for both the fulfillment and rejection cases. 
+    It returns a new promise, which enables method chaining.
+
+".catch(onRejected)":
+- This is a shorthand for .then(null, onRejected) and is typically used to handle errors at the end 
+    of a promise chain.
+
+".finally(onFinally)":
+- This handler is called when the promise is settled (either fulfilled or rejected), 
+    regardless of the outcome. It's useful for cleanup operations.
+
+Convert into async/await:
+                        fetch(url)
+                        .then(res => res.json())
+                        .then(data => console.log(data))
+                        .catch(err => console.log(err))
+
+Solution: 
+        async function fetchingURl(){
+            try{
+                const res = await fetch(url)
+                const data = await res.json()
+                console.log(data)
+            } catch(err){
+                console.log(err)
+            }
+        }
+
+
