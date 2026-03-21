@@ -23,6 +23,7 @@ Example:    const array = ["deer","greet","heyy"];
 
 
 "Spread Syntax" : (...)
+=> Used to copy or merge data
 => allows an iterable such as an array or string to be expanded in places where zero or more arguments
     or elements are expected.
 => In an object literal, the spread syntax enumerates the properties of an object and 
