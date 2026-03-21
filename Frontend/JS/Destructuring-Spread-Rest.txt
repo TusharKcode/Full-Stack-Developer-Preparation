@@ -1,0 +1,37 @@
+"Destructuring": In JS, syntax that make it possible to unpack values from arrays or properties
+                    from objects into distinct varaibles.
+ In simaple terms, means copying the values of an array or the properties of an object to a variable.
+
+Example:    let arr = [3, 5]
+            let [a, b] = arr
+            console.log(a, b)   // Output: a = 3, b = 5
+            
+=> Destructuring in Javascript also uses the "rest syntax". 
+    It is called the “rest” syntax as it covers the rest of the items in an array. 
+    The syntax is [...] then the name of the array created. 
+    The name “rest” that appears after the three dots is optional. 
+    You could use another name after the three dots.
+
+Example:    const array = ["deer","greet","heyy"];
+            const [arr, …newArr] = array;
+            console.log(arr);               //deer
+            console.log(newArr);          //[ greet, heyy]
+
+"Object Destructuring":
+=> With this, you can retrieve property values from an object. 
+    Objects take a different syntax from arrays when assigning values to variables.
+
+
+"Spread Syntax" : (...)
+=> allows an iterable such as an array or string to be expanded in places where zero or more arguments
+    or elements are expected.
+=> In an object literal, the spread syntax enumerates the properties of an object and 
+    adds the key-value pairs to the object being created.
+=> Spread syntax looks exactly like rest syntax.
+
+=> 'Spread syntax' "expands" an array into its elements, 
+    while 'Rest syntax' collects multiple elements and "condenses" them into a single element.
+
+Syntax: Function arguments list-(myFunction(a, ...iterableObj, b))
+        Array literals-         ([1, ...iterableObj, '4', 'five', 6])
+        Object literals-        ({ ...obj, key: 'value' })
