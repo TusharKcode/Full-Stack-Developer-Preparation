@@ -1,0 +1,120 @@
+"Conditional statements", or conditionals control the flow of your program based on whether certain 
+    conditions are true or false.
+
+Operator	Name	                        Description
+==	        Equal	                Checks if two values are equal
+!=	        Not equal	            Checks if two values are not equal
+>	        Greater than	        Checks if the value on the left is greater than the value on 
+                                        the right
+<	        Less than	            Checks if the value on the left is less than the value on the 
+                                        right
+>=	        Greater than or equal	Checks if the value on the left is greater than or equal to the 
+                                        value on the right
+<=	        Less than or equal	    Checks if the value on the left is less than or equal to the 
+                                        value on the right
+
+Example: 
+        print(3 > 4) # False
+        print(3 < 4) # True
+        print(3 == 4) # False
+        print(4 == 4) # True
+        print(3 != 4) # True
+        print(3 >= 4) # False
+        print(3 <= 4) # True
+
+Conditional is the if statement. Here's the basic syntax:
+
+Example         if condition:
+                    pass # Code to execute if condition is True
+
+=> if statements start with the if keyword.
+=> condition is an expression that evaluates to True or False, followed by a colon (:).
+=> The body of the if statement constitutes a code block, which is a group of statements that belong
+     together. In Python, the level of indentation is what defines a code block.
+
+For example:
+            age = 18
+            if age >= 18:
+                print('You are an adult') # You are an adult
+
+The else clause runs when the if condition is false. Here's the syntax for an if…else statement:
+        if condition:
+            pass # Code to execute if condition is True
+        else:
+            pass # Code to execute if condition is False
+
+There might be situations in which you want to account for multiple conditions. 
+    Extend your if statement with the elif (else if) keyword.
+
+        if condition1:
+            pass # Code to execute if condition1 is True
+        elif condition2:
+            pass # Code to execute if condition1 is False and condition2 is True
+        else:
+            pass # Code to execute if all conditions are False
+
+Example: 
+        age = 12
+        if age >= 18:
+            print('You are an adult')
+        elif age >= 13:
+            print('You are a teenager')
+        else:
+            print('You are a child') # You are a child
+
+In Python, every value has an inherent boolean value, or a built-in sense of whether it should be 
+    treated as True or False in a logical context. Many values are considered truthy, that is, they
+    evaluate to True in a logical context. Others are falsy, meaning they evaluate to False.
+
+Here are a few falsy values:    
+    - None
+    - False
+    - Integer 0
+    - Float 0.0
+    - Empty strings ""
+    - Other values like non-zero numbers, and non-empty strings are truthy.
+
+To check whether a value is truthy or falsy, you can use the built-in bool() function. 
+    It explicitly converts a value to its boolean equivalent and returns True for truthy values and 
+        False for falsy values. 
+Examples:
+            print(bool(False)) # False
+            print(bool(0))  # False
+            print(bool('')) # False
+            print(bool(True)) # True
+            print(bool(1)) # True
+            print(bool('Hello')) # True
+
+The "and" operator takes two operands and returns the first operand if it is falsy, otherwise, 
+    it returns the second operand. Both operands must be truthy for an expression to result in a 
+        truthy value.
+Example: 
+        is_citizen = True
+        age = 25
+        if is_citizen and age >= 18:
+            print('You are eligible to vote') # You are eligible to vote
+        else:
+            print('You are not eligible to vote')
+
+The "or" operator. This operator returns the first operand if it is truthy, otherwise, it returns 
+    the second operand. An or expression results in a truthy value if at least one operand is truthy.
+    The or operator is also known as a short-circuit operator. 
+Example:
+        age = 19
+        is_student = True
+        if age < 18 or is_student:
+            print('You are eligible for a student discount') # You are eligible for a student discount
+        else:
+            print('You are not eligible for a student discount')
+
+The "not" operator which takes a single operand and inverts its boolean value. It converts truthy 
+    values to False and falsy values to True. Unlike the previous operators we looked at, 
+        not always returns True or False.
+Example:
+        is_admin = False
+        if not is_admin:
+            print('Access denied for non-administrators.') # Access denied for non-administrators.
+        else:
+            print('Welcome, Administrator!')
+
+
