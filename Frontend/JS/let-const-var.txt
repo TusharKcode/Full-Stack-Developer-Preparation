@@ -1,0 +1,7 @@
+Var is globally scoped while let and const are blocked scope.
+Var can be updated and re-declared in its scoped.
+Let can be updated but not re-declared.
+Const cannot be updated as well as re-declared.
+Var variables are initialized with undefined whereas let and const variables are not initialized.
+Const must be initialized during declaration unlike let and var.
+

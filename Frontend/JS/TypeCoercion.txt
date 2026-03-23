@@ -1,0 +1,47 @@
+"Type coercion" is the process of converting value from one type to another, such as string to number,
+     object to boolean, etc.
+
+Any type either primitive or object is a valid subject for type coercion.
+
+Type Coercion can be Explicit and Implicit.
+=> When a developer expresses the intention to convert between types by writing the appropriate code,
+    like Number(value), it’s called explicit type coercion (or type casting).
+=> JavaScript is a weakly-typed language, values can also be converted between different types 
+    automatically, and it is called implicit type coercion. It usually happens when you apply 
+        operators to values of different types.
+
+One operator that does not trigger implicit type coercion is '===', which is called the strict equality operator.
+
+"String conversion"
+To explicitly convert values to a string apply the String() function. 
+    Implicit coercion is triggered by the binary + operator, when any operand is a string:
+
+String(123) // explicit
+123 + ''    // implicit
+
+"Boolean conversion"
+To explicitly convert a value to a boolean apply the Boolean() function.
+Implicit conversion happens in logical context, or is triggered by logical operators ( || && !) .
+
+Boolean(2)          // explicit
+if (2) { ... }      // implicit due to logical context
+!!2                 // implicit due to logical operator
+2 || 'hello'        // implicit due to logical operator
+
+"Numeric conversion"
+For an explicit conversion just apply the Number() function, same as you did with Boolean() and String() .
+
+Implicit conversion is tricky, because it’s triggered in more cases:
+
+- comparison operators (>, <, <=,>=)
+- bitwise operators ( | & ^ ~)
+- arithmetic operators (- + * / % ). Note, that binary+ does not trigger numeric conversion, when any operand is a string.
+- unary + operator
+- loose equality operator == (incl. !=).
+Note that == does not trigger numeric conversion when both operands are strings.
+    Number('123')   // explicit
+    +'123'          // implicit
+    123 != '456'    // implicit
+    4 > '5'         // implicit
+    5/null          // implicit
+    true | 0        // implicit

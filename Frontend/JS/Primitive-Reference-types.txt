@@ -1,0 +1,8 @@
+"Primitive Types": numbers, strings, bool, null, undefined, and symbols.
+   => When we create a primitive type, that value is stored on something called the “stack”.
+        A stack is a simple data structure that the computer uses to store and retrieve data quickly.
+
+"Reference types": all the objects. Object literals, arrays, functions, dates, etc.
+   => Dynamic in nature. That is, they do not have a fixed size.
+        When we create a reference type, that is stored on what is known as the “heap”.
+
