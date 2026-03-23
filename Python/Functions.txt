@@ -1,0 +1,35 @@
+Functions are reusable pieces of code that run when you call them.
+
+Built-in function is "input()"
+Example:
+        name = input('What is your name?') # User types "Kolade" and presses Enter  
+        print('Hello', name) # Output: Hello Kolade
+
+"int()" converts a number, boolean, and a numeric string into an integer:
+Example:
+        print(int(3.14)) # 3
+        print(int('42')) # 42
+        print(int(True)) # 1
+        print(int(False)) # 0
+
+Custom Functions, use the "def" keyword, followed by the name you want to give your function, 
+    a pair of parentheses, and a colon. Then on a new line, you write the code your function should 
+    run. The code the function runs is also referred to as the function's body.
+
+Example:
+        def hello():
+            print('Hello World')
+        hello()                 // to run the function
+
+=> Python relies on indentation to determine which groups of statements belong together. 
+    These groups of statements are called code blocks.
+
+Functions also use a special "return" keyword to exit the function and return a value. 
+    If you don't explicitly use return, Python will return None by default.
+
+Example:
+        def calculate_sum(a, b):
+            return a + b
+
+        my_sum = calculate_sum(3, 1)
+        print(my_sum) # 4

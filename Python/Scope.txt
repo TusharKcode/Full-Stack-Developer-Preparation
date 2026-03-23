@@ -1,0 +1,68 @@
+In Python, scope determines the point at which you can access a variable.
+
+Python follows the LEGB rule, which stands for the following:
+
+- Local scope (L): Variables defined in functions or classes.
+- Enclosing scope (E): Variables defined in enclosing or nested functions.
+- Global scope (G): Variables defined at the top level of the module or file.
+- Built-in scope (B): Reserved names in Python for predefined functions, modules, keywords, and objects.
+
+Python uses the LEGB rule to resolve the scope of the variables in your program. 
+
+=> "Local scope" means that a variable declared inside a function or class can only be accessed within 
+    that function or class.
+
+Example:
+        def my_func():
+            my_var = 10
+            print(my_var)
+        my_func() # 10
+
+=> "Enclosing scope" means that a function that's nested inside another function can access the variables
+    of the function it's nested within.
+
+For example:
+            def outer_func():
+                msg = 'Hello there!'
+
+                def inner_func():
+                    print(msg)
+
+                inner_func()
+
+            outer_func() # Hello there!
+
+=> "Global scope" refers to variables that are declared outside any functions or classes which can be 
+    accessed from anywhere in the program. 
+        Here, my_var can be accessed anywhere, even inside a function it's not defined in:
+
+            my_var = 100
+
+            def show_var():
+                print(my_var)
+
+            show_var() # 100
+            print(my_var) # 100
+
+        my_var_1 = 7
+
+    If want to make a locally scoped variable defined inside a function globally accessible, 
+    you can use the global keyword:
+        def show_vars():
+            global my_var_2
+            my_var_2 = 10
+            print(my_var_1)
+            print(my_var_2)
+
+        show_vars() # 7 10
+
+        # my_var_2 is now a global variable and can be accessed anywhere in the program
+        print(my_var_2) # 10
+
+"Built-in scope" refers to all of Python's built-in functions, modules, and keywords, and are 
+    available anywhere in your program:
+
+Example:
+        print(str(45)) # '45'
+        print(type(3.14)) # <class 'float'>
+        print(isinstance(3, str)) # False  
