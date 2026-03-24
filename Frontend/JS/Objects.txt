@@ -1,0 +1,42 @@
+The "Object" type represents one of JavaScript's data types. 
+    It is used to store various keyed collections and more complex entities. 
+    Objects can be created using the Object() constructor or the object initializer / literal syntax.
+
+Each key-value pair is called as a property. 
+=> A property can be a function, an array, an object itself or any primitive data type i.e. integer, string, etc. 
+    Functions in object are called as methods.
+
+Example:
+    const human = {
+        firstName: "Virat",
+        lastName: "Kohli",
+        age: 30,
+        fullName: function(){
+            return this.firstName + " " + this.lastName		
+        }
+    }
+
+"Delete" a property from an object
+=> To delete a property from an object we can use the delete operator.
+=> ‘delete’ operator returns true if the delete was successful. 
+    It also return true if the property to delete was non-existent or the property could not be 
+    deleted.
+
+Properties of the object can be accessed using the following two notations:
+=> Dot notation:
+    Example:    human.firstName;    //Output: Virat
+                human.fullName();   //Output: Virat Kohli
+=> Square bracket notation:
+Example:    human["firstName"];     //Output: Virat
+            human["fullName"]();    //Output: Virat Kohli
+
+New properties can be added:
+    => using the dot notation as shown below:
+            Example: 
+                    human.age = 27
+                    human.getAge = function(){
+                        return this.age;
+                    }
+    => using the Square bracket notation                
+            Example:
+                    
