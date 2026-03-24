@@ -1,0 +1,37 @@
+"Shallow Copy"
+=> A shallow copy of an object is a copy whose properties share the same references.
+=> when you change either the source or the copy, you may also cause the other object to change too.
+=> This means that if you change the nested properties in one object, those changes will reflect 
+    in the other because they share the same memory reference.
+=> shallowCopy !== original (They are not the same reference)
+    But if original has nested objects, their references are copied
+
+Example: 
+        const original = {
+            name: "Sagar",
+            address: { city: "Jaipur" }
+        };
+        const shallowCopy = { ...original };
+
+        console.log(original === shallowCopy); // ❌ false (different objects)
+        console.log(original.address === shallowCopy.address); // ✅ true (same nested reference)
+
+"Deep Copy"
+=> A deep copy creates a completely independent copy where all nested objects/arrays are also copied
+    recursively.
+=> This ensures that changes made to one object do not affect the other. 
+=> Each object is stored in a separate memory location, making them entirely independent.
+=> Cannot copy functions
+    Loses undefined, Symbol, Date, Map, Set, circular refs
+    
+Example: 
+        const original = {
+            name: "Sagar",
+            address: { city: "Jaipur" }
+        };
+
+        // ✅ Deep copy using JSON methods
+        const deepCopy = JSON.parse(JSON.stringify(original));
+
+        console.log(original === deepCopy); // ❌ false (completely new object)
+        console.log(original.address === deepCopy.address); // ❌ false (nested object also copied)
