@@ -1,0 +1,34 @@
+The "filter()" function is used to select elements from an iterable that meet a specific condition. 
+    The filter() function accepts a function and an iterable for its arguments.
+
+Example: 
+        words = ['tree', 'sky', 'mountain', 'river', 'cloud', 'sun']
+        def is_long_word(word):
+            return len(word) > 4
+
+        long_words = list(filter(is_long_word, words))
+        print(long_words) # ['mountain', 'river', 'cloud']
+
+=> "map()" function, which takes an iterable and applies a function to each of its elements. 
+    accepts a function and an iterable for its arguments.
+Example:
+        celsius = [0, 10, 20, 30, 40]
+        def to_fahrenheit(temp):
+            return (temp * 9/5) + 32
+
+        fahrenheit = list(map(to_fahrenheit, celsius))
+        print(fahrenheit) # [32.0, 50.0, 68.0, 86.0, 104.0]
+
+=> "sum()" function is used to get the sum from an iterable like a list or tuple. 
+Example:
+        numbers = [5, 10, 15, 20]
+        total = sum(numbers)
+        print(total) # Result: 50
+
+=> lambda functions are anonymous, so this function no longer has the name square associated with it.
+    Lambda functions are great when you need to use them in higher order functions like this:
+
+        numbers = [1, 2, 3, 4, 5]
+
+        even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+        print(even_numbers)  # [2, 4]     
