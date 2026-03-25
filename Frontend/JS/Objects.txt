@@ -30,13 +30,4 @@ Properties of the object can be accessed using the following two notations:
 Example:    human["firstName"];     //Output: Virat
             human["fullName"]();    //Output: Virat Kohli
 
-New properties can be added:
-    => using the dot notation as shown below:
-            Example: 
-                    human.age = 27
-                    human.getAge = function(){
-                        return this.age;
-                    }
-    => using the Square bracket notation                
-            Example:
                     

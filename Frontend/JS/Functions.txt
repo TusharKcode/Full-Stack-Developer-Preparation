@@ -1,0 +1,42 @@
+=> "Function Declaration"
+- A function definition (also called a function declaration, or function statement) consists of the 
+    function keyword, followed by:
+    -> The name of the function.
+    -> A list of parameters to the function, enclosed in parentheses and separated by commas.
+    -> The JavaScript statements that define the function, enclosed in curly braces, { /* … */ }.
+
+Function declarations and expressions can be nested, which forms a "scope chain".
+Function "hoisting" only works with function declarations — not with function expressions.
+
+=> "Function Expression"
+- While the function declaration above is syntactically a statement, functions can also be created 
+    by a function expression. Such a function can be anonymous; it does not have to have a name.
+
+=> "Defining a function" does not execute it. Defining it names the function and specifies what to do 
+    when the function is called.
+
+=> "Calling the function" actually performs the specified actions with the indicated parameters.
+
+- Functions must be in scope when they are called, but the function declaration can be hoisted 
+    (appear below the call in the code). 
+- The scope of a function declaration is the function in which it is declared 
+    (or the entire program, if it is declared at the top level).
+
+=> A function that calls itself is called a "recursive function".
+    Recursion is analogous to a loop. Both execute the same code multiple times, and both require 
+    a condition (to avoid an infinite loop, or rather, infinite recursion in this case).
+
+"Higher Order Functions"
+=> a fucntion that takes one or more functions as arguments or return a function as its result.
+    For exmaple: use the map(), reduce(), filter(), and sort() functions to manipulate and transform 
+        data in an array.
+
+In the case of the "reduce()" method, you should is used it when you want to perform some operation 
+on the elements of an array and return a single value as a result. The "single value" refers to the 
+accumulated result of repeatedly applying a function to the elements of a sequence.
+Example:
+        const numbers = [1, 2, 3, 4, 5];
+        const sum = numbers.reduce((total, currentValue) => {
+            return total + currentValue;
+        }, 0)
+        console.log(sum); // 15
