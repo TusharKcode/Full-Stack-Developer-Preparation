@@ -9,18 +9,18 @@ const student = {
 }
 
 // Adding email as new property
-student["email"] = "tk@gmail.com"
-student.getEmail = function(){
-    return this.email
-}
-console.log('User email added:',student.email)
+// student["email"] = "tk@gmail.com"
+// student.getEmail = function(){
+//     return this.email
+// }
+// console.log('User email added:',student.email)
 
-//Updating age
-student.age = 23
-student.getAge = function(){
-    return this.age
-}
-console.log('User age updated', student.age)
+// //Updating age
+// student.age = 23
+// student.getAge = function(){
+//     return this.age
+// }
+// console.log('User age updated', student.age)
 
 // deleting a property
 delete student.age
@@ -35,3 +35,21 @@ Object.entries(student).forEach(([key, value]) => {
     console.log(`${key} : ${value}`)
 })
 
+// Shallow Copy
+const shallowCopy = {...student}
+shallowCopy.address.city = "Noida"
+console.log("Shallow Copy:", shallowCopy.address.city)
+
+// Deep copy
+const deepCopy = structuredClone(student)
+deepCopy.address.city = "Mumbai"
+console.log("Deep Copy:", deepCopy.address.city)
+
+function updateUser(userObj){
+    return {
+        ...userObj,
+        name:"Tushar Kumar"
+    }
+}
+const updateStudent = updateUser(student)
+console.log("Updated User:", updateStudent.name)
