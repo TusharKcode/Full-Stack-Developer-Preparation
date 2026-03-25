@@ -35,3 +35,25 @@ const sum = numbers.reduce((total, currentValue) => {
     return total + currentValue;
 }, 0)
 console.log(sum); // 15
+
+// const myNames = ["Oluwatobi", "Sofela"];
+// function updateMyName(newName) {
+//     myNames.push(newName);
+//     return myNames;
+// }
+// console.log("Impure name: ", updateMyName("Tushar"))
+
+function updateMyName(newName) {
+    const myNames = ["Oluwatobi", "Sofela"];
+    myNames[myNames.length] = newName;
+    return myNames;
+}
+console.log("Pure name: " , updateMyName("Tushar"))
+
+const myBio = ["Oluwatobi", "Sofela"];
+function updateMyBio(newBio, array) {
+    const clonedBio = [...array];
+    clonedBio[clonedBio.length] = newBio;
+    return clonedBio;
+}
+console.log(updateMyBio("codesweetly.com", myBio));

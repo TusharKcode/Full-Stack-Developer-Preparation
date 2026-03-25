@@ -40,3 +40,22 @@ Example:
             return total + currentValue;
         }, 0)
         console.log(sum); // 15
+
+To Understand Pure and Impure Functions, 
+=> A "side effect" occurs in a program whenever you use external code in your function — which,
+    as a result, impacts the function’s ability to perform its task.
+
+"Pure Functions"
+=> A pure function is a function without any side effects (No external data changes).
+    In simple words, it does not depends on any external given data, changes possible according to 
+    function.
+    Are Independent and easier to read.
+
+"Impure Functions"
+=> An impure function with side effect because it contains code that mutates an external state — 
+    which gives some side effects.
+    In simple words, output data changes when it calls, different from given data.
+
+"Cloning" an external state into a pure function does not make the function impure.
+"State duplication" is simply a copy-and-paste operation that does not leave any strings attached 
+    between the source and its clone.
