@@ -1,0 +1,134 @@
+"List"
+=> The list data type is an ordered sequence of elements that can be comprised of strings, numbers, 
+    or even other lists. 
+=> Lists are mutable and use zero-based indexing, 
+    meaning that the first element of the list is at index zero.
+
+The "list()" constructor is used to convert an iterable into a list like this:
+Example Code:
+            developer = 'Jessica'
+            list(developer) # ['J', 'e', 's', 's', 'i', 'c', 'a']
+
+To check if an element is inside the list. To do that, you can use the "in" keyword
+Example: 
+        programming_languages = ['Python', 'Java', 'C++', 'Rust']
+        'Rust' in programming_languages # True
+        'JavaScript' in programming_languages # False
+
+If you need to collect any remaining elements from a list, you can use the asterisk (*) operator 
+like this:
+            developer = ['Alice', 34, 'Rust Developer']
+            name, *rest = developer
+            print(name) # 'Alice'
+            print(rest) # [34, 'Rust Developer']
+
+The "slice operator" (:),you can access portions of a list by using the slice operator.
+Example Code:
+            desserts = ['Cake', 'Cookies', 'Ice Cream', 'Pie', 'Brownies']
+            desserts[1:4] # ['Cookies', 'Ice Cream', 'Pie']
+
+The "append()" method. This is used to add an item to the end of the list.
+Example: 
+        numbers = [1, 2, 3, 4, 5]
+        numbers.append(6)
+        print(numbers) # [1, 2, 3, 4, 5, 6]
+
+The extend() method is similar to the "append()" method, 
+    but with "extend()" you can add multiple elements from one list to another.
+Example:
+        numbers = [1, 2, 3, 4, 5]
+        even_numbers = [6, 8, 10]
+        numbers.extend(even_numbers)
+        print(numbers) # [1, 2, 3, 4, 5, 6, 8, 10]
+
+To insert an element at a specific index in a list, you can use the "insert()" method. 
+    This method accepts two arguments: the index where you wish to insert the new item and 
+    the item you want to insert.
+Example:
+        numbers = [1, 2, 3, 4, 5]
+        numbers.insert(2, 2.5)
+        print(numbers) # [1, 2, 2.5, 3, 4, 5]
+
+To remove an element from a list, you can use the "remove()" method.
+    This method will only remove the first occurrence of an item, Not all.
+To remove an element at a specific index in the list, you can use the "pop()" method, If its empty 
+    will remove last element.
+If you need to empty the list, then you can use the "clear()" method
+Example:
+        numbers = [10, 20, 30, 40, 50, 50]
+        numbers.remove(50) 
+        numbers.pop(1)
+        numbers.clear() # empty the list
+        print(numbers) # [10, 30, 40, 50]
+
+"sort()" method used to sort the elements in place.
+There is the "sorted()" function which works for any iterable and returns a new sorted list 
+    instead of modifying the original list.
+Example:
+        numbers = [19, 2, 35, 1, 67, 41]
+        sorted_numbers = sorted(numbers)
+        numbers.sort()
+        print(numbers) # [1, 2, 19, 35, 41, 67]
+        print(sorted_numbers)   # [1, 2, 19, 35, 41, 67]
+
+"reverse()" method will reverse a list of elements.
+Example: 
+        numbers = [6, 5, 4, 3, 2, 1]
+        numbers.reverse()
+        print(numbers) # [1, 2, 3, 4, 5, 6]
+
+"index" method used to find the first index where an element can be found in a list.
+Example:
+        programming_languages = ['Rust', 'Java', 'Python', 'C++']
+        programming_languages.index('Java') # 1
+
+"Tuples"
+=> A tuple is a Python data type used to create an ordered sequence of values. 
+=> Tuples can contain a mixed set of data types.
+=> lists are a mutable data type, tuples are immutable.
+
+Example: using the "tuple()" constructor like this:
+        developer = 'Jessica'
+        tuple(developer) # ('J', 'e', 's', 's', 'i', 'c', 'a')
+Same as List:
+- Can use the "in" keyword
+- can use the asterisk (*) operator, to collect any remaining elements from a tuple
+
+=> If you need to remove / delete an item from a tuple, that isn't possible because tuples are immutable. 
+
+"count()" method is used to determine how many times an item appears in a tuple. 
+Example:
+        programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
+        programming_languages.count('Rust') # 2, (If element not available in tuple retrun 0).
+
+"index()" method is used to find the index where a particular item is present in a tuple.
+index() method is to pass in optional start and stop index arguments.
+Example:
+        programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+        programming_languages.index('Python', 3) # 5
+
+"sorted()" function can be used on any iterable including tuples.
+To customize the sorting behavior for an iterable, 
+        you can use the optional reverse and key arguments.
+Example:
+        programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+        sorted(programming_languages, key=len)
+        # Result
+        # ['C++', 'Rust', 'Java', 'Rust', 'Python', 'Python']
+
+If you want to create a new list of values in reverse order, then you can use the reverse argument.
+Example:
+        programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+        print(sorted(programming_languages, reverse=True))
+        # Result
+        # ['Rust', 'Rust', 'Python', 'Python', 'Java', 'C++']
+
+When might you use a tuple over a list?
+=> If you need a dynamic collection of elements where you can add, remove and update elements, 
+        then you should use a list. 
+=> If you know that you are working with a fixed and immutable collection of data, 
+        then you should use a tuple.
+
+Diff b/w:
+The "sorted()" function will always create a new list of the sorted values. 
+The "sort()" method which sorts the elements of a list in place and does not return a new list.
