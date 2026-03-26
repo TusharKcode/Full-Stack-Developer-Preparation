@@ -1,0 +1,153 @@
+"Dictionaries"
+=> built-in data structures that store collections of key-value pairs. 
+=> Syntax: dictionary = {
+                key1: value1,
+                key2: value2
+            }
+
+=> Keys must be unique in the dictionary, and they must be an immutable data type. 
+=> Values can be repeated, and they can be of any data type.
+
+Example: 
+        pizza = {
+            'name': 'Margherita Pizza',
+            'price': 8.9,
+            'calories_per_slice': 250,
+            'toppings': ['mozzarella', 'basil']
+        }
+
+=> Another alternative would be using the dict() constructor, which builds the dictionary from a 
+    sequence of key-value pairs.
+Example:
+        pizza = dict([('name', 'Margherita Pizza'), ('price', 8.9), ('calories_per_slice', 250), 
+                        ('toppings', ['mozzarella', 'basil'])])
+
+=> The .get() method retrieves the value associated with a key. 
+    Syntax: dictionary.get(key, default)
+
+=> The .keys() and .values() methods return a view object with all the keys and values in the 
+    dictionary,
+Example:
+        pizza.keys()
+        # dict_keys(['name', 'price', 'calories_per_slice'])
+
+        pizza.values()
+        # dict_values(['Margherita Pizza', 8.9, 250])
+
+=> The .items() method returns a view object with all the key-value pairs in the dictionary, 
+    including both the keys and the values
+Example:
+        pizza.items()
+        # dict_items([('name', 'Margherita Pizza'), ('price', 8.9), ('calories_per_slice', 250)])
+
+=> The .clear() method removes all the key-value pairs from the dictionary:
+Example:    pizza.clear()
+
+=> The .pop() method removes the key-value pair with the key that you specify as the first argument 
+    and returns its value. 
+    If the key doesn't exist, it returns the default value that you specify as the second argument. 
+    If the key doesn't exist and you don't pass a default value, a KeyError is raised:
+Example:
+        pizza.pop('price', 10)
+        pizza.pop('total_price') # KeyError
+
+=> In Python 3.7 and more recent versions, the .popitem() method removes the last inserted item:
+Example:
+        pizza.popitem()
+=> the .update() method updates the key-value pairs with the key-value pairs of another dictionary. 
+    If they have keys in common, their values are overwritten.
+Example: pizza.update({ 'price': 15, 'total_time': 25 })
+
+Example: for price in products.values():
+            print(price)
+
+            output :    990
+                        600
+                        250
+                        70
+
+Example:
+    for product in products.keys():
+    print(product)
+    # Or
+    for product in products:
+        print(product)
+output: Laptop
+        Smartphone
+        Tablet
+        Headphones
+
+Example:
+    for product in products.items():
+    print(product)
+
+output: ('Laptop', 990)
+        ('Smartphone', 600)
+        ('Tablet', 250)
+        ('Headphones', 70)
+
+"Sets"
+=> built-in data structures.
+=> they don't store duplicate values, If you try to add a duplicate value to a set, 
+    only one of them will be stored.
+=> mutable and unordered, cannot use indices or keys to access them.
+=> contain values of immutable data types like numbers, strings, and tuples. 
+    And they support mathematical set operations, including union, intersection, difference, and 
+    symmetric difference.
+
+Example: my_set = {1, 2, 3, 4, 5} 
+        my_set.add(6)   # {1, 2, 3, 4, 5, 6}
+
+You can either use the .remove() method or the .discard() method, and pass in the element that you 
+    want to remove as argument.
+
+The .remove() method will raise a KeyError if the element is not found, 
+    while the .discard() method will not:
+Example: 
+        my_set.remove(4)
+        my_set.discard(4)
+
+The .clear() method removes all the elements from the set:
+Example:
+        my_set.clear()
+
+The .issubset() and the .issuperset() methods check if a set is a subset or superset of another set
+The .isdisjoint() method checks if two sets are disjoint, which means they don't have any elements 
+    in common. In this case, that's False because my_set and your_set do have common elements 
+    – 2, 3, and 4:
+Example: 
+        my_set = {1, 2, 3, 4, 5}
+        your_set = {2, 3, 4, 6}
+
+        print(your_set.issubset(my_set)) # False
+        print(my_set.issuperset(your_set)) # False
+        print(my_set.isdisjoint(your_set)) # False
+
+The union operator | returns a new set with all the elements from both sets:
+Example:
+        my_set | your_set # {1, 2, 3, 4, 5, 6}
+
+The intersection operator & returns a new set with only the elements that the sets have in common:
+Example:
+        my_set & your_set # {2, 3, 4}
+
+The difference operator - returns a new set with the elements of the first set that are not in the 
+    other sets.
+Example:
+        my_set - your_set # {1, 5}
+
+The symmetric difference operator ^ returns a new set with the elements that are either in the 
+    first or the second set, but not both. 
+Example:
+        my_set ^ your_set # {1, 5, 6}
+
+the -= operator finds the difference between the sets and updates the first set with that result:
+Example:
+    my_set -= your_set
+    After this, my_set will be updated to {1, 5}:
+
+    print(my_set) # {1, 5}
+
+"in" used to check if an element is present in a set?
+Example:
+    print(5 in my_set)

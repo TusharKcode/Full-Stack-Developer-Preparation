@@ -1,0 +1,62 @@
+In software development, a library is like a toolbox for developers.
+A library gives you pre-written and reusable code, like functions, classes, and data structures 
+    that you can use in your projects.
+
+Python has an extensive standard library with many different built-in modules. 
+Such as:    Interacting with the operating system.
+            Working with files.
+            Networking.
+            Working with date and time.
+            Performing mathematical operations.
+            Using regular expressions.
+            Testing and debugging your code.
+            And much more!
+
+The "math" module has helpful functions for performing more complex mathematical operations.
+
+The "random" module is helpful for generating random numbers.
+
+The "re" module is used for working with regular expressions.
+
+The "datetime" module is helpful for working with dates and times in Python.
+
+You use an import statement. These statements let you import modules into your Python script. 
+Import statements are generally written at the top of the file.
+
+Example: import module_name
+
+If you need to import the module with a different name (also known as an "alias"), this syntax, 
+    with "as" followed by the alias at the end of the import statement:
+Example:
+        import module_name as module_alias
+
+import statement starts with from, followed by the name of the module, and then the import keyword followed by the name of the elements that you want to import:
+Example:
+        from module_name import name1, name2
+        from module_name import name1 as alias1, name2 as alias2
+
+The asterisk is telling Python that you want to import everything in that module, but you want to 
+    import it so that you don't need to use the name of the module as a prefix:
+Example:
+        from module_name import *
+
+Import statements work exactly the same for functions, classes, constants, variables, and 
+    any other elements defined in the module.
+
+idiom in Python scripts, because they are very closely related:
+Example:
+    if __name__ == '__main__': 
+    # Code
+
+__name__ is a special built-in variable in Python.
+
+When a Python file is executed directly, Python sets the value of this variable to the string 
+    "__main__".
+
+But if the Python file is imported as a module into another Python script, 
+    the value of the __name__ variable is set to the name of that module 
+        (usually the filename without the .py extension).
+
+This is helpful because it allows Python scripts to have two purposes. 
+    They can be run directly to execute their main logic, or they can be imported into another module
+     without executing their main logic.
