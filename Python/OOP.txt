@@ -1,0 +1,74 @@
+Object-oriented programming, also known as OOP, is a programming style in which developers treat 
+    everything in their code like a real-world object.
+
+A class is like a blueprint for creating objects. 
+Every single object created from a class has attributes that define data and methods that define 
+    the behaviors of the objects.
+
+They are encapsulation, inheritance, polymorphism, and abstraction.
+
+=> "Encapsulation" is the bundling of the attributes and methods of an object into a single unit, 
+    the class.
+    With encapsulation, you can hide the internal state of the object behind a simple set of public 
+        methods and attributes that act like doors. Behind those doors are private attributes and 
+        methods that control how the data changes and who can see it.
+
+Example: 
+        class Wallet:
+            def __init__(self, balance):
+                self._balance = balance # For internal use by convention
+
+            def deposit(self, amount):
+                if amount > 0:
+                    self._balance += amount # Add to the balance safely
+
+            def withdraw(self, amount):
+                if 0 < amount <= self._balance:
+                    self._balance -= amount # Remove from the balance safely
+
+=> Prefixing attribute and methods with a "single underscore" means they are meant for internal use. 
+    No one should directly access them from outside the class since it defies the principles of 
+    encapsulation, which can lead to bugs.
+=> Prefixing attributes and methods with a "double underscore" effectively prevents them to be accessed
+    from the outside of their class, making those attributes and methods private.
+
+Example: single underscore
+        class Wallet:
+            def __init__(self, balance):
+                self._balance = balance # For internal use by convention
+
+            def deposit(self, amount):
+                if amount > 0:
+                    self._balance += amount # Add to the balance safely
+
+            def withdraw(self, amount):
+                if 0 < amount <= self._balance:
+                    self._balance -= amount # Remove from the balance safely
+
+Example:double underscore
+        class Wallet:
+            def __init__(self, balance):
+                self.__balance = balance
+
+            def deposit(self, amount):
+                if amount > 0:
+                    self.__balance += amount
+
+            def withdraw(self, amount):
+                if 0 < amount <= self.__balance:
+                    self.__balance -= amount
+            
+            def get_balance(self):
+                return self.__balance
+
+
+            acct_one = Wallet(100)
+            acct_one.deposit(50)
+            print(acct_one.get_balance()) # 150
+
+            acct_two = Wallet(450)
+            acct_two.withdraw(28)
+            print(acct_two.get_balance()) # 422
+
+            acct_two.deposit(150)
+            print(acct_two.get_balance()) # 572
