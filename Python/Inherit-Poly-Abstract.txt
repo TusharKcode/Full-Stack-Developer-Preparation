@@ -1,0 +1,131 @@
+"Inheritance"
+
+With "inheritance", a subclass (or child class) can use the attributes and methods of a base class 
+    (or parent class). 
+    This allows you to reuse code, create clear class hierarchies, and customize behavior without 
+    rewriting everything. 
+    You can customize by extending existing methods or overriding them in the child class.
+
+For the Child class to inherit from the Parent class, you have to pass the Parent to the Child.
+This style is called "single inheritance", since a child class inherits from exactly one parent class.
+
+Syntax for inheritance:
+
+            class Parent:
+                # Parent attributes and methods
+
+            class Child(Parent):
+                # Child inherits, extends, and/or overrides where necessary
+
+Example:
+        class Animal:
+            def __init__(self, name):
+                self.name = name
+
+            def sound(self):
+                return f'{self.name} makes a sound'
+
+        class Dog(Animal):
+            bark = 'woof! woof!! woof!!!'
+
+        jack = Dog('Jack')
+        print(jack.sound())  # Jack makes a sound
+        print(jack.bark)  # woof! woof!! woof!!!
+
+If you want to keep the return value of sound() and add the bark class variable later, you can 
+    extend sound() by using the "super()" function
+
+"Multiple inheritance", where a child class can inherit from more than one parent class.
+
+Syntax of multiple inheritance:
+
+            class Parent:
+                # Attributes and methods for Parent
+
+            class Child:
+                # Attributes and methods for Child
+
+            class GrandChild(Parent, Child):
+                # GrandChild inherits from both Parent and Child
+                # GrandChild can combine or override behavior from each
+
+
+"Polymorphism"
+With polymorphism, you have access to an interface where you can interact with many objects of the 
+    same kind.
+Polymorphism allows methods in different classes to share the same name but perform different tasks.
+     You call the same method name on different objects, and each responds in its own way.
+
+Example of polymorphism:
+
+            class A:
+            def action(self): ...
+
+            class B:
+            def action(self): ...
+
+            class C:
+            def action(self): ...
+
+            Class().method()  # Works for A, B, or C
+
+Example:
+
+        class Cat:
+            def speak(self):
+                return "A cat meow"
+
+            class Bird:
+            def speak(self):
+                return "A bird tweet"
+            
+            class Monkey:
+            def speak(self):
+                return "A monkey ooh ooh aah aah ooh ooh aah aah"
+
+            def animal_sound(animal):
+            print(animal.speak())
+
+            animal_sound(Cat())
+            animal_sound(Bird())
+            animal_sound(Monkey())
+
+"Inheritance-based polymorphism"
+=> a parent class defines a method, and multiple child classes override that method in their own way.
+     You can then call the same method on any child object, and it behaves differently depending on
+     which child class it is.
+
+"Abstraction"
+It is the process of hiding complex implementation details and showing only the essential features 
+    of an object or system.
+
+How Python implements abstraction, it does so through the "abc" module.
+=> This module provides the ABC class (standing for “abstract base class”) and the 
+    "@abstractmethod" decorator.
+
+"ABC" is the class that is meant to be inherited from, but you cannot create direct objects from it.
+It is what defines a common interface of methods and properties that its subclasses must implement.
+
+An "abstract method" is a method declared in an Abstract Base Class (ABC) using the @abstractmethod 
+decorator. 
+It may have no implementation or a basic default one. However, any subclass must override it to be
+ considered concrete and instantiable, even if a default implementation is provided.
+
+Syntax:
+        from abc import ABC, abstractmethod
+
+        # Define an abstract base class
+        class AbstractClass(ABC):
+            @abstractmethod
+            def abstract_method(self):
+                pass
+
+        # Concrete subclass that implements the abstract method
+        class ConcreteClassOne(AbstractClass):
+            def abstract_method(self):
+                print('Implementation in ConcreteClassOne')
+
+        # Another concrete subclass
+        class ConcreteClassTwo(AbstractClass):
+            def abstract_method(self):
+                print('Implementation in ConcreteClassTwo')
