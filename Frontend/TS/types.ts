@@ -41,4 +41,18 @@ console.log("After converting into string:", typeof(convertData))
 var bool : boolean = true
 var bool : boolean = false
 
-// Type: Number
+// Type: Null / Undefined
+var nullDt: null = null
+var udf : undefined = undefined
+
+// Type: BigInt
+var bigNum = 9007199254740991n
+var x = 1n
+var y = 2n
+console.log(bigNum + x)
+console.log(bigNum + y)
+
+//Type: Symbol
+var sym = Symbol()
+var sym2 = Symbol()
+console.log(sym == sym2)
