@@ -1,0 +1,104 @@
+An "algorithm" is a set of unambiguous instructions for solving a problem or carrying out a task.
+
+"Big O notation" describes the worst-case performance, or growth rate, of an algorithm as the input 
+    size increases.
+The growth rate of an algorithm refers to how the resources it requires increase as the input size 
+    grows.
+Big O notation focuses on the worst-case performance because this case is very important to 
+    understand how efficient the algorithm can be, even in the worst case scenario, regardless of 
+    the input.
+
+Big O notation will not give you an exact number to describe the algorithm's efficiency, 
+    but it will give you an idea of how it scales as the input size grows, based on the number 
+    of operations performed by the algorithm.
+
+In Big O notation, we usually denote input size with the letter n. For example, if the input is a 
+    list, n would denote the number of elements in that list.
+
+"Quadratic time complexity" is one of many different types of time complexities that you can find in 
+the world of algorithms.
+
+"O(1)" is known as "Constant Time Complexity". When an algorithm has constant time complexity, 
+    it takes the same amount of time to run, regardless of input size.
+
+"O(log n)" is known as "Logarithmic Time Complexity". This means that the time required by the 
+        algorithm increases slowly as the input size grows. 
+    This is common in problems in which the size of the problem is repeatedly reduced by a constant 
+        fraction.
+    A popular search algorithm called Binary Search has O(log n) worst-case time complexity. 
+        This is because it eliminates half of the remaining elements in each comparison, 
+            which makes it more efficient overall.
+
+"O(n)" is known as "Linear Time Complexity". The running time of algorithms with this time complexity 
+    increases proportionally to the input size.
+
+"O(n log n)" is known as "Log-Linear Time Complexity". This is a common time complexity of efficient
+    sorting algorithms, like Merge Sort and Quick Sort.
+
+"O(n²)" is known as "Quadratic Time Complexity". The running time of these algorithms increases 
+    quadratically relative to the input size, which is generally not efficient for real-world 
+        problems.
+
+Other time complexities include 
+    "Exponential Time Complexity", denoted as O(2^n)
+    "Factorial Time Complexity", denoted as O(n!).
+
+"Pseudocode" is a high-level description of the algorithm's logic that is general in nature, 
+and is not based on any specific programming language.
+    It is not as formal as actual code, since it's only intended for humans to read. 
+    It should be easy to understand at a glance. 
+    Its main purpose is to give a clear idea of the sequence of steps that will be performed.
+    It is usually a mixture of a common written language, like English, with programming constructs,
+    like IF, ELSE, FOR, and WHILE.
+
+Example: 
+            GET original_string
+
+            SET reversed_string = ""
+
+            FOR EACH character IN original_string:
+            ADD character TO THE BEGINNING OF reversed_string
+
+            DISPLAY reversed_string
+
+"Static arrays" have a fixed size. They store elements in adjacent memory locations.
+    - The size of a static array is determined when the array is initialized.
+    - Once that specific block of memory is allocated, it's fixed, and cannot be 
+        changed while the program is running. 
+
+"Dynamic arrays" are more flexible because they can grow or shrink automatically while the program 
+    is running.
+    - They work through an automatic resizing mechanism that copies the elements into a new array 
+        when the original array is full. 
+        The process is done efficiently because the size of the new array is chosen in an efficient 
+        way that makes these computationally expensive operations less frequent.
+
+"Stacks"
+- Last-in, First-out (LIFO) data structure.
+- This means that the last element that was added to the stack is the first one to be removed.
+- Stacks have two ends, which we know as top and bottom.
+- Elements are added and removed from the top of the stack.
+- Adding an element to a stack is known as a "push" operation. 
+- Removing an element from a stack is known as a "pop" operation.
+- We don't really perform any operations at the bottom of the stack but we keep 
+    it there as a reference.
+- The time complexity of the push and pop operations is typically O(1), a constant time complexity.
+- The space complexity of the push and pop operations is usually constant O(1). 
+    This means that the amount of memory required to perform these operations remains constant 
+        regardless of the size of the stack.
+
+"Queues"
+- First-in First-out (FIFO) linear data structure.
+- This means that the first element added to the queue is the first one to be removed.
+- Queues have two ends: front and back.
+- Elements are added to the back of the queue and they are removed from the front of the queue.
+- Adding an element to the back of a queue is known as an "enqueue" operation.
+    The new element is added to the end of the queue, becoming the end of the line.
+- Removing an element from the front of the queue is known as a "dequeue" operation.
+    The element at the front of the queue is removed, and the next element in line becomes the 
+        new front.
+- The time complexity & space complexity  of the enqueue and dequeue operations is O(1), 
+    constant time. 
+
+
+
