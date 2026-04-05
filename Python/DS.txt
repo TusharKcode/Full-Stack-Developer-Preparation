@@ -100,5 +100,45 @@ Example:
 - The time complexity & space complexity  of the enqueue and dequeue operations is O(1), 
     constant time. 
 
+"Linked Lists"
+A linked list is a linear data structure in which each node is connected to the next node in the 
+    sequence. Looks like a chain of nodes, where each node stores data and a reference to the 
+        next node in the linked list.
+Used to implement essential graph algorithms, such as depth-first search and breadth-first search.
+They do not have a fixed size. They can be expanded or shrunk as needed by simply updating the 
+    connections between the nodes.
+"Singly Linked Lists"
+    - Type of linked list in which each node is connected to the next node in the sequence.
+    - Each node is connected to the next one by storing a reference to it.
+    - This single reference per node allows you to traverse the linked list in one direction,
+        from start to end.
+    - The search can only move forward, not backwards.
+    - The head node is the first node in the linked list.
+    - The tail node is the last node.
+    - You can insert a node at the start, middle, and end of a linked list.
+
+"Doubly Linked Lists"
+    -  each node stores two references: a reference to the next node and a reference to the previous
+        node in the sequence.
+    - can be traversed in both directions.
+    - require more memory because each node stores two references instead of one.
+
+"Abstract Data Type (ADT)" is a conceptual representation of a data type, including what operations 
+    can be performed on the data and the properties of that data.
+
+A "map" is an ADT that manages collections of key-value pairs and their operations in a very 
+    specific and efficient way.
+    - every value is associated with a specific key.
+    - every key must be unique, allows for direct lookups, which makes the process of retrieving 
+        information much more efficient.
+    - values can be repeated.
+    - inserting key-value pairs, getting the value associated with a key, updating the value 
+        associated with a key, removing a key-value pair, and checking if a key exists in the map.
+
+A "hash map", also known as a 'hash table', is a concrete implementation of the map Abstract Data Type.
+    - Hash maps use a technique called "hashing" to perform common operations very efficiently.
+    - Hashing essentially works by generating a hash value for each element using a hash function.
+    - based on the key of the key-value pair and it's used to calculate an index in an underlying array,
+        the actual data structure where the key-value pairs are stored.
 
 
