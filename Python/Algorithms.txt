@@ -19,6 +19,13 @@
 => The space complexity of binary search is O(1) because it doesn't require any additional space to 
     search through the list.
 
+How Linear Search Differs from Binary Search?
+=> Binary search is more suitable for a large list of items compared to linear search.
+=> The time complexity of linear search is O(n) because the time it takes to search through the 
+    list grows linearly with the size of the list.
+=> The time complexity of binary search is O(log n) because the time it takes to search through the 
+    list grows logarithmically with the size of the list.
+
 
 The divide and conquer paradigm in computer science is a technique for recursively breaking down 
     problems into smaller sub-problems.
@@ -27,3 +34,11 @@ Technique is "recursion", which happens when a function calls itself repeatedly 
 The time complexity for merge sort would be O(n log n) because the list is continuously divided in 
     half (log n) and then merged together (O(n))
 
+"Merge Sort"
+=> Merge sort is a sorting algorithm that follows the divide-and-conquer approach.
+=> It works by recursively dividing a list into smaller sub-lists until each sub-list contains only 
+    one element.
+=> It then repeatedly merges the sub-lists back together in a sorted order.
+=> The time complexity for merge sort is O(n log n) because the list is continuously divided in half
+    (log n) and then merged together (O(n)).
+=> The space complexity of merge sort is O(n) because it is not an in-place sorting algorithm.
