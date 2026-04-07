@@ -1,0 +1,139 @@
+"Graphs" are data structures used to represent the connections or relationships between objects or 
+    entities. They're often used to model networks.
+
+The types of networks that you can model with a graph include social networks, transportation 
+    networks, communications networks, and even recommendation systems.
+
+They're very versatile.
+
+A graph is often represented as a collection of points or circles connected by lines.
+
+These circles and lines represent the two main components of a graph: nodes and edges.
+
+"Nodes", also known as vertices, represent the objects or entities that are part of the network 
+    modeled by the graph. 
+    They could be users, products, stations, cities, or any other entities in the model.
+
+"Edges" are the connections between the nodes. If two nodes are connected by an edge, 
+    that means that they're somehow connected in the network.
+
+If two nodes are directly connected by an edge, like nodes A and B in this example, they're 
+    known as "adjacent nodes".
+
+"Types of Graphs":
+=> 'Undirected graphs' are graphs where the edges don't have a specific direction. 
+    This type of edge is usually represented with a straight line between the nodes.
+    - If there's an edge connecting nodes A and B, the connection works in both directions: 
+        from node A to node B and from node B to node A. The connection is bidirectional.
+=> 'Directed graphs' are graphs where the edges do have a specific direction.
+    - If there is a connection from node A to node B, that doesn't necessarily imply that there 
+        is a connection from node B to node A.
+    - The edges of a directed graph are often represented as straight lines that end with an 
+        arrow to indicate the direction.
+
+=> 'Vertex labeled graph' is a graph in which each node is associated with a label or identifier in
+    addition to its data. 
+    These labels are used to identify the nodes, represent them visually, and store additional 
+        information about them.
+
+=> 'Cyclic graphs' are directed graphs with at least one cycle.
+    - A cycle is a path that you can follow through the edges of a graph that will take you back to 
+        the initial node where you started.
+
+=> 'Edge labeled graphs', edges are associated with labels. 
+    These labels are usually drawn next to their corresponding edges.
+
+=> 'Weighted Graphs' Weighted graphs are a specific type of edge labeled graph in which the labels 
+    on the edges represent values that can be compared and used to perform arithmetic operations.
+    - Some edges have a higher weight, while others have a lower weight. These weights represent the 
+        "cost" of the edge.
+
+=> 'Directed Acyclic Graph' which is a directed graph with no cycles.
+    - If you start at a specific node, you cannot go back to it because of the direction of the edges.
+
+=> 'Disconnected Graph' is a graph with two or more groups of nodes that are not connected by any 
+    edges.
+
+"Traversing"
+=> Traversals are used to do something with every single node in the data structure, 
+    like printing their values, finding a specific value, or performing certain operations on the 
+        nodes.
+
+=> 'Breadth-first search' (BFS) is an algorithm that visits all neighboring nodes before moving to 
+    the next level in the graph.
+    - It can be used to find the shortest path between two nodes in an unweighted graph because 
+        it analyzes all the nodes at each level, so it finds the path with fewest edges first.
+    - Implemented using a queue data structure to keep track of the nodes that have been visited.
+    - It requires storing a queue in memory, and this queue may have a large number of nodes, 
+        the space requirements of this algorithm can be considerable.
+
+    We start at node A, then move to the next level to visit nodes B and C, then to the next level 
+        to nodes D, E, F, and G. That is the core principle of breadth-first search (BFS).
+    
+    The algorithm works like this:
+
+            1. You start at a specific node.
+            2. That node is marked as visited and added to the queue.
+            3. While the queue is not empty, the current node is removed from the queue (dequeued).
+
+=> 'Depth-First Search' (DFS) follows each branch as deep as possible before it backtracks. 
+    - used to solve puzzles with a single solution, detecting cycles in a graph, and finding connected 
+        graph components.
+    - using recursion or a stack data structure to keep track of the visited nodes.
+
+    One of the limitations of this algorithm is that it's not always guaranteed to find the shortest 
+        path between two nodes in an unweighted graph.
+
+    We start at node A, and then move all the way down the tree to node B, and nodes D and E, 
+        before we move up again to node C and then nodes F and G. 
+    This is the core principle of depth-first search (DFS), traversing full paths before backtracking
+        and finding other paths.
+                                [A → B → D → E → C → F → G]
+
+    The algorithm works like this:
+
+            1. Start at a specific node.
+            2. That node is marked as visited and added to the stack.
+            3. While the stack is not empty, the current node is popped (removed).
+
+"Adjacency Matrices"
+- A two-dimensional list in which the rows and columns represent the graph's vertices.
+- The values in the matrix represent the edges or connections between the nodes.
+- Advantage:  Checking if there is an edge between two nodes takes constant time O(1). 
+                This is because the program only needs to find that particular value in the 2D list.
+- Adjacency matrices have a large quadratic space requirement O(V²), where V is the number of nodes 
+    in the graph.
+    => This is inefficient for sparse graphs, which are graphs that only have a few edges. 
+        Because if the graph is sparse, you will be storing many 0s in the matrix to represent 
+        the lack of edges between the nodes, and these 0s will still take space in memory.
+
+    => The values may have different meanings depending on whether the graph is weighted or unweighted:
+        - If the graph is unweighted, a value of 1 means that there is an edge connecting these 
+            nodes, while a value of 0 means there is no edge between them.
+        - If the graph is weighted, the value would represent the weight of the edge that connects 
+            the nodes.
+Example: adjacency_matrix = [
+            [0, 1, 1, 1],  # The neighbors of A are B, C, and D
+            [1, 0, 0, 1],  # The neighbors of B are A and D
+            [1, 0, 0, 0],  # The only neighbor of C is A
+            [1, 1, 0, 0]   # The neighbors of D are A and B
+        ]
+
+"Adjacency Lists"
+- An adjacency list is an array or dictionary that stores all the neighbors of each node.
+- There are two ways to implement adjacency lists:
+        -> As an array, where each index represents a node and the list stored at that index 
+            contains its neighbors.
+        -> As a dictionary, where each key represents a node and the value associated to that key 
+            (a list) contains its neighbors.
+- More efficient in terms of space requirements. They have a O(V + E) space complexity, where V is 
+    the number of vertices (nodes) and E is the number of edges.
+- Less efficient if there is an edge between two nodes. 
+    The search process can take O(V) time in the worst-case, since it may have to search through a 
+        very long list of neighbors if the node is connected to all the other nodes in the graph.
+
+
+Difference:
+    => The adjacency matrix stores 0s, 1s, or other values that represent the edges or weights of 
+        the edges in the graph.
+    => The adjacency list stores the actual list of all the neighbors of each node.

@@ -1,0 +1,46 @@
+"Priority Queues"
+- an abstract data type (ADT) that works similarly to a queue or stack, but with one key difference.
+- priority queues take the "priority" of the elements into account. 
+    The priority is used to determine which element should be removed next.
+
+- Usually, the element with the highest priority is removed first, but some implementations may 
+    also choose to remove the element with the lowest priority first. 
+    This will depend on the requirements of your program.
+- implemented using a heap data structure.
+
+Example: applications like finding the shortest path between two locations, 
+        scheduling tasks in operating systems, simulating traffic, compressing data, and 
+        managing networks.
+
+"Heaps"
+- a tree data structure with a very specific property called the heap property.
+- relationship between each node and its children, based on the type of heap.
+- implemented as arrays to access parent and child nodes efficiently.
+- Types:
+    => Max-heap: the value of each node is greater than or equal to the value of its children.
+    => Min-heap: the value of each node is less than or equal to the value of its children.
+
+=> The heap property is key because it ensures that the maximum (or minimum) element 
+    (depending on the type of heap) always stays at the top, which makes it very easy to remove.
+
+
+Python has a [heapq] built-in module that you can use to work with an implementation of a "min-heap" 
+    and operating directly on Python lists
+
+import heapq
+my_heap = []
+heapq.heappush(my_heap, 9)  # To add elements to the heap
+heapq.heappop(my_heap)      # To get the element with the highest priority 
+
+heapq.heappushpop(my_heap, 15) # more efficient than calling them separately, when the heap is large
+                                only performs one "heapify" operation to reorder the list as a heap
+heapq.heapify(my_heap)      # to transform it into a heap, If you already have a list
+
+Using Priorities
+        my_heap = []
+        heapq.heappush(my_heap, (3, "A"))
+        heapq.heappush(my_heap, (2, "B"))
+        heapq.heappush(my_heap, (1, "C"))
+
+        # Removes lowest number = highest priority
+        print(heapq.heappop(my_heap))  # (1, "C")

@@ -1,0 +1,55 @@
+A tree is a specific type of graph.
+- Have no loops or cycles (paths where the start and end nodes are the same).
+- Be connected (every node can be reached from every other node).
+- non-linear data structures that organize nodes in a hierarchy, where nodes may have children, 
+    siblings, and parent nodes.
+- There are many different types of trees, including Binary Trees, Binary Search Trees, AVL trees, 
+    Red-Black Trees, and B-Trees.
+
+The "root node" is the very top of a tree. It's the only node in the tree without a parent node.
+A "parent node" is a node that is immediately connected to other nodes below it. Ex: node A is 
+    the parent node of nodes B and C.
+A "child node" is a node that is immediately connected to a node above it. Ex: node D and E are the 
+    child nodes of node C.
+
+   => Nodes D and E are also classified as leaves. A "leaf" is a node that has no child nodes.
+        (as the end of the "branches" of the tree.)
+
+Tree nodes also have important properties:
+    "Depth": the length of the path from the root to that node. For example node D has depth 2 
+                because if you start at the root, you have to go through two edges to reach it.
+    "Height": the length of the path from that node down to a leaf. For example, node C has a 
+                height of 1 because it's one level above the leaf nodes.
+    "Degree": the number of child nodes each node has. For example, node B has degree 0 because 
+                it's a leaf node, so it has no child nodes. 
+                Node C has degree 2 because it has two child nodes.
+
+"Binary Trees"
+- A type of tree in which each node can have at most two child nodes, a left child node and a right 
+    child node.
+
+    => A 'subtree' is a section of a tree that is a tree itself.
+
+"Binary Search Trees"
+- a more specific version of a binary tree, with a very particular ordering property.
+- The ordering property of binary search trees (BST) establishes that for every node, 
+    all values in its left subtree are less than the node's value, and all values in its right 
+    subtree are greater than the node's value.
+- This ordering makes search, insertion, and deletion operations very efficient if the tree is 
+    balanced.
+
+    => A balanced tree is a tree in which the heights of the left and right subtrees of any node 
+        are very similar to make sure that operations remain efficient.
+
+"Tries"
+- Tries are tree data structures used to store a set of strings.
+- known as prefix trees because they are very efficient for operations that require finding strings 
+    based on their prefixes.
+- Each node in the trie represents a single character of a string.
+- The worst-case time complexity for the search operation is O(L), where L is the length of the string 
+    that you are looking for.
+- Insertion is also efficient. This operation only requires creating new nodes for the characters that 
+    don't exist in the trie yet.
+- Advantage: When multiple strings share the same prefix, their paths overlap, so the prefix itself is 
+                only stored once. (like autocomplete and spell checkers)
+- They can be inefficient if the set of strings has many unique characters.
