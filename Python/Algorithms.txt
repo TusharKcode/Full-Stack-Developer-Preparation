@@ -42,3 +42,20 @@ The time complexity for merge sort would be O(n log n) because the list is conti
 => The time complexity for merge sort is O(n log n) because the list is continuously divided in half
     (log n) and then merged together (O(n)).
 => The space complexity of merge sort is O(n) because it is not an in-place sorting algorithm.
+
+"Selection sort"
+=> This algorithm works by repeatedly finding the smallest element from the unsorted portion of the 
+    list and swapping it with the first unsorted element.
+=> It begins by selecting the minimum value in the entire list and swapping it with the first element.
+    Then it moves to the second position, finds the smallest value in the remaining unsorted elements
+    , and swaps it with the second element.
+=> process continues, moving through the list one element at a time, until the entire list is sorted.
+=> It results in a quadratic time complexity in the best, average, and worst case scenarios. 
+=> The space complexity will be constant O(1) because the sorting is done in place and a constant 
+    amount of memory is being used regardless of the size of the list.
+
+"Luhn algorithm"
+=> It also known as the "modulus 10" or "mod 10" algorithm.
+=> It is a simple checksum formula used to validate a variety of identification numbers, 
+    like credit card numbers.
+    
