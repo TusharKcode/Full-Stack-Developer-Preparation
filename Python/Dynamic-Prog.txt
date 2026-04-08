@@ -1,0 +1,27 @@
+"Dynamic Programming"
+
+=> an algorithmic technique that solves complex problems by breaking them down into simpler 
+    subproblems and storing the results to avoid redundant calculations.
+
+Dynamic programming works when two key conditions are present:
+    - Overlapping Subproblems: The same smaller problems appear multiple times when solving the 
+                                    larger problem. 
+                                Instead of recalculating these subproblems repeatedly, we store 
+                                    their solutions.
+    - Optimal Substructure: The optimal solution to the problem contains optimal solutions to its 
+                                subproblems. 
+                            This means we can build up the best solution by combining the best 
+                                solutions to smaller parts.
+
+"Dynamic Programming Solutions"
+
+=> Memoization (Top-Down Approach)
+    - It stores the results of expensive function calls and returns the cached result when the same 
+        inputs occur again.
+    - more efficient because each unique value from 1 to n is calculated exactly once.
+
+=> Tabulation (Bottom-Up Approach)
+    - It builds the solution from the ground up, filling a table with solutions to subproblems. 
+    - eliminates recursion entirely by building the solution iteratively from the smallest 
+        subproblems up to the target.
+    Advantage: No recursion overhead, Predictable execution, Cache-friendly, Easy to optimize
