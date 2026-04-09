@@ -1,0 +1,78 @@
+The "id" attribute adds a unique identifier to an HTML element.
+
+=> You can reference the id name of title within your JavaScript or CSS. 
+=> The hash symbol (#) in front of title, tells the computer you want to target an id with that value.
+
+=> "id" names should not be used more than once, and they should always be unique.
+=> they cannot have spaces in them.
+=> id attribute values should only contain letters, digits, underscores, and dashes.
+
+Example: <h1 id="title">Movie Review Page</h1>
+    [an h1 element with an id of title]
+
+Example:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+       name="viewport"
+       content="width=device-width, initial-scale=1.0" />
+    <title>Review page Example</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <h1 id="title">Movie Review Page</h1>
+  </body>
+</html>
+
+#title {        [referencing the id of title to change the text color to red.]
+  color: red;
+}
+
+
+The "class" attribute value does not need to be unique and can contain spaces.
+=> If you wanted to add multiple class names to an element, you can do so by separating the names 
+    by a space.
+
+Example: <div class="box"></div>
+        <div class="box red-box"></div>
+
+Example:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+       name="viewport"
+       content="width=device-width, initial-scale=1.0" />
+    <title>Colored boxes example</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="box red-box"></div>
+    <div class="box blue-box"></div>
+    <div class="box red-box"></div>
+    <div class="box blue-box"></div>
+  </body>
+</html>
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.red-box {
+  background-color: red;
+}
+
+.blue-box {
+  background-color: blue;
+}
+
+
+When should you use an id versus a class? 
+=> Classes are best used when you want to apply a set of styles to many elements.
+=> If you want to target a specific element, it is best to use id because those values need to be 
+    unique.

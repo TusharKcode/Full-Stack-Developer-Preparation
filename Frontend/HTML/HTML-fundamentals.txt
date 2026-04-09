@@ -1,0 +1,45 @@
+An HTML entity, or character reference, is a set of characters used to represent a reserved 
+    character in HTML.
+
+=> When the HTML parser sees the less than (<) symbol followed by an HTML tag name, 
+    it interprets that as an HTML element.
+
+=> These types of character references are known as named character references. 
+    "Named references" start with an ampersand sign (&) and end with a semicolon (;).
+
+=> By using a named character reference, the HTML parser will not confuse this with an 
+    actual HTML element.
+
+=> Another type of character reference would be the "decimal numeric reference". 
+    This character reference starts with an ampersand sign and hash symbol (#), followed by one or 
+        more decimal digits, followed by a semicolon.
+
+=> The last type of character reference would be the "hexadecimal numeric reference". 
+    This character reference starts with an ampersand sign, hash symbol, and the letter x. 
+    Then it is followed by one or more ASCII hex digits and ends with a semicolon.
+
+Example: 
+    <p>This is an &lt;img /&gt; element</p>
+    <p>&lt;p&gt;learning is fun&lt;/p&gt; </p>
+    &#60;
+    &#169;       [copyright symbol]   
+    &#174;       [registered trademark symbol]
+    &#x3C;
+    &#x20AC;     [euro symbol]
+    &#x03A9;     [Greek capital letter Omega symbol]
+    Output - This is an <img /> element, <p>learning is fun</p>, <, ©, ®, <, €, Ω
+
+
+=> The "script element" is used to embed executable code. Most developers will use this to execute 
+    JavaScript code. 
+    Syntax: <script src="path-to-javascript-file.js"></script>
+=> The src attribute is used here to specify the location for that external JavaScript file. 
+    'src' stands for "source". 
+Example: 
+        - Remove the // from in front of the alert("Welcome to freeCodeCamp"); and you should see an 
+            alert pop up.
+        <body>
+            <script>
+                // alert("Welcome to freeCodeCamp");
+            </script>
+        </body>

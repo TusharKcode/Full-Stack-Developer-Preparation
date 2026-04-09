@@ -1,0 +1,29 @@
+The div element is used as a container to group other elements.
+You will mainly use the div element when you want to group HTML elements that will 
+    share a set of CSS styles.
+
+The section element has semantic meaning over the div element which is not semantic.
+
+Semantics are the meaning of words or phrases in a language.
+So, this means if you use a section element, the browser will pick up its semantic meaning and 
+    understand to treat this as a section - on desktops, mobiles, you name it.
+
+
+Example: 
+
+    <div>
+        <p>Example paragraph element.</p>
+    </div>
+
+    <section>
+        <h2>Mammals</h2>
+        <p>
+            Mammals are warm-blooded animals with fur or hair. Most give birth to live
+            young.
+        </p>
+        <ul>
+            <li>Lion</li>
+            <li>Elephant</li>
+            <li>Dolphin</li>
+        </ul>   
+    </section>
