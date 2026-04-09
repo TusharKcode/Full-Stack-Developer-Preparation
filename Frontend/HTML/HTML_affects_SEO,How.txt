@@ -1,0 +1,43 @@
+'SEO', or "Search Engine Optimization", is a practice that optimizes web pages so they become more 
+    visible and rank higher on search engines. 
+
+=> One way to improve your site's SEO, is to provide a short description for the web page using 
+    the meta element.
+Example: <meta
+            name="description"
+            content="Discover expert tips and techniques for gardening in small spaces, 
+                    choosing the right plants, and maintaining a thriving garden."
+        />
+
+=> The meta description will not be visible on the web page itself. 
+    One place where the page description can be found is in the search engine results page snippet.
+    Example:  freeCodeCamp's subreddit and GitHub repositories
+
+=> meta descriptions won't directly affect a site's ranking on search engine, 
+    having a strong description could result in more traffic to your website.
+
+"Open Graph Tags"
+=> The open graph protocol enables you to control how your website's content appears across various 
+    social media platforms, such as Facebook, LinkedIn, and many more.
+=> You can set these properties through a collection of meta elements inside your HTML head section.
+=> The first important OG property to include would be the 'title'.
+=> The next important OG property would be the 'type'. The type property is used to represent the 
+    type of content being shared on social media. Examples: articles, websites, videos, or music.
+
+=> The third important OG property would be the 'image'.
+=> The fourth important OG property would be the 'url'.
+=> There are many more OG properties that you can set, like description, audio, video and locale.
+
+Example: <meta content="freeCodeCamp.org" property="og:title" />
+         <meta property="og:type" content="website" />
+         <meta
+            content="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png"
+            property="og:image"
+         />
+         <meta property="og:url" content="https://www.freecodecamp.org" />
+
+How OGs properties affects SEO?
+=> When your content is shared on social media, well-crafted OG properties can enhance the 
+    appearance for your content in users' feeds. 
+   This can lead to higher click-through rates which could signal to search engines that your 
+    content is relevant and engaging.
