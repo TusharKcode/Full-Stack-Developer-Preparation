@@ -1,0 +1,30 @@
+<!DOCTYPE html>         -> It tells browsers which version of HTML you're using. 
+<html lang="en">        -> This wraps around all your content, and can specify the language of your page.
+  <head>
+    <meta charset="utf-8" />
+    <meta
+       name="viewport"
+       content="width=device-width, initial-scale=1.0" />
+    <title>freeCodeCamp</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+            -> The body section is where all your content goes
+  </body>
+</html>
+
+=> The "head" section contains important behind-the-scenes information:
+=> Your site's metadata, contained in meta elements, has details about things like character 
+    encoding, and how websites like Twitter should preview your page's link. 
+   Your site's title, found in the title element, determines the text that appears in the browser 
+    tab or window. 
+   Finally, you'll typically link your page's external stylesheets in the head section using link 
+    elements.
+Example: 
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document Title Goes Here</title>
+            <link rel="stylesheet" href="./styles.css" />
+        </head>
+

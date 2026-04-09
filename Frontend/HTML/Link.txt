@@ -1,0 +1,34 @@
+The "link" element is used to link to external resources like stylesheets and site icons.
+
+Basic syntax for using the link element for an external CSS file:
+        <link rel="stylesheet" href="./styles.css" />
+
+=> The 'rel' attribute is used to specify the relationship between the linked resource and the HTML 
+    document.
+=> The 'href' attribute is used to specify the location of the URL for the external resource.
+
+=> The link element should be placed inside the head element
+Example: 
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Examples of the link element</title>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+
+=> The 'preconnect' value for the rel attribute tells the browser to create an early connection to 
+    the value specified in the href attribute. This is done to speed up loading times for these 
+    external resources.
+Example:
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap"
+    rel="stylesheet"
+    />
+
+=> A 'favicon', which is short for favorite icon, is a small icon typically displayed in the browser 
+    tab next to the site title. 
+    A lot of websites will use a favicon to display their brand icon.
+Example: 
+    <link rel="icon" href="favicon.ico" />

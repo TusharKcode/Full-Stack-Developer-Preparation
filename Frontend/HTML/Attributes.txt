@@ -1,0 +1,21 @@
+An attribute is a value placed inside the opening tag of an HTML element. 
+Attributes provide additional information about the element or specify how the element should behave.
+
+Syntax: <element attribute="value"></element>
+
+=> The value can be a string or a number, depending on the attribute.
+=> The 'href' attribute specifies the URL of a link.
+=> The 'target' attribute specifies where to open the link. 
+    The target="_blank" enables the link to open in a new browser tab.
+
+The "a" element, also known as the 'anchor element', is used to create hyperlinks. 
+The text between the opening and closing a tags is the clickable part users select to navigate.
+
+Example: 
+    <a href="https://www.freecodecamp.org/news/" target="_blank">Visit freeCodeCamp</a>
+
+The src, and alt, or alternative, attribute - which is used to specify the source of an image and 
+    provide alternative descriptive text for the image, respectively.
+
+Example: 
+    <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg" alt="Two tabby kittens sleeping together on a couch." />
