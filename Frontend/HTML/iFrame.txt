@@ -39,6 +39,12 @@ Example:
 - To specify a 'title' attribute for the iframe, as it's important for accessibility.
 - The 'allow' attribute lets you define what an iframe can or can't do. This is called an allowlist. 
     Items in an allowlist can be separated by semicolons or spaces, and both can be used together.
+- 'accelerometer' lets the iframe use motion sensors so it can detect things like device tilting 
+    and rotation
+- 'clipboard-write' lets the iframe write data to the user’s clipboard.
+- 'referrerpolicy' is the rule that determines how much detail you share when your page connects to 
+    another page. "strict-origin-when-cross-origin": This shares the full address on the same site, 
+                    only the site name on other sites, and nothing on insecure sites.
 
 
 More Example: 
