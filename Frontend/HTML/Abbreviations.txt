@@ -1,0 +1,27 @@
+An abbreviation is a shortened form of a word or phrase.
+For example, "Dr" followed by a period, is an abbreviation for the word "doctor".
+
+There are two common forms of abbreviations: acronyms and initialisms.
+
+=> An acronym is a word formed from the initial letters of a phrase, with each letter representing 
+    the first letter of a word in that phrase.
+GUI is an example of an acronym. It stands for Graphical User Interface. By taking the first 
+    letters of each word G, U, and I, you get the acronym GUI.
+
+=> An initialism is formed from the initial letters of a phrase, with each letter representing the 
+    first letter of a word in that phrase.
+For example, HTML is an initialism; it stands for HyperText Markup Language and is pronounced by 
+    spelling out each letter H, T, M, L.
+
+- The 'title' attribute is optional, but if you decide to include it, it must be a human readable 
+    description of the abbreviation, acronym, or initialism.
+    . Some browsers may display a dotted underline, while others may convert the contents to 
+        small caps. When the user hovers over the abbreviation, the full form is displayed as a tooltip.
+
+=> "The distinction is acronyms are pronounced as words and initialisms are pronounced as 
+    individual letters."
+
+
+Example: 
+    <p><abbr>HTML</abbr> is the foundation of the web.</p>
+    <p><abbr title="HyperText Markup Language">HTML</abbr> is the foundation of the web.</p>

@@ -1,0 +1,59 @@
+"Semantics" are the meaning of words, or phrases, in a language. In HTML, which is a language, 
+    elements have their own semantic meaning too. 
+
+The semantic meaning of an element refers to what special information that element conveys.
+
+"But why is this important?"
+=> First and foremost, using proper semantic HTML will ensure the best experience for users with 
+    assistive technology like screen readers.
+=> Semantic HTML can improve your search rankings. This is referred to as 'search engine optimization'
+    , or "SEO".
+
+Search engines use automation to parse the content of your web page and determine when and where it 
+    should show up in results.
+
+Examples of semantic HTML elements include:
+- The 'header' element for defining the header of the document, or section.
+- The 'navigation' section element, nav, for sections with navigation links.
+- The 'section' element for grouping related information.
+- The 'figure' element for illustrations and diagrams.
+
+=> "Presentational HTML" focuses on the appearance and style of the content. 
+=> In the early days of HTML, developers would use elements like the center, big, and font elements.
+    - But in modern web development you shouldn't use these types of elements, 
+        because of their limitations and negative impact on accessibility and maintainability.
+
+
+=> "Semantic HTML describes the content, while Presentational HTML focuses on the appearance."
+
+=> The 'idiomatic text element', i, was originally used for presentational purposes to display 
+    the text in italics. But now, it is frequently used for highlighting alternative voice or mood, 
+    idiomatic terms from another language, technical terms, and thoughts.
+    - If you do need to emphasize the importance of the text, you can use a similar semantic element
+        called the emphasis element, em. 
+
+=> The "bring attention to" element, b, is commonly used to highlight keywords in summaries, or 
+    product names in reviews. Browsers display this text in boldface. 
+    - If you need to emphasize the importance of the text, you should use the strong element instead
+      of the b element.
+    - strong is a semantic HTML element that emphasizes text that is crucial, or urgent.
+
+=> Description lists are perfect for presenting terms and definitions in an organized and 
+    easy-to-read format, like in a glossary, or real dictionary, where you can find words with 
+    their corresponding definitions.
+
+    - First, the description list element, dl, which is the container for the entire list.
+    - Then, one description term element, dt, for each term. In this case the description list 
+        has two terms, HTML and CSS, so it has two of these elements.
+    - And finally, after each term you will find a description details element, dd, for the 
+        description, or details associated with that term.
+
+Example: 
+        <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets</dd>
+        <dt>JS</dt>
+        <dd>JavaScript</dd>
+        </dl>

@@ -1,0 +1,48 @@
+The contact address element is used to represent contact information for a section on a web page. 
+
+- The 'address' element is versatile and can be used for business pages, author pages, personal sites, 
+    and more.
+Example: 
+<address>
+  <h2>Company Name</h2>
+  <p>
+    1234 Elm Street<br />
+    Springfield, IL 62701<br />
+    United States
+  </p>
+  <p>Phone: <a href="tel:+15555555555">+1 (555) 555-5555</a></p>
+  <p>Email: <a href="mailto:contact@company.com">contact@company.com</a></p>
+</address>
+
+=> The tel:+ value inside the href attribute creates a clickable link to initiate a phone call on 
+    certain devices that support that.
+=> mailto links are used in HTML documents to allow users to open a new email within their 
+    preferred email client.
+    - downsides of using it is that users often perceive it as spam. A lot of spammers will use 
+    this option to send emails to users.
+
+
+=> The time element is used to represent a specific moment in time.
+Example: <p>The reservations are for <time datetime="20:00">20:00 </time></p>
+
+=> The datetime attribute is used to translate dates and times into a machine-readable format.
+    because it helps with search engine results and helps the browser process date and time 
+    information more effectively.
+    - The value for the datetime attribute must be either a valid year, valid month, valid time, 
+      local date, global date, or valid duration string.
+
+Example: 
+<p>
+  The graduation will be on <time datetime="2024-06-15T15:00">June 15</time>
+</p>
+
+The value for the datetime attribute is in the ISO 8601 format. ISO 8601 is an international 
+  standard to represent dates and times.
+
+The first part of that value is the year, month and day. The capital T in the value is a separator 
+  between the date and time.
+
+The fifteen hundred hours would be three PM in the afternoon.
+
+Whenever you need to represent events, publication dates, or appointments, it is best to use the 
+  time element.
