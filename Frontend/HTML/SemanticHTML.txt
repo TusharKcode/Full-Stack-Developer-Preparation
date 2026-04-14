@@ -57,3 +57,68 @@ Example:
         <dt>JS</dt>
         <dd>JavaScript</dd>
         </dl>
+
+"Semantic Elements"
+=> The superscript element is used to display a piece of text as a superscript. A superscript is a 
+    symbol or letter printed above the normal line of text.
+=> Common use cases for the superscript include exponents, superior lettering, and ordinal numbers.
+=> Superior lettering refers to letters written in superscript, usually to indicate abbreviations.
+    [letters g and r are wrapped inside superscript tags to illustrate the abbreviation]
+=> Used for typographical reasons. If you want to style a piece of text with a raised baseline, 
+    then you should use CSS instead of the superscript element.
+=> To represent chemical equations inside HTML, you would use the subscript element. This element 
+    uses a subscript which displays a lowered baseline using smaller text.
+    - Common use cases for the subscript element include chemical formulas, footnotes, and 
+        variable subscripts.
+
+Example: <p>2<sup>2</sup> (2 squared) is 4.</p>
+        <p>
+            Monseigneur is often written as <strong>M<sup>gr</sup></strong>.
+        </p>
+        <p>CO<sub>2</sub></p>
+
+=> The inline code element is used to represent short snippets of code inside text. 
+    Common use cases for the code element would be for technical articles and documentation pages.
+    - By wrapping this code snippet inside <code> tags, it communicates to the browser that the 
+        text is a piece of inline code.
+    - The code element is meant to represent a single line of code. If you want to represent 
+        multiple lines of code, you will need to place a code element inside a preformatted 
+        text element.
+=> The preformatted text element is used to represent preformatted text.
+    - When using the pre element, you will need to be mindful of spacing because it will display 
+        exactly as written inside the HTML document.
+Example: 
+<p>
+  To set the text color to blue in CSS, use the following code:
+  <code>color: blue;</code>
+</p>
+
+<pre>
+  <code>
+    body {
+      color: red;
+    }
+  </code>
+</pre>
+
+=> The unarticulated annotation element, or u element for short, is used to represent inline text 
+    that has non-textual annotation applied.
+    - In HTML4, the u element was used for styling purposes. 
+        But in HTML5, the u element should only be used to indicate that text has non-textual 
+        annotation applied.
+=> The strikethrough element, or s element for short, should be used to represent when text is no 
+    longer accurate or relevant.
+    - The s element should never be used just to show changes to a document. 
+=> The ruby element represents small text shown above or below the main text. 
+    It is typically used to show the pronunciation of East Asian characters.
+    - The rp element, or ruby fallback parenthesis element, is used as a fallback for browsers 
+        lacking support for displaying ruby annotations.
+    - The rt element, or ruby text element, is used to indicate text for the ruby annotation. 
+        This text is usually used for pronunciation, or translation details in East Asian typography.
+Example:
+<p>
+  You can use the unarticulated annotation element to highlight
+  <u>inccccort</u> <u>spling</u> <u>issses</u>.
+</p>
+<p><s>Tomorrow's hike will be meeting at noon.</s></p>
+<ruby> 明日 <rp>(</rp><rt>Ashita</rt><rp>)</rp> </ruby>
