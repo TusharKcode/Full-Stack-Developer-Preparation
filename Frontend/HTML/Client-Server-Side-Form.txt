@@ -1,0 +1,42 @@
+The term "client-side" refers to everything that happens on the user's computer or device, 
+    like the part of a website or app you interact with directly. This includes the layout, 
+    design, and any interactive features.
+
+The term "server-side" refers to everything that happens on the server, the computer, or system, 
+    that hosts the website or app. This includes processing data, running applications, and 
+    handling requests that come from the user's device.
+
+=> While client-side validation is important, you also need server-side validation for added 
+    security. 
+    Malicious users can bypass client-side checks, so robust server-side measures are essential.
+
+
+- The required attribute specifies that the user needs to fill out that portion of the form before 
+    it gets submitted.
+- It is important to note that browsers only check for basic validation for standard email addresses.
+- Other forms of validation for email inputs are to use the minlength and maxlength attributes.
+    The minlength and maxlength attributes are used to set the minimum and maximum length in 
+    characters for the email input. 
+    If you don't include the minimum length or exceed the max length of characters, the browser 
+        will show an alert message.
+        
+Example:
+
+            <form action="">
+                <label for="email">Email Address (Required field):</label>
+                <input required type="email" name="email" id="email" />
+                <button type="submit">Submit Form</button>
+            </form>
+
+            <form action="">
+                <label for="email">Email Address (Required field):</label>
+                <input
+                    required
+                    type="email"
+                    name="email"
+                    id="email"
+                    minlength="4"
+                    maxlength="64"
+                />
+                <button type="submit">Submit Form</button>
+            </form>

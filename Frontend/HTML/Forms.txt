@@ -1,0 +1,129 @@
+The "form element" in HTML is used to gather user information, such as names and email addresses.
+ - The 'action attribute' specifies where the form data will be sent upon submission. 
+ - The 'method attribute' is used to specify the HTTP method to use when sending the form data. 
+    The most common methods are GET and POST.
+ - To collect specific information, like names and email addresses, you would use the input element.
+ - input elements are void elements and do not have closing tags. 
+ - The 'type attribute' defines the data type expected from the user. In this case, the data would be 
+    plaintext.
+ - To add a label for the input, you would use a 'label element'.
+ - By nesting an input inside a label element, you create an implicit association between the label 
+    and the input field. 
+    The term "implicit" refers to something that is understood or inferred without needing to be 
+    explicitly stated or defined with additional attributes or elements.
+ - When using an explicit association, the values for the for attribute and id need to be the same.
+ - The email type in the input provides basic validation for correctly formatted email addresses.
+ - If you want to show additional hints to the users about the expected input, you can use the 
+    placeholder attribute.
+ - When working with fieldset elements, it is common to use a caption to describe the group of 
+    inputs. You can use the 'legend element' for this.
+
+Example:
+        <form action="">
+            <input type="text" />
+        </form>
+
+        <form action="">
+            <label>
+                Full Name:
+                <input type="text" />
+            </label>
+        </form>
+
+        <form action="">
+            <label for="email"> Email Address: </label>
+            <input type="email" id="email" />
+        </form>
+
+        <form action="">
+            <label for="email"> Email Address: </label>
+            <input type="email" id="email" placeholder="example@email.com" />
+        </form>
+
+        <form action="/example-url">
+            <fieldset>
+                <!-- inputs go inside here-->
+            </fieldset>
+        </form>
+
+=> The term "implicit" refers to something that is understood or inferred without needing to be 
+    explicitly stated or defined with additional attributes or elements.
+
+The "button element" is used to perform a particular action when it is activated.
+ - The button element has a type attribute which controls the behavior of the button when it is 
+    activated. 
+ - The first possible value for the type attribute would be the button type.
+ - Add some JavaScript code to make the button interactive, such as showing an alert in this case.
+ - Another possible value for the type attribute is the submit value.
+ - The third possible value for the type attribute is the reset value.
+ - The input element also has a type attribute with the possible values of submit, reset, and button.
+ - The value attribute is used to show the button text.
+
+
+Example:
+
+        <button>Start Game</button>
+        <button type="button">Show Alert</button>
+
+<button type="button">Show Alert</button>
+<script src="index.js"></script>
+
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => alert("You clicked on the alert button"));
+
+        <form action="">
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" />
+            <button type="submit">Submit form</button>
+        </form>
+
+        <form action="">
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" />
+            <button type="reset">Reset form</button>
+            <button type="submit">Submit form</button>
+        </form>
+
+<input class="start-btn" type="button" value="Start Game" />
+<script src="index.js"></script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".start-btn");
+  btn.addEventListener("click", () => {
+    const paraEl = document.createElement("p");
+    const bodyEl = document.querySelector("body");
+
+    bodyEl.appendChild(paraEl);
+    paraEl.textContent = "The game has started!!!";
+  });
+});
+
+=> Reset buttons are usually not the best idea because they could lead to users accidentally 
+    resetting their data. 
+    Also, multiple buttons in your form could clutter up the user interface.
+
+" Form States "
+=> In HTML, form controls, like inputs, can be in different stages or conditions like a focused 
+    state, readonly state, or disabled state.
+    
+    - The first state would be considered the default state. The default state of an email address 
+        input is a blank input.
+    - When the user clicks on a form control or selects it with the keyboard's tab key, then that 
+        means it is in the focused state. 
+        When an input is in the focused state, most browsers will show a blue highlighted border 
+            around the input.
+    - Another form state is the disabled state. This state shows users that an input cannot be 
+        focused or activated.
+    - Another type of form state is the readonly state. This is when a form control, like an input, 
+        is not editable by the user.
+
+Example:
+    <input type="email" name="email" id="email" />
+    <input disabled type="email" name="email" id="email" />
+    <input
+        readonly
+        type="email"
+        name="email"
+        id="email"
+        value="example@email.com"
+    />
