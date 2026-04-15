@@ -1,0 +1,37 @@
+The h2 without a closing tag will still render fine. This happens because browsers use a parsing 
+    algorithm that handles common errors and tries to render HTML as closely as possible to the 
+    author's intention.
+
+<h2>Subheading 3
+
+=> An HTML validator is a tool that checks the validity of your HTML code against the standard HTML 
+    specifications. 
+    - It helps you identify errors and warnings in your HTML code, ensuring your web pages are 
+        correctly structured and compliant with web standards.
+
+    - There are several HTML validators out there you can use. The most widely accepted one is 
+        the w3.org markup validation service.
+    - When you visit the site validator.w3.org, you can click on the Validate by Direct Input button
+     and paste in your HTML code. When you click on the Check button, then a list of results will 
+        display with the errors that need to be fixed.
+
+    - Another HTML validator that you can use is jsonformatter.org.
+    - You can copy and paste your HTML code inside the first editor, and when you click on the 
+        Validate button, it will show you any errors you have in your code.
+
+=> Programmers often refer to issues as bugs. The process of finding and fixing these bugs is known 
+    as debugging.
+    - Two important tools to use would be the DOM inspector and developer tools.
+    - The DOM inspector allows you to inspect the HTML structure of the page you are on.
+        DOM stands for Document Object Model. It is a tree-like structure that represents the 
+        elements on a page.
+    - Devtools: a set of web developer tools built directly into the browser that helps you debug, 
+        profile, and analyze web pages.
+
+    - To open the developer tools in your browser, you can right-click on the page and select Inspect.
+        use Control Shift I on your PC keyboard or Command Option I on your Mac.
+        When you open developer tools in Google Chrome, you'll see a number of tabs. 
+            The first tab is called the Elements tab. This tab shows you the HTML structure of the page
+            you are on.
+            The second tab is called the Console tab. This tab shows you any errors that might be occurring
+            on the page.
