@@ -1,0 +1,19 @@
+=> Alternative pointing devices are input devices that make good alternatives to the traditional 
+    mouse. 
+    They are essential for improving computer accessibility for those with disabilities, 
+    forelimb impairments, and limited mobility.
+    - Common examples of alternative pointing devices are trackballs, joysticks, and touchpads.
+
+    - A trackball is a stationary pointing device that consists of a large, movable ball within a 
+        socket. It also includes additional buttons for clicking and performing other functions.
+        Users manipulate the ball directly with their fingers, thumb, or palm to move the cursor on the screen.
+
+    - A joystick is a pointing device primarily designed for games and certain industrial 
+        applications like machinery control. It consists of a lever that pivots up, down, left, and 
+        right, and often includes additional buttons for various actions.
+        popular for flight simulators, cranes, driving games, and other applications requiring precise directional input.
+
+    - A touchpad is a flat, touch-sensitive device built into laptops and some keyboards. 
+        It allows users to control the cursor on the screen by sliding their fingers across its surface.
+        Touchpads also feature buttons that emulate the actions of a traditional mouse, such as 
+        right-click and left-click.
