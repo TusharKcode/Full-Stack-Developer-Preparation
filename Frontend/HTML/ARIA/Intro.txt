@@ -1,0 +1,13 @@
+"WAI-ARIA" stands for Web Accessibility Initiative - Accessible Rich Internet Applications. 
+    It's a specification that enhances accessibility for dynamic content and UI (User Interface) 
+    components.
+
+=> WCAG provides general guidelines for web accessibility
+=> WAI-ARIA offers specific rules for making dynamic and interactive content accessible for 
+    users of assistive technologies.
+
+=> WAI-ARIA works by introducing a set of attributes you can add to HTML elements to provide 
+    additional semantic information. 
+    These attributes are categorized into roles, states, and properties.
+
+=> ARIA role defines the purpose of an element within a website or web app.
