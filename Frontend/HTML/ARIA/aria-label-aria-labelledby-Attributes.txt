@@ -1,0 +1,49 @@
+The "aria-label" and "aria-labelledby" attributes provide crucial information about page elements 
+    that might be unclear or invisible.
+Both aria-label and aria-labelledby are prefixed with 'aria'.
+
+=> ARIA stands for Accessible Rich Internet Applications. 
+    - It's a set of attributes prefixed with aria-, which lets developers communicate the purpose 
+        of elements to assistive technologies. 
+
+    - "Do not use aria-label and aria-labelledby on an element at the same time."
+
+    - The 'aria-label' attribute is an invisible label for interactive elements. 
+        It adds a text label to an element that screen readers can read.
+    - aria-label is especially useful for elements that do not have visible text but still need 
+        to be described by screen readers.
+    - The aria-label attribute tells screen readers what text to use in place of the icon.
+
+    - The 'aria-labelledby' attribute does the exact same thing as the aria-label attribute, 
+        but instead of defining the text directly in the attribute, you use a reference to text 
+        that already exists on the page. 
+        The existing text must have an id attribute, which will be used for the reference value 
+        in the aria-labelledby attribute.
+    - Combining multiple id values into a single aria-labelledby attribute value is also possible.
+
+Example:<button aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <input type="text" aria-labelledby="search-btn">
+        <button type="button" id="search-btn">Search</button>
+
+        <div>
+            <span id="volume-label">Volume</span>
+            <span id="volume-details">Adjust the volume level</span>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="30"
+                aria-labelledby="volume-label volume-details">
+        </div>
+
+Advantages to using "aria-labelledby" over 'aria-label':
+=> If someone is using a translation service to translate the content on your page, the text in an 
+    aria-label attribute may not always be translated.
+=> Using aria-labelledby can also help prevent a mismatch between the visible label text and the 
+    invisible label for screen reader users since updating the visible text will automatically 
+    update the invisible label.
+=> aria-labelledby can make it much easier to programmatically create complex invisible labels 
+    consisting of multiple sources of text.

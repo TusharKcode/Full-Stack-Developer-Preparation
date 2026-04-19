@@ -1,0 +1,33 @@
+The "aria-describedby" attribute is used to provide additional information about an element to 
+    screen reader users by referencing existing content on the page.
+
+The most common use for aria-describedby is to associate instructions and error messages with form inputs.
+Due to the various methods screen reader users have for navigating a page, they may miss these 
+    messages when navigating between inputs. 
+    Using aria-describedby helps ensure that they will hear them.
+
+Example: 
+<form>
+  <label for="password">Password:</label>
+  <input type="password" id="password" aria-describedby="password-help" />
+  <p id="password-help">Your password must be at least 8 characters long.</p>
+</form>
+
+#password-help {
+  color: red;
+}
+
+const passwordEl = document.getElementById("password");
+const passwordHelpText = document.getElementById("password-help");
+
+passwordEl.addEventListener("input", (e) => { 
+  const userInput = e.target.value;
+  passwordHelpText.style.color = userInput.length >= 8 ? "green" : "red";
+});
+
+
+=> Another good use case for the aria-describedby attribute is when you have a delete button.
+
+Example: 
+    <button aria-describedby="delete-message">Delete</button>
+    <p id="delete-message">Warning! All deletions are permanent.</p>
