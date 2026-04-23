@@ -1,0 +1,90 @@
+Alternative text, often abbreviated as alt text, is a brief text description of an image.
+- It provides essential information about the image for users who cannot see it, such as people 
+    who use screen readers and other assistive technologies.
+
+ - Alternative text is also used by search engines to understand images. Some browsers may also 
+    display it when an image is not loaded properly. This can happen when the image file is missing 
+    or when the user has connectivity issues.
+
+ - If an image is only used for decorative purposes, it should have null (empty) alt text, so it 
+    can be ignored by screen readers and other assistive technologies.
+
+Example: 
+<img src="puppy.png" alt="A black and white puppy with an orange collar lies on its belly in the sand, looking off to the side. A bright orange ball rests near its front paws." />
+
+
+=> To add captions or subtitles to your video or audio content, you can use the "track" element 
+    inside your video or audio element.
+    - The kind attribute is used to tell the track element how it should be used. Valid values 
+        for the kind attribute include captions, subtitles, chapters, and metadata.
+    - The srclang attribute represents the language for the track content.
+    - The label attribute is a descriptive title for the text track that browsers use to identify
+        and display it in the list of available text tracks.
+
+Example:
+<video
+  width="400"
+  height="300"
+  controls
+  src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4"
+>
+  <track
+    src="captions.vtt"
+    kind="captions"
+    srclang="en"
+    label="English"
+  />
+</video>
+
+<audio controls src="sample.mp3">
+  <track
+    src="captions.vtt"
+    kind="captions"
+    srclang="en"
+    label="English"
+  />
+</audio>
+
+
+=> Keyboard accessibility ensures these users can navigate web applications effectively without barriers.
+ - Many users rely on the Tab key to move through interactive elements on a webpage. By default, 
+    browsers let users tab through elements like links, buttons, and form fields in the order they 
+    appear in the HTML. This is called the "natural tab order".
+ - 'tabindex' attribute allows you to adjust which elements are focusable or change their focus order.
+    tabindex="0" adds the element to the natural tab order.
+    tabindex="-1" makes an element focusable programmatically. Managing focus in elements that are 
+        not normally focusable, such as headings, containers, dialogs, or error messages.
+
+ - When the tabindex is greater than 0 it sets a custom tab order. So elements with lower positive 
+    values are focused first.
+ - Custom positive values are sometimes used in complex widgets, such as a toolbar where you want 
+    a specific navigation order.
+
+ - 'accesskey' is another attribute you can use to make your web project keyboard accessible. 
+    It allows you to define a key that focuses on or activates a particular element.
+
+
+Example:
+<element tabindex="number">Element Text</element>
+
+<button>First</button>
+<div tabindex="0">Second</div>
+<a href="#">Third</a>
+
+<p tabindex="-1">Sorry, there was an error with your submission.</p>
+
+<input tabindex="2">
+<input tabindex="1">
+<input tabindex="3">
+
+<button accesskey="s">Save</button>
+<button accesskey="c">Cancel</button>
+<a href="index.html" accesskey="h">Home</a>
+
+Explanation
+-> accesskey="s" assigns the key S to the Save button. On most browsers, pressing ALT + S
+    (on Windows) and CTRL + Option + S (on Mac) will activate this button.
+-> accesskey="c" sets the key C to the Cancel button, allowing users to activate it using
+    ALT + C (Windows) and CTRL + Option + C (Mac).
+-> accesskey="h" assigns the key H to the Home link, allowing users to navigate to the homepage 
+    using ALT + H (Windows) and CTRL + Option + H (Mac).
