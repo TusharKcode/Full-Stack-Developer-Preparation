@@ -1,0 +1,12 @@
+HTTP => Used by web browser to request web pages.
+SMTP => Send email messages and attachments from clients to servers and from servers to other email servers. 
+SSH => Used to provide secure remote access to servers and networking devices.
+POP => Used by email clients to retrieve emails and attachments from remote server.
+
+Intermediatory device => firewall
+
+What wireless router configuration would stop outsiders from using your home network?
+=> Encryption
+
+What type of device is able to create physical movement?
+=> Actuator
