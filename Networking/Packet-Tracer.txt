@@ -34,3 +34,20 @@ The "CLI tab" provides access to the command line interface of a Cisco device. U
 "Services Tab" a server has all of the functions of a host with the addition of one more tab, 
     the Services tab. This tab allows a server to be configured with common server processes 
     such as HTTP, DHCP, DNS, or other services.
+
+File Types
+.pka - Packet Tracer Activity file, has an instructions window.
+        - This file type contains two networks: an initial network and an answer network.
+        - The initial network opens when you launch the activity.
+        - The answer network runs in the background and can be used to provide scoring and feedback to 
+            learners as they complete the activity.
+.pkt - is created when a simulated network is built in Packet Tracer and saved. 
+        - can also have graphic background images embedded within it.
+.pksz - is specific to Packet Tracer Tutored Activities (PTTA). 
+        - These files bundle a .pka file, media assets, and a scripting file for the hinting system.
+        - Provide support, in the form of contextualized hints, for students who are working on 
+            completing the activity.
+.pkz - You will see Save As PKZ... in the File menu.
+        - This file type was previously used to embed images and other files in a Packet Tracer file.
+        - images are now embedded directly within a regular .pkt or .pka file by default.
+        - Therefore, consider .pkz as a deprecated file type.

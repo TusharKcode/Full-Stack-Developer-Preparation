@@ -10,3 +10,15 @@ What wireless router configuration would stop outsiders from using your home net
 
 What type of device is able to create physical movement?
 => Actuator
+
+What are the other was to connect devices?
+=> Other ways are USB, Coaxial, Wireless, Fiber optics, Serial
+
+Diff. b/w 
+- Wiring Closet Rack designed to hold equipments like switches, routers and patch panels.
+- Table used for end-user or non-rackable equipments such as laptop, desktop, etc.
+- Shelf used to hold smaller components such as external hard drives or specialized sensors.
+
+Diff. b/w 
+- Logical Mode focuses on network topology 
+- Physical Mode focuses on geopgraphic and spatial layout. 
