@@ -1,0 +1,99 @@
+Network protocols define many aspects of communication over the local network.
+- Message Format -> Uses fromat or structure. Depends on type of msg and the channel used to deliver 
+                    the msg.
+- Message Size -> Size of pieces communicated across network is ver strict. It depends on channel used.
+                    When the long msg is sent from one host to another over a network, it necessary
+                    to break the msg in smaller pieces, in order to ensure msg can be delivered relaibly. 
+- Timing -> Determines the speed at which the bits are transmitted across th network. Affects when 
+            individual host can send data and total amount of data can be sent in any one transmission.
+- Encoding -> Msg sent over network converted into bits by sending host. Each bits encoded into patterns
+                of sounds, light waves or electrical impluses depends on network media over bits are
+                transmitted. Destination host recieves and decodes signals in order to interpret msg.
+- Encapsulation -> Each msg transmitted on network include a header contains addressing info that 
+                    identifies source and destination hosts. It is the process of adding the info to
+                    pieces of data that make up msg. It ensure that msg is delivered to correct 
+                    application on destination host.
+- Message Pattern -> Some msg require acknowledgement before next msg be sent. Request/Response 
+                        pattern is common.
+
+The IETF (Internet Engineering Task Force) records and publishes internet standards in documents known as
+    Request For Comments(RFC).
+
+Layered Models depicts the operation of the protocols occuring within each layer, The layer model has
+    many benefits:
+- Assist in protocol design
+- Fosters competition
+- Enable technology changes to occur at one level without affecting other lvl.
+- commmon language to describe networking functions and capabilities.
+
+The First Layered Model for internetwork communication was created in early 1970s and reffered to as
+    "Internet Model".
+
+'Transport Control Protocol' / 'Internet Protocol'
+=> TCP/IP protocols are used for internet communication follow the structure of this model, that's why 
+    Internet Model reffered to as TCP/IP model.
+
+    Layers
+    - Application       -> Represent data to user, plus encoding and dialog control.
+    - Transport         -> Supports communication b/w various devices across diverse network.
+    - Internet          -> Determines the best path through the network.
+    - Network Access    -> Controls hardware devices and media that make up the network.
+
+OSI Reference Model
+=> Two types of model:
+    - Protocol Model -> A protocol suite includes the set of related protocols that provide all 
+                        functionality required for people to communicate with the data network.
+                        The TCP/IP model is protocol model b/s it describe the functions that occur 
+                        at each layer of protocols within TCP/IP suite.
+    - Reference Model -> This type of model describe the functionsmust be completed at particular 
+                            layer. A Reference Model is not intended to provide a sufficient level
+                            of detail to define precisely how each protocol should work at each layer
+
+Internetwork Reference Model was created by Open System Interconnection (OSI) project at International
+Organization of Standardization (ISO). It is used for data network design, operation specifications, 
+and troubleshooting. It is commonly reffered to as OSI Model.
+
+    Layers
+    7- Application   -> Used for Process-to-Process communications.
+    6- Presentation  -> Provides for common representaion of data transferred b/w application layer 
+                        service.
+    5- Session       -> Provide service layer to Presentation layer to organize its dialogue and to
+                        manage data exchange.
+    4- Transport     -> Defines service of segment, transfer, reassemble the data for individual 
+                        communication b/w the end devices.
+    3- Network       -> Provide service to exchange the individual pieces of data over the network
+                        b/w identified end devices.
+    2- Data Link     -> Describes methods for exchanging data frames b/w devices over a common media.
+    1- Physical      -> Describes mechanical, electrical, functional and procedural means to activate,
+                        maintain and de-activate physical connection for a bit transmission to and 
+                        from a network device.
+
+
+OSI Model and TCP/IP Model Comparison
+
+- The TCP/IP model is a method of visualizing the interactions of the various protocols that make up 
+    the TCP/IP protocol suite. 
+- It does not describe general functions that are necessary for all networking communications.
+- It describes the networking functions specific to those protocols in use in the TCP/IP protocol suite.
+- The protocols that make up the TCP/IP protocol suite can be described in terms of the OSI reference model.
+- The functions that occur at the internet layer in the TCP/IP model are contained in the network 
+    layer of the OSI Model.
+- The transport layer functionality is the same between both models. 
+- However, the network access layer and the application layer of the TCP/IP model are further 
+    divided in the OSI model to describe discrete functions that must occur at these layers.
+
+The key similarities are in the transport and network layers
+- OSI Layer 3, the network layer, maps directly to the TCP/IP internet layer. This layer is used to 
+    describe protocols that address and route messages through an internetwork.
+
+- OSI Layer 4, the transport layer, maps directly to the TCP/IP transport layer. This layer describes
+    general services and functions that provide ordered and reliable delivery of data between source
+    and destination hosts.
+
+- The TCP/IP application layer includes several protocols that provide specific functionality to a 
+    variety of end user applications. The OSI model Layers 5, 6, and 7 are used as references for 
+    application software developers and vendors to produce applications that operate on networks.
+
+- Both the TCP/IP and OSI models are commonly used when referring to protocols at various layers. 
+    Because the OSI model separates the data link layer from the physical layer, it is commonly 
+    used when referring to these lower layers.
