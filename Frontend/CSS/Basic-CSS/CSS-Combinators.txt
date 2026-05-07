@@ -1,0 +1,87 @@
+CSS combinators are used to define the relationship between selectors in CSS. 
+    They help in selecting elements based on their relationship to other elements, which allows 
+    for more precise and efficient styling.
+
+=> A descendant combinator is used to target elements matched by the second selector if they are 
+    nested within an ancestor element that matches the first selector. 
+    An ancestor can be a parent element or a parent's parent.
+
+    Example:
+        Note that a space is used between the parent and child selector. 
+            In this case, the figure would be the parent and the img would be the child.
+
+        figure img {
+            border: 4px solid red;
+        } 
+
+        <figure>
+            <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="Relaxing Cat">
+            <figcaption>A relaxing cat with a border</figcaption>
+        </figure>
+
+=> The child combinator (>) in CSS is used to select elements that are direct children of a 
+    specified parent element.
+    - This combinator targets only elements with a specific parent, making your CSS rules more 
+        precise and preventing unintended styling of deeper nested elements.
+
+    Example: 
+    Inside this container, there is a direct child p element ("First"), followed by two additional 
+        div elements, each containing a p element ("Second" and "Third").
+    The first p element is a direct child of the .container element, while the other two p elements 
+        are nested inside other div elements, making them deeper descendants.
+    Because the other two paragraph elements are nested inside div elements, they are not considered
+        direct children of the container class and will not get the text color of blue.
+
+    .container > p {
+        color: blue;
+    }
+    <div class="container">
+        <p>First</p>
+        <div>
+            <p>Second</p>
+        </div>
+        <div>
+            <p>Third</p>
+        </div>
+    </div>
+
+=> The next-sibling combinator (+) in CSS selects an element that immediately follows a specified 
+    sibling element.
+    - This combinator is useful when you want to apply styles to an element that directly follows 
+        another element, allowing for targeted styling based on the element's position relative to 
+        its siblings.
+
+    Example:
+    The figcaption element is the immediate sibling of the img element.
+    The next-sibling combinator (+) selects the figcaption element that immediately follows the 
+        img element. 
+    The applied CSS rule adds a 4px solid black border around the figcaption.
+
+    img + figcaption {
+        border: 4px solid black;
+    } 
+    <figure>
+        <img
+            src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg"
+            alt="A cute orange cat lying on its back."
+        />
+        <figcaption>A cute orange cat lying on its back.</figcaption>
+    </figure>
+
+=> The subsequent-sibling combinator (~) in CSS selects all siblings of a specified element that 
+    come after it.
+    - It can target any siblings that follow the specified element, offering greater flexibility in 
+        styling.
+
+    Example: 
+    The paragraph elements are siblings of the h2 element.
+    h2 ~ p {
+        color: green;
+    }
+    <div class="container">
+        <h2>Subheading</h2>
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+        <p>Another paragraph element</p>
+    </div>

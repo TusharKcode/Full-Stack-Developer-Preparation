@@ -1,0 +1,45 @@
+CSS can be applied to a webpage in three main ways: inline, internal, or external.
+
+=> "Inline CSS" is written directly within an HTML element using the style attribute. It applies styles 
+    to a specific element.
+    - It is generally used for quick, one-off styles or to override other styles for a specific 
+        element.
+    - It should be avoided in most cases because it can clutter the HTML and make the code harder 
+        to maintain.
+    Example: <p style="color: green;">This is an inline-styled paragraph.</p>
+
+=> "Internal CSS" is written within the style tags inside the head section of an HTML document. 
+    - It applies styles to the entire page and is useful when you need to style a single document.
+    - It’s useful for single-page websites or when the styles don’t need to be reused elsewhere.
+    - Not promoting reusability across multiple pages. Additionally, like inline CSS, it mixes HTML 
+        and CSS, making the code harder to maintain in larger projects.
+    Example:
+    <head>
+        <style>
+            p {
+            color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <p>This paragraph is styled using internal CSS.</p>
+    </body>
+
+=> "External CSS" is written in a separate .css file and linked to the HTML document using the link 
+    element in the head section.
+    - It allows you to style multiple pages consistently and is the preferred method in professional
+        web development.
+    Example:
+
+    index.HTML (html file code)
+        <head>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <p>This paragraph is styled using external CSS.</p>
+        </body> 
+
+    style.css (css file code)
+        p {
+            color: red;
+        }

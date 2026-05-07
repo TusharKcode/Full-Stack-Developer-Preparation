@@ -1,1 +1,0 @@
-CSS is used to add style — things like colors, fonts, spacing, and layout.
