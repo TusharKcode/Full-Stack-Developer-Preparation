@@ -19,6 +19,8 @@ Here is an overview of the directories and their contents:
 Contains fundamental concepts regarding computer systems and internet service providers.
 - `Basics-of-Computer.txt`
 - `ISP.txt`
+- `File-System.txt`
+- `Web-Browser.txt`
 
 ### 📊 DSA (Data Structures and Algorithms)
 *(Currently empty - planned for dedicated data structure and algorithm implementations outside of language-specific folders.)*
@@ -26,7 +28,7 @@ Contains fundamental concepts regarding computer systems and internet service pr
 ### 🎨 Frontend
 A rich collection of frontend technologies:
 - **HTML:** Covers ARIA, Accessibility, Basic concepts, Forms, Tables, Semantic HTML, and Projects.
-- **CSS:** Contains basic styling guides (`Basic.txt`).
+- **CSS:** Contains deep dives into styling rules, combinators, HTML meta elements, basics (`Basic-CSS/`), and practice exercises (`Practice/`).
 - **JS (JavaScript):** Deep dives into core JS concepts including Closures, Event Loop, OOP, Promises, Prototypes, Scope, Stack, and more. Both explanation (`.txt`) and code (`.js`) files are provided.
 - **ReactJS:** *(Currently empty - planned for React components and state management.)*
 - **TS (TypeScript):** Contains TypeScript type definitions and basics (`types.ts`).
@@ -45,7 +47,7 @@ A collection of basic to intermediate Java programming exercises:
 ### 🌐 Networking
 Networking fundamentals and practical exercises:
 - **Activity:** Contains Cisco Packet Tracer activities (`.pka`) and instruction files for configuring networks and wireless routers.
-- **Net-basics:** Conceptual guides on Network Types, Mobile Connectivity, Bandwidth Units, Home Networks, etc.
+- **Net-basics:** Conceptual guides on Network Types, Mobile Connectivity, Bandwidth Units, Home Networks, TCP/IP & OSI Models, etc.
 - Also includes `Knowledge-Check.txt` and `Packet-Tracer.txt`.
 
 ### 🐍 Python
