@@ -1,0 +1,24 @@
+Ethernet Frames
+Ethernet is technology commonly used in local area networks. Devices access the Ethernet LAN using 
+    an Ethernet Network Interface Card (NIC). 
+Each Ethernet NIC has a unique address permanently embedded on the card known as a Media Access 
+    Control (MAC) address. 
+The MAC address for both the source and destination are fields in an Ethernet frame.
+
+Encapsulation -> It is the process of prepending protocol information with information from another 
+                    protocol.
+- A message that is sent over a computer network follows specific format rules in order for it to 
+    be delivered and processed.
+- The process of placing one message format (the letter) inside another message format 
+   (the envelope) is called encapsulation.
+- De-encapsulation occurs when the process is reversed by the recipient and the letter is removed 
+    from the envelope.
+
+- Each computer message is encapsulated in a specific format, called a frame, before it is sent 
+    over the network.
+- A frame acts like an envelope; it provides the address of the intended destination and the 
+    address of the source host.
+- The format and contents of a frame are determined by the type of message being sent and the 
+    channel over which it is communicated. 
+- Messages that are not correctly formatted are not successfully delivered to or processed by the 
+    destination host.
