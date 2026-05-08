@@ -1,0 +1,54 @@
+In HTML and CSS, elements are classified as either inline elements or block-level elements.
+
+"Block-level" elements are elements that take up the full width available to them by default, 
+    stretching across the width of their container.
+    - These elements always start on a new line and push other content to the next line, creating
+        a "block" of content.
+    - Block-level elements have the CSS property display: block; applied by default.
+    - It ensures that the element stretches to fill the container's width and appears on a new line.
+    - Some common block-level elements are div elements, paragraphs, headings, ordered lists, 
+        unordered lists, and section elements.
+    - Block-level elements are ideal when you want content to stack vertically, such as paragraphs, 
+        sections, or larger blocks of content.
+
+"Inline" elements, only take up as much width as they need and do not start on a new line.
+    - These elements flow within the content, allowing text and other inline elements to appear 
+        alongside them.
+    - Inline elements have the CSS property display: inline; applied by default.
+    - It ensures that the element remains within the flow of the content and does not break onto 
+        a new line.
+    - Common inline elements are span, anchor, and img elements.
+    - Inline elements are best used for styling smaller portions of text or content within a line, 
+        such as emphasizing a word, creating hyperlinks, or applying specific styles to parts of a 
+        paragraph.
+
+
+When working with CSS, you often encounter three different types of display behaviors for elements: 
+    inline, block, and inline-block.
+
+=> The inline-block property is a hybrid of these two behaviors. Like inline elements, inline-block 
+    elements remain in the text flow without starting on a new line.
+=> You can adjust the width and height of an inline-block element, just as you would with 
+    block-level elements.
+=> Inline-block elements allow for full control over dimensions while still staying inline with other 
+    content.
+
+Example: 
+
+    .inline-block-element {
+        display: inline-block;
+        width: 150px;
+        height: 100px;
+    }
+
+    .element1 {
+        background-color: lightblue;
+    }
+
+    .element2 {
+        background-color: lightgreen;
+    }
+<div class="container">
+  <span class="inline-block-element element1">Inline-Block</span>
+  <span class="inline-block-element element2">Inline-Block</span>
+</div>
