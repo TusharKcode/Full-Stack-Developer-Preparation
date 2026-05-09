@@ -69,3 +69,31 @@
         but lower than inline styles. The specificity value for an ID selector is (0, 1, 0, 0).
 
     - This means ID selectors can be overridden by inline styles.
+
+
+What Is the important Keyword?
+
+- The !important keyword in CSS is used to give a style rule the highest priority, allowing it to 
+    override any other declarations for a property.
+
+    It forces the browser to apply the specified style, regardless of the specificity of other 
+    selectors.
+
+- The !important keyword is used after the CSS value and before the semicolon.
+
+- Another appropriate use case for the !important keyword is to override styles from third-party 
+    libraries or frameworks when you do not have control over the original CSS.
+
+- However, overusing the !important keyword can lead to difficulties in maintaining and debugging 
+    your CSS, as it breaks the natural cascading of styles and can lead to unintended consequences.
+
+    Example: 
+    To override those inline styles, you can use the !important keyword like this:
+
+            <p class="para" style="background-color: lightblue; color: black;">
+                This is a paragraph.
+            </p>
+            .para {
+                background-color: black !important;
+                color: white !important;
+            }
