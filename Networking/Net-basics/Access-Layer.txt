@@ -22,3 +22,17 @@ Encapsulation -> It is the process of prepending protocol information with infor
     channel over which it is communicated. 
 - Messages that are not correctly formatted are not successfully delivered to or processed by the 
     destination host.
+
+
+An Ethernet Switch is a device that is used at Layer 2. When a host send msgs to another host connected
+to the same switched network, the switch accepts and decodes the frames to read the MAC address portion
+of the msgs.
+A table on the switch called MAC address table, contains list of all the active ports and the host 
+MAC addresses that are attached to them.
+
+When a msg is sent b/w hosts, the switch checks to see if the destination MAC address is in the 
+table. If it is, the switch builds the temporary connection called Circuit, b/w the source and 
+destination ports.
+
+Ethernet switches also allows for sneding and receiving frames over the same Ethernet Cable.
+It improves performance of the network bby eliminating collisions.
