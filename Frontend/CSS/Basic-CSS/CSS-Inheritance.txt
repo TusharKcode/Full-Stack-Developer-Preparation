@@ -1,0 +1,26 @@
+Inheritance is a key concept in CSS that determines how styles are passed down from parent elements 
+    to their child elements.
+
+In CSS, not all properties are inherited by default.
+
+For example, properties like color, font-family, and line-height are inherited. 
+    This means that if you set the text color on a parent element, all of its child elements will 
+        inherit that color unless you specifically override it.
+
+        <div style="color: blue;">
+            This is the parent element.
+            <p>This is the child element inheriting the color.</p>
+        </div>
+
+On the other hand, properties like margin, padding, border, and background are not inherited by default. 
+If you want a child element to inherit these styles, you need to explicitly set them, either 
+    directly on the child element or by using the inherit keyword.
+
+The inherit keyword can be used to force inheritance of a property from a parent element, even if 
+    that property is not normally inherited.
+
+
+    <div style="padding: 20px;">
+        This is the parent element with padding.
+        <p style="padding: inherit;">This is the child element inheriting the padding.</p>
+    </div>
