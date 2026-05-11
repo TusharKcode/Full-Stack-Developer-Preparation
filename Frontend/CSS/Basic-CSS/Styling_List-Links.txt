@@ -1,0 +1,141 @@
+=> Margins can be used to create space between list items by applying margin properties to the li 
+    elements. 
+    This method allows you to control the spacing outside each list item, effectively increasing or 
+        decreasing the gap between them.
+
+Example: 
+
+            li {
+                margin-bottom: 40px;
+            }
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+Another way to space out list items would be to use the line-height property.
+
+=> The line-height property adjusts the vertical spacing between lines of text within a single 
+    list item.
+
+    Example: 
+    li {
+        line-height: 2; 
+    }
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+=> In CSS, the list-style property is used to control the appearance of lists on a webpage.
+
+- The list-style property is actually a shorthand for three other properties:
+
+    -> list-style-type = property allows you to define the type of bullet point or number used in a list.
+                        - For unordered lists, you can choose from several bullet styles, such as 
+                            discs, circles, or squares.
+                        - For ordered lists, you can use different numbering systems, like decimal, 
+                            Roman numerals, or even alphabetical characters.
+
+                        Example: 
+                                <ul style="list-style-type: square;">
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                </ul>
+    -> list-style-position = property controls the position of the bullet or number in relation to 
+                                the list item’s content. There are two values you can use: inside 
+                                and outside.
+                            - When you use the value outside, the bullet or number appears outside 
+                                the content, which is the default behavior.
+                            - when you use the value inside, the bullet or number appears inside the 
+                                content, which may cause the text to wrap and align with the bullet 
+                                or number.
+
+                            Example:
+                                    <ul style="list-style-position: inside;">
+                                        <li>Item 1</li>
+                                        <li>Item 2</li>
+                                        <li>Item 3</li>
+                                    </ul>
+                                    <ul style="list-style-position: outside;">
+                                        <li>Item 4</li>
+                                        <li>Item 5</li>
+                                        <li>Item 6</li>
+                                    </ul>
+    -> list-style-image = property allows you to use an image as the bullet point for your list 
+                            items. This can be useful for adding a unique visual style to your lists.
+                        - When using list-style-image, make sure the image you choose is small and 
+                            appropriate for the design of your webpage.
+
+                        Example: 
+                                <head>
+                                    <style>
+                                        ul {
+                                        list-style-image: url('https://cdn.freecodecamp.org/platform/universal/freecodecamp-org-gravatar.jpeg');
+                                        list-style-position: inside;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+                                    <ul>
+                                        <li>Item 1</li>
+                                        <li>Item 2</li>
+                                        <li>Item 3</li>
+                                    </ul>
+                                </body>
+
+
+Shorthand Example (However, if the image is unavailable or not rendered, the square bullets will be 
+                    used as a fallback.)
+<ul style="list-style: circle inside url('https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg');">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+=> Link Styles
+    - There are different states of a link, including link, visited, hover, focus, and active.
+
+    - These styles, typically blue for unvisited links and purple for visited links, have become a 
+        standard that users have come to expect and rely on when navigating websites.\
+
+    - It's also important to consider the different states of links. In addition to the default 
+        and visited states, links typically have hover and active states.
+
+    Example: 
+
+    a:link {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    a:visited {
+        color: purple;
+    }
+
+    a:hover {
+        color: red;
+    }
+
+    a:active {
+        color: darkorange;
+    }
+
+    a:focus {
+        outline: 2px solid orange;
+    }
+
+    <a href="/">Example link</a>
+
+=> A pseudo-class is a keyword added to a selector that specifies a special state of the selected element.
+    Pseudo-classes allow you to style elements based on their state or the user's interaction with 
+        them, without the need for additional markup in your HTML.
+
+    Syntax: 
+        A:B {
+            property: value;
+        }

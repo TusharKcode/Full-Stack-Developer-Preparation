@@ -1,0 +1,75 @@
+/* Layout & Background */
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* The Main Container */
+.todo-list {
+    list-style-type: none; /* Removes default bullets */
+    padding: 40px;
+    background-color: white; /* The white "paper" background */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Individual Card Items */
+.todo-list > li {
+    background-color: #e8f3e8; /* The light green from your image */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* Nested Sub-item List */
+.sub-item {
+    list-style-type: square; /* Matching the square bullets in your image */
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+/* Label Styling */
+label {
+    font-size: 1.1rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+.sub-item-link:link{
+    color: blue;
+    text-decoration: none;
+}
+
+.sub-item-link:visited{
+    color: red;
+}
+
+.sub-item-link:hover{
+    color: green;
+    text-decoration: underline;
+}
+
+.sub-item-link:focus{
+    outline: 2px solid yellow;
+    outline-offset: 2px;
+}
+
+.sub-item-link:active{
+    color: pink;
+}
