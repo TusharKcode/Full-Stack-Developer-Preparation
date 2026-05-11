@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            color: #333;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .alignment {
+            background: #fff;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .alignment:hover {
+            transform: scale(1.02);
+        }
+
+        .alignment h2 {
+            margin-bottom: 0.5rem;
+            color: #3498db;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="alignment left">
+            <h2>Left-Aligned</h2>
+            <p>This content is aligned to the left. Left alignment is most common for body text because it follows natural reading flow in left-to-right languages.</p>
+        </section>
+
+        <section class="alignment center">
+            <h2>Center-Aligned</h2>
+            <p>This content is centered. Center alignment is useful for titles, headings, and content that needs to be the focal point.</p>
+        </section>
+
+        <section class="alignment right">
+            <h2>Right-Aligned</h2>
+            <p>This content is aligned to the right. Right alignment can be used for stylistic emphasis or when aligning content against the right edge of a container.</p>
+        </section>
+    </div>
+</body>
+</html>

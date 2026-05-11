@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f6f6f6;
+                margin: 40px;
+                color: #333;
+            }
+
+            .container {
+                max-width: 700px;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 10px;
+                color: #111;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 25px;
+            }
+
+            .highlight-box {
+                background-color: #222;
+                color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .low-contrast-text {
+                color: #999999;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+
+            .high-contrast-button {
+                background-color: #e74c3c;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: background 0.3s ease;
+            }
+
+            .high-contrast-button:hover {
+                background-color: #c0392b;
+            }
+            .example {
+                padding: 20px;
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-family: sans-serif;
+            }
+
+            .high-contrast {
+                background-color: black;
+                color: white;
+            }
+
+            .low-contrast {
+                background-color: #add8e6; 
+                color: #dda0dd; 
+            }
+
+            .label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            
+            .contrast-example {
+                padding: 15px;
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-family: sans-serif;
+            }
+
+            .aa-contrast {
+                background-color: #ffffff; 
+                color: #4b4b4b; 
+            }
+
+            .aaa-contrast {
+                background-color: #ffffff; 
+                color: #1a1a1a; 
+            }
+
+            .label {
+                font-weight: bold;
+                margin-bottom: 8px;
+                display: block;
+            }
+            .red-on-blue {
+                background-color: #0000cc; 
+                color: #ff0000; 
+                padding: 15px;
+                font-family: sans-serif;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .low-sat-red-on-blue {
+                background-color: #0000cc; 
+                color: #b23333; 
+                padding: 15px;
+                font-family: sans-serif;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .high-sat-red-on-blue {
+                background-color: #0000cc; 
+                color: #ff4d4d;
+                padding: 15px;
+                font-family: sans-serif;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .high-sat-red-on-blue {
+                background-color: #0000cc; 
+                color: #ff4d4d; 
+                margin-bottom: 20px;
+            }
+            
+            .dark-red-on-light-blue {
+                background-color: #add8e6; 
+                color: #8b0000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Contrast in Design</h1>
+            <p>
+                Contrast helps draw attention to important elements. It also makes
+                content easier to read and visually engaging.
+            </p>
+
+            <div class="highlight-box">
+                This box stands out because of strong color contrast.
+            </div>
+
+            <button class="high-contrast-button">Example button</button>
+
+            <p class="low-contrast-text">
+                This text is harder to read due to low contrast with the background.
+            </p>
+        </div>
+        <br>
+        <div class="example high-contrast">
+            <div class="label">High Contrast</div>
+            This text has high contrast (black background and white text).
+        </div>
+
+        <div class="example low-contrast">
+            <div class="label">Low Contrast</div>
+            This text has low contrast (light blue background and light purple text).
+        </div>
+        <br>
+        <div class="contrast-example aa-contrast">
+            <span class="label">AA Standard (Contrast Ratio ~4.5:1)</span>
+            This text meets the minimum accessibility standard for contrast.
+        </div>
+
+        <div class="contrast-example aaa-contrast">
+            <span class="label">AAA Standard (Contrast Ratio ~7:1)</span>
+            This text meets the highest accessibility standard for contrast.
+        </div>
+
+        <br>
+        <div class="red-on-blue">
+            <span class="label">Red on Blue (Higher Contrast Hue Shift)</span>
+            This doesn't meet accessibility standards.
+        </div>
+
+        <br>
+        <div class="low-sat-red-on-blue">
+            <span class="label">Low Saturation Red on Blue (Contrast ~1.49:1)</span>
+            This red has low saturation, resulting in a poor contrast ratio.
+        </div>
+
+        <div class="high-sat-red-on-blue">
+            <span class="label">Higher Saturation Red on Blue (Contrast ~3.54:1)</span>
+            Increasing the saturation of red improves contrast but it’s still below AA standard.
+        </div>
+
+        <br>
+        <div class="high-sat-red-on-blue blue-bg">
+            <span class="label">Higher Saturation Red on Medium Blue (Contrast ~3.54:1)</span>
+            Increasing the saturation of red improves contrast but it’s still below AA standard.
+        </div>
+
+        <div class="dark-red-on-light-blue">
+            <span class="label">Darker Red on Light Blue (Contrast ~10.34:1)</span>
+            Decreasing the lightness of the red increases the contrast ratio significantly.
+        </div>
+    </body>
+</html>
