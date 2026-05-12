@@ -1,0 +1,254 @@
+<style>
+    /* .infinite-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .post {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    } */
+
+    /* .pagination {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .post {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .pagination-controls {
+        margin-top: 12px;
+    }
+
+    .pagination-controls button {
+        padding: 8px 16px;
+        margin-right: 8px;
+    } */
+
+    /* .infinite-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .post {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    } */
+
+    .load-more {
+        margin-top: 12px;
+        padding: 8px 16px;
+    }
+
+    .infinite-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .post {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .loading-indicator {
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: none;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<!-- <div>
+    <div class="infinite-scroll">
+        <div class="post">Post 1</div>
+        <div class="post">Post 2</div>
+        <div class="post">Post 3</div>
+        <div class="post">Post 4</div>
+        <div class="post">Post 5</div>
+        <div class="post">Post 6</div>
+        <div class="post">Post 7</div>
+        <div class="post">Post 8</div>
+        <div class="post">Post 9</div>
+        <div class="post">Post 10</div>
+        More posts will load here as the user scrolls down
+    </div>
+</div> -->
+
+<br>
+
+<!-- <div>
+    <div class="pagination">
+        <div class="post">Post 1</div>
+        <div class="post">Post 2</div>
+        <div class="post">Post 3</div>
+        More posts will be on the next pages
+    </div>
+    <div class="pagination-controls">
+        <button class="prev" disabled>Previous</button>
+        <button class="next">Next</button>
+    </div>
+</div> -->
+
+<br>
+
+<!-- <div class="infinite-scroll">
+    <div class="post">Post 1</div>
+    <div class="post">Post 2</div>
+    <div class="post">Post 3</div>
+    More posts will load when the user clicks "Load More"
+</div>
+<button class="load-more">Load More</button> -->
+
+<br>
+
+<div class="infinite-scroll">
+    <div class="post">Post 1</div>
+    <div class="post">Post 2</div>
+    <div class="post">Post 3</div>
+    <div class="post">Post 4</div>
+    <div class="post">Post 5</div>
+    <div class="post">Post 6</div>
+    <div class="post">Post 7</div>
+    <div class="post">Post 8</div>
+    <div class="post">Post 9</div>
+    <div class="post">Post 10</div>
+    More posts will load here as the user scrolls down
+</div>
+<div class="loading-indicator" style="display: none;">Loading...</div>
+<button id="back-to-top" class="back-to-top">↑ Back to Top</button>
+
+<script>
+//------------------------------------------------------------------ INFINITE SCROLL
+    // Simulate loading more content as the user scrolls
+// window.addEventListener('scroll', () => {
+//     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//         loadMorePosts();
+//     }
+// });
+
+// function loadMorePosts() {
+//     const container = document.querySelector('.infinite-scroll');
+//     for (let i = 0; i < 3; i++) {
+//         const post = document.createElement('div');
+//         post.className = 'post';
+//         post.textContent = `Post ${container.children.length + 1}`;
+//         container.appendChild(post);
+//     }
+// }
+
+//------------------------------------------------------------------ LOAD MORE (LOADING)
+// const loadMoreButton = document.querySelector('.load-more');
+// const container = document.querySelector('.infinite-scroll');   
+// loadMoreButton.addEventListener('click', () => {
+//     loadMorePosts();
+// });
+
+// function loadMorePosts() {
+//     for (let i = 0; i < 3; i++) {
+//         const post = document.createElement('div');
+//         post.className = 'post';
+//         post.textContent = `Post ${container.children.length + 1}`;
+//         container.appendChild(post);
+//     }
+// }
+
+//------------------------------------------------------------------ PAGNITION
+// let currentPage = 1;
+// const postsPerPage = 3;
+// const totalPosts = 9; 
+// const totalPages = Math.ceil(totalPosts / postsPerPage);
+// const container = document.querySelector('.pagination');
+// const prevButton = document.querySelector('.prev');
+// const nextButton = document.querySelector('.next'); 
+
+// function renderPosts() {
+//     container.innerHTML = '';
+//     const start = (currentPage - 1) * postsPerPage;
+//     const end = start + postsPerPage;
+//     for (let i = start; i < end && i < totalPosts; i++) {
+//         const post = document.createElement('div');
+//         post.className = 'post';
+//         post.textContent = `Post ${i + 1}`;
+//         container.appendChild(post);
+//     }
+//     prevButton.disabled = currentPage === 1;
+//     nextButton.disabled = currentPage === totalPages;
+// }
+
+// prevButton.addEventListener('click', () => {
+//     if (currentPage > 1) {
+//         currentPage--;
+//         renderPosts();
+//     }
+// });
+
+// nextButton.addEventListener('click', () => {
+//     if (currentPage < totalPages) {
+//         currentPage++;
+//         renderPosts();
+//     }
+// });
+// renderPosts();
+
+//---------------------------------------------------------------- BACK TO TOP
+const container = document.querySelector('.infinite-scroll');
+const loadingIndicator = document.querySelector('.loading-indicator');
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        backToTopBtn.style.display = 'block';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        loadMorePosts();
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function loadMorePosts() {
+    loadingIndicator.style.display = 'block';
+    setTimeout(() => {
+        for (let i = 0; i < 3; i++) {
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.textContent = `Post ${container.children.length + 1}`;
+        container.appendChild(post);
+        }
+        loadingIndicator.style.display = 'none';
+    }, 1000);
+}
+</script>

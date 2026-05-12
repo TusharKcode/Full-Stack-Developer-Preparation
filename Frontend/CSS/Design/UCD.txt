@@ -80,3 +80,17 @@ User-centered design is a web development approach that prioritizes the end user
         Make sure that the most important information on the card is the most prominent. You can use 
         bright colors for important elements like a call-to-action button, and light colors for less 
         important items on a card.
+
+=> "Infinite Scrolls
+    - Infinite scrolling is a design pattern that loads more content as the user scrolls down the page.
+    - Infinite scrolling is also used as a substitute for pagination.
+    - Pagination is a design pattern that breaks up content into pages. This is often used when 
+        there is a lot of content to display.
+
+    => The first consideration is to provide a "Load More" button that loads the next set of 
+        results when the user clicks on it.
+        A good way to give the user control over when they want to see more content.
+    => Another consideration would be to add a "Back" button. This gives users the ability to go 
+        back to the previous page without having to scroll all the way back up. 
+    => Another consideration is to provide a loading indicator. Users should have a clear indication
+        that more content is being loaded.
