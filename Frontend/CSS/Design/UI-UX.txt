@@ -6,7 +6,21 @@
     - Using alignment correctly is helpful for making the design look clean and organized. 
     - Designers create visual order by aligning elements along imaginary lines, edges, or a central 
         point.
+    => Alignment is the process of arranging text and images in a way that creates a visual 
+        connection between elements.
+    => There are several types of alignment you can use, but the basic ones are:
 
+        - 'Left alignment' is commonly used with text where each element is aligned to the left margin.
+        - 'Right alignment', where each element is aligned to the right margin. Used to display 
+            additional content like promotional banners or advertisements.
+        - 'Center alignment' is where elements are centered on the page. Used for headings, logos, and 
+            other important elements.
+        - Justified alignment is when text is aligned to both the left and right margins. Used for 
+            descriptive passages or articles.
+        - Vertical alignment, which is used to align elements along a vertical axis. Used for aligning 
+            all of the form inputs like the name, email, and message fields along a vertical axis.
+    => Left, right, and center alignments are all subtypes of horizontal alignment.
+    
 "Composition" is the art of arranging elements to create a harmonious design.
     - It determines how elements like images, text, and shapes relate to each other and contribute 
         to the design in an artistic way.
@@ -19,6 +33,12 @@
     - It's about making sure the most important information is noticed first.
     - You can implement a visual hierarchy with size, color, contrast, alignment, white space, and 
         even typography.
+
+    => Visual hierarchy refers to the way you layout and display the content of your page to guide 
+        the viewer's attention.
+    => To create a visual hierarchy, you should apply different font sizes to the heading tiers. 
+        You could also use something like a "callout box" to highlight a specific section.
+    => Help increase your user conversion.
 
 "Contrast" is helpful for guiding user attention to what you want to emphasize.
     - You can do this through variations in color, size, shape, texture, or any other visual characteristic.
@@ -36,10 +56,19 @@
         - The first is the hue, which represents the general color type, like red, blue, orange.
 
 "White Space", also known as "negative space", is the empty space in a design.
+    - It refers to any type of space around elements like images, text, and buttons.
     - It's the area surrounding the elements.
     - white space is not necessarily white.
     - It can be space in any color or texture. 
     - Its purpose is to improve the readability and enhance the visual hierarchy of a design.
+    => 'Macro white space' is the space between larger elements like images, text blocks, and buttons.
+    => 'Active white space' is the space that is intentionally created to help guide the user's eye 
+        and draw attention to certain elements on the page.
+    => 'Passive white space' is the space that is left over after all the elements on a page have 
+        been placed.
+    => 'Micro white space' is the space between individual characters in a line of text.
+    => CTAs (call-to-action buttons) are used to encourage users to take a specific action like 
+        signing up for a newsletter or making a purchase.
 
 The user interface, also known as UI, is how humans interact with computers. 
     - A user interface includes the visual and interactive elements that users can see on their 
@@ -47,3 +76,36 @@ The user interface, also known as UI, is how humans interact with computers.
 
 The user experience, also known as UX, is about how users feel when using a product or service.
 
+"Scale"
+- The "scale" of something refers to its size.
+- When you're looking at scaling in your web design, you're looking at the size relationships 
+    between different elements, and how these elements might adapt to different screen sizes.
+- Scale doesn't apply just to text, though. It's also important for images.
+- Scale is also important for interactivity, and the ability to actually use your website.
+
+"Responsive images" are images that scale to fit the size of the screen they are being viewed on. 
+    - This is important because it ensures that your images look good on all devices, from desktops 
+        to mobile phones.
+    -  'Resolution' for images, Higher quality images with better resolution have more pixels 
+        per inch. Pixels are small squares that make up an image.
+    -  'Size' of your images, make sure that your images are the right size and are not too large 
+        or too small.
+    - 'Accessibility' for images, make sure that your images are accessible to all users, including 
+        those with visual impairments. 
+
+    - Balance is the distribution of visual weight in a design.
+    - Hierarchy is the order in which elements are viewed on a page.
+    - Alignment is the placement of elements in relation to each other.
+    => Pixels per inch, or PPI, is the number of pixels in one inch of an image. The higher the 
+        PPI, the better the image quality.
+
+"Progressive enhancement" is a design approach that ensures all users, regardless of browser or 
+    device, can access the essential content and functionality of an application.
+    
+    - All core content and basic functionality should be accessible on all browsers.
+    - All advanced layouts should be provided through external CSS stylesheets.
+    - All advanced functionality should be provided through external JavaScript files.
+    - A user's browser preferences should be respected.
+
+    => It can also help improve the performance of your applications.
+    => It can also help improve the visibility of your applications.
