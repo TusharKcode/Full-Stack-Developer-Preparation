@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #222;
+            font-family: sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        button {
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        body.dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        button {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .buttons button {
+            border: none;
+        }
+
+        .saturated {
+            background-color: #ff00ff; 
+            color: white;
+        }
+
+        .desaturated {
+            background-color: #c472b5; 
+            color: white;
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark .saturated {
+            background-color: #ff00ff; 
+            color: black;
+        }
+
+        body.dark .desaturated {
+            background-color: #925f88; 
+            color: white;
+        }
+
+        .dark-mode-examples {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            padding: 1rem;
+            border-radius: 8px;
+            width: 300px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .box {
+            background-color: #ffffff;
+            color: #111;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        body.dark .box.harsh-dark {
+            background-color: #000000; 
+            color: #ffffff;           
+        }
+
+        body.dark .box.soft-dark {
+            background-color: #1e1e1e; 
+            color: #cccccc;           
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+
+    <div class="content">
+
+        <div class="dark-content">
+            <p>This is a simple dark mode example.</p>
+        </div>
+        <br>
+        <h1>Color Saturation in Dark Mode</h1>
+        <p>Compare the two buttons below. The first uses a saturated color, the second is desaturated for better accessibility in dark mode.</p>
+
+        <div class="buttons">
+            <button class="saturated">Saturated Button</button>
+            <button class="desaturated">Desaturated Button</button>
+        </div>
+
+        <br>
+        <div class="dark-mode-examples">
+            <div class="box harsh-dark">
+                <h2>High Contrast</h2>
+                <p>Pure black background with white text. While readable, it can be harsh on the eyes.</p>
+            </div>
+
+            <div class="box soft-dark">
+                <h2>Soft Contrast</h2>
+                <p>Dark gray background with light gray text. Easier to read and more comfortable for long periods.</p>
+            </div>
+        </div>
+
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>

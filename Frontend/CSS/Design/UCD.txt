@@ -1,0 +1,44 @@
+User-centered design is a web development approach that prioritizes the end user, from their needs 
+    to their preferences and limitations.
+
+    => Goal - is to craft a web page that is intuitive, efficient to use, and pleasing for your 
+                users to interact with.
+
+    => One of the first aspects of user-centered design is target demographics.
+    => Another aspect to consider is the goal of your end users.
+    => User behavior is an important factor as well. 
+
+=> "User research" is the systematic study of the people who use your product. The goal is to 
+    measure user needs, behaviors, and pain points.
+
+    -> Most common form is the "Net Promoter Score", or NPS. It measures how likely your users are 
+        to recommend your product to a friend.
+        NPS is measured through a survey offered at key milestones along the user's journey, such as 
+            after 7 days, 30 days, and 90 days. 
+        NPS is measured on a scale of 0 to 10, with 9 and 10 indicating an active promoter of your site.
+
+    -> Another research vector is an exit interview.
+        A survey you show to your users when they cancel a subscription or delete an account.
+
+=> "User testing", refers to the practice of capturing data from users as they interface with your 
+    application.
+    One you might run into as a web developer is 'A/B testing'. 
+    - A/B testing involves shipping a new feature to a randomly selected subset of your user base. 
+        You can then leverage analytics data to determine if the feature is beneficial.
+
+=> "User requirements" refer to the stories or rubric that your application needs to follow.
+    - User requirements might be defined by user research, or industry standards. They can even be 
+        defined by stakeholder input.
+    - These requirements may be functional, meaning they dictate how your application should work, 
+        or non-functional, meaning they define how your application should behave.
+    - The information from both user testing and user research can impact the requirements, and 
+        they will change as your user base changes.
+
+=> "Dark mode" is a special feature on web applications where you can change the default light 
+    color scheme to a dark color scheme.
+    - This helps reduce eye strain and improve readability in low-light conditions.
+    - The first consideration is the avoidance of saturated colors in dark mode. 
+    => 'Saturated colors' are colors that are bright and intense.
+    => 'Desaturated colors' are colors that are less intense, have a lower saturation level, and 
+        more comfortable to look at in dark mode. 
+    => A brand identity is a set of visual elements that represent a brand, such as the logo, colors, and typography. 
