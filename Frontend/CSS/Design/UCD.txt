@@ -42,3 +42,41 @@ User-centered design is a web development approach that prioritizes the end user
     => 'Desaturated colors' are colors that are less intense, have a lower saturation level, and 
         more comfortable to look at in dark mode. 
     => A brand identity is a set of visual elements that represent a brand, such as the logo, colors, and typography. 
+
+=> "BreadCrumbs"
+    - A navigation aid that shows the user where they are in the site's hierarchy.
+    - In most websites, breadcrumbs are displayed at the top of the page, showing the user the path 
+        they took to get to the current page.
+    - This is especially useful when a user has come from a search result or an external link and 
+        needs to understand the context of the page they are on.
+    
+    - The second consideration is the placement of the breadcrumbs. 
+        Breadcrumbs are typically placed at the top of the page, either above or below the main 
+        navigation bar.
+    - Another consideration is the size of the breadcrumbs.
+    - Typically, you will see breadcrumbs on e-commerce sites, news sites, and other sites with a 
+        deep hierarchy like technical documentation sites.
+
+    => Designing breadcrumb:
+        - The first is to decide on what the separator will be.
+        - The separator is the character that separates the different levels of the hierarchy.
+        - Common separators include the greater than sign (>), right angle quotation marks (») ,and 
+            the forward slash (/).
+
+=> "Cards"
+    - Card components are a very common occurrence in e-commerce, social media, and news sites. 
+        They are used to help display information in a structured way.
+    - The first consideration for card design should be simplicity.
+        Having less information and good spacing between items on the card makes it easier for the 
+        user to process the information, and allows for multiple cards on the page.
+    - Another thing to consider is where the user can click on the card.
+        Some card designs will have a single button, making it obvious where the user can click. 
+        Other card designs will have the entire card clickable. 
+    - Another consideration is the use of media on your cards.
+        Choosing high-quality media can significantly enhance the user experience. If you are using 
+        images or videos for say a product card, the higher the quality the more the user will be 
+        interested in that product.
+    - One of the last things to consider is the use of color hierarchy.
+        Make sure that the most important information on the card is the most prominent. You can use 
+        bright colors for important elements like a call-to-action button, and light colors for less 
+        important items on a card.
