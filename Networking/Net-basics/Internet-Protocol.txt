@@ -39,3 +39,32 @@ Router interfaces that provide connections to an IP network will also have an IP
             which each unique host address is located.
     - With IPv4 addressing, multiple logical networks can exist on one physical network if the 
         network portion of the logical network host addresses is different.
+
+=> "Unicast transmission" refers to one device sending a message to one other device in one-to-one 
+    communications.
+    - A unicast packet has a destination IP address that is a unicast address which goes to a 
+        single recipient. 
+    - A source IP address can only be a unicast address, because the packet can only originate 
+        from a single source.
+    - IPv4 unicast host addresses are in the address range of 1.1.1.1 to 223.255.255.255.
+
+=> "Broadcast transmission" refers to a device sending a message to all the devices on a network in 
+    one-to-all communications.
+    - A broadcast packet has a destination IP address with all ones (1s) in the host portion, or 
+        32 one (1) bits.
+    - A broadcast packet must be processed by all devices in the same broadcast domain.
+    - A broadcast domain identifies all hosts on the same network segment. 
+    - A broadcast may be directed or limited.
+    - A directed broadcast is sent to all hosts on a specific network.
+    - Broadcast traffic should be limited so that it does not adversely affect the performance of 
+        the network or devices.
+
+=> "Multicast transmission" reduces traffic by allowing a host to send a single packet to a 
+    selected set of hosts that subscribe to a multicast group.
+    - A multicast packet is a packet with a destination IP address that is a multicast address.
+    - IPv4 has reserved the 224.0.0.0 to 239.255.255.255 addresses as a multicast range.
+    - Hosts that receive particular multicast packets are called multicast clients. They use 
+        services requested by a client program to subscribe to the multicast group.
+    - Each multicast group is represented by a single IPv4 multicast destination address.
+    - Routing protocols such as OSPF use multicast transmissions.
+    - 
