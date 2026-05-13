@@ -108,3 +108,20 @@ User-centered design is a web development approach that prioritizes the end user
     - The second consideration is to make it possible to go back to previous steps.
     - Another consideration is to make the progress indication section easy to find. 
     - The last consideration is to have clear section titles, percentages, or steps.
+
+=> "Designing Shopping Carts"
+- There are thousands of e-commerce websites on the internet, and the shopping cart is a crucial part 
+    of the e-commerce experience. 
+
+- Another consideration is providing a clear way for users to update the quantity of items in their 
+    cart.
+    You should also provide a "Remove" button next to each item in the cart. This allows users to 
+        easily remove items from their cart. 
+
+- Another consideration is the shopping cart icon itself. The icon should be something easily 
+    recognizable for all users.
+    A common icon is a shopping cart with a handle and wheels. Other icons might be a shopping 
+        bag or a basket.
+
+- Finally, you should provide a clear call-to-action button for users to proceed to checkout. 
+    This button should be prominently displayed on the page, so users don't have to search for it.

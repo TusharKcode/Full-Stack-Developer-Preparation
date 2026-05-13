@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .shopping-cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-family: sans-serif;
+        }
+
+        #cart-btn {
+            background: none;
+            border: none;
+            cursor: default;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        #item-count {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 13px;
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            min-width: 18px;
+            height: 18px;
+            line-height: 14px;
+            text-align: center;
+            font-weight: 700;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        #cart-details {
+            background: white;
+            border: 1px solid #ccc;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            padding: 10px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #cart-items li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .shopping-cart-two {
+            max-width: 400px;
+            margin: 20px auto;
+            font-family: sans-serif;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+        .shopping-cart h2 {
+            margin-top: 0;
+            font-weight: 600;
+            font-size: 1.4rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item-name {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .quantity-input {
+            width: 50px;
+            padding: 4px 6px;
+            font-size: 1rem;
+            margin: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background: #e74c3c;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .remove-btn:hover,
+        .remove-btn:focus {
+            background: #c0392b;
+            outline: none;
+        }
+
+        .shopping-cart-three{
+            /* position: fixed;
+            top: 20px;
+            right: 20px; */
+            font-family: sans-serif;
+            width: 280px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+        #cart-btn {
+            background: none;
+            border: none;
+            cursor: default;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        #item-count {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 14px;
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            min-width: 18px;
+            height: 18px;
+            line-height: 14px;
+            text-align: center;
+            font-weight: 700;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        #cart-details {
+            margin-top: 10px;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+
+        #cart-items li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        #cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: right;
+            color: #111;
+        }
+
+        :root {
+            --primary-color: #007bff; 
+        }
+
+        .shopping-cart-four{
+            /* position: fixed;
+            top: 20px;
+            right: 20px; */
+            font-family: sans-serif;
+            width: 280px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+        #cart-btn {
+            background: none;
+            border: none;
+            cursor: default;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        #item-count {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 14px;
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            min-width: 18px;
+            height: 18px;
+            line-height: 14px;
+            text-align: center;
+            font-weight: 700;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        #cart-details {
+            margin-top: 10px;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+
+        #cart-items li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: right;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+        #checkout-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #checkout-btn:hover,
+        #checkout-btn:focus {
+            background-color: #0056b3;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="shopping-cart">
+        <button id="cart-btn" aria-label="Shopping cart">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-shopping-cart"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="item-count">2</span>
+        </button>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="shopping-cart-two">
+        <h2>Your Cart</h2>
+        <ul class="cart-items">
+            <li class="cart-item">
+                <span class="item-name">T-Shirt</span>
+                <input type="number" min="1" value="2" class="quantity-input" aria-label="Quantity for T-Shirt" />
+                <button class="remove-btn">Remove</button>
+            </li>
+            <li class="cart-item">
+                <span class="item-name">Hat</span>
+                <input type="number" min="1" value="1" class="quantity-input" aria-label="Quantity for Hat" />
+                <button class="remove-btn">Remove</button>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="shopping-cart-three">
+        <button id="cart-btn" aria-label="Shopping cart">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-shopping-cart"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="item-count">3</span>
+        </button>
+        <div id="cart-details">
+            <ul id="cart-items">
+                <li>T-Shirt x2 - $40.00</li>
+                <li>Hat x1 - $15.00</li>
+            </ul>
+            <div id="cart-total">
+                Total: <strong>$55.00</strong>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="shopping-cart-four">
+        <button id="cart-btn" aria-label="Shopping cart">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-shopping-cart"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="item-count">3</span>
+        </button>
+        <div id="cart-details">
+            <ul id="cart-items">
+                <li>T-Shirt x2 - $40.00</li>
+                <li>Hat x1 - $15.00</li>
+            </ul>
+            <div id="cart-total">
+                Total: <strong>$55.00</strong>
+            </div>
+            <button id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
