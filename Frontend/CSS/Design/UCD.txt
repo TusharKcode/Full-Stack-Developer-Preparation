@@ -125,3 +125,18 @@ User-centered design is a web development approach that prioritizes the end user
 
 - Finally, you should provide a clear call-to-action button for users to proceed to checkout. 
     This button should be prominently displayed on the page, so users don't have to search for it.
+
+=> "Progressive Disclosure"
+    - A progressive disclosure is a design pattern used to only show users relevant content based 
+        on their current activity and hide the rest. 
+    - Reduce cognitive load and make the user experience more intuitive.
+    - Another example of progressive disclosure would be the "More details" button on products 
+        in an e-commerce website.
+        When you visit a site like Amazon, you will see a list of product images in different categories.
+
+=> "Deferred and Lazy Registration"
+    - Lazy registration is a UI design pattern that allows users to browse and interact with your 
+        application without having to register.
+
+        Example: Users should be able to browse through the products and add a few items to their cart.
+                    Then, if they are interested in purchasing, they will need to register.
