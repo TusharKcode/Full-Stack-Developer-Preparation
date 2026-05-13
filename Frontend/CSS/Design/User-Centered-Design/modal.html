@@ -1,0 +1,66 @@
+<style>
+    dialog {
+        border: none;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .cta {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .close {
+        background-color: transparent;
+        color: #007BFF;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+
+<button id="open-modal">Open Modal</button>
+<dialog>
+    <h2>Subscribe to our Newsletter!</h2>
+    <p>Get the latest updates and offers.</p>
+    <button class="cta">Subscribe</button>
+    <button class="close">Close</button>
+</dialog>
+
+<script>
+    const dialog = document.querySelector('dialog');
+    const closeButton = dialog.querySelector('.close');
+    const openModalButton = document.getElementById('open-modal');
+
+    closeButton.addEventListener('click', () => {
+        dialog.close();
+    });
+
+    openModalButton.addEventListener('click', () => {
+        dialog.showModal();
+    });
+
+    // Close the modal when clicking outside of it
+    dialog.addEventListener('click', (event) => {
+        const rect = dialog.getBoundingClientRect();
+        const isInDialog = (
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom
+        );
+        if (!isInDialog) {
+            dialog.close();
+        }
+    }); 
+
+</script>

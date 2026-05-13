@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ------------------------------- Progress Indication One Styling*/
+        .progress-indication-one{
+            border: #222;
+            border-radius: 15px;
+            background-color: #9eeba1;
+            margin: 10px;
+            padding: 20px;
+        }
+        .form-progress {
+            max-width: 500px;
+            margin: 20px auto 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .progress-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-container {
+            position: relative;
+            background-color: #555; 
+            border-radius: 8px;
+            height: 30px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            background-color: #4caf50;
+            height: 100%;
+            width: 0; 
+            border-radius: 8px 0 0 8px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+            input[type="email"] {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #9e9e9e;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .form-progress, form {
+                max-width: 90%;
+                margin: 20px auto;
+            }
+        }
+
+        /* ------------------------------- Progress Indication Two Styling*/
+        .progress-indication-two{
+            border: #222;
+            border-radius: 15px;
+            background-color: #9eeba1;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .form-progress {
+            max-width: 500px;
+            margin: 20px auto 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .progress-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-container {
+            position: relative;
+            background-color: #555;
+            border-radius: 8px;
+            height: 30px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            background-color: #4caf50;
+            height: 100%;
+            width: 0;
+            border-radius: 8px 0 0 8px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.2s ease;
+            }
+
+        button:hover:not(:disabled) {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #9e9e9e;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .form-progress, form {
+                max-width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indication-one">
+        <form id="multiStepForm">
+            <div class="form-progress">
+                <label class="progress-label">Form progress</label>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <div class="progress-text">Step 1 of 3</div>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <fieldset class="form-step active">
+                <legend>Personal Information</legend>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="button" class="next-btn">Next</button>
+            </fieldset>
+
+            <!-- Step 2 -->
+            <fieldset class="form-step">
+                <legend>Address</legend>
+                <label for="address">Street Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </fieldset>
+
+            <!-- Step 3 -->
+            <fieldset class="form-step">
+                <legend>Review & Submit</legend>
+                <p>Please review your information before submitting.</p>
+
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <br>
+
+    <div class="progress-indication-two">
+        <form id="progressForm">
+            <div class="form-progress" aria-label="Form progress">
+                    <label class="progress-label">Step <span id="currentStep">1</span> of <span id="totalSteps">4</span> (<span id="percentage">25%</span>)</label>
+                    <div class="progress-container" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <fieldset class="form-step active">
+                <legend>Basic Information</legend>
+                <p>Please enter your basic information.</p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <button type="button" class="next-btn">Next</button>
+            </fieldset>
+
+            <!-- Step 2 -->
+            <fieldset class="form-step">
+                <legend>Contact Details</legend>
+                <p>How can we reach you?</p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </fieldset>
+
+            <!-- Step 3 -->
+            <fieldset class="form-step">
+                <legend>Address</legend>
+                <p>Where do you live?</p>
+                <label for="address">Street:</label>
+                <input type="text" id="address" name="address" required>
+
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </fieldset>
+
+            <!-- Step 4 -->
+            <fieldset class="form-step">
+                <legend>Review</legend>
+                <p>Review your answers before submitting.</p>
+
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        // const form = document.getElementById('multiStepForm');
+        // const steps = form.querySelectorAll('.form-step');
+        // const progressBar = form.querySelector('.progress-bar');
+        // const progressText = form.querySelector('.progress-text');
+        // const totalSteps = steps.length;
+
+        // let currentStep = 0;
+
+        // function updateProgress() {
+        //     const percent = ((currentStep + 1) / totalSteps) * 100;
+        //     progressBar.style.width = percent + '%';
+        //     progressText.textContent = `Step ${currentStep + 1} of ${totalSteps}`;
+        // }
+
+        // function showStep(index) {
+        //     steps.forEach((step, i) => {
+        //         step.classList.toggle('active', i === index);
+        //     });
+        //     updateProgress();
+        // }
+
+        // form.querySelectorAll('.next-btn').forEach(btn => {
+        //     btn.addEventListener('click', () => {
+        //         if (currentStep < totalSteps - 1) {
+        //         currentStep++;
+        //         showStep(currentStep);
+        //         }
+        //     });
+        // });
+
+        // form.querySelectorAll('.prev-btn').forEach(btn => {
+        //     btn.addEventListener('click', () => {
+        //         if (currentStep > 0) {
+        //         currentStep--;
+        //         showStep(currentStep);
+        //         }
+        //     });
+        // });
+
+        // showStep(currentStep);
+
+        // form.addEventListener('submit', e => {
+        //     e.preventDefault();
+        //     alert('Form submitted!');
+        // });
+
+        //---------------------------------------------------------------- Progress Indication Two
+        const form = document.getElementById('progressForm');
+        const steps = form.querySelectorAll('.form-step');
+        const progressBar = form.querySelector('.progress-bar');
+        const currentStepSpan = document.getElementById('currentStep');
+        const totalStepsSpan = document.getElementById('totalSteps');
+        const percentageSpan = document.getElementById('percentage');
+
+        const totalSteps = steps.length;
+        let currentStep = 0;
+
+        totalStepsSpan.textContent = totalSteps;
+
+        function updateProgress() {
+        const percent = Math.round(((currentStep + 1) / totalSteps) * 100);
+        progressBar.style.width = percent + '%';
+        currentStepSpan.textContent = currentStep + 1;
+        percentageSpan.textContent = percent + '%';
+
+        // Update ARIA attribute
+        form.querySelector('.progress-container').setAttribute('aria-valuenow', percent);
+        }
+
+        function showStep(index) {
+            steps.forEach((step, i) => {
+                step.classList.toggle('active', i === index);
+            });
+            updateProgress();
+        }
+
+        form.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep < totalSteps - 1) {
+                currentStep++;
+                showStep(currentStep);
+                }
+            });
+        });
+
+        form.querySelectorAll('.prev-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+                }
+            });
+        });
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Form submitted! Thanks!');
+        });
+
+        showStep(currentStep);
+
+    </script>
+</body>
+</html>

@@ -94,3 +94,17 @@ User-centered design is a web development approach that prioritizes the end user
         back to the previous page without having to scroll all the way back up. 
     => Another consideration is to provide a loading indicator. Users should have a clear indication
         that more content is being loaded.
+
+=> "Modals-Dailogs"
+    - It's the type of pop-up that a website might show you on top of their content. 
+    - HTML has a 'dialog' element that you can use to create modals.
+    - The content behind a modal is usually dimmed. This helps the user visually focus on the area 
+        you want them to interact with – in this case, the modal.
+
+=> "Progress Indication on Forms, Registration, and Setup"
+    - Progress indication is a way to show users how far they are in a process.
+    - It can be used in forms, registration, and setup processes.
+    - First consideration is to keep it simple.
+    - The second consideration is to make it possible to go back to previous steps.
+    - Another consideration is to make the progress indication section easy to find. 
+    - The last consideration is to have clear section titles, percentages, or steps.
