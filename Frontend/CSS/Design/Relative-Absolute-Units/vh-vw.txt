@@ -1,0 +1,49 @@
+vh and vw are viewport-relative units that allow you to size elements based on the dimensions of 
+    the browser window.
+
+    - vh stands for "viewport height," and 1vh is equal to 1% of the viewport's height.
+    - vw stands for "viewport width," and 1vw is equal to 1% of the viewport's width.
+
+    - These units are especially handy when you want to create full-screen layouts or elements 
+        that maintain a specific proportion of the screen.
+
+    - vh and vw units can also be used for typography to create responsive text sizes.
+
+    Advantages: They respond to changes in the viewport size in real-time. 
+                    This means that if a user resizes their browser window, elements sized with 
+                    these units will adjust accordingly without needing to reload the page. 
+
+    Example: This means that if you set an element's height to 100vh, it will occupy the full 
+                height of the viewport, regardless of the actual pixel dimensions of the device.
+                
+                body {
+                    margin: 0;
+                    font-family: sans-serif;
+                    border: 5px dashed #333;
+                }
+
+                .hero {
+                    height: 100vh;
+                    width: 100vw;
+                    background-color: #add8e6; 
+                    padding: 2em;
+                }
+
+                .hero h1 {
+                    font-size: 2em;
+                    margin-bottom: 0.5em;
+                }
+
+                .hero p {
+                    font-size: 1em;
+                }
+                <section class="hero">
+                    <h1>100vh / 100vw Example</h1>
+                    <p>This section fills the entire browser window.</p>
+                </section>
+
+                h1 {
+                    font-size: 5vw;
+                }
+                <h1>Responsive Heading</h1>
+                <p>The h1 heading scales with the viewport width.</p>

@@ -1,0 +1,40 @@
+Two relative units: ems and rems.
+
+=> em units are relative to the font size of the element.
+    - Good use cases for ems would be when you are working with modular components like buttons or 
+        cards.
+Example: 
+    .para {
+        font-size: 20px;
+        margin-bottom: 1.5em;
+        border: 2px solid red;
+    }
+
+    .blue-box {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        width: 100px;
+        height: 100px;
+    }
+    <p class="para">I am a paragraph element</p>
+    <div class="blue-box"></div>
+
+=> A rem unit is relative to the font size of the root element, which is the html element.
+    - By default, the font size of the html element is 16px. 
+        If the user increases the font size in their browser settings, the font size of the html 
+        element will increase, and all rem units will scale proportionally.
+    - rem units are preferred over pixels for typography because they scale proportionally with 
+        the user's browser settings. 
+        This makes your content more accessible to users with visual impairments.
+
+    - rem units can also help maintain consistent spacing and layout across different elements.
+
+    Example: 
+        .para {
+            font-size: 1.2rem;
+            margin-bottom: 1.5em;
+            border: 2px solid red;
+        }
+        <p>This is regular text.</p>
+        <p class="para">This text is slightly larger.</p>

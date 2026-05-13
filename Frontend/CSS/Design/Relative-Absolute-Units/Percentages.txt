@@ -1,0 +1,54 @@
+Percentages in CSS are relative units that allow you to define sizes, dimensions, and other 
+    properties as a proportion of their parent element.
+
+    - Percentages are ideal for creating fluid layouts that adjust to various screen sizes. 
+    - Using percentages for flexible images is another common practice.
+    - Percentages can also be used for font sizes to create scalable typography.
+
+    - Percentages can be particularly handy for vertical centering.
+    - You might use percentages with the 'transform' property to center an element vertically.
+    - For horizontal properties like width, they're relative to the parent's width.
+    - For vertical properties like height, they're usually relative to the parent's height 
+        (if specified).
+
+Example:
+    .container {
+        width: 400px;
+        height: 200px;
+        background-color: lightgray;
+    }
+    .box {
+        width: 50%;
+        height: 100%;
+        background-color: red;
+    }
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    <img src="https://placehold.co/150x150" alt="Example Product Image" />
+
+    .text-container {
+        font-size: 16px;
+    }
+    .text {
+        font-size: 120%;
+    }
+    <div class="text-container">
+        Parent text.
+        <p class="text">This is some example text.</p>
+    </div>
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+    <div class="centered"></div>
