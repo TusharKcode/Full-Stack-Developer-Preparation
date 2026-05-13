@@ -1,0 +1,139 @@
+Pseudo-classes are special CSS keywords that allow you to select an element based on its specific 
+    state or position.
+
+    - When it's active.
+    - When it's being hovered over by a mouse.
+    - When it's the first child of a parent.
+    - When it's the last child of a parent.
+    - When a link has been visited.
+    - When it's disabled.
+
+    Syntax: 
+        selector:pseudo-class {
+            /* CSS properties */
+        }
+
+Examples: 
+    => The :active pseudo-class lets you select the active state of an element, like clicking on a 
+        button.
+            button:active {
+                background: greenyellow;
+            }
+            <button>Example Button</button>
+
+    => The :hover pseudo-class defines the hover state of an element. An example would be hovering 
+        over a button or link.
+                a:hover {
+                    text-decoration: none;
+                    color: white;
+                    background: crimson;
+                }
+                <a href="#">Hover over me!</a>
+
+    => The :first-child pseudo-class selects an element that is the first child of its parent element.
+    => The :last-child pseudo-class targets the last element that is the child of its parent.
+
+        .container p:last-child {
+            background: lightcoral;
+            padding: 0.4rem;
+        }
+        .container p:first-child {
+            background: lightcoral;
+            padding: 0.4rem;
+        }
+        <div class="container">
+            <p>first child</p>
+            <p>second child</p>
+            <p>third child</p>
+            <p>last child</p>
+        </div>
+
+    => The :visited pseudo-class lets you style a link the user has already visited.
+            a:visited {
+                color: purple;
+            }
+            <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+
+    => The :disabled pseudo-class lets you style an interactive element in disabled mode.
+            button:disabled {
+                background-color: lightgray;  
+            }
+            <button disabled>Disabled Button</button>
+
+There are others like:
+
+:focus => It applies styles when an element gains focus, typically through keyboard navigation or 
+                when a user clicks into a form input.
+            input:focus {
+                outline: 2px solid darkgreen;
+                border-radius: 4px;
+            }
+            <form>
+                <input type="text" />
+            </form>
+
+:focus-within: for applying styles to an element when it or any of its descendants have focus.
+:first-of-type
+:last-of-type
+:nth-of-type
+:modal
+:enabled => for targeting form buttons or other elements that are currently enabled.
+:checked => In CSS allows you to style form elements such as checkboxes and radio buttons when they 
+            are selected (checked).
+            <style>
+                .checkbox {
+                    appearance: none;
+                    width: 18px;
+                    height: 18px;
+                    border: 2px solid #ccc;
+                    border-radius: 4px;
+                    display: inline-block;
+                    position: relative;
+                    cursor: pointer;
+                    transition: all 0.25s ease;
+                    vertical-align: middle; 
+                }
+
+                .checkbox:hover {
+                    border-color: #888;
+                }
+
+                .checkbox:checked {
+                    background-color: #4caf50;
+                    border-color: #4caf50;
+                }
+
+                .checkbox:checked::after {
+                    content: "";
+                    position: absolute;
+                    left: 4px;
+                    top: 0px;
+                    width: 5px;
+                    height: 10px;
+                    border: solid white;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+
+                .checkbox:focus {
+                    outline: 2px solid #90caf9;
+                    outline-offset: 2px;
+                }
+            </style>
+            <form>
+                <label>
+                    Agree <input class="checkbox" type="checkbox" />
+                </label>
+            </form>
+:target => for applying styles to an element that is the target of a URL fragment (the part of a 
+                URL after the # symbol).
+:required, and more.
+
+
+=> The "cursor: not-allowed;" CSS property value changes the appearance of the cursor to indicate 
+    that an action is not permitted.
+
+=> Some other examples of input pseudo-classes and what they do:
+    - :autofill: applies styles to input fields that the browser automatically fills with saved data.
+    - :optional: styles input elements that are not required and can be left empty.
+    - :in-range and :out-of-range: style elements based on whether their
