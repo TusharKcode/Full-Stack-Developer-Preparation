@@ -1,0 +1,35 @@
+Most of these design tools excel in vector-based design and prototyping.
+
+=> "Vector-based design" involves creating digital art using mathematical formulas to define lines, 
+    shapes, and colors. 
+
+=> Prototyping refers to the process of creating an interactive model of a product or user interface.
+
+Common design tools:
+    -> Figma is one of the most common and essential design tools, cloud-based tool specializes in 
+        User Interface and User Experience (UI/UX) design.
+        Offering built-in features such as: 
+            - Vector-based design
+            - Automatic layout
+            - Commenting and feedback system
+            - Version history
+            - Real-time collaboration
+            - Design systems, and more.
+
+    -> Sketch is another essential design tool, it is vector-based and primarily used for UI/UX design.
+        - It's also widely used by designers for tasks like creating UIs, icons, and web layouts.
+        - Its lack of a cloud-based interface and its availability only on macOS.
+
+    -> Adobe XD is another vector-based design and prototyping tool for UI/UX design,  
+        known for its seamless integration with other Adobe apps like Photoshop, Illustrator, 
+        and After Effects.
+        - Available for both Windows and macOS and includes a cloud-based interface.
+
+    -> Canva to create a wide range of visual content, including posters, cover photos, 
+        presentations, short videos, and more.
+        - Canva offers a rich library of templates, images, and design elements that make it easy to 
+            create professional-looking designs.
+        - The platform is available on the web, desktop, Android, and iOS app.
+
+    -> Other popular design tools developers should know are Framer, InVision, Adobe Photoshop, 
+        Adobe Illustrator, and Miro.
