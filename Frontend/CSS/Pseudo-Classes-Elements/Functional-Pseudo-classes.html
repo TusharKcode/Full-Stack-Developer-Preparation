@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :is(button, a.button, input[type='submit'], input[type='reset']) {
+            background-color: darkblue;
+            color: white;
+            border: 1px solid darkblue;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        :is(button, a.button, input[type='submit'], input[type='reset']):hover {
+            background-color: blue;
+            border-color: blue;
+        }
+
+        :where(h1, h2, h3) {
+            margin: 0;
+            padding: 0;
+        }
+
+        article:has(h2) {
+            border: 2px solid hotpink;
+        }
+
+        .not-class button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            color: white;
+        }
+
+        .not-class button.primary {
+            background-color: deepskyblue;
+            }
+
+        .not-class button:not(.primary) {
+            background-color: grey;
+        }
+
+        /* Website Layout Enhancements */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f4f7f6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .demo-box {
+            background-color: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        h4 {
+            color: #e67e22;
+            margin-top: 0;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        em {
+            font-weight: bold;
+            color: #2c3e50;
+            font-style: normal;
+            background: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eee;
+            padding: 2px 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        article {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Functional Pseudo-classes</title>
+</head>
+<body>
+    <header>
+        <h1>Functional Pseudo-classes</h1>
+        <p>Advanced Selectors for Modern Web Development</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <p>
+                Functional pseudo-classes allow you to select elements based on more complex conditions or 
+                relationships. Unlike regular pseudo-classes which target elements based on a state, for example, 
+                <code>:hover</code>, <code>:focus</code>, functional pseudo-classes accept arguments within parentheses, hence the name 
+                "functional pseudo-classes".
+            </p>
+
+            <p>Examples of functional pseudo-classes are:</p>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><code>:is()</code></li>
+                <li><code>:where()</code></li>
+                <li><code>:has()</code></li>
+                <li><code>:not()</code></li>
+            </ul>
+        </div>
+
+        <br>
+
+        <div class="card is-func">
+            <p>
+                The <em>:is()</em> pseudo-class is useful when you want to style a group of elements that share some, but not all, characteristics.
+                With the <code>:is()</code> function, you can write a more compact and understandable selector like this.
+            </p>
+            <div class="demo-box">
+                <h4>Example:</h4>
+                <button>Example Button</button>
+                <a href="#" class="button">Link styled like a button</a>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+            </div>
+        </div>
+
+        <div class="card">
+            <p>
+                The <em>:where()</em> pseudo-class functions similarly to <code>:is()</code>, but it doesn't increase the specificity of your selectors. This makes it ideal for applying styles without affecting the specificity of other rules.
+            </p>
+            <div class="demo-box">
+                <h4>Example:</h4>
+                <h1>Page Title (No Margin)</h1>
+                <h2>Subtitle (No Margin)</h2>
+                <h3>A point (No Margin)</h3>
+                <br>
+                <p>Example paragraph below heading.</p>
+                <p>Example paragraph.</p>
+                <p>Example paragraph.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <p>
+                Styling a parent element based on its children's states was previously challenging until the <em>:has()</em> pseudo-class was introduced. It allows you to apply styles to a parent element based on the presence or state of its child elements.
+            </p>
+            <div class="demo-box">
+                <h4>Example (Hotpink border if contains H2):</h4>
+                <article>
+                    <h2>Subheading</h2>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </article>
+
+                <article>
+                    <h3>A point</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </article>
+            </div>
+        </div>
+
+        <div class="card not-class">
+            <p>
+                The <em>:not()</em> pseudo-class is ideal for situations where you want to apply styles to a group of elements, excluding one or more specific exceptions.
+            </p>
+            <div class="demo-box">
+                <h4>Example:</h4>
+                <button class="primary">Primary Button</button>
+                <button class="secondary">Secondary Button</button>
+                <button class="danger">Another Secondary Button</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

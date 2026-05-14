@@ -1,0 +1,108 @@
+"pseudo" means "not real", so pseudo-elements are virtual or synthetic elements that don't directly 
+    match any actual HTML elements. 
+    They allow you to style specific parts of an element or insert content without adding extra HTML.
+
+    => To apply a pseudo-element, attach it to the original element's selector using a double colon (::).
+        Syntax: 
+            selector::pseudo-element {
+                property: value;
+            }
+
+    => Pseudo-elements allow you to style specific parts of an element's content or insert content 
+        before or after it, but they cannot exist independently. 
+        The element to which a pseudo-element is attached is called its originating element.
+
+    Example: 
+    -> ::before lets you insert content just before the element's content while 
+        ::after lets you insert content after it.
+        .cta-button {
+            background-color: lightseagreen;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cta-button::before {
+            content: "⭐";
+            position: absolute;
+            left: 3px;
+            top: 8px;
+            font-size: 0.75rem;
+        }
+        <button class="cta-button">Learn More</button>
+
+    -> The content property is used to represent the content you wish to add before the button text.
+        .cta-button {
+            background-color: orange;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cta-button::after {
+            content: '➡️';
+            position: absolute;
+            right: 5px;
+            bottom: 6px;
+            font-size: 1.125rem;
+            transition: transform 0.3s ease;
+        }
+        <button class="cta-button">Learn More</button>
+
+        .cta-button {
+            background-color: orange;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cta-button::after {
+            content: "➡️";
+            position: absolute;
+            right: 5px;
+            bottom: 6px;
+            font-size: 1.125rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(2px);
+        }
+        <button class="cta-button">Learn More</button>
+
+        -> The ::first-letter pseudo-element targets the first letter of an element's content, allowing 
+            you to style it.
+            p::first-letter {
+                font-size: 4rem;
+            }
+            <p>freeCodeCamp lets you learn to code without having to pay.</p>
+
+        -> The ::marker pseudo-element offers a way to enhance your website's brand identity by 
+            customizing list markers to match your color scheme.
+            li::marker {
+                color: crimson;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            <ul>
+                <li>Unordered list item 1</li>
+                <li>Unordered list item 2</li>
+                <li>Unordered list item 3</li>
+                <li>Unordered list item 4</li>
+            </ul>
+
+            <ol>
+                <li>Ordered list item 1</li>
+                <li>Ordered list item 2</li>
+                <li>Ordered list item 3</li>
+                <li>Ordered list item 4</li>
+            </ol>
+
+There are many more like the ::placeholder, ::spelling-error and ::selection.
+
+=> transform property does – it allows you to rotate, skew, scale, or translate an element in a 
+    particular direction.
