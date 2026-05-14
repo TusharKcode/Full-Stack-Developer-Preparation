@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Input Pseudo-Classes Guide</title>
     <style>
+        /* --- ORIGINAL CSS PRESERVED --- */
         .focus-inp:focus {
             border: 2px solid crimson;
             outline: none;
@@ -68,96 +70,200 @@
             cursor: not-allowed;
         }
 
+        /* Layout enhancements for a "website" look */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .card p {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .demo-box {
+            background-color: #fcfcfc;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="tel"] {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #444;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #34495e;
+        }
+
+        code {
+            background: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e83e8c;
+        }
     </style>
-    <title>Document</title>
 </head>
 <body>
-    <div>
-        <p>
-            The :focus pseudo-class allows you to target an input element when a user selects or clicks on it, 
-            drawing attention to the active input field. This helps users easily identify where they're 
-            currently typing.
-        </p>
-        <form>
-            <input class="focus-inp" type="text" />
-        </form>
-    </div>
 
-    <br>
+    <header>
+        <h1>Interactive CSS Guide</h1>
+        <p>Mastering Input Pseudo-Classes for Better UX</p>
+    </header>
 
-    <div>
-        <p>
-            the :hover pseudo-class is triggered when the user places the cursor over an element. 
-            It provides visual feedback before the user interacts with the input, effectively alerting 
-            them that the input is ready for action.
-        </p>
-        <form>
-            <input  class="hover-inp" type="text" />
-        </form>
-    </div>
+    <main>
+        <!-- Section 1: Focus -->
+        <div class="card">
+            <p>
+                The <code>:focus</code> pseudo-class allows you to target an input element when a user selects or clicks on it, 
+                drawing attention to the active input field. This helps users easily identify where they're 
+                currently typing.
+            </p>
+            <div class="demo-box">
+                <form>
+                    <label>Click to see the Crimson border:</label>
+                    <input class="focus-inp" type="text" placeholder="Type here..." />
+                </form>
+            </div>
+        </div>
 
-    <br>
+        <!-- Section 2: Hover -->
+        <div class="card">
+            <p>
+                The <code>:hover</code> pseudo-class is triggered when the user places the cursor over an element. 
+                It provides visual feedback before the user interacts with the input, effectively alerting 
+                them that the input is ready for action.
+            </p>
+            <div class="demo-box">
+                <form>
+                    <label>Hover over this box:</label>
+                    <input class="hover-inp" type="text" placeholder="Hover me..." />
+                </form>
+            </div>
+        </div>
 
-    <div>
-        <p>
-            The :checked pseudo-class lets you style a radio button or checkbox differently when a user 
-            selects it.
-        </p>
-        <form>
-            <label>
-                Agree <input class="checkbox" type="checkbox" />
-            </label>
-        </form>
-    </div>
+        <!-- Section 3: Checked -->
+        <div class="card">
+            <p>
+                The <code>:checked</code> pseudo-class lets you style a radio button or checkbox differently when a user 
+                selects it.
+            </p>
+            <div class="demo-box">
+                <form>
+                    <label style="display: flex; align-items: center; gap: 10px;">
+                        Agree <input class="checkbox" type="checkbox" />
+                    </label>
+                </form>
+            </div>
+        </div>
 
-    <br>
+        <!-- Section 4: Required -->
+        <div class="card">
+            <p>
+                <code>:required</code> targets input elements that have the required attribute. It signals to the user that 
+                they must fill out the field to submit the form.
+            </p>
+            <div class="demo-box">
+                <form action="#">
+                    <label for="name">Name (Required):</label>
+                    <input type="text" id="name" name="name" required />
 
-    <div>
-        <p>
-            :required targets input elements that have the required attribute. It signals to the user that 
-            they must fill out the field to submit the form.
-        </p>
-        <form action="#">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required />
+                    <label for="email">Email (Required):</label>
+                    <input type="email" id="email" name="email" required />
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+                    <label for="phone">Phone Number (Optional):</label>
+                    <input type="tel" id="phone" name="phone" />
 
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" />
+                    <button type="submit">Submit Form</button>
+                </form>
+            </div>
+        </div>
 
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+        <!-- Section 5: Valid/Invalid -->
+        <div class="card">
+            <p>
+                When validating forms, you can use the <code>:valid</code> pseudo-class to style the input fields that meet 
+                the validation criteria, and <code>:invalid</code> to style the input fields that do not meet the criteria. 
+                Typically, you will use green for a valid input and red for an invalid input.
+            </p>
+            <div class="demo-box">
+                <form>
+                    <label for="email-val">Enter a valid Email:</label>
+                    <input class="valid-invalid" type="email" id="email-val" name="email" placeholder="test@domain.com" />
+                </form>
+            </div>
+        </div>
 
-    <br>
-
-    <div>
-        <p>
-            When validating forms, you can use the :valid pseudo-class to style the input fields that meet 
-            the validation criteria, and :invalid to style the input fields that do not meet the criteria. 
-            Typically, you will use green for a valid input and red for an invalid input.
-        </p>
-        <form>
-            <label for="email">Email:</label>
-            <input class="valid-invalid" type="email" id="email" name="email" />
-        </form>
-    </div>
-
-    <br>
-
-    <div>
-        <p>
-            The :disabled pseudo-class allows you to select and style input elements that are disabled. 
-            These elements have the disabled attribute, which prevents users from interacting with them. 
-            When an input is disabled, it cannot be clicked, focused, or edited.
-        </p>
-        <form>
-            <label for="name">Name:</label>
-            <input class="disable-input" type="text" id="name" name="name" disabled />
-        </form>
-    </div>
+        <!-- Section 6: Disabled -->
+        <div class="card">
+            <p>
+                The <code>:disabled</code> pseudo-class allows you to select and style input elements that are disabled. 
+                These elements have the disabled attribute, which prevents users from interacting with them. 
+                When an input is disabled, it cannot be clicked, focused, or edited.
+            </p>
+            <div class="demo-box">
+                <form>
+                    <label for="name-dis">Name (This field is locked):</label>
+                    <input class="disable-input" type="text" id="name-dis" name="name" value="Read Only Content" disabled />
+                </form>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
-    

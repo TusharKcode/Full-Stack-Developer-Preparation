@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location-Pseudo-Classes</title>
+    <style>
+        em {
+            font-weight: bold;
+        }
+        .link-pseudo-class:link {
+            color: magenta;
+        }
+        .visited-pseudo-class:visited {
+            color: purple;
+        }
+        .any-link-pseudo-class:any-link {
+            color: crimson;
+        }
+        section:target {
+            background-color: green;
+            border: 2px solid green;
+            padding: 10px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        header {
+            border-bottom: 3px solid #333;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        article {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h2 { 
+            color: #2c3e50; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px; 
+        }
+        h4 { 
+            margin-top: 20px; 
+            color: #666; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+        }
+        ul { 
+            padding-left: 20px; 
+        }
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            display: flex; 
+            gap: 15px; 
+        }
+        nav a { 
+            text-decoration: none; 
+            color: #007bff; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CSS Guide: Location Pseudo-Classes</h1>
+    </header>
+
+    <main>
+        <article>
+            <p>
+                <strong>Location pseudo-classes</strong> are used for styling links and elements that are targeted within the current document. They offer a way to apply styles based on whether a link is visited or whether an element is currently in focus.
+            </p>
+            <p>Examples of location pseudo-classes are:</p>
+            <ul>
+                <li>:link</li>
+                <li>:visited</li>
+                <li>:any-link</li>
+                <li>:local-link</li>
+                <li>:target</li>
+            </ul>
+        </article>
+
+        <article>
+            <h2>Link States</h2>
+            <p>
+                The <em>:link pseudo-class</em> allows you to target all unvisited links on a webpage.
+            </p>
+            <h4>Example:</h4>
+            <a class="link-pseudo-class" target="_blank" href="https://www.example.com">Visit Example.com (Unvisited)</a>
+            
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <p>
+                The <em>:visited pseudo-class</em> comes into play after the user clicks the link, so you can use it to target links the user has already clicked.
+                The :visited pseudo-class helps users distinguish between links they have visited and those they have not.
+            </p>
+            <h4>Example:</h4>
+            <a class="visited-pseudo-class" target="_blank" href="https://www.example.com">Visit Example.com (Visited State)</a>
+            
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <p>
+                The <em>:any-link pseudo-class</em> is a combination of the :link and :visited pseudo-classes. So it matches any anchor element with an href attribute, regardless of whether it's visited or not.
+            </p>
+            <h4>Example:</h4>
+            <a class="any-link-pseudo-class" target="_blank" href="https://www.example.com">Visit Example.com (Any Link)</a>
+        </article>
+
+        <article>
+            <h2>Internal Linking</h2>
+            <p>
+                The <em>:local-link pseudo-class</em> targets links that point to the same document. It can be useful when you want to differentiate internal links from external ones. Currently, no browser supports the :local-link pseudo-class.
+            </p>
+        </article>
+
+        <article>
+            <h2>The Target Selector</h2>
+            <p>
+                The <em>:target pseudo-class</em> selects an element that matches the current URL fragment identifier, for example, #section1. It's very useful for pages with in-page navigation.
+            </p>
+            
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+                <h4>Navigation Demo:</h4>
+                <nav id="table-of-contents">
+                    <ul>
+                        <li><a href="#section1">Jump to Introduction</a></li>
+                        <li><a href="#section2">Jump to Features</a></li>
+                    </ul>
+                </nav>
+
+                <section id="section1" style="margin-top: 20px;">
+                    <h2>Introduction</h2>
+                    <p>This is the introduction section. Clicking the link above will highlight this area in green.</p>
+                </section>
+
+                <section id="section2" style="margin-top: 20px;">
+                    <h2>Features</h2>
+                    <p>This section describes the features. It will also turn green when targeted.</p>
+                </section>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
