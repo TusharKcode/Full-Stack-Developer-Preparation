@@ -1,0 +1,40 @@
+Hexadecimal color values, or hex codes, are a concise way to represent colors in the RGB color model.
+
+=> A hex code (short for hexadecimal code) is a six-character string used to represent colors in the 
+    RGB color model. 
+    - The "hex" refers to the base-16 numbering system, which uses digits 0 to 9 and letters A to F.
+    - Hex codes specify the amounts of red, green, and blue (RGB) that make up a particular color. 
+    - Each hex code starts with a hash symbol (#), followed by six characters that define the 
+        intensity of red, green, and blue in the color.
+
+    - Hex codes are popular for their precision and compatibility, allowing for over 16 million 
+        colors across all browsers. 
+
+    Example, the hex code for black is #000000, and the hex code for white is #FFFFFF.
+
+    Syntax: element {
+                color: #RRGGBB;
+            }
+
+    -> Here, #RRGGBB is a placeholder for the actual hex code. The RR, GG, and BB pairs each represent
+        the intensity of red, green, and blue, respectively.
+        - 00 (the lowest intensity) to FF (the highest intensity).
+
+        Example: 
+                <h1>This is a heading.</h1>
+                <p>This is a paragraph.</p>
+                h1 {
+                    color: #FF5733; /* A reddish-orange color */
+                }
+                p {
+                    background-color: #4CAF50; /* A shade of green */
+                }
+
+    -> Most design software, such as Adobe Photoshop or Figma, provides hex codes for the colors you 
+        select, which makes it easy to copy and paste these values directly into your CSS files.
+
+    -> For instance, #FF5733 cannot be shortened, but #FFFFFF (white) can be written as #FFF.
+        Similarly, #000 would represent black which is #000000 in full form.
+        Example: h2 {
+                    color: #FFF; /* White in shorthand */
+                 }

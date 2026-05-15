@@ -1,0 +1,86 @@
+RGB stands for Red, Green, and Blue — the primary colors of light. 
+    - These three colors are combined in different intensities to create a wide range of colors.
+    - The RGB color model is an additive color model, which means colors are created by combining 
+        light at varying intensities.
+    - The intensity of each color can range from 0 (which means no light) to 255 (which means full light).
+    - 0 represents the absence of that color, and 255 represents full saturation.
+
+    For example:
+        - Black is represented by rgb(0, 0, 0), which means no light for any of the three colors.
+        - White is represented by rgb(255, 255, 255), which means full light intensity for all three colors.
+        - Red is represented by rgb(255, 0, 0), with full intensity for red and none for green or blue.
+
+    -> In CSS, the rgb() function allows you to define colors using the RGB color model.
+        Syntax: 
+                element {
+                    color: rgb(red, green, blue);
+                }
+
+    -> CSS also provides the rgba() function, which adds a fourth value —alpha— that controls the 
+        transparency of the color.
+        The alpha value ranges from 0 (completely transparent) to 1 (completely opaque).
+        Example: 
+                <div>This is a div.</div>
+                div {
+                    background-color: rgba(0, 0, 255, 0.5);
+                }
+
+HSL stands for Hue, Saturation, and Lightness — three key components that define a color.
+    - The HSL color model represents colors in a way that is more in line with how humans perceive color.
+
+    Advantage: The HSL color model is its intuitive nature. Easy to adjust a color’s vibrancy or 
+                lightness by tweaking the saturation and lightness values without having to alter 
+                the core color (hue).
+
+    => The hue is the color type, represented as an angle on the color wheel, which ranges from 0 to 
+        360 degrees.
+        Example: 0 degrees represents red, 120 degrees is green, and 240 degrees is blue.
+
+    => Saturation refers to the intensity or purity of the color. 
+        - It is measured as a percentage from 0% (a completely desaturated, grayscale color) to 100% 
+            (the most vibrant form of that color).
+        - A color with 100% saturation is fully vivid.
+        - A color with 0% saturation appears as a shade of gray.
+    
+    => Lightness determines how light or dark the color is, again measured as a percentage.
+        - A lightness value of 0% will produce black, 50% will give you the normal tone of the hue, and 
+            100% will result in white.
+
+    Syntax: 
+            element {
+                color: hsl(hue, saturation, lightness);
+            }
+
+    Example: <p>This is a paragraph.</p>
+            body {
+                background-color: hsla(0, 0%, 1%, 1.00);
+            }
+
+            p {
+                color: hsl(120, 100%, 50%);
+            }
+
+            <div class="light">This is a light blue div.</div>
+            <div class="dark">This is a dark blue div.</div>
+            div.light {
+                background-color: hsl(240, 100%, 80%);
+            }
+
+            div.dark {
+                background-color: hsl(240, 100%, 20%);
+                color: hsl(0, 0%, 100%);
+            }
+
+    => The HSL model has an hsla() function. The fourth parameter in this function represents the 
+        alpha value, which controls the opacity of the color. 
+        
+        Syntax:
+                element {
+                    background-color: hsla(hue, saturation, lightness, alpha);
+                }
+
+        Example:
+                <div>This is a div.</div> 
+                div {
+                    background-color: hsla(0, 100%, 50%, 0.5);
+                }

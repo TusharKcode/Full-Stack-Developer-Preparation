@@ -1,0 +1,34 @@
+The box-shadow property applies one or more shadows around an element.
+
+Offset Values: You must specify horizontal (offset-x) and vertical (offset-y) values. 
+
+                - Positive offset-x moves the shadow to the right, while negative values move it to 
+                    the left.
+                - Positive offset-y moves the shadow down, while negative values move it up.
+
+Blur Radius: This optional value controls how blurry the shadow appears. The higher the value, 
+                the softer the shadow.
+
+Spread Radius: This optional value controls how much the shadow expands or shrinks. If not included, 
+                it defaults to 0.
+
+Shadow Color: You can specify the color using named colors, hex values, rgb(), rgba(), hsl(), or hsla()
+                functions.
+
+inset Keyword: Adding the inset keyword places the shadow inside the element instead of outside.
+
+Applying Multiple Box Shadows: You can apply multiple shadows by separating them with commas. 
+    Shadows are layered from front to back.
+
+    Syntax:
+            box-shadow: offset-x offset-y blur-radius spread-radius color;
+
+    Example: 
+
+            <div class="shadow-box">Shadow Color Example</div>
+            .shadow-box {
+                width: 200px;
+                padding: 20px;
+                background-color: lightblue;
+                box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            }

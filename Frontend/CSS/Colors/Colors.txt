@@ -1,0 +1,49 @@
+Color theory is the study of how colors interact with each other and how they affect our perception. 
+    It covers color relationships, color harmony, and the psychological impact of color.
+    Colors can be classified as either primary, secondary, or tertiary.
+
+=> Primary colors, yellow, blue, and red, are the fundamental hues from which all other colors are 
+    derived.
+
+=> Secondary colors result from mixing equal amounts of two primary colors. Green, orange, and purple 
+    are examples of secondary colors.
+
+=> Tertiary colors result from combining a primary color with a neighboring secondary color. 
+    Yellow-Green, Blue-Green, and Blue-Violet, are examples of tertiary colors.
+
+Fundamental classification in the world of color theory:
+    They can be classified as warm or cool, based on their temperature.
+    - Warm colors, like reds, oranges, and yellows, evoke feelings of comfort, warmth, and coziness.
+    - Cool colors, like blues, green, and purples, evoke feelings of calmness, serenity, and professionalism.
+
+=> Frequently used color models include the RGB model, the HSV model, and the HSL model.
+    They represent colors based on different properties.
+
+=> A color scheme is the set of colors chosen for a specific design or project. They are usually 
+    based on the principles of color theory. 
+    - Analogous color schemes create cohesive and soothing experiences. They have analogous colors, 
+        which are adjacent to each other in the color wheel.
+    - Complementary color schemes create high contrast and visual impact. Their colors are located 
+        on the opposite ends of the color wheel, relative to each other.
+        Example: magenta is complementary to green and blue is complementary to yellow and so on.
+    - A triadic color scheme has vibrant colors. They are made from colors that are approximately 
+        equidistant from each other. If they are connected, they form an equilateral triangle on 
+        the color wheel.
+    - Monochromatic color scheme, all the colors are derived from the same base color by adjusting 
+        its lightness, darkness, and saturation. This evokes a feeling of unity and harmony while still 
+        creating contrast.
+    
+=> Color contrast is essential for web accessibility. It ensures that text and other important 
+    elements are clearly distinguishable from their background. This is especially important 
+    for people with visual disabilities.
+
+
+=> Named colors are predefined color names recognized by browsers.
+    Example: p {
+                color: red;
+            }
+
+    - Named colors in CSS are a collection of 140 standard color names like red, blue, yellow, aqua, 
+        fuchsia, black, and so on.
+    - Useful for quick prototyping, simple designs, and improving code readability.
+    - Convenient but limited, with only 140 available options.
