@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            vertical-align: middle; 
+        }
+
+        .checkbox:hover {
+            border-color: #888;
+        }
+
+        .checkbox:checked {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+
+        .checkbox:checked::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox:focus {
+            outline: 2px solid #90caf9;
+            outline-offset: 2px;
+        }
+
+        input {
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 40px;
+            padding: 0;
+            border: 2px solid #555;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="date"] {
+            padding: 6px 10px;
+            border: 2px solid #555;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        You may want to use appearance: none to hide aspects of the default element and build your own instead. 
+        For a search input, WebKit based browsers will show a default search icon and a cancel button. 
+        Hiding these allows you to create your own indicators that would appear on all browsers.
+    </p>
+    <h3>
+        how to create a custom checkbox
+    </h3>
+    <form>
+        <label>
+            <input class="checkbox" type="checkbox" /> Agree
+        </label>
+    </form>
+
+    <div>
+        <p>
+            WebKit is a software engine that helps web browsers display websites.
+            Browsers like Safari use WebKit to make sure web pages look and work correctly. 
+        </p>
+        <p>
+            This appearance: none CSS property gives you complete control over the styling, but it does come with some things to look out for. 
+        </p>
+    </div>
+
+    <div>
+        <h2>What Are Common Issues When Styling Special Input Elements?</h2>
+        <p>
+            Let's learn about some of the common issues when trying to style special input elements like the datetime-local and color inputs.
+        </p>
+
+        <p>
+            These special types of inputs rely on complex pseudo-elements to create things like the date and color 
+            pickers. This presents a significant challenge for styling these inputs. One challenge is that, 
+            because the default styling depends entirely on the browser, CSS that makes the picker look right 
+            in one browser may produce a very different result in another.
+        </p>
+
+        <form>
+            <label for="favorite-color">Pick your favorite color:</label>
+            <input type="color" id="favorite-color" name="favorite-color">
+        </form>
+
+        <p>
+            Another may be the complexity of the pseudo-element. Consider the date selector; there are a lot of moving parts here and the complex structure of the pseudo-element might pose a significant challenge in applying styling to the right areas.
+        </p>
+        <form>
+            <label for="birthdate">Select your birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate">
+        </form>
+    </div>
+    
+
+</body>
+</html>
