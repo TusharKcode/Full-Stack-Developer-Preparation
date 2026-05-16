@@ -1,0 +1,30 @@
+"Need for IPv6"
+
+=> IPv4 is running out of addresses.
+=> IPv6 is designed to be the successor to IPv4.
+=>  IPv6 has a larger 128-bit address space, providing 340 undecillion (i.e., 340 followed by 36 zeroes) 
+    possible addresses.
+
+=> IPv6 is more than just larger addresses.
+
+=> As Africa, Asia and other areas of the world become more connected to the internet, there are not 
+    enough IPv4 addresses to accommodate this growth.
+
+=> IPv4 has a theoretical maximum of 4.3 billion addresses.
+
+=> Private addresses in combination with Network Address Translation (NAT) have been instrumental in 
+    slowing the depletion of IPv4 address space.
+
+The migration techniques can be divided into three categories:
+- Dual Stack -> It allows IPv4 and IPv6 to coexist on the same network segment. Dual stack devices run 
+                both IPv4 and IPv6 protocol stacks simultaneously. Known as "native IPv6", this means 
+                the customer network has an IPv6 connection to their ISP and is able to access content 
+                found on the internet over IPv6. 
+- Tunneling -> It is a method of transporting an IPv6 packet over an IPv4 network. The IPv6 packet is 
+                encapsulated inside an IPv4 packet, similar to other types of data.
+- Translation -> Network Address Translation 64 (NAT64) allows IPv6-enabled devices to communicate with 
+                    IPv4-enabled devices using a translation technique similar to NAT for IPv4.
+                    An IPv6 packet is translated to an IPv4 packet and an IPv4 packet is translated to an 
+                    IPv6 packet.
+Tunneling and translation are for transitioning to native IPv6 and should only be used where needed.
+The goal should be native IPv6 communications from source to destination.
