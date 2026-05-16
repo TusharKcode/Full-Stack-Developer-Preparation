@@ -1,0 +1,28 @@
+import { createNote } from "@/app/actions/notes"
+
+const NewNote = () => {
+    return(
+        <div>
+            <h2>Create Notes</h2>
+            <form action={createNote}>
+                <div>
+                    <label>
+                        Content
+                        <input type="text" name="content" required/>
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        Important
+                        <input type="checkbox" name="important" required/>
+                    </label>
+                </div>
+
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    )
+}
+
+export default NewNote

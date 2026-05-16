@@ -1,0 +1,155 @@
+"Next.js" is the leading framework for building React applications with server-side rendering.
+    - It provides a tightly integrated environment where the frontend and backend live in the same codebase.
+
+    - Routing, data fetching, form handling, authentication, and deployment are all covered by the 
+        framework, and the boundary between server and client code is managed by React itself rather than 
+        by a separate API layer.
+
+"Installations and Setup for Notes-App":
+-> A Next.js app is created with the create-next-app tool.
+
+        npx create-next-app@latest notes-app
+
+        ? Would you like to use the recommended Next.js defaults?
+        ❯   Yes, use recommended defaults
+
+-> The app directory structure looks like the following:
+
+                ├── AGENTS.md
+                ├── app                     => directory app that will contain most of the application code.
+                │   ├── favicon.ico
+                │   ├── globals.css
+                │   ├── layout.tsx
+                │   └── page.tsx
+                ├── CLAUDE.md               => AGENTS.md and CLAUDE.md are generated for coding agents.
+                ├── eslint.config.mjs
+                ├── next-env.d.ts
+                ├── next.config.ts          => next.config.ts contains the Next.js configurations
+                ├── node_modules
+                ├── package-lock.json
+                ├── package.json
+                ├── postcss.config.mjs
+                ├── public
+                ├── README.md
+                └── tsconfig.json
+
+-> We will start with some cleanups. Firstly change the content of the file layout.tsx to this:
+        export default function RootLayout({
+            children,
+        }: {
+            children: React.ReactNode
+        }) {
+            return (
+                <html lang="en">
+                <body>{children}</body>
+                </html>
+            )
+        }
+
+-> Next, we change the content page.tsx to be the following:
+        const Home = () => {
+        return <div>hello next.js</div>
+        }
+        export default Home
+
+-> Now we can start the app: "npm run dev"
+
+In Next.js, components inside the app directory are React Server Components by default.
+    - Server Components are rendered on the server, not in the browser.
+
+    - This is a Next.js development feature that helps with debugging: the server forwards console output 
+        to the browser DevTools so you can see it in one place.
+
+    - The component still executed on the server, and Next.js simply mirrored the console output to the 
+        client for convenience.
+    - In production, server-side console output stays on the server only.
+
+"App router"
+
+-> The App router that implements a file system based routing where the directories and files inside the 
+    directory app define the routing structure of the app.
+
+    We already had the file app/page.tsx, that is the file page.tsx directly under the app directory.
+
+    This file defines the React Server Component defining the content of the route /.
+
+What is the role of Layout.tsx file?
+=> The layout is a shared UI wrapper that is rendered around every page within its scope. 
+    - The root layout wraps the entire application and provides the <html> and <body> tags.
+    - The children prop receives the content of the current page (i.e., the component exported from page.tsx).
+    - Layouts persist across navigations and do not re-render, making them ideal for shared elements like 
+        navigation bars and footers.
+
+=> The navbar uses the component Link for the links. The behavior of the component is quite obvious: 
+    it provides a client side routing just as its counterpart in React Router.
+
+=> We shall eventually save the notes to a database. To prepare for the transition, let us refactor those 
+    to the file app/services/notes.ts.
+    Here we follow: the app/services directory holds modules responsible for data access. Right now 
+        getNotes simply returns a hardcoded array, but later we can swap in a database query without 
+        touching the page component at all.
+
+=> All of our components so far, the home page, the layout, and the notes page, are React Server Components.
+    They are rendered entirely on the server. 
+    The browser receives ready-made HTML, no JavaScript for these components is shipped to the client at all.
+
+=> Creating new notes so, let us create the component  /notes/new/page.tsx.
+    In the earlier parts of Full Stack Open, we would have added an onSubmit event handler and used 
+        useState to manage the form fields. 
+        That approach requires a Client Component, since event handlers and hooks only work in the browser.
+
+    - Next.js offers another option: Server Actions. 
+        A Server Action is a function that runs on the server but can be called directly from a form 
+        in the browser.
+
+    Let us now create directory /app/actions for server actions, and the file /app/actions/notes.ts for 
+    the actions.
+
+    - The action createNote takes formData as parameter, and uses the method get to access the form values. 
+        It then uses the function addNote defined in app/services/notes.ts to save the created note to the 
+        list of notes. Finally, it calls redirect to navigate the user back to the notes list.
+
+    - The "use server" directive at the top of the file marks all exported functions as Server Actions.
+        The server action is passed as the action prop to the <form>.
+
+    - When the form is submitted, the browser sends the form data to the server as a POST request, 
+        the Server Action executes, and the page is updated. 
+        All without writing any client-side JavaScript. 
+        This means the form component can remain a Server Component.
+
+"Static rendering"
+- Let us build the app and start it in production mode:
+    npm run build
+    npm start
+
+    The build output shows something interesting:
+        npm run ▲ Next.js 16.2.3 (Turbopack)
+
+        Creating an optimized production build ...
+        ✓ Compiled successfully in 2.2s
+        ✓ Finished TypeScript in 4.8s
+        ✓ Collecting page data using 7 workers in 451ms
+        ✓ Generating static pages using 7 workers (6/6) in 263ms
+        ✓ Finalizing page optimization in 19ms
+
+        Route (app)
+        ┌ ○ /
+        ├ ○ /_not-found
+        ├ ○ /notes
+        └ ○ /notes/new
+
+- Next.js serves the pre-built HTML immediately without running any server-side code.
+    This is great for performance, but it creates a problem: if we create a new note using the form, 
+        the Server Action executes and adds the note to our data.
+    The redirect("/notes") then takes the user back to the notes list. 
+    But since the /notes page was pre-rendered at build time, the user sees the old, cached version of 
+        the page, and the new note does not appear.
+
+In development mode, Next.js renders every page fresh on each request, so you always see the latest data.
+    This is a well-known pitfall: code that works perfectly in dev can break in production.
+
+    The fix is to tell Next.js that the cached page is stale after a mutation. We do this with 
+        "revalidatePath".
+
+    The build output markers (○ for static, ƒ for dynamic) are a helpful indicator of which routes are 
+        cached!
