@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow-Transform</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-color: #3b82f6;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Learning Section Cards */
+        .overflow, .transform {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Headings */
+        h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .overflow h3::before { content: "📦 "; margin-right: 10px; }
+        .transform h3::before { content: "✨ "; margin-right: 10px; }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        /* Paragraph adjustments */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Container to neatly bound the interactive examples */
+        .overflow-example, 
+        .transform-example,
+        div:has(> .box-two),
+        .box-three,
+        .box-four {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0 40px 0;
+            position: relative;
+        }
+
+        /* Adjustments specifically for the scrollable example box */
+        .overflow-example {
+            border: 1px dashed #cbd5e1;
+            background-color: #ffffff;
+        }
+        .overflow-example p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Clears layout spacing conflicts for the highly transformed items */
+        .transform div[class^="box-"] {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .overflow-example {
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .transform-example {
+            border: 2px solid black;
+        }
+
+        .box-one {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: translate(50px, 50px);
+        }
+        .box-two {
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: rotate(45deg);
+        }
+        .box-three {
+            margin: 100px;
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            transform: scale(1.5, 2);
+        }
+        .box-four {
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: translate(50px, 50px) rotate(45deg) scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="overflow">
+        <h3>About Overflow</h3>
+        <p>
+            Overflow refers to the way elements handle content that exceeds or overflows the size of the containing 
+            element.
+            <br>
+            Overflow is two-dimensional, the x-axis determines horizontal overflow, and the y-axis determines 
+            vertical overflow.
+            <br>
+            Instead we can use scroll to force the element to become scrollable.
+        </p>
+        <h4>Example:</h4>
+        <br>
+        <div class="overflow-example">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    
+    <div class="transform">
+        <h3>About Transform</h3>
+        <p>
+            The CSS transform property is a powerful tool that allows you to modify the visual presentation
+            of elements on your webpage without affecting the layout of other elements.
+            <br>
+            It enables you to apply various transformations to elements such as rotating, scaling, skewing, 
+            or translating (moving) them in 2D or 3D space.
+            <br>
+            The transform property works by applying a mathematical transformation to an element's coordinate 
+            system. This means you can manipulate an element's shape and position while keeping it's original 
+            place and document flow intact.
+            <br>
+            If you are using transform to hide or reveal content, make sure the content is still accessible to 
+            screen readers and keyboard navigation. Hidden content should be truly hidden such as by using 
+            display: none; or visibility: hidden;, rather than just being visually moved offscreen.
+        </p>
+        <br>
+        <p>
+            The translate function moves an element from its current position. Here's an updated example 
+            using the translate function:
+        </p>
+        <div class="transform-example">
+            <div class="box-one"></div>
+        </div>
+        <br>
+        <p>
+            The rotate function rotates an element around a fixed point and this is an example of using the rotate 
+            function for the .box element from earlier:
+        </p>
+        <div>
+            <div class="box-two"></div>
+        </div>
+        
+        <p>
+            The scale function allows you to change the size of an element. Here's an example:
+        </p>
+        <div class="box-three"></div>
+        <br>
+        <p>
+            You can combine multiple transformations in a single declaration:
+        </p>
+        <div class="box-four"></div>
+    </div>
+    
+</body>
+</html>
