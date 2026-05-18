@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin Collapsing</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-color: #0284c7;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .intro-section {
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 24px;
+            margin-bottom: 32px;
+            border-radius: 4px 12px 12px 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .concept-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        p strong {
+            color: var(--text-primary);
+        }
+
+        .box1, .box2, .parent, .child, .next-block, .parent-collpase-with-padding, .child-padding {
+            padding: 16px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #334155;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sandbox-area {
+            background-color: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e1;
+            margin-top: 16px;
+        }
+
+        .box1 {
+            margin-bottom: 20px;
+            background-color: lightblue;
+        }
+        .box2 {
+            margin-top: 30px;
+            background-color: lightgreen;
+        }
+        .parent {
+            margin-top: 40px;
+            background-color: lightyellow;
+        }
+        .child {
+            margin-top: 30px;
+            background-color: lightpink;
+        }
+        .empty-block {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            height: 0;
+        }
+        .next-block {
+            background-color: lightgray;
+        }
+
+        .parent-collpase-with-padding {
+            margin-top: 40px;
+            padding-top: 1px;
+            background-color: lightyellow;
+        }
+        .child-padding {
+            margin-top: 30px;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-section">
+        <p><strong>Margin collapsing</strong> is a fundamental concept in CSS that often confuses newcomers to web development.</p>
+        <p>This behavior occurs when the vertical margins of adjacent elements overlap, resulting in a single margin 
+            equal to the larger of the two.
+            <br>
+            Important for precise control over spacing and layout in web design.
+        </p>
+    </div>
+
+    <div class="concept-card">
+        <p>
+            In CSS when two vertical margins come into contact with each other they'll collapse, this means that 
+            instead of adding together, the larger margin wins and determines the space between the elements. 
+            <br>
+            This behavior applies only to vertical margins (top and bottom) and not to horizontal margins 
+            (left and right). 
+        </p>
+        <div>
+            <div class="box1">Box 1</div>
+            <div class="box2">Box 2</div>
+        </div>
+    </div>
+
+    <div class="concept-card">
+        <p>
+            Margins can also collapse between a parent element and its first or last child. If there's no border, 
+            padding, inline content, or clearance to separate the parent's margin from the child's, 
+            they will collapse.
+        </p>
+        <div class="parent">
+            <div class="child">Child element</div>
+        </div>
+    </div>
+    
+    <div class="concept-card">
+        <p>
+            If an element has no content, padding, or border, its top and bottom margins can collapse into a single margin.
+        </p>
+        <div class="empty-block"></div>
+        <div class="next-block">Next block</div>
+        
+        <br><br>
+
+        <div>
+            <p>Here's an example of preventing collapse using padding:</p>
+            <div class="parent-collpase-with-padding">
+                <div class="child-padding">Child element</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+The CSS box model is a fundamental concept for web development. It defines how HTML elements are 
+    structured and positioned. 
+    - In the CSS box model, every element is surrounded by a box. This box consists of four elements: 
+        the content area, the padding, the border, and the margin.
+
+    => The "content area" is the innermost part of the box. It's the space that contains the actual content 
+        of an element like text or images.
+
+    => The "padding" is the area immediately after the content area. It's the space between the content area 
+        and the border of an element.
+        You can set different values for the top, right, bottom and left padding with the padding property.
+        Ex: padding: 15px(top) 5px(right) 2px(bottom) 8px(left);
+
+    => The "border" is the outer edge or outline of an element in the CSS box model. It's the visual 
+        boundary of the element.
+        You can customize the border style, width, color and other properties using the border property.
+        Ex: border: 5px solid blue;
+        - If you want to assign a different style to each side you can use the border-width, border-style and 
+            border-color properties.
+            They will be applied in a clockwise sequence starting from the top.
+            Ex:     border-width: 2px 4px 7px 12px;
+                    border-style: dashed solid solid dashed;
+                    border-color: blue red green black;
+
+    => The "margin" is the space outside the border of an element. It determines the distance between an 
+        element and other elements around it.
+        You can set different margin values for the top, right, bottom and left sides of the element using 
+            the margin property.
+        Ex: margin: 3px 12px 9px 7px;

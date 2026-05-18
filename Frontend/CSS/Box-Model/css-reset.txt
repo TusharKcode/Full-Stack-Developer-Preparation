@@ -1,0 +1,20 @@
+A CSS reset is a stylesheet that removes all or some of the default formatting that web browsers apply to 
+    HTML elements. 
+    - A CSS reset removes the default styles. 
+    
+    - By removing all or some of the default styles, you can get a consistent baseline for your design and 
+        minimize the potential inconsistencies across browsers and devices.
+
+=> There are two main approaches to CSS resets: you can either define custom CSS resets or use third-party 
+    CSS resets.
+
+    -> Custom CSS resets are stylesheets that you create from scratch to fit the need of your project.
+
+    -> If you want to save time, you can also use a third-party CSS reset. These stylesheets are already 
+        pre-built so you can just download them and add them to your project directly.
+        A great example of a third-party CSS reset is 'Normalize.css'. This stylesheet normalizes styles for 
+            a wide range of HTML elements while still keeping some useful default styles especially those 
+            that are important for accessibility. It also corrects common bugs and style inconsistencies.
+
+        Another option is 'sanitize.css'. This is a CSS library that you can use to ensure that default styles
+            will be consistent across all major modern browsers. 

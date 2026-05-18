@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-color: #0d9488;
+            --border-color: #e2e8f0;
+            
+            /* Modern Code Syntax Block Palette */
+            --code-bg: #0f172a;
+            --code-text: #f8fafc;
+            --code-keyword: #38bdf8;
+            --code-property: #f43f5e;
+            --code-value: #34d399;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .intro-card, .concept-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .intro-card {
+            border-top: 4px solid var(--accent-color);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        /* Fixed Elegant Code Element Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border-radius: 8px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        code {
+            font-family: 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: var(--code-text);
+        }
+
+        /* Token colors for highlighted syntax look */
+        .token-keyword { color: var(--code-keyword); font-weight: bold; }
+        .token-property { color: var(--code-property); }
+        .token-value { color: var(--code-value); }
+
+        .sandbox {
+            background-color: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .math-highlight {
+            background-color: #f0fdf4;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        .content-box {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 4px solid black;
+        }
+
+        .border-box {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 4px solid black;
+            margin: 10px;
+            }
+
+            #red-div {
+            box-sizing: content-box;
+            background-color: red;
+            }
+
+            #blue-div {
+            box-sizing: border-box;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>Difference Between content-box and border-box?</h3>
+
+    <div class="intro-card">
+        <p>The box-sizing property can be set to either content-box or border-box to control how the width and height of elements are calculated.</p>
+        <p>
+            This property can be set on the universal selector (*) to apply to all the elements in the document:
+            <br>
+            <pre><code><span class="token-keyword">Syntax:</span> <span class="token-keyword">*</span> {
+                <span class="token-property">box-sizing</span>: <span class="token-value">border-box</span>;
+            }</code></pre>
+        </p>
+    </div>
+
+    <div class="concept-card">
+        <p>
+            In the content-box model, the width and height that you set for an element determine the dimensions of 
+            the content area, but they don't include the padding, border, or margin.
+            When you set width and height, you're only setting the size of the content itself.
+        </p>
+        <p>
+            To find the total width of the element, you will need to add the left and right padding, and the left 
+            and right borders.
+            the total height of an element can be found by adding the content height, the top and bottom padding, 
+            and the top and bottom borders.
+        </p>
+        For example,
+        <p>
+            In this case, if content-box is used the content area will be 300px by 200px. The total rendered size 
+            includes padding and borders — 
+            <span class="math-highlight">for example, total width = 300px (content) + 40px (padding) + 8px (borders) = 348px;</span> the total height 
+            is calculated in the same way.
+        </p>
+        <div class="sandbox">
+            <div class="content-box"></div>
+        </div>
+    </div>
+
+    <div class="concept-card">
+        <p>
+            Let's explore border-box. It's different because the width and height you set include the element's 
+            content, padding, and border (but not its margin).
+        </p>
+        <p>
+            Use border-box when you want the element's total size to stay fixed even if padding or borders 
+            change — that's often helpful in responsive layouts.
+        </p>
+        <p>
+            With border-box, padding and borders are included inside the element's specified size. 
+            The width and height you set become the element's total dimensions: content + padding + border; 
+            margins remain excluded.
+        </p>
+        <div>
+            In the following example, there are two div elements with the same dimensions but different box-sizing values.
+            <div class="sandbox">
+                <div class="border-box" id="red-div"></div>
+                <div class="border-box" id="blue-div"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

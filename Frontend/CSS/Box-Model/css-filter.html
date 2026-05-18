@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Filter</title>
+    <style>
+        .blur-effect {
+            filter: blur(2px);
+        }
+
+        .brightness{
+            filter: brightness(150%);
+        }
+        .grayscale{
+            filter: grayscale(100%);
+        }
+
+        .sepia{
+            filter: sepia(80%);
+        }
+        .hue-rotate{
+            filter: hue-rotate(90deg);
+        }
+
+        .multiple-effect {  
+            filter: contrast(150%) brightness(110%) sepia(30%);  
+        }
+    </style>
+</head>
+<body>
+    <h2>Filter Property</h2>
+    <div>
+        <p>
+            The CSS filter property is a powerful tool that allows you to apply graphical effects to 
+            elements on a web page.
+        </p>
+        <p>
+            It's particularly useful for adjusting the visual presentation of images, backgrounds, and 
+            even text without modifying the original asset.
+        </p>
+        <p>
+            The filter property can be used to create various effects, such as blurring, color shifting, and 
+            contrast adjustments.
+            <br>
+            The basic syntax for a filter property is straightforward:
+
+                selector {
+                    filter: function(amount);
+                }
+
+            Here, function represents the specific filter effect you want to apply, and amount is typically
+            a value that determines the intensity of the effect.
+        </p>
+
+        <div>
+            <p>
+                The blur function applies a Gaussian blur to the element, the amount is specified in pixels
+                and represents the radius of the blur. 
+                <br>
+                This CSS rule will apply a 2-pixel blur to all images on the page. The blur effect can be 
+                useful for creating depth in your design or for obscuring parts of an image.
+            </p>
+            <img class="blur-effect" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+        </div>
+
+        <div>
+            <p>
+                The brightness function adjusts the brightness of the element. A value of 0% will make the 
+                element completely black, while values over 100% will increase the brightness.
+            </p>
+            <p>
+                Brightness adjustments can be used to make images pop or create a washed-out effect.
+            </p>
+            <img class="brightness" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+        </div>
+
+        <div>
+            <p>
+                The grayscale function converts the element to grayscale. The amount is defined as a 
+                percentage, where 100% is completely grayscale and 0% leaves the image unchanged.
+            </p>
+            <p>
+                Grayscale can be used to create a vintage look or de-emphasize certain elements on a page.
+            </p>
+            <img class="grayscale" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+        </div>
+
+        <div>
+            <p>
+                The sepia function applies a sepia tone to the element. Like grayscale, it uses a percentage
+                value.
+            </p>
+            <p>
+                The sepia effect is great for creating a vintage or old-timey look.
+            </p>
+            <img class="sepia" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+        </div>
+
+        <div>
+            <p>
+                The hue-rotate function applies a hue rotation to the element. The value is defined in 
+                degrees, and represents a rotation around the color circle.
+            </p>
+            <p>
+                Hue rotation can be used to create psychedelic effects or to adjust the overall color 
+                scheme of an image.
+            </p>
+            <img class="hue-rotate" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+        </div>
+    </div>
+
+    <div>
+        <p>
+            One of the most powerful aspects of the filter property is the ability to combine multiple effects.
+        </p>
+        <img class="multiple-effect" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
+    </div>
+</body>
+</html>
