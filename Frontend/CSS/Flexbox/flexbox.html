@@ -139,6 +139,7 @@
         </main>
 
         <div>
+            <h4>Use of Justify Content</h4>
             <p>
                 If you assign the value flex-start to justify-content, the flex items will be aligned to 
                 the start of the main axis. This could be horizontal or vertical:
@@ -196,6 +197,73 @@
                 <div class="justify-se" id="second-div"></div>
                 <div class="justify-se" id="third-div"></div>
             </main>
+        </div>
+
+        <div>
+            <h4>Use of Align</h4>
+            <p>
+                To center the items along the cross axis, you just need to add align-items: center to the 
+                flex container:
+            </p>
+            <main class="align-items">
+                <div class="align-items-ct" id="first-div"></div>
+                <div class="align-items-ct" id="second-div"></div>
+                <div class="align-items-ct" id="third-div"></div>
+            </main>
+
+            <p>
+                The opposite is align-items: flex-end. This will align flex items to the end of the cross 
+                axis, vertically or horizontally.
+            </p>
+            <main class="align-items-end">
+                <div class="align-items-ed" id="first-div"></div>
+                <div class="align-items-ed" id="second-div"></div>
+                <div class="align-items-ed" id="third-div"></div>
+            </main>
+            <p>
+                To stretch the flex items along the cross axis, you can use align-items: stretch. 
+                This also works with elements that are automatically sized, such as those without set 
+                width or height, or with only a minimum width or height. <br>
+                The flex items will stretch to fill the container in the direction of the cross axis.
+            </p>
+            <div class="container-align-str">
+                <div class="box-str">One</div>
+                <div class="box-str">Two</div>
+                <div class="box-str">Three</div>
+            </div>
+            <p>
+                align-self property to assign a different alignment on the cross axis to an individual flex
+                item. For example, you can stretch it with align-self: stretch.
+            </p>
+            <div class="container-align-slf">
+                <div class="box-slf">One</div>
+                <div class="box-slf">Two</div>
+                <div class="box-slf special">Three</div>
+            </div>
+            <p>
+                You can center it with align-self: center.
+            </p>
+            <div class="container-align-slf-ct">
+                <div class="box-slf-ct">One</div>
+                <div class="box-slf-ct">Two</div>
+                <div class="box-slf-ct special-ct">Three</div>
+            </div>
+            <p>
+                You can align it to the start of the cross axis with align-self: flex-start.
+            </p>
+            <div class="container-align-slf-st">
+                <div class="box-slf-st">One</div>
+                <div class="box-slf-st">Two</div>
+                <div class="box-slf-st special-st">Three</div>
+            </div>
+            <p>
+                you can align it to the end of the cross axis with align-self: flex-end.
+            </p>
+            <div class="container-align-slf-ed">
+                <div class="box-slf-ed">One</div>
+                <div class="box-slf-ed">Two</div>
+                <div class="box-slf-ed special-ed">Three</div>
+            </div>
         </div>
     </div>
 </body>

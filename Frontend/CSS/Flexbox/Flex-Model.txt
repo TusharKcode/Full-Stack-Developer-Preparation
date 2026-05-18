@@ -21,4 +21,4 @@ This model defines how flex items are arranged within a flex container. Every fl
                     - 'nowrap' is the default value—flex items won't be wrapped onto a new line, even if their 
                         width exceeds the container's width.
     => 'justify-content' aligns the child elements along the main axis of the flex container.
-    
+    => The cross axis is perpendicular to the main axis. You can do this with the align-items property.

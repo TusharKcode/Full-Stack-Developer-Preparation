@@ -287,3 +287,143 @@
 #third-div {
     background-color: #4da3b2;
 }
+
+
+/* ----------------------------------------------------------------- */
+
+.align-items {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    border: 2px solid red;
+}
+
+.align-items-ct {
+    width: 80px;
+    height: 50px;
+}
+
+#first-div {
+    background-color: #4d70b2;
+}
+
+#second-div {
+    background-color: #5c4db2;
+}
+
+#third-div {
+    background-color: #4da3b2;
+}
+
+.align-items-end {
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    border: 2px solid red;
+}
+
+.align-items-ed {
+    width: 80px;
+    height: 50px;
+}
+
+#first-div {
+    background-color: #4d70b2;
+}
+
+#second-div {
+    background-color: #5c4db2;
+}
+
+#third-div {
+    background-color: #4da3b2;
+}
+
+.container-align-str {
+    display: flex;
+    align-items: stretch; 
+    border: 2px solid #444;
+    height: 200px; 
+}
+
+.box-str {
+    width: 100px;           
+    border: 1px solid #888;
+    background-color: lightblue;
+}
+
+.container-align-slf {
+    display: flex;
+    align-items: flex-start; 
+    border: 2px solid #444;
+    height: 200px; 
+}
+
+.box-slf {
+    width: 100px;
+    border: 1px solid #888;
+    background-color: lightblue;
+    margin: 4px;
+}
+
+.special {
+    align-self: stretch; 
+    background-color: lightcoral;
+}
+
+.container-align-slf-ct {
+    display: flex;
+    align-items: flex-start; 
+    border: 2px solid #444;
+    height: 200px; 
+}
+
+.box-slf-ct {
+    width: 100px;
+    border: 1px solid #888;
+    background-color: lightblue;
+    margin: 4px;  
+}
+
+.special-ct {
+    align-self: center; 
+    background-color: lightcoral;
+}
+
+.container-align-slf-st {
+    display: flex;
+    align-items: flex-start; 
+    border: 2px solid #444;
+    height: 200px; 
+}
+
+.box-slf-st {
+    width: 100px;
+    border: 1px solid #888;
+    background-color: lightblue;
+    margin: 4px;
+}
+
+.special-st {
+    align-self: flex-start; 
+    background-color: lightcoral;
+}
+
+.container-align-slf-ed {
+    display: flex;
+    align-items: flex-start; 
+    border: 2px solid #444;
+    height: 200px; 
+}
+
+.box-slf-ed {
+    width: 100px;
+    border: 1px solid #888;
+    background-color: lightblue;
+    margin: 4px;
+}
+
+.special-ed {
+    align-self: flex-end; 
+    background-color: lightcoral;
+}
