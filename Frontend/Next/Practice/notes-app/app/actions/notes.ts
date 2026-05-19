@@ -1,7 +1,7 @@
 "use server"
 
 import { redirect } from "next/navigation"
-import { addNote } from "../services/notes"
+import { addNote, toogleImportance } from "../services/notes"
 import { revalidatePath } from "next/cache"
 
 export const createNote = async(formData: FormData) => {
@@ -10,4 +10,11 @@ export const createNote = async(formData: FormData) => {
     addNote(content, important)
     revalidatePath("/notes")
     redirect("/notes")
+}
+
+export const toogleNoteImportance = async(formData: FormData) => {
+    const id = Number(formData.get("id"))
+    toogleImportance(id)
+    revalidatePath(`/notes/${id}`)
+    revalidatePath("/notes")
 }

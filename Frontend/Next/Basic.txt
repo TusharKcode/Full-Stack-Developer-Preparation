@@ -153,3 +153,17 @@ In development mode, Next.js renders every page fresh on each request, so you al
 
     The build output markers (○ for static, ƒ for dynamic) are a helpful indicator of which routes are 
         cached!
+
+"Page of a note"
+- The parameter is a promise, so to destructure it, await is needed, and that is why the function 
+    defining the component needs to be async.
+
+- When the note is not found, we call notFound() from next/navigation.
+    This function throws a special error that Next.js catches and renders the nearest not-found.tsx file.
+    or a default 404 page if none exists.
+
+- After toggling the importance, the action needs to revalidate both the path of the note itself, and 
+    the list of notes. This keeps all the views in sync with the change.
+
+- The server action needs the id of the note, and for that the form has a hidden input field, 
+    that makes it possible to include data that cannot be seen or modified by users of the form.
