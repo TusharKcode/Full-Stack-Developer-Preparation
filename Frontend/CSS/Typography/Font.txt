@@ -1,0 +1,105 @@
+A "font family" is a group of fonts that share a common design. 
+    All the fonts that belong to the same family are based on the same core typeface, but they also 
+    have variations in their style, weight, and width. 
+
+    For example, Arial is a font family that includes variations like Arial Bold and Arial Italic.
+
+The font family is chosen one character at a time, so if a font lacks a specific character, 
+    the browser looks for it in the lower-priority fonts.
+
+A "generic font family" is a default font that web browsers will render when the higher priority fonts are 
+    not available.
+    Some of the most commonly used ones are: serif, sans-serif, monospace, cursive, fantasy.
+
+"Web-safe fonts" are a subset of fonts that are very likely to be installed on a computer or device.
+    Supported across different operating systems and web browsers.
+
+"At-rules" are statements that provide instructions to the browser. You can use them to define various 
+    aspects of the stylesheet, such as media queries, keyframes, font faces, and more.
+
+    With @font-face, you can define a custom font by specifying the font file, format, and other important 
+    properties, like weight and style. 
+    Syntax:     @font-face {
+                    /* Descriptors */
+                }
+
+    Example:    @font-face {
+                    font-family: "MyCustomFont";
+                }
+
+    But for the @font-face at-rule to be valid, you also need to specify the src. This contains references 
+        to the font resources. 
+        It's basically a list of external references or locally-installed font face names separated by 
+        commas. 
+        It can also include hints about the format and technology of the font resources.
+
+    Example:    @font-face {
+                    font-family: "MyCustomFont"; 
+                    src: url("path/to/font.woff2"),
+                        url("path/to/font.woff"),
+                        url("path/to/font.otf");
+                }
+
+    Possible font formats include collection, embedded-opentype, opentype, svg, truetype, woff, and woff2.
+    Example: @font-face {
+                font-family: "MyCustomFont"; 
+                src: url("path/to/font.woff2") format("woff2"),
+                    url("path/to/font.otf") format("opentype"),
+                    url("path/to/font.woff") format("woff");
+            }
+
+woff stands for "Web Open Font Format."
+- The difference between WOFF and WOFF2 is the algorithm used to compress the data.
+- OpenType is a format for scalable computer fonts developed by Microsoft and Adobe that allows users to 
+    access additional features in a font. It's widely used across major operating systems.
+
+    Example: 
+            @font-face {
+                font-family: "MyCustomFont"; 
+                src: url("path/to/font.woff2") format("woff2"),
+                    url("path/to/font.otf") format("opentype") tech(color-COLRv1),
+                    url("path/to/font.woff") format("woff");
+            }
+
+"External Fonts"
+-> A font file that is not included directly within your project files. They're usually hosted on a separate
+    server.
+-> Google Fonts and Font Squirrel are popular online resources for finding and using free fonts for web 
+    development purposes. 
+
+    Google Fonts => This is a Google service that offers a collection of fonts, many of which are designed 
+                    specifically for web development.
+                    You can either use a link element or @import. If you choose the link element option, you can copy 
+                        and paste the HTML snippet and the CSS rules to add them to your project.
+
+    Font Squirrel => where you can find and download the custom fonts that you envision for your design.
+
+"text-shadow Property"
+- CSS doesn't apply any shadows to the text by default. 
+- In CSS, you can describe a shadow through a combination of its X offset, Y offset, blur radius, and color.
+    -> We can also customize the color of the shadow by specifying the value before or after the offset.
+    -> Blur radius is optional but makes the shadow look a lot smoother and more subtle. Default value is 0.
+        The higher the value, the bigger the blur, which means that the shadow becomes lighter.
+
+    => Positive values of the X offset and Y offset will move the shadow right and down.
+    => Negative values will move the shadow left and up.
+
+    Syntax: text-shadow: /* Values */
+    Example: 
+            Property with an x-offset of 3px and a y-offset of 2px:
+            p {
+                text-shadow: 3px 2px #00ffc3; (Positive)
+                text-shadow: -3px -2px #00ffc3; (Negative)
+                text-shadow: 3px 2px 3px #00ffc3; (blur 3px)
+            }
+            <p>Hello, World!</p>
+
+            It's also helpful to know that the text can have more than one shadow. You just need to write them 
+            in the same text-shadow property separated by commas. 
+            They will be applied in layers, from front to back, with the first shadow at the top.
+            p {
+                text-shadow: 
+                    3px 2px 3px #00ffc3, 
+                    -3px -2px 3px #0077ff, 
+                    5px 4px 3px #dee7e5;
+            }
