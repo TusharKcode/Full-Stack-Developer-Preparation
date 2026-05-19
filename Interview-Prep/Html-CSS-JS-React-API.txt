@@ -1,0 +1,167 @@
+What is HTML and Semantic HTML?
+- HTML (HyperText Markup Language) is used to structure web pages. It defines elements like headings, 
+    paragraphs, buttons, forms, images, etc.
+- Semantic HTML uses meaningful tags like <header>, <footer>, <article>. It improves SEO, readability, and 
+    accessibility.
+
+What is the purpose of alt attribute in image tag?
+- Provides alternative text if image fails to load. Also improves accessibility and SEO.
+
+What is SEO?
+- Search Engine Optimization, Helps websites rank higher in search engines.
+
+What is CSS?
+- CSS (Cascading Style Sheets) is used to style HTML elements.
+
+What is the CSS Box Model?
+- Every element consists of: Content, Padding (Inside space and border), Border, Margin (Outside space and border).
+- It Controls spacing and layout.
+
+Difference between Flexbox and Grid?
+- Flexbox = A CSS layout system used for alignment and spacing. One-dimensional, Row OR column.
+- Grid = Two-dimensional, Rows AND columns.
+
+What is responsive design?
+- Design that adapts to different screen sizes. Works on mobile, tablet, desktop.
+
+What are media queries?
+- Used to apply CSS based on screen size. 
+Example:    @media (max-width: 768px) {
+                body {
+                    background: red;
+                }
+            }
+
+Difference between relative, absolute, and fixed positioning?
+- Relative = Positioned relative to itself.
+- Absolute = Positioned relative to nearest positioned parent
+- Fixed = Fixed relative to viewport
+
+What is z-index?
+- Controls stack order of elements. Higher z-index appears on top.
+
+What is JavaScript?
+- JavaScript is a programming language used to make web pages interactive.
+
+Difference between var, let, and const?
+| var             | let              | const            |
+| --------------- | ---------------- | ---------------- |
+| Function scoped | Block scoped     | Block scoped     |
+| Can redeclare   | Cannot redeclare | Cannot redeclare |
+| Mutable         | Mutable          | Immutable        |
+
+What is hoisting?
+- JavaScript moves declarations to the top before execution. var is hoisted with undefined.
+
+Difference between == and ===?
+- == (Checks value only)
+- === (Checks value and datatype)
+
+Example:    5 == "5"   // true
+            5 === "5"  // false
+
+What is a closure?
+- A function accessing variables from its outer function even after outer function execution.
+
+What is a callback function?
+- A function passed as argument to another function.
+    Example:    function greet(name, callback) {
+                    callback(name);
+                }
+
+What are promises?
+- Promises handle asynchronous operations.
+- States: Pending, Resolved, Rejected
+
+What is async/await?
+- Simplified way to work with promises.
+- Exmaple:  async function fetchData() {
+                const data = await fetch(url);
+            }
+
+Difference between synchronous and asynchronous programming?
+| Synchronous           | Asynchronous       |
+| --------------------- | ------------------ |
+| Executes line by line | Non-blocking       |
+| Waits for completion  | Runs in background |
+
+What is the DOM?
+- DOM (Document Object Model) represents HTML as objects. JavaScript can manipulate webpage content using DOM.
+
+What is Virtual DOM?
+- React creates virtual copy of DOM for faster updates.
+
+What is event bubbling?
+- Event moves from child to parent element.
+
+Difference between map(), filter(), and forEach()?
+| Method    | Purpose             |
+| --------- | ------------------- |
+| map()     | Transforms array    |
+| filter()  | Filters array       |
+| forEach() | Loops through array |
+
+What is destructuring?
+- Extracting values from arrays/objects easily.
+Example: const {name, age} = user;
+
+What is the spread operator (...)?
+- Used to copy or merge arrays/objects.
+Example: const arr2 = [...arr1];
+
+What is JSON?
+- JavaScript Object Notation. Used for data exchange between frontend and backend.
+    Used for data exchange between client and server.
+
+What is localStorage and sessionStorage?
+| localStorage           | sessionStorage          |
+| ---------------------- | ----------------------- |
+| Permanent              | Temporary               |
+| Until manually removed | Removed after tab close |
+
+What is an API?
+- API allows communication between frontend and backend.
+
+What is fetch API?
+- Used to make HTTP requests. fetch("/api/users")
+
+What is React?
+- React is a JavaScript library for building UI.
+
+What is a component?
+- Reusable piece of UI.
+
+Difference between functional and class components?
+| Functional | Class             |
+| ---------- | ----------------- |
+| Simpler    | More complex      |
+| Hooks used | Lifecycle methods |
+
+
+What are props?
+- Props are data passed from parent to child component.
+
+What is state in React?
+- State stores dynamic data in component.
+
+What is useState?
+- Hook used to manage state. const [count, setCount] = useState(0);
+
+What is useEffect?
+- Hook used for side effects. Uses: API calls, Timers, Event listeners
+
+Why are keys important in React lists?
+- Keys help React identify changed elements efficiently.
+
+What is prop drilling?
+- Passing props through multiple components unnecessarily.
+
+What is Redux?
+- State management library. Used to manage global state. Avoids prop drilling and manages shared state centrally.
+
+What is React Router?
+- Used for navigation between pages in React apps.
+
+Difference between controlled and uncontrolled components?
+Controlled = Managed by React state.
+Uncontrolled = Managed by DOM itself.

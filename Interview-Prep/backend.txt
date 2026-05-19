@@ -1,0 +1,106 @@
+What is Backend Development?
+Backend handles server, database, business logic, and APIs. It processes requests and sends data to 
+    frontend.
+
+What is a Server?
+A server receives requests and sends responses.
+
+What is an API?
+API (Application Programming Interface) allows communication between frontend and backend.
+
+What is REST API?
+- REST API follows REST principles using HTTP methods.
+Common Methods
+GET → Fetch data
+POST → Create data
+PUT → Update entire data
+PATCH → Partial update
+DELETE → Remove data
+
+Difference between REST and RESTful API?
+REST = Architecture style.
+RESTful API = API following REST principles correctly.
+
+What is CRUD?
+| Operation | HTTP Method |
+| --------- | ----------- |
+| Create    | POST        | -> Sends Data, Data in body, More secure
+| Read      | GET         | -> Fetch Data, Data in URL, Less secure
+| Update    | PUT/PATCH   | -> Full Update/Partial Update
+| Delete    | DELETE      |
+
+What is HTTP & HTTPS?
+- HTTP is protocol used for communication on web. Not secure and No encryption.
+- HTTPS is secure and uses SSL/TLS
+
+HTTP status code:
+| Code | Meaning               |
+| ---- | --------------------- |
+| 200  | Success               |
+| 201  | Created               |
+| 400  | Bad Request           |
+| 401  | Unauthorized          |
+| 403  | Forbidden             |
+| 404  | Not Found             |
+| 500  | Internal Server Error |
+
+
+What is Node.js?
+
+Answer:
+- Node.js is JavaScript runtime built on Chrome V8 engine. Used for backend development. 
+- Because it uses:  V8 engine, Event-driven architecture, Non-blocking I/O.
+
+NPM - Node Package Manager manages packages/libraries.
+package.json - Stores project metadata and dependencies.
+event loop - Handles asynchronous operations in Node.js.
+
+What is Express.js?
+- Minimal Node.js framework for building APIs.
+- middleware => Functions executed between request and response. Uses: Authentication, Logging & Validation.
+
+Routing - Defines how app responds to client requests.
+CORS - Cross-Origin Resource Sharing, Allows frontend and backend from different origins to communicate.
+
+Authentication: Verifying user identity. (login)
+Authorization: Checking user permissions. (Access)
+
+What is JWT?
+- JWT (JSON Web Token) is used for secure authentication. Header, Payload, Signature.
+- Used for stateless authentication between frontend and backend. Stored on client
+
+Session => Stateful - It keeps a active record (the "state") of your login session in its memory or a 
+                        database. Usually stored in a cookie in your browser.
+JWT => Stateless - The server doesn't store anything about your active login. Every time you make a request,
+                    your browser sends this token.
+
+Hashing: Converting password into unreadable format.
+
+Spring? => More configuration, Complex setup.
+Spring Security = Provides authentication and authorization features.
+What is SpringBoot?
+- Framework used to build Java backend applications quickly. Auto configuration, Easy setup.
+
+dependency injection? - Objects are provided automatically instead of creating manually.
+IOC = Inversion of Control, Spring manages object creation.
+Bean = Object managed by Spring container.
+@Autowired = Automatically injects dependencies.
+@RestController = Used to create REST APIs. Returns JSON data
+
+@RequestMapping = Maps HTTP requests to methods.
+
+MVC architecture
+| Layer      | Purpose          |
+| ---------- | ---------------- |
+| Model      | Data             |
+| View       | UI               |
+| Controller | Handles requests |
+
+Spring Data JPA = Simplifies database operations.
+
+Hibernate = ORM (Object Relational Mapping) framework for Java. Maps Java objects to database tables.
+Entity = Java class mapped to database table.
+Repository = Used for database operations.
+
+Maven = Build and dependency management tool.
+application.properties? = Configuration file in Spring Boot. server.port=8080
