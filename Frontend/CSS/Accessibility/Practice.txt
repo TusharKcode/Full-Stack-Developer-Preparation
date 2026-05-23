@@ -1,0 +1,53 @@
+Several tools are available to help developers and designers check and maintain appropriate color 
+    contrast ratios on their sites. 
+    One popular tool is WebAIM's Color Contrast Checker.
+
+This online tool allows you to input the foreground and background colors of your design and 
+    instantly see if they meet the Web Content Accessibility Guidelines (WCAG) standards. 
+
+To use WebAIM's Color Contrast Checker, simply visit their website and enter the hexadecimal codes 
+for your foreground and background colors. 
+The tool will then calculate the contrast ratio and indicate whether it meets the WCAG 2.0 level AA 
+    or AAA standards.
+
+Another valuable tool is the TPGi Colour Contrast Analyzer. This desktop application offers more 
+    advanced features compared to online tools. 
+    It allows you to analyze entire web pages, not just individual color pairs. You can use its 
+    color picker to select colors directly from your screen, making it easier to check 
+    contrast ratios for existing designs.
+
+One common method to hide content is using display: none.
+Another approach to hiding content is using visibility: hidden. (it still occupies space on the page.)
+Example: 
+                .hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+                
+                <p class="hidden">Hidden text</p>
+                <p>Visible text</p>
+
+The accessibility tree is a structure used by assistive technologies, such as screen readers, to 
+    interpret and interact with the content on a web page. 
+    - It represents the content and its semantic meaning in a way that assistive technology can 
+        understand and present to the user.
+
+    => The max() function returns the largest of a set of comma-separated values:
+        img {
+            width: max(250px, 25vw);
+        }
+
+scroll-behavior: smooth;: This property and value enables a smooth scrolling behavior.
+prefers-reduced-motion feature: This is a media feature that can be used to detect the user's 
+    animation preference.
+
+The hidden attribute is supported by most modern browsers and hides content both visually and from 
+the accessibility tree.
+It can be easily toggled with JavaScript.
+Example: For toggling content visibility, consider using the hidden attribute:
+        <p hidden>This content is hidden</p>
+        <p>This content is visible</p>
+
+"Hiding Content with HTML Attributes"
+- aria-hidden attribute: Used to hide an element from people using assistive technology such as 
+    screen readers.

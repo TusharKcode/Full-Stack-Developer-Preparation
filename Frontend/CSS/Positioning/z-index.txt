@@ -1,0 +1,16 @@
+The z-index property in CSS is used to control the vertical stacking order of positioned elements 
+    that overlap on the page.
+
+When multiple elements are stacked on top of each other, the z-index value determines which element 
+    appears on top. 
+
+The higher the z-index value, the closer the element is to the viewer, while lower values place the 
+    element farther back in the stack.
+
+The z-index only works on elements that are positioned, which means the element must have a position
+    value other than static, such as relative, absolute, or fixed.
+
+The default z-index value is auto.
+
+This is especially useful for controlling how overlapping elements behave in complex layouts, 
+    such as modals, pop-ups, or tooltips.

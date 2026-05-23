@@ -1,0 +1,9 @@
+"Floats" in CSS are a technique originally designed to allow text to wrap around an element, 
+    such as an image. 
+    - When an element is floated, it's taken out of the normal document flow and pushed to the left 
+        or right of its container.
+
+    - Floats were also popular for creating multi-column layouts before Flexbox and Grid became 
+        widespread.
+
+    - clear: both ensures the pseudo-element clears both sides of any floated elements above it.

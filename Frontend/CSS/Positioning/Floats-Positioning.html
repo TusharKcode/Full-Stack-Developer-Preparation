@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        img {
+            float: left;
+            margin-right: 20px;
+        }
+        
+        .body{
+            border: solid 1px black;
+        }
+        .relative {
+            position: relative;
+            top: 30px;
+            left: 30px;
+        }
+
+        .positioned {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: coral;
+        }
+        body {
+            margin: 0;
+            padding-top: 60px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            position: fixed;
+            top: 0;
+            width: 500px;
+            background: white;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        h1 {
+            position: sticky;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Floats</h2>
+    <div class="container">
+        <img src="https://placehold.co/150x150" alt="Placeholder Image">
+    </div>    
+    <br>
+    <br>
+    <div class="body">
+        <h2>Positioning</h2>
+        <p class="relative">This paragraph is positioned relatively.</p>
+
+        <div class="positioned">Absolutely Positioned</div>
+    </div>
+    <div>
+        <h1>Fixed Header</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+        <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.</p>
+        <p>Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.</p>
+        <p>Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus.</p>
+        <p>Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci.</p>
+        <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum.</p>
+        <p>Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit.</p>
+    </div>
+
+    <div>
+        <h1>Sticky Header</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+        <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.</p>
+        <p>Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.</p>
+        <p>Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus.</p>
+        <p>Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci.</p>
+        <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum.</p>
+        <p>Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit.</p>
+    </div>
+</body>
+</html>
