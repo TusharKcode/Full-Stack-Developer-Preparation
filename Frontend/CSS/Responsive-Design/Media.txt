@@ -1,0 +1,115 @@
+"Media queries" are a fundamental component of responsive web design, allowing developers to apply 
+    different styles based on the characteristics of the user's device or browser.
+
+    - A media query consists of a media type and one or more expressions that check for specific 
+        conditions. 
+    - This mechanism allows for the creation of responsive designs that adapt to different screen 
+        sizes, resolutions, and device capabilities.
+
+Syntax: 
+        @media mediatype and (feature: value) {
+        /* CSS rules go here */
+        }
+
+Media types describe the general category of a device. Let's talk about the most commonly used 
+    media types:
+
+    -> [all] is suitable for all devices. This is the default if no media type is specified.
+    -> [print] is intended for paged material and documents viewed on a screen in print preview mode.
+    -> [screen] is intended primarily for screens.
+
+The [width and height] refers to the viewport width and height, and are often used with 
+    min- or max- prefixes for range queries.
+    Syntax: 
+            @media screen and (min-width: 768px) {
+                /* Styles for screens at least 768px wide */
+            }
+
+[aspect-ratio] describes the ratio between the width and height of the viewport.
+    Syntax: 
+            @media screen and (aspect-ratio: 16/9) {
+                /* Styles for screens with a 16:9 aspect ratio */
+            }
+
+The [orientation] feature indicates whether the device is in landscape or portrait orientation.
+    Syntax: 
+            @media screen and (orientation: landscape) {
+                /* Styles for landscape orientation */
+            }
+
+The [resolution] feature describes the resolution of the output device in dots per inch (dpi) or dots per centimeter (dpcm).
+    Syntax: 
+            @media screen and (min-resolution: 300dpi) {
+                /* Styles for high-resolution screens */
+            }
+
+The [hover] feature tests whether the primary input mechanism can hover over elements.
+    Syntax: 
+            @media (hover: hover) {
+                 /* Styles for devices that support hover */
+            }
+
+The [prefers-color-scheme] feature detects if the user has requested a light or dark color theme.
+    Syntax:
+            @media (prefers-color-scheme: dark) {
+                /* Styles for dark mode */
+            }
+
+Media queries can also combine multiple conditions using logical operators. 
+    - The and operator is used to combine multiple media features, while not and only can be used 
+        to negate or isolate media queries. 
+        Syntax:
+                @media screen and (min-width: 768px) and (orientation: landscape) {
+                    /* Styles for landscape screens at least 768px wide */
+                }
+    
+    - It's also possible to target multiple queries in a comma-separated list, which functions like 
+        an "or" operator.
+        Syntax:
+                @media screen and (min-width: 768px), print {
+                    /* Styles for screens at least 768px wide OR for print */
+                }
+
+"Media breakpoints" are specific points in a website's design where the layout and content adjust 
+    to accommodate different screen sizes.
+    - These queries allow you to apply different styles based on the characteristics of the device, 
+        most commonly the viewport width.
+
+    Example: 
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 1.125rem;
+            }
+        }
+        <div>
+            <h1>Responsive Design</h1>
+            <p>This is a simple example of responsive design using media queries.</p>
+        </div>
+
+A popular set of breakpoints corresponds to common device categories:
+-> Small devices (smartphones): up to 640px.
+-> Medium devices (tablets): 641px to 1024px.
+-> Large devices (desktops): 1025px and larger.
+
+Some designers prefer a more granular approach, using breakpoints like:
+-> Extra small devices: up to 576px.
+-> Small devices: 577px to 768px.
+-> Medium devices: 769px to 992px.
+-> Large devices: 993px to 1200px.
+-> Extra large devices: 1201px and larger.
+
+
+-> Extra small device: under 576px.
+-> Small device: more than or equal to 576px.
+-> Medium device: more than or equal to 768px.
+-> Large device: more than or equal to 992px.
+-> Extra large device: more than or equal to 1200px.
+-> Extra extra large device: more than or equal to 1400px.
+
+The "mobile-first approach" is a design philosophy and development strategy in responsive web 
+    design that prioritizes creating websites for mobile devices before designing for larger 
+    screens. 
+
+The mobile-first approach also aligns well with search engine optimization (SEO) strategies. 
+    Google, for instance, uses mobile-first indexing, meaning it predominantly uses the mobile 
+    version of the content for indexing and ranking.
