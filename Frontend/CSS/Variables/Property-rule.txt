@@ -1,0 +1,92 @@
+The [@property] rule is a powerful CSS feature that allows developers to define custom properties 
+    with greater control over their behavior, including how they animate and their initial values.
+
+Syntax of the @property rule is as follows:
+
+        @property --property-name {
+            syntax: '<type>';
+            inherits: true | false;
+            initial-value: <value>;
+        }
+
+        => The [--property-name] is the name of the custom property you're defining. Like all custom 
+            properties, it must start with two dashes.
+        => [syntax] defines the type of the property, which can be things like <color>, <length>, 
+            <number>, <percentage>, or more complex types.
+        => [inherits] specifies whether the property should inherit its value from its parent element.
+        => [initial-value] sets the default value of the property.
+
+Example: 
+            @property --main-color {
+                syntax: '<color>';
+                inherits: false;
+                initial-value: #3498db;
+            }
+
+            .button {
+                background-color: var(--main-color);
+            }
+
+            <button class="button">Click Me</button>
+
+Key benefits of the @property rule is that it allows for animation of custom properties.
+        @property --gradient-angle {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        .gradient-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(var(--gradient-angle), red, blue);
+            transition: --gradient-angle 0.5s;
+        }
+
+        .gradient-box:hover {
+            --gradient-angle: 90deg;
+        }
+
+        <div class="gradient-box"></div>
+
+Fallbacks:
+-> With the @property, fallbacks work on two levels: for the rule itself and for the use of the 
+    custom property.
+-> For browsers that don't support the @property rule, you can provide a fallback by declaring the 
+    custom property in the traditional way:
+    :root {
+        --main-color: #3498db;
+    }
+
+    @property --main-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #3498db;
+    }
+
+    body {
+        background-color: var(--main-color);
+    }
+
+-> When using the custom property, you can provide a fallback value using the var() function,
+        .button {
+            background-color: var(--main-color, #3498db);
+        }
+        <button class="button">Click Me</button>
+
+-> The @property rule also allows for more complex fallback scenarios. For instance, you can use 
+    it to provide type-safe fallbacks:
+    @property --padding {
+        syntax: '<length>';
+        inherits: false;
+        initial-value: 10px;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: darkred;
+        color: white;
+        padding: var(--padding);
+    }
+    <div class="box">Colored box</div>

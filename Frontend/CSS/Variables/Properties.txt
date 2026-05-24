@@ -1,0 +1,122 @@
+CSS custom properties, also known as CSS variables, are entities defined by CSS authors that 
+    contain specific values to be reused throughout a document.
+
+The [:root] pseudo-class is commonly used to declare global custom properties, as it represents the 
+    highest-level parent in the DOM tree.
+Syntax:
+        :root {
+            --main-color: #3498db;
+        }
+
+To use a custom property, you employ the var() function:
+
+            :root {
+                --main-color: #3498db;
+            }
+
+            .button {
+                background-color: var(--main-color);
+            }
+            <button class="button">Click Me</button>
+
+Custom properties follow the CSS cascade. This means that you can redefine them for specific 
+    elements or contexts:
+        .alert {
+            --main-color: #e74c3c;
+            background-color: var(--main-color);
+        }
+        <div class="alert">This is an alert message.</div>
+
+Custom properties also support fallback values. If a custom property is not defined or is invalid, 
+    you can provide a fallback value:
+        :root {
+            --text-color: green;
+        }
+
+        .text {
+            color: var(--text-color, green);
+        }
+        <div class="text">This is some text.</div>
+
+Custom properties are particularly useful in creating themeable designs. You can define a set of 
+    properties for different themes:
+            :root {
+                --bg-color: black;
+            }
+
+            body {
+                background-color: var(--bg-color);
+            }
+
+            .light-theme {
+                --bg-color: white;
+                --text-color: black;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                padding: 10px;
+            }
+            <div class="light-theme">
+                <p>This is some light themed text.</p>
+            </div>
+
+Custom properties can also be used with media queries to create responsive designs:
+            :root {
+                --card-width: 90%;
+                --card-bg: #f0f0f0;
+                --card-padding: 1rem;
+                --text-color: #333;
+            }
+
+            /* Tablet screens and up */
+            @media (min-width: 600px) {
+                :root {
+                    --card-width: 70%;
+                    --card-bg: #e8f5e9;
+                    --card-padding: 1.5rem;
+                }
+            }
+
+            /* Desktop screens and up */
+            @media (min-width: 1024px) {
+                :root {
+                    --card-width: 50%;
+                    --card-bg: #d0f0ff;
+                    --card-padding: 2rem;
+                }
+            }
+
+            body {
+                font-family: system-ui, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #fafafa;
+            }
+
+            .card {
+                width: var(--card-width);
+                background-color: var(--card-bg);
+                padding: var(--card-padding);
+                color: var(--text-color);
+                border-radius: 8px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            <div class="card">
+                <h2>Responsive Design</h2>
+                <p>Resize the window to see the card adapt!</p>
+            </div>
+
+Custom properties can also reference other custom properties:
+    :root {
+        --primary-color: #3498db;
+        --button-bg: var(--primary-color);
+    }
+
+    button {
+        background-color: var(--button-bg);
+    }
+    <button class="button">Click Me</button>
