@@ -1,0 +1,84 @@
+The [grid-template-areas] property lets you design a visual grid layout by using named labels.
+
+You then assign the labels to specific grid items using the grid-area property. So, in other words, 
+    those named labels are also called "grid area names".
+
+-> Values like header and main are the names of the grid areas.
+-> Each space-separated value within a string corresponds to a column.
+-> Each string represents a row in the grid.
+
+Syntax:
+        grid-template-areas:
+            'header header header'
+            'left-sidebar main right-sidebar'
+            'footer footer footer';
+
+The [grid-area] property connects the grid item to the named region you define in the 
+    grid-template-areas.
+
+"Holy Grail" layout is a web design pattern with a header, footer, two sidebars, and a main content 
+    area.  It ensures the main content takes priority, while sidebars and other sections adjust 
+    responsively within the layout.
+
+Example: 
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'header header header'
+                'sidebar-left main sidebar-right'
+                'footer footer footer';
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar-left {
+            grid-area: sidebar-left;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main {
+            grid-area: main;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar-right {
+            grid-area: sidebar-right;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        <div class="grid-container">
+            <div class="header">
+                <h2>Header</h2>
+            </div>
+            <div class="sidebar-left">
+                <h2>Left Sidebar</h2>
+            </div>
+            <div class="main"><h2>Main Content</h2></div>
+            <div class="sidebar-right">
+                <h2>Right Sidebar</h2>
+            </div>
+            <div class="footer">
+                <h2>Footer</h2>
+            </div>
+        </div>

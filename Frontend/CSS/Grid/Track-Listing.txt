@@ -1,0 +1,41 @@
+How Can You Repeat Track Listings in a Grid Layout?
+
+The [repeat()] function is used to repeat a section or all of the tracks for columns or rows. 
+    This function takes in a repeat count and the tracks you wish to repeat.
+
+    Example: 
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 10px;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: darkblue;
+    }
+    <div class="grid-container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    -> The repeat() function will accept any valid pattern that you can use for rows or columns.
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 20px 1fr);
+        column-gap: 10px;
+    }
+
+    .grid-container div {
+        height: 100px;
+        background-color: darkblue;
+    }
+    <div class="grid-container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>

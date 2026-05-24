@@ -1,0 +1,44 @@
+"Implicit grid" refers to the rows and columns automatically created by the browser when placing 
+    items in a grid layout – those not explicitly defined using [grid-template-rows] or 
+    [grid-template-columns].
+
+    -> The properties that control the columns and rows created 'implicitly' by the browser are 
+        [grid-auto-columns] and [grid-auto-rows].
+
+Example: two explicit columns
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 100px; /* Only 2 explicit columns */
+}
+
+.grid-item {
+  background-color: burlywood;
+  border: 1px solid orangered;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+<div class="grid-container">
+  <div class="grid-item">Item 1</div>
+  <div class="grid-item">Item 2</div>
+  <div class="grid-item">Item 3</div>
+  <div class="grid-item">Item 4</div>
+  <div class="grid-item">Item 5</div>
+  <div class="grid-item">Item 6</div>
+</div>
+
+
+"Explicit Grid"
+-> Fully customizable using grid-template-rows and grid-template-columns .	
+-> Does not change unless explicitly defined.	
+-> Requires more planning for layout structure.	
+-> Rigid structure with defined rows and columns.	
+-> Potentially more performant as the layout is predefined.	
+-> Useful when the grid structure is predictable and defined upfront.	
+
+"Implicit Grid"
+-> Controlled by grid-auto-rows and grid-auto-columns , or defaults to auto .
+-> Automatically adapts to items placed outside the explicit grid.
+-> Easier to implement for unstructured or variable content.
+-> Flexible and adapts to dynamically placed content.
+-> May require additional browser computations for implicit grid generation.
+-> Useful for dynamic layouts where content is unknown or changes frequently.

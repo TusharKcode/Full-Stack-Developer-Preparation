@@ -1,0 +1,112 @@
+CSS Grid is a powerful layout system that allows web developers to create complex and responsive 
+    web page layouts with ease.
+
+CSS Grid simplifies this process by dividing your web page into rows and columns, creating a 
+    grid-like structure.
+
+=> Grid is two-dimensional. Grid excels at creating layouts with both rows and columns.
+=> Grid is layout-first allowing you to create the layout and then place items into it.
+=> Use Grid for the overall page layout.
+
+If you wanted to style those elements in a grid format, you can set the display to grid and apply 
+columns like this:
+
+    -> we're telling the browser to create a grid with three equal-width columns, that's what the 
+        [1fr 1fr 1fr] means.
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    .item {
+        background-color: lightgray;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+  <div class="item">Item 4</div>
+  <div class="item">Item 5</div>
+  <div class="item">Item 6</div>
+</div>
+
+We will explore how to create flexible grid layouts using the [fr] unit.
+-> The [fr] unit is a fractional unit which represents a fraction of the space for the grid container.
+    Each column will take up one fraction of the available space.
+    => [grid-template-columns] is used to set the size for each column.
+Example: 
+        html,
+        body {
+            width: 90%;
+            height: 50%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
+            background-color: darkgray;
+            height: 100%;
+        }
+
+        .col {
+            background-color: darkslateblue;
+        }
+    <div class="grid-container">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    </div>
+
+Create 'Gaps' Between Tracks in a Grid:
+=> A track is the space between two neighboring grid lines. 
+    These lines are automatically created when you use CSS Grid. 
+=> It refer to the rows and columns that make up the grid layout.
+=> To create gaps between columns in a CSS Grid, you can use the [column-gap] property. It include 
+    pixels, the em unit, percentages, or the normal (result will be 0) keyword.
+
+    Example: 
+    .grid-container {
+        display: grid;
+        height: 100px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+    }
+
+    .grid-container div {
+        background-color: darkblue;
+    }
+    <div class="grid-container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+=> Example to have two rows of blue boxes and create more space between the rows, we can use the 
+    [row-gap] property, include percentages, em, and pixels.
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 30px;
+    }
+
+    .grid-container div {
+        height: 100px;
+        background-color: darkblue;
+    }
+    <div class="grid-container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+Shorthand for creating gaps: [gap: row-value optional-column-value;] (gap: 30px-(row) 10px-(col);)
