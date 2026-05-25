@@ -1,0 +1,44 @@
+"Variables" act as containers for storing data that you can access and modify throughout your 
+    program.
+
+=> One way to declare a variable in JavaScript is to use the [let] keyword. 
+    Advantage: You can reassign values to them.
+
+Ex: let age;    // it will return 'undefined', which means it has no value.
+
+=> To assign a value to a variable you will need to use the assignment operator like this:
+
+Ex: let age = 25;   // return the value of 25.
+
+=> The "assignment operator" looks like an equals sign (=) but it doesn't check for equality. 
+    - Used to assign a value to a variable.
+    - Process of assigning a value to a variable is known as 'initialization'.
+
+Example: Reassigning
+            let age = 25;
+            console.log(age); // 25
+            age = 30;
+            console.log(age); // 30
+
+=> Variables in JavaScript must begin with a letter, an underscore (_), or a dollar sign ($). 
+    - They cannot start with a number.
+    - Case-sensitive.
+    Example: 
+            // Valid variable names
+            let age;
+            let _score;
+            let $total;
+
+            // Invalid variable names
+            let 1stPlace; // starts with a number
+
+        let age = 25;
+        let Age = 30;           // consider as new variable.
+        console.log(age); // 25
+        console.log(Age); // 30
+
+"camelCase" is where the first word is all lowercase and each subsequent word starts with an 
+    uppercase letter.
+    Ex: let thisIsCamelCase;
+
+    

@@ -1,0 +1,50 @@
+A "variable" is a named container that stores a value of a specific data type, allowing you to 
+    reference and manipulate it throughout your code.
+
+Example:
+        x = 2
+        y = 4
+        x + y
+
+First: "Number" Type
+-> A Number represents both integers and floating-point values. 
+    Examples of integers include 7, 19, and 90.
+
+    console.log(3);
+    console.log(5);
+    console.log(-67);
+
+-> A floating point number is a number with a decimal point. 
+    Examples of floating point numbers include 3.14 and 5.2.
+    console.log(3.14);
+    console.log(7.2);
+    console.log(-14.5);
+
+Second: "String" Type
+-> String is a sequence of characters, or text, enclosed in quotes.
+-> Use strings to represent names, labels, alert messages, etc.
+    Example: console.log("I love to code!");
+
+Third: "Boolean" Type
+-> A Boolean represents one of two values: true or false.
+
+Fourth/Fifth: 
+-> "undefined" means a variable has been declared but hasn't been given a value yet.
+-> "null" means the variable has been intentionally set to "nothing" and does not hold any value.
+
+Sixth: "Object" Type
+-> An Object is a collection of key-value pairs.
+Example: {
+            name: "Alice",
+            age: 30
+        };
+
+Seventh: "Symbol" Type  
+-> A Symbol is a special type of value in JavaScript that is always unique and cannot be changed.
+-> Used to create unique labels or identifiers for properties.
+    Ex: Symbol('mySymbol');
+
+Eighth: "BigInt" Type
+-> BigInt is used for very large numbers that exceed the limit of the Number type:
+-> a BigInt by adding n at the end of a very large number.
+Ex: 1234567890123456789012345678901234567890n;

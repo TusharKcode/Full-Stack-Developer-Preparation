@@ -1,0 +1,17 @@
+JavaScript is a powerful programming language that brings interactivity and dynamic behavior to 
+    websites.
+
+JavaScript goes beyond those by enabling more complex functionality, such as handling user input, 
+    animating elements, and even building full web applications.
+
+Example: <button onclick="alert('Button clicked!')">Click me</button>
+
+[console.log()] is a function that outputs information to the console, which is a part of your web 
+    browser used for debugging code.
+Example:
+        console.log(3);
+        console.log(5);
+        console.log(-67);
+
+
+Also, the [//] symbols are used to add comments in your code.

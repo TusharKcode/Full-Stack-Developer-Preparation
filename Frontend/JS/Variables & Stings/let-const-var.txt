@@ -1,0 +1,23 @@
+In modern JavaScript, [let] and [const] are the preferred ways to declare variables, but they 
+    differ in how they handle value assignment and reassignment.
+
+-> The [let] keyword allows you to declare variables that can be updated or reassigned later.
+
+-> [const] is used to declare variables that are constant. Once you assign a value to a variable 
+    declared with const, you cannot reassign it.
+    
+    - Variables declared with const must be assigned a value at the time of declaration.
+        If you try to declare a const variable without assigning it a value, you will get an error:
+
+        Ex: const age; // Error: Missing initializer in const declaration
+
+    - Trying to reassign a value to a const variable will throw an error in your JavaScript console
+        , as const variables are immutable once they are assigned.
+
+
+    Ex: const maxScore = 100;   
+        console.log(maxScore); // 100
+
+-> You can also use the var keyword, but it's not as recommended anymore. 
+    The var is kind of like let, except it has a wider scope, which is more likely to cause    
+    problems in your program.
