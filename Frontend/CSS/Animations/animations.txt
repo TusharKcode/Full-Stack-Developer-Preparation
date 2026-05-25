@@ -1,0 +1,69 @@
+CSS animations allow you to create dynamic, visually engaging effects on web pages without the 
+    need for JavaScript or complex programming. 
+
+They provide a way to smoothly transition elements between different styles over a specified 
+    duration.
+
+CSS animation consists of two main components: the @keyframes rule and the animation property.
+
+The "@keyframes" rule defines the stages and styles of the animation. It specifies what styles the 
+    element should have at various points during the animation.
+
+    -> The "translateX" function in your @keyframes animation is controlling the horizontal position 
+        of an element as it animates into view.
+Example:
+        @keyframes slide-in {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }    
+
+=> The animation property is actually a shorthand for several individual properties:
+    - "animation-name" which specifies the @keyframes rule to use.
+    - "animation-duration" which sets how long the animation should take to complete.
+    - "animation-timing-function" which defines how the animation progresses over time - such as 
+        ease, linear, ease-in-out.
+    - "animation-delay" which specifies a delay before the animation starts.
+    - "animation-iteration-count" which sets how many times the animation should repeat.
+    - "animation-direction" which determines whether the animation should play forwards, backwards, 
+        or alternate.
+    - "animation-fill-mode" which specifies how the element should be styled before and after the 
+        animation.
+    - "animation-play-state" which allows you to pause and resume the animation.
+
+=> CSS animations can be triggered by various events, such as hovering over an element.
+
+=> CSS provides the prefers-reduced-motion media query.
+    - This feature allows web developers to detect if the user has requested minimal animations or 
+        motion effects at the system level.
+    Example: 
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+    - The "@media" query rule checks if the user prefers reduced motion. If true, it applies the 
+        enclosed styles.
+    - [animation-iteration-count: 1] ensures that any looping animations only play once.
+    - [scroll-behavior: auto] disables smooth scrolling effects.
+    - The [!important] declaration is used to ensure these rules take precedence over other 
+        animation styles.
+
+It's important to note that while this method effectively reduces motion, it's a blanket approach.
+Example: 
+        .animated-element {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animated-element {
+                transition: none;
+            }
+        }
