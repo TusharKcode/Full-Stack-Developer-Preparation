@@ -1,0 +1,39 @@
+JavaScript is a dynamically typed language, meaning you don't need to specify the data type of a 
+    variable when you declare it.
+
+Example: 
+        let example = "Hello";
+        example = 42;
+
+The flexibility of dynamic typing makes JavaScript more forgiving and easy to work with for quick 
+    scripting, but it can also introduce bugs that may be harder to catch, especially as your 
+    program grows larger.
+
+In statically typed languages like C# or C++, you must declare the data type of a variable when you 
+    create it, and that type cannot change.
+
+"Dynamically" typed languages offer flexibility but at the cost of potential runtime errors.
+
+"Statically" typed languages enforce stricter rules that can prevent certain errors, but they require 
+    more upfront declaration and offer less flexibility in changing types.
+
+Example: 
+        let data = 100;  // Initially a number
+        data = "New data";  // Dynamically changes to a string
+
+[typeof] operator
+- powerful tool that lets you see the data type of a variable or value.
+- It always returns a string indicating the type.
+
+        Example: 
+                let num = 42;
+                console.log(typeof num); // "number"
+
+                let isUserLoggedIn = true;
+                console.log(typeof isUserLoggedIn); // "boolean"
+
+- quirk in JavaScript when it comes to null.
+        Example:
+                let exampleVariable = null;
+                console.log(typeof exampleVariable); // "object"
+                
