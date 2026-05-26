@@ -1,0 +1,59 @@
+When working with strings in JavaScript, there may be times when you need to locate the position of 
+    a specific substring within a larger string.
+
+A substring is a sequence of characters that appears within a larger string.
+    Example, in the string hello world, hello and world are substrings.
+
+To locate the position of a substring inside of a string, you can use the [indexOf()] method.
+    indexOf() method in JavaScript allows you to search for a substring within a string.
+
+    => If the substring is found, indexOf() returns the index (or position) of the first occurrence 
+        of that substring. 
+    => If the substring is not found, indexOf() returns -1, which indicates that the search was 
+        unsuccessful.
+
+    => Takes two arguments:
+        - The first is the substring you want to find within the larger string.
+        - The second is an option starting position for the search.
+    
+        -> If no starting position, the search will begin at the start of the string.
+
+Example: 
+        let sentence = "JavaScript is awesome!";
+        let position = sentence.indexOf("awesome!");
+        console.log(position); // 14
+
+        let sentence = "JavaScript is awesome!";
+        let position = sentence.indexOf("fantastic");
+        console.log(position); // -1
+
+        let sentence = "JavaScript is awesome, and JavaScript is powerful!";
+        let position = sentence.indexOf("JavaScript", 10);
+        console.log(position); // 27
+
+- It is case sensitive.
+Example: console.log("freeCodeCamp".indexOf("F")) // -1
+
+[prompt()] Method
+- Part of JavaScript's interaction with the user. Get input from a user through a small pop-up 
+    dialog box.
+- It opens a dialog box that asks the user for some input, and then it returns the text entered by 
+    the user as a string.
+- Useful for quick testing or small applications.
+
+    It takes 2 arguments: 
+        - The first one is the message which will appear inside the dialog box typically prompting 
+            the user to enter information.
+        - The second one is a default value which is optional and will fill the input field initially.
+
+Syntax: prompt(message, default);
+
+Example:
+        <button id="prompt-btn">Show Prompt</button>
+        <p id="output"></p>
+        const btn = document.getElementById("prompt-btn");
+        const output = document.getElementById("output");
+        btn.addEventListener("click", () => {
+            const userName = prompt("What is your name?", "Guest");
+            output.textContent = "Hello, " + userName + "!";
+        });

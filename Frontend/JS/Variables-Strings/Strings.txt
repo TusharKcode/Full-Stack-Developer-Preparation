@@ -1,0 +1,134 @@
+A 'String' is a sequence of characters used to represent text data.
+    - Primitive data types in the language, along with numbers, booleans, null, and undefined.
+    - To create a string in JavaScript, you can use single quotes ('), or double quotes (").
+    - Strings are immutable.
+Example: 
+        let singleQuotes = 'This is a string';
+        console.log(singleQuotes);
+        let doubleQuotes = "This is also a string";
+        console.log(doubleQuotes);
+
+        let developer = "Jessica";
+        console.log(developer);
+        developer = "Quincy";
+        console.log(developer);
+
+"String Concatenation"
+- Combine or join pieces of text together. This process is called string concatenation.
+- Using the + operator, the += operator, and the concat() method.
+
+=> [+] operator allows you to join multiple strings or combine strings with variables that hold text.
+    Disadvantage: it can lead to spacing issues.
+    Example: 
+            let firstName = "John";
+            let lastName = "Doe";
+
+            let fullName = firstName + " " + lastName; 
+            console.log(fullName); // John Doe
+
+=> If you need to add or append to an existing string, then you can use the [+=] operator.
+    Example: 
+            let greeting = 'Hello';
+            greeting += ', John!';
+
+            console.log(greeting); // "Hello, John!"
+
+=> Use [concat()] to concatenate multiple strings together.
+Example: 
+        let str1 = 'Hello';
+        let str2 = 'World';
+
+        let result = str1.concat(' ', str2); 
+        console.log(result); // Hello World
+
+"Bracket Notation"  
+- In JavaScript, strings are treated as sequences of characters, and each character in a string can 
+    be accessed using bracket notation.
+- This allows you to retrieve a specific character from a string based on its position, which is 
+    called its 'index'.
+- Bracket notation uses square brackets ([]) and the index of the character you want to access.
+
+=> An index is the position of a character within a string, and it is zero-based. This means that 
+    the first character of a string has an index of 0, the second character has an index of 1, and 
+    so on.
+
+- The length property of a string tells you how many characters it contains, so to access the last 
+    character, you would subtract one from the length .
+    To get the last character of a string, you can use the length of the string minus one.
+
+Example: 
+        let greeting = "hello";
+        console.log(greeting[1]); // "e"
+
+        let greeting = "hello";
+        console.log(greeting[greeting.length - 1]); // "o"
+
+        let greeting = "hello";
+        let firstTwo = greeting[0] + greeting[1]; // "he"       //If you want to get multiple 
+                                                                    characters
+        console.log(firstTwo);
+
+
+"Newline in Strings and Escape Strings"
+- Two common tasks involve creating a newline within a string and escaping certain characters 
+    (like quotes) to make sure they appear correctly.
+- You can create a newline in a string using a special character called an escape sequence.
+    The most common escape sequence for newlines is [\n]. Insert a line break at that point, 
+    which results in the string being displayed across multiple lines.
+
+Example: 
+        let poem = "Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.";
+        console.log(poem);
+
+- Another important concept when working with strings is escaping characters. Treat the quotes as 
+    literal characters.
+- You can escape the inner quotes by placing a backslash (\) before them.
+- You can also escape other special characters, such as the backslash itself (\\), or single quotes 
+    within a string surrounded by single quotes (\').
+Example:
+        let statement = "She said, \"Hello!\"";
+        console.log(statement); // She said, "Hello!"
+
+        let quote = 'It\'s a beautiful day!';
+        console.log(quote); // It's a beautiful day!
+
+"Template Literals & String Interpolation"
+- Defined with backticks (`).
+- They allow for easier string manipulation, including embedding variables directly inside a string,
+    a feature known as string interpolation.
+
+- Template literals make it easier to create strings that span multiple lines or include expressions
+    (like variables or even JavaScript code) directly within the string.
+- They support multiline strings. Also allow you to embed JavaScript expressions directly within 
+    the string.
+
+Example: 
+        const name = "Alice";
+        const greeting = `Hello, ${name}!`;
+
+        console.log(greeting);
+        
+        let poem = `Roses are red,
+        Violets are blue,
+        JavaScript is fun,
+        And so are you.`;
+
+        console.log(poem);
+
+        const song = "Bohemian Rhapsody";
+        const score = 9.5;
+        const highestScore = 10;
+        const output = `One of my favorite songs is "${song}". I rated it ${
+        (score / highestScore) * 100
+        }%.`;
+        console.log(output); 
+
+- String interpolation allows you to embed variables and expressions inside a string. 
+    This is a significant improvement over the older method, where you would concatenate strings and
+    variables using the [+] operator.
+
+Example:
+        const name = "Alice";
+        const age = 25;
+        const message = `My name is ${name} and I am ${age} years old.`;
+        console.log(message); 
