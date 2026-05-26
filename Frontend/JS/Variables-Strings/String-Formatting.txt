@@ -1,0 +1,112 @@
+There are many situations where you might need to adjust the case of the text, such as transforming 
+    all letters to uppercase for a heading or converting text to lowercase for uniformity.
+
+JavaScript makes this easy with two built-in methods: toUpperCase() and toLowerCase().
+
+=> The [toUpperCase()] method converts all the characters to uppercase letters and returns a new 
+    string with all uppercase characters.
+Example: 
+        let greeting = "Hello, World!";
+        let uppercaseGreeting = greeting.toUpperCase();
+        console.log(uppercaseGreeting);  // "HELLO, WORLD!"
+
+=> The [toLowerCase()] method converts all characters in a string to lowercase.
+Example: 
+        let shout = "I AM LEARNING JAVASCRIPT!";
+        let lowercaseShout = shout.toLowerCase();
+        console.log(lowercaseShout);  // "i am learning javascript!"
+
+These methods are particularly useful for standardizing text input, making case-insensitive 
+    comparisons, and ensuring design consistency.
+
+"Trim Whitespace"
+- Whitespace can interfere with operations like comparison, storage, or display, which is why it's 
+    important to know how to remove it efficiently.
+- Whitespace refers to spaces, tabs, or line breaks that occur in a string but are not visible characters.
+- Using JavaScript's trim(), trimStart(), and trimEnd() methods.
+
+-> The [trim()] method is the most commonly used way to remove whitespace from both the beginning and 
+    the end of a string.
+Example: 
+        let message = "   Hello!   ";
+        console.log(message); // "   Hello!   "
+        let trimmedMessage = message.trim();
+        console.log(trimmedMessage);  // "Hello!"
+
+-> To remove whitespace from either the beginning or the end of a string, but not both.
+    trimStart() and trimEnd() come in.
+    - [trimStart()] removes whitespace from the beginning (or start) of the string.
+    - [trimEnd()] removes whitespace from the end of the string.
+Example:
+        let greeting = "   Hello!   ";
+        console.log(greeting);  // "   Hello!   "
+        let trimmedStart = greeting.trimStart();
+        console.log(trimmedStart);  // "Hello!   "
+
+        let greeting = "   Hello!   ";
+        console.log(greeting);  // "   Hello!   "
+        let trimmedEnd = greeting.trimEnd();
+        console.log(trimmedEnd);  // "   Hello!"
+
+
+"String Modification"
+-> The [replace()] method in JavaScript allows you to find a specified value (like a word or 
+    character) in a string and replace it with another value.
+    - Returns a new string with the replacement and leaves the original unchanged.
+    - Case-sensitive
+    - By default, the replace() method will only replace the first occurrence of the searchValue. 
+        If the value appears multiple times in the string, only the first one will be replaced.
+
+Syntax: string.replace(searchValue, newValue);
+            - searchValue is the value you want to search for in the string. Either a string or a regular 
+                expression (regex).
+            - The newValue is the value that will replace the searchValue.
+Example:
+        let text = "I love JavaScript!";
+        console.log(text); // "I love JavaScript!"
+        let newText = text.replace("JavaScript", "coding");
+        console.log(newText);  // "I love coding!"
+
+        let phrase = "Hello, world! Welcome to the world of coding.";
+        console.log(phrase);  // "Hello, world! Welcome to the world of coding."
+        let updatedPhrase = phrase.replace("world", "universe");
+        console.log(updatedPhrase);  // "Hello, universe! Welcome to the world of coding."
+
+"Repeat String"
+-> The [repeat()] method is a built-in function in JavaScript that allows you to repeat a string a 
+    specified number of times.
+    - The count parameter must be a non-negative number. If you pass a negative number, JavaScript 
+        will throw a RangeError.
+    - The count must be a finite number. If you try to repeat a string an infinite number of times
+        or use Infinity as the count, you will also get a RangeError.
+    - If the count is not an integer (such as a decimal like 2.5), the repeat() method will round 
+        it down to the nearest integer.
+    - If you pass 0 as the count, the repeat() method will return an empty string.
+    - Also pass a variable that stores a number value.
+
+Synatx: string.repeat(count);
+Example: 
+        let word = "Hello!";
+        let repeatedWord = word.repeat(3);
+        console.log(repeatedWord);  // "Hello!Hello!Hello!"
+
+        let word = "Test";
+        console.log(word.repeat(-1));  // Throws RangeError: Invalid count value
+
+        let word = "Test";
+        console.log(word.repeat(2.5));  // "TestTest"
+        
+        let word = "Test";
+        console.log(word.repeat(0));  // ""
+
+        let count = 4;
+        let word = "Test";
+        let repeatedWord = word.repeat(count);
+        console.log(repeatedWord); // TestTestTestTest
+
+In JavaScript, Infinity is a special value that represents an infinite quantity.
+    It's used to denote numbers that are larger than any finite number.
+
+Example: 
+        let word = "Test";
+        console.log(word.repeat(Infinity));  // Throws RangeError: Invalid count value
