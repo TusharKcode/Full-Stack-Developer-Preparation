@@ -1,0 +1,36 @@
+ASCII, short for American Standard Code for Information Interchange, is a character encoding 
+    standard used in computers to represent text. 
+It assigns a numeric value to each character, which is universally recognized by machines.
+
+JavaScript methods like charCodeAt() and fromCharCode() relate to character encoding. 
+JavaScript strings use Unicode (UTF-16) internally, ASCII values match the first 128 Unicode 
+    characters, which is why ASCII-based examples work in JavaScript.
+
+ASCII is a system for encoding characters such as letters, digits, and symbols into numerical values.
+Each character is mapped to a specific number.
+
+Example: A is represented by the number 65 in ASCII & a is represented by 97.
+
+The ASCII standard covers 128 characters including:
+    - Uppercase and lowercase English letters (A-Z, a-z).
+    - Numbers (0-9).
+    - Common punctuation marks and symbols (!, @, #, and so on).
+    - Control characters (such as newline and tab).
+
+In JavaScript, you can access the numeric code of a character using the [charCodeAt()] method.
+This method returns the UTF-16 code unit of the character at a specified index. For the first 128 
+    characters, this value matches the ASCII code.
+
+Example:    let letter = "A";
+            console.log(letter.charCodeAt(0));  // 65
+            let symbol = "!";
+            console.log(symbol.charCodeAt(0));  // 33
+
+[fromCharCode()] method allows you to do the opposite: convert a UTF-16 code unit (which matches 
+    ASCII for basic characters) into its corresponding character.
+
+Example:    let char = String.fromCharCode(65);
+            console.log(char);  //  A
+
+            let char = String.fromCharCode(97);
+            console.log(char);  // a
