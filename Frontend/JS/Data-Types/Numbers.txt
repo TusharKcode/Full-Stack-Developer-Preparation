@@ -1,0 +1,41 @@
+"Number"
+- Represents a numeric value.
+- Uses one unified Number type to account for numbers
+- Can work with whole numbers, decimals, and even special numeric values all under the same Number 
+    data type umbrella.
+- Special cases like Infinity and NaN, or "Not a Number". Surprisingly, the type of NaN is also Number.
+    'Integers' are whole numbers without any fractional or decimal part. They can be positive, 
+        negative, or zero.
+    'Floating point' numbers are numbers with decimal points (measurements or currencies). 
+- JavaScript can represent numbers that are beyond the maximum limit with Infinity.
+Example: 
+        const wholeNumber = 50;
+        const decimalNumber = 4.5;
+        const negativeNumber = -7;
+
+        console.log(typeof wholeNumber); // number
+        console.log(typeof decimalNumber); // number
+        console.log(typeof negativeNumber); // number
+
+        const positiveInteger = 100;
+        const negativeInteger = -25;
+        const zero = 0;
+
+        console.log(typeof positiveInteger); // number
+        console.log(typeof negativeInteger); // number
+        console.log(typeof zero); // number
+
+        const floatingPointNumber = 4.5;
+        const anotherFloat = 89.56;
+        const oneMoreFloat = 16.462;
+
+        console.log(typeof floatingPointNumber); // number
+        console.log(typeof anotherFloat); // number
+        console.log(typeof oneMoreFloat); // number
+
+        const infiniteNumber = 1 / 0;
+        console.log(infiniteNumber); // Infinity
+        console.log(typeof infiniteNumber); // number
+
+        const notANumber = 'hello world' / 2;
+        console.log(notANumber); // NaN
