@@ -1,0 +1,66 @@
+JavaScript offers a built-in Math object to tackle more complex math challenges.
+    Perform advanced calculations and manipulate numbers. 
+
+=> The Math.random() method generates a random floating-point number between 0 (inclusive) and 1 
+    (exclusive).
+    This means the possible output can be 0, but it will never actually reach 1.
+
+Example: 
+        const randomNum = Math.random();
+        console.log(randomNum);     // Output 0.12793994088226335
+        // any number between 0 and 1 – 0 inclusive and 1 exclusive
+
+=> Math.min() and Math.max() both take a set of numbers and return the minimum and maximum value.
+Example:
+        const smallest = Math.min(1, 5, 3, 9);
+        console.log(smallest); // 1
+
+        const largest = Math.max(1, 5, 3, 9);
+        console.log(largest); // 9
+
+=> If you wanted to round numbers up or down to the nearest whole integer, you could use the 
+    Math.ceil() and Math.floor() methods.
+Example:
+        console.log(Math.ceil(4.3)); // 5
+        console.log(Math.floor(4.7)); // 4
+
+=> Math.round() is the hybrid of Math.ceil() and Math.floor(). It rounds a number to its nearest 
+    integer, taking the decimal point into account.
+Example:
+        console.log(Math.round(2.3)); // 2
+        console.log(Math.round(4.5)); // 5
+        console.log(Math.round(4.8)); // 5
+
+=> A practical application of Math.floor() and Math.random() is to generate a random number between 
+    two whole numbers.
+Example:
+        const max = 10;
+        const min = 5;
+        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(randomNum);
+
+        const randomNumBtw1And20 = Math.floor(Math.random() * 20) + 1;
+        console.log(randomNumBtw1And20);
+
+=> Math.trunc() removes the decimal part of a number, returning only the integer portion, without 
+    rounding.
+Example:
+        console.log(Math.trunc(2.9)); // 2
+        console.log(Math.trunc(9.1)); // 9
+
+=> If you need to get the square root or cube root of a number, you can use the Math.sqrt() and 
+    Math.cbrt() methods.
+Example:
+        console.log(Math.sqrt(81)); // 9
+        console.log(Math.cbrt(27)); // 3
+
+=> If you need to get the absolute value of a number, you can use the Math.abs() method.
+    Turning negatives into positives.
+Example:
+        console.log(Math.abs(-5)); // 5
+        console.log(Math.abs(5)); // 5
+
+=> Math.pow() method takes two numbers and raise the first to the power of the second.
+Example:
+        console.log(Math.pow(2, 3)); // 8
+        console.log(Math.pow(8, 2)); // 64
