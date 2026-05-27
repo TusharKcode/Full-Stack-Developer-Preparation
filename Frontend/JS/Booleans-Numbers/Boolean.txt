@@ -1,0 +1,34 @@
+Booleans are a data type with only true and false values.
+
+    Booleans are essential when you want to evaluate whether something should happen or not, like 
+        deciding if someone can access a certain feature in your app.
+
+Example: 
+        let isOldEnoughToDrive = true;
+        console.log(isOldEnoughToDrive); // true
+
+    => With conditions,
+                    let isOldEnoughToDrive = true;
+                    if (isOldEnoughToDrive) {
+                    console.log("You're old enough to drive"); // You're old enough to drive
+                    } else {
+                    console.log("Sorry, you are not old enough to drive");
+                    }
+
+=> To compare two values, you can use either the equality or strict equality operator. 
+    The result of the comparison will be a boolean of either true or false.
+    - The equality operator is represented by a double equals sign (==).
+    - The equality operator uses type coercion before checking if each value is equal.
+Example: console.log(5 == "5"); // true
+
+=> The strict equality operator will check if the types are the same and if the values are the same.
+    This operator is represented by a triple equals sign (===).
+Example: console.log(5 === '5'); // false
+
+=> The inequality operator (!=) to compare a number with a string.
+Example: console.log(5 != "5"); // false
+
+=> The strict inequality operator is represented by an exclamation mark followed by two equal signs 
+    (!==).
+Example: console.log(5 !== "5"); // true
+

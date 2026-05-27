@@ -137,3 +137,74 @@ Ex:
     const result2 = undefined + 5;
     console.log(result2); // NaN
     console.log(typeof result2); // number
+
+"Assignment Operators"
+- All arithmetic operators have a compound assignment form.
+- Compound assignment operators provide a concise shorthand for an operation on a variable followed 
+    by storing the result in that same variable.
+
+- They combine the operation and assignment into a shorter form like x += y, which is equivalent to 
+    writing x = x + y.
+
+        Example: 
+                let num = 5;
+                num += 2;
+                console.log(num); // 7
+
+=> The [+=] operator lets you add a value to an existing variable. It is known as the addition 
+    assignment operator. 
+=> The subtraction assignment operator denoted by [-=].
+=> The multiplication assignment operator is represented by [*=].
+=> The division assignment operator denoted by [/=].
+        Example:
+                let total = 10;
+                total += 5;
+                console.log(total); // 15
+                
+                let score = 20;
+                score -= 7;
+                console.log(score); // 13
+
+                let points = 5;
+                points *= 3;
+                console.log(points); // 15
+
+                let balance = 100;
+                balance /= 4;
+                console.log(balance); // 25
+
+More,
+=> Remainder assignment operator (%=), which divides a variable by the specified number and assigns 
+    the remainder to the variable.
+=> Exponent assignment operator (**=), which raises a variable to the power of the specified number 
+    and reassigns the result to the variable.
+=> Bitwise AND assignment operator (&=), which performs a bitwise AND operation with the specified 
+    number and reassigns the result to the variable.
+=> Bitwise OR assignment operator (|=), which performs a bitwise OR operation with the specified 
+    number and reassigns the result to the variable.
+
+"Comparison Operators"
+- Allow you to compare two values and return a true or false result.
+=> The greater than operator, represented by a right-angle bracket (>), checks if the value on the 
+    left is greater than the one on the right.
+=> The lesser than operator, represented by a left-angle bracket (<) works similarly to >, but in 
+    reverse.
+=> The greater than or equal operator, represented by a right-angle bracket and the equals sign (>=),
+    checks if the value on the left is either greater than or equal to the one on the right.
+=> The less than or equal operator, represented by a left-angle bracket and the equals sign (<=) 
+    checks if the value on the left is smaller than or equal to the one on the right.
+Example:
+        let a = 6;
+        let b = 9;
+        console.log(a > b); // false
+        console.log(a < b); // true
+
+        let a = 6;
+        let b = 9;
+        let c = 6;
+        console.log(a >= b); // false
+        console.log(b >= a); // true
+        console.log(a >= c); // true
+        console.log(a <= b); // true
+        console.log(b <= a); // false   
+        console.log(a <= c); // true
