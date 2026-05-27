@@ -1,0 +1,121 @@
+An if statement takes a condition and runs a block of code if that condition is truthy.
+
+"Truthy values" are any values that result in true when evaluated in a Boolean context like an 
+    if statement. 
+Example:
+- non-empty strings, for example, hello
+- any number other than 0 and -0, for example, 4, -5, and others
+- arrays, objects, the boolean true
+
+"Falsy values" are values that evaluate to false in a boolean context.
+Example:
+- boolean false, 0 (zero), "" (empty string)
+- null, undefined, NaN (Not a Number)
+
+Examples of IF condition:
+                        if (null) {
+                            console.log("This will not run.");
+                        }
+
+                        if ("freeCodeCamp") {
+                            console.log("This will run.");
+                        }
+
+                        const age = 22;
+                        if (age >= 18) {
+                            console.log("You're eligible to vote"); // You're eligible to vote
+                        }
+
+-> When a condition is false, then you can use an else clause:
+Example:
+            const age = 15;
+            if (age >= 18) {
+                console.log("You're eligible to vote");
+            } else {
+                console.log("You're not eligible to vote"); // You're not eligible to vote
+            }
+
+-> If you want to check multiple conditions, you can use an else if block. This allows your program 
+    to choose between more than two paths.
+Example:
+            const score = 87;
+            if (score >= 90) {
+                console.log('You got an A'); 
+            } else if (score >= 80) {
+                console.log('You got a B'); // You got a B
+            } else if (score >= 70) {
+                console.log('You got a C');
+            } else {
+                console.log('You failed! You need to study more!');
+            }
+
+The ternary operator is a compact way to write simple if/else statements. 
+    It has three parts: a condition, a result if the condition is true, and a result if it is false.
+Syntax: condition ? expressionIfTrue : expressionIfFalse;
+Example:
+        const temperature = 30;
+        const weather = temperature > 25 ? 'sunny' : 'cool';
+        console.log(`It's a ${weather} day!`);
+
+"Binary Logical Operators"
+- It help you evaluate two expressions and return a result based on their truthiness.
+- 3 most common binary logical operators: logical AND, logical OR, and the nullish coalescing 
+    operator.
+
+=> The logical AND operator is represented by a double ampersand (&&).
+    It checks if both operands are true and returns a result. If both operands are truthy, it 
+    returns the second value, that is, the one on the right.
+    - If either operand is falsy, it returns the falsy value.
+    - If both operands are falsy, it returns the first falsy value.
+    - Useful when you want to check multiple conditions and ensure that all are true before 
+        proceeding. 
+Example:
+        const result = true && 'hello';
+        console.log(result); // hello
+
+        const result = 0 && 3;
+        console.log(result); // 0
+
+        const result = false && 0;
+        console.log(result); // false
+
+        if (2 < 3 && 3 < 4) {
+            console.log('The if block runs'); // "The if block runs"
+        } else {
+            console.log('The else block runs');
+        } 
+
+=> The logical OR operator checks if at least one of the operands is truthy. If the first operand 
+    is truthy, it returns that value.
+    - If the first operand is falsy but the second is truthy, the second value will be logged to 
+        the console.
+    - Use the logical OR operator in if/else statements.
+Example:
+        const result = 'This is truthy' || false;
+        console.log(result); // This is truthy
+
+        const result = 0 || 'This is truthy';
+        console.log(result); // This is truthy
+
+        let userInput;
+        if (userInput || 'Guest') {
+        console.log('A user is present');
+        } else {
+        console.log('No user detected');
+        }
+
+=> The nullish coalescing operator is more sophisticated than logical OR and logical AND.
+    Represented by a double question mark (??)
+    - Useful in situations where null or undefined are the only values that should trigger a 
+        fallback or default value.
+Example:
+        const result = null ?? 'default';
+        console.log(result); // default
+
+        const userSettings = {
+            theme: null,
+            volume: 0,
+            notifications: false,
+        };
+        let theme = userSettings.theme ?? 'light';
+        console.log(theme); // light
