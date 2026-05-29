@@ -1,0 +1,7 @@
+MongoDB is a NoSQL database that stores data in a flexible structure. A database is like a 
+    container for data, a collection is a group of related records, and a document is a single 
+    record stored in JSON-like format.
+MongoDB can have many databases on one server, each separate from the others.
+It creates three default databases: admin, local, and config (used internally).
+
+A new database is made automatically when you insert data into it or switch using use <dbname>.
