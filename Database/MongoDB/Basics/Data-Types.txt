@@ -1,0 +1,78 @@
+1. Integer
+- integer data type in two forms 32-bit signed integer and 64-bit signed integer.
+- used to store whole numbers, such as ages, counts, or any other numerical data that doesn't require 
+    decimal points.
+
+2. Double
+- used for storing floating-point numbers (decimal values).
+- used for storing data that requires decimal precision, such as prices, percentages, or scores.
+
+3. Boolean
+- stores one of two values: true or false
+- used for representing binary states, such as "active/inactive" or "pass/fail."
+
+4. Null
+- represent the absence of data, such as an optional field that may not be set.
+- stores a null value.
+
+5. Array
+- allows us to store multiple values in a single field
+- arrays can contain values of the same or different data types
+- array is created using square brackets([]).
+
+6. Object (Embedded Document)
+- Embedded documents are also known as nested documents
+- those types of documents which contain a document inside another document.
+- allow us to structure our data hierarchically.
+
+7. ObjectId
+- create a new document in the collection MongoDB automatically creates a unique objectId for that document
+- There is an _id field in MongoDB for each document.
+- data which is stored in Id is of hexadecimal format and the length of the id is 12 bytes which consist
+    = 4-bytes for Timestamp value.
+    = 5-bytes for Random values.
+    = 3- bytes for Counter
+
+8. Undefined
+- represents a value that is not defined
+- rarely used in modern MongoDB applications
+- replaced by the null value for most practical purposes
+
+9. Binary Data
+- stores binary information such as images, files, or encrypted data
+- used when working with non-textual data.
+
+10. Date
+- It is a 64-bit integer which represents the number of milliseconds
+- BSON data type generally supports UTC datetime and it is signed
+- If the value of the date data type is negative then it represents the dates before 1970.
+- can be returned either as a string or as a date object.
+- methods: 
+    Date(): current date in string format.
+    new Date(): returns a date object, uses the ISODate() wrapper.
+    new ISODate(): returns a date object, uses the ISODate() wrapper.
+
+11. Min & Max key
+- used for internal comparisons
+- MinKey represents the lowest BSON element
+- MaxKey represents the highest
+
+12. Regular Expression
+- used to store regex patterns
+- supports regex queries for performing pattern matching on string fields
+
+13. JavaScript
+- store JavaScript code within documents using the JavaScript data type.
+- useful for storing code or expressions.
+
+14. JavaScript with Scope
+- along with its scope (variables and functions).
+- no longer recommended for use.
+
+15. Timestamp
+- useful when we modify our data to keep a record and the value of this data type is 64-bit.
+- always unique.
+
+16. Decimal
+- stores 128-bit decimal-based floating-point value
+

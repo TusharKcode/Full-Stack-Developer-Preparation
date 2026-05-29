@@ -5,3 +5,52 @@ MongoDB can have many databases on one server, each separate from the others.
 It creates three default databases: admin, local, and config (used internally).
 
 A new database is made automatically when you insert data into it or switch using use <dbname>.
+
+"View Database"
+To see how many databases are present in your MongoDB server:
+        => [show dbs]
+
+    
+Naming Restriction for Database:
+-> case-sensitive.
+-> names cannot contain special characters such as /, ., $, *, |, etc.
+-> DB names cannot contain null characters(in windows, Unix, and Linux systems).
+-> DB names cannot be empty and must contain less than 64 characters. 
+
+"Collection in MongoDB":
+- Similar to a table in relational databases.
+- Holds a group of documents and is a part of a database.
+- They are schema-flexible.
+
+    Restriction:
+        - Collection name must start with an underscore(`_`) or a letter (a-z or A-Z)
+        - not start with a number, contain $, null characters, or begin with the reserved system. 
+            prefix.
+        - maxi length of the collection name is 120 bytes(including the database name, dot separator
+            , and the collection name).
+
+-> Creating collection
+- After creating database now we create a collection to store documents.
+        Syntax: db.collection_name.insertOne({..})
+    = [insertOne()] function is used to store single data in the specified collection.
+
+"Document in MongoDB"
+- Stores data as BSON documents, a binary form of JSON that supports additional data types.
+- Use field–value (key–value) pairs.
+- Maximum BSON document size: 16MB
+- For larger data, MongoDB provides GridFS.
+- Documents can contain duplicate fields.
+
+        Syntax:
+                { 
+                    field1: value1
+                    field2: value2
+                    ....
+                    fieldN: valueN
+                }
+        Example: 
+                {
+                    title: "MongoDB Basics",
+                    author: "John Doe",
+                    year: 2025
+                } 
