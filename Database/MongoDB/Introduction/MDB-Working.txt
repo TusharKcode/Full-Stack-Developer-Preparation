@@ -1,0 +1,35 @@
+MongoDB works on Application Layer and the Data Layer.
+
+1. Application Layer
+=> The Application Layer, also known as the abstraction layer, connects users to MongoDB by handling user interaction and server-side processing.
+
+Consists of two parts: Frontend and Backend
+    - Frontend (User Interface): Includes web and mobile applications used by users to interact with
+                                    the system.
+    - Backend (Server): Handles server-side logic and communicates with MongoDB using drivers or 
+                            the MongoDB shell.
+
+The frontend sends requests to the backend, which processes them and communicates with the MongoDB 
+    server in the Data Layer.
+
+2. Data Layer
+=> The Data Layer is responsible for storing and processing data in MongoDB, handling queries and 
+    managing data storage through core components.
+
+- MongoDB Server: Receives queries from the application layer and forwards them to the storage 
+                    engine.
+- Storage Engine: Handles actual data read and write operations and manages data storage in memory 
+                    and on disk.
+
+MongoDB Data Flow
+This describes the internal flow of data across MongoDB components during operations:
+
+-> User Interaction: The user interacts with the application (frontend) and sends a request.
+-> Backend Processing: The backend server receives the request, processes it, and communicates with 
+                        MongoDB using drivers or the MongoDB shell.
+-> MongoDB Server: The MongoDB server receives the request, processes the query, and determines the 
+                        required data operations.
+-> Storage Engine: The storage engine performs data read/write operations in memory or on disk as 
+                        instructed by the MongoDB server.
+-> Response Return: The result is sent back from MongoDB to the backend, and then to the frontend 
+                        for the user.

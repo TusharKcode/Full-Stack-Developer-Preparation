@@ -1,0 +1,47 @@
+MongoDB is a popular document-oriented NoSQL database that stores data in a flexible BSON format,
+    enabling fast and efficient storage and retrieval.
+
+Structure: 
+            {
+                "_id": 1,
+                "title": "Geeksforgeeks",
+                "author": "John Smith",
+                "url": "https://www.geeksforgeeks.org/",
+                "tags": ["NoSQL", "Database", "Tutorial"],
+                "published": true,
+                "views": 1500
+            }
+
+Working of MongoDB:
+- 1.Client Application: The application sends requests to MongoDB to read or write data.
+- 2.Query Router (mongos): The query router receives the client request and determines which shard 
+    should handle it.
+- 3.Config Servers: Store metadata about the cluster, including which data resides on which shard.
+- 4.Shards: Data is horizontally distributed across replica sets, with the primary handling writes 
+    and secondaries providing replication and reads.
+- 5.Primary Node: Handles all write operations.
+- 6.Secondary Nodes: Replicate data from the primary for high availability and read operations.
+
+CRUD Operations: 
+- Create (Insert): Add new documents to a collection.
+- Read (Find): Retrieve documents from a collection based on query criteria.
+- Update: Modify existing documents in a collection.
+- Delete: Remove documents from a collection.
+
+Features:
+- Document Oriented: single, flexible document rather than multiple tables.
+- Indexing: fast queries by avoiding full collection scans, handling large data efficiently.
+- Scalability: Uses sharding to distribute data across multiple servers.
+- Replication and High Availability: Stores multiple data copies on different servers
+- Aggregation: Processes and summarizes data (like SQL GROUP BY) using operations such as sum, avg, 
+                min, and max.
+
+Application:
+- Websites & Apps: like e-commerce sites to store product catalogs, user profiles, and order histories.
+- Real-Time Analytics: analyze user activity or sales trends on the fly
+- Content Management & Personalization: manage dynamic content and personalize recommendations
+- Big Data & IoT: handles large volumes of unstructured data from sensors, logs, or social media 
+    feeds for processing and insights.
+
+Supported Languages: 
+C, C++, Rust, C#, Java, Node.js, Perl, PHP, Python, Ruby, Scala, Go, Erlang

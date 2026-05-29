@@ -1,0 +1,17 @@
+        RDBMS	                                                                    MongoDB
+Relational database	                                    Non-relational, document-oriented database
+Stores data in tables with rows and columns	            Stores data in flexible JSON-like documents (BSON)
+Fixed, predefined schema	                            Schema-less, dynamic schema
+Vertically scalable (increase resources like CPU/RAM)	Horizontally scalable (add more servers to handle increased load)
+Strong focus on ACID properties	                        Supports ACID (limited/multi-document in newer versions)
+Supports complex joins	                                Supports joins using $lookup (less powerful than SQL joins)
+Row-based data storage	                                Document-based data storage
+Slower for large, distributed datasets	                Faster for large-scale, distributed data handling
+High level of information security	                    Provides strong security features
+Uses SQL for querying	                                Uses JSON-like query language
+Less flexible for schema changes	                    Highly flexible for evolving data models
+Limited indexing options	                            Extensive indexing on any field in the document
+Suitable for structured data with well-defined relationships	Best for handling unstructured or semi-structured data
+Backup and recovery options are manual	                Automated backup and recovery options available
+Can be deployed on-premises or cloud	                Cloud-native and supports multi-cloud deployment
+Ideal for transactional applications	                Ideal for high scalability and big data applications

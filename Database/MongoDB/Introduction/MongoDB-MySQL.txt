@@ -1,0 +1,12 @@
+MongoDB	                                                    MySQL
+NoSQL, document-oriented database	                    SQL, relational database
+Flexible schema with collections and documents	        Structured data with tables and rows
+Uses MongoDB Query Language (MQL)	                    Uses Structured Query Language (SQL)
+Horizontally scalable using sharding	                Primarily Vertically scalable
+High performance with large data sets	                Excellent for complex queries and joins
+Eventual consistency (ACID compliance)	                Strong consistency with ACID compliance
+Schema-less, dynamic schema design	                    Fixed schema with predefined tables
+MongoDB supports multi-document ACID transactions	    Full ACID support for multi-row transactions
+Ideal for Big Data and Real-time Analytics	            Ideal for enterprise and transactional systems
+Supports various types of indexes (hashed, compound)	Supports various indexes (primary, unique, full-text)
+Best suited for unstructured or semi-structured data	Best suited for structured data
