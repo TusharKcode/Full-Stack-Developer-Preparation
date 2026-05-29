@@ -1,0 +1,76 @@
+Four main types:
+
+1. Document-Based Database
+- A non-relational database that stores data as documents, offering flexible schemas and efficient 
+    access aligned with application data models.
+- Stores data in documents (JSON, BSON, or XML) instead of tables.
+- Closely matches application data objects, reducing data translation.
+- Supports indexing for faster access to specific document fields.
+- Uses collections to group related documents with similar content.
+- Allows flexible schemas, so documents in a collection need not be identical.
+
+    Features:
+    - Flexible schema
+    - Faster creation and maintenance
+    - No foreign keys
+    - Open formats
+
+    Use Cases:
+    - MongoDB: Content management, product catalogs, user profiles
+    - CouchDB: Offline applications, mobile synchronization
+    - Firebase Firestore: Real-time apps, chat applications
+
+2. Key-Value Stores
+- A key-value store is a non-relational database that stores data as simple key–value pairs, 
+    enabling fast and efficient data access.
+- Store data as key–value pairs.
+- Each key uniquely identifies a value.
+- Values can be simple or complex objects.
+- One of the simplest NoSQL models.
+- Does not support structured schemas, relationships, or SQL-like querying as in relational databases.
+
+    Features:
+    - Simplicity
+    - Scalability
+    - Speed
+
+    Use Cases:
+    - Redis	Caching, real-time leaderboards, session storage
+    - Memcached	High-speed in-memory caching
+    - Amazon DynamoDB	Cloud-based scalable applications
+
+3. Column Oriented Databases
+- A column-oriented database is a non-relational database that stores data by columns rather than 
+    rows, enabling efficient analytics and fast data retrieval.
+- Store data in columns instead of rows.
+- Read only required columns, reducing memory usage.
+- Optimized for read-heavy analytical queries and large-scale data processing.
+- Suitable for big data and distributed systems.
+
+    Features:
+    - Compression
+    - High Scalability
+    - Faster Query Performance
+
+    Use Cases:
+    - Apache Cassandra	Real-time analytics, IoT applications
+    - Google Bigtable	Large-scale machine learning, time-series data
+    - HBase	Hadoop ecosystem, distributed storage
+
+4. Graph-Based Databases
+- Graph-based databases store data as nodes and relationships, making them ideal for managing and 
+    querying complex, interconnected data.
+- Store data as nodes and relationships (edges).
+- Efficient for highly connected data.
+- Used where relationships are important (social networks, fraud detection).
+- Supports flexible or optional schema rather than being completely schema-less.
+
+    Features:
+    - Relationship-Centric Storage
+    - Real-Time Query Processing
+    - Schema Flexibility
+
+    Use Cases:
+    - Neo4j	Fraud detection, social networks
+    - Amazon Neptune	Knowledge graphs, AI recommendations
+    - ArangoDB	Multi-model database, cybersecurity

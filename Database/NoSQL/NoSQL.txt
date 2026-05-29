@@ -1,0 +1,43 @@
+NoSQL databases are designed to manage large amounts of structured, semi-structured, and 
+    unstructured data with flexible schemas and high scalability.
+
+Features:
+-> Dynamic schema: Allows flexible data structures without requiring schema changes or migrations.
+-> Performance: Perfect for big data and real-time analytics and high volume applications.
+-> Flexibility: Supports dynamic schemas and multiple data types for adaptable data storage and 
+    retrieval.
+-> Distributed and high availability: Maintains data availability using automatic replication and 
+    fault tolerance across cluster nodes.
+-> Column-based: Data are organized into columns instead of rows (e.g., CASSANDRA).
+-> Key-value-based: Stores data as key–value pairs for simple and fast access (e.g., Redis).
+-> Document-based: Data are presented in flexible, semi-structured formats like JSON/BSON 
+    (e.g., MongoDB).
+-> Horizontal scalability: Supports larger datasets and higher traffic by adding nodes and 
+    distributing load across servers.
+
+Challenges: 
+-> Lack of standardization: use different models and query languages.
+-> Relaxed ACID compliance: NoSQL databases follow eventual consistency
+-> Limited complex queries: Complex queries and joins are less efficient or handled differently 
+    compared to SQL databases.
+-> Narrow focus: Optimized for scalability and performance, but traditionally weaker in 
+    transaction-heavy systems.
+-> Management complexity: Distributed architecture (sharding, replication) can be difficult to 
+    manage.
+-> Maturity varies: Some systems may lack advanced enterprise features compared to relational 
+    databases.
+-> GUI tools: Tools exist but may not be as standardized as those for relational databases.
+
+NoSQL Databases:
+-> MongoDB: Document-based database storing JSON-like documents, used for content management and 
+    product catalogs.
+-> Redis: In-memory key-value store for fast access, used for caching, real-time analytics, and 
+    session storage.
+-> Cassandra: Column-family store built for scalability and high availability, used for big data systems.
+-> Neo4j: Graph database optimized for relationships, used for fraud detection and social networks.
+
+Applications:
+- Big Data Applications
+- Real-Time Analytics
+- Scalable Web Applications
+- Flexible Data Storage
