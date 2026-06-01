@@ -1,0 +1,76 @@
+"JSON"
+- JavaScript Object Notation, widely-used, lightweight data format for representing structured data.
+- Used in APIs, configuration files, and data exchange between servers and clients.
+- It uses key-value pairs, making the structure easy to understand.
+- Supported by many programming languages
+-  Represents data as objects, arrays, strings, numbers, booleans, and null.
+
+How JSON Data Flow Works in Web Applications?
+=> Server Side
+    - Data is stored as an object (for example, a dictionary or class instance).
+    - Before sending the data over the network, it is converted into a JSON string.
+    - This JSON string is sent to the client through an API response (such as an HTTP GET request).
+
+=> Client Side
+    - The client receives the data as a JSON string.
+    - The JSON string is parsed back into a native object depending on the programming language used.
+    - Once parsed, individual values can be accessed and used in the application.
+
+JSON Structure:
+- Objects in JSON -> enclosed in curly braces {}, key is always a string, and the value can be a 
+                        variety of data types.
+            Example: { "name": "Mohit Kumar",
+                        "age": 30,
+                        "isStudent": false }
+- Arrays in JSON -> enclosed in square brackets [], values can be of any type, including objects, 
+                        arrays, or primitive data types.
+            Example: { "fruits": ["apple", "banana", "cherry"] }
+
+Working with JSON in JavaScript: 
+- Parse JSON to Object, use JSON.parse().
+    let jsonS = '{"name": "Mohit", "age": 30}';
+    let jsonObj = JSON.parse(jsonS);
+    console.log(jsonObj.name);
+
+- Convert Object to JSON
+    let obj = {name: "Mohit", age: 30};
+    let jsonS= JSON.stringify(obj);
+    console.log(jsonS);
+
+"BSON"
+- Binary JSON, binary-encoded data format derived from JSON, designed for efficient data storage and
+    fast processing especially in databases like MongoDB.
+- Faster data traversal and better performance.
+- Less human-readable compared to JSON.
+- Providing better data type support and improved performance for machine processing.
+
+BSON Specification and Structure
+- Document Size: The first 4 bytes represent the total size of the document in bytes.
+- Elements: Each element contains a field name, a type identifier, and the corresponding value. 
+                Each element is encoded with its type, length, and data.
+End of Object (EOO): BSON documents are terminated by a special marker, ensuring that the parser 
+                        knows when a document ends.
+
+Example:
+{
+  "hello": "world"      //JSON
+}   
+
+//BSON
+\x16\x00\x00\x00           // total document size
+\x02                       // 0x02 = type String
+hello\x00                  // field name
+\x06\x00\x00\x00world\x00  // field value (size of value, value, null terminator)
+\x00                       // 0x00 = type EOO ('end of object')
+
+=> bsondump is used to convert BSON data into JSON
+    bsondump --outFile=output.json input.bson
+
+=> JSON to BSON
+- To import a BSON file into MongoDB:
+    mongorestore -d mydatabase /path/to/file.bson
+
+Use Cases for BSON:
+- Database Storage
+- Network Transfer
+- Real-Time Applications

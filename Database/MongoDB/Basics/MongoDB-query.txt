@@ -1,0 +1,103 @@
+A MongoDB query is used to retrieve documents from a collection based on specified conditions, 
+    using a JavaScript-like syntax.
+
+Working with MongoDB Queries:
+- MongoDB queries are executed using db.collection.find(), where conditions and operators like 
+    $eq (Equals), $gte (Greater Than or Equal to), $lte (Less Than or Equal to), $in, $or, 
+    and $and are used to filter documents.
+
+Syntax: db.collection_name.find({ field: value })
+
+MongoDB Query Return Value:
+-> It returns a cursor pointing to matching documents, which can be iterated over and formatted using 
+    .pretty(), or empty if no matches are found.
+
+Basic Query Operations: 
+1. Select Single Documents in a Collection
+- findOne() retrieves the first document that matches the given filter criteria.
+- returns null if no matching document is found.
+
+Syntax:  db.collection_name.findOne ()
+Example: db.article.findOne()
+
+2. Select All Documents in a Collection
+- find() retrieves all documents from a collection and returns a cursor
+- optional conditions for filtering and .pretty() for readable output
+
+Example: db.article.find().pretty()
+
+3. Filter Documents with Equality Condition
+- The equality operator($eq) is used to match the documents where the value of the field is equal 
+    to the specified value.
+Example: db.article.find({author:{$eq:"devil"}}).pretty()  
+
+4. Filter Documents with Greater Than or Less Than Condition 
+- Use $gte and $lte in find() to filter documents by numeric ranges (greater/less than or equal).
+Syntax:
+        db.collection_name.find({< key > : {$gte : < value >}}) 
+        or 
+        db.collection_name.find({< key > : {$lte : < value >}})
+Example: db.article.find({length:{$gte:510}}).pretty()
+
+5. Check the Existence of a Field
+- The $exists operator in MongoDB is used to check whether a specific field exists in the documents 
+    of a collection
+Example:  db.article.find({ time: { $exists: true } }).pretty()
+
+Advanced MongoDB Query Techniques:
+1. Specify AND Conditions
+- The $and operator comes under the type of MongoDB logical operator which perform logical AND 
+    operation on the array of one or more expressions and select or retrieve only those documents 
+    that match all the given expression in the array.
+Example: db.articles.find({
+            $and: [
+                { author: "Alen" },
+                { level: "basic" }
+            ]
+        }).pretty()
+
+2. Specify AND as well as OR Conditions
+- The $and and $or operators are used to combine multiple conditions in a query, allowing more 
+    complex filtering.
+    => $and: Combines multiple conditions, and documents must satisfy all conditions to be returned.
+    => $or: Combines multiple conditions, and documents must satisfy at least one condition to be 
+            returned.
+Example:
+        db.article.find({
+            $or: [
+                { level: "basic", author: "Alen" },
+                { $and: [
+                    { level: "medium" },
+                    { author: "Rim" }
+                ]
+                }
+            ]
+        }).pretty()
+
+3. Use OR Conditions
+- used to retrieve documents that match any of the specified conditions
+Example:
+        db.articles.find({
+            $or: [
+                { author: "Rim" },
+                { level: "high" }
+            ]
+        }).pretty()
+
+4. Limit the Number of Results
+- The limit() method in MongoDB allows you to specify the maximum number of documents that should 
+    be returned in a query result.
+- restrict the number of documents processed or displayed
+Example: db. article. find({author : "devil" }). limit(2). pretty() 
+
+MongoDB Query Operators: 
+$eq: Equal to
+$gt: Greater than
+$gte: Greater than or equal to
+$lt: Less than
+$lte: Less than or equal to
+$ne: Not equal to
+$in: Matches any value in an array
+$nin: Matches none of the values in an array
+$exists: Checks for the existence of a field
+$or: Performs a logical OR operation

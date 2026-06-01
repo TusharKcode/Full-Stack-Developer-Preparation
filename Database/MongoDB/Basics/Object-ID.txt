@@ -1,0 +1,44 @@
+The _id field uniquely identifies each MongoDB document, using "ObjectId" by default to ensure 
+    uniqueness and efficient data management.
+
+ObjectId Structure:
+- ObjectId is a 12-byte BSON data type.
+- The first 4 bytes store the Unix timestamp.
+- The next 5 bytes store a random value.
+- The last 3 bytes are used as a counter for uniqueness.
+- Represented as a hexadecimal string
+
+Format: ObjectId(<hexadecimal>)
+Example: db.collection.insertOne({ _id: ObjectId("64f1a2b3c4d5e6f789012345") })
+
+Methods of MongoDB ObjectId:
+-> toString(): Returns the ObjectId as a 24-character hexadecimal string.
+-> getTimestamp(): Returns the timestamp portion of the ObjectId as a Date.
+-> valueOf(): Returns the ObjectId value (generally same as its string representation).
+
+=> 1. Creating an ObjectId
+    - new ObjectId using the ObjectId() constructor
+        newObjectId = ObjectId()
+Output: ObjectId('64f1a2b3c4d5e6f789012345')
+
+=> 2. Getting the Timestamp from ObjectId
+    - returns the timestamp as a Date object.
+        var id =new ObjectId();     
+        id.getTimestamp()
+Output: ISODate('2026-02-10T07:23:18:000Z')
+
+=> 3. Converting ObjectId to String
+    - ObjectId into its string format using the str property
+        new ObjectId().toString()
+Output: 64f1a2b3c4d5e6f789012345
+
+=> 4. Getting the Hexadecimal Representation
+    - use the valueOf() method to get the hexadecimal representation of the ObjectId
+        new ObjectId().valueOf()
+Output: ObjectId('64f1a2b3c4d5e6f789012345')
+
+Using ObjectId for Querying:
+- ObjectId is indexed, these queries are very efficient.
+- In this query, the ObjectId is used to retrieve a document with a specific _id
+    db.student_gfg.findOne({ _id: ObjectId("5f92cbf10cf217478ba93561") })
+
