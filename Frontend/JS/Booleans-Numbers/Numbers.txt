@@ -1,0 +1,76 @@
+- NaN stands for "Not a Number", represents an unrepresentable or undefined numerical result.
+- NaN is a property of the global object
+
+Example: 
+        let result = 0 / 0;
+        console.log(result); // NaN
+
+=> One peculiar property of NaN is that it's not equal to anything, including itself:
+Example:    console.log(NaN === NaN); // false
+
+=> The isNaN() function property is used to determine whether a value is NaN or not.
+Example:
+        console.log(isNaN(NaN));       // true
+        console.log(isNaN(undefined)); // true
+        console.log(isNaN({}));        // true
+
+        console.log(isNaN(true));      // false
+        console.log(isNaN(null));      // false
+        console.log(isNaN(37));        // false
+
+        console.log(isNaN("37"));      // false: "37" is converted to 37
+        console.log(isNaN("37.37"));   // false: "37.37" is converted to 37.37
+        console.log(isNaN(""));        // false: empty string is converted to 0
+        console.log(isNaN(" "));       // false: string with a space is converted to 0
+
+        console.log(isNaN("blabla"));  // true: "blabla" is not a number
+
+=> Due to these potential inconsistencies, ES6 (the sixth edition of JavaScript, released in 2015) 
+    introduced Number.isNaN().
+    - This method does not attempt to convert the parameter to a number before testing. It only 
+        returns true if the value is exactly NaN.
+Example: 
+        console.log(Number.isNaN(NaN));        // true
+        console.log(Number.isNaN(Number.NaN)); // true
+        console.log(Number.isNaN(0 / 0));      // true
+
+        console.log(Number.isNaN("NaN"));      // false
+        console.log(Number.isNaN(undefined));  // false
+        console.log(Number.isNaN({}));         // false
+        console.log(Number.isNaN("blabla"));   // false
+
+- parseFloat() and parseInt() are two essential methods in JavaScript for converting strings to 
+    numbers.
+- Useful when dealing with user input or processing data that comes in string format but needs to 
+    be treated as numerical values.
+
+=> parseFloat() - This method parses a string argument and returns a floating-point number. 
+Example:
+        console.log(parseFloat("3.14"));     // 3.14
+        console.log(parseFloat("3.14 abc")); // 3.14
+        console.log(parseFloat("3.14.5"));   // 3.14
+        console.log(parseFloat("abc 3.14")); // NaN
+
+=> parseInt(), parses a string argument and returns an integer. 
+Example:
+        console.log(parseInt("42"));       // 42
+        console.log(parseInt("42px"));     // 42
+        console.log(parseInt("3.14"));     // 3
+        console.log(parseInt("abc123"));   // NaN
+
+=> Both ignore leading whitespace. They handle plus and minus signs at the beginning of the string.
+
+- The .toFixed() method is a built-in JavaScript function that formats a number using fixed-point 
+    notation.
+- Useful when you need to control the number of decimal places in a number.
+Example: 
+        let num = 3.14159;
+        console.log(num.toFixed(2)); // "3.14"
+
+=> The .toFixed() method rounds the number to the nearest value that can be represented with the 
+    specified number of decimal places. 
+Example: 
+        console.log((3.14159).toFixed(3));  // "3.142"
+        console.log((3.14449).toFixed(3));  // "3.144"
+        console.log((3.14550).toFixed(3));  // "3.146"
+
