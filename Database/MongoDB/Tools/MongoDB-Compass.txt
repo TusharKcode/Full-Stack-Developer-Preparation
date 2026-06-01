@@ -1,0 +1,8 @@
+MongoDB Compass is a graphical user interface (GUI) tool that provides a visual and intuitive way 
+    to interact with MongoDB databases.
+- Explore and manage databases, schemas, collections, and documents.
+- Build and run complex queries visually without manual coding.
+- Visualize data patterns using charts and graphs.
+- Monitor real-time database performance.
+- Apply validation rules to maintain data integrity.
+- Suitable for both beginners and experienced developers.

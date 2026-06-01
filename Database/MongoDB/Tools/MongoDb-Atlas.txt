@@ -1,0 +1,7 @@
+MongoDB Atlas is a fully managed cloud database service that automates deployment, scaling, backups,
+    and security across AWS, Google Cloud, and Azure, providing high availability and 
+    low-latency performance.
+
+- Advanced security (encryption, access control).
+- Automated backups and recovery.
+- Easy integration with Compass, Shell, and drivers.
