@@ -1,0 +1,63 @@
+Functions are reusable pieces of code that perform a specific task or calculate a value.
+    - A function call, or invocation, is when we actually use or execute the function. 
+Example: 
+        function greet() {
+            console.log("Hello, Jessica!");
+        }
+
+        greet(); // "Hello, Jessica!"
+
+=> Parameters act as placeholders for the values that will be passed to the function when it is called.
+    They allow functions to accept input and work with that input.
+=> Arguments are the actual values passed to the function when it is called. 
+
+Example:
+        function greet(name) {
+            console.log("Hello, " + name + "!");
+        }
+
+        greet("Alice"); // Hello, Alice!
+        greet("Nick"); // Hello, Nick!
+
+=> When a function finishes its execution, it will always return a value. By default, the return 
+    value will be undefined.
+
+=> An anonymous function is a function without a name that can be assigned to a variable.
+Example: 
+        const sum = function (num1, num2) {
+            return num1 + num2;
+        };
+        console.log(sum(3, 4)); // 7
+
+- Functions support default parameters, allowing you to set default values for parameters. 
+Example: 
+        function greetings(name = "Guest") {
+            console.log("Hello, " + name + "!");
+        }
+
+        greetings(); // Hello, Guest!
+        greetings("Anna"); // Hello, Anna!
+
+"Arrow Function"
+Example: 
+        const greetings = (name) => {
+            console.log("Hello, " + name + "!");
+        };
+If your parameter list only has one parameter in it, then you can remove the parentheses:
+        const greetings = name => {
+            console.log("Hello, " + name + "!");
+        };
+If your arrow function has no parameters, then you must use the parentheses:
+        const greetings = () => {
+            console.log("Hello");
+        };
+
+=> One line function code:
+    const greetings = name => console.log("Hello, " + name + "!");
+
+Ex:
+        const calculateArea = (width, height) => {
+            return width * height;
+        };
+
+        console.log(calculateArea(5, 3)); // 15
