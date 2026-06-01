@@ -1,0 +1,41 @@
+Scope in programming refers to the visibility and accessibility of variables in different parts of 
+    your code.
+There are three main types of scope: global scope, local scope, and block scope.
+
+"Global Scope"
+- Outermost scope in a JavaScript program.
+- Variables declared in the global scope are accessible from anywhere in your code, including within 
+    functions and blocks. 
+- These variables are often called global variables.
+
+Example: 
+        let globalVar = "I'm a global variable";
+
+        function printGlobalVar() {
+            console.log(globalVar);
+        }
+
+        printGlobalVar(); // "I'm a global variable"
+
+"Local Scope"
+- It refers to variables that are only accessible within a function.
+Example:
+        function greet() {
+            let message = "Hello, local scope!";
+            console.log(message);
+        }
+
+        greet(); // "Hello, local scope!"
+        // console.log(message); // This will throw an error
+
+"Block Scope"
+- A concept introduced with the let and const keywords in ES6.
+- Any code section within curly braces, {}, such as in if statements, for loops, or while loops.
+- Variables declared with let or const inside a block are only accessible within that block.
+
+Example:
+        if (true) {
+            let blockVar = "I'm in a block";
+            console.log(blockVar); // "I'm in a block"
+        }
+        console.log(blockVar); // This will throw an error
