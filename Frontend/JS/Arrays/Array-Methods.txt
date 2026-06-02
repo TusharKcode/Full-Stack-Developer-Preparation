@@ -1,0 +1,100 @@
+How Do You Get the Index for an Element in an Array Using the indexOf Method?
+    - indexOf() method is useful for finding the first index of a specific element within an array.
+    - If the element cannot be found, then it will return -1.
+
+    Syntax: array.indexOf(element, fromIndex)
+        - element represents the value you want to search for within the array
+        - fromIndex parameter is the position from which the search should start. (optional)
+
+    Example:
+            let fruits = ["apple", "banana", "orange", "banana"];
+            let index = fruits.indexOf("banana");
+            console.log(index); // 1
+
+            let fruits = ["apple", "banana", "orange"];
+            let index = fruits.indexOf("grape");
+            console.log(index); // -1
+
+    => If you want to start looking for an item after a specific index number, then you can pass a second argument.
+    Example:
+            let colors = ["red", "green", "blue", "yellow", "green"];
+            let index = colors.indexOf("green", 3);
+            console.log(index); // 4
+
+How Do You Add and Remove Elements from the Middle of an Array?
+    - The splice() method in JavaScript is a powerful way for modifying arrays.
+    - It allows you to add or remove elements from any position in an array, including the middle.
+    - The return value for the splice() method will be an array of the items removed from the array.
+    - If nothing was removed, then an empty array will be returned.
+
+    Syntax: array.splice(startIndex, itemsToRemove, item1, item2)
+        - startIndex specifies the index at which to begin modifying the array
+        - itemsToRemove (optional) indicating how many elements to remove.
+
+    Example:
+            let fruits = ["apple", "banana", "orange", "mango", "kiwi"];
+            let removed = fruits.splice(2, 2);
+            console.log(fruits);  // ["apple", "banana", "kiwi"]
+            console.log(removed); // ["orange", "mango"]
+
+    => The second parameter (0) means no elements are removed before insertion.
+            let colors = ["red", "green", "blue"];
+            colors.splice(1, 0, "yellow", "purple");
+            console.log(colors); // ["red", "yellow", "purple", "green", "blue"]
+
+=> You can also use splice() to simultaneously remove and add elements:
+    - starts at index 1, removes 2 elements (2 and 3), and inserts 6, 7, and 8. 
+Example:
+        let numbers = [1, 2, 3, 4, 5];
+        numbers.splice(1, 2, 6, 7, 8);
+        console.log(numbers); // [1, 6, 7, 8, 4, 5]
+
+=> If you need to keep the original array unchanged, you should create a copy before using splice():
+    - To create a copy of the original array without modifying it, we use the spread operator (...). 
+    - The spread operator will create a shallow copy of the elements of the original array into a new array.
+Example:
+        let original = [1, 2, 3, 4, 5];
+        let copy = [...original];
+        copy.splice(2, 1, 6);
+        console.log(original); // [1, 2, 3, 4, 5]
+        console.log(copy);     // [1, 2, 6, 4, 5]
+
+=> One common use case for splice() is to remove a single element from an array when you know its index:
+Example:
+        let fruits = ["apple", "banana", "orange", "mango"];
+        let indexToRemove = fruits.indexOf("orange");
+        if (indexToRemove !== -1) {
+            fruits.splice(indexToRemove, 1);
+        }
+        console.log(fruits); // ["apple", "banana", "mango"]
+
+=> You can also use splice() to clear an array by removing all elements:
+Example:
+        let array = [1, 2, 3, 4, 5];
+        array.splice(0);
+        console.log(array); // []
+
+How Can You Check if an Array Contains a Certain Value?
+- The includes() method is a simple and efficient way to check if an array contains a specific value.
+- Returns a boolean value: true if the array contains the specified element, and false otherwise.
+- Useful when you need to quickly verify the presence of an element in an array without needing to know its 
+    exact position. 
+- The includes() method is case-sensitive when dealing with strings.
+- The includes() method can also accept an optional second parameter that specifies the position in the array 
+    to start the search.
+- includes() uses the strict equality comparison (===), which means it can distinguish between different types.
+
+Example:
+        let fruits = ["apple", "banana", "orange", "mango"];
+        console.log(fruits.includes("banana")); // true
+        console.log(fruits.includes("grape"));  // false
+
+        console.log(fruits.includes("Banana")); // false
+
+        let numbers = [10, 20, 30, 40, 50, 30, 60];
+        console.log(numbers.includes(30, 3)); // true
+        console.log(numbers.includes(30, 4)); // true
+
+        let mixedArray = [1, "2", 3, "4", 5];
+        console.log(mixedArray.includes(2));  // false
+        console.log(mixedArray.includes("2")); // true

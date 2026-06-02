@@ -1,0 +1,10 @@
+Rest syntax, denoted by three dots (...). It allows you to capture the remaining elements of an array that 
+    haven’t been destructured into a new array.
+
+Example:
+        let fruits = ["apple", "banana", "orange", "mango", "kiwi"];
+        let [first, second, ...rest] = fruits;
+
+        console.log(first);  // "apple"
+        console.log(second); // "banana"
+        console.log(rest);   // ["orange", "mango", "kiwi"]

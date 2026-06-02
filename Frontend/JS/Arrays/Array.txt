@@ -1,0 +1,118 @@
+An array in JavaScript is an ordered collection of values, each identified by a numeric index.
+
+Values in a JavaScript array can be of different data types, including numbers, strings, booleans, objects, 
+    and even other arrays.
+They are zero-indexed, meaning that the first element in an array has an index of 0, the second element has 
+    an index of 1, and so on. 
+
+Arrays in JavaScript have a special length property that returns the number of elements in the array.
+
+They are dynamic, meaning that their size can change after they are created. 
+You can add or remove elements from an array using various array methods, such as push(), pop(), shift(), 
+    unshift(), splice(), and more.
+
+Example: 
+        let fruits = ["apple", "banana", "orange"];
+        console.log(fruits[0]); // "apple"
+        console.log(fruits[2]); // "orange"
+
+        let fruits = ["apple", "banana", "orange"];
+        console.log(fruits.length); // 3
+
+How Do You Access and Update Elements in an Array?
+- If you try to access an index that doesn't exist in the array, JavaScript will return undefined.
+- You can update an element by assigning a new value to a specific index.
+- You can also add new elements to an array by assigning a value to an index that doesn't yet exist.
+Example: 
+        let fruits = ["apple", "banana", "cherry"];
+        console.log(fruits[3]); // undefined
+
+        let fruits = ["apple", "banana", "cherry"];
+        fruits[1] = "blueberry";
+        console.log(fruits); // ["apple", "blueberry", "cherry"]
+
+        let fruits = ["apple", "banana", "cherry"];
+        fruits[3] = "date";
+        console.log(fruits); // ["apple", "banana", "cherry", "date"]
+
+How Do You Add and Remove Elements from the Beginning and End of an Array?
+- Arrays in JavaScript are dynamic, which means you can easily add or remove elements from them. 
+- Four main methods for adding and removing elements from the beginning and end of an array: push(), pop(), 
+    shift(), and unshift().
+
+    => The push() method is used to add one or more elements to the end of an array.
+        Value for the push() method is the new length of the array. 
+        Example: 
+                const fruits = ["apple", "banana"];
+                const newLength = fruits.push("orange");
+                console.log(newLength); // 3
+                console.log(fruits); // ["apple", "banana", "orange"]
+    
+    => The pop() method removes the last element from an array and returns that element. It also modifies the 
+        original array.
+        Example:
+                let fruits = ["apple", "banana", "orange"];
+                let lastFruit = fruits.pop();
+                console.log(fruits); // ["apple", "banana"]
+                console.log(lastFruit); // "orange"
+
+    => The unshift() method adds one or more elements to the beginning of an array and returns its new length. 
+        It works similarly to push(), but modifies the start of the array instead of the end.
+        Example: 
+                let numbers = [2, 3];
+                let newLength = numbers.unshift(1);
+                console.log(numbers); // [1, 2, 3]
+                console.log(newLength); // 3
+    
+    => The shift() method removes the first element from an array and returns that element. 
+        It's similar to pop(), but it works at the beginning of the array instead of the end.
+        Example:
+                let colors = ["red", "green", "blue"];
+                let firstColor = colors.shift();
+                console.log(colors); // ["green", "blue"]
+                console.log(firstColor); // "red"
+
+Note: 
+- This is possible because declaring an array with the const keyword creates a reference to the array. 
+    While the array itself is mutable and can be modified, you cannot reassign a new value to the 
+    fruits constant.
+Example: 
+        const fruits = ["apple", "banana"];
+        fruits = ["This", "will", "not", "work"];
+        console.log(fruits); // Uncaught TypeError: Assignment to constant variable. 
+
+- push() and unshift() can add multiple elements at once, pop() and shift() remove only one element at a time.
+
+Array Destructuring
+=> A feature in JavaScript that allows you to extract values from arrays and assign them to variables in a 
+    more concise and readable way.
+- Unpacking array elements into distinct variables.
+- This allows us to easily access individual elements of the array without using index notation.
+- Array destructuring also allows you to skip elements you're not interested in by using commas.
+- Ability to use default values.
+
+Example:
+        let fruits = ["apple", "banana", "orange"];
+        let [first, second, third] = fruits;
+        console.log(first);  // "apple"
+        console.log(second); // "banana"
+        console.log(third);  // "orange"
+
+        const fruits = ["apple", "banana", "orange"];
+        const first = fruits[0];
+        const second = fruits[1];
+        const third = fruits[2];
+        console.log(first); // "apple"
+        console.log(second); // "banana"
+        console.log(third); // "orange"
+
+        let colors = ["red", "green", "blue", "yellow"];
+        let [firstColor, , thirdColor] = colors;
+        console.log(firstColor); // "red"
+        console.log(thirdColor); // "blue"
+
+        let numbers = [1, 2];
+        let [a, b, c = 3] = numbers;
+        console.log(a); // 1
+        console.log(b); // 2
+        console.log(c); // 3
