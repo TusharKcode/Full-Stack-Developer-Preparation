@@ -1,0 +1,99 @@
+=> MongoDB update operations modify one or multiple documents using update operators like $set and $inc, while 
+    keeping _id unchanged.
+
+    - Can update one or many documents.
+    - update() is deprecated in newer MongoDB versions.
+    - Use multi: true to update multiple matching documents.
+
+    Syntax:
+            db.COLLECTION_NAME.update({SELECTION_CRITERIA}, {$set:{UPDATED_DATA}}, {
+                upsert: <boolean>,
+                multi: <boolean>,
+                writeConcern: <document>,
+                collation: <document>,
+                arrayFilters: [ <filterdocument1>, ... ],
+                hint:  <document|string>        
+            })
+
+    Example: 
+    1.Update a Single Document
+        Query:
+                db.students.updateOne(
+                    { name: "Alice" },
+                    { $set: { age: 26 } }
+                )
+    2.Use Update Operator Expressions ($inc and $set) // inc - increment
+    Query:
+            db.students.updateOne(
+                { name: "Bob" },
+                { $inc: { age: 1 } }
+            )
+
+    3.Insert a New Document if No Match Exists (Upsert)
+    Query:
+            db.students.updateOne(
+                { name: "Charlie" },
+                { $set: { age: 30 } },
+                { upsert: true }
+            )
+
+    4.Upsert with Existing Document
+    Query:
+            db.students.updateOne(
+                { name: "Alice" },
+                { $set: { age: 26 } },
+                { upsert: true }
+            )
+    5.Update with Aggregation Pipeline
+    Query:
+            db.students.updateOne(
+                { name: "Alice" },
+                [
+                    { $set: { age: { $add: ["$age", 1] } } }
+                ]
+            )
+    6.Update Elements Match arrayFilters Criteria
+    Query:
+            db.students.updateOne(
+                { _id: 1 },
+                { $set: { "grades.$[elem].score": 85 } },
+                { arrayFilters: [ { "elem.grade": { $eq: "Maths" } } ] }
+            )
+    7.Update Specific Elements of an Array of Documents
+    Query:
+            db.students.updateOne(
+                { _id: 1 },
+                { $set: { "grades.$[elem].score": 90 } },
+                { arrayFilters: [ { "elem.grade": { $eq: "Science" } } ] }
+            )
+
+=> The updateOne() method in MongoDB updates the first document that matches a specified condition in a 
+    collection.
+    Used to change fields or values in a single matching document without affecting others.
+    Syntax:
+            db.collection.updateOne(<filter>, <update>, {
+                upsert: <boolean>,
+                writeConcern: <document>,
+                collation: <document>,
+                arrayFilters: [<filterdocument1>, ...],
+                hint: <document|string> // Available starting in MongoDB 4.2.1
+            })
+
+    Example: 
+    1.Update an Integer Value in the Document
+        Query:  db.student.updateOne({Name: "Alen"}, {$set:{age:25}})
+
+    2.Update a String Value in the Document
+        Query:  db.student.updateOne({Name:"Ron"},{$set:{Name:"Ryan"}})
+
+    3.Insert a new field in the document
+        Query:  db.student.updateOne({Name: "Kim"}, {$set:{class: 3}})
+
+    4.Update using Update Operator Expressions
+        Query:  db.student.updateOne({ name: "Kim" }, { $set: { age: 25 } })
+
+    5.Update with Aggregation Pipeline
+        Query:  db.student.updateOne({ name: "Kim" }, [{ $set: { age: { $add: ["$age", 1] } } }])
+
+    6.Update with Upsert
+        Query:  db.student.updateOne({ Name: "Clevin" }, { $set: { age: 28 } }, { upsert: true })

@@ -1,0 +1,63 @@
+=> The insert() method in MongoDB is used to add one or more documents to a collection, automatically 
+    generating a unique _id when not provided.
+
+    - Adds single or multiple documents to a collection.
+    - Supports usage within multi-document transactions.
+    - Recommended alternatives are insertOne() or insertMany().
+
+Syntax:
+        db.Collection_name.insert(
+        <document or [document1, document2,...]>,
+        {
+            writeConcern: <document>,
+            ordered: <boolean>
+        })
+
+Examples of Insert() Method:
+                            Database: gfg
+                            Collection: student
+
+    1.Insert a Document without Specifying an _id Field
+        Query:  db.student.insert({Name: "Lee", Marks: 500})
+    2.Insert Multiple Documents
+        Query:
+                db.student.insert([
+                    {Name: "Ben", Marks: 550}, 
+                    {Name: "Nicol", Marks: 430},
+                    {Name: "Denis", Marks: 499}
+                ])
+
+    3.Insert a Document Specifying an _id Field
+        Query:  db.student.insert({_id: 102, Name: "Ryan", Marks: 400})
+
+=> insertOne() adds a single document to a collection.
+    - Inserts one document at a time.
+    - Supports text, numbers, arrays, etc.
+    - Returns the inserted document’s unique _id.
+
+    Syntax: db.collection_name.insertOne(<document>,{ writeConcern: <document>})
+
+    Query:  db.student.insertOne({Name: "Tim", Marks: 500})
+    Query:  db.student.insertOne({_id: "Stu102", Name: "Ron", Marks: 220})
+
+=> insertMany() inserts multiple documents in one operation, improving performance and efficiency.
+    - Adds many documents at once.
+    - Can be more efficient than single inserts depending on batch size, network conditions, and workload.
+    - Efficient for large datasets.
+
+    Syntax: db.collection_name.insertMany([<document 1>, <document 2>, ...],{writeConcern: <document>,ordered: <boolean>})
+
+    Query: db.student.insertMany([{name:"Ryan",age:20},  {name:"Ron",age:24}, {name:"Kim",age:26}])
+    Query: db.student.insertMany([{ _id: "stu200", name: "Luca", age: 20 }, { _id: "stu201", name: "Tim", age: 24 }])
+
+Unordered Inserts- allow remaining documents to be inserted even if some insert operations fail.
+                    - Prevents the entire operation from stopping due to one error.
+                    - Useful for bulk insert operations.
+    Query:
+            db.student.insertMany(
+                [
+                    {_id:"stu203",name:"Sophia",age:28}, 
+                    {_id:"stu206", name:"Emma", age:25}
+                ], 
+                    {ordered: false}
+            )
