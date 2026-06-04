@@ -1,0 +1,101 @@
+=> The "$divide operator" in MongoDB performs division between two numeric values or expressions within 
+    aggregation pipelines, enabling precise, in-database calculations for analytics and data transformation.
+    - Divides one value (dividend) by another (divisor).
+    - Arguments are passed as an array: [dividend, divisor].
+    - Used in stages like $project, $addFields, and $group.
+    - Errors if arguments don’t resolve to numbers or if division by zero occurs.
+
+    Syntax: { $divide: [ <expression1>, <expression2> ] }
+    
+    Example:
+        1: Divide using $divide operator
+        - db.employee.aggregate([
+                { $match: { department: "Development" } },
+                {
+                    $project: {
+                    name: 1,
+                    halfSalary: { $divide: ["$salary", 2] }
+                    }
+                }
+            ])
+
+        2: Perform Divide in the Embedded Document
+        - db.employee.aggregate([
+                { $match: { department: "HR" } },
+                { $project: { name: 1, halfsalary: { $divide: ["$details.salary", 2] } } }
+            ])
+
+=> The "$abs operator" returns the absolute value of a number in MongoDB aggregation pipeline, converting 
+    negative values to positive for clean and consistent calculations.
+    - Accepts numeric values or numeric fields.
+    - Commonly used in financial and time-difference calculations.
+    - Used in stages like $project, $addFields, and $group.
+    - Can be combined with other aggregation expressions (e.g., $add, $subtract) within pipeline stages.
+
+    Syntax: { $abs: <number> }
+    
+    Example:
+        1: Using $abs to Ensure Non-Negative Salary Values
+        - db.Employee.aggregate([
+                { $match: { department: "Development" } },
+                {
+                    $project: {
+                    name: 1,
+                    tSalary: {
+                        $abs: {
+                        $add: ["$firstSalary", "$secondSalary"]
+                        }
+                    }
+                    }
+                }
+            ])
+
+        2: Using $abs operator in embedded documents
+        - db.Employee.aggregate([
+                { $match: { department: "HR" } },
+                {
+                    $project: {
+                        name: 1,
+                        tSalary: {
+                            $abs: {
+                                $add: [
+                                    "$salary.firstMonth",
+                                    "$salary.secondMonth",
+                                    "$salary.thirdMonth"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ])
+
+
+=> The "$floor operator" in MongoDB rounds a number down to the nearest integer within aggregation pipelines, 
+    making numeric values suitable for reporting and analysis.
+    - Used in stages like $project, $addFields.
+    - Useful for reporting, formatting, and analytics.
+
+    Syntax: { $floor: <number> }
+    
+    Example:
+        1: Using $floor operator
+        - db.employee.aggregate([
+                { $match: { department: "Development" } },
+                {
+                    $project: {
+                    perfoPoint: 1,
+                    floorPoint: { $floor: "$perfoPoint" }
+                    }
+                }
+            ])
+
+        2: Using $floor operator in the embedded document
+        - db.employee.aggregate([
+                { $match: { department: "HR" } },
+                {
+                    $project: {
+                    "details.perfoPoint": 1,
+                    floorPoint: { $floor: "$details.perfoPoint" }
+                    }
+                }
+            ])

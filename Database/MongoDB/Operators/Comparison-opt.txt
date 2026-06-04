@@ -1,0 +1,47 @@
+The MongoDB $cmp operator compares two values and returns their order. It is used in aggregation pipelines 
+    for sorting and conditional logic, and follows BSON type ordering for different data types.
+    - Outputs 0, 1, or -1 based on the comparison result.
+    - Returns -1 if the first value is smaller, 1 if greater, and 0 if equal.
+
+Syntax: { $cmp: [ <expression1>, <expression2> ] }
+
+Example:
+    Using $cmp to Compare a Field with a Static Value   // returns 0
+    - Query: db.example.aggregate([{$match: {name: "Square"}}, {$project: {result: {$cmp:["$side", 4]}}}])
+
+    Using $cmp Operator in the embedded Document        // returns -1
+    - Query: db.example.aggregate([{$match: {name: "Rectangle"}}, {$project: {result: {$cmp:["$measurement.height", "$measurement.width"]}}}])
+
+MongoDB comparison query operators filter documents by matching exact values or selecting value ranges across 
+    numeric, string, and date fields.
+
+    - Exact match: Use $eq, $ne to match or exclude values.
+    - Multiple values: Use $in, $nin to match or exclude from a list of values.
+    - Range queries: Use $gt, $gte, $lt, $lte to filter ranges.
+    - Type support: Works with numbers, strings, and dates.
+    - Better filtering: Narrows results for faster, accurate queries.
+
+Example:
+    1.$nin operator - matches none of the values specified in an array.
+    Query: db.Students.find({name: {$nin: ["Alen", "Clevin"]}})
+
+    2.$in operator - matches any of the values specified in an array.
+    Query: db.Students.find({name: {$in: ["Alen", "Clevin"]}})
+
+    3.$lt operator - matches values of the fields that are less than a specified value.
+    Query: db.Students.find({salary: {$lt: 55000}})
+
+    4.$eq operator - matches the values of the fields that are equal to a specified value.
+    Query: db.Students.find({branch: {$eq: "CSE"}})
+
+    5.$ne operator - matches all values of the field that are not equal to a specified value.
+    Query: db.Students.find({branch: {$ne: "CSE"}})
+
+    6.$gt operator - matches values of the fields that are greater than a specified value.
+    Query: db.Students.find({salary: {$gt: 5000}})
+
+    7.$gte operator - matches values of the fields that are greater than or equal to the specified value.
+    Query: db.Students.find({joiningYear: {$gte: 2023}})
+
+    8.$lte operator - matches values of the fields that are less than or equal to the specified value.
+    Query: db.Students.find({joiningYear: {$lte: 2023}})

@@ -1,0 +1,120 @@
+=> The "$add operator" in MongoDB is an aggregation arithmetic operator used to add numeric values and combine 
+    numbers with dates, helping transform and compute fields in MongoDB queries.
+    - Works with integers, decimals, and dates.
+    
+    Syntax: { $add: [ <Expression1>, <Expression2>, ... <ExpressionN>] }
+    
+    Example:
+        1.Add Numbers Together
+        - db.Employee.aggregate([
+                { $match: { department: "Development" } },
+                { 
+                    $project: { 
+                    name: 1, 
+                    tSalary: { $add: ["$firstSalary", "$secondSalary"] } 
+                    } 
+                }
+            ])
+        2.Adding numbers in the embedded document
+        - db.Employee.aggregate([
+                { $match: { department: "HR" } },
+                { $project: { name: 1, tSalary: { $add: ["$salary.firstMonth", "$salary.secondMonth", 
+                    "$salary.thirdMonth"] } } }
+            ])
+
+        3.Adding to a Date Field
+        - db.Employee.aggregate([
+                { $match: { department: "Testing" } },
+                { $project: { extendProjectDate: { $add: ["$projectEndDate", 5 * 24 * 60 * 60 * 1000] } } }
+            ])
+
+=> The "$subtract operator" in MongoDB is an aggregation arithmetic operator used to subtract numbers and 
+    perform date/time calculations, helping transform fields in MongoDB queries.
+    - Subtracts two numbers and returns the difference.
+    - Subtracts two dates and returns the difference in milliseconds.
+    - Subtracts milliseconds from a date and returns a new date.
+    - Second value is subtracted from the first.
+    - Supports number–number, date–date (returns milliseconds), and date–number (subtracts milliseconds from 
+        date).
+
+    Syntax: { $subtract: [ <expression1>, <expression2> ] }
+    
+    Example:
+        1: Subtract Numbers
+        - db.Employee.aggregate([
+                { $match: { department: "Development" } },
+                {
+                    $project: {
+                    result: { $subtract: ["$secondSalary", "$firstSalary"] }
+                    }
+                }
+            ])
+
+        2: Subtract Two Dates
+        - db.Employee.aggregate([
+                { $match: { department: "Testing" } },
+                {
+                    $project: {
+                    diffResult: { $subtract: ["$projectEndDate", "$projectStartDate"] }
+                    }
+                }
+            ])
+
+        3: Subtract Milliseconds from a Date
+        - db.Employee.aggregate([
+                { $match: { department: "Testing" } },
+                { $project: {
+                    newprojectEndDate: { 
+                        $subtract: ["$projectEndDate", 5 * 24 * 60 * 60000] 
+                    }
+                    }
+                }
+            ])
+
+=> The "$multiply operator" multiplies two or more numeric values or expressions within MongoDB aggregation 
+    pipelines to compute results directly in the database.
+    - Multiplies two or more numeric expressions and returns a single result.
+    - Used inside aggregation stages like $project, $addFields, $group.
+    - Helpful for calculations (totals, discounts, conversions, scores).
+    - May return null if any argument evaluates to null or is missing, depending on expression evaluation.
+
+    Syntax: { $multiply: [ <expression1>, <expression2>, ... <expressionN> ] }
+    
+    Example:
+        1: Using $multiply Operator
+        - db.employee.aggregate([
+                { $match: { department: "Development" } },
+                { 
+                    $project: { 
+                    name: 1, 
+                    newSalary: { $multiply: ["$salary", 2] } 
+                    } 
+                }
+            ])
+
+        2: Multiply Using $multiply Operator in the Embedded Document
+        - db.employee.aggregate([
+                { $match: { department: "HR" } },
+                {
+                    $project: {
+                        name: 1,
+                        newSalary: { $multiply: ["$details.salary", 3] }
+                    }
+                }
+            ])
+
+        3: Combine $multiply with Other Operators
+        - db.employee.aggregate([
+                {
+                    $project: {
+                    name: 1,
+                    totalPay: {
+                        $add: [
+                        "$salary",
+                        { $multiply: ["$salary", "$bonusRate"] },
+                        1000
+                        ]
+                    }
+                    }
+                }
+            ])

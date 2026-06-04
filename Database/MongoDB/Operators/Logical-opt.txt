@@ -1,0 +1,35 @@
+MongoDB logical query operators combine multiple conditions in a single query.
+    
+    1.$and operator - It Joins query clauses with a logical AND. Returns documents that match all the conditions.
+        Syntax: { $and: [ { <expression1> }, { <expression2> }, ... ] }
+        Example: db.contributor.find({$and: [{branch: "CSE"}, {joiningYear: 2018}]})
+
+    2.$nor operator - Joins query clauses with a logical NOR. Returns documents that fail to match all the 
+                    specified conditions.
+        Syntax: { $nor: [ { <expression1> }, { <expression2> }, ... ] }
+        Example: db.contributor.find({$nor: [{salary: 3000}, {branch: "ECE"}]})
+
+    3.$or operator - combines multiple conditions, where at least one of the conditions must be true.
+        Syntax: { $or: [ { <expression1> }, { <expression2> }, ... ] }
+        Example: db.contributor.find({$or: [{branch: "ECE"}, {joiningYear: 2017}]})
+
+    4.$not operator - negates a condition at the field level and must be used with another operator.
+                    Returns documents that do not match the query expression.
+        Syntax: { <field>: { $not: { <operator-expression> } } }
+        Example: db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty()
+
+    5.
+        Syntax:
+        Example:
+    
+    6.
+        Syntax:
+        Example:
+
+    7.
+        Syntax:
+        Example:
+    
+    8.
+        Syntax:
+        Example:
