@@ -97,3 +97,37 @@
 
     6.Update with Upsert
         Query:  db.student.updateOne({ Name: "Clevin" }, { $set: { age: 28 } }, { upsert: true })
+
+=> The MongoDB updateMany() method updates all documents that match a filter in a single operation, 
+    making bulk updates efficient.
+    Supports options like upsert, writeConcern, and collation.
+    Can be used in multi-document transactions.
+    Accepts aggregation pipelines for complex updates.
+    Syntax:
+            db.collection.updateMany(
+                <filter>,
+                <update>,
+                {
+                    upsert: <boolean>,
+                    writeConcern: <document>,
+                    collation: <document>,
+                    arrayFilters: [ <filterdocument1>, ... ],
+                    hint: <document|string>
+                }
+            )
+
+    Example: 
+    1.Update a Single Document
+        Query:  db.student.updateMany({name: "Alen"}, {$set:{age: 20}}) 
+
+    2.Update Multiple Documents
+        Query:  db.student.updateMany({age:19},{$set:{eligible: true }})
+
+    3.Update with Upsert
+        Query:  db.student.updateMany({age: 20}, {$set: {eligible: false}}, {upsert: true})
+
+    4.Update with Write Concern
+        Query:  db.student.updateMany({age: 19 }, { $set: {age: 22 } }, { writeConcern: { w: "majority", wtimeout: 5000 }})
+
+    5.Update with Collation
+        Query:  db.student.updateMany({ age: 20 }, { $set: { age: 26 } }, { writeConcern: { w: "majority", wtimeout: 5000 }, collation: { locale: "en", strength: 2 }})
