@@ -1,0 +1,20 @@
+MongoDB stores related data as embedded documents within a single record, unlike a relational database that 
+    relies on joins.
+
+Syntax: db.collection.find(filter, projection) 
+
+Example:
+    1.Querying Entire Embedded Documents
+        Query: db.Courses.find({name: { first: "Ron", middle: "Rose", last: "Thompson"}})
+    
+    2.Querying Embedded Documents Using Dot Notation
+        Query: db.Courses.find({"courseDetails.name": "Java Backend Development"})
+
+    3.Using Query Operators for Advanced Filtering
+        - $in Operator: Match Multiple Values
+            Query: db.Courses.find({"name.first": {$in: ["Ron" , "Michael"]}})
+        - $and Operator: Match Multiple Conditions
+            Query: db.Courses.find({ $and: [{ "courseDetails.name": "Sudo GATE 2020" }, { "name.first": "Sophia" }] })
+
+    4.Selecting Specific Fields with Projections
+        Query: db.Courses.find({branch: "CSE"}, {"name.first": 1, "name.last": 1})
