@@ -1,0 +1,50 @@
+=> Single Document
+The deleteOne() method in MongoDB removes a single document from a collection that matches a specified filter.
+    - Removes only the first matching document; impact depends on the accuracy of the filter criteria.
+
+Syntax: db.Collection_name.deleteOne(selection_criteria:<document>, {writeConcern: <document>, collation: 
+            <document>, hint: <document|string>})
+
+Example:
+
+    1: Deleting the First Document in a Collection
+        Query: db.student.deleteOne({})
+
+    2.Delete One Document that Match Selection Criteria
+        Query: db.student.deleteOne({age:22})
+
+    3.Deleting One Document When Multiple Documents Match the Filter
+        Query: db.student.deleteOne({ branch: "CSE" })
+    
+    4.Deleting a Document from the 'student' Collection Based on Age.
+        - Ensures that only one document is deleted, even if multiple documents meet the condition.
+        Query: db.student.deleteOne({age:{$lt:19}})     // lt - less than
+
+    5.Using Collation for String Comparison
+        Query: db.student.deleteOne({ name: "clevin" }, { collation: { locale: "en", strength: 2 } })
+
+    6.Specifying a Hint for Index Optimization
+        Query: db.contributor.deleteOne(
+                    { name: "Lee" },
+                    { hint: "name_index" }
+                )
+
+=> Multiple Document
+The deleteMany() method in MongoDB is used to remove all documents from a collection that match a specified filter
+    - For bulk deletions, supports multi-document transactions, and ensures efficient data management.
+
+Syntax: db.collection.deleteMany(<filter>, {writeConcern: <document>, collation: <document>})
+
+Example:
+
+    1: Deleting Documents That Match a Filter
+        Query: db.contributor.deleteMany({ language: "C#" });
+
+    2.Deleting All Documents in a Collection
+        Query: db.contributor.deleteMany({})
+
+    3.Using Query Operators with deleteMany()
+        Query: db.contributor.deleteMany({ _id: { $gt: 2 } });      // gt - greater than
+
+=> Delete Database
+    Query: db.dropDatabase()
