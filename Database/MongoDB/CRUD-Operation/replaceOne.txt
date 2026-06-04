@@ -1,0 +1,19 @@
+replaceOne() replaces an entire matching document with a new one in a single operation. 
+    Replaces the full document, not specific fields
+    - Different from updateOne(), which updates selected fields.
+    - Supports upsert (insert if no match found).
+    - Returns a result object (not the document); use findOneAndReplace() to return the original or 
+        modified document.
+
+Syntax:
+        db.collection.replaceOne(<filter>, <replacementDocument>, {upsert: <boolean>, writeConcern: <document>,
+        collation: <document>, hint: <document|string>})
+
+Example:
+        1: Replace the First Document
+        Query: db.collection.replaceOne({}, {name: "Clevin", age: 27, branch: "EEE", department: "HR", 
+                    joiningYear: 2024})
+
+        2.Replacing single document that matches the filter
+        Query: db.employee.replaceOne({ name: "Maria" }, { name: "Maria", age: 25, branch: "CSE", department: 
+                "Designing" })
