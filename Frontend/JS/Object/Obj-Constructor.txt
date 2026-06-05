@@ -1,0 +1,33 @@
+A constructor is a special type of function used to create and initialize objects.
+    - Invoked with the 'new' keyword and can initialize properties and methods on the newly created object.
+
+    The Object() constructor creates a new empty object.
+        Syntax: new Object()
+
+    Example: 
+            const num = 42;
+            const numObj = Object(num); // Creates an object wrapper for the number
+
+            console.log(numObj);
+            console.log(typeof numObj); // "object"
+
+What happens if we try to pass null or undefined to the Object() constructor?
+    const newObj = new Object(undefined);
+    console.log(newObj); // {}
+
+When you're working with a value of unknown type and you need to ensure it's an object. 
+    Example:
+            function toObject(value) {
+                if (value === null || value === undefined) {
+                    return {};
+                }
+
+                if (typeof value === "object") {
+                    return value;
+                }
+
+                return Object(value);
+            }
+            console.log(toObject(null));    // {}
+            console.log(toObject(true));    // Boolean { constructor: { name: "Boolean" } }
+            console.log(toObject([1, 2, 3])); // [1, 2, 3]

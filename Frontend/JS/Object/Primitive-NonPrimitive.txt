@@ -1,0 +1,28 @@
+Primitive data types are the simplest form of data in JavaScript. 
+    - They include number, bigint, string, boolean, null, undefined, and symbol. 
+    - These types are called "primitive" because they represent single values and are not objects.
+    - Dealing directly with their values.
+    - Primitive values are immutable
+
+    Example: 
+            let num1 = 5;
+            let num2 = num1;
+            num1 = 10;
+            console.log(num2); // 5
+
+Non-primitive data types, are more complex.
+    - These are objects, which include regular objects, arrays, and functions. 
+    - Can hold multiple values as properties or elements.
+    - When you create a variable with a non-primitive value, what's stored in the variable is actually a 
+        reference to the location in memory where the object is stored, not the object itself.
+
+    Example: 
+            const originalPerson = { name: "John", age: 30 };
+            const copiedPerson = originalPerson;
+
+            originalPerson.age = 31;
+            console.log(copiedPerson.age); // 31
+
+=> In JavaScript, when you assign an object to another variable, you're copying the reference to the object, 
+    not the object itself. This is known as shallow copying by reference. 
+    Any changes made to the object through one reference are reflected in all references to that object.

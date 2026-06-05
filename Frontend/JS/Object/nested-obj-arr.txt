@@ -1,0 +1,37 @@
+Accessing Properties from Nested Objects and Arrays in Objects?
+- Accessing properties from nested objects involves using the dot notation or bracket notation, much like 
+    accessing properties from simple objects.
+
+Example: 
+        const person = {
+            name: "Alice",
+            age: 30,
+            contact: {
+                email: "alice@example.com",
+                phone: {
+                    home: "123-456-7890",
+                    work: "098-765-4321"
+                }
+            }
+        };
+
+    => To access Alice's work phone number, you would chain the property accessors like this:
+        console.log(person.contact.phone.work); // "098-765-4321"
+    
+    => use bracket notation, useful when property names include spaces or special characters, or when 
+        you're using variables to access properties.
+        console.log(person['contact']['phone']['work']); // "098-765-4321"
+
+
+Example: 
+        const person = {
+            name: "Alice",
+            age: 30,
+            addresses: [
+                { type: "home", street: "123 Main St", city: "Anytown" },
+                { type: "work", street: "456 Market St", city: "Workville" }
+            ]
+        };
+
+    => how to access Alice's work address city:
+        console.log(person.addresses[1].city); // "Workville"
