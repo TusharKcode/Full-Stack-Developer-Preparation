@@ -1,0 +1,101 @@
+The OSI Model is a conceptual framework created by the "International Organization for Standardization" (ISO) 
+    to describe how data is transmitted across a network using a structured seven-layer architecture.
+
+    - Divides network communication into seven functional layers.
+    - Assigns specific responsibilities to each layer.
+    - Promotes compatibility between different networking systems.
+    - Simplifies network design, implementation, and troubleshooting.
+
+Layers of OSI Model:
+    1: The Physical Layer
+        - foundation of the OSI model, acting as the bridge for actual physical connections between devices.
+        - transmission of raw, unstructured bitstreams over a physical medium from one node to the next.
+        - manages the hardware-level transmission of individual bits.
+        - it translates incoming physical signals back into digital 0s and 1s to be processed by the 
+            Data Link layer.
+        - include Hubs, Repeaters, Modems, and Cables.
+        - ensures the sender and receiver are "in sync" by providing a clock signal
+        - defined as the number of bits sent per second.
+        - defines the structural layout of the network, such as Bus, Star, or Mesh configurations.
+        - direction of data flow, utilizing modes like Simplex (one-way), Half-Duplex (two-way, one at a time), 
+            or Full-Duplex (simultaneous two-way).
+
+    2: The Data Link Layer (DLL)
+        - serves as the bridge between the physical hardware and the logical network, node-to-node delivery 
+            of data.
+        - ensure that data transfer is error-free across the physical medium.
+        - data packets received from the Network layer are divided into manageable units called Frames.
+        - adding specific "start" and "stop" bits so the receiver can recognize where one unit of data ends 
+            and the next begins.
+        - uses MAC addresses (Physical Addressing) to identify hosts.
+        - encapsulates the sender’s and receiver’s MAC addresses into the frame header.
+        - Common devices operating here are Switches and Bridges.
+        - Sublayers:
+            -> Logical Link Control (LLC): Manages flow and error control
+            -> Media Access Control (MAC): how devices physically access the transmission medium and handles 
+                                            hardware addressing.
+        - detects and retransmits damaged or lost frames 
+        - synchronizes the data rate between a fast sender and a slower receiver to prevent data 
+            "bottlenecks" or loss.
+
+    3: The Network Layer
+        - manages data transmission between hosts across different networks by handling logical addressing 
+            and path finding.
+        - Data segments are encapsulated into Packets
+        - Assigns unique IP addresses (sender and receiver) to the packet header to identify devices globally.
+        - Primarily implemented via Routers and Switches.
+        - communication between disparate networks by directing traffic to the correct destination.
+
+    4: The Transport Layer
+        - ensures the end-to-end delivery of entire messages
+        - Data is broken down into Segments.
+        -  Uses Port Numbers (e.g., Port 80 for web traffic) to ensure data is delivered to the specific 
+            process or application intended.
+        - Common protocols include TCP (reliable), UDP (fast).
+        - (TCP): Requires a "handshake" to establish a connection; ensures reliability via error checking 
+                    and acknowledgements.
+        - (UDP): Sends data immediately without a formal connection; faster but offers no guarantee of delivery.
+
+    5: The Session Layer
+        - acts as the "dialogue manager," governing the opening, closing, and security of communication channels between two devices.
+        - Ensures that the communicating parties are verified and the connection is secure.
+        - Inserts checkpoints into the data stream.
+        - Directs whether communication is half-duplex (alternating) or full-duplex (simultaneous).
+
+    6: The Presentation Layer
+        - Often called the Translation Layer
+        - ensures that data is formatted, secured, and compressed
+        - extracts data from the Application Layer and converts it into a standardized format for network 
+            transmission
+        - Handles the encoding of media using standards such as JPEG, MPEG, and GIF.
+        - Provides security by converting "plain text" into "ciphertext" (encryption) and back again 
+            (decryption) using key values. This process is typically handled by protocols like TLS/SSL.
+        - Reduces the total number of bits required for transmission, increases network efficiency and speed.
+
+    7: The Application Layer
+        - at the top of the OSI stack and serves as the direct interface between the software user and the 
+            network.
+        - sent and displays the information received from other layers
+        - Acts as a "window" for network-based applications (like web browsers or email clients) to access 
+            network services.
+        - Utilizes high-level protocols such as HTTP/S (Web), SMTP (Email), FTP (File Transfer), and DNS 
+            (Domain Name Resolution).
+        - Network Virtual Terminal (NVT): Enables users to log into and interact with remote hosts.
+        - File Transfer, Access, and Management (FTAM): users to retrieve, manage, and manipulate files 
+                                                        stored on remote computers.
+        - Offers distributed database access to manage global information regarding various network objects 
+            and services.
+
+Data Flow in OSI Model
+- First data travels down through 7 layers from the sender's end and then climbs back 7 layers on the 
+    receiver's end. 
+- Each layer adds specific information to ensure the data reaches its destination correctly, and these steps 
+    are reversed upon arrival.
+
+    Application Layer:  Applications create the data.
+    Presentation Layer: Data is formatted and encrypted.
+    Session Layer:      Connections are established and managed.
+    Transport Layer:    Data is broken into segments for reliable delivery.
+    Network Layer:      Segments are packaged into packets and routed.
+    Data Link Layer:    Packets are framed and sent to the next device.
+    Physical Layer:     Frames are converted into bits and transmitted physically.
