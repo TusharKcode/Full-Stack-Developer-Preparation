@@ -1,0 +1,66 @@
+Computer network is a collection of interconnected devices that communicate with each other to exchange 
+    data and resources.
+
+It enables efficient communication and supports services like email, file sharing, and internet access.
+
+- Nodes are physical devices such as computers, mobiles, or printers.
+- Routers and switches control the flow of information.
+- Transmission media carry data from one device to another.
+- Wired media includes Ethernet and optical fiber cables.
+
+Types of Computer Network Architecture
+-> Client-Server Architecture: Represents a type of computer network architecture in which nodes function 
+                                as servers or clients, where the server manages client behavior, 
+                                known as Client-Server Architecture.
+
+-> Peer-to-Peer Architecture: Operates without any central server, allowing each device to act as either a 
+                                client or a server, known as P2P (Peer-to-Peer) Architecture.
+
+Network devices
+=> Router
+    - Functions as a networking device that connects multiple networks and directs data between them.
+    - Connects local networks to the internet.
+    - Uses IP addresses to forward data correctly.
+    - Determines the best path for data packets
+
+=> Switch
+    - Connects devices within the same network and manages internal data communication.
+    - Connects computers, printers, and servers
+    - Sends data only to the intended device
+    - Improves network efficiency and performance
+
+=> Hub
+    - Acts as a basic device that connects multiple devices within a network.
+    - Broadcasts data to all connected devices
+    - Does not filter or manage traffic
+    - Less secure and less efficient than a switch
+
+=> Bridge
+    - Connects two network segments and filters traffic between them.
+    - Reduces unnecessary data transmission
+    - Improves network performance
+    - Works using MAC addresses
+
+=> Gateway
+    - Connects two different networks that use different protocols.
+    - Translates data between different systems
+    - Enables communication between dissimilar networks
+    - Commonly used to connect private networks to external networks
+
+=> Access Point
+    - Provides wireless connectivity to devices in a network.
+    - Extends a wired network into Wi-Fi
+    - Allows mobile devices to connect wirelessly
+    - Improves network coverage area
+
+=> 7. Modem
+    - Converts digital data into signals suitable for transmission and vice versa.
+    - Connects a home or office network to the ISP
+    - Converts digital signals to analog and back
+    - Enables internet access
+
+=> 8. Firewall
+    - Security device that monitors and controls network traffic.
+    - Blocks unauthorized access
+    - Filters incoming and outgoing data
+    - Protects networks from cyber threats

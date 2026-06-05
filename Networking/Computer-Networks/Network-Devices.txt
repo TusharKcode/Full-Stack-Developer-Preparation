@@ -1,0 +1,75 @@
+Network Devices are the physical appliances required for communication and interaction between computers on a 
+    computer network.
+
+Layer 1 Devices: Physical Layer
+    - Deal with raw electrical or optical signals (bits). 
+    - Do not understand IP addresses or MAC addresses.
+
+    => Hub
+        - It is a central connection point for devices in a LAN.
+        - It takes an incoming signal on one port and blindly broadcasts it to all other ports without knowing 
+            the recipient.
+        - High network traffic collisions and security risks
+        - It is a obsolete device, replaced by Switches.
+
+    => Repeater
+        - It regenerates signals to extend the range of a network.
+        - It receives a weak signal (due to attenuation over long cables), amplifies it, and retransmits it.
+        - Extending WiFi range or Ethernet cables beyond 100 meters.
+
+    => Modem (Modulator-Demodulator)
+        - Bridges the gap between digital computer data and analog signals, allowing devices to connect to the 
+            internet via telephone, cable, or fiber lines.
+        - Connects your home network to the ISP (Internet Service Provider).
+        - Converts digital signals from your computer into analog signals for telephone/cable lines 
+            (Modulation) and vice-versa (Demodulation).
+
+Layer 2 Devices: Data Link Layer
+    - Work with MAC Addresses (Physical Addresses).
+    - Smarter than hubs
+
+    => Switch
+        - High-speed networking device that connects devices (computers, printers, servers) within a Local 
+            Area Network (LAN), 
+        - switch learns the MAC address of every connected device.
+        - sends data only to the specific port where the destination device is connected.
+        - Reduces collisions and improves security and speed.
+
+    => Bridge
+        - Filters traffic based on MAC addresses to keep local traffic local, reducing congestion.
+        - Largely replaced by Switches (which are essentially multi-port bridges).
+
+    => Access Point
+        - networking hardware device that allows Wi-Fi-enabled devices, such as laptops and smartphones, to 
+            connect to a wired network.
+        - Acts as a bridge between wired Ethernet and wireless Wi-Fi devices.
+        - only provides Wi-Fi signal and it does not route traffic or assign IP addresses.
+
+Layer 3 Devices: Network Layer
+    - work with IP Addresses (Logical Addresses) and connect different networks together.
+
+    => Router
+        - connects multiple networks and directs data packets between them using IP addresses.
+        - maintains a Routing Table to make these decisions.
+        - stop broadcast traffic, isolating networks from each other.
+
+    => Brouter (Bridging Router)
+        - combining bridge and router functions, operating at both the Data Link and Network layers of the 
+            OSI model.
+        - It can route known protocols (like TCP/IP).
+        - It bridge unknown protocols (like non-routable legacy traffic) at the same time and rarely used today.
+
+Layer 4-7 Devices: Advanced Processing
+
+    => Gateway
+        - hardware device or software node that acts as an entry/exit point between two distinct networks using 
+            different protocols.
+        - It can convert protocols, data formats, or architectures (e.g., connecting a TCP/IP network to a 
+            legacy Mainframe network).
+        - An Internet Gateway translates your private LAN requests into public internet requests.
+
+    => 8. Firewall
+        - Security device that monitors and controls network traffic.
+        - Blocks unauthorized access
+        - Filters incoming and outgoing data
+        - Protects networks from cyber threats

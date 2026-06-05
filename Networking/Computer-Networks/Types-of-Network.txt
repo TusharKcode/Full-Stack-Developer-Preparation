@@ -1,0 +1,84 @@
+=> Classification Based on Geographical Area
+    - physical distance or area they cover, ranging from small personal spaces to large global regions.
+
+    1. Personal Area Network (PAN)
+        - This connects personal devices within a very short range around a single user.
+        - Range:        1–10 meters
+        - Technologies: Bluetooth, NFC, Infrared
+        - Example:      Smartphone connected to wireless earbuds
+        - Used:         For short-range communication between personal devices
+
+    2. Local Area Network (LAN)
+        - This connects computers and devices within a limited area such as a home, office, or building.
+        - Range:        One room, building, or small campus
+        - Technologies: Ethernet, Wi-Fi
+        - Example:      Home or office Wi-Fi network
+        - Used:         For fast and secure communication within a local location
+
+    3. Campus Area Network (CAN)
+        - A CAN connects multiple LANs within a campus or a group of nearby buildings.
+        - Range:        University or corporate campus
+        - Technologies: Ethernet, Fiber Optics
+        - Example:      College or corporate campus network
+        - Used:         To interconnect LANs across a campus under one organization
+
+    4. Metropolitan Area Network (MAN) 
+        - A MAN connects multiple networks within a city or metropolitan region.
+        - Range:        City or large town
+        - Technologies: Fiber Optics, Microwave, Metro Ethernet
+        - Example:      City-wide ISP network
+        - Used:         To provide high-speed connectivity across a city
+
+    5. Wide Area Network (WAN)
+        - A WAN connects networks over large geographical areas such as countries or continents.
+        - Range:        Country, continent, or global
+        - Technologies: Leased lines, Satellite links, Internet
+        - Example:      The Internet
+        - Used:         To enable long-distance and global communication
+
+=> Classification Based on Transmission Medium
+    - Transmission technology refers to the method or medium used to send data signals from one device 
+        to another.
+
+    1. Broadcast Network
+        - This used a shared communication medium among all connected devices.
+        - Data transmitted by one node is received by all other nodes in the network.
+        - Each data packet contains a destination address, and only the intended device processes it.
+        - Communication follows a one-to-many model.
+        - No dedicated physical path exists between sender and receiver.
+        - Examples: Ethernet (bus-based), Wireless LAN (Wi-Fi)
+
+    2. Point-to-Point Network
+        - This uses dedicated links between communicating devices.
+        - Data is transmitted directly from one node to another.
+        - Communication follows a one-to-one model.
+        - Data may pass through intermediate devices (routers or switches).
+        - Requires routing algorithms to determine the best path.
+        - Examples: Internet, Leased line networks, Telephone networks
+
+=> Classification Based on Ownership and Access Control
+    - focuses on administrative control and accessibility
+
+    1. Private Network
+        - This type of network is owned and managed by an individual, organization, or institution
+        - Access is restricted to authorized users only
+        - Requires authentication such as usernames, passwords, VPNs, or access tokens
+        - Used mainly for internal communication
+        - Offers higher security, privacy, and control
+        - Examples: Corporate intranet, Office LAN, Private cloud network
+
+    2. Public Network
+        - This type of network is owned by service providers or government authorities
+        - Accessible to the general public
+        - Requires little or no authorization to connect
+        - Offers wide accessibility but lower security
+        - Usually shared by a large number of users
+        - Can operate over both wired and wireless media
+        - Examples: Internet, Public Wi-Fi networks, Mobile cellular networks
+
+    3. Hybrid Network
+        - This type of network is combination of private and public networks
+        - Some parts of the network are restricted, while others are publicly accessible
+        - Allows organizations to maintain internal security while providing external connectivity
+        - Common in modern enterprise and cloud-based systems
+        - Examples: Corporate network connected to the Internet, Enterprise cloud networks, Online banking systems

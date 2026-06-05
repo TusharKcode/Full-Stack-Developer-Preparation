@@ -1,0 +1,35 @@
+Internetwork
+    - An internetwork is a collection of two or more independent networks connected together to function as a 
+        single logical network.
+    - It enables communication between devices across different networks.
+    - The Internet itself is the largest example of an internetwork.
+    - Consists of multiple networks, not just individual computers.
+    - Uses networking devices to interconnect networks
+
+Intranet
+    - An intranet is a private network used within an organization. It is accessible only to authorized users 
+        such as employees.
+    - Owned and controlled by a single organization
+    - Access restricted using login credentials
+    - Used for internal communication and collaboration
+    - Improves information sharing within the organization
+
+    => Uses
+            Employee portals
+            Internal emails and messaging
+            Sharing company policies and documents
+            Internal applications (HR, payroll, project management)
+
+Extranet
+    - An extranet is an extension of an intranet that allows limited access to external users. it connects 
+        the organization's internal network with trusted outsiders.
+    - Partially private network
+    - Access provided to partners, vendors, suppliers, or customers
+    - Requires authentication and authorization
+    - Often implemented using VPN or secure web access
+
+    => Uses
+            Business-to-business (B2B) communication
+            Supply chain management
+            Customer portals
+            Partner collaboration platforms
