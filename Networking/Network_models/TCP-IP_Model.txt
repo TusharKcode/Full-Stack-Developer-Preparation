@@ -1,0 +1,43 @@
+The TCP/IP model is a layered networking framework that explains how data is communicated between devices 
+    over a network using standardized protocols to ensure reliable and efficient transmission.
+
+- Defined as a four-layer architecture consisting of Application, Transport, Internet, and Network Access layers.
+- Standardized by RFC 1122, which specifies its structure and behavior.
+
+Layers of TCP/IP Model:
+    1. Application Layer
+        - closest to the user, where applications like web browsers, email clients, and file-sharing tools 
+            interact with the network.
+        - Acts as a bridge between user applications and lower network layers
+        - Supports protocols such as HTTP, FTP, SMTP, and DNS
+        - Handles data formatting
+        - Provides encryption for secure communication
+        - Manages sessions to track ongoing connections
+
+    2. Transport Layer
+        - Ensures reliable and efficient delivery of data between devices
+        - Breaks large messages into packets and reassembles them at the destination.
+        - TCP checks for errors, resends lost data, and ensures correct order.
+        - UDP provides low-latency, connectionless delivery without error checking.
+        - Prevents the receiver from being overwhelmed by regulating data flow.
+        - Uses port numbers to allow multiple applications to share the network simultaneously.
+
+    3. Internet Layer
+        - Responsible for addressing, packaging, and routing data packets, travel across networks and reach 
+            the correct destination device.
+        - Assigns IP addresses to identify source and destination devices.
+        - Breaks large packets into smaller ones for transmission and reassembles them at the destination.
+        - uses IP (Internet Protocol), along with supporting protocols like ICMP for error reporting and ARP 
+            for address resolution.
+
+    4. Network Access (Link Layer)
+        - Responsible for physically transmitting data over network hardware, including cables, switches, 
+            and wireless connections.
+        - It handles how data is formatted for the network medium and ensures it reaches the next device 
+            on the path.
+        - Sends and receives raw bits over physical media like Ethernet cables, fiber optics, or Wi-Fi.
+        - Organizes data into frames for proper transmission and recognition by devices.
+        - Detects transmission errors using checksums or CRC.
+        - Uses hardware addresses to identify devices within the same network segment.
+        - Determines how multiple devices share the same physical medium, avoiding collisions.
+
