@@ -1,0 +1,73 @@
+"$pull Operator"
+    - removes matching values from an array field during updates
+    - enabling in-place modification of arrays without rewriting the entire document.
+    - Leaves the array unchanged if no matching value is found.
+    - Works on arrays inside embedded (nested) documents.
+
+    Syntax: { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
+
+    Example: 
+        // Removing a Specific value / Multiple Values
+            db.contributor.updateMany(
+                { skills: "Java" },
+                { $pull: { skills: "Java" } }
+            )
+
+            db.contributor.updateMany(
+                { skills: { $in: ["JavaScript", "Python"] } },
+                { $pull: { skills: { $in: ["JavaScript", "Python"] } } }
+            )
+
+        // Removing Based on Condition
+            db.contributor.updateMany(
+                {},
+                { $pull: { skills: { $regex: "^.{1,4}$" } } }
+            )
+
+
+"$pop Operator"
+    - removes either the first or the last element from an array field during updates
+    - useful for maintaining fixed-size arrays such as rolling logs or recent activity lists.
+    - Modifies the array directly in place using updateOne(), updateMany(), or findAndModify().
+
+    Syntax: { $pop: { <field>: <-1 | 1>, ... } }
+
+    Example: 
+        // Removing first item and last item from the array
+            db.logs.updateOne(
+                { user: "Liam" },
+                { $pop: { recentActions: -1 } }
+            )
+
+            db.logs.updateOne(
+                { user: "Emma" },
+                { $pop: { recentActions: 1 } }
+            )
+
+        // Removing first item from the embedded/nested document
+            db.logs.updateOne(
+                { user: "Olivia" },
+                { $pop: { "activity.history": -1 } }
+            )
+
+"$pullAll Operator"
+    - removes all occurrences of specified values from an array field during updates
+    - a direct way to clean array data without using query conditions.
+    - Matches values directly (not condition-based like $pull).
+    - Can be used with methods like updateOne(), updateMany(), and findAndModify().
+
+    Syntax: { $pullAll: { <field1>: [ <value1>, <value2> ... ], ... } }
+
+    Example: 
+        // Removing items from an array
+            db.contributor.updateOne(
+                { name: "Liam" },
+                { $pullAll: { language: ["Java", "C#", "Python"] } }
+            )
+
+        // Removing items from an array in the embedded document
+            db.contributor.updateOne(
+                { name: "Noah" },
+                { $pullAll: { "personal.semesterMarks": [71, 72] } }
+            )
+

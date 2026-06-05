@@ -1,0 +1,47 @@
+"$push Operator"
+    - adds values to an array field during updates
+    - creating the field if it doesn’t exist
+    - can insert multiple values individually when used with $each.
+
+    Syntax: { $push: { <field1>: <value1>, ... } }
+    Syntax with Modifiers: { $push: { <field1>: { <modifier1>: <value1>, ... }, ... } }
+
+    Processing Order with Modifiers:
+            -> First, items are added to the array at the specified position.
+            -> Then, sorting is applied if $sort is specified.
+            -> Next, the array is sliced if $slice is specified.
+            -> Finally, the updated array is stored.
+
+    Example: 
+        // Append a Value to an Array
+            db.contributor.updateOne({ name: "Mateo" }, { $push: { language: "C++" } })
+
+        // Append Multiple Values to an Array
+            db.contributor.updateOne({ name: "Luca" }, { $push: { language: { $each: ["C", "Ruby", "Go"] } } })
+        
+        // Append Multiple Values to embedded document
+            db.contributor.updateOne(
+                { name: "Luca" },
+                {
+                    $push: {
+                        "personal.semesterMarks": {
+                            $each: [89, 76.4]
+                        }
+                    }
+                }
+            )
+
+        // Use $push Operator with Multiple Modifiers
+            db.contributor.updateOne(
+                { name: "Mateo" },
+                {
+                    $push: {
+                        language: {
+                            $each: ["C", "Go"],
+                            $sort: 1,
+                            $slice: 4
+                        }
+                    }
+                }
+            )
+
