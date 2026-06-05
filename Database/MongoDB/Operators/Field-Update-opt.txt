@@ -1,0 +1,65 @@
+MongoDB field update operators modify specific fields in documents without replacing the entire document, 
+    enabling efficient and atomic updates.
+
+1. $currentDate Operator
+    - Sets the value of a field to a current date, either as a Date or a Timestamp.
+    Example: 
+                db.Employee.updateOne(
+                    { "name.first": "Alex" },
+                    { $currentDate: { joiningDate: true } }
+                )
+
+2. $inc Operator
+    - Increments the value of the field by the specified amount.
+    Example:
+            db.Employee.updateOne(
+                { "name.first": "Daniel" },
+                { $inc: { "personalDetails.salary": 3000 } }
+            )
+
+3. $max operator
+    - Updates the field if the specified value is greater than the existing field value.
+    Example:
+                db.Employee.updateOne(
+                    { "name.first": "Daniel" },
+                    { $max: { "personalDetails.salary": 40000 } }
+                )
+
+4. $min Operator
+    - Updates the field only if the specified value is less than the existing field value
+    Example:
+            db.Employee.updateOne(
+                { "name.first": "Daniel" },
+                { $min: { "personalDetails.salary": 5000 } }
+            )
+
+5. $mul Operator
+    - Multiplies the value of the field by the specified amount.
+    Example:
+            db.Employee.updateOne(
+                { "name.first": "Daniel" },
+                { $mul: { "personalDetails.salary": 2 } }
+            )
+
+6. $rename Operator
+    - This operator is used to rename a field.
+    Example:
+            db.Employee.updateOne(
+                { "name.first": "Alex" },
+                { $rename: { unit: "department" } }
+            )
+
+7. $setOnInsert Operator
+    - Sets the value of a field if an update results in an insert of a document.
+    - It has no effect on update operations that modify existing documents.
+    Example:
+            db.Employee.updateOne(
+                {
+                name: { first: "Maria", last: "Will" },
+                personalDetails: { age: 24, contactInfo: 4578934201 }
+                },
+                {
+                $setOnInsert: { department: "HR", salary: 30000 }
+                },
+                { upsert: true }
+            )

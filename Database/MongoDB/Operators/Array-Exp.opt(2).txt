@@ -1,0 +1,80 @@
+"$concatArrays Operator"
+    - combines two or more arrays into a single array within the aggregation pipeline
+    - Preserves the order of elements from input arrays.
+    - Can combine array fields with static arrays or expressions.
+
+    Syntax: { $concatArrays: [ <array1>, <array2>, ... <arrayN> ] }
+    Example:
+        1. Using $concatArrays Operator
+            - 
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Lorenzo" } },
+                        {
+                            $project: {
+                            concatResult: { $concatArrays: ["$numbers1", "$numbers2"] }
+                            }
+                        }
+                    ])
+        2. Using $concatArrays Operator to concatenate arrays Values
+            - 
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Bruno" } },
+                        {
+                            $project: {
+                            concatResult: { $concatArrays: ["$fruits", "$veggie"] }
+                            }
+                        }
+                    ])
+
+        3. Using $concatArrays Operator in the Embedded Document
+            - 
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Pika" } },
+                        {
+                            $project: {
+                            concatResult: {
+                                $concatArrays: ["$favGame.indoorGames", ["Uno", "Snooker"]]
+                            }
+                            }
+                        }
+                    ])
+
+"$reverseArray Operator"
+    - reverses the order of elements in an array within the aggregation pipeline
+    - useful for data processing and presentation when the order of values needs to be flipped.
+    - returns a new reversed array.
+    - Works within aggregation pipeline stages like $project and $addFields
+    
+    Syntax: { $reverseArray: <array expression> }
+    Example:
+        1. Using $reverseArray Operator
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Lorenzo" } },
+                        {
+                        $project: {
+                            revNumbers: { $reverseArray: "$numbers2" }
+                        }
+                        }
+                    ])
+        
+        2. Using $reverseArray Operator on Array of Strings
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Bruno" } },
+                        {
+                            $project: {
+                            revStrings: { $reverseArray: "$fruits" }
+                            }
+                        }
+                    ])
+
+        3. Using $reverseArray Operator in the Embedded Document
+            Example:
+                    db.arrayExample.aggregate([
+                    ... {$match: {name: "Pika"}},
+                    ... {$project: {
+                    ... result: {$reverseArray: "$favGame.outdoorGames"}}}])

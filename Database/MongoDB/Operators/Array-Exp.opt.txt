@@ -1,0 +1,144 @@
+"$isArray Operator"
+    - checks whether a given field or expression evaluates to an array and returns a boolean result
+    - helping handle mixed data types safely in aggregation pipelines.
+    - Useful when fields may contain arrays, strings, or numbers.
+    - Helps avoid errors when processing array-specific operations.
+
+    Syntax: { $isArray: <expression> }
+    
+    Example:
+        1: Basic $isArray Usage
+            - Suppose a categories field may be either an array or a string.
+            Example: db.products.aggregate([
+                        {
+                            $project: {
+                                name: 1,
+                                isCategoriesArray: { $isArray: "$categories" }
+                            }
+                        }
+                    ])
+
+        2: Conditionally Applying Logic Based on Array Check
+            - We conditionally append a value to categories only if it’s an array otherwise, return 
+                "Not an array".
+            Example: db.products.aggregate([
+                        {
+                            $project: {
+                                name: 1,
+                                updatedCategories: {
+                                    $cond: {
+                                    if: { $isArray: "$categories" },
+                                    then: { $concatArrays: [ "$categories", [ "Discounted" ] ] },
+                                    else: "Not an array"
+                                    }
+                                }
+                            }
+                        }
+                    ])
+
+        3: Count Elements in an Array
+            - verify categories is an array and then apply $size to count its elements.
+            Example: db.products.aggregate([
+                        {
+                            $project: {
+                                name: 1,
+                                categoryCount: {
+                                    $cond: {
+                                    if: { $isArray: "$categories" },
+                                    then: { $size: "$categories" },
+                                    else: 0
+                                    }
+                                }
+                            }
+                        }
+                    ])
+
+        4: Filtering Documents Where a Field Is an Array
+            - to filter out only those documents where the categories field is an array, use $isArray in 
+                combination with $match.
+            Example: db.products.aggregate([
+                        {
+                            $match: {
+                                $expr: { $isArray: "$categories" }
+                            }
+                        }
+                    ])
+
+"$size Operator"
+    - returns the count of elements in an array field
+    - used in aggregation pipelines to filter documents
+    - Works inside $project and $addFields; in $match it can only be used via $expr.
+    - Combine with $isArray to avoid errors on non-array fields.
+    - Helps filter documents based on array length (e.g., non-empty arrays).
+
+    Syntax: { $size: <expression> }
+    Example: 
+        1: Counting Array Elements Using $size
+            - Count the number of elements in the numbers1 array for a document where the name is "Lorenzo" 
+                using a $size operator. 
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Lorenzo" } },
+                        { $project: { number1Size: { $size: "$numbers1" } } }
+                    ])
+
+        2: Using $size Operator in the Embedded Document
+            - Find the size of the indoorGames array inside the favGame embedded document for a document 
+                where name is "Pika"
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Pika" } },
+                        { $project: { resultSize: { $size: "$favGame.indoorGames" } } }
+                    ])
+
+        3: Filtering Documents Based on Array Size
+            - how to filter documents where the size of the numbers1 array is greater than 2.
+            Example:
+                    db.arrayExample.aggregate([
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $isArray: "$numbers1" },
+                                        { $gt: [{ $size: "$numbers1" }, 2] }
+                                    ]
+                                }
+                            }
+                        }
+                    ])
+
+"$arrayElemAt Operator"
+    - retrieves a specific element from an array by index
+    - used in aggregation pipelines to extract targeted values efficiently.
+    - Useful for accessing first, last, or any indexed value.
+
+    Feature: 
+        -> Positive Index: Retrieves the element starting from the beginning of the array (0-based index).
+        -> Negative Index: Retrieves elements counting backward from the end of the array.
+        -> Out-of-Bounds Index: Returns null if the index is outside the array range.
+
+    Syntax: { $arrayElemAt: [ <array>, <index> ] }
+    Example:
+        1. Retrieving First and Last Items
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Bruno" } },
+                        {
+                            $project: {
+                            firstItem: { $arrayElemAt: ["$fruits", 0] },
+                            lastItem:  { $arrayElemAt: ["$fruits", -1] }
+                            }
+                        }
+                    ])
+
+        2. Using $arrayElemAt Operator in the Embedded Document
+            Example:
+                    db.arrayExample.aggregate([
+                        { $match: { name: "Pika" } },
+                        {
+                            $project: {
+                            firstItem: { $arrayElemAt: ["$favGame.outdoorGames", 0] },
+                            item:      { $arrayElemAt: ["$favGame.outdoorGames", 2] }
+                            }
+                        }
+                    ])
