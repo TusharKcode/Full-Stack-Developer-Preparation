@@ -1,0 +1,56 @@
+Network topology is the arrangement of devices (nodes) and connections (links) in a computer network.
+    - It shows how computers, servers, and other devices are connected and how data flows between them.
+
+-> Point To Point Topology
+    - a type of topology that works on the functionality of the sender and receiver.
+    - simplest communication between two nodes
+    - one is the sender and the other one is the receiver.
+    - provides high bandwidth.
+    - High data transfer speed (dedicated link), Secure communication (direct connection)
+
+-> Mesh Topology
+    - every device is connected to another device via a particular channel.
+    - Every device is connected to another via dedicated channels.
+    - These channels are known as links.
+    - it focuses on direct device-to-device connections.
+    - Provides security and privacy.
+    - cost of cables, maintenance is high
+
+-> Star Topology
+    - all the devices are connected to a single hub through a cable.
+    - hub is the central node and all other nodes are connected to the central node.
+    - hub can be passive in nature i.e., not an intelligent hub such as broadcasting devices
+    - at the same time the hub can be intelligent known as an active hub. Active hubs have repeaters in them.
+    - Easy to fault identification and fault isolation, uses inexpensive coaxial cable.
+
+-> Bus Topology
+    - a network type in which every computer and network device is connected to a single cable.
+    - It is bi-directional.
+    - a multi-point connection and a non-robust topology
+    - If N devices are connected to each other in a bus topology, then the number of cables required to 
+        connect them is 1, known as backbone cable, and N drop lines are required.
+    - Coaxial or twisted pair cables are mainly used, support up to 10 Mbps.
+    - less cost, security.
+
+-> Ring Topology
+    - it forms a ring connecting devices with exactly two neighboring devices.
+    - A number of repeaters are used for Ring topology with a large number of nodes
+    - to prevent data loss repeaters are used in the network.
+    - data transmission is high-speed, Cheap, Less Secure
+    - if someone wants to send some data to the last node in the ring topology with 100 nodes, then the 
+        data will have to pass through 99 nodes to reach the 100th node.
+
+-> Tree Topology
+    - variation of the Star topology, hierarchical flow of data.
+    - protocols like DHCP and SAC (Standard Automatic Configuration) are used.
+    - various secondary hubs are connected to the central hub which contains the repeater.
+    - data flow from top to bottom i.e. from the central hub to the secondary and then to the devices or 
+        from bottom to top i.e. devices to the secondary hub and then to the central hub. 
+    - a multi-point connection and a non-robust topology, high cost.
+
+-> Hybrid Topology
+    - combination of all the various types of topologies
+    - used when the nodes are free to take any form, such as Ring or Star topology, etc.
+    - Each individual topology uses the protocol
+    - Flexible, challenging architecture
+    - Hubs are expensive, infrastructure cost is very high
