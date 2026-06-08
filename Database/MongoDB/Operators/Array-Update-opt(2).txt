@@ -45,3 +45,67 @@
                 }
             )
 
+"Positional Operator ($)"
+    - updates the first matched element in an array without specifying its exact index
+    - Eliminates manual index calculation in update queries.
+    - Works with arrays of nested/embedded documents.
+
+    Syntax: { "<array>.$" : value }
+
+    Example: 
+        // Update First matching elements in an Array
+            db.contributor.updateOne(
+                { name: "Mateo", language: "Java" },
+                { $set: { "language.$": "Python" } }
+            )
+
+        // Update First Matching Element in an Array
+            db.contributor.updateOne(
+                { name: "Mateo", "articles.language": "C#" },
+                { $set: { "articles.$.tArticles": 120 } }
+            )
+        
+        // Update Nested Arrays 
+            db.contributor.updateOne(
+                {
+                    name: "Luca",
+                    articles: { $elemMatch: { pArticles: { $gt: 30 } } }
+                },
+                {
+                    $set: { "articles.$.tArticles": 250 }
+                }
+            )
+
+
+"All Positional Operator ($[])"
+    - updates every element in an array field for documents that match the query
+    - Useful for bulk updates on arrays containing nested/embedded documents.
+    - Works with update operations like db.collection.updateOne() and db.collection.findAndModify() .
+
+    Syntax: { <update operator>: { "<array>.$[]" : <value> } }
+
+    Example: 
+        // Updating all the items in an array using All Positional Operator
+            db.contributor.updateMany(
+                {},
+                { $inc: { "points.$[]": 5 } }
+            )
+
+        // Updating all the documents in the array using All Positional Operator
+            db.contributor.updateMany(
+                {},
+                { $inc: { "articles.$[].tArticles": -10 } }
+            )
+        
+        // Updating an array using a negation query operator
+            db.contributor.updateMany(
+                { points: { $nin: [100] } },
+                { $inc: { "points.$[]": 20 } }
+            )
+
+        // Updating the nested array in conjunction with $[< identifier>]
+            db.contributor.updateMany(
+                {},
+                { $inc: { "marks.$[].firstsemester.$[newmarks]": 3 } },
+                { arrayFilters: [{ newmarks: { $lte: 80 } }] }
+            )
