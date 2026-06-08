@@ -1,0 +1,150 @@
+"$concat Operator"
+    - concatenates multiple strings or expressions into a single string
+    - used in aggregation stages like $project, $addFields, and others for string transformations.
+    - Supports combining field values, literals, and expression results.
+    - Enables complex string formatting for reporting and presentation.
+
+    Syntax: { $concat: [ <expression1>, <expression2>, ... ] }
+
+    Examples: 
+        // Concatenating Strings Using $concat
+            db.employee.aggregate([
+                {
+                    $project: {
+                        "name.first": 1,
+                        _id: 0,
+                        dept: { $concat: ["My department is: ", "$department"] }
+                    }
+                }
+            ])
+
+        // Concatenating Strings in Embedded Documents
+            db.employee.aggregate([
+                {
+                    $project: {
+                        fullname: {
+                            $concat: ["$name.first", " ", "$name.middle", " ", "$name.last"]
+                        }
+                    }
+                }
+            ])
+
+
+"$strcasecmp Operator"
+    - performs case-insensitive alphabetical comparison between two strings in the aggregation pipeline
+    - Returns 0 when both strings are equal ignoring case.
+    - Returns 1 when the first string is lexicographically greater.
+    - Returns -1 when the first string is lexicographically smaller.
+    - used in $project, $addFields, and $expr-based filters
+
+    Syntax: { $strcasecmp: [ <expression1>, <expression2> ] }
+
+    Examples: 
+        // Using $strcasecmp Operator
+            db.employee.aggregate([
+                {
+                    $project: {
+                        "name.first": 1,
+                        _id: 0,
+                        result: { $strcasecmp: ["$department", "development"] }
+                    }
+                }
+            ])
+
+        // Using $strcasecmp Operator in the Embedded Document
+            db.employee.aggregate([
+                {
+                    $project: {
+                        result: { $strcasecmp: ["$name.first", "Lucas"] }
+                    }
+                }
+            ])
+            
+"$toUpper Operator"
+    - converts string values to uppercase
+    - Leaves numbers and special characters unchanged.
+    - non-string values must be explicitly converted using operators like $toString before 
+        applying $toUpper.
+    - used for normalization, case-insensitive comparisons, and uniform display formatting in 
+        aggregation stages (e.g., $project, $addFields).
+
+    Syntax: { $toUpper: <expression> }
+
+    Examples: 
+        // Using $toUpper Operator
+            db.employee.aggregate([
+                {
+                    $project: {
+                        dept: { $toUpper: "$department" }
+                    }
+                }
+            ])
+
+        // Using $toUpper in the Embedded Document
+            db.employee.aggregate([
+                {
+                    $project: {
+                        firstName: { $toUpper: "$name.first" }
+                    }
+                }
+            ])
+            
+"$toLower Operator"
+    - converts string values to lowercase
+    - Returns an empty string ("") if the input resolves to null.
+    - Designed for aggregation stages only
+
+    Syntax: { $toLower: <expression> }
+
+    Examples: 
+        // Using $toLower Operator
+            db.employee.aggregate([
+                { $match: { "name.first": "Diego" } },
+                { $project: { dept: { $toLower: "$department" } } }
+            ])
+            
+        // Using $toLower on nested fields (via dot notation)
+            db.employee.aggregate([
+                { $match: { department: "Development" } },
+                { $project: { name: { $toLower: "$name.first" } } }
+            ])
+
+"$substrCP Operator"
+    - extracts substrings based on Unicode code points within the aggregation pipeline
+    - ensuring correct handling of both ASCII and non-ASCII characters for multilingual text processing.
+    - Avoids byte-level slicing issues
+
+    Syntax: { $substrCP: [ <string expression>, <code point index>, <code point count> ] }
+
+    Examples: 
+        // Using $substrCP operator
+            db.articles.aggregate([
+                {
+                    $project: {
+                        articlename: 1,
+                        publicationmonth: { $substrCP: ["$publishedon", 0, 4] },
+                        publicationyear: { $substrCP: ["$publishedon", 4, 4] }
+                    }
+                }
+            ])
+
+        // Single-Byte Character Set
+            db.articles.aggregate([
+                {
+                    $project: {
+                        articlename: 1,
+                        shortName: {
+                            $substrCP: ["$articlename", 0, 10]
+                        }
+                    }
+                }
+            ])
+
+        // Handling Multibyte Character Set
+            db.articles.aggregate([
+                {
+                    $project: {
+                        shortName: { $substrCP: ["$articlename", 0, 15] }
+                    }
+                }
+            ])
