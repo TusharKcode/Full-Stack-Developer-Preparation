@@ -1,0 +1,21 @@
+{
+  "_id": ObjectId("60a3c7e96e06f64fb5ac0700"),
+  "name": "Alex",
+  "age": 30,
+  "email": "alex@example.com",
+  "city": "New York"
+}
+{
+  "_id": ObjectId("60a3c7e96e06f64fb5ac0701"),
+  "name": "Ben",
+  "age": 35,
+  "email": "ben@example.com",
+  "city": "Los Angeles"
+}
+{
+  "_id": ObjectId("60a3c7e96e06f64fb5ac0702"),
+  "name": "Clevin",
+  "age": 25,
+  "email": "clevin@example.com",
+  "city": "Chicago"
+}

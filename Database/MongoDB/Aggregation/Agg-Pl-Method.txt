@@ -1,0 +1,99 @@
+Aggregation Pipeline Method:
+    1. $group: It Groups documents by the city field and calculates the average age using the $avg 
+                accumulator.
+        Example:
+        db.users.aggregate([
+            { $group: { _id: "$city", averageAge: { $avg: "$age" } } }
+        ])
+        
+        Output:
+        [
+            { _id: 'New York', averageAge: 30 },
+            { _id: 'Chicago', averageAge: 25 },
+            { _id: 'Los Angeles', averageAge: 35 }
+        ]
+
+    2. $project: Include or exclude fields from the output documents.
+        Example:
+        db.users.aggregate([
+            { $project: { name: 1, city: 1, _id: 0 } }
+        ])
+        Output:
+
+        [
+            { name: 'Alex', city: 'New York' },
+            { name: 'Ben', city: 'Los Angeles' },
+            { name: 'Clevin', city: 'Chicago' }
+        ]
+
+    3. $match: Filter documents to pass only those that match the specified condition(s).
+        Example:
+        db.users.aggregate([
+            { $match: { age: { $gt: 30 } } }
+        ])
+
+        Output:
+        [
+            {
+            _id: ObjectId('60a3c7e96e06f64fb5ac0701'),
+            name: 'Ben',
+            age: 35,
+            email: 'ben@example.com',
+            city: 'Los Angeles'
+            }
+        ]
+
+    4. $sort: It Sorts documents based on field values.
+        Example: 
+        db.users.aggregate([
+            { $sort: { age: 1 } }
+        ])
+        
+        Output:
+        [
+            {
+                _id: ObjectId('60a3c7e96e06f64fb5ac0702'),
+                name: 'Clevin',
+                age: 25,
+                email: 'clevin@example.com',
+                city: 'Chicago'
+            },
+            {
+                _id: ObjectId('60a3c7e96e06f64fb5ac0700'),
+                name: 'Alex',
+                age: 30,
+                email: 'alex@example.com',
+                city: 'New York'
+            },
+            {
+                _id: ObjectId('60a3c7e96e06f64fb5ac0701'),
+                name: 'Ben',
+                age: 35,
+                email: 'ben@example.com',
+                city: 'Los Angeles'
+            }
+        ]
+
+    5. $limit: Limit the number of documents passed to the next stage.
+        Example:
+        db.users.aggregate([
+            { $limit: 2 }
+        ])
+        
+        Output:
+        [
+            {
+                _id: ObjectId('60a3c7e96e06f64fb5ac0700'),
+                name: 'Alex',
+                age: 30,
+                email: 'alex@example.com',
+                city: 'New York'
+            },
+            {
+                _id: ObjectId('60a3c7e96e06f64fb5ac0701'),
+                name: 'Ben',
+                age: 35,
+                email: 'ben@example.com',
+                city: 'Los Angeles'
+            }
+        ]

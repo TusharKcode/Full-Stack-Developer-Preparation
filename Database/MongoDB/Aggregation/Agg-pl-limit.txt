@@ -1,0 +1,77 @@
+The $limit stage in MongoDB controls how many documents move through the aggregation pipeline, 
+    helping reduce processing overhead and optimize query performance.
+
+    - Restricts the number of documents passed to the next stage.
+    - Reduces data processed, improving performance.
+    - Commonly used to limit final result sets (pagination/top-N).
+    - Can be placed at any point in the pipeline.
+    - Accepts a single numeric argument as the maximum limit.
+
+Benefits: 
+        - Enhances Performance
+        - Pagination Support
+        - Efficient Sampling
+        - Reduces Network Load
+
+    Syntax: { $limit: <positive integer> }
+
+Stages Used with $limit
+    -> $match: Match filters documents based on conditions before limiting them.
+    -> $group: Group documents by a specified key and performs aggregation operations.
+    -> $project: Reshapes documents by including, excluding, or renaming fields.
+    -> $sort: Sorts documents based on specified fields.
+    -> $skip: Skips a number of documents before applying $limit (useful for pagination).
+
+Example: 
+    1: Retrieve the First 3 Orders
+        db.orders.aggregate([
+            { $limit: 3 }
+        ])
+
+    2: Retrieve the First 5 Orders
+        db.orders.aggregate([
+            { $limit: 5 }
+        ])
+
+    3: Implement Pagination using $limit and $skip
+        const pageSize = 10;
+        // First page
+        const pageNumber = 1; 
+
+        db.orders.aggregate([
+            { $sort: { _id:1} }, // define order first
+            { $skip: (pageNumber-1)*pageSize},
+            { $limit: pageSize}
+        ])
+
+Optimizing Techniques for $limit in Aggregation Pipelines:
+    1. Use Indexes for Faster Query Execution
+            db.orders.createIndex({ orderDate: -1 });
+            db.orders.aggregate([
+                { $match: { status: "completed" } },
+                { $sort: { orderDate: -1 } },
+                { $limit: 5 }
+            ])
+    
+    2. Projection Optimization
+            db.orders.aggregate([
+                { $project: { customer: 1, total: 1 } },
+                { $limit: 5 }
+            ])
+
+    3. Apply $match Before $limit
+            db.orders.aggregate([
+                { $match: { total: { $gt: 100 } } },
+                { $limit: 3 }
+            ])
+
+    4. Optimize $sort Before $limit
+            db.orders.aggregate([
+                { $sort: { total: -1 } },
+                { $limit: 3 }
+            ]);
+
+    5. Avoiding In-Memory Operations
+        - reduce memory usage and prevent out-of-memory errors
+        - Use indexing, early filtering ($match), and projection ($project) to limit data processing 
+            and optimize query performance.

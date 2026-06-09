@@ -1,0 +1,223 @@
+Aggregation Stages
+    - Aggregation stages are individual steps that work on data to filter, group, or sort it.
+
+Syntax: 
+        db.<collection_name>.aggregate(pipeline, options)
+        or 
+        db.<collection_name>.aggregate( [ { <stage1> }, {<stage2>},... ] )
+
+    1. $addFields Stage
+        - used to add new fields to the existing documents
+        - returns documents that contain all the existing fields and newly added fields.
+
+        Syntax :
+                db.<collection_name>.aggregate([
+                    {
+                        $addFields: {
+                            <newField1>: <expression>,
+                            <newField2>: <expression>
+                            // ...
+                        }
+                    }
+                ])
+
+        Example: 
+                db.employee_details.aggregate([
+                    { 
+                        $addFields: {"isActive" : true }
+                    }
+                ])
+
+    2. $set Stage
+        - can overwrite existing fields
+        - modifying the _id field is restricted
+
+        Syntax :
+                db.<collection_name>.aggregate([
+                    {
+                        $set: {
+                            <newField>: <expression>
+                            // ...
+                        }
+                    }
+                ])
+
+        Example: 
+                db.employee_details.aggregate([
+                    { 
+                        $set: {"company_name" : "GFG"}
+                    }
+                ])
+
+    3. $unset Stage
+        - used to remove/exclude fields from the documents
+        - remove the field or fields from the embedded document then use the dot notation
+
+        Syntax :
+                -> To remove a single field, The $unset stage takes a string that specifies the field 
+                    to remove.
+                    db.<collection_name>.aggregate([
+                        {
+                            $unset: "<field>"
+                        }
+                    ])
+                -> To remove multiple fields, The $unset takes an array of fields to remove.
+                    db.<collection_name>.aggregate([
+                        {
+                            $unset: ["<field1>", "<field2>"]
+                        }
+                    ])
+
+        Example: 
+                db.employee_details.aggregate([
+                    { 
+                        $unset: "address.phone.type"
+                    }
+                ])
+
+    4. $project Stage
+        - used to include fields, exclude _id field, add new fields and replace the existing field 
+            value in the output document
+
+                Specification	                Description
+            field : <1 or true>	        include the field in the output document.
+            _id : <0 or false>	        exclude the _id from the output document.
+            field : <expression>	    add the new field or replace the existing field value.
+            field : <0 or false>	    excluding any field (except _id) in $project prevents using 
+                                                other inclusion/expression specification.
+
+        Syntax:
+                db.<collection_name>.aggregate([
+                    {
+                        $project: {
+                            <specification>
+                        }
+                    }
+                ])
+
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {
+                                $project:{"name.firstName":1, "name.lastName":1, "salary":1, "_id":0}
+                        }
+                ])
+
+    5. $count Stage
+        - returns the count of the documents present in the selected collection. 
+
+        Syntax:
+                db.<collection_name>.aggregate([
+                    {
+                        $count: "<fieldName>"
+                    }
+                ])
+                
+        Example: 
+                db.employee_details.aggregate([
+                    {  $count: "employees_count" }
+                ])
+
+    6. $unwind Stage
+        - deconstructs an array field into separate documents
+        - If the field isn’t an array but exists (not null/missing/empty), it’s treated as a 
+            single-element array, and includeArrayIndex is set to null.
+
+        Syntax:
+                db.<collection_name>.aggregate(
+                    [
+                        {
+                            $unwind:
+                            {
+                                path: <field path>,
+                                includeArrayIndex: <string>,
+                                preserveNullAndEmptyArrays: <boolean>
+                            }
+                        }
+                ])
+                
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {$skip : 3},
+                        { $unwind: "$skills" }
+                    ]
+                )
+    
+    7. $limit Stage
+        - used to limit the number of documents passed to the next stage in pipeline.
+
+        Syntax:
+                db.<collection_name>.aggregate(
+                    [
+                        {
+                            $limit: <positive 64-bit integer> 
+                        }
+                ])
+                
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {$limit : 2},
+                        {$count : "employees_count" }
+                    ]
+                )
+    
+    8. $sort Stage
+        - orders documents by one or more fields
+        - applying sort keys left to right (first by <field1>, then by <field2> for ties).
+        - 1 Ascending
+        - -1 Descending
+
+        Syntax:
+                db.<collection_name>.aggregate(
+                    [
+                        {
+                            $sort: { <field1>: <sort order>, <field2>: <sort order> ... } 
+                        }
+                ])
+                
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {$sort : {"name.firstName" : 1}}
+                ])
+
+                db.employee_details.aggregate(
+                    [
+                        {$sort : {"name.firstName" : -1}}
+                ])
+    
+    9. $sortByCount Stage
+        - groups documents by a field, counts each group, and returns the results sorted by count in 
+            descending order.
+
+        Syntax:
+                db.<collection_name>.aggregate(
+                    [
+                        {$sortByCount : "<field path>"}
+                ])
+                
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {$unwind : "$skills"},
+                        {$sortByCount : "$skills"}
+                ])
+
+    10. $skip Stage
+        - used to skip the number of documents and passes the remaining documents to the next stage 
+            in the pipeline
+        - returns the remaining documents
+
+        Syntax:
+                db.<collection_name>.aggregate(
+                    [
+                        { $skip: <positive 64-bit integer> }
+                ])
+                
+        Example: 
+                db.employee_details.aggregate(
+                    [
+                        {$skip : 3}
+                ])

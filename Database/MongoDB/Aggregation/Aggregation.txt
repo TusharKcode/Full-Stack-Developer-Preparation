@@ -1,0 +1,39 @@
+-> It processes documents through a pipeline of stages to transform, analyze, and compute results 
+    directly in the database.
+
+    - Processes data step by step through pipeline stages.
+    - Performs computations on the server to reduce client load.
+    - Transforms and reshapes documents for analytics.
+
+Aggregation Approaches:
+    1. Single Purpose Aggregation
+        - used for quick, simple analytics like counting documents or fetching distinct field values
+            without using the aggregation pipeline.
+        -> count(): Returns the number of documents in a collection.
+        -> distinct(): Retrieves unique values for a specified field.
+        -> estimatedDocumentCount(): Provides an estimated count of documents.
+
+        Example:
+                db.users.aggregate([
+                    { $group: { _id: "$city", totalUsers: { $sum: 1 } } }
+                ])
+
+    2. MongoDB Aggregation Pipeline
+        - a multi-stage process where each stage transforms documents.
+        - The output of one stage becomes the input for the next, with each stage filtering, 
+            modifying, or computing on documents until the final result is produced.
+        - Filters that will operate like queries.
+        - Provide pipeline tools for grouping and sorting documents.
+        - can run on sharded collections, where processing is distributed across shards and results 
+            are merged efficiently.
+
+        Example:
+                db.collection.aggregate([
+                    {
+                        $group: {
+                        _id: "$groupField",          
+                        totalCount: { $sum: 1 }      
+                        }
+                    }
+                ])
+
