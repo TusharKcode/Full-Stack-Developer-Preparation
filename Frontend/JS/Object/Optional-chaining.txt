@@ -1,0 +1,20 @@
+The optional chaining operator (?.) is a useful tool in JavaScript that lets you safely access 
+    object properties or call methods without worrying whether they exist. 
+
+    Example: 
+        const user = {
+        name: "John",
+        profile: {
+                email: "john@example.com",
+                address: {
+                    street: "123 Main St",
+                    city: "Somewhere"
+                }
+            }
+        };
+
+        console.log(user?.profile?.address?.street); // "123 Main St"
+        console.log(user?.profile?.phone?.number);   // undefined
+
+=> If the value before the ?. is null or undefined, JavaScript returns undefined rather than 
+    attempting to proceed with the operation and throwing an error.

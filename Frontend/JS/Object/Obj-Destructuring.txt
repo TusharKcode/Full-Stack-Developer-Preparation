@@ -1,0 +1,65 @@
+- It allows you to extract values from objects and assign them to variables in a more concise and 
+    readable way.
+    - It's part of the ES6 (ECMAScript 2015) specification.
+
+=> Object destructuring is about unpacking values from objects into distinct variables.
+    Instead of accessing object properties one by one, you can extract multiple properties in a 
+    single statement.
+
+Example: 
+            const person = { name: "Alice", age: 30, city: "New York" };
+
+            const { name, age } = person;
+
+            console.log(name); // Alice
+            console.log(age);  // 30
+
+- Object destructuring is that you can assign the extracted values to variables with different names.
+Example:
+            let person = { name: "Alice", age: 30, city: "New York" };
+
+            let { name: personName, age: personAge } = person;
+
+            console.log(personName); // Alice
+            console.log(personAge); //  30
+
+- Object destructuring also allows you to set default values. If a property doesn't exist in the 
+    object you're destructuring, you can specify a fallback value.
+Example:
+            let person = { name: "Alice", age: 30, city: "New York" };
+            let { name, age, country = "Unknown" } = person;
+
+            console.log(country); // Unknown
+
+- Another common case is nested object destructuring. You can destructure properties nested inside 
+    other objects by using another set of braces.
+Example:
+            const recipe = {
+            name: "Chocolate Cake",
+                ingredients: {
+                    flour: "2 cups",
+                    sugar: "1 cup"
+                }
+            };
+
+            // Extract `flour` from `ingredients`
+            const { ingredients: { flour } } = recipe;
+            console.log(flour); // "2 cups"
+
+            OR
+        
+            const flour = recipe.ingredients.flour;
+            console.log(flour); // "2 cups"
+
+Shorthand notation:
+    let name = "Bob";
+    let age = 25;
+    let person = { name, age };
+    console.log(person); // { name: "Bob", age: 25 }
+
+    function createPerson(name, age) {
+        return { name, age };
+    }
+
+    let person = createPerson("Charlie", 35);
+    console.log(person); // { name: "Charlie", age: 35 }
