@@ -1,0 +1,38 @@
+Map-Reduce is an older feature in MongoDB and is generally replaced by the aggregation pipeline for 
+    better performance and flexibility.
+
+    - Processes large datasets for aggregation.
+    - Uses map (emit key–value) and reduce (aggregate by key).
+    - Stores results in a new collection.
+    - Supports custom logic like sum, max, and avg.
+
+    Syntax:
+            db.collection.mapReduce(
+                mapFunction,
+                reduceFunction,
+                {
+                    query: <filter>,
+                    out: <outputCollection>
+                }
+            )
+
+    Step 1: Define the map function
+            var map = function () {
+                emit(this.sec, this.marks);
+            }
+    
+    Step 2: Define the Reduce Function
+            var reduce = function (sec, marks) {
+                return Array.max(marks)
+            }
+
+    Step 3: Run Map-Reduce
+            db.collectionName.mapReduce(map, reduce, { out: "collectionName" })
+
+    Step 4: View Result
+            db.collectionName.find()
+    
+    Output:
+    {"_id":"A", value:90}
+    {"_id":"B", value:99}
+    {"_id":"C", value:90}
