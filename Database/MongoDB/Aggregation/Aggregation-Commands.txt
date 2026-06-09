@@ -1,0 +1,166 @@
+$out stage in MongoDB allows you to persist the results of an aggregation pipeline by writing them 
+    to a collection, making pre-processed data available for reporting, analytics, and future queries.
+
+    -> Must be the last stage in the aggregation pipeline.
+    -> Stores results for later use without re-running complex aggregations.
+    Features: 
+            - Stores Aggregation Results
+            - Creates or Replaces Collections
+            - Optimizes Repeated Queries
+            - Supports Analytical Workloads
+            - Final Stage Requirement
+
+    Syntax: { $out: { db: "<output-db>", coll: "<output-collection>" } }
+
+The count() method improve was used to return the number of documents matching a query, but it is now 
+    deprecated in MongoDB.
+    
+    -> Supports optional filters to narrow the count scope.
+    -> Can be called on a collection or cursor.
+    -> Functionally similar to db.collection.find().count()
+    -> Avoid Using count() in Transactions
+
+    Syntax of count() Method
+                            The count() method can be used in two ways:
+
+                                1. Count all documents in a collection:
+                                    db.Collection_Name.count()
+
+                                2. Count documents that match a filter condition:
+                                    db.collectionName.count(
+                                        selectionCriteria,
+                                        {
+                                            limit: <integer>,
+                                            skip: <integer>,
+                                            hint: <string or document>,
+                                            maxTimeMS: <integer>,
+                                            readConcern: <string>,
+                                            collation: <document>
+                                        }
+                                    )
+
+The $lookup stage in MongoDB performs a left outer join between collections, enabling relational-like 
+    queries within the aggregation framework.
+    -> Matches records based on specified local and foreign fields.
+    -> Returns matched documents as an array field in the result.
+
+    Syntax:
+            {
+                $lookup: {
+                    from: <foreignCollection>,  // name of the foreign collection to join with.
+                    localField: <fieldInInputDocument>, // field from the input documents used for matching
+                    foreignField: <fieldInForeignDocument>, // field from the foreign collection used for matching
+                    as: <outputArrayField>  //  name of the output array field
+                }
+            }
+
+    Example: 
+        1: Perform a Single Equality Join with $lookup
+            db.orders.aggregate([
+                {
+                    $lookup: {
+                        from: "customers",
+                        localField: "customer_id",
+                        foreignField: "_id",
+                        as: "customer_details"
+                    }
+                }
+            ])
+
+        2: Use $lookup with Pipeline and $expr
+            db.orders.aggregate([
+                {
+                    $lookup: {
+                        from: "customers",
+                        let: { customerId: "$customer_id" },
+                        pipeline: [
+                            {
+                            $match: {
+                                $expr: { $eq: ["$_id", "$$customerId"] }
+                            }
+                            }
+                        ],
+                        as: "customer_details"
+                    }
+                }
+            ])
+
+        3: Use $lookup with $mergeObjects
+            db.orders.aggregate([
+                {
+                    $lookup: {
+                        from: "customers",
+                        localField: "customer_id",
+                        foreignField: "_id",
+                        as: "customer_info"
+                    }
+                },
+                {
+                    $addFields: {
+                        customer_details: {
+                        $mergeObjects: { $arrayElemAt: ["$customer_info", 0] }
+                        }
+                    }
+                }
+            ])
+
+        4: Perform Multiple Joins and a Correlated Subquery with $lookup
+        db.orders.aggregate([
+            {
+                $lookup: {
+                    from: "customers",
+                    let: { customerId: "$customer_id" },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: { $eq: ["$_id", "$$customerId"] }
+                            }
+                        },
+                        {
+                            $lookup: {
+                                from: "products",
+                                localField: "_id",
+                                foreignField: "customer_id",
+                                as: "products_ordered"
+                            }
+                        }
+                    ],
+                    as: "customer_details"
+                }
+            }
+        ])
+
+The $first operator in MongoDB returns the first document’s field value from each group in an 
+    aggregation pipeline, based on the current sort order.
+
+    -> Used within the $group stage of the aggregation pipeline.
+    Syntax:
+            {
+                $group: {
+                    _id: <expression>,
+                    firstField: { $first: "$fieldName" }
+                }
+            }
+
+    Example:
+        1: Find the oldest student in each grade after sorting
+        db.students.aggregate([
+            { $sort: { grade: 1, age: -1 } },
+            {
+                $group: {
+                    _id: "$grade",
+                    oldestStudent: { $first: "$name" }
+                }
+            }
+        ])
+
+        2: Handling Multiple Fields
+            db.students.aggregate([
+                {
+                    $group: {
+                        _id: "$grade",
+                        oldestStudentFirst: { $first: "$name" },
+                        oldestStudentLast: { $last: "$name" }
+                    }
+                }
+            ])
