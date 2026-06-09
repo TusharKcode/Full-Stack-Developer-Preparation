@@ -1,0 +1,113 @@
+Loops in programming are used to repeat a block of code multiple times.
+
+Syntax: 
+            for (initialization; condition; increment or decrement) {
+                // code block to be executed
+            }
+
+The initialization statement is executed before the loop starts. It is typically used to initialize 
+    a counter variable. 
+    - A counter variable is a variable that is used to keep track of how many times the loop has run.
+The condition statement is evaluated before each iteration of the loop. An iteration is a 
+    single pass through the loop.
+    - If the condition is true, the code block inside the loop is executed. If the condition is false,
+        the loop stops and you move on to the next block of code.
+The last part of the loop is the increment/decrement statement. This statement is executed after 
+    each iteration of the loop. It is typically used to increment or decrement the counter variable.
+
+Example:
+        for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }
+
+=> "For...of Loop Work"
+    - used when you need to loop over values from an iterable.
+    - iterables would be arrays, and strings.
+    - If you have an array of numbers, the variable would be the current number in the array. 
+    - If you have a string, the variable would be the current character in the string.
+    - can use let, or const when declaring the variable in a for...of loop.
+    - use const though, make sure that the value of the variable does not change inside the loop.
+
+    Syntax:
+            for (variable of iterable) {
+                // code block to be executed
+            }
+    Example: 
+            const numbers = [1, 2, 3, 4, 5];
+            for (const num of numbers) {
+                console.log(num);
+            }
+
+            const str = 'freeCodeCamp';
+            for (let char of str) {
+                console.log(char);
+            }
+
+            const people = [
+                { name: 'John', age: 30 },
+                { name: 'Jane', age: 25 },
+                { name: 'Jim', age: 40 }
+            ];
+            for (const person of people) {
+                console.log(`${person.name} is ${person.age} years old`);
+            }
+
+- An inherited property is a property that is inherited from the object's prototype chain
+- A non-numeric property is a property that is not a number or a string that can be converted to a 
+    number.
+
+=> "For...in Loop"
+    - used when you need to loop over the properties of an object.
+    - iterate over all enumerable properties of an object, including inherited properties and 
+        non-numeric properties.
+
+    Syntax:
+            for (variable in object) {
+                // code block to be executed
+            }
+    Example:
+            const fruit = {
+                name: 'apple',
+                color: 'red',
+                price: 0.99
+            };
+            for (const prop in fruit) {
+                console.log(fruit[prop]);
+            }
+
+            const person = {
+                name: 'John',
+                age: 30,
+                address: {
+                    street: '123 Main St',
+                    city: 'Anytown',
+                    state: 'CA'
+                }
+            };
+            for (const prop in person) {
+                console.log(person[prop]);
+            }
+
+            const person = {
+                name: 'John',
+                age: 30,
+                address: {
+                    street: '123 Main St',
+                    city: 'Anytown',
+                    state: 'CA'
+                }
+            };
+                        // The Array.isArray method is used to check if the value is an array. 
+            function isObject(obj) {
+                return typeof obj === 'object' && !Array.isArray(obj) && obj !== null;
+            }
+
+            for (const prop in person) {
+                if (isObject(person[prop])) {
+                    for (const nestedProp in person[prop]) {
+                        console.log(person[prop][nestedProp]);
+                    }
+                } else {
+                    console.log(person[prop]);
+                }
+            }

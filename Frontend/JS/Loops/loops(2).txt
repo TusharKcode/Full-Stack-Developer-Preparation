@@ -1,0 +1,71 @@
+=> "While Loop"
+    - A while loop will run a block of code as long as the condition is true. 
+    - The condition is checked before the block of code is executed. If the condition is false, 
+        the block of code will not be executed.
+
+    Syntax:
+            while (condition) {
+                // code block to be executed
+            }
+    Example:
+            let counter = 0;
+            while(counter < 5) {
+                console.log(counter);
+                counter++;
+            }
+
+=> "do...while loop"
+    - do...while loop will execute the block of code at least once before checking the condition.
+    - If the condition is true, the block of code will continue to execute. 
+    - If the condition is false, the block of code will stop executing.
+
+    Syntax:
+            do {
+                // code block to be executed
+            } while (condition);
+    Example:
+            let counter = 0;
+            do {
+                console.log(counter);
+                counter++;
+            } while (counter < 5);  
+
+=> "Break"
+    - used to exit a loop early
+
+    Example:
+            for (let i = 0; i < 10; i++) {
+                if (i === 5) {
+                    break;
+                }
+                    console.log(i);
+            }
+
+=> "Continue"
+    - used to skip the current iteration of a loop and move to the next one.
+
+    Example:
+            for (let i = 0; i < 10; i++) {
+                if (i === 5) {
+                    continue;
+                }
+                    console.log(i);
+            }
+
+- Both the break and continue statements is to use labels to specify which loop you want to break or 
+    continue.
+    Example:
+    outerLoop: for (let i = 0; i < 3; i++) {
+        innerLoop: for (let j = 0; j < 3; j++) {
+            if (i === 1 && j === 1) {
+                break outerLoop;
+            }
+            console.log(`i: ${i}, j: ${j}`);
+        }
+    }
+
+    Output: 
+            "i: 0, j: 0"
+            "i: 0, j: 1"
+            "i: 0, j: 2"
+            "i: 1, j: 0"
