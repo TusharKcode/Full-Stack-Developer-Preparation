@@ -1,0 +1,19 @@
+"Memory Management"
+    - JavaScript code in a web browser, it needs memory to store all the information its working with.
+    - Includes variables, functions, objects, basically everything your code creates and uses.
+
+=> Memory management is the process of controlling this memory, allocating it when needed, and freeing it 
+    up when it's no longer needed.
+
+    - JavaScript however uses automatic memory management.
+    - This means that JavaScript (more specifically the JavaScript engine in your web browser) takes care 
+        of memory allocation and deallocation for you.
+    - This automatic process is often called garbage collection.
+
+    Workflow:
+        - First allocation happens when you create a variable, objects or functions in your JavaScript 
+            code, memory is automatically allocated to store them.
+        - Then you use this allocated memory when you work with these variables, objects or functions in 
+            your code.
+
+    - JavaScript engine has clever ways to figure out when something in memory is no longer needed.

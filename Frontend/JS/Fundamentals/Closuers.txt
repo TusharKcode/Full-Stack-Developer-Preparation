@@ -1,0 +1,57 @@
+-> It is a function that has access to variables in its outer enclosing lexical scope, even after the
+    outer function has returned. 
+
+Example: 
+        function outerFunction(x) {
+            let y = 10;
+            function innerFunction(){
+                console.log(x + y);
+            }
+            return innerFunction;
+        }
+
+        let closure = outerFunction(5);
+        console.log(closure()); // 15
+
+-> The inner function maintains a reference to its outer lexical environment, preserving access to the 
+    variables in that environment even after the outer function has completed.
+
+Closures are particularly useful for creating private variables and functions.
+Example: 
+        function createCounter() {
+            let count = 0;
+            return function () {
+                count++;
+                return count;
+            };
+        }
+
+        let counter = createCounter();
+        console.log(counter()); // 1
+        console.log(counter()); // 2
+
+Closures can also capture multiple variables from their outer scope. 
+Example:
+        function multiply(x) {
+            return function (y) {
+                return x * y;
+            };
+        }
+
+        let double = multiply(2);
+        console.log(double(5)); // 10
+
+Closures is that they capture variables, by reference not by value. This means if the value of a captured 
+    variable changes, the closure will see the new value.
+Example:
+        function createIncrementer() {
+            let count = 0;
+            return function () {
+                count++;
+                console.log(count);
+            };
+        }
+
+        let increment = createIncrementer();
+        increment(); // 1
+        increment(); // 2

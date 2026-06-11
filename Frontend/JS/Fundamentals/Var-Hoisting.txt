@@ -1,0 +1,51 @@
+"Var"
+- When you declare a variable with var, it becomes function-scoped or globally-scoped.
+- If you declare a variable inside a function using var it's only accessible within that function.
+
+- If you declare it outside any function, it becomes a global variable accessible throughout your entire 
+    script. 
+- This sometimes lead to unexpected results.
+
+- A problem with var is that it allows you to redeclare the same variable multiple times without throwing 
+    an error.
+- Lead to accidental overwrites
+
+- Lack of block scoping. 
+- Variables declared with var inside a block like an if statement or a for loop are still accessible 
+    outside that block.
+
+"Hositing"
+- Hoisting is JavaScript's default behavior of moving declarations to the top of their respective scopes 
+    during the compilation phase before the code is executed.
+- Declaration is hoisted, not the initialization means you can use a variable in your code before you 
+    have declared it, but its value will be undefined until you actually assign a value to it.
+
+Example:
+        console.log(x); // undefined
+        var x = 5;
+        console.log(x); // 5
+
+- JavaScript runs in two phases: the compilation phase and the execution phase.
+    -> During the compilation phase, the JavaScript engine goes through your code and sets up memory space 
+        for variables and functions.    
+        This is where hoisting comes into play.
+
+    => Function hoisting
+        - When you declare a function using the function declaration syntax both the function name and the 
+            function body are hoisted. 
+        - means you can call a function before you've declared it in your code.
+        
+        Example:
+            sayHello(); // "Hello, World!"
+            function sayHello(){
+                console.log("Hello, World!");
+            }
+
+- Hoisting works differently with let and const declarations introduced in ES6.
+Example: 
+        console.log(y); // Throws a ReferenceError
+        let y = 10;
+
+    => These declarations are hoisted but they are not initialized and you can't access them before the 
+        actual declaration in your code. 
+        This is often referred to as the temporal dead zone.

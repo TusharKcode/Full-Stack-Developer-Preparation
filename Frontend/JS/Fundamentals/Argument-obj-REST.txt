@@ -1,0 +1,104 @@
+"Argument Object"
+    - You can create functions with a number of parameters and call that function with arguments.
+
+    Example: 
+    // function definition
+        function getSum(num1, num2) {
+            return num1 + num2;
+        }
+
+    // function call
+        getSum(3, 4); // 7
+
+In below given Example:
+    - JavaScript will not throw an error in this case.
+    - Instead ignore the extra argument and just add the numbers 3 and 4 together.
+// function definition
+function getSum(num1, num2) {
+  return num1 + num2;
+}
+
+// function call with extra argument
+console.log(getSum(3, 4, 5)); // 7
+
+    => Functions that accept a variable number of arguments are known as variadic functions.
+        If working with this you can utilize the arguments object. 
+        This array-like object contains the values of the arguments passed into the function.
+    
+    Example:
+    function logArgs() {
+        for (const arg of arguments) {
+            console.log(arg);
+        }
+    }
+
+    logArgs(1, 2, 3);
+        // result:
+        // 1
+        // 2
+        // 3
+
+    logArgs("example"); // "example"
+
+    // you can access an argument at a specific index like this:
+        function getArg() {
+            return arguments[1];
+        }
+
+        console.log(getArg(2, 4, 6)); // 4
+    
+    // You can also use the length property like this to get the number of arguments the function was 
+        called with:
+    Example:
+            function getArgs() {
+                return arguments.length;
+            }
+
+            console.log(getArgs("Example")); // 1
+            console.log(getArgs("Another", "Example")); // 2
+
+- It does not have built in Array methods like includes or push.
+    To have access to those methods, you would need to first convert the arguments object to a real array 
+        using something like slice, Array.from() or the spread operator:
+    Example: 
+            function hasCat() {
+                return [...arguments].includes("cat");
+            }
+
+            console.log(hasCat("dog", "chicken", "cat")); // true
+            console.log(hasCat("dog", "chicken", "horse")); // false
+
+"Rest Parameters"
+    - Modern JavaScript applications will use the rest parameter syntax instead.
+    - One restriction is that function definitions can only have one rest parameter. 
+    - Another restriction is that the rest parameter cannot have a default value. Otherwise, SyntaxError 
+        will be thrown.
+
+    Just make sure it is the last parameter in the function definition like this:
+            function exampleFunction(a, b, ...restOfArgs) {
+                // some code here
+            }
+
+            function anotherFunction(x, y, ...theArgs) {
+                // some code here
+            }
+Example:
+        function logArgs(...args) {
+            for (const arg of args) {
+                console.log(arg);
+            }
+        }
+
+        logArgs(1, 2, 3);
+        // result:
+        // 1
+        // 2
+        // 3
+
+
+                                    Argument V/S Rest
+
+- arguments object is not a real array, doesn't support methods like includes, pop and push. 
+- rest parameter is an Array instance. Can use valid built in array methods without needing to convert it 
+    to a real array first.
+

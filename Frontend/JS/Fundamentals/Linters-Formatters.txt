@@ -1,0 +1,13 @@
+These tools are essential for developers to ensure code quality and consistency across projects and teams.
+
+-> A "linter" is a static code analysis tool that flags programming errors, bugs, stylistic errors, and 
+    suspicious constructs.
+    - The term lint comes from a Unix utility that examines C language source code.
+    - First they catch potential errors before runtime. 
+    - A popular linter for JavaScript is ESLint.
+
+-> "Formatters" on the other hand are tools that automatically format your code to adhere to a specific 
+    style guide.
+    - designed to rewrite your code to match a predetermined style.
+    - A popular formatter for JavaScript is Prettier.
+

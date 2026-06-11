@@ -1,0 +1,61 @@
+A module is a self-contained unit of code that encapsulates related functions, classes, or variables.
+    - Module focuses on a specific functionality, making your code more organized, maintainable, and 
+        reusable.
+    - It help prevent naming conflicts and allow you to structure your application into separate, 
+        interconnected pieces.
+    - Most widely used and supported approach is the ES6 (ECMAScript 2015) module system.
+
+    => They allow you to break your application into smaller, manageable pieces, promote code reuse, and 
+        help maintain a clean separation of concerns. 
+
+To create a module, you write your JavaScript code in a separate file. Any variables, functions, or 
+    classes you want to make available to other parts of your application need to be 
+    explicitly exported.
+    - You can do this using the export keyword.
+To use these exported items in another part of your application, you need to import them.
+    - This is done using the import keyword.
+
+Example: 
+        // math.js file
+        export function add(a, b) {
+            return a + b;
+        }
+
+        export function subtract(a, b) {
+            return a - b;
+        }
+
+        const PI = 3.14159;
+        export { PI };
+
+        // Another file (main.js)
+        import { add, subtract, PI } from './math.js';
+        console.log(add(5, 3));        // Outputs: 8
+        console.log(subtract(10, 4));  // Outputs: 6
+        console.log(PI);               // Outputs: 3.14159
+
+        // You might want to import everything a module exports. You can do this using the asterisk (*) syntax:
+            // In this case, all exports from math.js are imported as properties of an object called Math.
+        import * as Math from './math.js';
+        console.log(Math.add(5, 3));        // Outputs: 8
+        console.log(Math.subtract(10, 4));  // Outputs: 6
+        console.log(Math.PI);               // Outputs: 3.14159
+
+Another common pattern is to have a default export in a module. This is typically used when a module 
+    primarily exports a single function. 
+    - You can only have one default export per module.
+
+Example: 
+        // In math.js
+        export default function multiply(a, b) {
+            return a * b;
+        }
+
+        // In app.js
+        import multiply from './math.js';
+
+        console.log(multiply(4, 5));  // Outputs: 20
+
+It's important to note that to use ES6 modules in the browser, you need to specify the type as module in 
+    your script tag:
+                    <script type="module" src="app.js"></script>
