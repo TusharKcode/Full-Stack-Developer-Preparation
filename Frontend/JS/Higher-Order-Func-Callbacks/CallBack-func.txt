@@ -1,0 +1,32 @@
+A callback function is a function that is passed as an argument to another function, so that the outer 
+    function can invoke it at a specific point.
+
+Imagine you have a function, and within the function you want to do something multiple times. 
+    Instead of writing all the code in one big function, you can pass a second function (the callback) 
+    to be executed whenever you need that specific something to be done.
+
+'forEach' is a built-in method for arrays in JavaScript. 
+    - Allows you to iterate over each element in an array and perform an operation on each element. 
+    - Operation you want to perform is defined in a callback function that you provide to forEach.
+
+    -> This callback function takes one parameter, which represents each element in the array.
+    -> The forEach method will call this callback function once for each element in the array.
+    -> You can also use an arrow function as the callback.
+
+Example:
+        let numbers = [1, 2, 3, 4, 5];
+        numbers.forEach(function(number) {
+            console.log(number * 2);
+        });
+
+=> The callback function in forEach can actually take up to three arguments: 
+                    - the current element, 
+                    - the index of the current element, and 
+                    - the array that forEach was called upon.
+
+    Example: 
+            let numbers = [1, 2, 3, 4, 5];
+            numbers.forEach((number, index, array) => {
+                console.log(`Element ${number} is at index ${index} in array ${array}`);
+            }); 
+            // Output: "Element 1 is at index 0 in array 1,2,3,4,5" and so on....

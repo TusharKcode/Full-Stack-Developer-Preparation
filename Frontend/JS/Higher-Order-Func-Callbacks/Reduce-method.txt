@@ -1,0 +1,23 @@
+The reduce method is a function in JavaScript that allows you to process an array and condense it into a 
+    single value.
+    - This single value can be a number, a string, an object, or even another array.
+    - It's called reduce because it reduces an array to a single output.
+
+-> At its core, reduce works by applying a function to each element in the array, in order, 
+    passing the result of each calculation on to the next. This function is often 
+    called the 'reducer function'.
+
+    It takes two main parameters: an accumulator and the current value.
+        - accumulator is where you store the running result of your operations
+        - current value is the array element being processed.
+        
+    -> If you don't provide an initial value, reduce will use the first element of the array as the 
+        initial accumulator and start the process from the second element.
+
+    Example: 
+            const numbers = [1, 2, 3, 4, 5];
+            const sum = numbers.reduce(
+                (accumulator, currentValue) => accumulator + currentValue,
+                0
+            );
+            console.log(sum); // 15

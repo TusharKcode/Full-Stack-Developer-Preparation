@@ -1,0 +1,33 @@
+The sort method is used to arrange the elements of an array and returns a reference to the sorted array.
+    No copy is made because the elements are sorted in place.
+
+Syntax: array.sort(compareFunction);
+    // The compareFunction is an optional parameter that specifies a function that defines the sort order. 
+
+Example:
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.sort();
+        console.log(fruits); // ["Apple", "Banana", "Mango", "Orange"]
+
+        // If we try to use the sort method on this numbers array, we will get unexpected results.
+            - because the sort method converts the elements to strings and then compares their sequences 
+                of UTF-16 code units values.
+            - The solution to this problem is to provide a compare function to the sort method.
+
+            const numbers = [414, 200, 5, 10, 3];
+            numbers.sort();
+            console.log(numbers); // [10, 200, 3, 414, 5]
+
+            const numbers = [414, 200, 5, 10, 3];
+            numbers.sort((a, b) => a - b);
+            console.log(numbers); // [3, 5, 10, 200, 414]
+
+            // The compare function should return a negative value if a should come before b, a positive 
+                value if a should come after b, and zero if a and b are equal.
+                - The first comparison is between the numbers 414 and 200. The result of 414 - 200 is 214, 
+                    which is a positive value. 
+                    This means that 414 should come after 200 in the sorted array.
+                - The next comparison is between the numbers 200 and 5. The result of 200 - 5 is 195, 
+                    which is a positive value. 
+                    This means that 200 should come after 5 in the sorted array.
+

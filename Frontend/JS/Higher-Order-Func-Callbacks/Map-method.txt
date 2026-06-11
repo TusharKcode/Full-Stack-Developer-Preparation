@@ -1,0 +1,27 @@
+The map method in JavaScript that operates on arrays.
+    - It is designed to create a new array by applying a given function to each element of the original 
+        array.
+
+    - This method does not modify the original array but instead returns a new array containing the 
+        results of the function applied to each element.
+
+    - The map method accepts a callback function where the function is called on every single element 
+        in the array.
+Example:
+        const numbers = [1, 2, 3, 4, 5];
+        const doubled = numbers.map((num) => num * 2);
+        console.log(numbers); // [1, 2, 3, 4, 5]
+        console.log(doubled); // [2, 4, 6, 8, 10]
+
+-> The callback function can accept up to three arguments.
+    - first argument is the current element being processed.
+    - The second argument is the index of the current element being processed.
+    - third argument is the array where map is being called on.
+
+    Example: 
+    const numbers = [3, 4, 5, 6, 7].map((element, index, array) => {
+        console.log("Element:", element);
+        console.log("Index:", index);
+        console.log("Array:", array);
+        return element * 2;
+    });

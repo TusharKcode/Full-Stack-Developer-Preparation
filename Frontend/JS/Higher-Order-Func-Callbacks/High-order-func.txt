@@ -1,0 +1,50 @@
+Higher order function is a function that either takes one or more functions as arguments, returns a 
+    function, or both.
+
+To understand higher order functions: 
+    Let's consider functions as first-class citizens in JavaScript.
+    This means that functions can be treated like any other value – they can be assigned to variables, 
+        passed as arguments to other functions, and returned from functions.
+    This flexibility is what enables the creation and use of higher order functions.
+
+    => One common use of higher order functions is to abstract away complex operations.
+
+=> Instead of writing separate functions for different operations, you can create a higher order function 
+    that takes the operation as an argument.
+    This allows you to reuse the same function structure with different behaviors.
+
+Example: 
+        function operateOnArray(arr, operation) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result.push(operation(arr[i]));
+        }
+        return result;
+        }
+
+        function double(x) {
+            return x * 2;
+        }
+
+        let numbers = [1, 2, 3, 4, 5];
+        let doubledNumbers = operateOnArray(numbers, double);
+        console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+
+=> Higher order functions can also return functions. This concept is often referred to as function factories. 
+    Example:
+            function multiplyBy(factor) {
+                return function(number) {
+                    return number * factor;
+                }
+            }
+
+            let double = multiplyBy(2);
+            let triple = multiplyBy(3);
+
+            console.log(double(5)); // 10
+            console.log(triple(5)); // 15
+
+=> Many built-in methods for arrays in JavaScript, such as map(), filter(), and reduce(), are higher order 
+    functions.
+    These methods take a function as an argument and apply it to the elements of the array in various ways.
+
