@@ -1,0 +1,36 @@
+"innerHTML"
+    - property of Element objects that you can use to set their HTML markup.
+    - set the HTML structure of an existing element with a string, creating all the necessary nodes.
+
+Example:
+    // We have an empty div and we'll add some elements within it using the innerHTML property:
+        <div id="container"></div>
+        <script src="index.js">
+            const container = document.getElementById("container");
+            container.innerHTML = "<ul><li>Cheese</li><li>Tomato</li></ul>";
+        </script>
+
+    -> The new nodes were created and added dynamically to the DOM after the string was parsed.
+        Have some security risk - You shouldn't use it if you won't have full control over the string.
+            Ex: if the string will be entered by the user, you shouldn't use innerHTML because the 
+                    user might insert malicious content into your website.
+                usually recommended to use textContent instead, to insert plain text.
+
+"createElement()"
+    - you can create a new element by specifying its tag name.
+    - returns a new HTMLElement object if the document is an HTMLDocument
+    - Else, it returns an Element object.
+
+Example: 
+    // if you want to create an image element, you would pass the img tag as a string when calling this 
+        method.
+    // you can add it to the DOM as a child of another existing element using the appendChild() method/
+
+        <div id="container"></div>
+        <script src="index.js">
+            const container = document.getElementById("container");
+            const img = document.createElement("img");
+            img.src = "https://cdn.freecodecamp.org/curriculum/cat-photo-app/lasagna.jpg";
+            img.alt = "A slice of lasagna on a plate.";
+            container.appendChild(img);
+        </script>

@@ -1,0 +1,49 @@
+You can use this method to get a list of all the DOM elements that match a specific CSS selector.
+
+call the querySelectorAll() method: document.querySelectorAll(selectors);
+    - Call it on the document object and pass a string with the CSS selectors as an argument.
+
+-> querySelectorAll() returns a NodeList object, a collection of nodes that match the specified 
+    CSS selector.
+
+-> The list will contain one Element object for each element that matches the CSS selectors. 
+    If no matches are found, the list will be empty.
+
+Example: 
+            document.querySelectorAll("div");
+
+        - All elements with a specific class:
+            document.querySelectorAll(".rounded");
+
+        - All elements with a specific ID:
+            document.querySelectorAll("#logo");
+        
+        - All elements with a specific attribute, like all links that take users to a specific URL:
+            document.querySelectorAll("a[href='https://www.freecodecamp.org/']");
+
+-> You can also use more complex CSS selectors, like this one, which matches all list items within 
+    an unordered list element with the class ingredients:
+                    document.querySelectorAll("ul.ingredients li");
+
+Example:
+    If you have this unordered list with three list items:
+                <ul class="ingredients">
+                    <li>Flour</li>
+                    <li>Cheese</li>
+                    <li>Water</li>
+                </ul>
+
+    You can call the querySelectorAll() method to match all list items within the unordered list with 
+        the class ingredients and assign the return value to the matches constant:
+        
+        const matches = document.querySelectorAll("ul.ingredients li");
+
+    This will return a collection of three nodes. Each node represents a list item element:
+
+                // NodeList(3)
+                {
+                    0: `<li>Flour</li>`,
+                    1: `<li>Cheese</li>`,
+                    2: `<li>Water</li>`,
+                    length: 3,
+                }
