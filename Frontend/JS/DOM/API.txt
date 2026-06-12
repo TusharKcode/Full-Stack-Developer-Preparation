@@ -1,0 +1,24 @@
+API (Application Programming Interface) establish a set of rules and protocols that allow software 
+    applications to communicate with each other and exchange data efficiently.
+
+There are various types of APIs.
+    - Web APIs are specifically designed for web applications. 
+        Types of web APIs for client-side JavaScript development.
+
+These types of APIs are often divided into two main categories: browser APIs and third-party APIs.
+    -> Browser APIs expose data from the browser. As a web developer, you can access and manipulate this 
+        data using JavaScript.
+        - access to various functionalities, such as manipulating the structure of the website, 
+            handling events, working with storage, and communicating with the network.
+        - can use to handle user interactions and to get more information from the browser, 
+            like the user's current location.
+        - They already come built into the browser.
+        Example: 
+        - The DOM API, which you can use to manipulate HTML elements, their styles, and attributes.
+        - The Storage API, to store data locally on the user’s device.
+
+    -> Third-party APIs, which are not built into the browser by default. 
+        - They come with detailed documentation explaining how to use their services.
+        - including weather APIs, social media APIs, payment APIs, data APIs, translation APIs, and more.
+        Example:
+        - Google Maps API, which you can use to display interactive maps on your website.

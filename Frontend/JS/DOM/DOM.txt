@@ -1,0 +1,83 @@
+DOM (Document Object Model) is a programming interface that lets us interact with HTML documents.
+    - You can add, modify, or delete elements on a webpage.
+    - Make your website interactive by making elements listen to and respond to events.
+
+    In DOM, an HTML document is represented as a tree of nodes. 
+        Each element node represents an HTML element from the HTML document
+
+    Example: 
+            <!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <title>DOM Example</title>
+                </head>
+                <body>
+                    <h1>What is the DOM?</h1>
+                    <h2>Let's learn about the DOM</h2>
+                </body>
+            </html>
+
+    // diagram representing the basic DOM structure of our example.
+            Document
+            ========
+
+            HTML
+            -----
+
+            - Head
+                - Title
+            - Body
+                - H1
+                - H2   
+
+    -> To access these elements in JavaScript, you can use getElementById() and querySelector() methods. 
+        - These methods are web APIs because they provide standardized ways to interact with the DOM 
+            using JavaScript.
+        
+        - With getElementById(), you can get an object that represents the HTML element with the specified id.
+            Example: const container = document.getElementById("container");
+        
+        - With querySelector(), you can get the first element in the HTML document that matches the CSS 
+            selector passed as argument.
+
+    -> Other methods to match multiple elements, like getElementsByClassName() and querySelectorAll().
+
+Example: 
+        <div id="container">
+            <h1>Hello, World!</h1>
+            <p>Welcome to learning about the DOM.</p>
+        </div>
+        <script src="index.js">
+            const container = document.getElementById("container");
+            console.log(container); 
+        </script>
+
+        <section>
+            <h2>Section Title</h2>
+            <p>This is a section of the webpage.</p>
+        </section>
+        <script src="index.js">
+            const sectionEl = document.querySelector("section");
+            console.log(sectionEl);
+        </script>  
+
+        - If you want to select an element by its class name using querySelector(), you need to prefix the 
+            class name with a dot (.)
+
+            Example: 
+            <style>
+                body {
+                    background-color: lightgray;
+                }
+
+                .highlight {
+                    background-color: yellow;
+                }
+            </style>
+            <div class="highlight">
+                <p>This content is highlighted.</p>
+            </div>
+            <script src="index.js">
+                const highlightEl = document.querySelector(".highlight");
+                console.log(highlightEl);
+            </script>

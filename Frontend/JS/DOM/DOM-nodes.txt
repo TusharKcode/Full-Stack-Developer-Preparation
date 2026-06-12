@@ -1,0 +1,42 @@
+Just as a real tree has large and small branches connected in a hierarchical structure, DOM nodes 
+    also have direct and indirect relationships with one another. 
+
+Example:
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Tree Example</title>
+            </head>
+            <body>
+                <h1>Heading 1</h1>
+                <p>Paragraph 1</p>
+                <ul>
+                    <li>List item 1</li>
+                    <li>List item 2</li>
+                </ul>
+            </body>
+        </html>
+
+    -> The root of the DOM tree is the html element. Top-level container for all the content of an HTML 
+        document.
+
+    -> Below the root node, other nodes in the hierarchy. 
+        - A parent node is an element that contains other elements. 
+        - A child node is an element that is contained within another element.
+
+        Ex: body element is the parent of the paragraph element while the paragraph element is a child 
+            of the body element.
+            Elements are represented as nodes in the DOM tree with the same relationships.
+
+    -> Also have, Sibling nodes are elements that share the same parent. 
+        Ex: Two list item elements share the same unordered list parent, so they are siblings.
+            h1 and paragraph elements are siblings because they share the same parent, the body element.
+
+=> Descendant nodes are elements that are contained within another element, either directly or indirectly.
+    An element is considered a descendant of another one if it can be reached by going through the 
+        DOM tree downwards from its ancestor.
+    Ex: the list item li elements are descendants of the body element, since they are indirectly 
+            contained within it.
+
+=> An ancestor node is an element that is higher up in the DOM tree hierarchy than another element.
+    Ex: the body element is an ancestor of the list item li elements.
