@@ -1,0 +1,18 @@
+The dropIndex() method removes a specific index from a collection to help manage indexing and improve 
+    performance. 
+
+    - It cannot be used to drop the default _id index.
+    - dropIndex() removes one index at a time; use dropIndexes() to remove multiple indexes.
+    - Hidden indexes can also be dropped using this method.
+    - dropIndex("*") to remove multiple non-_id indexes.
+
+Syntax: db.collection_Name.dropIndex(index : <document/string>)
+
+Examples: 
+    1: Drop the Index Using the Index Name
+        db.student.dropIndex("name_2")
+
+    2: Drop the Index Using the Index Specification Document
+        db.student.dropIndex({ name: -1 })
+
+    

@@ -1,0 +1,25 @@
+It retrieves detailed information about all indexes on a collection.
+    - It review index keys and options to manage and optimize query performance effectively.
+
+Syntax: db.collection_name.getIndexes()
+
+The getIndexes() method returns an array of documents, where each document represents an index and contains 
+    details such as:
+                - The index keys.
+                - Options used to create the index (e.g., unique, sparse, etc.).
+                - Information about hidden indexes, if applicable (available from MongoDB 4.4).
+
+Examples: 
+
+    1: Retrieve Index Information for a Collection
+        db.student.getIndexes()
+
+    2: Create an Index Using createIndex() and View with getIndexes()
+        db.student.createIndex({name:1, language:-1})
+
+    3: Viewing Hidden Indexes
+        db.student.createIndex({ email: 1 }, { hidden: true, name: "email_hidden_index" })
+    Now, to view the hidden index, use the getIndexes() method:
+        db.student.getIndexes()
+
+    
