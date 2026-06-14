@@ -1,0 +1,14 @@
+setAttribute() method to add attributes to your HTML elements.
+    Syntax: setAttribute(attribute, value);
+
+    Example: 
+            <p id="para">I am a paragraph</p>
+
+        // To add a class attribute we first need to access that p element using the getElementById() 
+            method.
+        // we can use the setAttribute() method to add the class attribute and set the value to my-class.
+        // We are using outerHTML to log the entire HTML element including its attributes.
+
+            const para = document.getElementById("para");
+            para.setAttribute("class", "my-class");
+            console.log(`${para.outerHTML}`);

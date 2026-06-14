@@ -1,0 +1,16 @@
+The Event object is a payload that triggers when a user interacts with your web page in some way.
+    - Interactions can be anything from clicking on a button or focusing an input to shaking their 
+        mobile device.
+
+-> All Event objects will have the type property.
+    - This property reveals the type of event that triggered the payload, such as "keydown" or "click".
+    - These values will correspond to the same values you might pass to addEventListener(),
+        where you can capture and utilize the Event object.
+
+-> The target property is a reference to whatever object triggered the event.
+    - this will be some sort of HTMLElement object, or the Document or Window objects.
+    - like an AudioContext.
+
+=> Events also have methods, which are functions exposed as properties on the object. 
+    - preventDefault(), which prevents the default behavior of the event when called.
+    - stopPropagation() method prevents the event from bubbling up or propagating to parent elements. 

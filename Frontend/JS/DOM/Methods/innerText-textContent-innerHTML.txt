@@ -1,0 +1,40 @@
+These are properties that you can access in JavaScript to get or change the content of an HTML element
+
+=> innerText represents the visible text content of the HTML element and its descendants.
+    - doesn't include hidden text or HTML tags, only rendered text.
+    - innerText only returns the text that is visible at the particular moment when the string is 
+        requested. 
+    - If a child element is hidden, its text won't be visible.
+
+    -> Since innerText takes visibility into account, getting its value triggers a process called 
+        "reflow", that recalculates the position of certain elements on the website.
+        (avoid triggering it if possible.)
+        
+    Example: 
+            <div id="container">
+                <p>Hello, World!</p>
+                <p>I'm learning JavaScript</p>
+                <p hidden>I'm learning hidden JavaScript</p>
+            </div>
+            <script src="index.js">
+                const container = document.getElementById("container");
+                console.log(container.innerText);
+            </script>
+
+=> textContent returns the plain text content of an element, including all the text within its descendants.
+
+    - If you try to replace the value of textContent on a node, it will remove all its child nodes 
+        and replace them with a single text node containing the new string.
+
+    Example: 
+            <div id="container">
+                <p>Hello, World!</p>
+                <p hidden>I'm learning JavaScript</p>
+            </div>
+            <script src="index.js">
+                const container = document.getElementById("container");
+                container.textContent = "New content";
+            </script>
+
+=> innerHTML you can set the inner HTML content of an element. This is helpful for injecting new HTML 
+    into the DOM dynamically.

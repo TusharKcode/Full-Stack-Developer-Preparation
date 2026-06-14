@@ -1,0 +1,52 @@
+The removeEventListener() method is used to remove an event listener that was previously added to an 
+    element using the addEventListener() method.
+
+    Syntax: element.removeEventListener("event", listener);
+
+    Takes 2 arguments: 
+                    - the event you want to remove
+                    - the listener function that was previously added.
+
+        Optional third argument:  can either be the options or useCapture.
+            - The options argument is an object that specifies the options for the event listener, 
+                such as whether the event listener should be passive or once.
+            - The useCapture argument is a boolean value that specifies whether the event should be 
+                captured during the event propagation phase.
+
+Example: 
+        button {
+            background: linear-gradient(135deg, #4da3ff, #007bff);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        }
+        <h1>Event Listener examples</h1>
+        <button id="btn">Change background color</button>
+
+        const bodyEl = document.querySelector("body");
+        const btn = document.getElementById("btn");
+        let isBgColorGrey = true;
+        function toggleBgColor() {
+            bodyEl.style.backgroundColor = isBgColorGrey ? "blue" : "grey";
+            isBgColorGrey = !isBgColorGrey;
+        }
+        btn.addEventListener("click", toggleBgColor);
+
+Example: // When the paragraph is hovered over, the event listener for the button click event is 
+                removed, and the background color will no longer change when the button is clicked.
+        <h1>Event Listener examples</h1>
+        <p id="para">MouseOver this text to remove the event listener</p>
+        <button id="btn">Change background color</button>
+
+        const para = document.getElementById("para");
+        const btn = document.getElementById("btn");
+        para.addEventListener("mouseover", () => {
+            btn.removeEventListener("click", toggleBgColor);
+        });
+

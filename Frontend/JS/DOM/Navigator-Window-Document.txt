@@ -1,0 +1,31 @@
+An interface is a collection of methods and properties that define a particular object.
+
+=> The Navigator interface provides information about the browser environment, such as the user agent 
+    string, the platform, and the version of the browser.
+    - A user agent string is a text string that identifies the browser and operating system being used.
+
+Example: console.log(navigator.userAgent);
+
+    language property, which returns the language of the browser. You can use this property to display 
+    content in the user's preferred language.
+
+Example: console.log(navigator.language);
+
+=> The Window interface represents the browser window that contains the DOM document.
+    - It provides methods and properties for interacting with the browser window, such as resizing 
+        the window, opening new windows, and navigating to different URLs.
+
+Example: 
+        console.log(window.innerWidth); //if the browser window is 800 pixels wide, it will return 800.
+        console.log(window.location);   //location property, contains information about the current URL
+        console.log(location);
+
+=> The Document interface represents the DOM document that is displayed in the browser window. 
+    - Provides methods and properties for interacting with the DOM, such as selecting elements, 
+        creating new elements, and modifying the content of elements.
+
+Example: 
+        <p>Hello, World!</p>
+        <script src="index.js">
+            console.log(document.children);
+        </script>

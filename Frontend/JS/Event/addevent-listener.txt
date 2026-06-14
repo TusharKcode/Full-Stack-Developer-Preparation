@@ -1,0 +1,44 @@
+The addEventListener() method is used to listen for events.
+
+Takes 2 arguments: 
+    - the event you want to listen for
+    - a function that will be called when the event occurs.
+
+Syntax: element.addEventListener("event", listener);
+
+    // The element is the HTML element to monitor for events, and event specifies the type of event 
+        to listen for, such as "click".
+
+    // The listener is an object that will receive the notification when the event occurs. 
+
+Example:
+        element.addEventListener("click", () => {
+            // code to run when the click event occurs
+        });
+
+        function handleClick() {
+            // code to run when the click event occurs
+        }
+        element.addEventListener("click", handleClick);
+
+=> The listener argument can also be null, or it can be an object that uses the EventListener interface.
+    - It defines a single method called handleEvent()
+    - This method is automatically called whenever the event you're listening for occurs.
+    - Using this interface allows the same object to handle multiple events if needed.
+
+Example: 
+        <button id="btn">Show alert</button>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", () => alert("You clicked the button"));
+
+=> Another type of event that you can listen for is the "input" event. This event is triggered when the
+    value of an input element changes.
+
+    Example:
+            <input type="text" id="input" placeholder="Type something" />
+            const input = document.getElementById("input");
+            input.addEventListener("input", () => {
+                console.log(input.value);
+            });
+
+=> Some common events include mouseover, mouseout, keydown, keyup, and submit.
