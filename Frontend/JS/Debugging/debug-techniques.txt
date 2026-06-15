@@ -1,0 +1,115 @@
+The four common types of error messages are SyntaxError, ReferenceError, TypeError, and RangeError.
+
+    -> A SyntaxError happens when you write something incorrectly in your code, like missing a parenthesis, 
+        or a bracket.
+
+    -> A ReferenceError triggered in different ways: 
+        - The first type of ReferenceError would be not defined variables.
+        - trying to access a variable, declared with let or const, before it has been defined
+
+    -> A TypeError occur when you try to perform an operation on the wrong type.
+
+    -> A RangeError happens when your code tries to use a value that’s outside the range of what 
+        JavaScript can handle.
+
+=> The throw statement in JavaScript is used to throw a user defined exception
+    - when an unexpected event happens and disrupts the normal flow of the program.
+
+    Syntax: throw expression;
+
+    Example: 
+            function validateNumber(input) {
+                if (typeof input !== "number") {
+                    throw new TypeError("Expected a number, but received " + typeof input);
+                }
+                return input * 2;
+            }
+
+    // If you wanted to throw a more generic error message, then you can reference the Error constructor 
+        like this:
+
+        function divide(numerator, denominator) {
+            if (denominator === 0) {
+                throw new Error("Cannot divide by zero");
+            }
+            return numerator / denominator;
+        }
+
+=> try...catch...finally
+    - The try block is used to wrap code that might throw an error. It acts as a safe space to try 
+        something that could fail.
+    - The catch block captures and handles errors that occur in the try block. You can use the Error 
+        object inside catch to inspect what went wrong.
+    - The finally block runs after the try and catch blocks, regardless of whether an error occurred.
+        used for cleanup tasks, such as closing files or releasing resources.
+
+    Example: 
+            function processInput(input) {
+                if (typeof input !== "string") {
+                    throw new TypeError("Input must be a string.");
+                }
+
+                return input.toUpperCase();
+            }
+
+            try {
+                console.log("Starting to process input...");
+                const result = processInput(9);
+                console.log("Processed result:", result);
+            } catch (error) {
+                console.error("Error occurred:", error.message);
+            } finally {
+                // Code that runs regardless of whether an error occurred or not
+            }
+
+=> The "debugger" statement is a powerful JavaScript tool that lets you pause your code at a specific 
+    line to investigate what's going on in the program.
+
+    While JavaScript executes your code and hits a debugger statement, it immediately pauses 
+        execution at that line. 
+
+    To use the debugger statement, place it at the line in which you want the code execution to pause. \
+    Example: 
+            let firstNumber = 5;
+            let secondNumber = 10;
+            debugger; // Code execution pauses here
+            let sum = firstNumber + secondNumber;
+            console.log(sum);
+
+            function calculateTotalPrice(price, discountPercentage) {
+                debugger
+                let discountAmount = (price * discountPercentage) / 100
+                let totalPrice = price - discountAmount
+
+                console.log(`Original Price: ${price}`)
+                console.log(`Discount Amount: ${discountAmount}`)
+                console.log(`Total Price after Discount: ${totalPrice}`)
+
+                return totalPrice
+            }
+
+            let price = 100
+            let discount = 15
+
+            let finalPrice = calculateTotalPrice(price, discount)
+            console.log(`Final Price: ${finalPrice}`);
+
+"Advanced JavaScript Debugging Techniques"
+    - 'Breakpoints' let you pause the execution of your code at a specific line of your choice.
+        After the pause, you can inspect variables, evaluate expressions, and examine the call stack.
+
+    - Watch expressions lets you monitor the values of variables or expressions as the code runs even 
+        if they are out of the current scope.
+
+    - Profiling helps you identify performance bottlenecks by letting you capture screenshots and 
+        record CPU usage, function calls, and execution time.
+
+    - Inspecting network requests can help you debug issues related to API requests such as parameter 
+        errors, address errors, or server errors.
+
+    -> console.table() displays tabular data as a table in the console.
+        - It takes one mandatory argument, which must be an array or an object
+        - one optional argument to specify which properties or columns to display.
+    
+    -> console.dir() lets you display an interactive list of the properties of a specified JavaScript object.
+        - It outputs a hierarchical listing that can be expanded to see all nested properties.
