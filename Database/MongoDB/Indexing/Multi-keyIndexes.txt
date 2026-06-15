@@ -1,0 +1,20 @@
+MongoDB Multikey Indexes automatically index array fields to speed up queries on individual elements 
+    within arrays, improving performance for datasets with nested or list-based values.
+
+Limitations: 
+    -> Compound Multikey Restriction
+    -> Shard Key Limitation
+    -> $expr Limitation
+    -> Insertion Constraint
+
+
+// Create a Multikey Index
+
+    Syntax: db.Collection_name.createIndex({field_name: 1/ -1})
+
+    Examples: 
+        1: Index Basic Arrays
+            db.student.createIndex({language:1})
+
+        2: Index Arrays with Embedded Documents
+            db.student.createIndex({"details.age":1, "details.branch":1})

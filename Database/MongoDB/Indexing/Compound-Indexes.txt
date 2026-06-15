@@ -1,0 +1,36 @@
+MongoDB compound indexes combine multiple fields in a single structure to speed up queries that filter 
+    or sort on more than one field, improving query performance.
+    - Supports covered queries using only indexed fields.
+    - Reduces full collection scans, with efficiency depending on the order of fields in the index.
+
+
+// Create a Compound Index
+    Syntax: db.collection.createIndex({<field1>: <type1>, <field2>: <type2>, ...})
+
+Examples:
+
+    1: Creating a compound index on manufacture and price
+        db.products.createIndex({manufacturer:1, price:-1})
+
+    2: Creating a compound index on product, manufacturer, and price
+        db.products.createIndex({product:1,manufacturer:1,price:1}) 
+
+// Sorting using Compound Indexes 
+    - MongoDB can use indexes to efficiently perform sorting when the sort keys match an index prefix.
+    - Without a suitable index, MongoDB performs a blocking in-memory sort.
+
+        Example	                                    Prefix
+
+    db.data.find().sort({a: 1})	                {a: 1}
+
+    db.data.find().sort({a: -1})                {a: 1}
+
+    db.data.find().sort({a: 1, b: -1})	        {a: 1, b: -1}
+
+    db.data.find().sort({a: -1, b: 1})	        {a: 1, b: -1}
+
+    db.data.find().sort({a: 1, b: -1, c: 1})	{a: 1, b: -1, c: 1}
+
+    Examples: 
+
+        1. db.products.find({ manufacturer: "lays" }).sort({ price: -1, rating: 1 })

@@ -1,0 +1,43 @@
+Single-field indexes in MongoDB improve query performance by indexing one specific field, allowing faster 
+    lookups and sorting on that field.
+    - Lowers disk reads by avoiding full collection scans in the database.
+
+Index Properties: 
+        -> Unique Index: Ensures that indexed field values are unique across the collection.
+        -> Sparse Index: Indexes only documents that contain the indexed field, ignoring documents that 
+                            do not have the field.
+        -> Partial Index: Indexes documents based on a specified filter expression.
+
+Examples:
+
+    DB: 
+        [
+            {
+                "title": "MongoDB Basics",
+                "author": { "firstName": "John", "lastName": "Doe" },
+                "publishedYear": 2021
+            },
+            {
+                "title": "Advanced MongoDB Techniques",
+                "author": { "firstName": "Jane", "lastName": "Smith" },
+                "publishedYear": 2020
+            },
+            {
+                "title": "Mastering MongoDB",
+                "author": { "firstName": "Alice", "lastName": "Johnson" },
+                "publishedYear": 2019
+            }
+        ]
+
+
+    1: Create an Index on a Single Field
+        db.books.createIndex({ title: 1 })
+
+    2: Create a Descending Index on a Single Field
+        db.books.createIndex({ publishedYear: -1 })
+
+    3: Create an Index on an Embedded Field
+        db.books.createIndex({ "author.firstName": 1 })
+
+    4: Create an Index on an Embedded Document
+        db.books.createIndex({ author: 1 })

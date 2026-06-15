@@ -1,0 +1,47 @@
+MongoDB Text Indexes enable fast full-text search on string fields, allowing efficient querying of 
+    words and phrases across large text datasets, especially in unstructured or semi-structured data.
+
+Limitations:
+    -> Only One Text Index per Collection
+    -> Limited Use of hint()
+    -> Sorting Limitation
+    -> Restrictions in Compound Text Index
+
+
+
+// Create a Text Index in MongoDB
+
+    Syntax: db.collectionName.createIndex( { field: "text" } )
+
+    Example: 
+        1. db.studentsposts.createIndex({title: "text"})
+            db.studentsposts.find({$text:{$search: "mongodb"}})
+
+// Drop Text Index in MongoDB
+
+    Syntax: db.collection.dropIndex("TextIndex")
+
+    Example: 
+        1. db.studentsposts.getIndexes()
+            db.studentsposts.dropIndex("title_text")
+
+// Field Weights in Text Indexes
+    - It control the relevance score of documents by assigning higher importance to matches in specific 
+        fields during full-text search.
+    - Default weight is 1 and can be configured during createIndex().
+
+    Example: 
+    db.studentsposts.createIndex(
+        { title: "text", tags: "text" },
+        {
+            weights: { title: 10, tags: 5 },
+            name: "TextIndex"
+        }
+    )
+
+// Wildcard Text Index in MongoDB
+    - A wildcard text index ($**) indexes all string fields in a collection, enabling full-text search 
+        across dynamic or unknown fields in unstructured data.
+
+    Example: 
+    db.studentsposts.createIndex( { "$**": "text" } )
