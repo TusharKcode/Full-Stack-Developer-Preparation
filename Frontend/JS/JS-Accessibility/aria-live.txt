@@ -1,0 +1,24 @@
+=>  ARIA role of alert, log, marquee, status, or timer, as these roles already have default aria-live values.
+
+The aria-live attribute creates a live region on your page which can be used to notify screen reader 
+    users of dynamic content changes in the live region as they occur.
+
+    - Include messages that are displayed after an action has been taken (such as an error message 
+        or confirmation), 
+        content that updates periodically (such as a ticker, marquee, or countdown timer), or 
+        general status messages (such as updates about a process).
+
+=> There are three possible values for this attribute
+    - If you set aria-live to the value assertive that means that the update is very important. 
+        (highest priority) (only be used for time-sensitive or critical notifications.)
+    
+    - The next value in order of priority is polite. Means the update is not urgent, so the screen reader 
+        can wait until any current announcement is finished or until the user stops typing before 
+        announcing the update. 
+
+    - The lowest priority value for aria-live is off which means that the update will not be announced 
+        unless the content is in an element that currently has keyboard focus.
+
+Example: (Aria.html)
+
+    

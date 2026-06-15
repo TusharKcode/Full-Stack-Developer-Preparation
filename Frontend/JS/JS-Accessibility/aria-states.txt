@@ -1,0 +1,26 @@
+Semantic form control elements like input, select, textarea, button, and fieldset have built-in 
+    states that are conveyed to assistive technologies.
+
+=> The first ARIA state we will discuss is "aria-selected". 
+    - This state is used to indicate that an element is selected. 
+    - You can use this state on custom controls like a tabbed interface, a listbox, or a grid.
+
+=> The second ARIA state we will discuss is "aria-disabled". 
+    - This state is used to indicate that an element is disabled only to people using assistive 
+        technologies, such as screen readers.
+    - aria-disabled does not actually disable the element (make it look and act like a disabled element).
+    - This attribute is also commonly used on native HTML elements in place of the disabled attribute.
+
+=> The next ARIA state we will discuss is "aria-haspopup".
+    - used to indicate that an interactive element will trigger a popup element when activated.
+    - when the popup has one of the following roles: menu, listbox, tree, grid, or dialog.
+    - value is either one of these roles or true, which defaults to the menu role.
+
+=> The next ARIA state we will discuss is "aria-required".
+    - used to indicate that a field needs to be filled out before the form is submitted.
+
+=> The last ARIA state we will discuss is "aria-checked". 
+    - used to indicate whether an element is in the checked state. 
+    - when creating custom checkboxes, radio buttons, switches, and listboxes.
+
+Example: (aria.html)

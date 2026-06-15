@@ -1,0 +1,131 @@
+The "aria-expanded" attribute is used for accessibility purposes to indicate if a control is expanded or 
+    collapsed.
+    - Used in collapsible widgets like menus, accordions and other disclosure widgets that control the 
+        visibility of content.
+    - The aria-expanded attribute is set to true if the control is expanded, or false if it is collapsed.
+    - The information provided by aria-expanded allows people using screen readers to understand the 
+        current state of the control 
+    - The value of aria-expanded should be updated dynamically using JavaScript as the user interacts 
+        with the element.
+
+-> aria-controls and aria-owns can be used in combination with aria-expanded
+    - aria-controls attribute is used to specify the element being controlled.
+    - aria-owns attribute allows you to virtually move it after the control in the accessibility tree.
+        (allows assistive technology like screen readers to pretend the expanded content is placed 
+            directly after the control in the DOM.)
+
+    Examples: 
+            // When the menu is expanded, the aria-expanded attribute should be set to true like:
+                <button aria-expanded="true">Menu</button>
+
+            // When the menu is collapsed, it should be set to false instead.
+                <button aria-expanded="false">Menu</button>
+
+        <style>
+            button {
+                background-color: #0078d4;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #005ea2;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 8px 0 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 150px;
+                background: #fff;
+            }
+
+            li {
+                padding: 8px;
+                cursor: pointer;
+            }
+
+            li:hover {
+                background-color: #f2f2f2;
+            }
+        </style>
+        <button aria-expanded="false" aria-controls="menu1">Menu</button>
+        <ul id="menu1" hidden>
+            <li>...</li>
+            <li>...</li>
+        </ul>
+        <script>
+            const button = document.querySelector('button');
+            const menu = document.getElementById(button.getAttribute('aria-controls'));
+
+            button.addEventListener('click', () => {
+                const expanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', String(!expanded));
+                menu.hidden = expanded;
+            });
+        </script>
+
+        <style>
+            button {
+                background-color: #0078d4;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #005ea2;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 8px 0 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 150px;
+                background: #fff;
+            }
+
+            li {
+                padding: 8px;
+                cursor: pointer;
+            }
+
+            li:hover {
+                background-color: #f2f2f2;
+            }
+        </style>
+        <button aria-owns="menu1" aria-expanded="true">Menu</button>
+        <main>
+            <!-- an entire page worth of content --->
+        </main>
+        <ul id="menu1">
+            <li>...</li>
+            <li>...</li>
+        </ul>
+        <script>
+            const button = document.querySelector('button');
+            const menu = document.getElementById(button.getAttribute('aria-owns'));
+
+            button.addEventListener('click', () => {
+                const expanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', String(!expanded));
+                menu.hidden = expanded;
+            });
+
+            // Close the menu if user clicks outside
+            document.addEventListener('click', (e) => {
+                if (!button.contains(e.target) && !menu.contains(e.target)) {
+                    button.setAttribute('aria-expanded', 'false');
+                    menu.hidden = true;
+                }
+            });
+        </script>

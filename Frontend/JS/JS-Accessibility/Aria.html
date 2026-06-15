@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .session-warning {
+            background-color: #ffcc00;
+            color: #000;
+            font-family: system-ui, sans-serif;
+            font-weight: 500;
+            padding: 1em 1.5em;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .session-warning.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .session-warning.fade-out {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .upload-success {
+            background-color: #4caf50;
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            font-weight: 500;
+            padding: 1em 1.5em;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .upload-success.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .upload-success.fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        /* ARIA states */
+        [role="tablist"] {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            gap: 0.25rem;
+            font-family: system-ui, sans-serif;
+        }
+
+        [role="tab"] {
+            appearance: none;
+            border: none;
+            background: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #444;
+            border-radius: 4px 4px 0 0;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        [role="tab"]:hover {
+            background-color: #f3f3f3;
+        }
+
+        [role="tab"][aria-selected="true"] {
+            background-color: #fff;
+            color: #0078d4;
+            border: 2px solid #0078d4;
+            border-bottom: 2px solid #fff; 
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        [role="tab"]:focus {
+            outline: 2px solid #0078d4;
+            outline-offset: 2px;
+        }
+
+        [role="button"] {
+            display: inline-block;
+            background-color: #0078d4;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: system-ui, sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+        }
+
+        [role="button"]:not([aria-disabled="true"]):hover {
+            background-color: #005fa3;
+        }
+
+        [role="button"]:not([aria-disabled="true"]):focus {
+            outline: 2px solid #005fa3;
+            outline-offset: 2px;
+        }
+
+        [role="button"]:not([aria-disabled="true"]):active {
+            transform: scale(0.97);
+        }
+
+        [role="button"][aria-disabled="true"] {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+            background-color: #b0b0b0;
+            color: #f2f2f2;
+        }
+
+        #menubutton {
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            position: relative;
+        }
+
+        #menubutton:hover,
+        #menubutton:focus {
+            background-color: #005ea2;
+            outline: none;
+        }
+
+        #filemenu {
+            list-style: none;
+            padding: 4px 0;
+            margin: 4px 0 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            width: 160px;
+            position: absolute;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #filemenu[hidden] {
+            display: none;
+        }
+
+        #filemenu [role="menuitem"] {
+            display: block;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        #filemenu [role="menuitem"]:hover,
+        #filemenu [role="menuitem"]:focus {
+            background-color: #e5f1fb;
+            outline: none;
+        }
+
+        #filemenu [role="menuitem"]:focus-visible {
+            box-shadow: inset 0 0 0 2px #0078d4;
+        }
+
+        #name-label {
+            font-family: system-ui, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+
+        [role="textbox"] {
+            display: block;
+            width: 100%;
+            min-height: 2rem;
+            padding: 0.5rem 0.75rem;
+            border: 1.5px solid #ccc;
+            border-radius: 4px;
+            font-family: system-ui, sans-serif;
+            font-size: 1rem;
+            color: #222;
+            background-color: #fff;
+            line-height: 1.4;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        [role="textbox"]:hover {
+            border-color: #999;
+        }
+
+        [role="textbox"]:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.25);
+        }
+
+        [role="textbox"]:empty::before {
+            content: attr(data-placeholder);
+            color: #aaa;
+            pointer-events: none;
+        }
+
+        [role="textbox"][aria-required="true"] {
+            border-left: 3px solid #e81123;
+            padding-left: calc(0.75rem - 3px);
+        }
+
+        [role="checkbox"] {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: system-ui, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            user-select: none;
+            color: #222;
+        }
+
+        [role="checkbox"]::before {
+            content: "";
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #666;
+            border-radius: 4px;
+            background-color: #fff;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        [role="checkbox"]:hover::before {
+            border-color: #0078d4;
+            }
+
+        [role="checkbox"]:focus::before {
+            outline: 2px solid #0078d4;
+            outline-offset: 2px;
+        }
+
+        [role="checkbox"][aria-checked="true"]::before {
+            background-color: #0078d4;
+            border-color: #0078d4;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path fill='white' d='M5.2 10.4L2 7.2l1.1-1.1 2.1 2.1L10.9 2.5 12 3.6z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        [role="checkbox"][aria-disabled="true"] {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        /* ARIA-control */
+        [role="tablist"] {
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 1em;
+            gap: 4px;
+            background: #fafafa;
+            padding: 0.25em;
+        }
+
+        [role="tab"] {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        [role="tab"]:hover,
+        [role="tab"]:focus {
+            background: #e8f0fe;
+            outline: none;
+        }
+
+        [role="tab"][aria-selected="true"] {
+            background: #fff;
+            border-color: #ccc;
+            border-bottom: 2px solid #fff;
+            color: #000;
+            font-weight: 600;
+            position: relative;
+            top: 1px;
+        }
+
+        [role="tab"]:focus-visible {
+            outline: 2px solid #0078d4;
+            outline-offset: 2px;
+        }
+
+        [role="tabpanel"] {
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 4px;
+            padding: 16px;
+            background-color: #fff;
+            color: #333;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        [role="tabpanel"][hidden] {
+            display: none;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="session-warning" aria-live="assertive">
+        <p>Your session will expire in 30 seconds.</p>
+    </div>
+    <br>
+    <div class="upload-success" aria-live="polite">
+        <p>File successfully uploaded</p>
+    </div>
+    <br>
+
+    <!-- ARIA states -->
+
+    <div role="tablist">
+        <button role="tab" aria-selected="true">Tab 1</button>
+        <button role="tab" aria-selected="false">Tab 2</button>
+        <button role="tab" aria-selected="false">Tab 3</button>
+    </div>
+    <br>
+    
+    <div role="button" tabindex="-1" aria-disabled="true">Edit</div>
+    
+    <br>
+
+    <button id="menubutton" aria-haspopup="menu" aria-controls="filemenu" aria-expanded="false">File</button>
+    <ul id="filemenu" role="menu" aria-labelledby="menubutton" hidden>
+        <li role="menuitem" tabindex="-1">Open</li>
+        <li role="menuitem" tabindex="-1">New</li>
+        <li role="menuitem" tabindex="-1">Save</li>
+        <li role="menuitem" tabindex="-1">Delete</li>
+    </ul>
+
+    <br>
+
+    <div id="name-label">Full Name*</div>
+    <div role="textbox" contenteditable aria-labelledby="name-label" aria-required="true" id="name"></div>
+
+    <br>
+
+    <div role="checkbox" aria-checked="true" tabindex="0">Checkbox</div>
+    <br>
+
+    <!-- ARIA control -->
+
+    <div role="tablist">
+        <button role="tab" id="tab1" aria-controls="section1" aria-selected="true">
+            Tab 1
+        </button>
+        <button role="tab" id="tab2" aria-controls="section2" aria-selected="false">
+            Tab 2
+        </button>
+        <button role="tab" id="tab3" aria-controls="section3" aria-selected="false">
+            Tab 3
+        </button>
+    </div>
+    <div id="section1" role="tabpanel" aria-labelledby="tab1">
+        Section 1 content
+    </div>
+    <div id="section2" role="tabpanel" aria-labelledby="tab2" hidden>
+        Section 2 content
+    </div>
+    <div id="section3" role="tabpanel" aria-labelledby="tab3" hidden>
+        Section 3 content
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const warning = document.querySelector(".session-warning");
+            setTimeout(() => {
+                warning.classList.add("visible");
+            }, 100);
+
+            setTimeout(() => {
+                warning.classList.add("fade-out");
+            }, 8000);
+
+            warning.addEventListener("transitionend", () => {
+                if (warning.classList.contains("fade-out")) {
+                    warning.remove();
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const success = document.querySelector(".upload-success");
+
+            setTimeout(() => {
+                success.classList.add("visible");
+            }, 100);
+
+            setTimeout(() => {
+                success.classList.add("fade-out");
+            }, 8000);
+
+            success.addEventListener("transitionend", () => {
+                if (success.classList.contains("fade-out")) {
+                    success.remove();
+                }
+            });
+        });
+
+        // ARIA states
+        document.addEventListener("click", (event) => {
+            const clickedTab = event.target.closest('[role="tab"]');
+            if (!clickedTab) return;
+
+            const tablist = clickedTab.closest('[role="tablist"]');
+            const tabs = tablist.querySelectorAll('[role="tab"]');
+
+            tabs.forEach((tab) => {
+                const isSelected = tab === clickedTab;
+                tab.setAttribute("aria-selected", isSelected);
+                tab.tabIndex = isSelected ? 0 : -1;
+            });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            const activeTab = document.activeElement;
+            if (activeTab.getAttribute("role") !== "tab") return;
+
+            const tablist = activeTab.closest('[role="tablist"]');
+            const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+            const index = tabs.indexOf(activeTab);
+
+            let newIndex = index;
+            if (event.key === "ArrowRight") newIndex = (index + 1) % tabs.length;
+            if (event.key === "ArrowLeft") newIndex = (index - 1 + tabs.length) % tabs.length;
+
+            if (newIndex !== index) {
+                tabs[newIndex].focus();
+                tabs[newIndex].click();
+            }
+        });
+
+        // ARIA-control
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const tabList = document.querySelector('[role="tablist"]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                activateTab(tab);
+            });
+
+            tab.addEventListener('keydown', (e) => {
+                const key = e.key;
+                const currentIndex = Array.from(tabs).indexOf(tab);
+                let newIndex = null;
+
+                if (key === 'ArrowRight') {
+                    newIndex = (currentIndex + 1) % tabs.length;
+                } else if (key === 'ArrowLeft') {
+                    newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                } else if (key === 'Home') {
+                    newIndex = 0;
+                } else if (key === 'End') {
+                    newIndex = tabs.length - 1;
+                }
+
+                if (newIndex !== null) {
+                    tabs[newIndex].focus();
+                    activateTab(tabs[newIndex]);
+                }
+            });
+        });
+
+        function activateTab(tab) {
+        const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+        tabs.forEach(t => {
+            t.setAttribute('aria-selected', 'false');
+            t.setAttribute('tabindex', '-1');
+        });
+
+        tabPanels.forEach(panel => panel.hidden = true);
+
+        tab.setAttribute('aria-selected', 'true');
+        tab.removeAttribute('tabindex');
+
+        const panelId = tab.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        panel.hidden = false;
+        tab.focus();
+        }
+
+
+
+    </script>
+</body>
+</html>
