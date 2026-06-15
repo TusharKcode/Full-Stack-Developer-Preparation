@@ -1,0 +1,62 @@
+Both methods accept two parameters: a function and a delay.
+
+=> setTimeout() lets you delay an action for a specified time.
+    
+    Syntax: setTimeout(functionToRun, delay);
+    Example: 
+            setTimeout(function () {
+                console.log("This runs after 3 seconds");
+            }, 3000);
+
+            // You can also use an arrow function for the callback
+            setTimeout(() => {
+                console.log("This runs after 3 seconds"); 
+            }, 3000);
+
+=> setInterval() keeps repeating a function at a set interval. 
+    - like refreshing data or creating an animation that moves continuously.
+    Syntax: setInterval(functionToRun, delay);
+    Example:
+            setInterval(() => {
+                console.log("This runs every 2 seconds");
+            }, 2000);
+
+            // Result:
+            // This runs every 2 seconds
+            // This runs every 2 seconds
+            // This runs every 2 seconds
+            // ...
+
+        // If you might want to stop it, use the clearInterval() method.
+            const intervalID = setInterval(() => {
+                console.log("This will stop after 5 seconds");
+            }, 1000);
+
+            setTimeout(() => {
+                clearInterval(intervalID);
+            }, 5000);
+
+        // You can also stop a timeout with the clearTimeout() method
+            let timeoutID = setTimeout(() => {
+                console.log("This will not run");
+            }, 5000);
+
+            clearTimeout(timeoutID);
+
+=> A more elegant way to do it is through the DOM, by adding a click event listener to a button to stop the 
+    timeout:
+
+    <h1>Cancel Timeout Example</h1>
+    <button id="cancelButton">Cancel Timeout</button>
+    <script>
+        let timeoutID = setTimeout(() => {
+            console.log("This will run if not canceled");
+        }, 5000);
+
+        document
+        .querySelector("#cancelButton")
+        .addEventListener("click", () => {
+            clearTimeout(timeoutID);
+            console.log("Timeout canceled!");
+        });
+    </script>

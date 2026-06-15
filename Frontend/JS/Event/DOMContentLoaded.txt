@@ -1,0 +1,40 @@
+The DOMContentLoaded event is fired when everything in the HTML document has been loaded and parsed. 
+    - If you have external stylesheets, or images, the DOMContentLoaded event will not wait for 
+        those to be loaded. It will only wait for the HTML to be loaded.
+
+    - This differs from the load event, which waits for everything to be loaded, including external 
+        stylesheets, images, and so on.
+
+Example: 
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOM is loaded.");
+        });
+
+        // Another 
+            -  image inside the HTML. To update the image, we can create a function that changes the src 
+                and alt attributes for the image
+            - We can then check if the DOM is still loading and add an event listener for the 
+                DOMContentLoaded event.
+            - If the DOMContentLoaded event has already fired, we can call the changeImg function directly
+        <h1>Image Change on DOM Loaded</h1>
+        <img
+            id="example-img"
+            src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg"
+            alt="Cat relaxing"
+        />
+        <script src="index.js">
+            function changeImg() {
+                const img = document.getElementById("example-img");
+                img.src =
+                    "https://cdn.freecodecamp.org/curriculum/responsive-web-design-principles/FCCStickers-CamperBot200x200.jpg";
+                img.alt = "CamperBot sticker";
+                console.log("image was just changed");
+            }
+            changeImg();
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", changeImg);
+            } else {
+                console.log("DOMContentLoaded has already fired");
+                changeImg();
+            }
+        </script>
