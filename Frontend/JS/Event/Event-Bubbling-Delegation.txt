@@ -1,0 +1,59 @@
+=> Event bubbling, or propagation, refers to how an event "bubbles up" to parent objects when triggered. 
+Example: 
+    // p element is considered as parent of span element
+        <p>
+            <span>Click me~!</span>
+        </p>
+
+    // click on the span element, it becomes the target of a click event. That event, also bubbles 
+        up to the parent – the p element can receive and consume that event as needed.
+
+        <script>
+            const p = document.querySelector("p");
+            p.addEventListener("click", (event) => {
+                console.log(event.target);
+            });
+        </script>
+
+    // Expanding code: 
+        "Span listener: "
+        <span>Click me~!</span>
+        "P listener: "
+        <span>Click me~!</span>
+
+        const p = document.querySelector("p");
+        const span = document.querySelector("span");
+        p.addEventListener("click", (event) => {
+            console.log("P listener: ");
+            console.log(event.target);
+        });
+        span.addEventListener("click", (event) => {
+            console.log("Span listener: ");
+            console.log(event.target);
+            event.stopPropagation();
+        });
+
+=> Event delegation can be thought of as the opposite. It's the process of taking a captured event, and 
+    delegating it to another element.
+
+Example: 
+    // let's update it so clicking on a span element changes it to red:
+        const p = document.querySelector("p");
+        const span = document.querySelector("span");
+        p.addEventListener("click", (event) => {});
+            span.addEventListener("click", (event) => {
+            event.target.style.color = "red";
+        });
+
+    // If there are multiple span elements
+        <p>
+            <span>Click me~!</span>
+            <span>Click me~!</span>
+            <span>Click me~!</span>
+            <span>Click me~!</span>
+        </p>
+        const p = document.querySelector("p");
+        p.addEventListener("click", (event) => {
+            event.target.style.color = "red";
+        });
+
