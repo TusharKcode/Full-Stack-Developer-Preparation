@@ -1,0 +1,37 @@
+The click event on a checkbox toggles the state of that checkbox, by default. 
+    Pressing the space bar on a focused button activates the button.
+
+    => The preventDefault() method on these event objects stops that behavior from happening.
+
+Example
+    // The keydown event fires when you press down on a keyboard key.
+        - The default behavior of a keydown is to render the character in the input.
+    // e.key gives you the value of the key pressed, such as a for the a key or Enter for the Enter key.
+
+    // When we don't want to show the characters in the input as well. 
+        This is where our preventDefault() method comes in.
+
+        - When to use preventDefault():
+            -> By default, submitting a form sends data to the server and reloads the page. 
+                Using e.preventDefault() prevents this from happening.
+
+                Ex: 
+                const form = document.querySelector("form");
+                    form.addEventListener("submit", (e) => {
+                        e.preventDefault();
+                    // rest of code goes here
+                });
+
+    <label>Enter some characters:
+        <input type="text">
+    </label>
+    <p id="output"></p>
+    
+    <script>
+        const input = document.querySelector("input");
+        const output = document.getElementById("output");
+        input.addEventListener("keydown", (e) => {
+            e.preventDefault();
+            output.innerText = `You pressed the ${e.key} key`;
+        });
+    </script>

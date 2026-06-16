@@ -1,0 +1,68 @@
+If you want to get more complex, such as displaying your own error messages to the user, 
+    you will need to use JavaScript.
+
+Certain HTML elements, such as the textarea and input elements, expose a Constraint Validation API. 
+    - It  allows you to assert that the user's provided value for that element passes any HTML-level 
+        validation you have written, such as minimum length or pattern matching.
+
+We are using the email input which comes with built in validation to check for basic validation 
+    like if the input includes the at (@) sign.
+
+-> Use the 'pattern' attribute to specify that the email address must end in a company email address. 
+    Example: 
+        // e.target refers to the element that triggered the event. 
+
+    // checkValidity(): Part of the Constraint Validation API. returns true if the element matches 
+                            all HTML validation (based on its attributes), and false if it fails. 
+                        - It reports the invalid state immediately, instead of waiting for us to submit 
+                            the form.
+            <form>
+                <label>Enter your email: </label>
+                <input required placeholder="username@sampleCompany.com" type="email" pattern=".+@sampleCompany\.com" />
+
+                <label>Enter your feedback: </label>
+                <textarea required placeholder="Your feedback here..."></textarea>
+
+                <button type="submit">Submit Feedback</button>
+            </form>
+
+            <script>
+                const input = document.querySelector("input");
+                input.addEventListener("input", (e) => {
+                    if (!e.target.checkValidity()) {
+                        e.target.reportValidity();
+                    }
+                })
+            </script>
+
+    // reportValidity method only tells the browser that the input is invalid. 
+        The browser still chooses how to display why it's invalid. That's where the 
+            setCustomValidity method comes in.
+        - This method accepts a custom error message, which is displayed to the user.
+            <script>
+                const input = document.querySelector("input");
+                input.addEventListener("input", (e) => {
+                    if (!e.target.checkValidity()) {
+                        e.target.setCustomValidity(
+                            "You must use a company email address that ends in @sampleCompany.com"
+                        );
+                    }
+                });
+            </script>
+
+=> The validity property is an instance of the ValidityState object.
+
+In browser looks like given below:
+                                    ValidityState {
+                                        badInput: false,
+                                        customError: false,
+                                        patternMismatch: true,
+                                        rangeOverflow: false,
+                                        rangeUnderflow: false,
+                                        stepMismatch: false,
+                                        tooLong: false,
+                                        tooShort: false,
+                                        typeMismatch: true,
+                                        valueMissing: false,
+                                        valid: true
+                                    }
