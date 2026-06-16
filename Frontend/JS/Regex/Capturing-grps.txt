@@ -1,0 +1,28 @@
+A capturing group allows you to "capture" a portion of the matched string to use however you might need. 
+    - Capturing groups are defined by parentheses containing the pattern to capture, with no leading 
+        characters like a lookahead.
+
+    - capture groups are often used when replacing contents of a string.
+
+    Example: 
+            const regex = /free(code)camp/i;
+            console.log(regex.test("freecodecamp")); // true
+
+            const regex = /free(code)camp/i;
+            console.log("freecodecamp".replace(regex, "paidcodeworld"));
+
+            const regex = /free(co+de)camp/i;
+            console.log("freecoooooooodecamp".replace(regex, "paidcodeworld"));
+
+-> In a replace call, you achieve a backreference by using a dollar sign ($) followed by the number 
+    of the capture group to use.
+    - You can actually use them directly in a regular expression.
+    - a backreference is denoted with a backslash followed by the number of the capture group
+
+    Example: 
+            const regex = /free(co+de)camp/i;
+            console.log("freecoooooooodecamp".replace(regex, "paid$1world")); // paidcoooooooodeworld
+
+            const regex = /free(co+de)camp.*free\1camp/i;
+            console.log(regex.test("freecooooodecamp is great i love freecooooodecamp")); // true
+            console.log(regex.test("freecooooodecamp is great i love freecodecamp")); // false
