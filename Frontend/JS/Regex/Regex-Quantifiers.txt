@@ -1,0 +1,67 @@
+Quantifiers are defined by curly braces containing one or two numbers. 
+
+Example: 
+    // our quantifier contains only the number 4. 
+        - This syntax means "match the previous character exactly four times".
+        const regex = /^\d{4}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("1234")); // true
+        console.log(regex.test("12345")); // false
+        console.log(regex.test("123456")); // false
+        console.log(regex.test("1234567")); // false
+
+    // But maybe the identification code only needs to be a minimum of four digits.
+        - To allow for four or more digits, add a comma after the number in your quantifier
+        - But if you set the minimum to 1, you can effectively achieve the same result.
+
+        const regex = /^\d{4,}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("1234")); // true
+        console.log(regex.test("12345")); // true
+        console.log(regex.test("123456")); // true
+        console.log(regex.test("1234567")); // true
+
+    // A seven-digit identifier is rather long. 
+        - These identifiers should have a maximum of 6 digits, and a minimum of 4 digits.
+        - you can add a second number to your quantifier after the comma
+
+        const regex = /^\d{4,6}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("1234")); // true
+        console.log(regex.test("12345")); // true
+        console.log(regex.test("123456")); // true
+        console.log(regex.test("1234567")); // false
+
+    // Identifiers can now optionally start with a letter. 
+        const regex = /^[a-zA-Z]\d{4,6}$/;
+
+    // a special shorthand quantifier for a single optional character – the question mark (?)
+        const regex = /^[a-zA-Z]?\d{4,6}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("a1234")); // true
+        console.log(regex.test("12345")); // true
+        console.log(regex.test("az12345")); // false
+        console.log(regex.test("X123456")); // true
+        console.log(regex.test("1234567")); // false
+
+    // there's another short-hand for "match the previous character zero or more times" – 
+        the asterisk (*) symbol.
+
+        const regex = /^[a-zA-Z]*\d{4,6}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("a1234")); // true
+        console.log(regex.test("12345")); // true
+        console.log(regex.test("az12345")); // true
+        console.log(regex.test("X123456")); // true
+        console.log(regex.test("1234567")); // false
+
+    // we could use a quantifier with a minimum of one and no defined maximum, or we could use 
+        yet another special syntax – the plus (+) symbol
+
+        const regex = /^[a-zA-Z]+\d{4,6}$/;
+        console.log(regex.test("123")); // false
+        console.log(regex.test("a1234")); // true
+        console.log(regex.test("12345")); // false
+        console.log(regex.test("az12345")); // true
+        console.log(regex.test("X123456")); // true
+        console.log(regex.test("1234567")); // false

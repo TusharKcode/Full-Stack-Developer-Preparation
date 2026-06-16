@@ -1,0 +1,40 @@
+Character classes are a special syntax you can use to match sets or subsets of characters.
+    - But you can also use character classes to narrow down your matches.
+
+    -> The wildcard is represented by a period or dot (.), and matches any single character except 
+        line breaks. 
+        To allow the wildcard class to match line breaks, need to use the s flag.
+
+        Ex: const regex = /a./;
+
+    - To match a numerical character? 
+        You might have to write out every possible digit, separating them with the or operator (|):
+            const regex = /0|1|2|3|4|5|6|7|8|9/;
+
+    - the character class is written as a backslash (\) followed by a d character:
+        const regex = /\d/;
+
+    - To match any letter character a through z. 
+        - You could write out each individual character separated by the or operator. 
+
+    -> The \w class, which is a backslash followed by a w, represents any word character.
+        - It defined as any letter, from a to z, or a number from 0 to 9, or the underscore (_) character.
+        - Negating the \w class would match any character that is not a to z, 0 to 9, or an underscore
+        const regex = /\w/;
+
+    -> The whitespace class \s, represented by a backslash followed by an s. 
+        - This character class will match any whitespace, including new lines, spaces, tabs, and 
+            special unicode space characters.
+        - These special character classes can be negated.
+        - To negate one of these character classes, use the uppercase
+        - negating the \s character class would match any character that is not a whitespace.
+
+        const regex = /\D/;
+
+    -> You can also mix digits and numbers in your character class. 
+        const regex = /[a-zA-Z0-9]/;
+
+    ->  if you want your character class to match a literal hyphen, you need to place a hyphen at the 
+        beginning or end of the class:
+            const regex = /[-a-zA-Z0-9]/;
+

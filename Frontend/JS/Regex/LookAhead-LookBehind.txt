@@ -1,0 +1,57 @@
+Lookahead and lookbehind assertions allow you to match specific patterns based on the presence 
+    or lack of surrounding patterns. 
+    - There are four variations of these assertions.
+
+    => First is the positive "lookahead" assertion. 
+        - This assertion will match a pattern when the pattern is followed by another pattern.
+
+        To construct it:
+            - you need to start with the pattern you want to match.
+            - Then, use parentheses to wrap the pattern you want to use as your condition.
+            - After the opening parenthesis, use ?= to define that pattern as a positive lookahead.
+
+        Example:
+                const regex = /free(?=code)/i;
+                console.log(regex.test("freeCodeCamp"));                    // true
+                console.log(regex.test("free code camp"));                  // false
+                console.log(
+                regex.test("I need someone for free to write code for me")
+                );                                                          // false
+
+        -> If you want to match the presence of free when it is NOT followed by code
+            - turn your positive lookahead into a negative lookahead to invert the behavior. 
+            - To do this, change your ?= to ?!
+
+        Example:
+                const regex = /free(?!code)/i;
+                console.log(regex.test("freeCodeCamp"));                    // false
+                console.log(regex.test("free code camp"));                  // true
+                console.log(
+                regex.test("I need someone for free to write code for me")
+                );                                                          // true
+
+    => "Lookbehind" assertions function similarly to lookahead assertions
+        - instead of matching conditionally based on a following pattern, they match conditionally 
+            based on a preceding pattern.
+
+        -> A positive lookbehind is denoted with ?<=
+            - It match code when it is preceded by free
+
+        Example: 
+                const regex = /(?<=free)code/i;
+                console.log(regex.test("freeCodeCamp"));                    // true
+                console.log(regex.test("free code camp"));                  // false
+                console.log(
+                regex.test("I need someone for free to write code for me")
+                );                                                          // false
+
+        -> To match code when it is NOT preceded by free, we can use a negative lookbehind. 
+            A negative lookbehind is defined by replacing ?<= with ?<!
+        
+        Example:
+                const regex = /(?<!free)code/i;
+                console.log(regex.test("freeCodeCamp"));                    // false
+                console.log(regex.test("free code camp"));                  // true
+                console.log(
+                regex.test("I need someone for free to write code for me")
+                );                                                          // true

@@ -1,0 +1,154 @@
+A regular expression is a special syntax to create a "pattern", which you can then use to check against 
+    a string, extract text, and more.
+
+    - Regular expressions are case-sensitive by default.
+
+Example: const regex = /freeCodeCamp/;
+
+Our first method – the test() method. 
+    -> The test() method is present on RegExp objects, which are objects representing a regular 
+        expression (such as the one we just defined).
+    -> The test() method accepts a string, which is the string to test for matches against the 
+        regular expression. 
+    -> The test() method returns a boolean, indicating whether the string matches the regular expression 
+        at all.
+
+    Example: 
+            const regex = /freeCodeCamp/;
+            const test = regex.test("e");
+            console.log(test);                                   // false
+            console.log(regex.test("freeCodeCamp"));             // true
+            console.log(regex.test("freeCodeCamp is great"));    // true
+            console.log(regex.test("I love freeCodeCamp"));      // true
+            console.log(regex.test("freecodecamp"));             // false
+            console.log(regex.test("FREECODECAMP"));             // false
+            console.log(regex.test("free"));                     // false
+            console.log(regex.test("code"));                     // false
+            console.log(regex.test("camp"));                     // false
+
+Another method - match() method.
+    -> This method accepts a regular expression, although you can also pass a string which will be 
+        constructed into a regular expression.
+    -> match() returns the match array for the string
+
+    Example: 
+            const regex = /freeCodeCamp/;
+            const match = "freeCodeCamp".match(regex);
+            console.log(match);
+
+        // Output: 
+                [
+                  'freeCodeCamp',
+                  index: 0,                 // The index property tells you at what character in the string 
+                                                        the match was found.
+                  input: 'freeCodeCamp',    // The input property tells you the string the match() method 
+                                                        was called on.
+                  groups: undefined         // The groups property would show any captured groups.
+                ]
+
+        const regex = /freeCodeCamp/;
+        console.log("freeCodeCamp".match(regex)); // ['freeCodeCamp', index: 0, input: 'freeCodeCamp', 
+                                                        groups: undefined]
+        console.log("freeCodeCamp is great".match(regex)); // ['freeCodeCamp', index: 0, 
+                                                            input: 'freeCodeCamp is great', groups: undefined]
+        console.log("I love freeCodeCamp".match(regex)); // ['freeCodeCamp', index: 7, input: 'I love 
+                                                                freeCodeCamp', groups: undefined]
+        console.log("freecodecamp".match(regex)); // null
+        console.log("FREECODECAMP".match(regex)); // null
+        console.log("free".match(regex)); // null
+
+strings have a replace() method - which accepts two arguments: 
+    -> the regular expression to match (or a string, if you don't need all of the features of regex), and 
+    -> the string to replace the match with (or a function to run against each match).
+
+    Example: 
+            const regex = /freecodecamp/;
+            const str = "freecodecamp is rly kewl";
+            const replaced = str.replace(regex, "freeCodeCamp");
+            console.log(replaced);                              // "freeCodeCamp is rly kewl"
+
+
+=> when you use the global modifier with match(), you lose the extra information about capture groups 
+    and string indices that would come in the match array.
+
+    Example: 
+            const str = "freecodecamp is the best we love freecodecamp";
+            const matched = str.match(regex);
+            const replaced = str.replace(regex, "freeCodeCamp");
+            console.log(matched);
+            console.log(replaced);
+
+        // Output: 
+            // [ 'freecodecamp', 'freecodecamp' ]
+            // freeCodeCamp is the best we love freeCodeCamp
+
+ECMAScript update brought us two new methods: matchAll() and replaceAll().
+    -  these methods accept a string or regular expression, and replaceAll() also accepts a second 
+        argument as the string to replace with.
+    - replaceAll() and matchAll() will throw an error if you give them a regular expression without 
+        the global modifier.
+
+    Example: 
+            const str = "freecodecamp is the best we love freecodecamp";
+            const matched = str.matchAll(pattern);
+            const replaced = str.replaceAll(pattern, "freeCodeCamp");
+            console.log(matched);
+            console.log(replaced);
+
+        // Output: 
+            // {}
+            // freeCodeCamp is the best we love freeCodeCamp
+
+        => matchAll() returns a special type of object called an Iterator, which the freeCodeCamp console 
+            isn't prepared to handle.
+                - matchAll() iterator is lazy. It doesn't find all of your matches at once.
+                - It only finds a match when you tell it to by calling next().
+                - As long as it finds a match, it isn't done. Once it fails to find a match and 
+                    brings back undefined, it is done.
+
+    - next() gives us an object with two values: done, which is false when there are more elements 
+        available in the iterator, and value which is the value we just iterated over.
+        
+        Example:
+                const regex = /freecodecamp/g;
+                const str = "freecodecamp is the best we love freecodecamp";
+                const matched = str.matchAll(regex);
+                const replaced = str.replaceAll(regex, "freeCodeCamp");
+                console.log(matched);
+                console.log(replaced);
+                console.log(matched.next());
+                console.log(matched.next());
+
+                // {
+                //   "done": false,
+                //   "value": Array [ "freecodecamp"]
+                // }
+                //
+                // {
+                //   "done": false,
+                //   "value": Array [ "freecodecamp"]
+                // }
+
+    - you can skip that feature and extract all of the matches at once by converting it to an array. 
+        This is achieved by calling Array.from() and passing your iterator as the argument.
+
+        Example: 
+                const regex = /freecodecamp/g;
+                const str = "freecodecamp is the best we love freecodecamp";
+                const matched = str.matchAll(regex);
+                console.log(Array.from(matched));
+                And we finally get our array of matches:
+
+                // [
+                //   'freecodecamp',
+                //   index: 0,
+                //   input: 'freecodecamp is the best we love freecodecamp',
+                //   groups: undefined
+                // ]
+                //
+                // [
+                //   'freecodecamp',
+                //   index: 33,
+                //   input: 'freecodecamp is the best we love freecodecamp',
+                //   groups: undefined
+                // ]

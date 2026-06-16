@@ -1,0 +1,132 @@
+Modifiers, often referred to as "flags", modify the behavior of a regular expression.
+
+=> The all-lowercase and all-uppercase freeCodeCamp strings failed to match the pattern. 
+    This is because, by default, regular expressions are case-sensitive.
+    
+    - A regular expression can use multiple flags (as many as needed) to achieve your desired behavior.
+
+=> If we could tell the regular expression to be case-insensitive. 
+    - There's a modifier for that 'i' flag makes a regex ignore case.
+    - Flags go after the closing forward slash in a regular expression.
+    - This can also work for a string with a random mix of uppercase and lowercase letters
+
+Other flags: 
+    -> The 'g' flag, or global modifier, allows your regular expression to match a pattern more than once.
+        - The global modifier makes your regular expression stateful. This means it keeps track 
+            of where it has previously matched a pattern. 
+        - When a regular expression is global, it gets a new property called lastIndex. 
+        - If you're testing multiple strings with the same regular expression it's best to leave the g 
+            flag off.
+
+        - global regular expression will start from lastIndex and search the entire remainder of 
+            the string for another match
+
+    -> You can make a regex handle multiple lines with the 'm' flag, or the multi-line modifier.
+
+    -> You have the 'd' flag, or indices modifier.
+        - The d flag expands the information you get in a match object.
+        - Our match object gets a new indices property! 
+        - This property is an array of two numbers, the first being the index in the original string 
+            where the match starts, and 
+        - The second being the index after the match ended.
+        - This array also has an extra groups property, which is also for named capture groups.
+
+Less Common Groups: 
+    -> The first is the unicode modifier, or 'u' flag. 
+        - This expands the functionality of a regular expression to allow it to match special 
+            unicode characters.
+        - u flag gives you access to special classes like Extended_Pictographic to match most emoji
+    
+    -> There is also a 'v' flag, which further expands the functionality of the unicode matching.
+
+    -> The second is the sticky modifier, or the 'y' flag. 
+        - The sticky modifier behaves very similarly to the global modifier, but with a few exceptions.
+        - sticky regular expression will return null and reset the lastIndex to 0 if there is not 
+            immediately a match at the previous lastIndex.
+
+    -> The last is the single-line modifier, or the 's' flag.
+        - allows a wildcard character, represented by a period (.) in regex, to match linebreaks – 
+            effectively treating the string as a single line of text.
+
+    Example: 
+        // i flag
+            const regex = /freeCodeCamp/i;
+            console.log(regex.test("freeCodeCamp"));                    // true
+            console.log(regex.test("freeCodeCamp is great"));           // true
+            console.log(regex.test("I love freeCodeCamp"));             // true
+            console.log(regex.test("freecodecamp"));                    // true
+            console.log(regex.test("FREECODECAMP"));                    // true
+            console.log(regex.test("free"));                            // false
+            console.log(regex.test("code"));                            // false
+            console.log(regex.test("camp"));                            // false
+            console.log(regex.test("dO yOu LoVe fReEcOdEcAmP?"));       // true
+
+        //  gi flags
+            const regex = /freeCodeCamp/gi;
+            console.log(regex.test("freeCodeCamp"));            // true
+            console.log(regex.test("freeCodeCamp is great"));   // false
+            console.log(regex.test("I love freeCodeCamp"));     // true
+            console.log(regex.test("freecodecamp"));            // false
+            console.log(regex.test("FREECODECAMP"));            // true
+            console.log(regex.test("free"));                    // false
+            console.log(regex.test("code"));                    // false
+            console.log(regex.test("camp"));                    // false 
+
+            console.log(regex.lastIndex);                       // 0
+            console.log(regex.test("freeCodeCamp"));            // true
+            console.log(regex.lastIndex);                       // 12
+            console.log(regex.test("freeCodeCamp is great"));   // false
+            console.log(regex.lastIndex);                       // 0
+            console.log(regex.test("I love freeCodeCamp"));     // true
+            console.log(regex.lastIndex);                       // 19
+            console.log(regex.test("freecodecamp"));            // false
+            console.log(regex.lastIndex);                       // 0
+            console.log(regex.test("FREECODECAMP"));            // true
+            console.log(regex.lastIndex);                       // 12
+            console.log(regex.test("free"));                    // false
+            console.log(regex.lastIndex);                       // 0
+            console.log(regex.test("code"));                    // false
+            console.log(regex.lastIndex);                       // 0
+            console.log(regex.test("camp"));                    // false
+
+        // m flag
+            const start = /^freecodecamp/im;
+            const end = /freecodecamp$/im;
+            const string = `I really love
+            freecodecamp
+            it's my favorite`;
+            console.log(start.test(string));    // true
+            console.log(end.test(string));      // true
+
+        // d flag
+            const regex = /freecodecamp/di;
+            const string = "we love freecodecamp isn't freecodecamp great?";
+            console.log(string.match(regex));
+
+        // u flag
+            const regex = /🍎/u;
+            const str = "I have an apple 🍎";
+            console.log(regex.test(str)); // true
+        
+Anchors: 
+    -> The caret (^) anchor, at the beginning of the regular expression, says "match the start of the string".
+    -> The dollar sign ($) anchor, at the end of the regular expression, says "match the end of the string".
+
+    Example: 
+            const start = /^freecodecamp/i;
+            const end = /freecodecamp$/i;
+            console.log(start.test("freecodecamp"));                        // true
+            console.log(end.test("freecodecamp"));                          // true
+            console.log(start.test("freecodecamp is great"));               // true
+            console.log(end.test("freecodecamp is great"));                 // false
+            console.log(start.test("i love freecodecamp"));                 // false
+            console.log(end.test("i love freecodecamp"));                   // true
+            console.log(start.test("have met freecodecamp's founder"));     // false
+            console.log(end.test("have met freecodecamp's founder"));       // false
+
+        // mutiple lines
+            const string = `I really love
+                            freecodecamp
+                            it's my favorite`;
+            console.log(start.test(string));    // false
+            console.log(end.test(string));      // false
