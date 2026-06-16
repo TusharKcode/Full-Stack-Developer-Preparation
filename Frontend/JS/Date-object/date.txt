@@ -1,0 +1,99 @@
+The Date object is a built-in object in JavaScript that allows you to work with dates and times.
+
+    - It is using the military time format, so 14:30 is 2:30 PM. 
+    - GMT-0700 is the timezone offset, and 
+    - Pacific Daylight Time is the timezone name.
+
+    Syntax: const now = new Date();
+        - The new keyword is used to create a new instance of the Date object
+        - Date object is then assigned to the variable now
+    
+    Example:
+            const now = new Date();
+            console.log(now);       // current date and time based on the system clock
+
+        -> You can also pass in a specific date and time to the Date object by providing the year,
+            month, day, hour, minute, second, and millisecond values as arguments.
+
+            Ex: 
+                const specificDate = new Date("July 4, 1776 12:00:00");
+                console.log(specificDate);
+
+=> To get the current date and time, you can use the "Date.now()" method, which returns the 
+    number of milliseconds since January 1, 1970, 00:00:00 UTC. 
+    This is known as the Unix epoch time.
+
+=> Unix epoch time is a common way to represent dates and times in computer systems because it is an 
+    integer that can be easily stored and manipulated. 
+
+=> UTC stands for Universal Time Coordinated, which is the primary time standard by which the 
+    world regulates clocks and time.
+
+    - If you need to get a day of the month based on the current date, you can use the getDate method.
+        To get the day of the month and assign it to the variable date.
+
+        -> getDate will return an integer value between 1 and 31, depending on the day of the month.
+            If the date is invalid, it will return NaN (Not a Number).
+
+        -> The month is zero-based, so January is 0, February is 1, and so on. 
+            If the month is invalid, it will return NaN.
+
+
+        Ex:
+            const now = new Date();
+            const date = now.getDate();
+            console.log(date);
+
+            const now = new Date();
+            const month = now.getMonth();
+            console.log(month);
+
+        // If you need to get the full year, then you can use the getFullYear method
+            If the year is invalid, it will return NaN.
+            const now = new Date();
+            const year = now.getFullYear();
+            console.log(year); 
+
+=> More methods like: getHours, getMinutes, getSeconds, and so on.
+
+"Format Dates"
+    - work with the toISOString(), toString(), and toLocaleDateString() methods to format dates in JavaScript.
+
+    Examples:
+        // Both returns same value
+            -If you were to use the toString() method on the date object
+            - To format the date in an extended ISO format (ISO 8601), you can use the 
+                toISOString() method like this
+
+            const date = new Date();
+            console.log(date.toISOString());    // "2026-06-16T13:43:47.695Z"
+
+    -> ISO 8601 is an international standard for representing dates and times. The format is 
+        YYYY-MM-DDTHH:mm:ss.sssZ.
+
+        Output: 2024-09-30T02:47:20.292Z
+
+    -> The toLocaleDateString() method accepts two optional parameters: locales and options.
+        - To use the toLocaleDateString() method, allows you to format the date based on the user's locale.
+        - The locales parameter is a string representing the locale to use. 
+        - If you don't pass in a locales parameter, the default locale is used.
+
+        - The second optional parameter is the options parameter that allows you to specify the 
+            format of the date string. 
+
+        Ex: 
+            const date = new Date();
+            console.log(date.toLocaleDateString());   // "6/16/2026"
+
+            // en-US for English (United States) or fr-FR for French (France).
+                const date = new Date();
+                console.log(date.toLocaleDateString("fr-FR"));  // "16/06/2026"
+
+                const date = new Date();
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                };
+                console.log(date.toLocaleDateString("en-GB", options)); // "Tuesday, 16 June 2026"
