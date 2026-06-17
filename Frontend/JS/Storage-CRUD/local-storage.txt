@@ -1,0 +1,49 @@
+The Web Storage API provides a mechanism for browsers to store key-value pairs right within the browser, 
+    allowing developers to store information that can be used across different page reloads and sessions.
+
+=> The two main components in the Web Storage API are localStorage and sessionStorage.
+
+    -> "localStorage" is the part of the Web Storage API that allows data to persist even after the 
+        browser window is closed or the page is refreshed.
+        
+        - This data remains available until it is explicitly removed by the application or the user.
+        
+        - It include storing user settings, such as themes or language preferences, remembering 
+            form data across browser sessions, and caching small pieces of information to 
+            improve the performance of web apps.
+        
+        - useful for storing small pieces of data that need to persist between sessions.
+
+        -  not be used to store sensitive information, such as passwords, because it can pose security risks.
+        
+        - Some common localStorage methods include:
+            setItem - stores a key-value pair
+                        Ex: localStorage.setItem('username', 'JaneDoe');
+            getItem - retrieve that value of a given key
+                        Ex: let username = localStorage.getItem('username');
+                            console.log(username); // JaneDoe
+            removeItem - remove an item using its key
+                            Ex: localStorage.removeItem('username');
+            clear - clear all data in localStorage
+                    Ex: localStorage.clear();
+
+        Example: 
+                // Store the user's theme preference
+                    localStorage.setItem('theme', 'dark');
+
+                // Retrieve the stored theme preference
+                    const userTheme = localStorage.getItem('theme');
+                    console.log(userTheme); // 'dark'
+
+                // Remove the theme preference
+                    localStorage.removeItem('theme');
+
+                // Clear all localStorage data
+                    localStorage.clear();
+
+    -> sessionStorage is another part of the Web Storage API that stores data for the duration of 
+        the page session, meaning the data is available as long as the browser tab or window is open.
+
+=> "Caching" refers to storing frequently accessed data in a temporary storage location, known as a cache.
+    - Data can be served more quickly, than database or external server.
+

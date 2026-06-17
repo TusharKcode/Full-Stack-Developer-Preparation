@@ -1,0 +1,29 @@
+The Cache API is used to store network requests and responses, making web applications work more 
+    efficiently and even function offline.
+    - It is part of the broader Service Worker API and is critical for creating Progressive Web Apps (PWAs) 
+        that can work under unreliable or slow network conditions.
+
+    -> The Cache API is a storage mechanism that stores Request and Response objects. 
+    -> When a request is made to a server, the application can store the response and later retrieve 
+        it from the cache instead of making a new network request.
+    -> This reduces load times, saves bandwidth, and improves the overall user experience.
+
+    -> The browser provides a storage area known as CacheStorage, where developers can save key-value 
+        pairs of network requests and their corresponding responses.
+    
+    -> With the Cache-Control header, developers can specify how long a cached resource should remain stored
+
+    -> By using the Cache API, developers can build offline-first web applications, allowing a PWA
+
+=> A network request is a request made by a web browser or application to a server to retrieve data or 
+    resources over the internet.
+
+=> A service worker is a special type of JavaScript file that runs in the background of a web application, 
+    separate from the main browser thread.
+    - Acts as a middleman between the web page and the network.
+    - Allowing developers to intercept network requests, cache resources, and handle things
+        like push notifications or background sync.
+
+=> A PWA, or Progressive Web App, is a type of web application that uses modern web technologies to provide 
+    a native app-like experience on the web.
+    - It designed to work reliably on any device

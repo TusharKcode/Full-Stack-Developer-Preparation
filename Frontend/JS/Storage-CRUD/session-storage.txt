@@ -1,0 +1,34 @@
+sessionStorage is when the data is cleared as soon as the user closes the tab or window in which the web 
+    application is running.
+
+    -> It is ideal for situations where data only needs to persist for the length of a single session, 
+        such as maintaining form data during navigation or storing temporary state information 
+        during a checkout process.
+
+    -> sessionStorage uses key-value pairs to store and retrieve data.
+
+    -> The methods used with sessionStorage are also the same as localStorage.
+
+    -> The only real difference being how long the data is stored.
+
+Benefits: 
+    - Storing temporary data such as form entries during a multi-page form process.
+    - Storing temporary selections or preferences that don’t need to persist across sessions.
+    - Maintaining state on a single-page application that doesn’t need to be remembered once the tab 
+        is closed.
+    - It ensures that once the user leaves the page, the session data is cleared
+
+
+Example: 
+        // Store data in sessionStorage
+            sessionStorage.setItem('currentUser', 'JohnDoe');
+
+        // Retrieve the stored data
+            const user = sessionStorage.getItem('currentUser');
+            console.log(user); // 'JohnDoe'
+
+        // Remove a specific key from sessionStorage
+            sessionStorage.removeItem('currentUser');
+
+        // Clear all sessionStorage data
+            sessionStorage.clear();
