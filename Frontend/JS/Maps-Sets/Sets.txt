@@ -1,0 +1,110 @@
+Set is a built-in object for managing data collections. 
+    Let's lets you store unique values of any type, whether primitive or object references. 
+
+    => Set ensures that each value in it appears only once, making it useful for eliminating 
+        duplicates from an array or handling collections of distinct values.
+        - duplicate items will be ignored in the Set.
+
+-> As for WeakSet, it’s a special type of Set with fewer features that allows you to store weakly 
+    held object references and symbols.
+
+    - WeakSet does not support primitives like numbers or strings.
+
+    - WeakSet only stores objects, and the references to those objects are "weak" meaning WeakSets 
+        do not prevent the stored objects from being garbage-collected if there are no other 
+        references to them.
+
+    => In simpler terms, if the object is not being used anywhere else in your code, it is removed 
+        automatically to free up memory.
+
+Example :
+    // To create a Set, you use the Set constructor and assign it to a variable:
+                const myFirstSet = new Set();
+
+    // You can also initialize the Set with values:
+                const treeSet = new Set(["Baobab", "Jackalberry", "Mopane Tree", "Breadfruit"]);
+
+    // If you didn't initialize the Set with values, you can use the add() method to add an item to the Set:
+
+                const treeSet = new Set();
+        // Add items to the treeSet
+                treeSet.add("Baobab");
+                treeSet.add("Jackalberry");
+                treeSet.add("Mopane Tree");
+                treeSet.add("Breadfruit");
+
+Other Methods: 
+    -> "delete()" removes a specified item from the Set : treeSet.delete("Breadfruit");
+    
+    -> "has()" checks if a specified value exists in the Set: console.log(treeSet.has("Breadfruit")); // false
+    
+    -> "entries()" returns a Set iterator containing an array of the values in a [value, value] format: 
+                    console.log(treeSet.entries());
+        // SetIterator {"Baobab" => "Baobab", "Jackalberry" => "Jackalberry", "Mopane Tree" => "Mopane Tree"}
+    
+    -> "keys()" and "values()" show the values in the Set. keys() is just an alias for the values() method
+                console.log("Keys: ", treeSet.keys());
+                console.log("Values: ", treeSet.values());
+        // Keys: SetIterator {"Baobab", "Jackalberry", "Mopane Tree"}
+        // Values: SetIterator {"Baobab", "Jackalberry", "Mopane Tree"}
+    
+    -> "forEach()" lets you iterate through the Set: treeSet.forEach((tree) => console.log(tree));
+                                                            /*
+                                                            Baobab
+                                                            Jackalberry
+                                                            Mopane Tree
+                                                            */
+    
+    -> "clear()" removes all the items of the array: 
+            treeSet.clear();
+            console.log(treeSet); // Set(0) {size: 0}
+
+    -> "size" property that returns the number of items in the Set: console.log(treeSet.size); // 3
+
+
+=> There's also a WeakSet constructor you can use to create a WeakSet:
+    - WeakSet also has the add(), delete(), and the has() methods:
+
+            const treeWeakSet = new WeakSet();
+
+            const baobab = { name: "Baobab" };
+            const jackalberry = { name: "Jackalberry" };
+            const mopaneTree = { name: "Mopane Tree" };
+            const breadfruit = { name: "Breadfruit" };
+
+            treeWeakSet.add(baobab);
+            treeWeakSet.add(jackalberry);
+            treeWeakSet.add(mopaneTree);
+            treeWeakSet.add(breadfruit);
+
+            treeWeakSet.delete(jackalberry);
+            console.log(treeWeakSet.has(jackalberry)); // false
+
+            console.log(treeWeakSet);
+
+        // Output: 
+            /*
+                WeakSet {{…}, {…}, {…}}
+                [[Entries]]
+                    0: value: {name: "Mopane Tree"}
+                    1: value: {name: "Baobab"}
+                    2: value: {name: "Breadfruit"}
+                [[Prototype]]: WeakSet
+            */
+
+    // Adding a primitive, such as numbers or strings, will result in an error:
+        treeWeakSet.add("Alan Smith");
+        console.log(treeWeakSet); // Invalid value used in weak set
+        //    at WeakSet.add (<anonymous>)
+
+
+Difference: 
+
+        Feature	                    Set	                                        WeakSet
+-> Type of Values Stored	Stores any data type	                        Stores only objects
+-> Referencing	            Strong referencing	                            Weak referencing
+-> Iteration	            Supports iteration with forEach and loops	    Does not support iteration
+-> Methods and Properties	add(), delete(), has(), keys(), values(),       add(), delete(), and has() only
+                                size, and more	
+-> Use case	                General-purpose collection of unique values     Efficient memory tracking of 
+                            and removing duplicates from arrays	            object references

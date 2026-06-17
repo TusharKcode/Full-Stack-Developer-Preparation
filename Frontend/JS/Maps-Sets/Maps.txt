@@ -1,0 +1,60 @@
+Map is a built-in object that stores key-value pairs, similar to an object.
+    - Allowing keys of any type, including objects and functions.
+
+    => A WeakMap is a collection of key-value pairs, similar to a Map, but it uses weak references for 
+        its keys. 
+        - The keys must be objects, while the values can be of any type.
+
+    -> To create a Map, you use the Map() constructor prepended with the new keyword:
+                    const myFirstMap = new Map();
+
+    -> You can initialize the Map with values:
+                    const myTreesMap = new Map([
+                        [{ type: 'deciduous' }, 'Maple tree'],
+                        [['forest', 'grove'], 'Pine tree'],
+                        [42, 'Oak tree'],
+                        [true, 'Birch tree'],
+                        [function() { return 'I am a function key'; }, 'Willow tree'],
+                    ]);
+
+    -> If you didn't initialize the Map with values, you can use the set() method to add them:
+                    const myTreesMap = new Map();
+                    myTreesMap.set({ type: 'deciduous' }, 'Maple tree');
+                    myTreesMap.set([1, 2], 'Pine tree');
+                    myTreesMap.set(42, 'Oak tree');
+                    myTreesMap.set(true, 'Birch tree');
+                    myTreesMap.set(function() { return "I'm a function key"; }, 'Willow tree');
+
+                    console.log(myTreesMap);
+
+Other methods:
+    -> get(key) to retrieve the value associated with the specified key.
+    -> has(key) to check if a key exists in the Map.
+    -> delete(key) to remove a key-value pair from the Map.
+    -> clear() to remove all key-value pairs.
+    -> entries() to check the entries of the Map (it returns the entries in a MapIterator).
+    -> forEach() to loop through the entries of the Map.
+    -> size to indicate the number of key-value pairs in the Map.
+
+    => There's a WeakMap() constructor you can use to create a WeakMap:
+        - The set(), get(), has(), and delete() methods are all available for use with a WeakMap
+                
+                const myFirstWeakMap = new WeakMap();
+                myTreeWeakMap.set({ id: 1 }, 'Maple tree');
+                myTreeWeakMap.set({ id: 2 }, 'Pine tree');
+                myTreeWeakMap.set({ id: 3 }, 'Oak tree');
+                myTreeWeakMap.set({ id: 4 }, 'Birch tree');
+                myTreeWeakMap.set({ id: 5 }, 'Willow tree');
+
+                console.log(myTreeWeakMap);
+
+Difference: 
+Feature	                        Map	                                                WeakMap
+Key Type	        Keys can be of any data type, including strings,          Keys must be objects.
+                        numbers, objects, or even functions.	
+Use Case	        Use a Map when you need to associate data with any      Use a WeakMap when you only need 
+                            type of key.	                                to associate data with objects.
+Iteration	        You can loop through a Map using forEach(),                A WeakMap is not iterable.
+                        keys(), values(), or entries().	
+Size Property	    Map has a size property to get the number of            WeakMap does not have a size 
+                            key-value pairs.	                                property.
