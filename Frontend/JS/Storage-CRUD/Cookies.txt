@@ -63,4 +63,24 @@ Example of setting a cookie using JavaScript:
     // To delete a cookie, you set its expiration date in the past:
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
 
+=> You can actually store more complex data structures in cookies. 
+    -  One common method is to use JSON to store objects or arrays.
 
+Example: 
+    // creating an object with user data, converting it to a JSON string, and then storing it in a cookie. 
+    // When we want to retrieve this data, we can parse the JSON string into an object using JSON.parse().
+        
+        const userData = {
+            name: "John Doe",
+            age: 30,
+            role: "admin"
+        };
+        document.cookie = "userInfo=" + JSON.stringify(userData) + "; path=/";
+
+    // Typically, cookies are set by the server using HTTP headers.
+
+        Ex: Set-Cookie: username=John Doe; expires=Thu, 31 Dec 2024 6:00:00 IST; path=/
+
+=> Cookies have a size limit of around 4KB, and storing too much data in them may slow down your web app.
+=> Storing large amounts of data in cookies can increase network traffic as cookies are sent with every 
+    HTTP request.

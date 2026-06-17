@@ -27,3 +27,24 @@ The Cache API is used to store network requests and responses, making web applic
 => A PWA, or Progressive Web App, is a type of web application that uses modern web technologies to provide 
     a native app-like experience on the web.
     - It designed to work reliably on any device
+
+=> Caching is the process of storing copies of files in a temporary storage location so they can be 
+    accessed more quickly.
+
+    - When you visit a website, your browser can save certain files (such as images, CSS, and JavaScript) 
+        locally. 
+    - Means that the next time you visit the same site, it can load these files from your device instead 
+        of fetching them again from a server, making the site load faster.
+
+=> A service worker is a script that runs in the background, separate from your web page. 
+    - It can intercept network requests, access the cache, and enable the web app to work offline
+    - component of Progressive Web Apps.
+
+How do bothh work together?
+    => PWAs are web apps that can offer an app-like experience. They can work offline, send 
+        push notifications, and even be installed on the home screen of a mobile device or computer.
+
+    -> When a user first visits a PWA, the service worker can cache important files.
+
+    => Users can continue to use the app offline, and when they come back online, any upcoming changes 
+        can be synced with the server.

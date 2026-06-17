@@ -1,0 +1,63 @@
+IndexedDB is a tool for storing structured data in the browser.
+    - Built into modern web browsers, allowing web apps to store and fetch JavaScript objects efficiently.
+    - IndexedDB can store JavaScript objects, files, and pretty much any other type of data.
+    - Easy for web applications that need to work with large and complex data structures.
+    - It's asynchronous means when you interact with IndexedDB, operations don't block the main thread 
+        of the web application. (web application remains responsive even when dealing with large amounts 
+            of data.)
+
+Example: 
+    // If you check the browser dev tools application interface, you will see your Sample DB in the     
+        IndexedDb section has been opened.
+    // You can start working with object stores.
+        
+        let request = indexedDB.open("Sample DB", 1);
+
+        request.onerror = function(event) {
+            console.log("Error opening database");
+        };
+
+        request.onsuccess = function(event) {
+            let db = event.target.result;
+            console.log("Database opened successfully");
+        };
+    
+    // Object stores in IndexedDB are similar to tables in traditional databases.
+    // The key path is like a primary key in a traditional database - it's used to uniquely identify each 
+        record.
+    // To create an object store:
+
+        let request = indexedDB.open("Sample DB", 1);
+        request.onupgradeneeded = function(event) {
+            let db = event.target.result;
+            let objectStore = db.createObjectStore("customers", { keyPath: "id" });
+        };
+
+    // To add data to our object store
+
+        let transaction = db.transaction(["customers"], "readwrite");
+        let objectStore = transaction.objectStore("customers");
+        let request = objectStore.add({ id: 1, name: "John Doe", email: "john@example.com" });
+
+        request.onerror = function(event) {
+            console.log("Error adding data");
+        };
+
+        request.onsuccess = function(event) {
+            console.log("Data added successfully");
+        };
+
+    // Retrieving data
+    // start a transaction, get our object store, and then use methods like get to retrieve data:
+
+        let transaction = db.transaction(["customers"]);
+        let objectStore = transaction.objectStore("customers");
+        let request = objectStore.get(1);
+
+        request.onerror = function(event) {
+        console.log("Error retrieving data");
+        };
+
+        request.onsuccess = function(event) {
+        console.log("Customer:", request.result);
+        };

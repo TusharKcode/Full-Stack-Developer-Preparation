@@ -1,0 +1,35 @@
+Client-side storage allows websites to store data on a user's device.
+    - But it can be misused.
+
+    -> Some negative patterns associated with client-side storage, focusing on cookies and their 
+        misuse for tracking and fingerprinting.
+
+=> Cookies: 
+    - cookies are data stored on a user's device when they visit a web app. 
+    - A common misuse of cookies is excessive tracking.
+    - Websites use cookies to track a user's interactions with a web app, creating a history of 
+        their digital activities. 
+
+    Example, a shopping website might use a tracking cookie like this:
+                document.cookie = "userID=123; path=/; expires=Thu, 18 Dec 2024 6:00:00 UTC";
+
+    // The cookie will be sent with every request to the website, allowing it to track the user's actions.
+
+=> Fingerprinting:
+    - This technique uses client-side information to create a unique "fingerprint" of a user's browser.
+    - Websites have the ability to gather information about your browser version, installed plugins, 
+        screen resolution, and other data to uniquely identify you.
+    - 
+    - 
+
+    Example, how a website can create a fingerprint of you:
+                    let fingerprintExample = navigator.userAgent + screen.width + screen.height;
+                    console.log(fingerprintExample);
+
+=> Local Storage:
+    - some websites use it to store sensitive information insecurely
+    - This code stores a user's password in localStorage. This is a serious security risk as the 
+        data in localStorage is not encrypted and can be accessed easily.
+
+    Example: localStorage.setItem('userPassword', 'someonesPasswordHere');  
+
