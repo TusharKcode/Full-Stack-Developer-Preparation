@@ -1,0 +1,29 @@
+The Audio constructor, like other constructors, is a special function called with the new keyword. 
+    - It returns an HTMLAudioElement, which you can then use to play audio for the user, or 
+        append to the DOM for the user to control themselves.
+
+    - When you call the constructor, you can optionally pass a URL as the (only) argument. 
+        This URL should point to the source of the audio file you want to play.
+
+    => use the play() method, which begins audio playback.
+    => There is also the pause() method, which pauses the audio playback but preserves the 
+        current location in the track allowing play() to resume playback from that point.
+
+    => a stop() method, to pause audio playback and reset the track to the beginning.
+
+    => the canPlayType() method can be used to determine if a browser is likely to be able to 
+        play your specific audio format.
+
+"Codecs"
+    - A codec, short for "encoder/decoder", is an algorithm or software that can convert audio and 
+        video between analogue and digital formats.
+    - Codecs can be specified as part of the MIME type.
+    - syntax to define a codec is to add a semi-colon after the media type, then codecs= and the codec.
+
+    Ex: audio/ogg; codecs=vorbis | video/webm; codecs="vp8, vorbis"
+
+        // complicated syntax for codecs - codecs="avc1.4d002a" (encoded with H.264)
+
+    => MediaSource.isTypeSupported() method accepts a MIME-type, and returns true if the environment 
+        is likely to support it.
+        Or rather, it returns false if it fails to instantiate a buffer for that file type. 
