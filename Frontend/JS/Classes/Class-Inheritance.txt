@@ -1,0 +1,75 @@
+Inheritance allows you to define classes that inherit properties and methods from other classes.
+    - This "is a" relationship is characteristic of inheritance.
+
+=> The main advantages of inheritance are code reusability, modularity, extensibility, and improved 
+    code structure.
+
+    - Inheritance also promotes modularity by breaking down complex systems into simpler components 
+        in the hierarchy.
+
+Example, Car 'is a' more specialized form of Vehicle.
+
+    =>  Two main concepts: 
+        -> A 'parent class' is a class that acts like a blueprint for other classes.
+            - It defines properties and methods that are inherited by other classes.
+            - A parent class can have multiple child classes.
+
+        -> A child class is a class that inherits the properties and methods of another class.
+            - Also extend the functionality of their parent classes by adding new properties and methods
+
+=> In JavaScript, we use the 'extends' keyword to implement inheritance. This keyword indicates that 
+    a class is the child class of another class.
+
+    Example: 
+            class Vehicle {
+                // Implementation of Vehicle...
+            }
+
+            class Car extends Vehicle {
+                // Implementation of Car...
+            }
+
+        // Main Example: 
+                        class Vehicle {
+                            constructor(brand, year) {
+                                this.brand = brand;
+                                this.year = year;
+                            }
+                        }
+
+                        class Car extends Vehicle {
+                            honk() {
+                                console.log("Honk! Honk!");
+                            }
+                        }
+
+                        let myCar = new Car("freeCodeCamp Motors", 2019);
+                        console.log(myCar.brand);
+                        console.log(myCar.year);
+                        myCar.honk();
+
+    => In the Child class, if you do need to add additional properties, you'll need to define a constructor.
+        - super() invokes the constructor of the superclass, means defining the properties of the 
+            superclass in the subclass
+
+        - superclass is the parent class and the subclass is the child class.
+
+    Example: 
+            class Vehicle {
+                constructor(brand, year) {
+                    this.brand = brand;
+                    this.year = year;
+                }
+            }
+
+            class Car extends Vehicle {
+                constructor(brand, year, numDoors) {
+                    super(brand, year);
+                    this.numDoors = numDoors;
+                }
+            }
+
+            let myCar = new Car("freeCodeCamp Motors", 2019, 4);
+            console.log(myCar.brand);
+            console.log(myCar.year);
+            console.log(myCar.numDoors);

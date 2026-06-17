@@ -1,0 +1,75 @@
+Static properties and methods belong to the class itself, not to the individual instances of the class. 
+    - You can access them directly on the class name without creating an instance of the class. 
+    - They are defined within classes to encapsulate related functionality.
+
+Syntax: 
+        class MyClass {
+            static staticMethod() { ... }
+        }
+        MyClass.staticMethod();         // calling static method
+
+Example: 
+        class Movie {
+
+            constructor(title, rating) {
+                this.title = title;
+                this.rating = rating;
+            }
+
+            static compareMovies(movieA, movieB) {
+                if (movieA.rating > movieB.rating) {
+                    console.log(`${movieA.title} has a higher rating.`);
+                } else if (movieA.rating < movieB.rating) {
+                    console.log(`${movieB.title} has a higher rating.`);
+                } else {
+                    console.log("These movies have the same rating.");
+                }
+            }
+
+        }
+        let movieA = new Movie("Movie A", 80);
+        let movieB = new Movie("Movie B", 45);
+        console.log(movieA);
+        Movie.compareMovies(movieA, movieB);
+        console.log(movieA);
+
+=> Static methods are also helpful for implementing "factory" methods.
+    - A factory method is a method that you define in addition to the constructor to create 
+        objects based on specific criteria.
+
+    Example: 
+        // The value of the this keyword in static methods is the class itself, since the static method 
+            belongs to the class.
+
+            class Pizza {
+                constructor(type, price) {
+                    this.type = type;
+                    this.price = price;
+                }
+
+                static createMargherita() {
+                    return new this("Margherita", 6.99);
+                }
+            }
+            let myPizza = Pizza.createMargherita();
+            console.log(myPizza);
+            console.log(myPizza.type);
+
+    => you can also define static properties with the static keyword.
+
+        Example: 
+            // It's static because it doesn't belong to any particular pizza instance, it belongs to the 
+                class itself.
+            // It has an initial value of 0 and it's updated every time a new instance is created.
+            // In this case, the output is 2 because two pizzas were sold.
+                class Pizza {
+                    static numberOfPizzasSold = 0;
+
+                    constructor(type) {
+                        this.type = type;
+                        Pizza.numberOfPizzasSold++;
+                    }
+                }
+                let pizza1 = new Pizza("Margherita");
+                let pizza2 = new Pizza("Neapolitan");
+                console.log(Pizza.numberOfPizzasSold);

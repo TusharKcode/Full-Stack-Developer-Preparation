@@ -1,0 +1,90 @@
+"Classes" are like blueprints that you can define in code for creating multiple objects of the same kind.
+    - Classes can be defined as either a class expression or class declaration.
+    - Use the PascalCase naming convention instead of camelCase.
+    - Class is anonymous and assigned to a variable.
+
+    Syntax: 
+        // The content inside the curly braces is known as the class body. 
+            This is where the constructor and methods will go.
+            
+            class MyClassName {
+                // Class Methods
+                constructor() { ... }
+                method1() { ... }
+                method2() { ... }
+                ...
+            }
+
+Example: 
+    => If you're modeling an inventory system, you'll need to create multiple objects per type of product.
+        Each individual product will have its own properties and actions but products of the same kind 
+        can be created from the same "blueprint". 
+        That's what classes are used for.
+
+    => The 'constructor' is a special method that gets called automatically when a new object is created 
+        from the class. 
+        - It is typically used to initialize the properties of the object.
+
+        Example: 
+            // 'this' keyword is used here to refer to the current instance of the Dog class.
+                class Dog {
+                    constructor(name) {
+                        this.name = name;
+                    }
+                }
+
+    => Methods are functions defined inside a class that perform actions or operations.
+        - Used to define behaviors that instances of the class can perform.
+
+        Example: 
+                class Dog {
+                    constructor(name) {
+                        this.name = name;
+                    }
+
+                    bark() {
+                        console.log(`${this.name} says woof!`);
+                    }
+                }
+
+    => Once you have your class defined, you can create an instance of the class with the new keyword, 
+        the name of the class, and its arguments.
+
+        Example: const dog = new Dog("Gino");
+
+    => You can then access this property using the dot notation:
+        Example: console.log(dog.name);
+
+    => You can also call methods
+        Example: dog.bark();    // "Gino says woof!"
+
+
+" 'this' Keyword"
+    - It refers to the context where the code is supposed to run. 
+    - If you use it within a method, the value of this will be a reference to the object 
+        associated to that method.
+    - This way, you can access the properties and methods of the object within the class and reuse 
+        the method on different objects.
+
+    - also have a value in standalone functions and arrow functions, refers to the global object 
+        (in non-strict mode) or undefined (in strict mode).
+    - Arrow functions inherit the value of this from the enclosing scope where they are defined.
+        means that value of this depends on the context where the arrow function is defined, 
+        not where or how the arrow function is called.
+
+    Example: 
+            class Dessert {
+                constructor(name, price) {
+                    this.name = name;
+                    this.price = price;
+                }
+
+                showPrice() {
+                    console.log(`The price of ${this.name} is $${this.price}.`);
+                }
+            }
+
+            const brownie = new Dessert("Brownie", 5.99);
+            brownie.showPrice();
+            console.log(brownie);
+
