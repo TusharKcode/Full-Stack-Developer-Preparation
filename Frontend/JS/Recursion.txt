@@ -1,0 +1,94 @@
+Recursion is a complicated feature that allows you to call a function repeatedly until a base-case is 
+    reached.
+
+Recursion allows you to handle something with an unknown depth, such as deeply nested objects/arrays, 
+    or a file tree.
+
+    - Uses in solving mathematical problems like factorial and Fibonacci, traversing trees and graphs, 
+        generating permutations and combinations and much more.
+
+    Example: 
+            const recursiveCountdown = (number) => {
+                console.log(number);
+            };
+            recursiveCountdown(5);
+
+    => If you don’t have a base case established, your code will run until it exceeds your memory 
+        allocation and crashes.
+
+            const recursiveCountdown = (number) => {
+                if (number < 1) {
+                    return;
+                }
+                console.log(number);
+            };
+            recursiveCountdown(5);
+
+        // For our base case, we want the countdown to stop if the number is less than 1. When we hit 
+            that base-case, we can return to break out of the function execution.
+
+    => The key point that makes a function recursive is that it calls itself in its execution.
+
+            const recursiveCountdown = (number) => {
+                if (number < 1) {
+                    return;
+                }
+                console.log(number);
+                recursiveCountdown(number - 1);
+            };
+            recursiveCountdown(5); 
+
+=> The call stack is how JavaScript tracks and resolves function calls.
+    - The stack functions as a last-in-first-out (LIFO) queue of sorts.
+
+    Example: 
+        const recursiveCountdown = (number) => {
+            console.log(`Function execution started for number: ${number}`);
+            if (number < 1) {
+                console.log(`Base case reached, begin resolving stack`);
+                return;
+            }
+            console.log(`Calling recursiveCountdown with number: ${number - 1}`);
+            recursiveCountdown(number - 1);
+            console.log(`Function execution completed for number: ${number}`);
+        };
+        recursiveCountdown(5);
+
+    // How this works?
+
+        - recursiveCountdown(5), that function call is added to the call stack.
+        - When that function call reaches the point where it needs to call recursiveCountdown(4), 
+            it has to stop and wait for that result.
+            our recursiveCountdown(4) gets added to the call stack, on top of the recursiveCountdown(5).
+
+            (repeat same until reaches to 0).
+
+        - But recursiveCountdown(0) doesn’t call another function – it hits our base case, where it 
+            returns early.
+
+        - When the call is resolved, it’s removed from the stack.
+
+        - Now our recursiveCountdown(1) is no longer waiting on that call – it’s at the top of the stack 
+            and can resume executing.
+
+        - recursiveCountdown(1) resolves, is removed from the stack, and allows recursiveCountdown(2) 
+            to resume execution.
+        - recursiveCountdown(2) resolves, is removed from the stack, and allows recursiveCountdown(3) 
+            to resume execution.
+
+            (repeat same)
+
+        - And recursiveCountdown(5) resolves and is removed from the stack. Our call stack is now empty, 
+            so the recursion is complete!
+
+Another Example: 
+                function findFactorial(n) {
+                    if (n === 0) {
+                        return 1;
+                    }
+                    return n * findFactorial(n - 1);
+                }
+
+    In this example, the findFactorial function is called recursively until n reaches 0. When n is 0,
+        the base case is reached and the function returns 1. 
+    The function then returns the product of n and the result of the recursive call to findFactorial(n - 1).
