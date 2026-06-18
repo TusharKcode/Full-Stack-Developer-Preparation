@@ -1,0 +1,119 @@
+An algorithm is a set of unambiguous instructions for solving a problem or carrying out a task.
+
+Characteristics:
+                - They cannot continue indefinitely. They must finish in a finite number of steps.
+                - Each step must be precise and unambiguous.
+
+=> Algorithm efficiency can be measured in terms of how long they take to run and how much space they 
+    require in memory to complete the task.
+    - It gives you an idea of how well it will perform as the input size grows.
+
+"Big O notation"
+    - It describes the worst-case performance, or growth rate, of an algorithm as the input size increases.
+
+    - The growth rate of an algorithm refers to how the resources it requires increase as the input 
+        size grows.
+
+    - It focuses on the worst-case performance because this case is very important to understand how 
+        efficient the algorithm can be, even in the worst case scenario, regardless of the input.
+
+=> In Big O notation, we usually denote input size with the letter n. 
+    For example, if the input is a list, n would denote the number of elements in that list.
+
+    - Constant factors and lower-order terms are not taken into account to find the time complexity 
+        of an algorithm based on the number of operations.
+    - That's because as the size of n grows, the impact of these smaller terms in the total number of 
+        operations performed will become smaller and smaller.
+
+    - The term that will dominate the overall behavior of the algorithm will be the highest order term 
+        with n, the input size.
+
+For example, 
+    -> If an algorithm performs 7n + 20 operations to be completed, the impact of the constant 20 on the 
+        final result will be smaller and smaller as n grows. 
+        The term 7n will tend to dominate and this will define the overall behavior and efficiency of 
+            the algorithm.
+
+    -> An algorithm that takes 20n² + 15n + 7 operations to be completed. The term 20n² will tend to 
+        dominate as n grows, 
+        so this algorithm would have a quadratic time complexity because the dominant term has n².
+
+"Common Complexities"
+    => O(1) is known as "Constant Time Complexity". 
+        - When an algorithm has constant time complexity, it takes the same amount of time to run, 
+            regardless of input size.
+
+        Ex: 
+            function checkEvenOrOdd(number) {
+                if (number % 2 === 0) {
+                    return "Even";
+                } else {
+                    return "Odd";
+                }
+            }
+
+    => O(log n) is known as "Logarithmic Time Complexity". 
+        - This means that the time required by the algorithm increases slowly as the input size grows.
+        - This is common in problems in which the size of the problem is repeatedly reduced by a constant 
+            fraction.
+
+        Example: A popular search algorithm called Binary Search has O(log n) worst-case time complexity. 
+                    This is because it eliminates half of the remaining elements in each comparison, 
+                    which makes it more efficient overall.
+
+    => O(n) is known as "Linear Time Complexity". 
+        - The running time of algorithms with this time complexity increases proportionally to the 
+            input size.
+
+        Example: A for loop that iterates over all the elements of a list will perform more iterations as 
+                    the number of list elements increases. 
+                If the list is doubled in size, the number of operations will approximately double as well.
+
+    => O(n log n) is known as "Log-Linear Time Complexity". 
+        - This is a common time complexity of efficient sorting algorithms, like Merge Sort and Quick Sort.
+
+    => O(n²) is known as "Quadratic Time Complexity". 
+        - The running time of these algorithms increases quadratically relative to the input size, 
+            which is generally not efficient for real-world problems.
+        
+        Example: Nested Loops - The inner loop will perform n iterations for each one of the n 
+                                iterations of the outer loop, resulting in n squared iterations.
+
+                for (let i = 0; i < n; i++) {
+                    for (let j = 0; j < n; j++) {
+                        console.log("Hello, World!");
+                    }
+                }
+
+    => Others include "Exponential Time Complexity", denoted as O(2^n), and "Factorial Time Complexity", 
+        denoted as O(n!). Both are inefficient for real-world scenarios.
+
+Big O notation can also be applied to the context of space requirements.
+    - It describes how the memory space required by the algorithm grows as the input size grows.
+
+    => Algorithms with "Constant Space Complexity" O(1) always require a constant amount of memory 
+        space, even as the input gets larger.
+        Example would be an algorithm that only creates and stores a few variables in memory.
+
+    => The space required by algorithms with "Linear Space Complexity" O(n) increases proportionally 
+        as the input size grows.
+        Example would be an algorithm that creates and stores a copy of a list of length n.
+
+    => The space requirements of an algorithm with "Quadratic Space Complexity" O(n²) increase 
+        quadratically as the input size grows.
+        Example would be creating a 2D matrix, where the dimensions are determined by the input size, 
+                storing all possible pairs.
+
+-> Pseudocode is a high-level description of the algorithm's logic that is general in nature, and is 
+    not based on any specific programming language.
+    - Its main purpose is to give a clear idea of the sequence of steps that will be performed.
+
+    Example: 
+            GET original_string
+
+            SET reversed_string = ""
+
+            FOR EACH character IN original_string:
+                ADD character TO THE BEGINNING OF reversed_string
+
+            DISPLAY reversed_string
