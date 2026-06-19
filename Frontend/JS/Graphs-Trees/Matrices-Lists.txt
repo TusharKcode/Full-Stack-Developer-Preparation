@@ -1,0 +1,92 @@
+There are two common ways to implement graphs in your code:
+            - Adjacency matrices
+            - Adjacency lists
+
+"Adjacency Matrices"
+    -> An adjacency matrix is a two-dimensional array in which the rows and columns represent the graph's 
+        vertices.
+        - The values in the matrix represent the edges or connections between the nodes.
+    Example: if you have a matrix stored in a variable named matrix, the value stored at matrix[i][j], 
+                where i is the row and j is the column, 
+                represents the edge or connection between node i and node j.
+
+    -> values may have different meanings depending on whether the graph is weighted or unweighted:
+        - If the graph is unweighted, a value of 1 means that there is an edge connecting these nodes, 
+            while a value of 0 means there is no edge between them.
+        - If the graph is weighted, the value would represent the weight of the edge that connects the nodes.
+
+    Advantage: 
+        - checking if there is an edge between two nodes takes constant time O(1).
+            because the program only needs to find that particular value in the 2D array.
+
+    => Adjacency matrices have a large quadratic space requirement O(V²), where V is the number of 
+        nodes in the graph.
+        - inefficient for sparse graphs, which are graphs that only have a few edges. 
+        - if the graph is sparse, you will be storing many 0s in the matrix to represent the lack of 
+            edges between the nodes, and these 0s will still take space in memory.
+
+    => Adjacency matrices are also inefficient for finding a node's neighbors because the program has 
+        to iterate over the entire row or column to find the 0s and 1s that represent the edges.
+        - In the worst case, this process can take O(V) time, where V is the number of nodes in the graph.
+
+    Example: 
+        - Each row represents a node. The first row represents node A, the second row represents node B, 
+            and so on.
+        - Each column represents a node too.
+        - Each value in the matrix represents whether there is an edge between each pair of nodes. 
+            A value of 0 means there isn't an edge connecting these nodes, while a value of 1 means 
+            there is an edge.
+
+        - The values in the diagonal represent whether or not each node has a self-loop, an edge 
+            that connects the node to itself.
+            In our example, they are all 0s because the graph doesn't have any self-loops.
+
+            #      A  B  C  D
+            # A   [0, 1, 1, 1],
+            # B   [1, 0, 0, 1],
+            # C   [1, 0, 0, 0],
+            # D   [1, 1, 0, 0]
+
+        In code: 
+                const adjacencyMatrix = [
+                    [0, 1, 1, 1], // The neighbors of A are B, C, and D
+                    [1, 0, 0, 1], // The neighbors of B are A and D
+                    [1, 0, 0, 0], // The only neighbor of C is A
+                    [1, 1, 0, 0]  // The neighbors of D are A and B
+                ];
+
+"Adjacency lists"
+    -> an array or object (or a Map) that stores all the neighbors of each node.
+
+    - Two common ways to implement:
+        As an array, where each index represents a node and the array stored at that index contains its 
+            neighbors.
+        As an object (or Map), where each key represents a node and the value associated to that key 
+            (an array) contains its neighbors.
+
+    - Adjacency lists are more efficient in terms of space requirements.
+        They have a O(V + E) space complexity, where V is the number of vertices (nodes) and E is 
+            the number of edges.
+
+    - There is also a tradeoff.
+
+    - Adjacency lists are less efficient for determining if there is an edge between two nodes.
+
+    - The search process typically takes O(deg(v)) time (where deg(v) is the number of neighbors of the 
+        node you’re checking), and in the worst case it can be O(V) if a node is connected to all the 
+        other nodes in the graph.
+
+    Example: 
+            const adjacencyList = {
+                A: ["B", "C", "D"],
+                B: ["A", "D"],
+                C: ["A"],
+                D: ["A", "B"]
+            };
+
+            const adjacencyList = [
+                ["B", "C", "D"], // Neighbors of A (index 0)
+                ["A", "D"],      // Neighbors of B (index 1)
+                ["A"],           // Neighbors of C (index 2)
+                ["A", "B"]       // Neighbors of D (index 3)
+            ];

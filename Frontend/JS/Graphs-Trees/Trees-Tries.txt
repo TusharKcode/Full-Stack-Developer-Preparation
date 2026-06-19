@@ -1,0 +1,69 @@
+"Tree"
+    -> A tree is a specific type of graph.
+        - Have no loops or cycles (paths where the start and end nodes are the same).
+        - Be connected (every node can be reached from every other node).
+
+    -> non-linear data structures that organize nodes in a hierarchy, where nodes may have children, 
+        siblings, and parent nodes.
+
+    -> The root node is the very top of a tree. It's the only node in the tree without a parent node. 
+
+    -> A parent node is a node that is immediately connected to other nodes below it. 
+        Example: node A is the parent node of nodes B and C.
+
+    -> A child node is a node that is immediately connected to a node above it. 
+        Example: node D and E are the child nodes of node C.
+
+    -> Nodes D and E are also classified as leaves. A leaf is a node that has no child nodes.
+
+    Properties: 
+        - Depth - length of the path from the root to that node
+        - Height - length of the path from that node down to a leaf.
+        - Degree - number of child nodes each node has.
+
+    -> Trees also have a height. The height of a tree is the height of its root node.
+
+    => Different types of Trees: 
+        - A 'binary tree' is a type of tree in which each node can have at most two child nodes, a left 
+            child node and a right child node. 
+
+        - A 'binary search tree' is a more specific version of a binary tree, with a very particular 
+            ordering property.
+            = A subtree is a section of a tree that is a tree itself. Ex: nodes C, D, and E form a tree 
+                by themselves
+            = This ordering makes search, insertion, and deletion operations very efficient if the tree 
+                is balanced.
+
+            = A balanced tree is a tree in which the heights of the left and right subtrees of any 
+                node are very similar to make sure that operations remain efficient.
+
+"Tries"
+    -> Tries are tree data structures used to store a set of strings.
+    -> Tries are also known as prefix trees because they are very efficient for operations that require 
+        finding strings based on their prefixes.
+    -> Each node in the trie represents a single character of a string.
+
+    -> The root node does not represent any particular character, so you can think of it as 
+        representing an empty string.
+
+    - Nodes that represent complete words are assigned end-of-word markers.
+
+        This is an example of a trie with the words "top", "tea" and "ten".
+        words "tea" and "ten" share the same prefix "te", so the data structure follows the same path 
+            until the last character, which is marked as an end-of-word character
+
+    -> The worst-case time complexity for the search operation is O(L), where L is the length of the 
+        string that you are looking for.
+
+    -> Insertion is also efficient, only requires creating new nodes for the characters that don't exist 
+        in the trie yet.
+
+    Advantage: 
+        - when multiple strings share the same prefix, their paths overlap, so the prefix itself is 
+            only stored once.
+
+    -> implementing features like autocomplete and spell checkers.
+
+    -> They can be inefficient if the set of strings has many unique characters. 
+        This would require storing many unique characters as individual nodes. 
+        These nodes would have to be traversed to find the words, which would not be optimal.
