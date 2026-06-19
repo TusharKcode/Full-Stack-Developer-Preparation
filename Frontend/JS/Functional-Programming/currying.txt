@@ -1,0 +1,34 @@
+Currying is a technique where we transform a function that takes multiple arguments into a sequence of 
+    functions, each taking a single argument.
+
+Ex: 
+    function add(a, b) {
+        return a + b;
+    }
+
+    console.log(add(3, 4)); // 7
+
+Another ex: 
+        function curriedAdd(a) {
+            return function(b) {
+                return a + b;
+            }
+        }
+        console.log(curriedAdd(3)(4)); // 7
+
+    -> In this curry converted code, instead of taking two arguments at once, we have a function that 
+        takes the first argument and returns another function. 
+    -> This returned function then takes the second argument and performs the addition
+
+=> Currying allows us to create some special functions easily. 
+
+Ex: 
+    function curriedAdd(a) {
+        return function(b) {
+            return a + b;
+        }
+    }
+
+    const addFive = curriedAdd(5);
+    console.log(addFive(10)); // 15
+    console.log(addFive(20)); // 25
