@@ -1,0 +1,25 @@
+The JavaScript engine has the ability to read, understand, and execute your code. 
+    - It works like a converter that takes your code, turns it into instructions that the computer 
+        can understand and execute.
+
+    - One of the most well-known JavaScript engines is V8, developed by Google, used in Chrome and Node.js. 
+
+    => First, it parses your code, reading it line by line to make sure there’s no mistake in the 
+        JavaScript code.
+    => Then, it converts this code into bytecode, which is a simpler, intermediate version of your 
+        code that’s easier for the computer to understand and execute. 
+    => Finally, it runs this bytecode to execute your program's instructions.
+
+- 'Parsing' means the engine reads the code and breaks it down into a structure it can understand, 
+    checking for mistakes along the way.
+
+- Then, it compiles the code into an intermediate format (often bytecode or machine code, 
+    depending on the engine). 
+
+- 'Compiling' is the process of converting the human-readable code into a more efficient format that the 
+    computer can execute faster.
+
+=> The JavaScript runtime is the environment in which your JavaScript code is executed. 
+    - It includes the JavaScript engine (like V8 in Chrome or SpiderMonkey in Firefox)
+    - which processes and executes the code, as well as additional features provided by the environment 
+        (such as a web browser or Node.js)

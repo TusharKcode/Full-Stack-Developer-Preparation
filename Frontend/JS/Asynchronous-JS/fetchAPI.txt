@@ -1,0 +1,67 @@
+The Fetch API allows web apps to make network requests, typically to retrieve or send data to the server.
+    - It provides a fetch() method that you can use to make these requests.
+
+Ex: fetch('https://api.example.com/data')
+
+=> By default, the Fetch API uses the GET method to retrieve data.
+
+- Images are some frequently fetched resources. You might use fetch to load images statically or 
+    dynamically based on user actions, and display them on your web app.
+
+- Text files are another type of resource often fetched. This could include configuration files, 
+    log files, or even entire documents that you want to display on your webpage.
+
+- In some cases, you might fetch audio or video files. The Fetch API can handle these types of 
+    resources as well, allowing you to work with a wide variety of data types.
+
+=> most common HTTP method which is the GET method.
+    - used to retrieve data from a server. When you use fetch() without specifying a method, 
+        it defaults to GET.
+
+        Ex: fetch('https://api.example.com/data')
+
+    - you have to convert the response to a JSON format.
+
+        Ex: 
+            fetch('https://api.example.com/data')
+            .then(response => response.json())
+            .then(data => console.log(data))
+
+    - the response coming from the Fetch API is a promise, and we are using a '.then' handler to convert the 
+        response to a JSON format.
+    
+=> The POST method is used to send data to a server to create a resource.
+    - we use JSON.stringify() to convert our object to a JSON string.
+
+        Ex: 
+            fetch('https://api.example.com/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: 'John Doe',
+                    email: 'john@example.com'
+                })
+            })
+
+=> The PUT method is used to update existing resources of a server.
+
+        Ex: 
+            fetch('https://api.example.com/users/45', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: 'John Smith',
+                    email: 'john@example.com'
+                })
+            })
+
+=> The DELETE method is used to delete a resource from the server.
+
+        Ex: 
+            fetch('https://api.example.com/users/45', {
+                method: 'DELETE',
+            })

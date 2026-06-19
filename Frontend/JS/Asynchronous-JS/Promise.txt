@@ -1,0 +1,38 @@
+A Promise is an object that represents the eventual completion or failure of an asynchronous operation. 
+    - It's initially in a pending state. 
+    - It can then transition to either a fulfilled state when the operation is successful, or a 
+        rejected state when the operation fails.
+
+        Ex: 
+            const aPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Operation successful!");
+                }, 1000);
+            });
+
+    -> Another way to work with promises is to use the .then and .catch methods.
+        - The .then() method is used in a promise to specify what should happen when the promise is fulfilled
+        - .catch() is used to handle any errors that occur.
+
+        Ex: 
+            aPromise.then((result) => {
+                console.log(result);  // Outputs: "Operation successful!"
+            }).catch((error) => {
+                console.error(error);
+            });
+
+"Promise Chaining"
+    - we can chain multiple asynchronous operations together. 
+    - Each .then() can return a new promise, allowing you to perform a sequence of asynchronous operations 
+        one after the other.
+
+        Ex: 
+            fetch('https://api.example.com/data')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    return fetch('https://api.example.com/data2');
+                })
+                .then(response => response.json())
+                .then(data2 => console.log(data2))
+                .catch(error => console.error('Error:', error));

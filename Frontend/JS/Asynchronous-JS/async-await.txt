@@ -1,0 +1,55 @@
+The 'async' and 'defer' attributes in HTML script elements play a crucial role in how JavaScript files are 
+    loaded and executed in web pages.
+
+    - They provide ways to load scripts more efficiently.
+
+Let's start with the async attribute:
+        <script src="example.js" async></script>
+
+By adding the async attribute to a script tag, the browser will continue parsing the HTML while the 
+    script is being downloaded. 
+
+Once the script is fully downloaded, the browser will pause HTML parsing, execute the script, 
+    and then resume parsing the HTML. 
+This can significantly speed up page loading.
+
+=> async scripts are executed as soon as they're downloaded, which means they might not run in  
+    the correct order
+
+Let's look at what the defer attribute looks like:
+        <script src="example.js" defer></script>
+
+defer scripts are not executed immediately after they're downloaded, they wait until the HTML parsing is 
+    complete.
+defer scripts execute in the order they appear in the HTML code.
+
+"Async/Await"
+    - async/await, built on top of promises
+    - When you put the async keyword before a function, it means that function will always return a Promise. 
+    - The await keyword, which allows you to wait for a Promise to resolve before moving on to the next 
+        line of code
+
+        Ex: 
+            async function delayedGreeting(name) {
+                console.log("A Messenger entered the chat...");
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                console.log(`Hello, ${name}!`);
+            }
+
+            delayedGreeting("Alice");
+            console.log("First Printed Message!");
+
+-> One of the biggest advantages of async/await is error handling. With promises, we often had to use 
+    .catch() method to handle errors. With async/await, we can use try/catch blocks.
+
+        Ex: async function fetchUserData() {
+                try {
+                    let response = await fetch(`https://api.example.com/users`);
+                    let userData = await response.json();
+                    console.log(userData);
+                } catch (error) {
+                    console.log("Error fetching user data:", error);
+                }
+            }
+
+            fetchUserData();
