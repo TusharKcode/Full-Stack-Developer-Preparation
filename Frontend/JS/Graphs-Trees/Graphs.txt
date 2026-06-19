@@ -1,0 +1,75 @@
+Graphs are data structures used to represent the connections or relationships between objects or entities. 
+    - They're often used to model networks.
+    - They're very versatile.
+
+=> The types of networks that you can model with a graph include social networks, transportation networks, 
+    communications networks, and even recommendation systems.
+
+    => A graph is often represented as a collection of points or circles connected by lines.
+        - These circles and lines represent the two main components of a graph: nodes and edges.
+
+    => 'Nodes', also known as vertices, represent the objects or entities that are part of the network 
+        modeled by the graph. 
+        - They could be users, products, stations, cities, or any other entities in the model.
+
+        Ex: They could be users, products, stations, cities, or any other entities in the model.
+
+    => 'Edges' are the connections between the nodes. If two nodes are connected by an edge, 
+        that means that they're somehow connected in the network.
+
+        Ex: Node A is connected to node B. node B is connected to nodes A, C, and D and so on.
+
+    => If two nodes are directly connected by an edge, like nodes A and B in this example, they're 
+        known as adjacent nodes.
+
+"Types of Graphs": 
+    => "Undirected graphs" are graphs where the edges don't have a specific direction. 
+        - This type of edge is usually represented with a straight line between the nodes.
+        Ex: if there's an edge connecting nodes A and B, the connection works in both directions: 
+            from node A to node B and from node B to node A.
+
+            if you're modeling connections between users of a social media platform, this means that 
+                user A is connected to user B and user B is connected to user A. 
+                
+            The connection is 'bidirectional'.
+
+    => "Directed Graphs" are graphs where the edges do have a specific direction.
+        - The edges of a directed graph are often represented as straight lines that end with an 
+            arrow to indicate the direction.
+        - If there is a two-way connection between the nodes of a directed graph, you can represent 
+            this with two directed edges between them.
+        Ex: If there is a connection from node A to node B, that doesn't necessarily imply that there 
+                is a connection from node B to node A.
+
+            You can go from node B to node D and from node D to node B, two edges connecting them, 
+                but each edge has a direction.
+
+    => "Vertex Labeled Graphs" is a graph in which each node is associated with a label or identifier in 
+        addition to its data. 
+        - These labels are used to identify the nodes, represent them visually, and store additional 
+            information about them.
+        Ex: In a transportation network graph, nodes could be cities and their labels could be their 
+                names, coordinates, or any other characteristic that would be helpful for the 
+                purposes of the model.
+
+    => "Cyclic Graphs" are directed graphs with at least one cycle.
+        - A cycle is a path that you can follow through the edges of a graph that will take you back to 
+            the initial node where you started.
+
+    => "Edge Labeled Graphs", edges are associated with labels. These labels are usually drawn 
+        next to their corresponding edges.
+
+    => Weighted graphs are a specific type of edge labeled graph in which the labels on the edges 
+        represent values that can be compared and used to perform arithmetic operations.
+        - Some edges have a higher weight, while others have a lower weight. These weights represent 
+            the "cost" of the edge.
+
+    => Some edges have a higher weight, while others have a lower weight. These weights represent 
+        the "cost" of the edge.
+
+    => "Directed Acyclic Graph" is a directed graph with no cycles.
+        - because each edge has a direction.
+
+    => "Disconnected Graph" is a graph with two or more groups of nodes that are not connected by any edges.
+
+        Ex: The first component has the nodes A, B, and C. The second component has the nodes D and E.

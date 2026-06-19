@@ -1,0 +1,63 @@
+=> It follows each branch as deep as possible before it backtracks.
+
+Ex: You can imagine this algorithm as exploring a maze by choosing a specific path and following 
+    it until you reach a dead end or the exit. 
+    If you reach a dead end, you go back and choose a different path.
+
+=> Depth-first search (DFS) is commonly used to solve puzzles with a single solution, detecting cycles 
+    in a graph, and finding connected graph components.
+
+    - using recursion or a stack data structure to keep track of the visited nodes.
+
+=> One of the limitations of this algorithm is that it's not always guaranteed to find the shortest 
+    path between two nodes in an unweighted graph.
+
+    Let's see an example of Depth-First Search (DFS) applied to our tree example.
+
+    - Step 1:
+        We start at the root node A. We mark it as visited and add it to the stack.
+            Stack: [A]
+            Visited: {A}
+
+    - Step 2:
+        We pop node A from the stack. Then, we add its unvisited children, node B and node C, to the stack. 
+        We'll add them in reverse order, C then B, so that B is on top (LIFO) and will be processed next. 
+        We also mark them as visited.
+            Stack: [C, B]
+            Visited: {A, B, C}
+
+    - Step 3:
+        We pop node B from the stack. Then, we add its unvisited children, node D and node E, to the stack 
+        in reverse order (E then D). 
+        We also mark them as visited.
+            StackStack: [C, E, D]
+            Visited: {A, B, C, D, E}
+
+    - Step 4:
+        We pop node D from the stack. This node has no children to add to the stack.
+            Stack: [C, E]
+            Visited: {A, B, C, D, E}
+    
+    - Step 5:
+        We pop node E from the stack. This node has no children to add to the stack.
+            Stack: [C]
+            Visited: {A, B, C, D, E}
+
+    - Step 6:
+        We pop node C. Then, we add its children, node F and node G, to the stack in reverse order 
+            (node G then node F) and we mark them as visited.
+            Stack: [G, F]
+            Visited: {A, B, C, D, E, F, G}
+
+    - Step 7:
+        We pop node F from the stack. This node has no children to add to the stack.
+            Stack: [G]
+            Visited: {A, B, C, D, E, F, G}
+
+    - Step 8:
+        We pop node G. This node has no children to add to the stack.
+            Stack: []
+            Visited: {A, B, C, D, E, F, G}
+
+    = When the stack is empty, the traversal is completed and all nodes have been visited.
+        The algorithm visited the nodes in this order: A → B → D → E → C → F → G
