@@ -1,0 +1,44 @@
+One of the most popular tools for setting up projects is Vite.
+    - Vite, which means "fast" in French, is a build tool that aims to provide a faster development 
+        experience for modern web projects.
+
+    - Vite can be used with React, as well as with other libraries and frameworks like Vue or Svelte.
+    - You can even use it with vanilla JavaScript projects.
+
+
+-> In case you don't have Node.js installed, which is needed for npm to work, here is a link for the 
+    official Node.js webpage: https://nodejs.org.
+
+=> To create a new project with Vite, you will need to use the command line. 
+=> In Windows machine, then you can use the Command Prompt or Windows PowerShell. 
+=> If you are using a Mac, then you can use the Terminal app.
+
+    npm create vite@latest my-react-app -- --template react
+
+// creates a new React project named my-react-app using Vite's React template.
+
+=> need to install the dependencies using (needed to properly run your React project): 
+    
+        cd my-react-app
+        npm install
+
+=> "Dependencies" are libraries or packages that your React project requires in order to function correctly, 
+    such as React itself, ReactDOM, or other third-party packages that provide additional functionality.
+
+    -> Running npm install will read the package.json file in your project directory and install all the 
+        dependencies listed there allowing you to build and run your React app.
+
+    -> The package.json file is a key configuration file in projects that contains metadata about your 
+        project, including its name, version, and dependencies. 
+            - It also defines scripts, licensing information, and other settings that help manage the project 
+                and its dependencies.
+
+    -> Once the dependencies are installed, you should notice a new folder in your project called 
+        node_modules.
+        - The node_modules folder is where all the packages and libraries required by your project are stored.
+            contains the actual code for the dependencies listed in your package.json file.
+
+    -> To run your project, run the npm run dev command and open up a new browser tab at 
+        http://localhost:5173/.
+
+    -> If you need to stop the local server, press CTRL + C in the command line.

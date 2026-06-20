@@ -1,0 +1,21 @@
+"Libraries" are generally more focused on providing solutions to specific tasks, such as manipulating the 
+    DOM, handling events, or managing AJAX requests.
+
+Ex: jQuery very popular in the early 2010s and was widely used to simplify DOM manipulation, 
+    event handling, animations, effects, and more. A rich ecosystem of plugins easy to build 
+    common web components like date pickers, sliders, and modal dialogs.
+
+    But no longer as widely used as it once was.
+
+"Frameworks", provide a more defined structure for building applications. A set of rules and conventions 
+    that developers need to follow.
+
+Ex: Angular encourages a component-based architecture with a set of conventions and tools that provide a 
+    structured approach to organizing and building applications. To structure components, manage state, 
+    handle routing, and interact with services, making it a more opinionated framework.
+
+Other Frameworks include Remix and Next.js.
+
+    => React, a UI library, is more flexible and doesn't enforce any particular architectural pattern.
+        focuses primarily on the view layer and leaves a lot of the choices on application design up 
+        to the developers.
