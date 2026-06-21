@@ -1,0 +1,120 @@
+=> "Conditional rendering" in React allows you to create dynamic user interfaces. 
+    - It is used to show different content based on certain conditions or states within your application.
+    - The most common approaches of using conditional rendering includes using if statements, the 
+        ternary (?:) operator, and logical AND (&&) operator.
+
+Example: 
+    // The simplest form of conditional rendering uses an if statement.
+
+                function Greeting({ isLoggedIn }) {
+                    if (isLoggedIn) {
+                        return <h1>Welcome back!</h1>;
+                    }
+                    return <h1>Please sign in</h1>;
+                }
+
+            In App.jsx
+
+                function App() {
+                    return (
+                        <div className="App">
+                            <Greeting isLoggedIn={false} />
+                        </div>
+                    );
+                }
+
+    // For simpler conditions, the ternary operator (?:) is often used directly within JSX.
+        - It allows for inline conditional rendering
+
+            function Greeting({ isLoggedIn }) {
+                return <h1>{isLoggedIn ? "Welcome back!" : "Please sign in."}</h1>;
+            }
+
+    // using the logical AND (&&) operator.
+        - useful when you want to render something, or nothing, based on a condition.
+
+            function Notification({ message }) {
+                return (
+                    <div>
+                        {message && <p>{message}</p>}
+                    </div>
+                );
+            }
+
+=> "Rendering lists" is a fundamental task in React web apps, and is used for displaying data to users.
+    - In React, the map method is used to transform an array of data into an array of JSX elements that 
+        can be rendered in the UI.
+
+    - It is important not to forget the key prop for each element in the list.
+    - Key must always be unique and it helps React identify which items have changed, been added, 
+        or been removed, essential for efficient rendering and updating the list.
+    - If you forget the key, React will show a warning in the console, but it will not throw a fatal error.
+
+    => Rendering lists in React involves converting arrays of data into JSX elements, typically using 
+        the map function.
+
+    Ex: 
+        function FruitList() {
+            const fruits = ['Apple', 'Banana', 'Cherry', 'Date'];
+            return (
+                <ul>
+                    {fruits.map(fruit => <li>{fruit}</li>)}
+                </ul>
+            );
+        }
+
+    // considered an anti-pattern
+    // Using the index as a key can cause issues when the list is reordered, sorted, or filtered.
+        {fruits.map((fruit, index) => <li key={index}>{fruit}</li>)}
+
+    => React uses the key to track elements. 
+        - If the list order changes, React might incorrectly reuse component state or fail to 
+            update the DOM efficiently 
+            because the keys (indexes) stay the same even if the content at that index has changed.
+
+        - The best practice is to use a stable, unique identifier for each item. 
+            This is typically an ID from your database, like a UUID or a database ID.
+
+        - If your data doesn't have a unique ID, you can generate one when the data is created 
+            (e.g., using crypto.randomUUID() or a library like uuid), or use a combination of fields 
+            that are guaranteed to be unique.
+
+        - You should avoid generating keys on the fly during rendering (e.g., key={Math.random()}), 
+            as this will cause React to recreate the DOM elements on every render and reset their state.
+
+        Ex: 
+
+        // This ensures that each list item has a distinct key, which helps React efficiently manage and 
+            update the list when items are added, removed, or reordered.
+
+            function FruitList() {
+                const fruits = ["Apple", "Banana", "Cherry", "Date"];
+                return (
+                    <ul>
+                        {fruits.map((fruit, index) => (
+                            <li key={`${fruit}-${index}`}>{fruit}</li>
+                        ))}
+                    </ul>
+                );
+            }
+
+    => React also allows you to render more complex structures. 
+
+        Ex: 
+            function UserList() {
+                const users = [
+                    { id: "user-001-employee", name: "Alice", email: "alice@example.com" },
+                    { id: "user-002-employee", name: "Bob", email: "bob@example.com" },
+                    { id: "user-003-employee", name: "John", email: "john@example.com" },
+                ];
+                return (
+                    <div>
+                        {users.map((user) => (
+                            <div key={user.id}>
+                                <h3>{user.name}</h3>
+                                <p>{user.email}</p>
+                            </div>
+                        ))}
+                    </div>
+                );
+            }
