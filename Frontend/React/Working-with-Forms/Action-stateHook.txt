@@ -1,0 +1,74 @@
+Forms are fundamental to every web application because they let you handle user input, collect data, and 
+    trigger actions.
+
+=> In React, forms are managed using state or refs, giving you full control over their behavior and 
+    validation.     
+
+    - These two ways to manage forms are called "controlled" and "uncontrolled" input.
+
+-> Controlled input is the most "React-like" way to handle form inputs.
+    - you store the input field value in state and update it through onChange events. 
+    - This gives you complete control over the form data and allows instant validation and 
+        conditional rendering.
+
+    - Use controlled inputs when you need dynamic form updates, real-time validation, or when you want 
+        to sync input values with state. 
+        They provide better control but require more re-renders.
+
+Example: 
+            import { useState } from "react";
+
+            function App() {
+                const [name, setName] = useState("");
+
+                const handleChange = (e) => {
+                    setName(e.target.value);
+                };
+
+                const handleSubmit = (e) => {
+                    e.preventDefault();
+                    console.log(name);
+                };
+
+                return (
+                    <>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="name">Your name</label> <br />
+                            <input value={name} id="name" onChange={handleChange} type="text" />
+                            <button type="submit">Submit</button>
+                        </form> 
+                    </>
+                );
+            }
+
+            export default App;
+
+-> Uncontrolled inputs on the other hand are seen more in traditional HTML forms.
+    - instead of using useState Hook, uncontrolled inputs in HTML maintain their own internal state with 
+        the help of the DOM.
+    - they require less code
+
+    - Use uncontrolled inputs when you need simpler forms, want to access values only on submission, or 
+        when you're working with non-React code.
+
+Example: 
+            import { useRef } from "react";
+
+            function App() {
+                const nameRef = useRef();
+
+                const handleSubmit = (e) => {
+                    e.preventDefault();
+                    console.log(nameRef.current.value);
+                };
+
+                return (
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="name">Your</label>{" "}
+                        <input type="text" ref={nameRef} id="name" />
+                        <button type="submit">Submit</button>
+                    </form>
+                );
+            }
+
+            export default App;
