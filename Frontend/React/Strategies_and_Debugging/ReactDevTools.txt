@@ -1,0 +1,19 @@
+The browser has built-in developer tools you can use to debug HTML, CSS, and JavaScript.
+
+=> React team developed a tool called "React Developer Tools" (AKA React DevTools) so you can inspect, 
+    debug, and profile React apps.
+    - available as a browser extension for Chrome, Edge, and Firefox.
+
+    -> After installing and enabling React DevTools, if you open a React app in your browser, 
+        then open your browser's developer tools, 
+        you should see two extra tabs: Components and Profiler.
+
+    => The 'Components tab' displays each component for you in a tree view format.
+        - View the app's component hierarchy.
+        - Check and modify props, states, and context values in real time.
+        - Check the source code for each selected component.
+        - Log the component data to the console.
+        - Inspect the DOM elements for the component.
+
+    => The 'Profiler tab' helps you record and analyze component performance so you can identify 
+        unnecessary re-renders, view commit durations, and things you can optimize.

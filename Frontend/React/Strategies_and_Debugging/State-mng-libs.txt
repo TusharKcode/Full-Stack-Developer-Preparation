@@ -1,0 +1,157 @@
+When starting out, React's useState hook might be sufficient, but as you add features, you might encounter 
+    issues with:
+        - Passing props through components that don't need them, also known as prop drilling
+        - Keeping data in sync across different parts of your app
+        - Handling complex updates that affect multiple components simultaneously
+
+-> State management libraries come in – they provide a centralized place where components can get or 
+    update the data they need.
+
+=> The "Context API" is a state manager built into React that lets you share state across components 
+    without using a third-party library. 
+    - upgrade over the useState hook
+    - for cases like theme toggling or user authentication status.
+    - the Context API does not handle frequent updates well, and can cause unnecessary re-renders
+    - making it less suitable for complex state needs in applications like eCommerce and social 
+        media platforms. 
+
+Example: 
+    // CounterProvider uses the useState hook to initialize and manage the count state and its setter.
+        Both are then passed into child components through the Provider
+    // So, when you wrap your whole app with the CounterProvider, the count state is available 
+        everywhere in your application.
+
+        import { useState, createContext } from 'react';
+
+        const CounterContext = createContext();
+        const CounterProvider = ({ children }) => {
+            const [count, setCount] = useState(0);
+
+            return (
+                <CounterContext.Provider value={{ count, setCount }}>
+                    {children}
+                </CounterContext.Provider>
+            );
+        };
+        export { CounterContext, CounterProvider };
+
+    // can wrap CounterProvider around your application
+
+        import { CounterProvider } from './context/CounterContext';
+
+        function App() {
+            return (
+                <CounterProvider>
+                    {/* App components */}
+                </CounterProvider>
+            );
+        }
+        export default App;
+
+    // can use the count state
+    
+        import React, { useContext } from 'react';
+        import { CounterContext } from '../context/CounterContext';
+
+        const Counter = () => {
+            const { count, setCount } = useContext(CounterContext);
+
+            return (
+                <>
+                    <div style={{ textAlign: 'center' }}>
+                        <h1>Context API Counter</h1>
+                        <button style={{ marginRight: '5px' }} onClick={() => setCount(count - 1)}>
+                            Decrease
+                        </button>
+                        <span>{count}</span>
+                        <button style={{ marginLeft: '5px' }} onClick={() => setCount(count + 1)}>
+                            Increase
+                        </button>
+                    </div>
+                </>
+            );
+        };
+        export default Counter;
+
+=> Another popular state management library is "Redux", which is one of the most popular state 
+    management libraries to use with React.
+    - Ideal for larger applications like eCommerce and social media platforms, forums, and so on.
+    - handles state management by providing a central store and strict control over state updates. 
+    
+    -> uses a predictable pattern with actions, reducers, and middleware.
+        - Actions are payloads of information that send data from your application to the Redux store, 
+            often triggered by user interactions.
+        - Reducers are functions that specify how the state should change in response to those actions, 
+            ensuring the state is updated in an immutable way.
+        - Middleware acts as a bridge between the action dispatching and the reducer, allowing you to 
+            extend Redux's functionality without modifying the core flow.
+
+    -> Redux team introduced "Redux Toolkit" and "RTK Query", which simplify the setup process quite a bit.
+
+    -> You typically define both actions and reducers in a single file using the createSlice() function.
+
+    Example: 
+            import { createSlice } from '@reduxjs/toolkit';
+
+            const counterSlice = createSlice({
+                name: 'counter',
+                initialState: { count: 0 },
+
+                reducers: {
+                    increment: (state) => {
+                        state.count += 1;
+                    },
+                    decrement: (state) => {
+                        state.count -= 1;
+                    },
+                },
+            });
+            export const { increment, decrement } = counterSlice.actions;
+
+            export default counterSlice.reducer;
+
+        // From here, you then need to wrap the entire app with the Provider, select a piece of state 
+            from the slice with useSelector(), then use useDispatch() to make the state active.
+
+=> Zustand is a lightweight state management library with a simple API. 
+    - based on hooks, so there's less boilerplate compared to Redux
+    - ideal for small to medium-scale applications
+    - works by using a useStore hook to access state directly in components and pages
+    - lets you modify and access data without needing actions, reducers, or a provider.
+
+    Example: 
+        // useCounterStore that implements another counter functionality
+            import { create } from 'zustand';
+
+            const useCounterStore = create((set) => ({
+                count: 0,
+                increment: () => set((state) => ({ count: state.count + 1 })),
+                decrement: () => set((state) => ({ count: state.count - 1 })),
+            }));
+            export default useCounterStore;
+
+        // here's how to initialize and use the states in your app
+
+            // Import the useCounterStore (it's just a hook)
+            import useCounterStore from '../useCounterStore';
+
+            const Counter = () => {
+                // Initialize the states with the useCounterStore hook
+                const { count, increment, decrement } = useCounterStore();
+
+                return (
+                    <>
+                        <div style={{ textAlign: 'center' }}>
+                            <h1>Zustand Counter</h1>
+                            <button style={{ marginRight: '5px' }} onClick={() => decrement()}>
+                                Decrease
+                            </button>
+                            <span>{count}</span>
+                            <button style={{ marginLeft: '5px' }} onClick={() => increment()}>
+                                Increase
+                            </button>
+                        </div>
+                    </>
+                );
+            };
+            export default Counter;

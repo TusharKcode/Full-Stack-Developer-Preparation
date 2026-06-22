@@ -1,0 +1,85 @@
+Prop drilling is the most basic approach to state management in React applications.
+
+=> Prop drilling is the process of passing props from a parent component to deeply nested child 
+    components, even when some of the child components don't need the props.
+
+Example: 
+
+-> You have three components named Parent, Child, and Grandchild. If you want to use some data in the 
+    Grandchild component, 
+    but it's in the Parent component, you'd need to pass it from the Parent to the Child component, 
+    then from the Child to the Grandchild component.
+
+    Or if the data is even further up the chain, the data might have to be passed to the Parent component, 
+        too.
+
+// 1. Here, the data I want to display is the string Hello, Prop Drilling!. 
+    It's assigned to the greeting variable in the root App component:
+            
+            import "./App.css";
+            import Parent from "./Parent";
+
+            function App() {
+                const greeting = "Hello, Prop Drilling!";
+
+                return <Parent greeting={greeting} />;
+            }
+            export default App;
+
+// 2. Here's the Parent component passing it into the Child component as the value of another greeting 
+    prop in the Child
+
+            import Child from "./Child";
+
+            const Parent = ({ greeting }) => {
+                return <Child greeting={greeting} />;
+            };
+            export default Parent;
+
+// 3. here's the Child component that passes it to the Grandchild component:
+
+            import Grandchild from "./Grandchild";
+
+            const Child = ({ greeting }) => {
+                return <Grandchild greeting={greeting} />;
+            };
+            export default Child;
+
+// 4. finally the Grandchild component receives the greeting and uses it as the content of an h1 element:
+            
+            const Grandchild = ({ greeting }) => {
+                return <h1>{greeting}</h1>;
+            };
+            export default Grandchild;
+
+=> If you need to pass props around, try to keep them all in a single parent component. 
+    This approach of centralizing all necessary data is called the "single source of truth".
+=> To avoid prop drilling, especially in large, complex applications, consider using the Context API or 
+    state management libraries like Redux and Redux Toolkit, Zustand, Recoil, and others.
+    
+Example: 
+
+    function App() {
+        const greeting = "Hello, Prop Drilling!";
+        const response = "I'm not here to play!";
+
+        return <Parent greeting={greeting} response={response} />;
+    }
+
+    const Parent = ({ greeting, response }) => {
+        return <Child greeting={greeting} response={response} />;
+    };
+
+    const Child = ({ greeting, response }) => {
+        return <Grandchild greeting={greeting} response={response} />;
+    };
+
+    const Grandchild = ({ greeting, response }) => {
+        return (
+            <>
+                <h1>{greeting}</h1>
+                <h2>{response}</h2>
+            </>
+        );
+    };
+    export default App;
