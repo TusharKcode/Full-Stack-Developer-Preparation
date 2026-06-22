@@ -1,0 +1,139 @@
+React introduced server components and server actions to shift some of the rendering and logic 
+    responsibilities to the server.
+
+=> React added a new hook called 'useOptimistic' to keep UIs responsive while waiting for an 
+    async action to complete in the background.
+
+    -> Often used for fetching data from a server, it's not limited to that.
+    -> useful for handling async operations, ensuring the UI remains smooth and interactive while 
+        the action runs.
+
+=> The useOptimistic hook helps manage "optimistic updates" in the UI, a strategy in which you provide 
+    immediate updates to the UI based on the expected outcome of an action, like waiting 
+    for a server response.
+
+=> Syntax: const [optimisticState, addOptimistic] = useOptimistic(actualState, updateFunction);
+    
+    - 'optimisticState' is the temporary state that updates right away for a better user experience.
+    - 'addOptimistic' is the function that applies the optimistic update before the actual state changes.
+    - 'actualState' is the real state value that comes from the result of an action, like fetching 
+        data from a server.
+    - 'updateFunction' is the function that determines how the optimistic state should update when called.
+
+-> the useOptimistic hook is just another way to handle loading states in React. But it's more than that.
+    A loading state controls whether you see a spinner, message, or some other indicator in the UI while 
+        something happens in the background.
+
+-> This hook gives you a chance to show a loading indicator or message, handle potential errors gracefully, 
+    and show instant feedback to make the UI feel snappy.   
+
+Example: 
+
+    // The line, (state, newTask) => [...state, { text: newTask, pending: true }] 
+        - ensures that a new task appears with a pending status even before the server confirms 
+            something is coming from the form.
+
+    // When the form is submitted, the handleSubmit function extracts the task and adds it "optimistically" 
+        with the addOptimisticTask parameter. 
+
+    // Then addTask is passed as a prop which sends the task to the server. Finally, the form is reset by 
+        calling e.target.reset().
+
+    // When task.pending is true, the text Adding Task... is displayed next to the task, confirming 
+        that the task has been added optimistically before the server confirms it.
+
+        "use client";
+
+        import { useOptimistic, startTransition } from "react";
+
+        export default function TaskList({ tasks, addTask }) {
+            const [optimisticTasks, addOptimisticTask] = useOptimistic(
+                tasks,
+                (state, newTask) => [...state, { text: newTask, pending: true }]
+            );
+
+            async function handleSubmit(e) {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+
+                startTransition(() => {
+                    addOptimisticTask(formData.get("task"));
+                });
+
+                addTask(formData);
+                e.target.reset();
+            }
+
+            return(
+                <>
+                    <div className="max-w-md mx-auto p-4">
+                        <h3 className="text-xl font-medium mb-3">Tasks</h3>
+
+                        <ul className="space-y-2 mb-4">
+                            {optimisticTasks.map((task, index) => (
+                                <li key={index} className="p-2 border-b">
+                                    {task.text}
+                                    {task.pending && (
+                                        <small className="ml-2 text-gray-500 text-sm">
+                                            Adding Task...
+                                        </small>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <form onSubmit={handleSubmit} className="flex gap-2">
+                            <input
+                                type="text"
+                                name="task"
+                                placeholder="Type in a task..."
+                                className="flex-1 p-2 border"
+                            />
+                            <button type="submit" className="bg-gray-200 px-3 py-2 cursor-pointer">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </>
+            )
+        }
+
+    // Here's the Task component that manages the state for the form. 
+        - It calls the saveTask function from the action so it can add the task, and 
+            appends the new task once it is received by the server:
+
+    // Once the task is saved, the pending property is removed, and the final task list updates 
+        accordingly.
+
+            "use client";
+
+            import { useState } from "react";
+            import TaskList from "./TaskList";
+            import { saveTask } from "./actions";
+
+            export default function Tasks() {
+                const [tasks, setTasks] = useState([]);
+
+                async function addTask(formData) {
+                    const newTaskText = formData.get("task");
+
+                    // Add an optimistic task with a pending state
+                    const tempTask = { id: Date.now(), text: newTaskText, pending: true };
+                    setTasks((prev) => [...prev, tempTask]);
+
+                    // Simulate a 3 seconds delay before marking the task as completed
+                    setTimeout(async () => {
+                        const savedTask = await saveTask(newTaskText);
+
+                        setTasks((prev) =>
+                        prev.map((task) =>
+                            task.id === tempTask.id
+                            ? { ...task, text: savedTask, pending: false }
+                            : task
+                        )
+                        );
+                    }, 3000);
+                }
+
+                return <TaskList tasks={tasks} addTask={addTask} />;
+            }

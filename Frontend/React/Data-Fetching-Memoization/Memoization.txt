@@ -1,0 +1,82 @@
+As your React app gets larger, unnecessary re-renders and expensive calculations can slow down performance, 
+    leading to slow UI updates and increased resource usage.
+
+=> React solves this problem with a process called "memoization", 
+    - a technique which caches values and functions to prevent unnecessary recalculations, so your 
+        app can be faster and more responsive.
+
+=> Memoization is an optimization technique in which the result of expensive function calls are cached 
+    (remembered) based on specific arguments.
+    - When the same arguments are provided again, the cached result is returned instead of re-computing 
+        the function.
+
+=> The memoization process: 
+    - Store the results of function calls along with their input arguments.
+    - Before executing the function, check if the result for the current arguments already exists in the 
+        cache.
+    - If it exists, return the cached result instead of running the computation again.
+    - If it doesn't exist, compute the result, store it in the cache, and then return it.
+
+-> React provides three tools – React.memo (or memo), useMemo and useCallback. 
+
+    - Both useMemo and useCallback are hooks, but 
+    - React.memo is a component wrapper, a higher-order component (HOC).
+
+=> 'useMemo' lets you memoize computed values while useCallback does the same for function references.
+
+    - computed values refer to the result of executing a function
+    - function references are the pointers to functions – the function object in memory.
+
+Syntax: 
+        const memoizedValue = useMemo(
+            function () {
+                return computeExpensiveValue(a, b);
+            },
+            [a, b]
+        );
+
+Example : 
+
+        // import the useMemo hook
+        import { useMemo } from "react";
+
+        function ExpensiveSquare({ num }) {
+            function calculateSquare(n) {
+                console.log("Calculating square...");
+                return n * n;
+            }
+
+            // const squared = calculateSquare(num);
+            // Wrap the function call in useMemo instead
+            const squared = useMemo(() => calculateSquare(num), [num]);
+
+            return (
+                <p>
+                    Square of {num}: {squared}
+                </p>
+            );
+        }
+        export default ExpensiveSquare;
+
+        import { useState, useEffect } from "react";
+        import ExpensiveSquare from "./components/ExpensiveSquare";
+
+        function App() {
+            const [timer, setTimer] = useState(0);
+            const [num, setNum] = useState(0);
+
+            useEffect(() => {
+                const interval = setInterval(() => setTimer((c) => c + 1), 1000);
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <div>
+                    <h1>Timer: {timer} seconds gone</h1>
+                    <ExpensiveSquare num={num} />
+                    <button onClick={() => setNum((n) => n + 1)}>Increase Number</button>
+                </div>
+            );
+        }
+
+        export default App;
