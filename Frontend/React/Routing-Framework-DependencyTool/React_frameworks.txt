@@ -1,0 +1,41 @@
+If you needed additional features like routing, then you had to import a third party library like 
+    React Router to be able to switch between the different views.
+
+For Full Stack Application: 
+    -> Well you could use React for the front-end and use Node and Express for the back-end logic 
+        if you just want to stick with JavaScript. 
+        Or you could use other languages like Go, Python, or Java for your back-end.
+
+=> React frameworks provide features like routing, image optimizations, data fetching, authentication 
+    and more.
+    - This means that you might not need to set up separate front-end and back-end applications for 
+        certain use cases.
+
+    -> Next.js which is a popular React framework.
+        - Next.js is the file-system based router.
+        - This routing system includes support for dynamic routes, parallel routes, route handlers, 
+            redirects, internalization and more.
+        - Next.js are the automatic image and font optimizations.
+
+Example: 
+        // creating a custom request handler:
+            - You can define route handlers like GET or POST requests in a file called route.js inside the 
+                app/api directory.
+
+            export async function GET() {
+                const res = await fetch("https://example-api.com");
+                const data = await res.json();
+                return Response.json({ data });
+            }
+
+        // working with the Image component inside a page.js file
+
+            import Image from "next/image";
+            export default function Page() {
+                return (
+                    <Image src="link-to-image-goes-here" alt="descriptive-title-goes-here" />
+                );
+            }
+
+=> Other React frameworks like Remix that will provide the same ability to build out modern full-stack 
+    web applications.

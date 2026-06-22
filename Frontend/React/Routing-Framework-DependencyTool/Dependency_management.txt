@@ -1,0 +1,60 @@
+In software, a dependency is where one component or module in an application relies on another to 
+    function properly.
+
+Dependencies are common in software applications because it allows developers to use pre-built functions 
+    or tools created by others.
+
+If you want to build out a React application, you will need to install the React dependencies.
+
+When you are working with more complex projects, you will often need to rely on many dependencies.
+    If a set of dependencies is not well managed or defined in a project, then that will lead to 
+    what is known as 'dependency hell'.
+
+-> To manage software dependencies in a project, you will need to use a package manager.
+    - A tool used for installation, updates, and removal of dependencies.
+    - Languages like JavaScript, Python, Ruby and Java, all use package managers.
+
+-> To create a new React project using Vite and npm you can run the following command:
+
+            npm create vite@latest my-react-app -- --template react
+
+->  Before you can launch the application, you will need to install the dependencies by running 
+    [npm install] or [npm i] for short.
+
+-> You can view all of the dependencies in the 'package.json' file which is located in the root directory 
+    of your project.
+
+-> When you install dependencies, a node_modules folder will be added to your project.
+    - all the packages and libraries required by your project are stored. 
+    - contains the actual code for the dependencies listed in the package.json file
+    - project's direct dependencies and any dependencies of those dependencies.
+
+    - The two core dependencies needed for a React project will be the react and react-dom packages:
+                        "dependencies": {
+                            "react": "^18.3.1",
+                            "react-dom": "^18.3.1"
+                        }
+
+-> If you need to update any packages locally, you can run the [npm update] command. 
+    Or you can update all packages globally by running the [npm update -g] command.
+
+-> You will also have a package-lock.json file. This file will lock down the exact versions of all 
+    packages that your project is using. 
+    - When you update a package, then the new versions will be updated in the lock file as well.
+
+        - Another important aspect of the package.json file are the dev dependencies:
+
+                "devDependencies": {
+                    "@eslint/js": "^9.17.0",
+                    "@types/react": "^18.3.18",
+                    "@types/react-dom": "^18.3.5",
+                    "@vitejs/plugin-react": "^4.3.4",
+                    "eslint": "^9.17.0",
+                    "eslint-plugin-react": "^7.37.2",
+                    "eslint-plugin-react-hooks": "^5.0.0",
+                    "eslint-plugin-react-refresh": "^0.4.16",
+                    "globals": "^15.14.0",
+                    "vite": "^6.0.5"
+                }
+
+    -> Dev dependencies are packages that are only used for development and not in production. 
