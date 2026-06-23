@@ -1,0 +1,28 @@
+Assertions are used to test that the code is behaving as expected.
+
+-> A commonly used assertion library is Chai.
+    -  same library used inside of the freeCodeCamp codebase
+    - Whenever you go through a workshop or lab, there is an automated test suite that runs against your 
+        code to ensure that your code is behaving the way it is supposed to.
+
+-> There are many more asserts built into Chai, like ones that check if a value is a boolean, if an object 
+    has a certain property name, or if a value is null.
+
+-> Other common JavaScript assertion libraries are should.js and expect.js.
+
+Example: 
+
+    // In Build a Calculator workshop, Step 1 is testing for a function called addTwoAndSeven:
+                
+                assert.isFunction(addTwoAndSeven);
+
+        - assertion checks that the provided code contains a function named addTwoAndSeven
+        - If the user creates an array, string, or anything else that's not a function and assigns it 
+            to addTwoAndSeven, then the test will fail.
+
+    // another: 
+
+                assert.equal(addThreeAndFour(), 7);
+
+        - assertion checks that the return value from the addThreeAndFour function is equal to the number 7
+        - If the return value does not equal 7, then the test will fail.

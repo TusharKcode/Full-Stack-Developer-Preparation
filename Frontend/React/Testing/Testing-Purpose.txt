@@ -1,0 +1,17 @@
+One option is to do what is called manual testing. 
+    - This is where a tester will go through each part of the application and test out all of the 
+        different features to make sure it works correctly.
+
+    - Real-world applications involve many components and services and can often be complex in nature. 
+        So only relying on manual testing will result in many bugs lying beneath the surface that can 
+        hurt the usability and maintainability of an application.
+
+=> This is where automated testing comes in.
+    - You can write separate test code to check whether your application behaves as expected, without 
+        needing to manually click through it.
+
+=> Different types of testing used in the industry like unit testing, end-to-end testing, functional 
+    testing and more.
+
+    Writing tests for your applications will help ensure that your code is doing what it is supposed 
+        to be doing. 

@@ -1,0 +1,37 @@
+"Software Development Life Cycle"
+    - a process for designing and building out new products and services. 
+    - used by software teams to build and deploy applications.
+
+Stages used in the SDLC: 
+    -> Planning stage
+        - development team collects requirements for the proposed work from the stakeholders.
+        - A stakeholder is someone with a vested interest in the success of the product or service.
+        - could be investors, owners, or even other employees.
+        - includes estimating costs for the work and creating a schedule for when the work will be completed.
+
+    -> Design stage
+        - software team breaks down the requirements and decide on the best approaches for solutions.
+        - includes deciding on which external tools can be used to help things
+        - what internal tooling needs to be built to get the job done.
+
+    -> Implementation stage
+        - involves the software team breaking down the requirements into manageable tasks
+    
+    -> Testing stage
+        - involves manual and automated testing for the new work
+        - team tests out the application throughout the entire development stage to catch and fix any issues
+    
+    -> Deployment stage
+        - where the team deploys the new changes to a build or testing environment.
+        - team to test out the application some more and fix any issues before the changes go to production
+        - production application is the app that end users will use.
+
+    -> Maintenance stage
+        - involves fixing any issues that arise from customers in the production application
+        - involves monitoring the system
+
+Different Models in SDLC: 
+    -> Waterfall - where each phase of the life cycle needs to be completed before the next phase can begin
+    -> Agile - focuses on iterative development by breaking down work into sprints
+
+ 

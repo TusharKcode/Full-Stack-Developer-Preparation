@@ -1,0 +1,29 @@
+There are two types of testing approaches that you should be aware of in software development.
+
+=> TDD (Test-Driven Development)
+    - a methodology that emphasizes writing tests first before building out the features for an application
+    - It also helps with catching bugs earlier on in the development stage.
+    - TDD is a polarizing topic in the industry.
+    -> Process: 
+                - Write a test
+                - Ensure that it fails
+                - Write the code for that test
+                - Ensure that the test passes this time
+                - Make any necessary refactors to the code
+
+=> BDD (Behavior-Driven Development)
+    - approach of aligning a series of tests with business goals.
+    - should be written in a language that can be understood by both technical and non-technical individuals.
+    - uses the Gherkin language, which is used in businesses to describe behaviors and scenarios.
+    - The Gherkin language uses Given, When, and Then statements when describing scenarios.
+    - BDD testing frameworks include Cucumber, JBehave, and SpecFlow.
+
+    Example:
+            'Scenario': Creating a New Blog Post
+
+            'Given' the user is logged into their account and is on the "Create New Post" page,
+
+            'When' the user enters a title and content for the post and clicks the "Publish" button,
+
+            'Then' the blog post should be saved and displayed on the homepage with the correct title, 
+                content, and timestamp.
