@@ -1,0 +1,83 @@
+The 'perceived performance' is how users perceive the performance of a website.
+    - in terms of responsiveness and reliability.
+    
+    -> Techniques for improving perceived performance:
+        - Reducing the initial load time as much as possible by loading non-essential resources in the 
+            background is essential, known as "lazy loading."
+            It can reduce the amount of content that has to be loaded upfront, so the page will load faster.
+        - To provide quick response and feedback to user interactions.
+
+        - Keeping users actively engaged with your website is very important for improving their time 
+            perception.
+            Displaying text as soon as it arrives is helpful for keeping users engaged from the start, 
+                even if other resources, like images, have not been loaded yet.
+        - Another tip is to avoid content reflow and jumping content. 
+
+        - If your website has custom fonts, you should also try to minimize font loading delays, since 
+            this may result in flickering - or showing the fallback font while the custom font is being 
+            loaded.
+
+The 'real performance' is the objective and measurable performance of the website.
+    - It's measured using metrics like page load time, server response time, and rendering time.
+
+"Ways to Reduce Page Loading Times"
+
+    -> Number 1: optimize media assets. Large images and videos are common culprits for slow load times. 
+                    By optimizing these assets, you can significantly speed up your site:
+
+                - Compress Images: Use tools like TinyPNG to reduce image file sizes without compromising 
+                                    quality.
+                - Lazy Loading: Defer loading off-screen images and videos until they're needed. 
+                                    In HTML, add the loading="lazy" attribute to your media tags.
+                - Use Modern Formats: Implement formats like WebP for images and AV1 for videos to achieve 
+                                        better compression rates.
+
+    -> Next, we have to minimize HTTP requests. Each file your website requests adds to the load time. 
+                Reducing the number of HTTP requests can lead to faster page loads. 
+        You can:
+                - Combine Files: Merge CSS and JavaScript files to reduce the number of requests.
+                - Use Inline Critical CSS: Place essential CSS directly in the HTML to speed up initial 
+                    rendering.
+                - Use CSS Sprites: Combine multiple images into a single sprite sheet to minimize requests.
+
+    -> Leverage Browser Caching. Caching allows browsers to store parts of your website locally, 
+        reducing load times for returning visitors:
+                - Set Expiry Headers: Use the Cache-Control header to specify how long browsers should 
+                                        keep files.
+                - Version Assets: When updating files, change their names or use query strings to ensure 
+                                    browsers fetch the latest versions.
+
+    -> Minifying and Compressing files, which will reduce the size of your files can lead to quicker 
+        downloads:
+            - Minify CSS and JavaScript: Remove unnecessary whitespace and comments using tools like 
+                                            UglifyJS for JavaScript and cssnano for CSS.
+            - Enable Compression: Configure your server to use Gzip to reduce the size of transmitted files.
+
+    -> optimize web fonts. Web fonts can enhance design but may also slow down your site if not handled 
+        properly:
+            - Limit Font Variants: Only include the character sets and styles you need.
+            - Use font-display: Control how fonts are displayed during loading by setting the font-display 
+                                property in your CSS.
+
+
+=> Improving the "time to usable", or in other words the interval from when a user requests a page to 
+    when they can meaningfully interact with it, is crucial for enhancing user experience.
+    
+Example of "Time to Usable":
+    - lazy load images as a refresher
+        <img src="image.jpg" loading="lazy" alt="Description">
+
+    - lazy load iframes
+        <iframe src="video.html" loading="lazy"></iframe>
+
+    - use the defer attribute to delay non-critical JavaScript until after the initial page load
+        <script src="non-critical.js" defer></script>
+
+    - Render-blocking resources delay the page from becoming interactive. To avoid this, you could try 
+        loading CSS asynchronously. 
+        For non-critical CSS, use the media attribute to load stylesheets conditionally
+            <link rel="stylesheet" href="print.css" media="print">
+
+    - <!-- This stylesheet is only loaded on screens wider than 800px -->
+        - This saves bandwidth by skipping unnecessary styles.
+        <link rel="stylesheet" href="desktop.css" media="(min-width: 800px)">

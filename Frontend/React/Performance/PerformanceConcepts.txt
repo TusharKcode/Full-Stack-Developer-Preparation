@@ -1,0 +1,45 @@
+=> Source order refers to the way HTML elements are structured in the document. 
+    - This determines what loads first and can significantly impact performance and accessibility.
+    -> It includes:
+        - Placing critical content such as headings, navigation or main text higher in the HTML structure.
+        - Deferring non-essential scripts such as ones for analytics, or third-party widgets, so they don't 
+            block rendering.
+        - Using progressive enhancement, to ensure the core experience works even before styles and 
+            scripts load.
+
+=> The critical rendering path is the sequence of steps the browser follows to convert code into pixels 
+    on the screen.
+        - Parsing HTML: Builds the DOM (Document Object Model)
+        - Parsing CSS: Builds the CSSOM (CSS Object Model)
+        - JavaScript Execution: Can modify the DOM & CSSOM
+        - Render Tree Construction: Combines the DOM & CSSOM
+        - Layout & Painting: Determines element sizes & draws pixels
+        - Optimizations:
+            - Minimize render-blocking resources (e.g., large CSS files, unused JS).
+            - Use async and defer attributes for scripts:
+            - Load only essential styles first; defer non-critical CSS.
+
+=> Latency is the time it takes for a request to travel between the browser and the server. 
+    So in other words, high latency equals slow pages.
+
+    It includes: 
+        - Using CDNs, or in other words, Content Delivery Networks, to serve files from closer locations.
+        - Enabling compression using things such as Gzip to reduce file sizes.
+        - Optimizing images and using lazy loading - which we will also go into later.
+
+By removing unnecessary loops and using async/await, we lower processing time and energy consumption.
+-> Some practical optimization tips: 
+    - Minify Your Assets: Use tools like Terser or UglifyJS to shrink JavaScript and CSS files. Smaller 
+                            files load faster and require less energy.
+    - Optimize Images: Use next-gen formats like WebP instead of PNGs or JPEGs to reduce file size without 
+                        quality loss.
+    - Reduce Network Requests: Each request adds overhead. Combine CSS and JavaScript files and use lazy 
+                                loading to reduce load times.
+    - Use Efficient Algorithms: A poorly optimized loop can increase CPU usage. This is the same as 
+                                    writing inefficient JavaScript.
+    - Leverage Caching & CDNs: Caching prevents repeated downloads, and CDNs deliver content closer to 
+                                users, reducing transmission energy.
+
+-> Use tools like Google Lighthouse to analyze performance and estimate energy savings.
+    For deeper sustainability check, try the Website Carbon Calculator — as it estimates your page's 
+        environmental impact.

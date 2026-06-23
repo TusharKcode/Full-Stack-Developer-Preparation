@@ -1,0 +1,33 @@
+First up, we have Chrome DevTools.
+    - built-in tool inside Google Chrome that lets you analyze and debug performance in real-time
+    - show loading times, CPU usage, and render delays
+    - useful for measuring First Contentful Paint, or FCP
+
+Next, Lighthouse.
+    - automated tool that checks performance, SEO, and accessibility
+    - simply open Chrome DevTools and go to the "Lighthouse" tab
+    - click "Analyze page load" and it will give you a score on how fast and optimized your site is, 
+        also recommendations to improve it
+    - If you want a quick performance audit, Lighthouse is your go-to tool.
+
+Now, let's talk about WebPageTest.
+    - test how your site loads from different locations and devices
+    - visit WebPageTest.org, enter your website URL, choose a test location and browser and click "Start 
+        Test"
+    - gives a detailed breakdown of your site's Speed Index, Total Blocking Time, and other key 
+        performance metrics
+
+Another great tool is Google PageSpeed Insights.
+    - analyzes your website and suggests quick improvements for both mobile and desktop
+    - go to PageSpeed Insights, enter your URL, and click "Analyze"
+    - tell you what's slowing your site down and give specific recommendations — like optimizing images, r
+        emoving render-blocking scripts, and reducing server response times.
+
+Real User Monitoring, or RUM tools
+    - track actual user behavior, showing how real visitors experience your site
+    - include Google Analytics, which tracks page load times and bounce rates
+
+New Relic or Datadog, 
+    - which Monitors real-time performance issues.
+
+

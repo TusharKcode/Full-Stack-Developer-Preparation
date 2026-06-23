@@ -1,0 +1,66 @@
+If you ever clicked on a webpage and felt like nothing happened. This delay impacts user experience and 
+    is measured by a metric called Interaction to Next Paint, or INP.
+
+    - It assesses a page's overall responsiveness by measuring the time from when a user interacts — 
+        like a click or key press — to the next time the browser updates the display.
+
+    - A lower INP indicates a more responsive page.
+
+    - A high INP can make users feel that a page is unresponsive, leading to frustration.
+
+    - Optimizing INP ensures that users receive timely feedback, enhancing their experience.
+
+-> Tools like Chrome's DevTools and web performance APIs can help measure INP by tracking interaction delays.
+
+-> To improve INP, minimize main thread work, optimize event handlers, and ensure that user interactions 
+    trigger timely visual updates.
+
+Steps: 
+
+    - First of all, let's open DevTools by pressing "F12" or Right-click and click on "Inspect".
+    - Now, let's head to the "Performance" tab - and there is everything that you need.
+
+    - Now, let's say you have a search bar on your webpage.
+        Imagine a user types a query, but it takes 600ms before the suggestion dropdown appears. 
+        Chrome DevTools would mark this high INP value.
+
+        You can optimize by deferring heavy JavaScript, reducing long tasks, and improving event handling. 
+        The INP would then drop to 150ms, making interactions feel instant.
+
+    -> A good INP is generally below 200ms, and a poor INP is above 500ms. And that's it!
+
+=> Key Metrics for Measuring Performance:
+
+    -> First Contentful Paint, or FCP. 
+        - This measures how quickly the first piece of content, like a text or image, appears on the screen.
+        - A good FCP is regarded as a time below 1.8 seconds
+        - A poor FCP is usually above 3 seconds. 
+
+        Step 1: Open Chrome DevTools
+                Open Google Chrome.
+                Go to the webpage you want to test.
+                Press "F12" or Right-click and "Inspect".
+
+        Step 2: Find and click the "Lighthouse" tab in the DevTools.
+
+        Step 3: Click the "Analyze page load" button and wait for the analyzation to finish.
+
+        - Now we can analyze the results. Scrolling down to the "Metrics" section and looking for the 
+            "First Contentful Paint" marker. We can see the exact time in milliseconds or seconds.
+
+    -> Speed Index measures how quickly visible parts of the page are painted.
+        - Lower scores mean better performance! You can check your Speed Index in the Lighthouse Reports.
+
+    -> Total Blocking Time or TBT. 
+        - This shows how long the main thread is blocked by heavy JavaScript tasks.
+        - If TBT is high, users experience laggy interactions.
+        - To improve TBT, break up long tasks and defer non-essential scripts.
+
+    -> Bounce Rate. 
+        - This is the percentage of visitors who leave without interacting.
+        - If your site has high bounce rates, it might be because your page is too slow
+
+    -> Unique users. 
+        - This metric tracks how many individual visitors come to your site. 
+        - To view the bounce rate and unique users, you can use Google Analytics. 
+        - It will allow you to monitor these metrics and improve engagement.
