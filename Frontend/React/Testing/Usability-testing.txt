@@ -1,0 +1,25 @@
+Usability testing is when you have real users interacting with the application to discover if there are 
+    any design, user experience, or functionality issues in the app.
+
+=> Tools to assist with usability testing: Loop11, Maze, Userbrain, UserTesting, UXTweak
+
+=> The four common types of usability testing are: 
+    -> explorative
+        - involves users interacting with the different features of the application to better understand 
+            how they work
+        - identify any potential issues in the application, can be addressed early on and resolved.
+
+    -> comparative
+        - where you compare your application's user experience with similar applications in the marketplace
+        -  see where your application falls short compared to the competition
+
+    -> assessment
+        - where you study how intuitive the application is to use and if there are any major blockers for 
+            users
+        - result in reduced costs and headaches once the application is live to thousands or even millions 
+            of users down the line.
+
+    -> validation
+        - identify any major issues that will prevent the user from using the application
+        - happens after the initial development stage and just before the final release of the application
+

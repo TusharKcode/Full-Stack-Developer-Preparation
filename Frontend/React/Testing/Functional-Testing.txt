@@ -1,0 +1,11 @@
+Unit testing is part of functional testing
+
+-> Functional testing checks if the features and functions of the application work as expected.
+
+=> The goal of functional testing is to test the system as a whole against multiple scenarios to ensure 
+    that the system works as expected. 
+
+    Example: Smoke testing is where you perform a preliminary check on the system for basic or critical 
+                issues before more extensive testing is done.
+
+=> In contrast, non-functional testing focuses on things like performance and reliability.

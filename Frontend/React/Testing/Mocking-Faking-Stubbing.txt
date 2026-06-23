@@ -1,0 +1,59 @@
+"Mocking"
+    - process of replacing real data with false data that simulates the behavior of real components
+    - allows testers and developers to test for specific components in the application without having 
+        to rely on external dependencies
+
+    -> Mocking the API response removes those external factors and allows testers to work with a predictable,
+        controlled data set.
+
+    Example: 
+            // use case for mocking data would be when dealing with API calls
+                    export const postService = {
+                        async getPosts() {
+                            const response = await fetch("https://api.example.com/posts");
+                            return response.json();
+                        },
+                    };
+
+        // If you need to test the postService function, you could mock the API response instead of 
+            making continuous API calls to fetch the data
+        // Fetching from an API takes time and depends on external factors like network availability and 
+            server responses
+
+"Faking"
+    - simplified versions of real components without the complexity or side effects of the real thing
+
+    Example: fake a database by storing the data in memory instead of interacting with the real database.
+                allow you to mimic database operations in memory, which will be much faster than dealing 
+                with the real database.
+            OR can create a fake file system in place of the real one when it comes to testing.
+
+"Stubbing"
+    - Stubs are objects that return pre-defined responses or dummy data for an expected behavior in an 
+        application.
+
+    Example: 
+            // a stub in Jes
+            // stub the behavior for a database connection in your tests without having to rely on an 
+                actual database connection
+
+                    import { postService } from "./postService";
+                    import { db } from "./db";
+
+                    jest.mock("./db", () => ({
+                        db: {
+                            fetchPosts: jest.fn(),
+                        },
+                    }));
+
+                    test("should return stubbed posts", async () => {
+                        const fakePosts = [
+                            { id: 1, title: "Stubbed Post", content: "This is a stubbed post." },
+                        ];
+
+                        db.fetchPosts.mockResolvedValue(fakePosts);     // stub
+
+                        const posts = await postService.getPosts();
+
+                        expect(posts).toEqual(fakePosts);
+                    });
