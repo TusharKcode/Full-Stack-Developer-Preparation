@@ -1,0 +1,90 @@
+A CSS preprocessor is a tool that extends standard CSS with powerful features like variables, mixins, 
+    nesting, and selector inheritance.
+
+Some of these features, like variables and nesting, are now supported or are getting more support in 
+    native CSS
+
+They take the CSS rules and styles you write, along with their extended syntax, and compile them into a 
+    native CSS file that browsers can understand.
+
+You will also have access to powerful features, like mixins, that are not directly supported by CSS.
+
+Some of the most popular CSS preprocessors are Sass, Less, and Stylus.
+
+=> Sass stands for "Syntactically Awesome Style Sheets." 
+    - It's compatible with all versions of CSS and maintained by a large community of developers.
+
+    -> Features: 
+                - Variables, so you can store and reuse values throughout the spreadsheet.
+                - Nested CSS rules, so you can create a visual hierarchy in your file.
+                - Modules, so you can split your styles into multiple stylesheets.
+                - Mixins, so you can reuse CSS declarations throughout your site.
+                - Inheritance, so multiple CSS selectors can share properties.
+                - Operators, for basic mathematical operations.
+
+    - Sass also supports two syntaxes.
+        -> The SCSS syntax stands for Sassy CSS, which is a superset of CSS. This means that SCSS expands 
+            the basic syntax of CSS.
+            - It requires the use of curly braces ({ and }) around CSS properties and semicolons (;) at the 
+                end of CSS declarations, just like native CSS.
+            - These files have a .scss extension
+            Example: 
+                // at the top, is a variable defined in SCSS. This variable is used in the CSS rule below.
+
+                    $primary-color: #3498eb;
+
+                    header {
+                        background-color: $primary-color;
+                    }
+
+        -> A less-frequently used syntax, the indented syntax. 
+            - This is also known as the "Sass syntax" since it was Sass's original syntax.
+            - This syntax relies on indentation to define the rules
+
+            Example: 
+                    $primary-color: #3498eb
+
+                    header
+                        background-color: $primary-color
+
+    => Sass also supports a powerful feature, called mixins.
+
+        -> Mixins allow you to group multiple CSS properties and their values under the name and reuse 
+            that block of CSS code throughout your stylesheet.
+            - CSS code less repetitive and easier to maintain
+            - mixins can have custom and descriptive names
+            - also promote consistency in stylesheets by applying uniform styles
+
+        Example: 
+                @mixin center-flex {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+            // once you have your mixin defined, you would use the @include at-rule to include those 
+                properties in a CSS rule
+
+                section {
+                    @include center-flex;
+                    height: 500px;
+                    background-color: #3289a8;
+                }
+
+        // indented syntax without the curly braces or semicolons:
+                @mixin center-flex
+                    display: flex
+                    justify-content: center
+                    align-items: center
+
+                section
+                    @include center-flex
+                    height: 500px
+                    background-color: #3289a8
+
+=> Disadvantages: 
+    - First, CSS preprocessors have to compile the CSS rules into standard CSS.
+    - Next, they can create debugging challenges, since browsers use the compiled CSS directly.
+
+=> Advantages: 
+    - They can be very helpful for writing cleaner, reusable, less repetitive, and scalable CSS.

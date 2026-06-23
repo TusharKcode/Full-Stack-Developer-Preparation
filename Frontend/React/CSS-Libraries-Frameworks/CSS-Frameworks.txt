@@ -1,0 +1,43 @@
+A CSS framework consists of pre-written CSS code that you can use to style your HTML elements.
+
+-> CSS framework as toolbox, frameworks often include pre-defined styles and components that you can 
+    use very easily, including styles for creating responsive layouts.
+
+-> Some of the most popular CSS frameworks are Tailwind CSS, Bootstrap, Materialize, and Foundation.
+
+"Utility-first CSS frameworks"
+    - Tailwind CSS
+    - has small classes with very specific purposes, like setting the margin, padding, or background color.
+    - usually assign these small classes directly to the HTML elements.
+
+    Example: 
+        // blue background with white and bold text, a vertical padding of 2 rem, a horizontal padding of 
+            4 rem, and rounded borders. class hover:bg-blue-700 will turn the background dark blue when 
+            the user hovers over it with the mouse
+            
+            <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-700">
+                Button
+            </button>
+
+"Component-based CSS framework"
+    - Bootstrap
+    - pre-built components with pre-defined styles that you can easily add to your website
+    - available in the official documentation of the CSS framework
+    - can copy and paste them quickly into your project
+
+    Example: 
+        // if you want to create a list group in Bootstrap
+            <div class="card" style="width: 25rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">HTML</li>
+                    <li class="list-group-item">CSS</li>
+                    <li class="list-group-item">JavaScript</li>
+                </ul>
+            </div>
+
+CSS frameworks rely on pre-defined styles
+    - try to add custom CSS on top them, specificity issues may arise
+    - selectors used by the framework may have a higher specificity than the selectors that you use in 
+        your custom CSS
+    
+Some frameworks are quite large, and may take some time to load.
