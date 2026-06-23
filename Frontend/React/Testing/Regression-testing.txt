@@ -1,0 +1,22 @@
+As an application continues to grow, it is not uncommon to have situations where new changes 
+    unintentionally break existing functionality. This is known as a regression.
+
+-> To help catch these issues before they happen, you can use regression testing.
+
+-> When you re-run functional tests against parts of your application to ensure that everything still 
+    works as expected.
+
+    If you've implemented bug fixes, enhancements, or even have updates to your configuration, then 
+        it's a good idea to perform regression testing.
+
+-> Tools they include Puppeteer, Playwright, Selenium, and Cypress.
+
+-> Few testing techniques to be aware of: 
+    - first is called unit regression testing, where you have a list of items that need to be tested each 
+        time major changes or fixes are implemented into the app.
+    - Another testing technique is called partial regression testing. Involves targeted approaches to 
+        ensure that new changes have not broken specific aspects of the application.
+
+=> Retesting is used to check for known issues and ensure that they have been resolved.
+=> Regression testing searches for unknown issues that might have occurred through recent changes in 
+    the codebase.

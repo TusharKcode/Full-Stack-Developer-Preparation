@@ -1,0 +1,16 @@
+Once the initial development and software testing are complete, it is important to have the application 
+    tested by testers and real users. 
+
+=> Alpha testing is done by a select group of testers who go through the application to ensure there are 
+    no bugs before it is released into the marketplace
+    - part of acceptance testing, which ensures that the software application meets the needs of users 
+        before its release.
+
+    - utilizes both white and black box testing techniques
+        Black box testing only focuses on the expected behavior of the application
+        white box testing involves the tester knowing the internal components and performing tests on that
+
+=> Beta testing where the application is made available to real users.
+    - Actual users can interact with the application and provide feedback.
+    - This is a form of user acceptance testing which ensures that the application meets the business 
+        requirements as well as user needs.

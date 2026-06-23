@@ -1,0 +1,22 @@
+"A/B Testing"
+
+Companies spend a lot of time analyzing analytics and studying user behavior. 
+    - identify pain points in the user experience for their site or application
+    - use that data to come up with solutions to create a smoother user experience.
+
+=> One of the techniques companies employ is called A/B testing.
+    - involves comparing two versions of a page or application and studying which version performs better.
+    - this type of testing is known as bucket or split testing.
+
+You can randomly divide your users into two groups.
+    - Group A is the control group, which sees the original version of the page with the smaller blue button
+    - Group B is the experimental group, which see the new version of the page with the larger green button.
+
+    If the new version of the page results in a higher click-through rate, then you can confidently 
+        replace the old button styling with the new one.
+
+Examples of tools to use for A/B testing include GrowthBook and LaunchDarkly.
+
+There are many common use cases for A/B testing like testing ads, email campaigns, or new product features. 
+
+A/B testing allows you to make more data-driven decisions and continually improve the user experience.

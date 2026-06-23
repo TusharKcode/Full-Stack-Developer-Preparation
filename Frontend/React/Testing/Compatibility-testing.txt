@@ -1,0 +1,32 @@
+The goal of compatibility testing is to see how well your software works in a variety of different 
+    computing environments.
+
+This provides the team with the ability to catch bugs before they reach production and will help contribute 
+    to a smoother product launch.
+
+It include backwards and forwards compatibility, hardware testing, operating systems, networks, browsers, 
+    and mobile devices.
+
+-> Backwards compatibility refers to when current software is compatible with earlier versions.
+
+-> Forwards compatibility is when software and systems will work with future versions of itself.
+
+-> Hardware compatibility testing focuses on the software's ability to work properly in different hardware 
+    configurations. 
+    It includes different types of processors, memory, storage, and graphics cards.
+
+-> Operating System compatibility testing 
+    - You don't want to design software that works smoothly on Mac devices but has bugs on Windows or 
+        vice versa.
+    - You also need to consider Linux distributions like Ubuntu and Fedora.
+
+-> Network compatibility testing
+    - You will have users working with different network speeds, protocols, security settings, and more.
+
+-> Browser compatibility testing
+    - There are a few popular browsers in the market like Google Chrome, Safari, Firefox, and more. 
+    - all browsers work slightly differently, it's important to test your web application thoroughly and 
+        make sure your web applications work consistently across many browsers.
+
+-> Mobile testing
+    - ensure that your software applications work on a variety of Android and iOS devices.

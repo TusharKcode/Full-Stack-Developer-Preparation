@@ -1,0 +1,26 @@
+Performance testing is what you do when you test an application's speed, responsiveness, scalability, and 
+    stability under different workloads. 
+
+=> The first type is load testing. A load in this context refers to the amount of work or demand put on a 
+    system. 
+    - determines how a system behaves during normal and peak load times.
+    - analyze metrics like response times and resource usage and determine if the current software build is
+        ready or not.  
+
+=> Another type of testing is stress testing. This is where you test your application in extreme loads 
+    and see how well your system responds to the higher load.
+    - identify any bottlenecks and vulnerabilities by testing the system beyond its limits.
+
+=> The next type of performance testing is soak testing, also known as endurance testing. 
+    - This is a type of load testing where you test the system with a higher load for an extended period 
+        of time.
+    - determine any types of memory leaks and performance degradation.
+
+=> Another type of testing is spike testing. This is where you dramatically increase and decrease the 
+    loads and analyze the system's reactions to the changes. 
+    - see if your system will fail with these dramatic changes in the load.
+
+=> Finally, there's breakpoint testing, also known as capacity testing. 
+    - This is where the load will slowly increment over time to the point where the system starts to 
+        fail or degrade. 
+    -  better understand the system's limits and capacities.
