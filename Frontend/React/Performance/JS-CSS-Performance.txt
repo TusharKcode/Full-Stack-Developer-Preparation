@@ -1,0 +1,29 @@
+Improve CSS performance
+
+By default, the browser assumes that all stylesheets should block the rendering process.
+    - But you can tell the browser when a stylesheet should be loaded by using the media attribute and 
+        a media query.
+
+    In this example, the print.css stylesheet will only be applied when the document is being printed 
+        because it has the media attribute with the value print:
+
+                    <link rel="stylesheet" href="print.css" media="print" />
+
+Preloading resources with rel="preload" is another important technique. Critical assets should be loaded 
+    first.
+
+Animating certain CSS properties, such as dimensions, position, and layout, triggers a process called 
+    "reflow," during which the browser recalculates the position and geometry of certain elements on 
+    the page. This requires a repaint, which is computationally expensive.
+
+Fonts can enhance the visual presentation of your web application, they can have an impact on performance. 
+    Some fonts have large files, up to multiple megabytes. 
+    Try to use two or three fonts at most and use web-safe fonts whenever possible.
+
+Improve JS performance
+
+- Reduce the amount of DOM manipulation on your JavaScript code, since this is computationally expensive.
+- Splitting your JavaScript code into modules that perform critical and non-critical tasks is also helpful. 
+
+- Pre-loading files does not guarantee that they will be available when you use them, but the download will 
+    start sooner, so the overall waiting time should be shorter.
