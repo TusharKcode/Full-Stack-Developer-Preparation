@@ -1,0 +1,57 @@
+=> The command line is a basic text input interface which allows a user to enter "commands", usually in 
+    the form of a series of characters, and submit or execute them, usually by pressing the "Enter" key. 
+    You will most-commonly see command line interfaces within a terminal.
+
+=> A terminal is a special application that offers a command line interface to perform system-level 
+    commands beyond the basic read/write operations. 
+    "Terminal emulators", which are essentially applications that wrap a basic terminal interface to offer 
+    additional features or functionality. 
+
+=> A "shell" is the software that wraps the command line and interprets your inputs as commands, returning 
+    the output.
+
+=> Windows offers two distinct shell applications out of the box: Powershell and Command Prompt.
+
+=> Windows also offers a relatively new and modernized terminal emulator aptly named Microsoft Terminal.
+
+    Advantage: 
+        - It allows you to access both the Powershell and Command Prompt shells from the same application
+            as well as Linux shell if you have configured Windows Subsystems for Linux.
+
+=> MacOS offers a terminal that is aptly named "Terminal". You can access this through your spotlight 
+    search, or through your application launcher.
+    - Offers support for third-party terminal emulators, such as iTerm or Ghostty.
+
+=> On Linux, the default terminal (and how you launch it) depends highly on the distro and desktop 
+    environment you use.
+    - support for third-party terminal emulators, too
+
+=> Shortcuts use in CLI
+
+    - The first shortcut is the up arrow key. Pressing this key will allow you to cycle backwards through 
+        your command history, one command at a time.
+
+    - The down arrow key, then, can be used to cycle forwards through your command history.
+
+    - The tab key can be used to fill in the rest of the suggestion, quickly populating your command 
+        line with the full syntax
+
+    - In *nix based terminals found on Linux and macOS devices, you can press Control + L to clear the 
+        entire screen and start with a fresh clean prompt. 
+
+    - In PowerShell, you would need to run the cls command (which you can bind to a key combination like 
+        Control + L).
+
+    - If you need to interrupt a command to stop its execution, you can use Control + C to kill the process.
+        For PowerShell users, Control + C is also used to copy text - and will only work to terminate a 
+            process when the context is not ambiguous (such as when there is no text selected to copy).
+
+-> The next couple of shortcuts are only available in *nix based terminals
+    - Pressing Control + Z places the current process in a background task and returns you to the command 
+        line, where you can continue your work.
+
+    - When you need to shift focus back to the background task, you can use fg to restore it.
+
+    - And finally, there may be commands you need to run twice in a row. You can press the up arrow key to 
+        cycle backwards to the previously run command, but you can also type two exclamation points (!!) 
+        into the command line and hit enter - this will automatically run the last executed command.
