@@ -1,0 +1,52 @@
+You have actually seen a generic type in a previous lesson: Array<string>
+    - usually use generic types in functions.
+
+    -> They can be thought of as a special parameter you provide to a function to control the behavior of 
+        the function's type definition.
+
+Example: 
+    // a function to get a random value from an array
+    // Our function accepts an array of strings and returns a string.
+
+        const getRandomValue = (array: string[]): string => {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+    // if we wanted to pass in an array of numbers and return a number, use a union type
+    // we have passed in an array of only numbers, TypeScript determines that the val variable could be 
+        a number OR a string.
+
+        const getRandomValue = (array: (string|number)[]): (string|number) => {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        const val = getRandomValue([1, 2, 4])
+
+    // Instead, you can define a generic type for the function
+    
+        const getRandomValue = <T>(array: T[]): T => {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        const val = getRandomValue([1, 2, 4])
+
+    - First, the <T> syntax tells TypeScript that you are defining a generic type T for the function. 
+        T is a common name for generic types, but you can actually name it whatever you want 
+
+    - We tell TypeScript that the array parameter is an array of values matching the generic type and 
+        returned value is a single element of that same type.
+
+    - This allows TypeScript to properly detect that val will be a number, because the array we passed 
+        consists solely of numbers.
+
+=> But what about functions you don't control?
+    
+    - document.querySelector() method:
+        // We're querying with an ID selector, TypeScript doesn't know what kind of element we are querying.
+            const email = document.querySelector("#email");
+            console.log(email.value);
+
+        // we can pass a type argument to the function call
+            This tells TypeScript that the element we expect to find will be an input element
+                querySelector can return null if an element is not found
+                
+            const email = document.querySelector<HTMLInputElement>("#email");
+            console.log(email.value);

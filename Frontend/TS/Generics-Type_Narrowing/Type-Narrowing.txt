@@ -1,0 +1,143 @@
+-> The first is narrowing by truthiness. 
+
+Example:
+    // get a compiler error trying to access the value property of email because email might be null.
+
+        const email = document.querySelector<HTMLInputElement>("#email");
+        console.log(email.value);
+
+    // use a conditional statement to confirm email is truthy before accessing the property
+        
+        const email = document.querySelector<HTMLInputElement>("#email");
+        if (email){
+            console.log(email.value);
+        }
+    - TypeScript is able to infer that email MUST be an input element within the conditional block. 
+        So it no longer throws a compiler error.
+
+=> Truthiness checks can also work in the reverse direction
+
+    const email = document.querySelector<HTMLInputElement>("#email");
+    if (!email) {
+        throw new ReferenceError("Could not find email element!")
+    }
+    console.log(email.value);
+
+    // we throw an error if email is falsy. null is a falsy value.
+        Throwing an error ends the logical execution of this code, which means when we reach the 
+            console.log() call TypeScript knows email cannot be null.
+
+-> "Optional chaining" is also a form of type narrowing, under the same premise that the property access 
+    can't happen if the email value is null
+
+    const email = document.querySelector<HTMLInputElement>("#email");
+    console.log(email?.value);
+
+-> You can also narrow types using the 'typeof' operator
+
+    Example: // a variable we have indicated might be a string OR a number
+                - gets a compiler error because we cannot perform arithmetic on a string value
+                    const myVal = Math.random() > 0.5 ? 222 : "222";
+                    console.log(myVal / 10)
+
+            // But use a conditional to check the typeof the myVal variable
+                - TypeScript now knows that myVal has to be a number, and we can safely perform arithmetic 
+                    with it.
+                    const myVal = Math.random() > 0.5 ? 222 : "222";
+                    if (typeof myVal === "number") {
+                        console.log(myVal / 10);
+                    }
+
+=> If the object in question happens to come from a class, you can actually use the 'instanceof' keyword 
+    to narrow the type. 
+
+    -> instanceof is a runtime validation - which means, if we somehow got the TypeScript type wrong, 
+        our JavaScript code will still confirm that email is an input element.
+
+    Example: 
+            const email = document.querySelector("#email");
+
+    // Rather than passing a generic type and telling TypeScript what the element is, we can use instanceof 
+        to narrow the type and write safer code
+
+            const email = document.querySelector("#email");
+            if (email instanceof HTMLInputElement) {
+                console.log(email.value);
+            }
+
+Example: 
+        // we fetch a User object from an API and try to print the information:
+
+                interface User{
+                    name: string;
+                    age: number;
+                }
+
+                const printAge = (user: User) => {
+                    console.log(`${user.name} is ${user.age} years old.`)
+                }
+                const request = await fetch("url")
+                const myUser = await request.json();
+                printAge(myUser)
+
+        - get a compiler error trying to pass myUser into the function
+            we know the API returns the correct object, TypeScript does not. And the .json() method 
+            does not take a generic type.
+
+        // to resolve this issue would be to cast the type
+            - whenever you cast the type, you're essentially weakening TypeScript's ability to catch 
+                potential errors. 
+
+                interface User{
+                    name: string;
+                    age: number;
+                }
+
+                const printAge = (user: User) => {
+                    console.log(`${user.name} is ${user.age} years old.`)
+                }
+                const request = await fetch("url")
+                const myUser = await request.json() as User;
+                printAge(myUser)
+        
+        // instead of casting the type, you can write a type guard
+            - The user is User syntax indicates that our function returns a boolean value, which when 
+                true means the user value satisfies the User interface
+
+                interface User {
+                    name: string;
+                    age: number;
+                }
+
+                const isValidUser = (user: unknown): user is User => {
+                return !!user && 
+                    typeof user === "object" &&
+                    "name" in user &&
+                    "age" in user;
+                }
+
+        // some basic checks to ensure that the structure of the user object matches : 
+            - use of a truthiness (!!user) narrowing 
+            - typeof narrowing
+            - typeof null returns "object"
+
+                interface User {
+                    name: string;
+                    age: number;
+                }
+
+                const isValidUser = (user: unknown): user is User => {
+                return !!user && 
+                    typeof user === "object" &&
+                    "name" in user &&
+                    "age" in user;
+                }
+
+                const printAge = (user: User) => 
+                console.log(`${user.name} is ${user.age} years old!`)
+
+                const request = await fetch("url")
+                const myUser = await request.json() as User;
+                if (isValidUser(myUser)) {
+                    printAge(myUser);
+                }
