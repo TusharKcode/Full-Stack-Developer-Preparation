@@ -1,0 +1,59 @@
+TypeScript allows you to build new types from existing ones.
+
+=> A 'union' type is a type that combines two or more other types.
+    - Union types are also helpful when working with null and undefined values.
+        
+        Syntax: type1 | type2 | type3
+        Example: 
+                // a variable called id with a union type for string or number
+                // The value can be updated to a number which is still valid for the union type
+                    - If you tried to assign another value that isn't a string or number, then 
+                        TypeScript will display an error message
+                        
+                        let id: string | number = "user_783";   
+                        let id: string | number = 1024;
+                
+                // a variable might contain a string value, or it might be null if no value has been set yet
+                        
+                        let username: string | null;
+                
+                // using undefined
+
+                        let score: number | undefined;
+                        score = undefined; 
+
+    -> One common way to work with union types is to use a type alias.
+        - A type alias is a name for a type.
+
+            type ID = number | string;
+
+        Example: 
+            // ID would be a union type for number or string while User is an object type with id and 
+                name properties
+            // The id is specified with the ID type while the name has the string type.
+            // The getUserId function has one parameter called user and its type is User
+            // The return type for the getUserId function would be ID.
+
+                type ID = number | string;
+                type User = {
+                    id: ID;
+                    name: string;
+                };
+                function getUserId(user: User): ID {
+                    return user.id;
+                }
+
+        // Type aliases are a great way to describe the shape of an object. It is common to create object 
+            types and use them in arrays like this
+            - If you forget a property in one of the objects, then TypeScript will throw an error
+            
+                type User = {
+                    id: number | string;
+                    name: string;
+                };
+
+                const users: User[] = [
+                    { id: 101, name: "Alice" },
+                    { id: "A102", name: "Bob" },
+                    { id: 103, name: "Charlie" }
+                ];

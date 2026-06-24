@@ -1,0 +1,46 @@
+Another way to name an object type would be to use an interface declaration like this
+    - interfaces use the extends keyword to build on other interfaces or types
+    - type aliases use intersection types (&) to combine types.
+
+            type ID = number | string;
+
+            interface User {
+                id: ID;
+                name: string;
+            }
+
+Example: 
+    // The Admin interface extends User, meaning it includes id and name and adds a new property called role.
+
+        interface User {
+            id: number | string;
+            name: string;
+        }
+
+        interface Admin extends User {
+            role: string;
+        }
+
+        const adminUser: Admin = {
+            id: 101,
+            name: "Alice",
+            role: "superadmin"
+        };
+
+    // If you wanted to extend a type, you would use an intersection type (&) like this
+        - Admin combines the User type with a new object type that includes role
+        
+        type User = {
+            id: number | string;
+            name: string;
+        };
+
+        type Admin = User & {
+            role: string;
+        };
+
+        const adminUser: Admin = {
+            id: 101,
+            name: "Alice",
+            role: "superadmin"
+        };

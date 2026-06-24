@@ -1,0 +1,49 @@
+"Any"
+    - The any type is used to represent any type of value. 
+    Example:
+                let randomValue: any;
+
+                randomValue = 42;           
+
+                randomValue = "Hello";     
+                
+                randomValue = true;        
+
+                randomValue = { name: "Alice" }; 
+
+"Never"
+    - This type represents something that will never happen.
+    Example:
+                function processValue(value: string | number) {
+                    if (typeof value === "string") {
+                        console.log("String value:", value.toUpperCase());
+                    } else if (typeof value === "number") {
+                        console.log("Number value:", value * 2);
+                    } else {
+                        console.log(value); 
+                    }
+                }
+
+"Unknown"
+    - unknown is similar to any but with the unknown type, you have to do a type check for the variable 
+        before using it
+    Example:
+                function doubleValue(value: unknown) {
+                    if (typeof value === "number") {
+                        console.log(value * 2);
+                    } else if (typeof value === "string") {
+                        console.log(value + value);
+                    }
+                }
+                doubleValue(10);    
+                doubleValue("Hi "); 
+                doubleValue(true);  
+"Void"
+    -  When you have a function that doesn't return a value, that would be a void type.
+    Example:
+                type Status = "loading" | "success" | "error";
+
+                type Handler = {
+                    status: Status;
+                    onChange: (newStatus: Status) => void; 
+                };

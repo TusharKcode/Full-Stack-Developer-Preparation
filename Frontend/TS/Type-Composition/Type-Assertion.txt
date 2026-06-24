@@ -1,0 +1,42 @@
+Sometimes there will be situations where you will know more about a type than TypeScript does. 
+    This is where type assertions come in handy.
+
+    - TypeScript only allows type assertions between compatible or overlapping types.
+
+Example:
+    // using the querySelector() method to access an element with the id of submit
+    // Right now, TypeScript only knows that this submitBtn is some sort of Element or possibly null. 
+        TypeScript will not look at the corresponding HTML to figure it out.
+                
+                const submitBtn = document.querySelector("#submit");
+
+    // now, use a type assertion to tell TypeScript what type of element this is
+        - TypeScript will treat this as a button element because of that type assertion.
+
+                const submitBtn = document.querySelector("#submit") as HTMLButtonElement;
+
+=> There are limits to using the as keyword
+
+    - you can't do stuff like this without TypeScript throwing an error:
+        // Conversion of type 'string' to type 'number' may be a mistake because neither type 
+            sufficiently overlaps with the other. 
+            If this was intentional, convert the expression to 'unknown' first.
+                
+                const age = "awesome" as number;
+
+        // to remove that error would be to use a double assertion
+                
+                const age = "awesome" as unknown as number;
+
+    - Another way to write type assertions is to use angle bracket syntax
+
+            const submitBtn = <HTMLButtonElement>document.querySelector("#submit");
+
+        // You need to be careful with this syntax when using tsx files because TypeScript will think 
+            you are trying to render a component and throw an error
+
+            // file: index.tsx
+            // This JSX tag requires 'React' to be in scope, but it could not be found.
+            // JSX element 'HTMLButtonElement' has no corresponding closing tag.
+            
+            const submitBtn =  <HTMLButtonElement>document.querySelector("#submit");
