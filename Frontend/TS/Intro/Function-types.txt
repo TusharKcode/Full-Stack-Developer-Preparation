@@ -1,0 +1,57 @@
+Example:
+        function circleArea(radius) {
+            return Math.PI * radius * radius;
+        }
+
+    -> TypeScript would display a message of Parameter 'radius' implicitly has an 'any' type.
+    -> The 'any' type indicates that a value can have any type.
+
+    // To get rid of the error and explicitly type the parameter
+        - If you try to call the circleArea function with a different type that is not a number, 
+            TypeScript will display an error
+        - If you try to provide more arguments then the function expects, TypeScript will display an error
+        - If you provide too few arguments, then TypeScript will also display an error
+
+            function circleArea(radius: number) {
+                return Math.PI * radius * radius;
+            }
+
+    -> You can make parameters optional by the using the ? symbol near the parameter like this:
+
+        // Placing a required parameter after an optional one will result in a TypeScript error.
+
+            function area(radius: number, height?: number): number {
+                const baseArea = Math.PI * radius * radius;
+
+                if (height !== undefined) {
+                    const sideArea = 2 * Math.PI * radius * height;
+                    return baseArea + sideArea;
+                }
+
+                return baseArea;
+            }
+
+        // If you want to type your return values, you can add return type annotations like this:
+
+            function circleArea(radius: number): number {
+                return Math.PI * radius * radius;
+            }
+
+Example: 
+        // asynchronous functions and promises
+
+    // If your function is going to return a promise, you can use the Promise type like this
+            async function getCityTemperature(city: string): Promise<number> {
+                const response = await fetch(`https://api.example.com/weather?city=${city}`);
+                const data = await response.json(); 
+                return data.temperature;
+            }
+        
+        - If you try to remove the return type, TypeScript might infer the return as Promise<any>
+
+    // an anonymous function in the callback passed to a forEach:
+            
+            const languages = ["JavaScript", "Python", "TypeScript"];
+            languages.forEach((lang) => {
+                console.log(`${lang.toUpperCase()} has ${lang.length} characters`);
+            });

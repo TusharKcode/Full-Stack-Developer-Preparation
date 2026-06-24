@@ -1,0 +1,27 @@
+JavaScript is considered a dynamically-typed language.
+    - This means that variables can receive any values at run time - 
+        declaring a variable as a number does not prevent you from assigning it a string value later, and 
+        function parameters can be passed any value.
+
+-> The challenge of a dynamically-typed language is that the lack of type safety can introduce errors 
+    if you are not careful.
+
+=> TypeScript extends the JavaScript language to include static typing, which helps catch those errors 
+    before you even deploy your code.
+
+Example:
+    // in JavaScript
+        const getRandomValue = (array) => {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        console.log(getRandomValue(10));
+
+    // in TypeScript
+        const getRandomValue = (array: string[]) => {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        console.log(getRandomValue(10));  // compiler error b/s of type
+
+=> Most JavaScript runtime environments, such as a browser or Node.js, cannot run TypeScript natively.
+    Instead, you first need to compile, or translate, TypeScript code into regular JavaScript.
+    - You can do that with the built-in compiler that comes with the TypeScript language. 

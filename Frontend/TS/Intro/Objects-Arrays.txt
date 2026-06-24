@@ -1,0 +1,70 @@
+"Arrays"
+
+    Example:
+                const programmingLanguages = ["Java", "C++", "Python"];
+
+        // If you wanted to explicitly type that array as an array of strings, then you can type it as 
+            string[]
+                const programmingLanguages:string[] = ["Java", "C++", "Python"];
+
+        // But explicitly typing it will help in situations if you attempt to add another type to the array like this:
+        // Type 'number' is not assignable to type 'string'.(2322)
+
+                const programmingLanguages:string[] = ["Java", 9, "Python"];
+
+        // Another way to type arrays is to use this syntax:
+                const programmingLanguages:Array<string> = ["Java", "C++", "Python"];
+
+"Objects"
+
+    Example: 
+                const developer = {
+                    firstName: "Jessica",
+                    isEmployed: true
+                }
+
+        // To explicitly type the object properties, you can use this syntax:
+                const developer: { firstName: string, isEmployed: boolean } = {
+                    firstName: "Jessica",
+                    isEmployed: true
+                }
+
+        // If you try to add or remove properties from the object, then you will get an error like this:
+                // Property 'isEmployed' is missing in type '{ firstName: string; }' but required in type 
+                    '{ firstName: string; isEmployed: boolean; }'
+                    const developer: { firstName: string, isEmployed: boolean } = {
+                        firstName: "Jessica",
+                    }
+
+        // You can make object properties optional by using the ? after the property name like this:
+                    const developer: { firstName: string, isEmployed?: boolean } = {
+                        firstName: "Jessica",
+                    }
+
+What if you want an object that can have any number of properties but all of the values must follow a 
+    specific type?
+
+    -> The first way is to use a Record which is a built-in generic utility type in TypeScript.
+
+        Syntax:    Record<Keys, ValueType>
+
+        Example: 
+            // using a Record for a userRoles object
+                - If you try to assign a non-string value, you’ll get an error
+
+                    const userRoles: Record<string, string> = {
+                        admin: "full-access",
+                        editor: "limited-access",
+                        viewer: "read-only"
+                    };
+    
+    -> The second way to write the same idea is with an index signature:
+
+        Syntax: const obj: { [key: string]: string } = {};
+
+        Example: 
+                    const settings: { [key: string]: string } = {
+                        theme: "dark",
+                        language: "en",
+                        layout: "grid"
+                    };
