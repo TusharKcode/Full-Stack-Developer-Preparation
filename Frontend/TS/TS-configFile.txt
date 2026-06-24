@@ -1,0 +1,46 @@
+TypeScript's compiler settings can be configured to meet your project's needs. 
+    - That configuration lives in a tsconfig.json file in the root directory of your project.
+    - Without it, the compiler will not run unless you pass it command flags directly
+
+Example: 
+            {
+                "compilerOptions": {
+                    "rootDir": "./src",
+                    "outDir": "./prod",
+                    "lib": ["ES2023"],
+                    "target": "ES2023",
+                    "module": "ES2022",
+                    "moduleResolution": "Node",
+                    "esModuleInterop": true,
+                    "skipLibCheck": true,
+                    "strict": true
+                },
+                "exclude": ["test/"]
+            }
+
+    - The 'compilerOptions' property is going to contain the "meat" of your configuration, 
+        where you control how the TypeScript compiler behaves.
+
+    - The 'rootDir' and 'outDir' tell TypeScript which directory holds your source files & which 
+        directory should contain the transpiled JavaScript code.
+
+    - The 'lib' property determines which type definitions the compiler uses, and allows you to include 
+        support for specific ES releases, the DOM, and more.
+
+    - 'module' and 'moduleResolution' effectively work in tandem to manage how your package uses modules 
+        - either CommonJS or ECMAScript.
+
+    - 'esModuleInterop' allows for smoother interoperability between CommonJS and ES modules by 
+        automatically creating namespace objects for imports, making it easier to use modules 
+        from different systems together in your TypeScript projects
+
+    - 'skipLibCheck' option skips validating .d.ts files that aren't referenced by imports in your code.
+
+    - 'strict' mode toggles quite a few other checks, such as requiring you to properly handle nullable 
+        types, or warn when TypeScript can't infer a type and falls back to any.
+
+    - 'exclude' property - when you've defined a source directory, you may have TypeScript code outside 
+        of that directory which you don't want compiled as part of your production code
+    
+    - The exclude array tells the compiler to ignore these TypeScript files during compilation, 
+        but still allows tooling like Intellisense to expose potential issues.
