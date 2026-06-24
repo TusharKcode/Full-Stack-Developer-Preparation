@@ -1,0 +1,94 @@
+-> A code editor is any application that allows you to edit code files. 
+
+-> An IDE, or Integrated Development Environment, is a full application that allows you to compile, run, 
+    and debug your code while you edit it.
+
+=> Popular IDEs: 
+    - Visual Studio by Microsoft that provides a comprehensive suite of tools for building, debugging, 
+        and deploying applications across various platforms.
+        a lightweight, open-source code editor & supports a wide range of programming languages
+
+    - Xcode by Apple designed for creating, coding, and debugging applications for macOS, iOS, watchOS, 
+        and tvOS.
+
+    - Android Studio by Google specifically designed for building, debugging, and testing Android applications.
+
+
+=> Editors:
+    - Sublime Text is a fast, versatile text editor known for its sleek interface, powerful features, and 
+        support for a wide range of programming languages through customizable syntax highlighting and 
+        plugins.
+
+    - Notepad++ is a free, open-source, text and source code editor for Windows that offers syntax 
+        highlighting, code folding, and a range of plugins to enhance productivity and customization.
+
+    - A cloud-based editor is an online tool that allows users to write, edit, and manage code or text 
+        directly through a web browser without needing to install software locally.
+
+=> Cloud-based editors:
+    - Replit is an online platform that provides a collaborative environment for coding, allowing users 
+        to write, run, and share code in various programming languages directly from a web browser.
+
+    - GitHub Codespaces is a cloud-based development environment that provides instant access to a 
+        fully-configured code editor and development tools directly from GitHub, enabling seamless 
+        coding and collaboration.
+
+    - Ona is a cloud-based development environment that integrates with GitHub and GitLab, offering 
+        instant, customizable workspaces for coding, building, and debugging directly from your browser.
+
+=> Install Visual Studio Code
+
+    - For Windows, you can download an EXE installer. Once you've downloaded it, run the file and the 
+        setup wizard will take you through the installation process.
+
+    - For Mac, you can download a zip archive which contains a .app that you can run. You can also 
+        install VS Code via homebrew.
+
+    - Open up the Terminal app on your Mac and run the following command:
+
+                    brew install --cask visual-studio-code
+
+    - On Linux, you can download a .deb or .rpm file directly. Once you have it installed, you can use 
+        the appropriate executable, or CLI command (typically code), to launch the application.
+
+=> How to Create a Project and Run Your Code Locally in VS Code
+
+    - To begin, you will need to use a command line interface to create a new directory for your new 
+        project. A directory is another name for the folder.
+
+    - Command-line interfaces, or CLI for short, allow you to interact with your operating system through 
+        text-based commands.
+
+    - If you are on Windows, you can use the Command Prompt or PowerShell. If you are on a Mac, you can 
+        open up your Terminal app.
+
+    - Once the command line is open, navigate to the home directory by typing in the cd ~ command and 
+        hitting enter on your keyboard. 
+        Then type in the mkdir my-project command and hit enter. mkdir, or "make directory" is the 
+            command used to create a new directory. 
+        You should then open your new directory with VS Code.
+
+    - Depending on your operating system, you might have a context menu (or right-click option) to open 
+        VS Code directly from your file explorer. 
+        You could also choose to double-click on the VS Code application. 
+        If you feel comfortable with the command line you can run the command code /path/to/folder.
+
+    - Once it's open, you should see a new blank workspace.
+
+    - To create a new file, click on the File menu at the top-left corner and select New File.... 
+        Then name your file index.html and click on Save.
+
+    - Now you should see your new file in the explorer tab. Try adding some HTML to your index.html file.
+
+    - Now you might be tempted to open the HTML file in your browser directly. While that can work, it can 
+        also lead to all sorts of unexpected bugs, such as CSS not loading properly.
+
+    - You'll need to grab the Live Server extension first, which is available for free in the marketplace.
+
+    - Click on the extensions tab in the left hand corner and type in Live Server in the search bar.
+
+    - Once you have this installed, you should see a Go live button in your status bar. Make sure you have 
+        your HTML file open, and then click it.
+
+    - Your new page should open automatically in a new tab in the browser. If it doesn't then you can go 
+        directly to http://localhost:5500/

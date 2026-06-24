@@ -1,0 +1,26 @@
+-> Shortcuts like Ctrl + S to save, Ctrl + C to copy, and Ctrl + V to paste all work in VS Code.
+
+-> Shift + Alt + F will run your configured formatter (such as prettier, for a JavaScript project) on 
+    the currently opened file.
+
+-> Ctrl + Shift + F (Windows), or Cmd + Shift + F (Mac), to search the text contents of all the files in
+    your workspace 
+
+-> Ctrl + Shift + H (Windows), or Cmd + Shift + H (Mac), if you want to run a find-and-replace.
+
+-> If you need to remove a line, Ctrl + Shift + K (Windows), or Cmd + Shift + K (Mac), will delete it.
+
+-> Ctrl + B (Windows), or Cmd + B (Mac), will hide the sidebar - which has the file list and extensions menu.
+
+-> Ctrl + plus (Windows), or Cmd + plus (Mac), will increase the scaling of the editor
+
+-> Ctrl + minus (Windows), or Cmd + minus (Mac), will decrease it.
+
+-> You can place multiple cursors by using Ctrl + Alt + down and Ctrl + Alt + up (Windows/Linux), or 
+    Option + Command + down and Option + Command + up (Mac), to extend the cursor to consecutive lines.
+
+-> You can also press and hold Alt (Windows/Linux) or Option (Mac) and click to add cursors on separate 
+    lines wherever you need them.
+
+-> You always have Ctrl + Shift + P (Windows), or Cmd + Shift + P (Mac), which opens the command palette 
+    for you to select whatever you may need.
