@@ -1,0 +1,54 @@
+A "relational database" is a collection of data organized into tables. These tables are made of rows and 
+    columns.
+
+    - Rows represent individual records.
+    - Columns represent the attributes or fields that describe each record.
+        Ex: such as name and national ID number.
+
+    -> They allow us to connect different pieces of information by linking tables through common attributes,
+        making it easier to see how they relate to each other.
+
+    -> Relational databases require a schema. The schema defines the overall structure of the database, 
+        including its tables, columns, data types, relationships, and constraints.
+
+    -> All tables in a relational database have a primary key, which is a unique identifier for each row.
+    -> They enable relationships between tables via foreign keys. 
+
+- A query is a request for specific data from the database
+
+    -> Relational databases have a wide range of applications across industries such as healthcare, 
+        construction, business, gaming, education, government, e-commerce, social media, and more.
+
+    -> They offer several advantages, including scalability. They can handle large datasets, so they're 
+        perfect for complex, real-world applications.
+
+    -> They also enforce data integrity through primary keys, foreign keys, and data types, which ensures 
+        that the data will be consistent and accurate.
+
+=> "Non-relational databases", also known as NoSQL databases, are more flexible.
+    - They store data in individual files that are not connected. 
+    - Their data model is more flexible too.
+    - Some non-relational dbs have a basic schema or data model
+    - You can add, modify, or remove data fields if necessary.
+
+=> Some of the most common relational databases are MySQL, PostgreSQL, SQLite, and Microsoft SQL Server.
+
+    -> MySQL is an open-source relational database management system. 
+        - It's very popular for web development because it's easy to use, reliable, and efficient for 
+            building real-world applications.
+        - It also has an active community of developers that support and maintain it.
+
+    -> PostgreSQL is officially described as "The World's Most Advanced Open Source Relational Database."
+        - It's a free, open source object-relational database system known for its reliability, data 
+            integrity, and extensibility.
+
+    -> SQLite is a free, open source, and lightweight file-based SQL database engine.
+        - widely used database engines
+        - SQLite is self-contained and serverless.
+        - It's a zero-configuration database, which means that it doesn't require an initial setup process
+
+    -> There are other popular proprietary options too, including Microsoft SQL Server and Oracle database.
+        - Microsoft SQL server is a popular relational database management system developed by Microsoft 
+            and used in various applications.
+        - Oracle database is a scalable relational database management system often used for enterprise 
+            applications that require high performance.

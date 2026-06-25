@@ -1,0 +1,60 @@
+SQL stands for Structured Query Language.
+    - It was developed in the 1970s
+    - known as the structured English query language (SEQUEL)
+
+-> SQL is a programming language used for storing and managing data in relational databases.
+
+-> With SQL, you can add, change, delete, find, and retrieve data from a relational database. 
+
+-> It provides a comprehensive set of commands for querying, filtering, sorting, and aggregating data.
+
+-> SQL can help optimize database performance, by querying only the necessary data, and it can be easily 
+    integrated with a wide range of programming languages, so you can use it to interact with databases 
+        directly from your applications.
+
+-> It has been also adopted as an industry standard. It enforces data integrity and includes many security 
+    features, like support for user authentication and data encryption.
+
+-> It's also scalable, portable, and compatible with a wide range of database management systems.
+
+-> SQL is based on commands, commonly known as SQL statements or SQL queries.
+
+-> SQL commands end with a semicolon (;).
+
+=> Before you can enter SQL commands, you need to open the psql shell so you can directly interact with 
+    the PostgreSQL database.
+
+    - In the command prompt or terminal, enter: psql -U <username> -d <database_name>
+
+        // Replace username with your username and database_name with the database to connect.
+        // If you have not created your own database yet, PostgreSQL automatically includes a default 
+            database called postgres when it is installed.
+            You can use this postgres database to follow along.
+
+    - Once connected, you will see the prompt change to: postgres=#
+
+        // It shows the database name you are connected to and waits for SQL commands.
+
+
+-> First, you can use this command to create a database named my_database:
+
+                CREATE DATABASE my_database;
+
+-> In the interactive psql shell, you can switch databases with the \c shortcut command
+    // they do not require a semi-colon to complete the command.
+                \c my_database
+
+    // Now that you've connected to your new database, you will see the prompt has changed:
+
+                my_database=#
+
+-> Once you have created and connected to a database, you can create a table with the CREATE TABLE keywords:
+
+                CREATE TABLE products (
+                    id SERIAL,
+                    name VARCHAR(255)
+                );
+
+=> The standard naming convention for table and column names is snake case, writing words in lowercase and 
+    separating them with an underscore (_).
+    Ex: delivery_orders
