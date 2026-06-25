@@ -1,0 +1,77 @@
+Bash stands for Bourne Again SHell, and is arguably the most common shell you will encounter in Unix-like 
+    environments.
+
+-> The first command is 'pwd', which prints the current working directory to the terminal. 
+    - "working directory" refers to the directory the terminal is currently pointed at
+
+-> The 'cd' command allows you to change directories.
+    - You can specify an absolute path, prefixed with a forward slash (/), 
+    - a relative path with no prefix, and 
+    - use the double-dot (..) syntax to move up to the parent directory.
+
+-> The next command is 'ls', which lists the contents of your current working directory.
+    - helpful to see if a file or folder exists in your directory
+    - takes flags to show hidden files (the -a flag)
+    -  file permissions (the -l flag), and other features.
+    - You can also use 'less' or 'cat' to view the contents of a file.
+
+-> If the directory does not contain the file or folder you need commands called mkdir and touch that 
+    allow you to create them
+    - 'mkdir' creates a new directory, or folder
+    - 'touch' creates a new file
+    - Both of these commands accept the name of the file or folder you want to create
+    Ex: touch readme.md creates a new Markdown file named readme.md
+
+-> 'mv' command allows you to move (or rename) a file
+    - It takes the old file name and the new file name.
+
+-> The 'rm' command allows you to remove (or delete) a file, and with the (-r) flag will delete a directory
+    - Sometimes a file might be protected, and you'll need to include the (-f) flag.
+
+-> The 'cp' command can be used to copy a file or directory to a new location.
+    - does not remove the original file
+    - in order to copy a directory, you'll need to pass the (-r) flag.
+
+-> The 'echo' command can be thought of as the Bash equivalent of a console.log() or print() function.
+    - takes a string argument, wrapped in quotes, and prints it to the terminal.
+    - The (>) symbol allows you to specify a filename to create or overwrite with the new string, 
+        like [ echo "Naomi was here." > readme.md ]
+    - the (>>) symbol will append to the file.
+
+-> There are many more Bash commands available to you, such as head, tail, chown, and chmod
+
+-> The 'man' command to see the manual or help page for nearly any command.
+
+
+=> Options, or flags, are special arguments you can pass to a command that affect the way it behaves.
+    - The two terms are used interchangeably, though "flags" tends to be used more specifically for options 
+        that serve as an on/off toggle.
+
+    - Options are typically prefixed with one or two hyphen (-) symbols, which helps provide a visual 
+        distinction between an option and an argument
+
+    - The two-hyphen, or "long form", syntax.
+
+    - Many applications, such as ls, accept a (--version) flag, which prints the current version of the 
+        application to the terminal instead of running the application's commands.
+
+    - Many applications also offer a (--help) flag, which prints instructions on how to use the application.
+
+    - The one-hyphen, or "short form", syntax typically uses options that are a single letter.
+        -> the -a flag with ls lists all files, including hidden files that start with a dot (.), like .env.
+        -> advantage of these short options is that you can chain multiple flags together.
+
+        Instead of ls --all --human-readable --size you can use the single letters all at once with ls -ahs.
+
+    - When using long-form options, you typically need to use an equal sign. In this syntax, the value 
+        is directly concatenated to the option with the equal (=) symbol.
+
+        Ex: modifying the behavior of ls to either include or exclude colors:
+            ls --color=never
+
+    - When using short-form options, you typically separate the value with a space.
+
+        Ex: are the long and short form options for setting the width of the ls result:
+
+                ls -w 50
+                ls --width=50
