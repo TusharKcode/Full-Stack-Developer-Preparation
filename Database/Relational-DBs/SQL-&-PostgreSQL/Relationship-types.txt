@@ -1,0 +1,34 @@
+The "relational" aspect of "relational databases" comes from the fact that records in different tables can 
+    have different types of relationships.
+
+    => Five main types of relations: 
+
+        -> one-to-one - Two tables have a one-to-one relationship when each record in the first table can be 
+                            associated with at most one record in the second table, and vice versa.
+                        Ex: a company only assigns one vehicle per employee.
+
+        -> one-to-many - when one record in a table can be related to one or more records in another table.
+                        Ex: a customers table and an orders table, each customer could be related to one or 
+                            more orders but each order can only be related to one customer.
+
+        -> many-to-one - same as previous one, but opposite perspective.
+                        Ex: One or more orders can be related to one customer.
+
+        -> many-to-many - when a record in a table can be related to multiple records in another table and 
+                            vice versa. 
+                        Ex: An author can write multiple books, and a single book can be written by multiple 
+                                authors.
+
+        -> self-referencing relationships (also known as recursive relationships)
+            - when the records of a table can be related to other records on the same table. 
+
+    => Relational model at its core doesn't support many-to-many relationships directly.
+        - To handle this, create an intermediate table, also known as a junction table.
+        - This table solves these initial limitations by transforming the many-to-many relationship into two 
+            one-to-many relationships.
+        - It creates a one-to-many relationship between the first table and the junction table and a 
+            one-to-many relationship between the second table and the junction table.
+
+        - The name of the junction table is usually a combination of the entities.
+
+        Ex: From books and authors, you may call it books_authors.

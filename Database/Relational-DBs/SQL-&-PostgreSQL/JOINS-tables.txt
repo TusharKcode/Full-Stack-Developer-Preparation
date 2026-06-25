@@ -1,0 +1,50 @@
+SQL's JOIN operations allow you to combine related information from tables to query data.
+
+=> Several variants of the JOIN operation:
+    
+    -> INNER JOIN - filters the result to include only rows where the values in the joining columns that 
+                        you specify are equal in both tables. 
+                    - it gives you the intersection of the data.
+
+                    Ex: The first is this products table with multiple products. It includes their ID's, 
+                            names, category, price, and origin.
+                        And second, we have a sales table, with the sale ID, product ID, quantity, and sale 
+                            date.
+                        We can perform an INNER JOIN based on the product_id like: 
+
+                            SELECT * FROM products INNER JOIN sales
+                                ON products.product_id = sales.product_id;
+
+    -> FULL OUTER JOIN - returns all rows from both tables.
+                        - If a match is found in the specified columns, the data is combined and you get 
+                            all columns for each matching record.
+                        - If there's no match in the specified columns, in either one of the tables, the 
+                            missing columns are filled with NULL values.
+
+                    Ex: based on the product_id column. 
+                        SELECT * FROM products FULL OUTER JOIN sales
+                            ON products.product_id = sales.product_id;
+
+    -> LEFT OUTER JOIN - used to get all the records from the left table and the matching information 
+                            from the right table for each row of the left table.
+                        - If no match is found, the columns from the right table are filled in with NULL 
+                            values.
+
+                    Ex: 
+                    SELECT * FROM products LEFT JOIN sales
+                        ON products.product_id = sales.product_id;
+
+    -> RIGHT OUTER JOIN - get all the records from the right table and the matching information from the 
+                            left table for each row of the right table.
+                        - If there's no match, the columns from the left table are filled in with NULL values.
+                    Ex: 
+                        SELECT * FROM products RIGHT JOIN sales
+                            ON products.product_id = sales.product_id;
+
+    -> SELF JOIN - allows you to join the table with itself, joining two copies of the same table.
+                    - helpful for comparing different rows within the same table.
+
+    -> CROSS JOIN - known as a Cartesian Join, joins every row from the first table with every row of the 
+                    second table.
+                    - generates all possible row combinations
+                    - doesn't need any conditions to join the tables.
