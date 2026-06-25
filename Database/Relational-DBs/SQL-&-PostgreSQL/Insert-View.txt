@@ -1,0 +1,54 @@
+First of all, to view data, you need to insert it. 
+
+    CREATE TABLE dogs(
+        id SERIAL,
+        name VARCHAR(100),
+        age INTEGER
+    );
+
+=> With PostgreSQL
+    -> use the SERIAL data type for the id, its value will be an INTEGER, starting from 1, and 
+        incremented automatically
+        So you will not need to pass a value for it when you insert a record.
+
+    -> inserting records to our dogs table with the INSERT INTO statement. 
+        - first one would be inserting a single row and specifying the columns of the values that will be 
+            inserted.
+
+            INSERT INTO dogs (name, age)
+            VALUES ('Gino', 3)
+
+        - Another alternative is to insert the record without specifying the columns, This syntax is 
+            valid SQL, but it is error-prone.
+            
+            INSERT INTO dogs
+            VALUES ('Gino', 3);
+
+        - You can also insert multiple records in the same SQL command by separating them with a comma.
+            
+            INSERT INTO dogs (name, age)
+            VALUES
+            ('Gino', 3),
+            ('Nora', 2);
+
+    -> You can query information from the database. A query is a request for data.
+
+        - SELECT statement is used for querying data from one or more tables. The asterisk is a wildcard 
+            character that represents "all columns."
+
+            SELECT * FROM dogs;
+
+        - To query specific columns, you can write the names of those columns in the command, right after 
+            SELECT, separated by a comma
+
+            SELECT name, age FROM dogs;
+
+    -> Query data based on a specific condition
+
+        - use the WHERE keyword and the less than (<) comparison operator
+            
+            SELECT * FROM dogs WHERE age < 3;
+
+        - use the equals (=) comparison operator
+            
+            SELECT age FROM dogs WHERE name = 'Gino';

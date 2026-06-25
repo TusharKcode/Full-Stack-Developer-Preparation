@@ -1,0 +1,66 @@
+This is the basic syntax for creating a table in SQL. Each column has its own data type.
+
+    Example: 
+            CREATE TABLE table_name(
+                column1 data_type column_constraint,
+                column2 data_type column_constraint,
+                column3 data_type column_constraint,
+                ... etc
+            );
+
+=> Categories of Data Types: 
+
+    - Numeric, such as INTEGER, FLOAT, SERIAL, and DECIMAL.
+    - Date and time, such as TIMESTAMP, DATE, and TIME.
+    - Character and string. These include CHAR, VARCHAR, and TEXT.
+    - Unicode, including NTEXT, and NVARCHAR, These are used to make sure that text will be stored and 
+        retrieved correctly, regardless of the characters' origin.
+    - Binary, used to store non-textual data, like images, audio, and video files.
+    - And other miscellaneous data types, such as XML and TABLE.
+
+"INTEGER"
+    - consume 4 bytes in the database
+    - can range in value from -2,147,483,648 to 2,147,483,647.
+    - SMALLINT and BIGINT, smaller and bigger range of numbers
+
+    Ex: units_sold INTEGER
+
+-> A useful feature available in PostgreSQL is to create a column using the SERIAL keyword. 
+    - it's not a true data type, it's very helpful for creating unique identifier columns
+    - the column will have an INTEGER type, will not allow NULL values
+    - automatically increment when rows are added.
+    - the equivalent of SERIAL would be the AUTO_INCREMENT attribute, used to generate sequential integers 
+        automatically
+    
+    Ex: id SERIAL
+        id INT AUTO_INCREMENT
+
+"VARCHAR"
+    - used for a variable string length
+    - can set the maximum character length within parentheses
+
+    Ex: name VARCHAR(50)
+
+-> If you need to store strings of any length, you can use TEXT instead
+
+    Ex: name TEXT
+
+"DATE"
+    - store the date of each event in a specific format
+    Ex: event_date DATE
+
+"TIME"
+    Ex: start_time TIME
+
+"TIMESTAMP"
+    - combines both date and time
+    - include the time zone if you write TIMESTAMP WITH TIME ZONE
+
+    Ex: event_timestamp TIMESTAMP
+        event_timestamp TIMESTAMP WITH TIME ZONE
+
+"BOOLEAN"
+    - need to store a boolean value, TRUE or FALSE
+
+    Ex: is_active BOOLEAN
+
