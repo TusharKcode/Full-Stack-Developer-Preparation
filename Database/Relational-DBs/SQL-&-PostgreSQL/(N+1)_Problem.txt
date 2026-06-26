@@ -1,0 +1,72 @@
+The N+1 problem is a common performance bottleneck in database-driven applications. 
+
+    Ex: a really long load time while using an application, it's very likely related to the N+1 problem.
+
+    -> This problem occurs when many small queries are being performed in a sequence to get the data 
+        you requested.
+
+    -> The more queries you perform, the longer the entire process will take because you need to send 
+        each query to the server, find the data on the database, and then receive the data sent by the 
+        server for that query.
+
+Example: 
+    //  you're developing an application for a food delivery service and you run a query to get the 
+        first 50 orders in the database. 
+
+    // First, you will get a list with these orders from an orders table
+            order_id | product   | quantity | customer_id
+            1        | pizza     | 2        | 3422
+            2        | salad     | 1        | 1255
+            3        | ice cream | 4        | 2344
+            4        | donuts    | 10       | 3455
+            .        | .         | .        | .
+            .        | .         | .        | .
+            .        | .         | .        | .
+
+    // what if you also need to get the data of the customers who submitted these orders
+        This information would be stored in a different customers table.
+
+    -> One way to approach this would be to get the list of orders first and then run one query per order 
+        to get the customers' information.
+        // To get the list of orders -  to get the first 50 records from the orders table
+            
+            SELECT * FROM orders LIMIT 50;
+
+        // This is where the 1 in N+1 comes from. 
+            It's the initial query that gives you the list of records. Then, you will need to perform 
+            another query for each one of these records to get the information of the customer who 
+            submitted the order.
+
+        // For this, you might write a loop in an asynchronous function to process both orders and customers.
+            The getCustomerData() function will perform a SQL query to get the data of the customer who 
+            placed a specific order.
+
+            for (const order of orders) {
+                const customerId = order.customer_id;
+                const customerData = await getCustomerData(customerId);
+                // Process the customer's data.
+            }
+
+    -> That's where the N in N+1 comes from. N represents the number of queries that will be performed 
+        to get additional data for each one of the records.
+
+    -> You should avoid making queries in a loop because making multiple small queries will take much 
+        longer than performing a single, larger query to get all the data.
+
+    -> You should try to use the tools that SQL gives you to reduce the number of queries as much as possible. 
+        we could use a JOIN operation to join the orders and customers table
+
+        SELECT 
+            orders.order_id,
+            orders.product,
+            orders.quantity,
+            customers.customer_id,
+            customers.name AS customer_name,
+            customers.email AS customer_email,
+            customers.address AS customer_address
+        FROM orders
+        JOIN customers ON orders.customer_id = customers.customer_id
+        WHERE orders.order_id IN (SELECT order_id FROM orders LIMIT 50)
+
+    // With the JOIN operation, we can retrieve the data of the first 50 orders in the database, 
+        including the data of the customers, their names, email, and addresses, with only one query.
