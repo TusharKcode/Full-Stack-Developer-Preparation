@@ -1,0 +1,68 @@
+Input refers to text written by the user read by the program. Input is always read as a string.
+
+-> For reading input, we use the 'Scanner' tool that comes with Java. 
+
+-> The tool can be imported for use in a program by adding the command [ import java.util.Scanner; ] 
+    before the beginning of the main program's frame (public class ...). 
+
+    The tool itself is created with:
+                                    Scanner scanner = new Scanner(System.in);.
+
+-> input is read with the scanner tool's 'nextLine()' method.
+
+=> The call scanner.nextLine() is left waiting for the user to write something. When user writes 
+    something and presses enter, the provided string is assigned to a string variable 
+    (in this instance message).
+
+-> The program is then able to reference the variable message later on, the variable message is 
+    referenced in the print command.
+
+"Strings"
+    - We refer to "strings" rather than "text".
+
+    -> The term "string" is shorthand for "string of characters" which describes how the computer sees text on 
+        a more fundamental level: as a sequence of individual characters.
+
+    -> Variables are named containers that contain information of some specified type and have a name.
+
+    -> A string variable is declared in a program by stating the type of the variable (String) and its name 
+        (myString, for instance).
+
+    -> Typically a variable is also assigned a value during its declaration. You can assign a value by 
+        following the declaration with an equals sign followed by the value and a semicolon.
+
+        Ex: String message = "Hello world!";
+            System.out.println(message);        // Hello world!
+
+=> A string enclosed in a programming language's quotation marks is called a "string literal", i.e., a 
+    string with a specified value.
+
+    Ex: String message = "Hello world!";
+        System.out.println("message");      // message
+
+=> Concatenation - Joining Strings Together
+
+    - The string to be printed can be formed from multiple strings using the + operator.
+
+        Ex: System.out.println("Hello " + "world!");
+
+    - The same method can be used to join a string literal and the value of a string variable.
+
+        Ex: String message = "Hello world!";
+            System.out.println(message + " ... and the universe!");
+
+=> Reading Strings
+    - The reader.nextLine(); command reads the user's input and returns a string. 
+    - To use the string in the program, it must be saved to a string variable — 
+        String message = scanner.nextLine();. 
+    - A value saved to a variable can be used repeatedly.
+
+    -> When the program's execution comes a statement that attempts to read input from the user 
+        (the command reader.nextLine()), the execution stops and waits. 
+
+    Ex: 
+        The program prompts the user for three strings. 
+        First, the program prints Write the first string: , and then waits for user input. 
+            When the user writes some text, the program prints Write the second string: , and 
+            then waits for user input again. 
+        This continues for a third time, after which the program prints all three strings

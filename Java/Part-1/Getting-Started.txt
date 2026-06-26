@@ -1,0 +1,48 @@
+An IDE (Integrated Development Environment) contains a set of useful tools for the programmer. 
+    It does not create the program by itself, but it can give hints about common mistakes in the 
+    code, and help the programmer understand the structure of the program.
+
+"Java Programming"
+
+=> The "code" you write is called source code.
+    - Source code consists of statements and expressions, which are read line by line from top to bottom, 
+        and from left to right. 
+
+=> When a program is run, the source code is first compiled into Java bytecode. This compilation process 
+    is done by Java's compiler, which itself is a program. 
+
+    The program gets executed, meaning the commands are executed one-by-one by a Java-interpreter that is 
+        able to read Java bytecode.
+
+    This compile process affects how and when errors occur. When a program is compiled before execution, 
+        the compiler can search for errors in it.
+
+=> Printing Multiple Lines
+
+            public class Example {
+                public static void main(String[] args) {
+                    System.out.println("Hello world!");
+                    System.out.println("... and the universe!");
+                }
+            }
+
+    Output: Hello world!
+            ... and the universe!
+
+=> Terminology and Code Comments
+
+    -> Command parameters
+        - The information to be printed by the print command, i.e. its parameters, are passed to it by 
+            placing them inside the parentheses () that follow the command.
+
+            Ex: passing Hi as a parameter to the System.out.println command
+                System.out.println("Hi").
+
+    -> Semicolon Separates Commands
+        - Commands are separated with a semicolon ;.
+
+    -> Comments
+        - Single-line comments are marked with two slashes //. Everything following them on the same line 
+            is interpreted as a comment.
+        - Multi-line comments are marked with a slash and an asterisk /*, and closed with an asterisk 
+            followed by a slash */. Everything between them is interpreted as a comment.
