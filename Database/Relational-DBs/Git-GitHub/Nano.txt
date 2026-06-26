@@ -1,0 +1,47 @@
+Linux environments typically include a text editor. 
+    - Vi, or Vim, tend to be the most common.
+    - Emacs and Nano may need to be installed manually, but they are readily available for nearly every 
+        distribution.
+
+-> The challenge with Vim is it has a substantial learning curve.
+
+-> Emacs is arguably a bit more user friendly, but still has its own tome of keyboard shortcuts.
+
+-> Nano is considerably more streamlined and user-friendly, especially for new learners. 
+
+    - To open a file, you can enter nano <filename> in the terminal.
+        (Once a file is open, you will see the version of Nano you are running and the name of the file you 
+            have open at the top of the screen.)
+
+        (Below that is the content of the file. You can use the arrow keys to navigate your cursor and 
+            insert or delete text with your keyboard. The file will scroll as needed to follow.)
+
+    - Then, at the bottom, you will see a list of available keyboard shortcuts
+        (
+            ^G Help   ^O Write Out    ^F Where Is   ^K Cut      ^T Execute  ^C Location     M-U Undo    M-A Set Mark    M-] To Bracket    M-B Previous
+            ^X Exit   ^R Read File    ^\ Replace    ^U Paste    ^J Justify  ^/ Go To Line   M-E Redo    M-6 Copy        ^B Where Was      M-F Next
+        )
+
+    Shortcuts which start with the caret (^) symbol indicate you need to hold the Ctrl key and press the 
+        indicated letter.
+    Shortcuts which start with M- require you to hold the "meta key", which in most setups should be the 
+        Alt key, and press the letter.
+
+    -> To edit a file in Nano, you only need to know a few of the shortcut commands.
+        - After making changes to a file, you can press Ctrl + O to "Write Out", or save, the file. 
+
+                File Name to write : <filename>
+                ^G Get Help                 ^T  To Files
+                ^C Cancel                   TAB Complete
+
+        - Press enter to save the file and go back to editing the file, or Ctrl + C to cancel and go back 
+            to editing the file.
+
+    -> While in the editor, you can press Ctrl + X to exit Nano and go back to the terminal. 
+        If you have unsaved changes when trying to exit, you will see this in the bottom menu
+
+                Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?
+                                            Y Yes
+                ^C Cancel                   N No
+
+    -> Press Y to save your unsaved changes, or N to discard them.

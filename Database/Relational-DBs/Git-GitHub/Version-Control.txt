@@ -1,0 +1,116 @@
+If you've worked on something, like a thesis paper, where you've saved copies after making significant 
+    changes and named the files something like 
+    
+    Thesis-Draft, Thesis-Final, Thesis-Final-For-Real, and Thesis-Absolute-Final-DO-NOT-CHANGE
+
+=> Tools like Git, SVN, or Mercurial
+    - These are version control systems, and they are a key component to every developer's workflow. 
+    - A version control system allows you to track and manage changes in your project.
+
+    -> Git offers powerful tools that allow you to manage the edit history of a project. 
+        - Git allows you to do things like create commits, which are a snapshot of a specific state 
+            of your codebase. 
+        - You can then compare commits to see what changes you have made, revert a commit that has 
+            improper changes, and more.
+
+        - You can also create "branches", which you can think of as different pathways in your code. 
+            a branch might be the road you walk down, commits are the landmarks along the way.
+
+    -> You will often pair a version control system like Git with a version control provider like 
+        GitHub or Gitlab, which offers you additional collaboration tools and the ability to back up 
+        your projects to the cloud.
+
+    -> But even without a cloud-based storage solution, version control systems can be a game changer for 
+        your workflows. No more THIS-IS-THE-FINAL-COPY-FOREVER files.
+
+=> GitHub and Gitlab 
+
+    - They are cloud-based solutions that offer storage of version-controlled projects in something 
+        called "repositories"
+
+    - enable collaboration features to use with those projects.
+
+    -> Many projects are considered "open-source", which means people can see the code you publish, 
+        propose changes, report issues, and even run a modified version.
+
+    -> You can also publish a project as "closed-source", meaning the only people who can see and interact 
+        with the project are the people you explicitly authorize.
+
+=> Install and Set Up Git
+
+    -> To check if Git is already installed on your machine you can run the following command
+            git --version
+
+    -> For Linux systems, Git often comes preinstalled with most distros. 
+        If you do not have Git pre-installed, you should be able to install it with your package manager 
+        commands such as sudo apt-get install git or sudo pacman -S git.
+
+    -> For Mac users, you can install Git via Homebrew with brew install git, or you can download the 
+        executable installer from Git's website.
+
+    -> For Windows, you can download the executable installer from Git's website.
+        Or, if you have set up Chocolatey, you can run choco install git.install in PowerShell.
+        Windows, you may also want to download GitBash so you have a Unix-like shell environment available.
+
+    - 'git config' is used to set configuration variables that are responsible for how Git operates on your 
+        machine. 
+                git config --list --show-origin
+
+    - If you are using a Windows machine and want to change your editor, you will need to provide the 
+        complete path to the executable file
+
+        git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+    - To see your list of configurations, you can run the following command
+
+            git config --list
+
+=> SSH and GPG Keys
+    - Both use a public-private pair
+    - This means that you keep a private key on your local machine, which you use to authenticate yourself. 
+    - You share a public key with the people or services that need to validate your auth.
+
+-> GPG, or Gnu Privacy Guard, keys are typically used to sign files or commits.
+    - use your public GPG key to verify that the file signature is from your key and that the contents 
+        of the file have not been modified or tampered with
+
+-> SSH, or Secure SHell, keys are typically used to authenticate a remote connection to a server - via 
+    the ssh utility.
+
+    To generate a GPG key, you'll need to run:
+
+            gpg --full-generate-key
+        
+    For an SSH key, you'll run:
+
+        ssh-keygen -t ed25519 -C "your_email@example.com"
+
+=> For SSH keys, you'll get two files - one for your private key, and one for your public.
+
+    - Public key filenames will end in .pub, These files will be in ~/.ssh.
+
+=> GPG keys, however, will be in a hidden and encrypted directory. Instead, to list your public keys, 
+    you'll run:     gpg --list-secret-keys --keyid-format=long
+
+    Then, to get the public key, use: gpg --armor --export "<key id>"
+
+=> In order to sign your commits with your GPG key, you'll need to upload your public key, not the 
+    private key, to your GitHub account
+
+    git config --global user.signingkey <your_gpg_key_id>
+
+=> Then, you can pass the -S flag to your git commit command to sign a specific commit - you'll need to 
+    provide your passphrase.
+
+    git config --global commit.gpgsign true
+
+=> To sign with an SSH key, which is a relatively new feature on GitHub, you'll need to start by 
+    uploading the key to your GitHub account.
+
+    git config --global gpg.format ssh
+
+=> Then, to set the signing key, you'll pass the file path instead of an ID:
+
+        git config --global user.signingkey <path_to_your_ssh_keys>
+
+    // Finally, you can enable auto signing as you would for a GPG key.
