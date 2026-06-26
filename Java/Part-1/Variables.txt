@@ -1,0 +1,137 @@
+A variable can be thought of as a container in which information of a given type can be stored.
+
+    - Different types include text (String), whole numbers (int), floating-point numbers (double), and 
+        whether something is true or false (boolean).
+    - A value is assigned to a variable using the equals sign (=).
+
+        Ex: int months = 12;
+
+    - A variable's value can be joined to a string using the + sign.
+
+    - Variable names are unique - no two variables can have the same name.
+
+    - The variable type is stated when the variable is first declared. When a new value is assigned to the 
+        variable, the type is no longer declared.
+
+        Ex: int value = 10;
+            System.out.println(value);      // 10
+            value = 4;
+            System.out.println(value);      // 4
+
+-> Changing a Value Assigned to a Variable
+    - A variable exists from the moment of its declaration, and its initial value is preserved until 
+        another value is assigned to it.
+
+    - You can change a variable's value using a statement that comprises the variable name, an equals sign, 
+        and the new value to be assigned. 
+    
+    - A variable can hold only one value at a time.
+
+    Ex: int number = 123;
+        System.out.println("The value of the variable is " + number);
+
+        number = 42;
+        System.out.println("The value of the variable is " + number);
+
+-> Variable's Type Persists
+    - Once a variable's type has been declared, it can no longer be changed.
+
+    Ex: 
+        // boolean value cannot be assigned to a variable of the integer type, nor can an integer be assigned 
+            to a variable of the boolean type
+
+            boolean integerAssignmentWillWork = false;
+            integerAssignmentWillWork = 42; // Does not work
+
+            int value = 10;
+            integerAssignmentWillWork = value; // Neither does this
+
+        // A floating-point value cannot, however, be assigned to an integer variable.
+
+            int value = 4.2; // Does not work
+
+            double floatingPoint = 0.42;
+            value = floatingPoint; // Neither does this
+
+    - Exception: 
+        an integer can be assigned to a variable of the double type
+        Ex: 
+            double floatingPoint = 0.42;
+            floatingPoint = 1; // Works
+
+            int value = 10;
+            floatingPoint = value; // Also works
+
+-> Naming Variables
+    - Naming variables is a fundamental aspect of describing a program.
+
+        double a = 3.14;
+        double b = 22.0;
+        double c = a * b * b;
+        System.out.println(c);                      // 1519.76
+
+        double pi = 3.14;
+        double radius = 22.0;
+        double surfaceArea = pi * radius * radius;
+        System.out.println(surfaceArea);            // 1519.76
+
+-> Variable naming is limited by certain constraints.
+    - cannot contain certain special symbols, such as exclamation marks (!).
+    - Spaces are also not allowed
+
+    - The convention in Java is to use a style known as camelCase.
+
+                Ex: int camelCaseVariable = 7;
+
+    - Numbers can be used within a variable name as long as the name does not begin with a number.
+
+                Ex: int variable7 = 4; // Allowed, but is not a descriptive variable name
+
+-> Reading Different Variable Types from User
+
+    Ex: Scanner scanner = new Scanner(System.in);
+        System.out.println("Write text and press enter ");
+        String text = scanner.nextLine();
+        System.out.println("You wrote " + text);
+
+-> Reading Integers
+    - The Integer.valueOf command converts a string to an integer.
+    - It takes the string containing the value to be converted as a parameter.
+
+        Ex: String valueAsString = "42";
+            int value = Integer.valueOf(valueAsString);
+
+            System.out.println(value);
+
+    - When using a Scanner object, the reading of the value is usually inserted directly into the type 
+        conversion.
+
+        Ex: Scanner scanner = new Scanner(System.in);
+            System.out.println("Write a value ");
+            int value = Integer.valueOf(scanner.nextLine());
+            System.out.println("You wrote " + value);
+
+-> Reading Doubles
+    - The Double.valueOf command converts a string to a double.
+
+        Ex: String valueAsString = "42.42";
+            double value = Double.valueOf(valueAsString);
+            System.out.println(value);
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Write a value ");
+            double value = Double.valueOf(scanner.nextLine());
+            System.out.println("You wrote " + value);
+
+-> Reading Booleans
+    - The valueOf command also appears when converting a string to a boolean — this is done with the
+        command Boolean.valueOf.
+    - When converting a string to a boolean, the string must be "true" if we want the boolean value to be 
+        true. 
+    - The case is insensitive here: both "true" and "TRue" turn into the boolean value of true.
+    - All other strings turn into the boolean false.
+
+        Ex: Scanner scanner = new Scanner(System.in);
+            System.out.println("Write a boolean ");
+            boolean value = Boolean.valueOf(scanner.nextLine());
+            System.out.println("You wrote " + value);
