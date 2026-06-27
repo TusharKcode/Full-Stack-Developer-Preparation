@@ -1,0 +1,138 @@
+=> To branch the execution of a program based on user input, we need to use something known as a 
+    conditional statement.
+
+    -> A conditional statement begins with the keyword if followed by parentheses. 
+    -> An expression is placed inside the parentheses, which is evaluated when the conditional statement 
+        is reached.
+    -> The result of the evaluation is a boolean value. 
+    -> Instead, a boolean value was explicitly used in the conditional statement.
+
+    -> The parentheses are followed by a block, which is defined inside opening- { and closing } 
+        curly brackets.
+
+    -> The source code inside the block is executed if the expression inside the parentheses evaluates 
+        to true.
+    -> If the expression evaluates to false, the execution moves on to the statement after the closing 
+        curly bracket of the current conditional statement.
+
+    Ex: 
+        int number = 11;
+        if (number > 10) {
+            System.out.println("The number was greater than 10");
+        }
+
+"Code Indentation and Block Statements"
+    - A code block refers to a section enclosed by a pair of curly brackets.
+    - Blocks define a program's structure and its bounds.
+    - Code living inside a block is indented.
+
+    Ex:
+        if (number > 10) {
+            number = 9;
+        }
+
+"Comparison Operators"
+    
+                        > greater than
+                        >= greater than or equal to
+                        < less than
+                        <= less than or equal to
+                        == equal to
+                        != not equal to
+
+    - The modulo operator is a slightly less-used operator, which is, however, very handy when we want to 
+        check the divisibility of a number.
+        The symbol for the modulo operator is %.
+
+    Ex: 
+        int number = 55;
+
+        if (number != 0) {
+            System.out.println("The number is not equal to 0");
+        }
+
+        if (number >= 1000) {
+            System.out.println("The number is at least 1000");
+        }
+
+        // Modulo Operator
+            int remainder = 7 % 2;
+            System.out.println(remainder); // prints 1
+            System.out.println(5 % 3); // prints 2
+            System.out.println(7 % 4); // prints 3
+            System.out.println(8 % 4); // prints 0
+            System.out.println(1 % 2); // prints 1
+
+"Else"
+    - If the expression inside the parentheses of the conditional statement evaluates to false, then 
+        the execution of the code moves to the statement following the closing curly bracket of the 
+        current conditional statement. 
+
+    - Usually, we want to create an alternative option for when the conditional expression evaluates to 
+        false.
+    - This can be done with the help of the else command, which is used together with the if command.
+
+        Ex: 
+            int number = 4;
+
+            if (number > 5) {
+                System.out.println("Your number is greater than five!");
+            } else {
+                System.out.println("Your number is five or less!");
+            }
+
+"More Conditionals: else if"
+    - In the case of multiple conditionals, we use the else if-command.
+    - else if follows the if-condition, and they may be multiple.
+
+        Ex: 
+            int number = 3;
+
+            if (number == 1) {
+                System.out.println("The number is one");
+            } else if (number == 2) {
+                System.out.println("The given number is two");
+            } else if (number == 3) {
+                System.out.println("The number must be three!");
+            } else {
+                System.out.println("Something else!");
+            }
+
+=> Order of Execution for Comparisons
+    - The comparisons are executed top down.
+    - When execution reaches a conditional statement whose condition is true, its block is executed and the 
+        comparison stops.
+
+        Ex: 
+            int number = 5;
+
+            if (number == 0) {
+                System.out.println("The number is zero.");
+            } else if (number > 0) {
+                System.out.println("The number is greater than zero.");
+            } else if (number > 2) {
+                System.out.println("The number is greater than two.");
+            } else {
+                System.out.println("The number is less than zero.");
+            }
+
+"Conditional Statement Expression and the Boolean Variable"
+    - The value that goes between the parentheses of the conditional statement should be of type boolean 
+        after the evaluation.
+    - boolean type variables are either true or false.
+    - Comparison operators can also be used outside of conditionals.
+        Ex: boolean isItTrue = true;
+            System.out.println("The value of the boolean variable is " + isItTrue); 
+
+            OR  boolean isItTrue = true;
+                if (isItTrue) {
+                    System.out.println("Pretty wild!");
+                }
+
+            OR  int first = 1;
+                int second = 3;
+                boolean isLessThan = first < second;
+
+                if (isLessThan) {
+                    System.out.println("1 is less than 3!");
+                }
