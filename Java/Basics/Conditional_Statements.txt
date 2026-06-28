@@ -25,5 +25,6 @@ Types:
     -> SWITCH:
         - a multiway branch statement
         - dispatch execution to different parts of code based on the value of the expression.
+        - Duplicate case values are not allowed.
 
 
