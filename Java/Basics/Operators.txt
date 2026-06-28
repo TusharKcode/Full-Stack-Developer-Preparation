@@ -1,0 +1,52 @@
+Java operators are symbols used to perform operations on variables and values.
+    - They play a key role in expressions, calculations, and decision-making in programs.
+
+"Arithmetic operator"
+    -> used to perform arithmetic operations on primitive numeric data types such as int, float, and double.
+    Ex: (Operators.java)
+
+"Logical operator"
+    -> used to perform "logical AND" and "logical OR" operations, similar to AND gate and OR gate in 
+        digital electronics.
+    -> && (AND) returns true only if both conditions are true.
+    -> || (OR) returns true if at least one condition is true.
+    -> ! (NOT) reverses the boolean value.
+    Ex: (Operators.java)
+
+"Ternary operator"
+    -> shorthand version of the if-else statement
+    -> Syntax: (condition) ? value1 : value2.
+    Ex: (Operators.java)
+
+"Unary operator"
+    -> need only one operand.
+    -> used to increment, decrement, or negate a value
+    -> Post-increment (a++) returns the value first, then increments it.
+    -> Pre-increment (++a) increments first, then returns the updated value.
+    -> Same behavior applies to decrement operators (--).
+    Ex: (Operators.java)
+
+"Assignment operator"
+    -> assigns a value from the right-hand side to a variable on the left
+    -> Compound operators like +=, *=, -=, /=, %= perform operation and assignment together.
+    Ex: (Operators.java)
+
+"Bitwise & Shift operator"
+    -> Bitwise Operators manipulate individual bits using AND, OR, XOR, and NOT.
+    -> Shift Operators move bits to the left or right, effectively multiplying or dividing by powers of two.
+    -> Operators like &, |, ^, ~ manipulate individual bits.
+    -> Shift operators (<<, >>, >>>) move bits left or right.
+    -> useful in low-level programming and optimizations
+    Ex: (Operators.java)
+
+"Relational operator"
+    -> used to check for relations like equality, greater than, and less than
+    -> return boolean results after the comparison
+    -> used in looping statements as well as conditional if-else statements
+    -> Operators like >, <, >=, <=, ==, != return boolean values.
+    Ex: (Operators.java)
+
+"Instance Of operator"
+    -> used for type checking
+    -> used to test if an object is an instance of a class, a subclass, or an interface.
+    Ex: (Operators.java)
