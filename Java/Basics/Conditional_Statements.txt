@@ -1,0 +1,29 @@
+Decision-making statements in Java allow a program to choose different execution paths based on specified 
+    conditions.
+
+    - They help control the flow of a program by executing certain blocks of code only when particular 
+        conditions are true.
+    - essential for implementing logic, validations, and user-driven actions in applications.
+
+Types: 
+    -> IF:
+        - executes a block of code only if a given condition is true
+
+    -> IF-ELSE:
+        - allows you to execute one block if the condition is true and another block if it is false
+
+    -> NESTED-IF:
+        - if statement inside another if statement
+        - useful when a second condition depends on the first.
+        - If the outer condition is true, the inner if condition is checked.
+        - If the inner condition is also true, its block executes.
+    
+    -> IF-ELSE-IF:
+        - allows multiple independent conditions to be checked in order
+        - one condition is true, its block executes, and the rest are skipped.
+    
+    -> SWITCH:
+        - a multiway branch statement
+        - dispatch execution to different parts of code based on the value of the expression.
+
+
