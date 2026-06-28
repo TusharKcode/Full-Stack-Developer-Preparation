@@ -49,5 +49,29 @@ public class DataTypes {
         char symbol = '$';
         System.out.println("Grade: " + grade);
         System.out.println("Symbol: " + symbol);
+
+        System.out.println("");
+
+        System.out.println("------ String Data Type ------");
+        String name = "Tushar";
+        String message = "Welcome to Java";
+        System.out.println("Name: " + name);
+        System.out.println("Message: " + message);
+
+        System.out.println("------ Class Data Type ------");
+        System.out.println("Will come Later.....");
+
+        System.out.println("------ Object Data Type ------");
+        System.out.println("Will come Later.....");
+
+        System.out.println("------ Interface Data Type ------");
+        System.out.println("Will come Later.....");
+
+        System.out.println("------ Array Data Type ------");
+        int[] numbers = {1, 2, 3, 4, 5};
+        String[] names = {"John", "Bob", "Ron"};
+        System.out.println("First number: " + numbers[0]);
+        System.out.println("Second name: " + names[1]);
+
     }
 }

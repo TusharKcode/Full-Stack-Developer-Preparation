@@ -18,13 +18,26 @@ Java data types define the type of data a variable can store in a program.
     'float'   -> 32-bit floating point    -> 0.0f   -> Not JVM-defined -> 3.14f	        (~6–7 digits precision)
     'double'  -> 64-bit floating point    -> 0.0d   -> Not JVM-defined -> 3.14159d	    (~15–16 digits precision)
 
-Syntax: 
-    -> Boolean : boolean booleanVar;
-    -> byte    : byte byteVar;
-    -> short   : short shortVar;
-    -> int     : int intVar;
-    -> long    : long longVar;
-    -> float   : float floatVar;
-    -> double  : double doubleVar;
+    Syntax: 
+        -> Boolean : boolean booleanVar;-> used in conditions and control statements
+        -> byte    : byte byteVar;      -> used to save memory in large numeric arrays
+        -> short   : short shortVar;    -> used when memory is limited and values are moderate in size
+        -> int     : int intVar;        -> used numeric data type
+        -> long    : long longVar;      -> used when int is not sufficient for large values
+        -> float   : float floatVar;    -> used for fractional values
+        -> double  : double doubleVar;  -> default for decimal numbers
+        -> char    : char charVar;      -> used to store single symbols or letters
 
-Examples: in /DataTypes.java
+    Examples: in (/DataTypes.java)
+
+"Non-Primitive (Reference) Data Type"
+    - store references (memory addresses) rather than actual values
+
+    Syntax: 
+        -> String    -> a sequence of characters enclosed in double quotes
+        -> Class     -> defines variables and methods
+        -> Object    -> instance of a class representing real-world entities
+        -> Interface -> used numeric data type
+        -> Array     ->  stores multiple elements of the same type in a single structure
+
+    Examples: in (/DataTypes.java)
