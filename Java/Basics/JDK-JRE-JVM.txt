@@ -1,0 +1,22 @@
+"JDK"
+    - Java Development Kit provides tools and libraries to develop Java applications, working with 
+        JRE and JVM 
+    - used by developers
+    - Includes compiler (javac), debugger, and utilities like jar and javadoc.
+    - JRE (JVM + libraries)
+
+"JRE"
+    - Java Runtime Environment offers the libraries and JVM needed to run Java programs
+    - required by end-users to run applications
+    - does not include development tools
+    - platform-dependent
+
+"JVM"
+    - core execution engine of Java
+    - Java Virtual Machine executes the compiled Java bytecode on the system.
+    - making programs platform-independent
+    - Part of both JDK and JRE.
+    - Performs memory management and garbage collection.
+
+-> Bytecode is platform-independent and can run on any JVM.
+-> Modern JVMs rely heavily on Just-In-Time (JIT) compilation for performance.

@@ -1,4 +1,5 @@
 A variable can be thought of as a container in which information of a given type can be stored.
+    - Variables define how data is stored, accessed, and manipulated. 
 
     - Different types include text (String), whole numbers (int), floating-point numbers (double), and 
         whether something is true or false (boolean).

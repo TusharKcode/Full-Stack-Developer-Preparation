@@ -1,0 +1,32 @@
+Java is a widely used programming language for building web, desktop, mobile, and enterprise applications.
+    - Supports object-oriented programming concepts like classes, objects, inheritance, and polymorphism
+    - Platform independent because of JVM support
+    - Secure and robust with strong memory management
+
+Features: 
+    -> Object-Oriented Programming (OOP)
+    -> Platform Independence
+    -> Robust and Secure
+    -> Multithreading and Concurrency
+    -> Rich API and Standard Libraries
+    -> Frameworks for Enterprise and Web Development
+    -> Open-Source Libraries
+    -> Maintainability and Scalability
+
+=> How to run the Java code?
+    - Write code in a file like HelloWorld.java.
+    - Java Compiler "javac" compiles it into bytecode "HelloWorld.class".
+    - JVM (Java Virtual Machine) reads the .class file and interprets the bytecode.
+    - The JVM initially interprets bytecode and uses JIT (Just-In-Time) compilation to convert frequently 
+        executed code into native machine code for better performance.
+
+Uses of java: 
+    - Mobile App Development
+    - Web Development
+    - Desktop GUI Applications
+    - Enterprise Applications
+    - Game Development
+    - Big Data Technologies
+    - Internet of Things (IoT)
+    - Cloud-based Applications
+    - Scientific Applications
