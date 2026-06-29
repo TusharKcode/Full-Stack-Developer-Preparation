@@ -25,7 +25,7 @@ public class NumberGuessingGame {
                 System.out.println("The number is less than " + guess);
             }
         }
-        System.out.println("You have exhausted all your attempts. The  correct number was: " + number);
+        System.out.println("You have exhausted all your attempts. The correct number was: " + number);
         scn.close();
     }
     public static void main(String[] args) {
