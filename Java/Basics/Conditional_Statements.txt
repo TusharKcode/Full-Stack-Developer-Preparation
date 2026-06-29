@@ -23,7 +23,7 @@ Types:
         - one condition is true, its block executes, and the rest are skipped.
     
     -> SWITCH:
-        - a multiway branch statement
+        - a multi-way branch statement
         - dispatch execution to different parts of code based on the value of the expression.
         - Duplicate case values are not allowed.
 
