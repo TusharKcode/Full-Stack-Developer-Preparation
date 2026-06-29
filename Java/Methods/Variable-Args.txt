@@ -1,0 +1,30 @@
+Variable Arguments (Varargs) in Java allow methods to accept a variable number of parameters using a 
+    simplified syntax
+    - varargs are handled as arrays, making them easy to process within methods.
+    
+Syntax: public static void fun(int ... a) 
+        {
+            // method body
+        } 
+
+Ex: 
+    import java.io.*;
+    class Geeks {
+    
+        // Method that accepts variable number of String arguments using varargs
+        public static void Names(String... n) {
+        
+            // Iterate through the array and print each name
+            for (String i : n) {
+                System.out.print(i + " "); 
+            }
+            System.out.println(); 
+        }
+
+        public static void main(String[] args) {
+        
+            // Calling the 'Names' method with different number of arguments
+            Names("geek1", "geek2");           
+            Names("geek1", "geek2", "geek3");   
+        }
+    }
