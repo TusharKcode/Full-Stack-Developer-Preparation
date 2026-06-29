@@ -1,0 +1,37 @@
+Command-line arguments in Java are values passed to a program during execution through the command prompt.
+    - These arguments are stored as String values in the main() method parameter.
+    - Commonly used for file names, configuration values, and user data at runtime.
+
+-> Command-line arguments in Java are space-separated values passed to the main(String[] args) method.
+-> JVM wraps them into the args[] array, where each value is stored as a string (e.g., args[0], args[1], 
+    etc.).
+-> The number of arguments can be checked using args.length.
+
+Syntax: java Geeks Hello World
+
+Example: 
+        class Hello {
+
+            // Main driver method
+            public static void main(String[] args)
+            {
+                // Checking if length of args array is
+                // greater than 0
+                if (args.length > 0) {
+
+                    // Print statements
+                    System.out.println("The command line"
+                                    + " arguments are:");
+
+                    // Iterating the args array
+                    // using for each loop
+                    for (String val : args)
+
+                        System.out.println(val);
+                }
+                else
+
+                    System.out.println("No command line "
+                                    + "arguments found.");
+            }
+        }
