@@ -1,0 +1,44 @@
+Static Method
+    - Can be called using the class name without creating an object
+    - Can access only static variables and methods
+    - Cannot directly access non-static (instance) members
+    - Loaded once per class
+    - Does not support runtime polymorphism
+
+    Ex: class Geeks {
+                                        // static method
+            public static void greet() {
+                System.out.println("Hello Geek!");
+            }
+            public static void main(String[] args) {
+                                        // calling the method directily
+                greet();
+                                        // using the class name
+                Geeks.greet();
+            }
+        }
+
+Instance Method
+    - Can access instance variables, other instance methods, and static members
+    - Requires an object to invoke the method
+    - Has access to the this reference, pointing to the current object
+    - Can use the this keyword to refer to the current object.
+    - Supports runtime polymorphism
+    - Each object has its own copy
+
+    Ex: class Test {
+            String n = "";
+                                        // Instance method 
+            public void test(String n) { 
+            this.n = n; 
+            }
+        }
+        class Geeks {
+            public static void main(String[] args) {
+                                        // create an instance of the class
+                Test t = new Test();
+                                        // calling an instance method in the class 'Geeks'
+                t.test("GeeksforGeeks");
+                System.out.println(t.n);
+            }
+        }
