@@ -1,0 +1,30 @@
+A multi-dimensional array in Java is an array of arrays that allows data to be stored in tabular form 
+    such as rows and columns
+    - It is commonly used to represent matrices, tables, and grids in programs.
+    - Most commonly used type is the two-dimensional (2D) array.
+
+    - Java uses 0-based indexing, so arr[0][0] represents the first row and first column.
+    - Row index ranges from 0 to x-1 and column index from 0 to y-1.
+
+    Syntax: data_type[dim1][dim2]...[dimN] array_name = new data_type[size1][size2]...[sizeN];
+
+    Examples: 
+            int[][]  arr2d = new int[3][5];     // Two dimensional array
+            int[][][] arr3d = new int[3][5][7]; // Three dimensional array
+
+=> Size Calculation:   Total elements = product of all dimension sizes
+    Ex: int[][][] x = new int[3][5][7]; can store 3 × 5 × 7 = 105 elements.
+
+--> Two-dimensional Array (2D Array)
+    - A 2D array represents data in rows and columns
+
+    Syntax: data_type[][] array_name = new data_type[x][y];
+            array_name[row_index][col_index] = value;
+
+    => Two Dimensional Array with User input
+            Ex: TwoDArray.java
+
+--> Three Dimensional Array (2D Array)
+    - 3D-Array is a complex form of a multidimensional array
+
+    Ex: ThreeDArray.java
