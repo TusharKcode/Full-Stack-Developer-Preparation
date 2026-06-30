@@ -1,0 +1,9 @@
+In Java, the final keyword makes a variable's reference constant, not its contents.
+    - When an array is declared as final, you cannot reassign it to point to a new array.
+    - you can still modify the elements within the array.
+    - Helps maintain a fixed reference
+
+Example: 
+            final int[] arr = {10, 20, 30};
+        // Modifying elements inside the array is allowed
+                arr[2] = 99;
