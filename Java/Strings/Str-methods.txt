@@ -1,0 +1,77 @@
+Java String methods are built-in functions provided by the String class to perform various operations on 
+    strings.
+    - These methods help in manipulating, comparing, searching, and formatting text efficiently.
+    - Support string comparison.
+    - Allow searching within strings.
+
+    Example: 
+            String str = "GeeksforGeeks";
+
+            System.out.println("Length: " + str.length());  
+            System.out.println("Uppercase: " + str.toUpperCase());
+            System.out.println("Substring: " + str.substring(2, 6));
+
+=> Methods:
+    -> int length() Method
+        - provides the total count of characters in the string
+
+    -> charAt(int i) Method
+        - returns the character at ith index.
+
+    -> String substring(int i) Method
+        - return the substring from the ith index character to end
+
+    -> String substring(int i, int j) Method
+        - returns the substring from i to j-1 index.
+
+    -> String concat( String str) Method
+        - appends the given string to the end of the current string.
+
+    -> int indexOf(String s) Method
+        - returns the index within the string of the first occurrence of the specified string
+        - If the specified string s is not found in the input string, the method returns -1 by default.
+
+    -> int indexOf(String s, int i) Method
+        - returns the index within the string of the first occurrence of the specified string, starting at 
+            the specified index
+
+    -> int lastIndexOf(String s) Method
+        - returns the index within the string of the last occurrence of the specified string
+        - If the specified string s is not found in the input string, the method returns -1 by default.
+
+    -> boolean equals(Object otherObj) Method
+        - compares the string to the specified object.
+
+    -> boolean equalsIgnoreCase(String anotherString) Method
+        - checks if two strings are equal, without considering letter case
+
+    -> int compareTo(String anotherString) Method
+        - compares two string lexicographically.
+        - A positive result means the first string comes after the second string alphabetically.
+        - A negative result means the first string comes before the second string.
+        - A result of 0 means both strings are exactly identical.
+
+    -> int compareToIgnoreCase(String anotherString) Method
+        - compares two string lexicographically, ignoring case considerations.
+
+    -> String toLowerCase() Method
+        - converts all the characters in the String to lower case.
+
+    -> String toUpperCase() Method
+        - converts all the characters in the String to upper case. 
+
+    -> String trim() Method
+        - returns the copy of the String, by removing whitespaces at both ends
+        - does not modify the whitespace characters present between the text
+
+    -> String replace(char oldChar, char newChar) Method
+        - returns a new string where all instances of oldChar are replaced by newChar.
+
+    -> boolean contains(CharSequence sequence) Method
+        - returns true if string contains the given string.
+
+    -> char[] toCharArray() Method
+        - converts the string into a new character array.
+
+    -> boolean startsWith(String prefix) Method
+        - returns true if string starts with this prefix.
