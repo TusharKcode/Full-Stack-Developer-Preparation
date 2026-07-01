@@ -1,0 +1,11 @@
+The concat() method in Java is used to append one string to another and returns a new combined string.
+    - It does not modify the original string since strings are immutable.
+    - Returns a new string as the result
+    - Throws NullPointerException if the argument is null
+
+    Syntax:   public String concat (String s);
+
+    Ex: // String Initialization
+            String s = "Geeks";                
+            s = s.concat("forGeeks");       // Use concat() method for string concatenation
+            System.out.println(s);

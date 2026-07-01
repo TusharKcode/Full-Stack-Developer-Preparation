@@ -1,0 +1,81 @@
+A String in Java is an object used to store a sequence of characters enclosed in double quotes.
+    - It uses UTF-16 encoding and provides methods for handling text data.
+    - Strings are immutable, meaning their value cannot be changed after creation.
+    - Java provides a rich API for manipulation, comparison, and concatenation of strings.
+
+    Ex: 
+        // creating Java string using a new keyword
+                String str = new String("Geeks");
+
+                System.out.println(str);
+
+=> Two ways to create a string in Java:
+    -> String literal (Static Memory)
+        - To make Java more memory efficient
+        Ex: String str = “GeeksforGeeks”;
+
+    -> Using new keyword (Heap Memory)
+        - Using the new keyword creates a new object in heap memory
+        - The string literal is stored in the string pool (if not already present)
+        - The reference variable points to the heap object, not the pool
+
+        Ex: String str = new String (“GeeksforGeeks”);
+
+=> Interfaces and Classes in Strings
+    -> CharSequence Interface
+        - represents a sequence of characters in Java
+        - methods such as length(), charAt(), subSequence(), and toString()
+
+    -> Classes that implement CharSequence:
+        - String            - immutable class whose contents cannot be modified after creation, any change 
+                                results in a new String object
+        - StringBuffer      - mutable and thread-safe class used for string manipulation in multithreaded 
+                                environments    
+        - StringBuilder     - mutable and non-thread-safe class that provides faster string manipulation in 
+                                single-threaded applications
+        - StringTokenizer   - utility class used to break a string into smaller tokens based on specified 
+                                delimiters  
+
+=> Immutable String
+    - string objects are immutable
+    - means unmodifiable or unchangeable
+    - Once a string object is created its data or state can't be changed but a new string object is created
+
+        Ex: String str = "Hello";
+            str.concat(" World");
+            System.out.println(str);    // Hello
+
+=> How Strings are stored in Heap Memory?
+    -> String literal
+        - Whenever a String Object is created as a literal, the object will be created in the String 
+            constant pool
+        - This allows JVM to optimize the initialization of String literal. 
+        - The string constant pool is present in the heap.
+
+    -> Using new Keyword
+        - Strings can also be created using the new keyword, which allocates a new object in heap memory
+
+        - The intern() method returns a reference from the string constant pool.
+        - If the string is not already present in the pool, it is added.
+        - Otherwise, the existing reference from the pool is returned.
+
+            Ex: String internedString = demoString.intern(); 
+
+Example: 
+        // Declaring Strings using String literals
+                String s1 = "TAT";
+                String s2 = "TAT";
+
+                // Declaring Strings using new keyword
+                String s3 = new String("TAT");
+                String s4 = new String("TAT");
+
+                // Printing all the Strings
+                System.out.println(s1);
+                System.out.println(s2);
+                System.out.println(s3);
+                System.out.println(s4);
+
+
+    -> All objects in Java are stored in a heap. The reference variable is to the object stored in the 
+        stack area or they can be contained in other objects which puts them in the heap area also.
