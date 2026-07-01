@@ -1,0 +1,138 @@
+Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects that contain 
+    data (fields) and behavior (methods).
+
+=> Characteristics: 
+    -> 'Class'
+        - a blueprint or template used to create objects
+        - defines the properties (data) and behaviors (methods) that objects of that class will have
+        - user-defined data type
+        - contains variables (fields) and methods
+        - Multiple objects can be created from a single class
+
+        Ex: A Car represents a class (blueprint), while BMW, Mercedes, and Audi represent objects 
+                (instances) created from that class.
+
+    -> 'Object'
+        - an instance of a class that represents a real-world entity
+        - used to access the variables and methods defined inside a class
+        - State,    Represents the current data or attributes of an object
+        - Behavior, Represents the actions that an object can perform
+        - Identity, Every object has a unique identity in memory that distinguishes it from other objects, 
+                    even if they contain the same data.
+
+        Ex: Dog is a class, Tommy is an object of that class.
+
+    -> 'Encapsulation'
+        -  process of wrapping data and methods into a single unit, usually a class, and restricting direct 
+            access to the data
+        - acts as a protective shield that prevents data from being accessed directly from outside the class
+        - Data members are hidden using the private access modifier.
+        - Access to data is provided through public getter and setter methods.
+        - It improves data security, maintainability, and controlled access.
+
+    -> 'Abstraction'
+        - process of hiding implementation details and showing only the essential features of an object
+        - helps users focus on what an object does rather than how it does it
+        - Hides complexity          : Internal implementation details are hidden from the user
+        - Enhances flexibility      : Supports loose coupling through abstract classes and interfaces.
+        - Improves maintainability  : Changes in implementation do not affect the user code.
+        - It is achieved in Java using abstract classes and interfaces.
+        - Interfaces can provide 100% abstraction, while abstract classes provide partial abstraction.
+
+        Ex: An ATM or a coffee machine represents abstraction, where the user interacts with simple 
+            operations while the internal working and implementation details remain hidden.
+
+    -> 'Polymorphism'
+        - means “many forms”, where a single entity can behave differently in different situations
+        - it allows the same method or object to show different behavior based on context
+        - Same method, different behavior depending on the object
+        - Achieved through method overloading and method overriding
+
+        Ex: Different animals represent polymorphism, where the same method speak() produces different 
+            outputs like Bark, Meow, and Moo depending on the object.
+        
+        Types:
+            -> Method Overloading
+                - Compile-time Polymorphism
+                - Achieved when multiple methods have the same name but different parameters
+                - The method call is resolved at compile time.
+
+            -> Method Overriding
+                - Runtime Polymorphism
+                - Achieved when a subclass provides a specific implementation of a method already defined 
+                    in its superclass
+                - The method call is resolved at runtime based on the object 
+
+    -> 'Inheritance'
+        - allows one class to acquire the fields and methods of another class using the extends keyword
+        - represents an “is-a” relationship between classes.
+        - The class being inherited is called the superclass, and the inheriting class is the subclass.
+        - A subclass can use existing features of the superclass and also add its own.
+        
+        Ex: Dog, Cat, Cow can be Derived Class of Animal Base Class. 
+
+        Types: 
+            -> Single Inheritance
+                - One subclass inherits from one superclass.
+
+            -> Multi-level Inheritance
+                - A class is derived from another derived class, forming a chain.
+
+            -> Hierarchical Inheritance
+                - Multiple subclasses inherit from a single superclass.
+
+            -> Multiple Inheritance (through Interface)
+                - A class inherits from multiple interfaces since Java does not support multiple 
+                    inheritance using classes.
+
+            -> Hybrid Inheritance (through Interface)
+                - A combination of two or more types of inheritance, achievable using interfaces.
+
+"Constructor"
+    - special member of a class that is automatically invoked when an object is created
+    - used to initialize the object's data members and set up the initial state of an object
+    - its name must be the same as the class name
+    - It does not have any return type, not even void.
+    - It is automatically called when an object is created using the 'new' keyword.
+    - It help initialize object properties during object creation.
+
+    Ex: When creating a Car object, a constructor can automatically assign values such as brand, model, and 
+        color.
+
+    Types: 
+        -> Default Constructor
+            - does not accept any parameters and initializes an object with default values
+
+        -> Parameterized Constructor
+            - accepts parameters to initialize an object with specific values
+
+        -> Copy Constructor
+            - user-defined constructor that creates a new object by copying the data of another object of 
+                the same class
+
+        -> Private Constructor
+            - declared with the private access modifier that prevents object creation from outside the class
+
+"Association"
+    - defines a relationship between two or more classes that are connected to each other
+    - represents how objects interact with each other and communicate
+    - objects of one class are related to objects of another class, but they can exist independently
+
+    Types: 
+        -> Aggregation (Weak Association)
+            - represents a “has-a” relationship where one class contains a reference to another class
+            - both can exist independently
+            - Objects have independent life-cycles
+            - One object can exist without the other
+
+            Ex: A Company has Employees, but employees can exist independently even if the company no 
+                longer exists.
+
+        -> Composition (Strong Association)
+            - strong form of association where one class owns another class
+            - If the parent object is destroyed, the child object also gets destroyed.
+            - Objects have dependent life-cycles
+            - Child object cannot exist without the parent
+
+            Ex: A House is composed of Rooms, and if the house is destroyed, the rooms cannot exist 
+                independently.

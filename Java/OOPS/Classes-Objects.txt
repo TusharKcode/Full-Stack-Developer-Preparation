@@ -1,0 +1,143 @@
+"Classes"
+    -> A class is a blueprint used to create objects that share common properties and behavior.
+    - It groups related fields and methods in a single unit.
+    - Can contain fields, methods, constructors, nested classes and interfaces.
+    - Memory for instance members is allocated when an object is created
+    - static members are allocated when the class is loaded into memory.
+    
+    -> Every class has at least one constructor. If none is defined Java provides a default no-argument 
+        constructor that calls the parent constructor.
+
+"Objects"
+    -> An object is an instance of a class. It represents a specific entity created from the class template.
+    - Each object holds its own state.
+    - State: Values stored in fields.
+    - Behavior: Actions defined through methods.
+    - Identity: Distinguishes one object from another.
+
+    -> Objects mirror real-world items such as customer, product or circle.
+    -> Non-primitive objects are stored on the heap while their references remain on the stack.
+
+    -> Creating an object is known as 'instantiation'.
+        All instances of a class share structure and behavior while storing different state values.
+
+    Ex: 
+        Declaration:    Dog bob;
+        Initialization: bob = new Dog("Bob", "Papillon", 5, "White");
+
+    Example: 
+            class Product {
+
+                String name;
+                float price;
+
+                // Constructor to initialize object state
+                public Product(String name, float price) {
+                    this.name = name;
+                    this.price = price;
+                }
+
+                // Setter methods (optional)
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public void setPrice(float price) {
+                    this.price = price;
+                }
+
+                // Getter methods
+                public String getName() {
+                    return name;
+                }
+
+                public float getPrice() {
+                    return price;
+                }
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+
+                    Product p1 = new Product("Visual Studio", 0.0f);
+                    Product p2 = new Product("IntelliJ IDEA", 4999.0f);
+
+                    System.out.println(p1.getName() + " - " + p1.getPrice());
+                    System.out.println(p2.getName() + " - " + p2.getPrice());
+                }
+            }
+
+=> Ways to Create Object in Java: 
+    -> Using new Keyword
+        Ex: // creating object of class Test 
+                Test t = new Test();
+
+    -> Using Reflection: Used for dynamic class loading as seen in frameworks like Spring
+        Ex: class Student {
+                public Student() {}
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+                    try {
+                        Class<?> c = Class.forName("Student");
+                        Student s = (Student) c.getDeclaredConstructor().newInstance();
+                        System.out.println(s);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+    -> Using clone() method: creates a copy of an existing object. The class must implement Cloneable.
+        Ex: class Geeks implements Cloneable {
+                String name = "GeeksForGeeks";
+
+                @Override
+                protected Object clone() throws CloneNotSupportedException {
+                    return super.clone();
+                }
+
+                public static void main(String[] args) {
+                    try {
+                        Geeks g1 = new Geeks();
+                        Geeks g2 = (Geeks) g1.clone();
+                        System.out.println(g2.name);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+    -> Using Deserialization: a technique of reading an object from the saved state in a file. 
+                                Object is recreated from a stored byte stream.
+        Ex: import java.io.*;
+            class Student implements Serializable {
+                private String name;
+                public Student(String name) { this.name = name; }
+                public String toString() { return "Student: " + name; }
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+                    try (ObjectOutputStream out =
+                            new ObjectOutputStream(new FileOutputStream("student.ser"))) {
+                        out.writeObject(new Student("Alice"));
+                    } catch (IOException e) { e.printStackTrace(); }
+
+                    try (ObjectInputStream in =
+                            new ObjectInputStream(new FileInputStream("student.ser"))) {
+                        Student s = (Student) in.readObject();
+                        System.out.println(s);
+                    } catch (Exception e) { e.printStackTrace(); }
+                }
+            }
+        
+=> "Anonymous Objects"
+    - are created without a reference and used immediately for one-time operations.
+
+    -> No reference variable: Cannot reuse the object.
+    -> Created & used instantly, saves memory for short-lived tasks.
+    -> Common in event handling (e.g., button clicks).
+
+    Ex: new Dog("Max", "Labrador", 3, "Black").getName();
