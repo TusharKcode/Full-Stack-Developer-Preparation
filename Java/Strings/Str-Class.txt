@@ -1,0 +1,73 @@
+The String class in Java represents a sequence of characters and is widely used for handling textual data
+    - Stored in the String Pool to optimize memory usage and reuse objects.
+    - Immutable nature ensures better security and thread safety.
+    - Can be created using string literals or the new keyword.
+
+Features: 
+    -> Immutable
+        - once a String object is created, its value cannot be changed.
+
+    -> Thread-safe
+        - because it is immutable, allowing safe access by multiple threads without synchronization
+
+    -> Supports Various Utility Methods
+        - predefined final class in Java present in java.lang package
+        - methods to create, manipulate, and compare strings, like length(), charAt(), concat(), equals(), 
+            etc.
+
+    -> Implements Interfaces
+        - Allows access to characters in the string using charAt(), length(), etc.
+        - Enables comparing two strings lexicographically using compareTo()
+        - Allows string objects to be converted into a byte stream (Serializable).
+
+String Constructor
+    - used to create new String objects from different sources like character arrays, byte arrays, or 
+        another string
+    - String class also provides constructors for more control.
+
+    Ex: // Constructor 1: Creating string using new keyword
+        String str1 = new String("Hello Java");
+        System.out.println("String using new keyword: " + str1);
+
+        // Constructor 2: Creating string from character array
+        char[] charArray = { 'J', 'A', 'V', 'A' };
+        String str2 = new String(charArray);
+        System.out.println("String from char array: " + str2);
+
+        // Constructor 3: Creating string from byte array
+        byte[] byteArray = { 72, 101, 108, 108, 111 };
+        String str3 = new String(byteArray);
+        System.out.println("String from byte array: " + str3);
+
+    -> String(byte[] byte_arr)
+        - Construct a new String by decoding the byte array. 
+        - It uses the platform's default character set for decoding.
+
+    -> String(byte[] byte_arr, Charset char_set)
+        - Construct a new String by decoding the byte array
+        - It uses the char_set for decoding.
+
+    -> String(byte[] byte_arr, int start_index, int length)
+        - Construct a new string from the bytes array depending on the start_index(Starting location) and 
+            length(number of characters from starting location).
+
+    -> String(byte[] byte_arr, int start_index, int length, Charset char_set)
+        - Construct a new string from the bytes array depending on the start_index(Starting location) and 
+            length(number of characters from starting location).
+        - Uses char_set for decoding.
+
+    -> String(char[] char_arr)
+        - Allocates a new String from the given Character array.
+
+    -> String(char[] char_array, int start_index, int count)
+        - Allocates a String from a given character array but choose count characters from the start_index.
+
+    -> String(int[] uni_code_points, int offset, int count)
+        - Allocates a String from a uni_code_array but choose count characters from the start_index.
+
+    -> String(StringBuffer s_buffer)
+        - Allocates a new string from the string in s_buffer.
+
+    -> String(StringBuilder s_builder)
+        - Allocates a new string from the string in s_builder.
+
