@@ -1,0 +1,71 @@
+Abstraction in Java is the process of hiding internal implementation details and showing only essential 
+    functionality to the user.
+    -> It focuses on what an object does rather than how it does it.
+
+    -> Abstract classes may have methods without implementation and must be implemented by subclasses.
+
+    -> abstract method cannot be declared as final because final methods cannot be overridden
+
+Two ways to achieve Abstraction:
+    -> Abstract Classes (Partial Abstraction)
+    -> Interface (provides abstraction for behavior, may contain default or static methods)
+
+Advantages: 
+    - makes complex systems easier to understand by hiding the implementation details
+    - keeps different part of the system separated
+    - maintains code more efficiently
+    - increases the security by only showing the necessary details
+
+Disadvantages: 
+    - add unnecessary complexity if overused
+    - reduce flexibility in implementation
+    - make debugging and understanding the system harder
+    - Overuse of abstraction may make code harder to follow
+
+Example: 
+    -> The television remote control is the best example of abstraction. It simplifies the interaction with 
+        a TV by hiding all the complex technology.
+        - We don't need to understand how the TV internally works.
+        - we just need to press the button to change the channel or adjust the volume.
+
+        TV is abstract class defining turnOn() and turnOff() methods.
+        TVRemote class implements the abstract methods with specific logic.
+        Main class uses TV remote = new TVRemote(); to interact without knowing the internal implementation.
+
+    Code: 
+        abstract class Tv{
+            abstract void turnOn();
+            abstract void turnOff();
+        }
+
+        class TvRemote extends Tv{
+            @Override
+            void turnOn(){
+                System.out.println("TV turned ON.");
+            }
+
+            @Override
+            void turnOff(){
+                System.out.println("TV turned OFF.");
+            }
+        }
+
+        public class Main{
+            public static void main(String [] args){
+                Tv remote = new TvRemote();
+                remote.turnOn();
+                remote.turnOff();
+            }
+        }
+
+=> Abstract Class
+    - class that cannot be instantiated and may contain abstract methods (methods without body) as 
+        well as concrete methods (with implementation).
+
+=> Interface
+    - a blueprint for a class that defines a set of methods a class must implement
+    - used to achieve abstraction in Java.
+    - Modern Java interfaces can contain abstract methods, constants, and also default or static methods 
+        with implementations.
+
+    -> To implement an interface we use the keyword “implements” with class.
