@@ -1,0 +1,91 @@
+Polymorphism is one of the fundamental concepts of Object-Oriented Programming (OOP)
+
+    -> Polymorphism means "many forms".
+
+    - allows a single entity to take multiple forms
+    - enables the same method or interface to behave differently depending on the object involved
+    - achieved through method overloading and method overriding.
+    - improves code flexibility, reusability, and maintainability
+
+Example: A person who plays different roles in life, like a father, a husband, and an employee. 
+        Each of these roles defines different behaviors of the person depending on the object calling it.
+
+Types:
+    -> Compile-Time Polymorphism
+        - known as static polymorphism
+        - occurs when the method to be executed is determined during compilation
+        - achieved through method overloading
+        
+        -> "Method Overloading"
+            - allows multiple methods with the same name but different parameter lists within the same class
+            Syntax: class Demo {
+                        void show(int a) {
+                        }
+                        void show(int a, int b) {
+                        }
+                    }
+        Ex: class Helper{
+                static int Multiply(int a, int b){      // Method (1) with 2 integer parameters
+                    return a * b;               // return product in integer
+                }
+                static double Multiply(double a, double b){ // Method (2) with same name but with 2 double
+                                                                    parameters
+                    return a * b;               // return product in double
+                }
+            }
+            class Maths{
+                public static void main(String[] args){
+                    System.out.println(Helper.Multiply(2, 4));
+                    System.out.println(Helper.Multiply(2.5, 4.5));
+                }
+            }
+
+    -> Runtime Polymorphism
+        - also known as dynamic polymorphism
+        - occurs when the method call is resolved during program execution
+        - achieved through method overriding.
+        
+        -> "Method Overriding"
+            - occurs when a subclass provides its own implementation of a method already defined in its 
+                superclass
+            - overridden method is selected based on the actual object created.
+            Syntax: class Parent {
+                        void print() {
+                        }
+                    }
+
+                    class Child extends Parent {
+                        @Override
+                        void print() {
+                        }
+                    }
+
+        Ex: class Parent{
+                void Print(){
+                    System.out.println("This is Parent class.")
+                }
+            }
+
+            class Subclass1 extends Parent{
+                void Print(){
+                    System.out.println("This is Sub class 1.")
+                }
+            }
+
+            class Subclass2 extends Parent{
+                void Print(){
+                    System.out.println("This is Sub class 2.")
+                }
+            }
+
+            class Main{
+                public static void main(String[] args){
+                    Parent a;
+                    a = new Subclass1();
+                    a.Print();
+                    a = new Subclass2();
+                    a.Print();
+                }
+            }
+
+
