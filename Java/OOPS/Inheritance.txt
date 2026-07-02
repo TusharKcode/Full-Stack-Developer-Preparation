@@ -1,0 +1,200 @@
+Inheritance in Java is a core OOP concept that allows a class to acquire properties and behaviors from 
+    another class.
+    - It helps in creating a new class from an existing class, promoting code reusability and better 
+        organization.
+
+    -> A 'subclass' can reuse the fields and methods of the parent class without rewriting the code
+    -> A 'subclass' can add its own fields and methods or modify existing ones to extend functionality.
+
+    -> In Java, inheritance is implemented using the 'extends' keyword.
+
+Syntax: class Parent {
+            // fields and methods
+        }
+        class Child extends Parent {
+            // additional fields and methods
+        }
+
+Key Terminologies: 
+    -> Class        : Blueprint from which objects are created
+    -> Superclass   : Class whose properties are inherited
+    -> Subclass     : Class that inherits another class
+    -> extends      : Keyword used to inherit a class
+
+Types: 
+    -> Single Inheritance
+        - a sub-class is derived from only one super class
+        - It inherits the properties and behavior of a single-parent class
+        - known as simple inheritance.
+
+        Ex: 
+            class Vehicle{                      // Super class
+                Vehicle(){
+                    System.out.println("This is a Vehicle");
+                }
+            }
+
+            class Car extends Vehicle{          // Sub class
+                Car(){
+                    System.out.println("This is a Car");
+                }
+            }
+
+            public class Main{
+                public static void main(String[] args){
+                    Car c1 = new Car();         // Creating object of subclass invokes base class constructor
+                }
+            }
+
+    -> Multilevel Inheritance
+        - a derived class will be inheriting a base class and as well as the derived class also acts as 
+            the base class for other classes.
+
+        Ex: class Vehicle{
+                Vehicle(){
+                    System.out.println("This is a Vehicle");
+                }
+            }
+
+            class FourWheeler extends Vehicle{
+                FourWheeler(){
+                    System.out.println("4 Wheeler Vehicle");
+                }
+            }
+
+            class Car extends FourWheeler{
+                Car(){
+                    System.out.println("This 4 Wheeler Vehicle is a Car");
+                }
+            }
+
+            public class Main{
+                public static void main(String[] args){
+                    Car c1 = new Car();         // Triggers all constructors in order
+                }
+            }
+
+    -> Hierarchical Inheritance
+        - more than one subclass is inherited from a single base class
+        Ex: class Vehicle{
+                Vehicle(){
+                    System.out.println("This is a Vehicle");
+                }
+            }
+
+            class Car extends Vehicle{
+                Car(){
+                    System.out.println("This is a Car");
+                }
+            }
+
+            class Bus extends Vehicle{
+                Bus(){
+                    System.out.println("This is a Bus");
+                }
+            }
+
+            public class Main{
+                public static void main(String[] args){
+                    Car c1 = new Car();
+                    Bus b1 = new Bus();
+                }
+            }
+
+    -> Multiple Inheritance (Through Interfaces)
+        - one class can have more than one superclass and inherit features from all parent classes.
+        - ava does not support multiple inheritances with classes
+        - an achieve multiple inheritances only through Interfaces.
+
+        Ex: interface LandVehicle{
+                default void landInfo(){
+                    System.out.println("This is a Land Vehicle");
+                }
+            }
+
+            interface WaterVehicle{
+                default void waterInfo(){
+                    System.out.println("This is a Water Vehicle");
+                }
+            }
+        
+        // Subclass implementing both interfaces
+
+            class AmphibiousVehicle implements LandVehicle, WaterVehicle{
+                AmphibiousVehicle(){
+                    System.out.println("These are Amphibious Vehicles");
+                }
+            }
+
+            public class Main{
+                public static void main(String[] args){
+                    AmphibiousVehicle a1 = new AmphibiousVehicle();
+                    a1.waterInfo();
+                    a1.landInfo();
+                }
+            }
+
+    -> Hybrid Inheritance
+        - It is a mix of two or more of the above types of inheritance
+        - we can achieve hybrid inheritance only through Interfaces if we want to involve multiple 
+            inheritance to implement Hybrid inheritance
+
+        Ex: class Vehicle{                                  
+                void vehicleType(){                         // Super class
+                    System.out.println("This is a Vehicle");
+                }
+            }
+
+            interface Fare{                                 // Interface for fare
+                default void fareInfo(){                    
+                    System.out.println("This is Fare Info");
+                }
+            }
+
+            class Car extends Vehicle{                    // Subclass 1: Single inheritance + multilevel         
+                void carType(){
+                    System.out.println("This is a Car");
+                }
+            }
+
+            class Bus extends Vehicle implements Fare{    // Subclass 2: Hybrid inheritance (extends + implements)
+                void busType(){
+                    System.out.println("This is a Bus");
+                }
+            }
+
+            public class Main{
+                public static void main(String[] args){
+                    Car car = new Car();
+                    car.vehicleType();
+                    car.carType();
+
+                    Bus bus = new Bus();
+                    bus.vehicleType();
+                    bus.busType();
+                    bus.fareInfo();
+                }
+            }
+
+=> Java "IS-A" type of Relationship
+    - represents an inheritance relationship in Java, meaning this object is a type of that object.
+
+    Ex: 
+        - SolarSystem is the superclass of Earth class.
+        - SolarSystem is the superclass of Mars class.
+        - Earth and Mars are subclasses of SolarSystem class.
+        - Moon is the subclass of both Earth and SolarSystem classes.
+
+    Code: 
+    class SolarSystem{}
+    class Earth extend SolarSystem{}
+    class Mars extend SolarSystem{}
+    public class Moon extends Earth{
+        SolarSystem ss = new SolarSystem();
+        Earth earth = new Earth();
+        Mars mars = new Mars();
+
+        System.out.println(s instanceof SolarSystem);   // true        
+        System.out.println(e instanceof Earth);         // true
+        System.out.println(m instanceof SolarSystem);   // true        
+    }
