@@ -1,0 +1,177 @@
+A constructor in Java is a special member that is called when an object is created.
+    - It initializes the new object’s state.
+    - It is used to set default or user-defined values for the object's attributes
+
+    -> A constructor has the same name as the class.
+    -> It does not have a return type, not even void.
+    -> It can accept parameters to initialize object properties.
+
+    Ex: class Student {
+            String name;
+
+            // Constructor
+            Student(String name) {
+                this.name = name;
+            }
+
+            void display() {
+                System.out.println("Name: " + name);
+            }
+
+            public static void main(String[] args) {
+                Student s1 = new Student("Vishnu");
+                s1.display();
+            }
+        }
+
+=> Types: 
+    -> Default Constructor
+        - has no parameters
+        - used to assign default values to an object
+        - If no constructor is explicitly defined, Java provides a default constructor
+
+        Ex: class Geeks{
+                Geeks(){        // Default Constructor
+                    System.out.println("Default constructor"); 
+                }
+                public static void main(String[] args){
+                    Geeks hello = new Geeks();
+                }
+            }
+
+    -> Parameterized Constructor
+        - A constructor that has parameters is known as parameterized constructor
+        - If we want to initialize fields of the class with our own values, then use a parameterized 
+            constructor
+
+        Ex: class Geeks{
+                String name;        // data members of the class
+                int id;
+                                            // Parameterized Constructor
+                Geeks(String name, int id)
+                {
+                    this.name = name;
+                    this.id = id;
+                }
+
+                void display(){         // Method to display object data
+                    
+                    System.out.println("GeekName: " + name
+                                    + " and GeekId: " + id);
+                }
+
+                // main() method — placed inside the same class for
+                // universal compatibility
+                public static void main(String[] args){
+                    
+                    // This will invoke the parameterized constructor
+                    Geeks geek1 = new Geeks("Sweta", 68);
+                    geek1.display();
+                }
+            }
+
+    -> Private Constructor
+        - cannot be accessed from outside the class
+        - used in 
+            : Singleton Pattern: To ensure only one instance of a class is created.
+            : Utility/Helper Classes: To prevent instantiation of a class containing only static methods.
+
+        Ex: class GFG {
+                private GFG(){      // Private constructor
+                    
+                    System.out.println("Private constructor called");
+                }
+
+                public static void displayMessage(){    // Static method
+                    
+                    System.out.println("Hello from GFG class!");
+                }
+            }
+
+            class Main{
+                
+                public static void main(String[] args){       
+                    // GFG u = new GFG(); // Error: constructor is private
+                    GFG.displayMessage();
+                }
+            }
+
+    -> Copy Constructor
+        - passed with another object which copies the data available from the passed object to the newly 
+            created object
+        - Java does not provide a built-in copy constructor like C++
+
+        Ex: class Geeks{
+                String name;        // data members of the class
+                int id;
+
+                Geeks(String name, int id)      // Parameterized Constructor
+                {
+                    this.name = name;
+                    this.id = id;
+                }
+
+                Geeks(Geeks obj2)                // Copy Constructor
+                {
+                    this.name = obj2.name;
+                    this.id = obj2.id;
+                }
+            }
+
+            class GFG {
+                public static void main(String[] args)
+                {
+                    // This would invoke the parameterized constructor
+                    System.out.println("First Object");
+                    Geeks geek1 = new Geeks("John", 68);
+                    System.out.println("GeekName: " + geek1.name + " and GeekId: " + geek1.id);
+
+                    System.out.println();
+
+                    // This would invoke the copy constructor
+                    Geeks geek2 = new Geeks(geek1);
+                    System.out.println("Copy Constructor used Second Object");
+                    System.out.println("GeekName: " + geek2.name + " and GeekId: " + geek2.id);
+                }
+            }
+
+=> Constructor Overloading
+
+    - allows us to create multiple constructors in the same class with different parameter lists.
+
+        Ex: class Geeks{
+                Geeks(String name){     // constructor with one argument
+                    
+                    System.out.println("Constructor with one "
+                                    + "argument - String: " + name);
+                }
+
+                Geeks(String name, int age){    // constructor with two arguments
+
+                    System.out.println(
+                        "Constructor with two arguments: "
+                        + " String and Integer: " + name + " " + age);
+                }
+
+                // Constructor with one argument but with different type than previous
+                Geeks(long id)
+                {
+                    System.out.println(
+                        "Constructor with one argument: "
+                        + "Long: " + id);
+                }
+            }
+
+            class GFG {
+                public static void main(String[] args){
+                    
+                    // Creating the objects of the class named 'Geek' by passing different arguments
+                    Geeks geek2 = new Geeks("John");
+
+                    // Invoke the constructor with two arguments
+                    Geeks geek3 = new Geeks("Nova", 28);
+
+                    // Invoke the constructor with one argument of type 'Long'.
+                    Geeks geek4 = new Geeks(325614567);
+                }
+            }

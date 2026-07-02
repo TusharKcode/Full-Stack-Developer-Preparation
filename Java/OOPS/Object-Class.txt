@@ -1,0 +1,118 @@
+Object class (in Java.lang) is the root of the Java class hierarchy
+    - Every class in Java either directly or indirectly extends Object
+    - provides essential methods like toString(), equals(), hashCode(), clone() and several others that 
+        support object comparison, hashing, debugging, cloning and synchronization.
+
+    - Supports thread communication (wait(), notify(), notifyAll())
+
+Methods: 
+    -> toString() Method
+        - provides a String representation of an object and is used to convert an object to a String.
+        Ex: class Student{
+                String name = "Vishnu";
+                int age = 21;
+
+                @Override
+                public String toString(){
+                    
+                    return "Student{name='" + name + "', age=" + age + "}";
+                }
+
+                public static void main(String[] args) {
+                    Student s = new Student();
+                    System.out.println(s.toString());   // Calls overridden toString()
+                }
+            }
+
+    -> hashCode() Method
+        - method returns the hash value of an object (not its memory address)
+        - Used heavily in hash-based collections like HashMap, HashSet, etc. 
+        Ex: class Employee{
+                int id = 101;
+
+                @Override
+                public int hashCode(){
+                    return id * 31;   // Simple custom hash
+                }
+
+                public static void main(String[] args) {
+                    Employee e = new Employee();
+                    System.out.println(e.hashCode());
+                }
+            }
+
+    -> equals(Object obj) Method
+        - compares the given object with the current object
+        - recommended to override this method to define custom equality conditions
+        - compares objects based on content rather than reference
+        Ex: class Book{
+                String title;
+
+                Book(String title) {
+                    this.title = title;
+                }
+
+                @Override
+                public boolean equals(Object obj){     
+                    Book b = (Book) obj;
+                    return this.title.equals(b.title);
+                }
+
+                public static void main(String[] args) {
+                    Book b1 = new Book("Java");
+                    Book b2 = new Book("Java");
+                    System.out.println(b1.equals(b2));      // true
+                }
+            }
+    
+    -> getClass() method
+        - returns the class object of "this" object
+        - used to get the actual runtime class of the object.
+        Ex: Object o = new String("GeeksForGeeks");
+            Class c = o.getClass();
+            System.out.println("Class of Object o is: " + c.getName());
+
+    -> finalize() method
+        - method is invoked by the Garbage Collector just before an object is destroyed
+        - runs when the object has no remaining references
+        - You can override finalize() to release system resources and perform clean up
+        - its use is discouraged in modern Java.
+        Ex: {
+                Geeks t = new Geeks();
+                System.out.println(t.hashCode());
+
+                t = null;
+                System.gc();    // calling garbage collector
+                System.out.println("end");
+            }
+
+            @Override protected void finalize()
+            {
+                System.out.println("finalize method called");
+            }
+
+    -> clone() method 
+        - creates and returns a new object that is a copy of the current object.
+        - clone() creates a copy of the current object (shallow copy by default).
+        - Class must implement Cloneable or else it throws CloneNotSupportedException.
+        Ex: class Student implements Cloneable{
+                int id = 1;
+                String name = "Vishnu";
+
+                @Override
+                public Object clone() throws CloneNotSupportedException{
+                    return super.clone();  // shallow copy
+                }
+
+                public static void main(String[] args) throws Exception{
+                    Student s1 = new Student();
+                    Student s2 = (Student) s1.clone();
+                    System.out.println(s1.name); // Vishnu
+                    System.out.println(s2.name); // Vishnu
+                }
+            }
+
+    -> Concurrency Methods: wait(), notify() and notifyAll()
+        - related to thread Communication in Java
+        - used to make threads wait or notify others in concurrent programming
+        Ex: 
