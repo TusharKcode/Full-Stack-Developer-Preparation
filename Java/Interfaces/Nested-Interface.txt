@@ -1,0 +1,52 @@
+In Java, a Nested Interface is an interface declared inside a class or another interface.
+    - declared with the public, protected, package-private (default), or private access specifiers.
+
+    -> Inside a class, it can be public, protected, default, or private.
+    -> Inside another interface, it is implicitly public and static.
+
+Types: 
+    -> Nested Interface Inside a Class
+        - When an interface is declared inside a class, it can have any access modifier.
+        - To implement it, you must qualify it with the outer class name.
+        Ex: class Outer{
+                interface Inner{
+                    void display();
+                }
+            }
+            class GFG implements Outer.Inner{
+                public void display(){
+                    System.out.println("Hello from Nested Interface Inside a Class!")
+                }
+
+                public static void main(String[] args){
+                    Outer.Inner obj = new GFG();
+                    obj.display();
+                }
+            }
+
+    -> Nested Interface Inside an Interface
+        - When an interface is declared inside another interface, it is implicitly public and static, 
+            even if not explicitly declared.
+        Ex: interface Outer{
+                void show();
+
+                interface Inner{
+                    void msg();
+                }
+            }
+            class GFG implements Outer.Inner{
+                public void msg(){
+                    System.out.println("Message from Nested Interface Inside an Interface!")
+                }
+
+                public static void main(String[] args){
+                    Outer.Inner obj = new GFG();
+                    obj.msg();
+                }
+            }
+
+Rules: 
+    -> Inside a Class: A nested interface can be public, protected, package-private (default), or private.
+    -> Inside an Interface: It is implicitly public and static, even if not explicitly mentioned.
+    -> Top-Level Interfaces: A top-level interface (not nested) can only be public or package-private 
+        (default), it cannot be protected or private.
