@@ -1,0 +1,34 @@
+Exception Handling in Java is a mechanism used to handle both compile-time (checked) and runtime 
+    (unchecked) exceptions, allowing a program to continue execution smoothly even in the presence 
+    of errors.
+
+=> Types of Java Exceptions
+    -> Built-in Exception
+        - pre-defined exception classes provided by Java to handle common errors during program execution
+
+        - Two types: 
+            Checked Exception: checked at compile time, forcing the programmer to handle them explicitly
+            Unchecked Exception: checked at runtime and do not require explicit handling at compile time.
+
+    -> User-Defined Exception
+        - users can also create exceptions, which are called "user-defined Exceptions".
+        - Methods to Print the Exception Information:
+            printStackTrace(): Prints the full stack trace of the exception, including the name, message 
+                                and location of the error.
+            toString(): Prints exception information in the format of the Name of the exception.
+            getMessage() : Prints the description of the exception
+
+=> How Does JVM Handle an Exception?
+    -> When an Exception occurs, the JVM creates an exception object containing the error name, description, 
+        and program state. 
+    -> Throwing an exception means creating an exception object and transferring control to the nearest 
+        appropriate exception handler using the throw keyword. 
+    -> ordered list of methods is called call stack.
+    
+    Procedure:
+        - The run-time system searches the call stack for an exception handler
+        - It starts searching from the method where the exception occurred and proceeds backward through 
+            the call stack.
+        - If a handler is found, the exception is passed to it.
+        - If no handler is found, the default exception handler terminates the program and prints the stack 
+            trace.
