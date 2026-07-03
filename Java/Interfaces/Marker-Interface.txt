@@ -1,0 +1,30 @@
+A Marker Interface in Java is an interface that contains no methods or fields.
+    - It is used to mark a class so that the Java runtime or compiler can identify some special behavior 
+        or capability of that class.
+
+Syntax: public interface Serializable { }
+
+Role of Marker Interfaces
+    -> Marker interfaces give information to the JVM or compiler about:
+        - How to treat the object
+        - What operation is allowed or disallowed
+        - What special behavior should be applied
+
+Common Marker Interface:    
+    -> Cloneable Interface
+        - a marker interface in java.lang that allows an object to be cloned using Object.clone()
+        - If a class does not implement Cloneable, calling clone() on its object throws 
+            CloneNotSupportedException.
+
+    -> Serializable Interface
+        - present in java.io package.
+        - used to make an object eligible for saving its state into a file called Serialization.
+        - Classes that do not implement serializable will not have their state serialized or deserialized.
+        - All subtypes of a serializable class are themselves serializable.
+        Ex: 
+
+    -> Remote Interface
+        - (in java.rmi) is a marker interface that identifies objects whose methods can be invoked remotely 
+            from another JVM
+        - Any class implementing Remote is eligible to be used in Java RMI, allowing distributed 
+            communication between systems.
