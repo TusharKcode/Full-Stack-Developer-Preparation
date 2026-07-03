@@ -1,0 +1,45 @@
+A functional interface in Java is an interface that has only one abstract method, making it suitable for 
+    use with lambda expressions and method references (introduced in Java 8).
+
+    -> Use '@FunctionalInterface' to ensure only one abstract method (annotation is optional).
+    -> A functional interface can also extend another functional interface.
+
+=> @FunctionalInterface annotation ensures that an interface cannot have more than one abstract method.
+    - If multiple abstract methods are present, the compiler throws an “Unexpected @FunctionalInterface 
+        annotation” error.
+    - It is optional to use.
+
+=> Types: 
+    -> Consumer
+        - accepts only one argument
+        - used for performing an action, such as printing or logging
+        - functional variants of the Consumer DoubleConsumer, IntConsumer and LongConsumer.
+        
+        Syntax: Consumer<Integer> consumer = (value) -> System.out.println(value);
+
+    ->  Predicate 
+        - represents a boolean-valued function of one argument
+        - used for filtering operations in streams
+        - variants of the Predicate IntPredicate, DoublePredicate and LongPredicate.
+
+        Syntax: public interface Predicate<T> {
+                boolean test(T t);
+            }   OR
+            Predicate<Integer> predicate = (value) -> value != null;    // using lambda expression
+
+    -> Function
+        - takes one argument and returns a result
+        - used for transforming data
+        - variations are:
+            Bi-Function: Takes two arguments and returns a result.
+            Unary Operator: Input and output are of the same type.
+            Binary Operator: Like BiFunction but with same input/output type.
+
+        Syntax: Function<Integer, Integer> function = (value) -> value * value;
+
+    -> Supplier
+        - does not take any input or argument and yet returns a single output
+        - other suppliers functions like BooleanSupplier, DoubleSupplier, LongSupplier and IntSupplier.
+        
+        Syntax: Supplier<String> supplier = () -> "Hello, World!";
+

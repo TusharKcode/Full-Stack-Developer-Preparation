@@ -1,0 +1,58 @@
+An interface in Java is a blueprint that defines a set of methods a class must implement without providing 
+    full implementation details
+    - It helps achieve abstraction by focusing on what a class should do rather than how it does it.
+    - Interfaces also support multiple inheritance in Java.
+
+    -> All variables in an interface are public, static, and final by default.
+    -> Interfaces can have default, static, and private methods (Java 8+ and 9+).
+
+    -> Private methods can only be called inside default or static methods.
+    -> Static methods are accessed using the interface name, not via objects.
+
+    -> To implement an interface, use the 'implements' keyword.
+
+Relationship b/w Class and Interface
+    -> A class can extend another class similarly an interface can extend another interface.
+    -> Only a class can implement an interface and the reverse (an interface implementing a class) 
+        is not allowed.
+
+Example: Vehicles like bicycles, cars, and bikes share common functionalities that can be defined in an 
+            interface.
+            Each class implements these in its own way, ensuring reusability, scalability, and consistency.
+    File: (Interface.java)
+
+=> Multiple Inheritance using Interface in Java
+    - Java does not support multiple inheritance with classes to avoid ambiguity
+
+=> New Features added in Interfaces in JDK 8
+
+    -> Default Method:
+        - Interfaces can define methods with default implementations.
+        - Useful for adding new methods to interfaces without breaking existing implementations.
+
+    -> Static Methods:  
+        - Interfaces can now include static methods.
+        - These methods are called directly using the interface name and are not inherited by implementing 
+            classes.
+        - We can now define static methods in interfaces that can be called independently without an object.
+
+    -> Functional Interface:
+        - used with lambda expressions or method references.
+        - '@FunctionalInterface' annotation can be used to indicate that an interface is a functional 
+            interface, although it’s optional.
+
+        Ex: @FunctionalInterface
+            public interface Calculator {
+                int compute(int x, int y); // single abstract method
+            }
+
+=> New Features added in Interfaces in JDK 9
+
+    -> Private Method:
+        - defined within the interface but it cannot be accessed by the implementing classes.
+        - cannot be overridden by implementing classes as they are not inherited.
+
+    -> Extending Interfaces:
+        - One interface can inherit another by the use of keyword extends.
+        - When a class implements an interface that inherits another interface, it must provide an 
+            implementation for all methods required by the interface inheritance chain.
