@@ -1,0 +1,41 @@
+Regular Expressions in Java provide a way to match, search, and manipulate text.
+
+=> The Matcher class is part of the java.util.regex package is used to perform matching operations on an 
+    input string using a compiled regular expression (Pattern)
+
+    -> The Matcher class provides methods to:
+        - Check matches
+        - Retrieve match positions
+        - Study the matching state
+        - Replace matched content
+
+Methods: 
+    -> Match Methods
+        - used to check whether a pattern matches the input string, either completely or partially.
+        - matches()     : Checks if the entire input matches the pattern
+        - find()        : Finds the next occurrence of the pattern
+        - lookingAt()   : Checks if the pattern matches from the beginning
+
+    -> Index Methods
+        - return positional information about the current match in the input string.
+        - start()           : returns the start index of the previous match.
+        - start(int group)  : returns the start index of the subsequence captured by the given group during 
+                                the previous match operation.
+        - end()             : returns the offset after the last character is matched.
+        - end(int group)    : returns the offset after the last character of the subsequence captured by the 
+                                given group during the previous match operation.
+
+    -> Study Methods
+        - used to inspect the state and behavior of the matcher during pattern matching.
+        - groupCount()  : Returns number of capturing groups
+        - group()       : Returns the matched substring
+        - hitEnd()      : Checks if match reached end of input
+        - requireEnd()  : Checks if more input could change the result
+
+    -> Replacement Method
+        - used to modify the input string based on regex matches.
+        - appendReplacement(StringBuffer sb, String replacement)  : Performs a non-terminal 
+                                                                        append-and-replace operation.
+        - appendTail(StringBuffer sb)       : Appends the remaining input after the last match.
+        - replaceAll(String replacement)    : Replaces all matching subsequences.
+        - replaceFirst(String replacement)  : Replaces the first matching subsequence.
