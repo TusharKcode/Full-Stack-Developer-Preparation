@@ -1,0 +1,77 @@
+-> "final" Keyword
+    - The final keyword is used to restrict changes in Java.
+    - applied to variables, methods, and classes
+    - Once declared as final, certain modifications are not allowed.
+    - A final variable cannot be reassigned after initialization.
+    - A final method cannot be overridden by subclasses.
+    - A final class cannot be inherited.
+    
+    Syntax: final int b = 100;      // Constant value
+
+    Example: class A {
+                public static void main(String[] args){
+                    int a = 5;
+                    final int b = 6;
+
+                    a++;            // modifying the non final variable
+                    b++;            // modifying the final variable Immediately gives Compile Time error
+                }
+            }
+
+-> "finally" Keyword
+    - used in exception handling.
+    - contains code that is executed after the try and catch blocks, whether an exception occurs or not.
+    - Used for cleanup tasks such as closing files or database connections.
+    - Executes even if an exception is thrown.
+
+    Syntax: try {
+                // Code that might throw an exception
+            } catch (ExceptionType e) {
+                // Code to handle the exception
+            } finally {
+                // Code that will always execute
+            }
+
+    Example: public class A {
+                public static void main(String[] args){
+                    try{
+                        System.out.println("Inside try block");
+                        int result = 10/0;                     // // This will cause an exception
+                    } catch (ArithmeticException e) {
+                        System.out.println("Exception caught: " + e.getMessage());
+                    } finally {
+                        System.out.println("finally block always execute");
+                    }
+                }
+            }
+
+-> "finalize()" Keyword
+    - defined in the Object class and is called by the Garbage Collector before an object is removed from 
+        memory
+    - used for cleanup operations.
+    - finalize() is deprecated in Java 9 and should not be used in modern applications.
+
+    Syntax: protected void finalize() throws Throwable{}
+
+    Example: public class Geeks {
+                public static void main(String[] args){
+                    Geeks g = new Geeks();
+                    System.out.println("Hashcode is: " + g.hashCode());
+
+                    g = null;   // Making the object eligible for garbage collection
+                    System.gc();
+
+                    try {       // Adding a short delay to allow GC to act
+                        Thread.sleep(1000);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("End of the garbage collection");
+                }
+
+                @Override protected void finalize() // Defining the finalize method
+                {
+                    System.out.println("Called the finalize() method");
+                }
+            }
