@@ -1,0 +1,44 @@
+Chained Exceptions in Java allow associating one exception with another, i.e. one exception describes the 
+    cause of another exception.
+
+Example: consider a situation in which a method throws an ArithmeticException because of an attempt to 
+            divide by zero.
+        But the root cause of the error was an I/O failure that caused the divisor to be zero.
+        In such cases, chained exceptions help propagate both the primary and underlying causes of the error.
+
+=> Chained exceptions, also known as nested exceptions, allow us to associate a cause with an exception in Java.
+
+Constructors:   
+    -> Throwable(Throwable cause): Where cause is the exception that causes the current exception.
+    -> Throwable(String msg, Throwable cause): Where msg is the exception message and cause is the exception
+        that causes the current exception.
+
+=> Methods of Throwable Supporting Chained Exceptions
+    -> getCause(): This method returns actual cause of an exception.
+    -> initCause(Throwable cause): This method sets the cause for the calling exception.
+
+Example: 
+        // Use a custom message with chained exception
+        public class Geeks {
+            public static void main(String[] args) {
+                try {
+                
+                    // Code that might throw an exception
+                    int[] n = new int[5];
+                    int divisor = 0;
+
+                    for (int i = 0; i < n.length; i++) {
+                        int res = n[i] / divisor;
+                        System.out.println(res);
+                    }
+                } 
+                catch (ArithmeticException e) {
+                
+                    // Creating a new exception with the original as the cause
+                    throw new RuntimeException
+                    ("Error: Division by zero occurred", e);
+                }
+            }
+        }
+
+    

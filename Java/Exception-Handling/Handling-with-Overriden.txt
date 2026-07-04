@@ -1,0 +1,37 @@
+Exception handling with method overriding in Java defines how exceptions are declared when a subclass 
+    overrides a superclass method.
+    - It restricts checked exceptions to maintain type safety and ensure consistent runtime behavior.
+
+    - Checked exceptions in the subclass must stay within the superclass method’s declared range.
+
+Rules: 
+    -> The subclass can throw the same or smaller exceptions as the superclass methods.
+    -> The subclass can choose not to throw any exceptions.
+    -> The subclass cannot throw new checked exceptions not in the parent method.
+
+Ex:
+    // Superclass without exception declaration
+    class SuperClass {
+        void method() {
+            System.out.println("SuperClass method executed");
+        }
+    }
+
+    // Subclass declaring an unchecked exception
+    class SubClass extends SuperClass {
+        @Override
+        void method() throws ArithmeticException {
+            System.out.println("SubClass method executed");
+            throw new ArithmeticException("Exception in SubClass");
+        }
+
+        public static void main(String[] args) {
+            SuperClass s = new SubClass();
+            try {
+                s.method();
+            } catch (ArithmeticException e) {
+                System.out.println("Caught Exception: " + e.getMessage());
+            }
+        }
+    }
+
