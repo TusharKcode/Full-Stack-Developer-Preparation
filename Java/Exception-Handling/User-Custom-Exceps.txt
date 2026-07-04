@@ -1,0 +1,77 @@
+User-defined Exceptions
+    - an exception class created by the programmer to represent application-specific or business-specific 
+        error scenarios.
+    
+    Examples: Invalid bank transaction, Insufficient balance, Age not eligible for registration, 
+                Invalid login attempt
+
+
+Custom-defined Exceptions
+    - an exception defined by the user to handle specific application requirements
+    - exceptions extend either the Exception class (for checked exceptions) or the RuntimeException class 
+        (for unchecked exceptions).
+    - To add clear, descriptive error messages for better debugging.
+
+    Types: 
+        -> checked exceptions: 
+            - extends the Exception class
+            - declared in the throws clause of the method signature
+
+        -> unchecked exceptions: 
+            - extend RuntimeException
+            - not checked by the compiler, so they don’t need to be declared or handled
+            - represent programming errors or invalid operations.
+
+=> How to Create a User-Defined Custom Exception
+Example 1:
+            // Custom Checked Exception
+            class InvalidAgeException extends Exception {
+                public InvalidAgeException(String m) {
+                    super(m);  
+                }
+            }
+
+            // Using the Custom Exception
+            public class Geeks {
+                public static void validate(int age) 
+                throws InvalidAgeException {
+                    if (age < 18) {
+                        throw new InvalidAgeException("Age must be 18 or above.");
+                    }
+                    System.out.println("Valid age: " + age);
+                }
+
+                public static void main(String[] args) {
+                    try {
+                        validate(12);
+                    } catch (InvalidAgeException e) {
+                        System.out.println("Caught Exception: " + e.getMessage());
+                    }
+                }
+            }
+
+    Example 2: 
+            // Custom Unchecked Exception
+                class DivideByZeroException extends RuntimeException {
+                    public DivideByZeroException(String m) {
+                        super(m);
+                    } 
+                }
+
+                // Using the Custom Exception
+                public class Geeks {
+                    public static void divide(int a, int b) {
+                        if (b == 0) {
+                            throw new DivideByZeroException("Division by zero is not allowed.");
+                        }
+                        System.out.println("Result: " + (a / b));
+                    }
+
+                    public static void main(String[] args) {
+                        try {
+                            divide(10, 0);
+                        } catch (DivideByZeroException e) {
+                            System.out.println("Caught Exception: " + e.getMessage());
+                        }
+                    }
+                }
