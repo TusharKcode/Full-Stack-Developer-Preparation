@@ -1,4 +1,4 @@
-package Practice;
+package Java.Regex.Practice;
 
 public class Quantifiers {
     public static void main(String[] args) {
