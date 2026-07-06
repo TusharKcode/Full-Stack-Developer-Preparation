@@ -1,18 +1,106 @@
-Garbage Collector
-    - responsible for reclaiming memory by destroying objects that are no longer in use.
-    - When an object becomes unreachable that means no active reference points to it, it then becomes 
-        eligible for garbage collector. 
-    - The garbage collector removes those objects freeing up the memory in the heap.
+Garbage Collection (GC) in Java is an automatic memory management process performed by the JVM.
+    - helps in removing unused and unreachable objects from heap memory
+    - Helps prevent memory leaks and improves memory management.
 
-    -> Types: 
-        - Serial Garbage Collector:         uses a single thread to handle all garbage collection tasks.
-        - Parallel Garbage Collector:       default (Java 8), uses multiple threads to perform garbage 
-                                                collection tasks 
-        - Concurrent Mark-Sweep Collector:  minimize pause times by doing most of its work while the 
-                                                application is still running, uses multiple threads to 
-                                                mark and clean up unreachable objects
-        - G1 Garbage Collector:             default (Java 9), Designed for applications with large heap 
-                                                sizes (greater than 4GB)
-        - Z Garbage Collector:              designed to handle large heaps with minimal pause times, typically 
-                                                in the range of milliseconds.
-        - Shenandoah Garbage Collector:     low-pause-time garbage collector introduced in Java 12
+-> Java developers do not need to manually free memory because the JVM automatically handles object cleanup.
+
+Working of Garbage Collection:
+    - Object Creation:              Objects are created in the heap memory when a program runs.
+    - Reference Checking:           gc checks whether objects are still referenced by the program.
+    - Identify Unreachable Objects: Objects without any active reference become unreachable and eligible 
+                                        for gc.
+    - Memory Cleanup:               JVM removes unreachable objects and frees heap memory automatically.
+    - Reuse Memory:                 Freed memory can now be reused for creating new objects.
+
+Types of GC based on Memory Area: 
+    -> Minor Garbage Collection
+        - occurs in the Young Generation of heap memory
+        - removes short-lived and unreachable objects that are recently created
+        - Faster compared to Major GC.
+        - Removes temporary objects quickly.
+ 
+    -> Major or Full Garbage Collection
+        - Old Generation of heap memory. 
+        - removes long-lived objects that are no longer referenced.
+        - Slower than Minor GC.
+        - Cleans long-lived unused objects.
+
+=> Unreachable Objects
+    - becomes unreachable if it does not contain any reference to it.
+
+    Ex: Integer i = new Integer(4);     // the new Integer object is reachable  via the reference in 'i'  
+        i = null;                       // the Integer object is no longer reachable. 
+        
+    -> Making Objects Eligible for GC
+        - An object is said to be eligible for garbage collection if it is unreachable.
+
+    -> Ways to do: 
+        Nullifying the reference variable (obj = null).
+        Re-assigning the reference variable (obj = new Object()).
+        An object created inside the method (eligible after method execution).
+        Island of Isolation (Objects that are isolated and not referenced by any reachable objects).
+
+=> Requesting GC
+    - Once an object is eligible for garbage collection, it may not be destroyed immediately.
+    - The garbage collector runs at the JVM's discretion and you cannot predict when it will occur.
+
+    -> Ways to request JVM to run Garbage Collector: 
+        - Using System.gc():                static method requests the JVM to perform gc
+        - Using Runtime.getRuntime().gc():  method also requests gc through the Runtime class.
+    
+=> Before destroying an object, the garbage collector calls the 'finalize()' method to perform cleanup 
+    activities.
+    It is deprecated since Java 9 because it is unpredictable and can cause performance issues.
+
+=> Threads in GC:
+    -> Controlling Garbage Collection Threads
+        - to control the no. of threads used by gc, use multi-threaded collectors like the Parallel Garbage 
+            Collector.
+        - Implementation: java -XX:+UseParallelGC -XX:ParallelGCThreads=NumberOfThreads -jar ApplicationJar.java
+
+    -> Limiting GC Pause Time 
+        - To limit the maximum pause time during garbage collection, use the MaxGCPauseMillis option.
+        - Implementation: java -XX:+UseParallelGC -XX:MaxGCPauseMillis=SecInMillisecond -jar ApplicationJar.java
+
+=> Types: 
+    -> Serial Garbage Collector:         
+        - uses a single thread to handle all garbage collection tasks.
+        - pauses all application threads during GC
+        - suited for small applications or systems with limited memory
+
+        Implementation: java -XX:+UseSerialGC -jar ApplicationJar.java
+
+    -> Parallel Garbage Collector:         
+        - default in Java 8
+        - uses multiple threads to perform garbage collection, improving throughput.
+        - pauses the application during GC, ideal for high-throughput applications.
+
+        Implementation: java -XX:+UseParallelGC -jar ApplicationJar.java
+
+    -> Concurrent Mark-Sweep Collector:         
+        - minimize pause times by performing most GC work concurrently with application threads
+        - suitable for low-latency applications like web servers 
+        - deprecated in newer Java versions
+
+        Implementation: java -XX:+UseParNewGC -jar ApplicationJar.java
+
+    -> G1 Garbage Collector:         
+        - divides the heap into multiple regions and collects regions with the most garbage first
+        - provides predictable pause times, supports large heaps
+        - default GC in Java 9
+
+        Implementation: java -XX:+UseG1GC -jar ApplicationJar.java
+
+    -> Z Garbage Collector:         
+        - low-latency garbage collector introduced in Java 11
+        - handles very large heaps with pause times typically in milliseconds
+        - suitable for performance-critical applications.
+
+        Implementation: java-XX:+UseZGC -jar ApplicationJar.java
+
+    -> Shenandoah Garbage Collector:         
+        - introduced in Java 12
+        - focuses on very low pause times by running garbage collection concurrently with application threads.
+        - ideal for latency-sensitive systems.
+
+        Implementation: java-XX:+UseShenandoahGC -jar ApplicationJar.java
