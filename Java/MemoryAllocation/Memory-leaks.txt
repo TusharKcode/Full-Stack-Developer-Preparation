@@ -1,0 +1,46 @@
+Memory leaks in Java occur when objects that are no longer needed remain referenced, preventing garbage 
+    collection.
+
+Over time, this increases memory usage, degrades performance, and can eventually crash the application.
+
+-> Java provides automatic garbage collection, but it cannot remove objects that are still referenced.
+
+-> Poor reference management is the main reason memory leaks occur in Java applications.
+
+Ex: Memory Leak Due to Unused Objects
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class MemoryLeakExample {
+        private static List<String> list = new ArrayList<>();
+
+        public static void main(String[] args) {
+            for (int i = 0; i < 1000000; i++) {
+                list.add("Item " + i);          // Items keep being added but never removed
+            }
+            System.out.println("Finished adding items!");
+        }
+    }
+
+Why do Memory leaks happen in Java?
+    - memory leaks can occur when the program keeps references to objects that are no longer needed, 
+        preventing their removal and wasting memory.
+
+    -> If our program keep on leaking memory it means the program will use up all the memory as much as it 
+        can use.
+        After some time, the program will stop working and will show an error like this:
+            (Java ran out of memory to create new things it needs.)
+                java.lang.OutOfMemoryError: Java heap space
+        
+=> Tools to find Memory Leaks:
+    - VisualVM (comes with JDK)
+    - Eclipse Memory Analyzer (MAT)
+    - Java Mission Control
+    - YourKit Java Profiler
+
+-> To avoid memory leaks:
+    - Stop keeping things that we do not need in our program do not initialize unnecessary variables and 
+        list items to null.
+    - Do not let lists or caches keep growing forever without removing old stuff.
+    - recommended to close files and database connections when we are done with them.
