@@ -37,11 +37,14 @@ public class CollectionOperations {
         System.out.println("");
         
         System.out.println("------------- Accessing Elements -------------");
-        Collection<String> toAccess = new ArrayList<>();
+        List<String> toAccess = new ArrayList<>();
         toAccess.add("Apple");
         toAccess.add("Banana");
         toAccess.add("Mango");
         System.out.println("Before Accessing elements: " + toAccess);
+        System.out.println("Element at 0 Index: " + toAccess.get(0));
+        System.out.println("");
+        
         System.out.println("------------- Adding Elements -------------");
 
     }

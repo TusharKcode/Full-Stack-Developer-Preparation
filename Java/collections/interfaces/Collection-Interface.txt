@@ -64,9 +64,21 @@ Hierarchy of Collection interface
         - its sub-interface List (implemented by ArrayList) allows retrieving elements using the 
             get(int index) method
 
-    -> 
-        - 
-        - 
+    -> Iterating over a Collection  
+        - Iterator
+            Iterator interface allows traversal in one direction (forward).
+            safely remove elements during iteration using remove().
+
+        - List-Iterator
+            ListIterator extends Iterator and is available for List implementations (ArrayList, LinkedList, 
+                etc.).
+            Supports bidirectional traversal (forward and backward).
+            Allows adding, removing, and replacing elements during iteration.
+
+    
+    -> Removing During Iteration
+        - Using Iterator.remove() or ListIterator.remove() is the correct way to remove elements while iterating.
+        - Directly using collection.remove(element) inside a loop will throw ConcurrentModificationException.
 
 
 
