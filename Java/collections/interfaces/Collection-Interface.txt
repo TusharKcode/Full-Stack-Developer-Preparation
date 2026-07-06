@@ -1,0 +1,73 @@
+The Collection interface is the root of the Java Collections Framework, defined in the java.util package.
+    - represents a group of individual objects as a single unit and provides basic operations for working 
+        with them.
+
+    - Dynamic in size (can grow or shrink)
+    - Provide simple methods like add(), remove(), and clear().
+    - Stores elements of a specific type using generics
+
+=> Declaration: public interface Collection<E> extends Iterable<E>
+    (E represents the type of elements stored in the collection.)
+
+=> Object creation: Collection<String> fruits = new ArrayList<>();
+
+Hierarchy of Collection interface   
+    => The Collection interface is part of a hierarchy that extends Iterable, which means collections can 
+        be traversed.
+
+    => Sub-Interfaces (Collection Types)
+        ->  List
+            - represents an ordered collection that allows duplicates.
+            - Elements can be accessed by index.
+            - Implementing Classes: ArrayList, LinkedList, Vector, Stack.
+            - Declaration: public interface List<E> extends Collection<E>
+
+        ->  Set
+            - represents an unordered collection with no duplicate elements.
+            - Implementing Classes: HashSet, TreeSet, LinkedHashSet, EnumSet, CopyOnWriteArraySet.
+            - Declaration: public interface Set<E> extends Collection<E>
+
+        ->  SortedSet
+            - extends Set and maintains elements in a sorted order.
+            - Provides methods to handle range-based operations.
+            - Implementing Class: TreeSet.
+            - Declaration: public interface SortedSet<E> extends Set<E>
+
+        ->  NavigableSet
+            - extends SortedSet 
+            - provides navigation methods like lower(), floor(), ceiling(), and higher().
+            - Implementing Class: TreeSet.
+            - public interface NavigableSet<E> extends SortedSet<E>
+
+        ->  Queue
+            - represents a collection following FIFO (First-In-First-Out) order.
+            - Implementing Classes: PriorityQueue, ArrayDequeue, LinkedList.
+            - Declaration: public interface Queue<E> extends Collection<E>
+
+        ->  Dequeue
+            - extends Queue
+            - allows elements to be added/removed from both ends.
+            - Implementing Classes: ArrayDequeue, LinkedList.
+            - Declaration: public interface Dequeue<E> extends Queue<E>
+
+=> Operations on Collection Objects
+    -> Adding Elements
+        - add elements using the add(E e) method for a single element
+        - addAll(Collection c) to add multiple elements.
+
+    -> Removing Elements
+        - can be removed using remove(E e)
+        - removeAll(Collection c) methods. 
+
+    -> Accessing Elements
+        - Collection interface doesn’t provide index-based access
+        - its sub-interface List (implemented by ArrayList) allows retrieving elements using the 
+            get(int index) method
+
+    -> 
+        - 
+        - 
+
+
+
+    
