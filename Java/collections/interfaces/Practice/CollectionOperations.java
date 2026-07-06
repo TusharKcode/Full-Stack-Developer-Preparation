@@ -1,4 +1,4 @@
-package Java.collections.interfaces;
+package Java.Collections.Interfaces.Practice;
 
 import java.util.*;
 
@@ -36,7 +36,12 @@ public class CollectionOperations {
 
         System.out.println("");
         
-        System.out.println("------------- Adding Elements -------------");
+        System.out.println("------------- Accessing Elements -------------");
+        Collection<String> toAccess = new ArrayList<>();
+        toAccess.add("Apple");
+        toAccess.add("Banana");
+        toAccess.add("Mango");
+        System.out.println("Before Accessing elements: " + toAccess);
         System.out.println("------------- Adding Elements -------------");
 
     }
