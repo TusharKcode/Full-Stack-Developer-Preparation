@@ -1,0 +1,18 @@
+Garbage Collector
+    - responsible for reclaiming memory by destroying objects that are no longer in use.
+    - When an object becomes unreachable that means no active reference points to it, it then becomes 
+        eligible for garbage collector. 
+    - The garbage collector removes those objects freeing up the memory in the heap.
+
+    -> Types: 
+        - Serial Garbage Collector:         uses a single thread to handle all garbage collection tasks.
+        - Parallel Garbage Collector:       default (Java 8), uses multiple threads to perform garbage 
+                                                collection tasks 
+        - Concurrent Mark-Sweep Collector:  minimize pause times by doing most of its work while the 
+                                                application is still running, uses multiple threads to 
+                                                mark and clean up unreachable objects
+        - G1 Garbage Collector:             default (Java 9), Designed for applications with large heap 
+                                                sizes (greater than 4GB)
+        - Z Garbage Collector:              designed to handle large heaps with minimal pause times, typically 
+                                                in the range of milliseconds.
+        - Shenandoah Garbage Collector:     low-pause-time garbage collector introduced in Java 12

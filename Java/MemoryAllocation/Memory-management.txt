@@ -49,7 +49,7 @@ Components:
             - Contains native libraries (.dll or .so files).
             - Used by JNI for executing native methods.
 
-    Heap                                                Stack
+            Heap                                                Stack
 - Stores objects and instance variables.           || Stores method calls and local variables.
 - Larger but slower.                               || Smaller but faster.
 - Random access.                                   || LIFO (Last-In-First-Out).
@@ -63,4 +63,3 @@ Components:
     - Objects are created using the "new" keyword and are allocated in the heap memory.
     - Declaring a variable of a class type does not create an object it only creates references.
     - To allocate memory for the object in heap, we need to use the "new" keyword.
-    - 

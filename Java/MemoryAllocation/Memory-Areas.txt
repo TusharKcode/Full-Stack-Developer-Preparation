@@ -1,0 +1,65 @@
+There are 5 different memory areas: 
+
+    => Class (Method) Area
+        - stores class-level information that is loaded by the JVM
+        - includes class metadata, method details, and static variables, and it is shared among all threads.
+        - Created once when JVM starts
+        - Contains Runtime Constant Pool
+
+    => Heap Memory
+        - When an object is created using the new keyword, Java allocates space for that object in the heap
+        - amount of memory allocated depends on the fields defined in the object's class and their 
+            respective data types.
+        - Garbage collection in the heap area is mandatory for automatic memory management.
+
+            Ex: Scanner sc = new Scanner(System.in)
+                -> 'Scanner' object is stored in the heap, and the reference 'sc' is stored in the stack
+
+        -> Divides into several regions:
+            Young Generation: The area within the heap where new objects are generally allocated.
+            Old Generation: The area within the heap where long-lived metadata Objects are stored after 
+                                surviving multiple garbage collection cycles.
+            Permanent Generation: It stores metadata about classes and methods in Java 7 and earlier versions.
+
+        -> Starting with Java 8, the old permanent generation space was removed and replaced by meta-space.
+        -> Meta-space uses native memory outside the main heap. 
+            This change helps Java to handle class metadata better and also reduces the chances of errors 
+            caused by permanent generation.
+            
+        -> When the new keyword is called, the JVM allocates memory for that object in the heap.
+            The garbage collector automatically deletes objects that are no longer needed.
+
+    => Stack Memory 
+        - used to store local variables, method calls and references to an object.
+        - Each time a method is called, a new stack frame is created to hold local variables and object 
+            references.
+        - The stack memory is managed automatically, when a method finishes the stack frame is removed and 
+            the space used by its local variable is also released.
+        - Primitive data types and local variables are stored in the stack.
+        - Each thread in Java application has its own stack.
+
+    => Program Counter Register
+        - keeps track of the current instruction being executed by a thread
+        - helps JVM resume execution after thread switching.
+        - One PC register per thread
+        - Stores address of current JVM instruction
+        - Undefined for native methods
+        - Supports thread scheduling
+
+    => Native Method Stack
+        - stores execution details of native methods written in languages like C or C++.
+        - works alongside the Java Stack.
+        - Thread-specific memory area
+        - Depends on underlying OS
+        - Separate from Java Stack
+
+=> Memory Layout of an Object
+    - Object header: contains metadata like the object's class and lock information for synchronization.
+    - Instance data: refers to the actual fields or variables that belongs to an object.
+    - Padding:       refers to the extra memory to align the object size to the word size for better 
+                        performance.
+
+=> Object Header includes:  
+    - Class Pointer: This is a reference to the object's class.
+    - Lock Information: This is used for synchronization in multithreaded programs.
+    - GC-related Information: It is used by the garbage collector for managing the object lifecycle.

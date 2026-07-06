@@ -2,16 +2,13 @@ package Java.MemoryAllocation.Practice;
 
 class Geeks {
 
-    // static variables are stored in the Method Area
-    static int v = 100;
+    static int v = 100; // static variables are stored in the Method Area
 
-    // instance variables are stored in the Heap
-    int i = 10;
+    int i = 10;         // instance variables are stored in the Heap
 
     public void Display()
     {
-        // local variables are stored in the Stack
-        int s = 20;
+        int s = 20;     // local variables are stored in the Stack
 
         System.out.println(v);
         System.out.println(s);
@@ -21,8 +18,6 @@ class Geeks {
 public class MemoryArea {
     public static void main(String[] args) {
         Geeks g = new Geeks();
-
-        // Calling the Display method
-        g.Display();
+        g.Display();    // Calling the Display method
     }
 }
