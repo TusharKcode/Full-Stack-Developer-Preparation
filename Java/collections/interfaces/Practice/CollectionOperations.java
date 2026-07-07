@@ -44,8 +44,31 @@ public class CollectionOperations {
         System.out.println("Before Accessing elements: " + toAccess);
         System.out.println("Element at 0 Index: " + toAccess.get(0));
         System.out.println("");
-        
-        System.out.println("------------- Adding Elements -------------");
 
+        System.out.println("------------- Iterating over a Collection -------------");
+        Collection<String> fruits = new ArrayList<>(Arrays.asList("Apple", "Mango", "Banana"));
+        Iterator<String> it = fruits.iterator();
+
+        while(it.hasNext()){
+            String fruit = it.next();
+            if(fruit.equals("Banana")){
+                it.remove();                    // safely removes "Banana" from collection
+            }
+        }
+        System.out.println(fruits);
+        System.out.println("");
+
+        System.out.println("------------- List Iterating over a Collection -------------");
+        List<String> colors = new ArrayList<>(Arrays.asList("Red", "Blue", "Green"));
+        ListIterator<String> itColor = colors.listIterator();
+
+        System.out.println("Forward: ");         // Forward traversal
+        while (itColor.hasNext()) {
+            System.out.println(itColor.next() + " ");
+        }
+        System.out.println("\nBackward: ");
+        while(itColor.hasPrevious()){
+            System.out.println(itColor.previous() + " ");
+        }
     }
 }
