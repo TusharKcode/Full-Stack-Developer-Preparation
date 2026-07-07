@@ -23,4 +23,5 @@ The Dequeue interface is part of the java.util package and extends the Queue int
 
     -> Iterating Elements
         - a Dequeue can be iterated from both directions
-        - iterator method of the Dequeue interface provides us two ways to iterate. One from the first and the other from the back. 
+        - iterator method of the Dequeue interface provides us two ways to iterate. One from the first and 
+            the other from the back. 
