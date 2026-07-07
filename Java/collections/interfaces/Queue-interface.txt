@@ -1,0 +1,41 @@
+The Queue interface is part of the java.util package and extends the Collection interface.
+    - represents a data structure where elements are processed based on a specific order.
+
+    -> Elements follow FIFO (First-In-First-Out) in LinkedList and priority order in PriorityQueue
+    - Elements cannot be accessed directly using an index
+    - Allows storing duplicate elements
+
+=> Declaration: public interface Queue<E> extends Collection<E>
+
+    -> We cannot instantiate a Queue directly as it is an interface.
+        We use classes like PriorityQueue, LinkedList, or ArrayDequeue that implement the Queue interface.
+
+        Queue<Obj> queue = new LinkedList<Obj>();
+            or
+        Queue<Obj> queue = new PriorityQueue<>();
+
+=> Common implementations:
+    -> LinkedList: Implements List and Dequeue interfaces, allows null elements, used as a FIFO queue when 
+                        used through the Queue interface.
+    -> ArrayDequeue: resizable array-based queue that is faster than LinkedList and does not allow nulls.
+    -> PriorityQueue: elements are processed according to their priority instead of insertion order.
+    -> ConcurrentLinkedQueue: thread-safe, non-blocking queue suitable for concurrent environments.
+    -> BlockingQueue: thread-safe queue that supports blocking operations for producer-consumer scenarios.
+
+=> Operations:
+    -> Adding Elements
+        - To add an element in a queue, we can use the add() method.
+        - insertion order is not retained in the PriorityQueue.
+        - elements are stored based on the priority order which is ascending by default. 
+
+    -> Removing Elements
+        - To remove an element from a queue, we can use the remove() method.
+        - If there are multiple objects, then the first occurrence of the object is removed.
+        - The poll() method is also used to remove the head and return it. 
+
+    -> Accessing Elements
+        - access the head element without removing it using peek() or element().
+
+    -> Iterating Elements
+        - converting the queue to the array and traversing using the for loop.
+        - also an inbuilt iterator which can be used to iterate through the queue.
