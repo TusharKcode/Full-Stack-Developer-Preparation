@@ -1,0 +1,53 @@
+The List interface in Java extends the Collection interface and is part of the java.util package.
+    - used to store ordered collections where duplicates are allowed
+    - elements can be accessed by their index.
+    - Maintains insertion order
+    - Supports bidirectional traversal using ListIterator
+
+    Syntax: List<Type> list = new ArrayList<Type>();
+    Declaration: public interface List<E> extends Collection<E> { }
+
+=> Common implementation classes of the List interface are:
+    -> Array List - using resizable array, offers fast random access but slower insert/delete.
+    -> Linked List - using Doubly-linked list, efficient for frequent insertions and deletions.
+    -> Vector - using Legacy synchronized dynamic array, thread-safe but slower.
+    -> Stack - using a LIFO (Last-In-First-Out) subclass of Vector for stack operations.
+
+=> List Operations: 
+    -> Adding Elements
+        - To add an element to the list, we can use the add() method. 
+        - overloaded to perform multiple operations
+        - add(Object o): used to add an element at the end of the List.
+        - add(int index, Object o): used to add an element at a specific index in the List
+
+    -> Updating Elements
+        - To update an element in a list, use the set() method with the target index and the new value.
+        - Since List is indexed, the element is replaced at the specified position.
+        
+    -> Searching Elements 
+        - Searching in a List can be done using indexOf(), lastIndexOf() methods.
+        - indexOf(Object o): returns the index of the first occurrence of the specified element in the list 
+                                or -1 if the element is not found   
+        - lastIndexOf(Object o): returns the index of the last occurrence of the specified element in the 
+                                    list or -1 if the element is not found
+
+    -> Removing Elements
+        - To remove an element from a list, we can use the remove() method.
+        - perform multiple operations
+        - remove(Object o): Removes the first occurrence of the specified object from the list.
+        - remove(int index): Removes the element at the specified index and shifts subsequent elements left.
+
+    -> Accessing Elements
+        - To access an element in the list, we can use the get() method
+        - returns the element at the specified index.
+
+    -> Checking if an element is present or not
+        - To check if an element is present in the list, we can use the contains() method
+        - returns true if the specified element is present in the list, otherwise, it returns false.
+
+=> Complexity of List interface in Java
+                                        Time Complexity  |   Space Complexity
+- Adding Element in List Interface          O(1)         |       O(1)
+- Remove Element from List Interface        O(N)         |       O(1)
+- Replace Element in List Interface         O(1)         |       O(1)
+- Traversing List Interface                 O(N)         |       O(1)
