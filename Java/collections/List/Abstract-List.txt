@@ -15,3 +15,5 @@ AbstractList in Java is an abstract class in the Java Collections Framework that
     -> protected AbstractList(): Being protected and abstract, you cannot create AbstractList objects 
                                     directly.
         AbstractList<Integer> al = new ArrayList<Integer>();
+
+=> Methods: (https://www.geeksforgeeks.org/java/abstractlist-in-java-with-examples/)
