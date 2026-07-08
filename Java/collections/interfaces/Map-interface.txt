@@ -1,0 +1,39 @@
+In Java, the Map Interface is part of the java.util package and represents a collection of key-value pairs, 
+    where Keys should be unique, but values can be duplicated.
+
+    - efficient retrieval, insertion, and deletion operations based on keys.
+    - HashMap and LinkedHashMap allow one null key, and TreeMap does NOT allow null keys (if natural 
+        ordering is used).
+    - Use ConcurrentHashMap for thread-safe operations, or Collections.synchronizedMap() to make an 
+        existing map synchronized.
+
+Declaration: public interface Map<K, V>
+
+        - K -> Type of keys maintained by the map
+        - V -> Type of mapped values
+
+Implemented Classes:
+    -> HashMap: Stores key-value pairs using hashing for fast access, insertion, and deletion.
+    -> LinkedHashMap: Similar to HashMap but maintains the insertion order of key-value pairs.
+    -> TreeMap: Stores key-value pairs in sorted order using natural ordering or a custom comparator.
+    -> Hash-table: A synchronized Map implementation that doesn’t allow null keys or values.
+
+Operations: 
+    -> Adding Elements
+        - Use the put() method to add elements to a Map.
+        - In HashMap, insertion order isn’t preserved, each element is stored based on its hash for faster 
+            access.
+
+    -> Changing Element 
+        - To update a value, use the put() method with the same key.
+        - The new value replaces the old one for that key.
+
+    -> Removing Elements
+        - To remove an element from the Map, we can use the remove() method.
+        - takes the key value and removes the mapping for a key from this map if it is present in the map.
+
+    -> Iterating through the Map 
+        - use a for-each loop and get the keys. 
+        - The value of the key is found by using the getValue() method. 
+
+    
