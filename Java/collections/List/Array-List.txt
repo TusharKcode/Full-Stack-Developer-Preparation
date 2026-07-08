@@ -1,0 +1,28 @@
+ArrayList in Java is a resizable array provided in the java.util package.
+    - size can grow or shrink dynamically as elements are added or removed.
+    - Elements can be accessed using their indices, similar to arrays.
+    - Duplicates are allowed.
+    - Elements are stored in the order they are inserted.
+    - ArrayList is not thread-safe. To make it thread-safe, we must wrap it manually using 
+        Collections.synchronizedList().
+
+    -> ArrayList cannot hold primitive types like int, double, or char directly.
+        We must use their wrapper classes instead:
+
+            Use Integer instead of int
+            Use Double instead of double
+            Use Character instead of char
+        
+=> Constructors:
+    -> ArrayList()
+        - Creates an empty ArrayList with default initial capacity.
+        - ArrayList<Integer> arr = new ArrayList<>();
+
+    -> ArrayList(Collection<? extends E> c)
+        - Creates an ArrayList initialized with elements from the specified collection.
+        - ArrayList<String> arr = new ArrayList<>(collection); 
+
+    -> ArrayList(int initialCapacity)
+        - used to build an array list with the initial capacity being specified.
+        - ArrayList<Double> arr = new ArrayList<>(20);
+
