@@ -1,0 +1,16 @@
+LinkedHashSet is a class in Java that implements the Set interface and maintains insertion order while 
+    storing unique elements. 
+    - It combines the features of a HashSet and a LinkedList.
+    - Maintains insertion order of elements
+    - Provides fast performance for basic operations
+
+    -> If an element is removed and then added again, it is inserted at the end of the LinkedHashSet, 
+        because insertion order is maintained based on latest insertion.
+
+=> Constructors:    
+    -> LinkedHashSet(): default capacity i.e. 16 and load factor 0.75. - LinkedHashSet<E> hs = new LinkedHashSet<E>();
+    -> LinkedHashSet(Collection C): LinkedHashSet<E> hs = new LinkedHashSet<E>(Collection<? extends E> c);
+    -> LinkedHashSet(int initialCapacity): LinkedHashSet<E> hs = new LinkedHashSet<E>(int initialCapacity);
+    -> LinkedHashSet(int capacity, float fillRatio): LinkedHashSet<E> hs = new LinkedHashSet<E>(capacity, loadFactor);
+
+Operations & Methods: (https://www.geeksforgeeks.org/java/linkedhashset-in-java-with-examples/)
