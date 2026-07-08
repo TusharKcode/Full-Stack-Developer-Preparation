@@ -1,0 +1,25 @@
+Vector is a dynamic array that can grow or shrink in size as elements are added or removed.
+    - part of the java.util package and extends the AbstractList class.
+    - Maintains insertion order and allows duplicate and null values.
+    - Dynamically grows its size when capacity is exceeded.
+    - Implements List, RandomAccess, Cloneable, and Serializable interfaces.
+    - Thread-safe: All methods are synchronized for safe multi-threaded access.
+    - ArrayList is preferred over vector in general when in-built thread synchronization is not required.
+
+=> Constructors: 
+    -> Vector(): Vector<Integer> vector = new Vector<>();
+    -> Vector(int initialCapacity): Vector<Integer> vector = new Vector<>(20);
+    -> Vector(int initialCapacity, int capacityIncrement): Vector<Integer> vector = new Vector<>(10, 5);
+    -> Vector(Collection c): Vector<Integer> vector = new Vector<>(collection);
+
+=> Capacity: 
+    - When a Vector is created using the default constructor, it is initialized with a default capacity of 
+        10. means it can hold up to 10 elements before needing to grow in size.
+    - If the number of elements exceeds the current capacity, the Vector automatically increases its capacity.
+
+        Vector<String> vec = new Vector<>(); 
+        System.out.println("Default Capacity: " + vec.capacity()); // Output: 10
+
+    -> Formula to calculate new capacity : newCapacity = oldCapacity * 2 
+
+Operations (https://www.geeksforgeeks.org/java/java-util-vector-class-java/)
