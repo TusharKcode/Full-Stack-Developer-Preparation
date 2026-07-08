@@ -6,6 +6,13 @@ ArrayList in Java is a resizable array provided in the java.util package.
     - ArrayList is not thread-safe. To make it thread-safe, we must wrap it manually using 
         Collections.synchronizedList().
 
+    -> When the internal array becomes full, the ArrayList automatically increases its capacity by creating a 
+        new larger array and copying the existing elements into it.
+
+    -> When an ArrayList is created using the default constructor, its default capacity is 10.
+    -> The new capacity is calculated using the formula: New Capacity = Old Capacity + (Old Capacity / 2).
+        This increases the capacity by 50% of the old capacity.
+
     -> ArrayList cannot hold primitive types like int, double, or char directly.
         We must use their wrapper classes instead:
 
@@ -26,3 +33,90 @@ ArrayList in Java is a resizable array provided in the java.util package.
         - used to build an array list with the initial capacity being specified.
         - ArrayList<Double> arr = new ArrayList<>(20);
 
+=> Complexity of ArrayList:
+    Operation                       Time                    Space
+Inserting element at end            O(1)                    O(1)
+Inserting element at specific       O(N)                    O(1)
+    index
+Removing an element                 O(N)                    O(1)
+Replacing element (set)             O(1)                    O(1)
+Traversing an element               O(N)                    O(1)
+
+=> Methods: 
+    add(int index, Object element)      -> inserts the specified element at the specified position index in 
+                                            the ArrayList, Elements from that position onwards are shifted 
+                                            to the right.
+
+    add(Object o)                       -> appends the specified element to the end of the ArrayList.
+                                            always adds at the end.
+
+    addAll(Collection c)                -> used to append all the elements from a specific collection to 
+                                            the end of the mentioned list
+
+    addAll(int index, Collection c)     -> Used to insert all of the elements starting at the specified 
+                                            position
+    clear()                             -> used to remove all the elements from any list.
+
+    clone()                             -> used to return a shallow copy of an ArrayList in Java.
+
+    contains(Object o)                  -> Returns true if this list contains the specified element.
+
+    ensureCapacity(int minCapacity)     -> Increases the capacity of this ArrayList instance, if necessary, 
+                                            to ensure that it can hold at least the number of elements 
+                                            specified by the minimum capacity argument.
+
+    forEach(Consumer<? super E> action) -> Performs the given action for each element of the Iterable until 
+                                            all elements have been processed or the action throws an exception.
+
+    get(int index)                      -> Returns the element at the specified position in this list.
+
+    indexOf(Object o)                   -> index the first occurrence of a specific element is either returned
+                                            or -1 in case the element is not in the list.
+
+    isEmpty()                           -> Returns true if this list contains no elements.
+
+    lastIndexOf(Object O)               -> index of the last occurrence of a specific element is either 
+                                            returned or -1 in case the element is not in the list.
+
+    listIterator()                      -> Returns a list iterator over the elements in this list 
+                                            (in proper sequence).
+    listIterator(int index)             -> Returns a list iterator over the elements in this list 
+                                            (in proper sequence), starting at the specified position 
+                                            in the list.
+
+    remove(int index)                   -> Removes the element at the specified position in this list.
+    remove(Object o)                    -> Removes the first occurrence of the specified element from this 
+                                            list, if it is present.
+    removeAll(Collection c)	            -> Removes all elements from this ArrayList that are present in the 
+                                            specified collection.
+                                            If an element occurs multiple times in the list and present in 
+                                            collection, all its occurrences will be removed.
+
+    removeIf(Predicate filter)          -> Removes all of the elements of this collection that satisfy the 
+                                            given predicate
+
+    removeRange(int fromIndex, int toIndex) -> Removes from this list all of the elements whose index is 
+                                                between from Index, inclusive and to Index, exclusive.
+
+    retainAll(Collection<?> c)          -> Retains only the elements in this list that are contained in the 
+                                            specified collection.
+
+    set(int index, E element)           -> Replaces the element at the specified position in this list with 
+                                            the specified element.
+
+    size()	                            -> Returns the number of elements in this list.
+    spliterator()                       -> Creates a late-binding and fail-fast Spliterator over the 
+                                            elements in this list.
+
+    subList(int fromIndex, int toIndex) -> Returns a view of the portion of this list between the specified 
+                                            fromIndex, inclusive and toIndex, exclusive.
+
+    toArray()                           -> This method is used to return an array containing all of the 
+                                            elements in the list in the correct order.
+
+    toArray(Object[] O)                 -> It is also used to return an array containing all of the 
+                                            elements in this list in the correct order same as the 
+                                            previous method.
+
+    trimToSize()                        -> used to trim the capacity of the instance of the ArrayList to 
+                                            the list's current size.
