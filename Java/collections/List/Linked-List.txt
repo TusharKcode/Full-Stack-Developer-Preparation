@@ -8,6 +8,9 @@ LinkedList is a part of the Java Collections Framework and is present in the jav
     - insertion and deletion operations, especially at the beginning or middle.
     - nodes cannot be accessed directly by index
     - elements must be accessed by traversing from the head.
+    - O(n) - Slow random access
+    - Memory is higher (extra pointers per node)
+    - nodes are scattered in memory, making it less cache-efficient.
 
 => Constructors
     -> LinkedList(): used to create an empty linked list
