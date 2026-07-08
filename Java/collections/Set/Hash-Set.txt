@@ -1,0 +1,33 @@
+HashSet in Java implements the Set interface of the Collections Framework.  
+    - used to store the unique elements, and it doesn't maintain any specific order of elements.
+    - Uses HashMap internally which is an implementation of hash table data structure.
+    - Also implements Serializable and Cloneable interfaces.
+    - HashSet is not thread-safe, To make it thread-safe, synchronization is needed externally.
+    - Does not support primitive types directly
+    - requires wrapper classes (Integer, Character, etc.).
+
+=> Capacity (refers to the number of buckets in the hash table): default capacity of a HashSet is 16 and 
+    the load factor is 0.75.
+
+    -> When the number of elements exceeds the threshold, the capacity automatically increases
+                        new capacity = old capacity × 2
+
+=> Collision: 
+    - HashSet internally uses a hash table (via HashMap), where elements are stored based on their hash codes.
+    - Sometimes, different elements may produce the same hash code, leading to a collision.
+    - handles collisions using chaining (LinkedList) and converts it into a balanced tree (Red-Black Tree) 
+        when the number of elements in a bucket exceeds a threshold (Java 8+).
+
+=> Load Factor: 
+    - a measure that controls how full the HashSet can get before resizing. 
+    - Default Load Factor = 0.75. If the number of elements exceeds the threshold, the capacity is doubled.
+            Threshold = capacity × load factor
+
+=> Constructors:
+    -> HashSet(): HashSet<String> set = new HashSet<>();
+    -> HashSet(int initialCapacity): HashSet<Type> set = new HashSet<>( initialCapacity);
+    -> HashSet(int initialCapacity, float loadFactor): HashSet<Type> set = new HashSet<>( initialCapacity, loadFactor);
+    -> HashSet(Collection<? extends E> c): HashSet<Type> set = new HashSet<>(c);
+                                            - removes duplicates automatically
+
+Operations & Methods: (https://www.geeksforgeeks.org/java/hashset-in-java/)
