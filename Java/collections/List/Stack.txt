@@ -1,0 +1,14 @@
+Stack is a linear data structure that follows the Last In First Out (LIFO) principle and is defined in the 
+    java.util package. Internally, it extends the Vector class.
+    - Stack class maintains insertion order and allows duplicates and null values.
+    - Grows dynamically when its capacity is exceeded.
+    - Stack methods are synchronized.
+    - Stack class implements List, RandomAccess, Cloneable, and Serializable interfaces.
+
+    -> The Stack class is a legacy class; in modern Java development, use ArrayDequeue or LinkedList instead.
+
+Constructors: 
+    -> Stack() :    Stack<Integer> stack = new Stack<>();
+    -> Stack(int initialCapacity) :     Stack<Integer> stack = new Stack<>();
+
+Operations : (https://www.geeksforgeeks.org/java/stack-class-in-java/)
