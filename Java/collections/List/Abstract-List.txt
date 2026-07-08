@@ -1,0 +1,17 @@
+AbstractList in Java is an abstract class in the Java Collections Framework that provides a skeletal 
+    implementation of the List interface.
+    - Provides default implementations for most List methods, reducing coding effort
+    - Requires overriding core methods like get() and size()
+
+=> Declaration: public abstract class AbstractList<E> extends AbstractCollection<E> implements List<E>
+
+=> Implementations
+    -> ArrayList : Resizable array implementation of List.
+    -> LinkedList : Doubly-linked list implementation supporting sequential access.
+    -> Stack: Last-in-first-out stack extending Vector.
+    -> Vector: Synchronized, resizable array implementation.
+
+=> Constructor:
+    -> protected AbstractList(): Being protected and abstract, you cannot create AbstractList objects 
+                                    directly.
+        AbstractList<Integer> al = new ArrayList<Integer>();
