@@ -1,0 +1,34 @@
+LinkedList is a part of the Java Collections Framework and is present in the java.util package.
+    - implements a doubly linked list where elements are stored as nodes containing data and references to 
+        the previous and next nodes
+    - size of the LinkedList can grow or shrink dynamically at runtime.
+    - Maintains the order in which elements are inserted.
+    - Multiple duplicate elements can be stored.
+    - not thread-safe by default, can be synchronized using Collections.synchronizedList().
+    - insertion and deletion operations, especially at the beginning or middle.
+    - nodes cannot be accessed directly by index
+    - elements must be accessed by traversing from the head.
+
+=> Constructors
+    -> LinkedList(): used to create an empty linked list
+        LinkedList list = new LinkedList(); 
+
+    -> LinkedList(Collection C): used to create an ordered list
+        LinkedList list = new LinkedList(C);
+
+=> Operations: 
+    -> Adding Elements
+        - add(Object): used to add an element at the end of the LinkedList.
+        - add(int index, Object): used to add an element at a specific index in the LinkedList. 
+
+    -> Update Elements
+        - set() method, we can update an element in a LinkedList.
+        - takes an index and the updated element which needs to be inserted at that index
+
+    -> Removing Elements
+        - remove(Object): Removes the first occurrence of the specified object from the LinkedList.
+        - remove(int index): Removes the element at the given index and shifts subsequent elements.
+
+    -> Iterating a LinkedList
+        - basic for loop in combination with a get() method to get the element at a specific index and the 
+            advanced for-loop.
