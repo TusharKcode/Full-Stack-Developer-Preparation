@@ -1,0 +1,18 @@
+A TreeSet is a collection class that stores unique elements in a sorted order. 
+    - part of java.util package that implements the SortedSet interface
+    - internally uses a Red-Black tree to maintain sorting.
+    - Does not allow null elements because sorting is based on comparison, which may cause NullPointerException.
+    - Implements the NavigableSet interface and provides navigation methods like higher(), lower(), 
+        ceiling() and floor().
+
+    - It is not synchronized and can be made synchronized using Collections.synchronizedSet().
+
+=> Syntax: TreeSet<DataType> ts = new TreeSet<>();
+
+=> Constructors:
+    -> TreeSet(): TreeSet<> ts = new TreeSet<>(); 
+    -> TreeSet(Comparator): TreeSet <> ts = new TreeSet<>(comp); 
+    -> TreeSet(Collection): TreeSet <> t = new TreeSet<>(col);  
+    -> TreeSet(SortedSet): TreeSet <> t = new TreeSet<>(s);
+
+=> Operations & methods: (https://www.geeksforgeeks.org/java/treeset-in-java-with-examples/)
