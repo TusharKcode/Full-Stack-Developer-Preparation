@@ -1,0 +1,22 @@
+Wildcards in Java Generics allow you to work with unknown types in a flexible and type-safe way.
+    - represented using the ? symbol
+    - can handle different generic types.
+    - Commonly applied in method arguments to increase flexibility
+
+=> Types: 
+    -> Upper Bounded Wildcards
+        - used when you want to relax the restrictions on a variable
+        - To declare an upper-bounded wildcard, use the wildcard character ('?')
+                
+                public static void add(List<? extends Number> list)
+
+    -> Lower Bounded Wildcards
+        - expressed using the wildcard character ('?')
+        - followed by the super keyword, followed by its lower bound: <? super A>. 
+
+                Collectiontype <? super A>
+
+    -> Unbounded Wildcard
+        - using the wildcard character (?)
+        - When writing a method that can be employed using functionality provided in Object class.
+        - When the code is using methods in the generic class that doesn't depend on the type parameter
