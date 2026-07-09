@@ -1,0 +1,38 @@
+A HashMap is a part of Java’s Collection Framework and implements the Map interface.
+    - stores elements in key-value pairs, where, Keys are unique. and Values can be duplicated.
+    - Internally uses Hashing, hence allows efficient key-based retrieval, insertion, and removal with an 
+        average of O(1) time.
+    - HashMap is not thread-safe, to make it synchronized, use Collections.synchronizedMap().
+
+    ->  Insertion order is not preserved in HashMap. 
+        - To preserve the insertion order, inkedHashMap is used and 
+        - To maintain sorted order, TreeMap is used.
+
+    - allows one null key and multiple null values.
+    - If a null key is added multiple times, it overwrites the previous value.
+
+    - Order is not guaranteed in HashMap output may vary when you run your program
+
+=> Declaration: public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable
+
+=> Capacity: number of buckets it can hold for storing entries.
+                new capacity=old capacity×2
+
+    - Default capacity: Default capacity of hashmap is 16.
+    - Load factor: 0.75 (default): when 75% of the capacity is filled, the capacity is doubled.
+
+=> Constructors: 
+    -> HashMap(): HashMap<K, V> hm = new HashMap<K, V>();
+    -> HashMap(nt initialCapacity): HashMap<K, V> hm = new HashMap<K, V>();
+    -> HashMap(nt initialCapacity, float loadFactor): HashMap<K, V> hm = new HashMap<K, V>();
+    -> HashMap(Map map):    Map<Integer, String> map = new HashMap<>();
+                            HashMap<Integer, String> hm = new HashMap<>(map);
+
+=> Operations & Methods: (https://www.geeksforgeeks.org/java/java-util-hashmap-in-java-with-examples/)
+
+=> Time & Complexity
+    - In the worst case, HashMap operations can take O(N) time due to hash collisions.
+                                        Time    Space
+    -> Adding elements in HashMap	    O(1)	O(1) (extra)
+    -> Removing elements from HashMap	O(1)	O(1) (extra)
+    -> Extracting elements from HashMap	O(1)	O(1) (extra)
