@@ -1,0 +1,59 @@
+In Java, a Literal is a value of boolean, numeric, character, or string data.
+    Any constant value that can be assigned to the variable is called a literal. 
+
+    Ex: // Here 100 is a constant/literal.
+            int x = 100; 
+
+=> Types: 
+    -> Integral Literals
+        - By default, every integral literal is of int type.
+        - For Integral data types (byte, short, int, long), we can specify literals in four ways:
+
+            1.1 Decimal literals (Base 10): In this form, the allowed digits are 0-9
+                                            int x = 101;
+
+            1.2 Octal literals (Base 8): In this form, the allowed digits are 0-7, prefix with 0
+                                            int x = 0146; 
+
+            1.3 Hexadecimal literals (Base 16): In this form, the allowed digits are 0-9, and characters 
+                are a-f, can use both uppercase and lowercase characters, should be prefix with 0X or 0x.
+                                                int x = 0X123Face; 
+            1.4. Binary literals: From 1.7 onward, even in binary form also, allowed digits are 0 and 1,
+                should be prefixed with 0b or 0B. 
+                                                int x = 0b1111;
+
+    -> Floating-Point Literal   
+        - Java supports decimal as well as hexadecimal floating-point literals. 
+        - Octal floating-point literals are not supported.
+        - By default, floating-point literals are of double type.
+
+            2.1 Decimal literals(Base 10): In this form, the allowed digits are 0-9. 
+                                            double d = 123.456;
+
+    -> Char Literals
+        - For char data types, we can specify literals in four ways 
+            Single quote: We can specify literal to a char data type as a single character within the 
+                            single quote. Ex: char ch = 'a';
+            Char literal as Integral literal: represents the Unicode value of the character, and that integral 
+                                                literal can be specified either in Decimal, Octal, and Hexadecimal 
+                                                forms. But the allowed range is 0 to 65535. 
+                                            Ex: char ch = 062;
+            Unicode Representation: We can specify char literals in Unicode representation ‘\uxxxx’. 
+                                    Here xxxx represents 4 hexadecimal numbers.
+                                    Ex: char ch = '\u0061';
+
+            Escape Sequence: Every escape character can be specified as char literals.
+                                Ex: char ch = '\n';
+
+    -> String Literal
+        - Any sequence of characters within double quotes is treated as String literals. 
+            Ex: String s = "Hello";
+        - String literals may not contain unescaped newline or linefeed characters.
+            Ex: String text = "This is a String literal\n"
+                                + "which spans not one and not two\n"
+                                + "but three lines of text.\n";
+
+    -> Boolean Literals
+        - Only two values are allowed for Boolean literals, i.e., true and false. 
+            Ex: boolean b = true;
+                boolean c = false;
