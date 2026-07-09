@@ -1,0 +1,23 @@
+Sometimes, you may want to restrict the types used in generics.
+
+->  For example, if a method should only work with numbers, you can use a bounded type like <T extends 
+                    Number> to allow only Number and its subclasses.
+
+- If you don’t want to make the entire class generic, you can define generic methods instead.
+- Constructors, being special types of methods, can also use generic type parameters.
+- Sometimes, you may want to allow only types that implement the Comparable interface 
+    (e.g., when comparing two objects).
+- To do this, you use bounded types like <T extends Comparable <T>>.
+- If a non-Comparable type is passed, the compiler throws a compile-time error, ensuring safe and correct 
+    usage.
+
+=> Syntax: <T extends superClassName>
+
+=> Multiple Bounds
+    -> can restrict a type to inherit from one class and implement multiple interfaces.
+
+    - The class must come first.
+    - You can’t use more than one class in the bounds.
+    - Example: <T extends ClassName & Interface1 & Interface2>
+
+    -> Syntax: <T extends superClassName & Interface>
