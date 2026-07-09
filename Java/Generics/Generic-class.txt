@@ -1,0 +1,49 @@
+In Java, Generics provide type-safe, reusable code by allowing parameterized types.
+    - enable classes, interfaces and methods to work with any data type (e.g., Integer, String or custom 
+        types)
+    - ensuring compile-time type checking and reducing runtime errors
+    - Using type parameters like <T>
+
+    -> Type parameters must be reference types (not primitives like int, float, etc.).
+
+=> Generic Class with Single Type Parameter
+    - A generic class can be reused with any data type by replacing T with specific types like Integer, 
+        String or custom classes.
+    - declared like a regular class but includes a type parameter (e.g., <T>) after the class name.
+
+    Ex: class Solution<T> {
+            T data;
+
+            public T getData() {        // Generic method inside a generic class (corrected)
+                return data;
+            }
+        }
+
+=> Generic Class with Multiple Type Parameters
+    - multiple type parameters in a generic class using commas (e.g., <K, V>).
+
+    Ex: public class Pair<K, V> {
+            private K key;
+            private V value;
+
+            public Pair(K key, V value) {
+                this.key = key;
+                this.value = value;
+            }
+
+            public K getKey()    { return key; }
+            public V getValue() { return value; }
+        }
+
+=> Generic Method
+    - A generic method is a method that declares its own type parameters.
+    - It can be called with arguments of different types and the compiler infers the correct type during 
+        the method call.
+    - Declare type parameters in angle brackets < > before the return type.
+    - can be used in return types and method parameters.
+    - Method body is defined like a regular method.
+
+=> Advantages:  
+    - Type-Safety
+    - Type Casting Is Not Required
+    - Compile -Time Checking
