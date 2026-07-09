@@ -1,0 +1,143 @@
+"this" Keyword
+    - refers to the current object, the object whose method or constructor is being executed
+    - Refer to the current class’s instance variables and methods.
+    - Differentiate between instance variables and local variables when they have the same name.
+    - Pass the current object as an argument to methods or constructors.
+    - Call one constructor from another within the same class (using this())
+    - Access instance variables and methods of the object on which the method or constructor is being invoked.
+
+    => Methods: 
+        -> To Refer Current Class Instance Variables
+            Ex: class Sum {
+                    int a;
+                    int b;
+
+                    
+                    Sum(int a, int b){      // Parameterized constructor
+                        this.a = a;
+                        this.b = b;
+                    }
+
+                    void display(){
+                        System.out.println("a = " + a + "  b = " + b);  // Displaying value of variables a and b
+                    }
+
+                    public static void main(String[] args){
+                        Sum object = new Sum(10, 20);
+                        object.display();
+                    }
+                }
+
+        -> To Invoke Current Class Constructor
+            Ex: class Values {
+                    int a;
+                    int b;
+
+                    Values(){    // Default constructor
+                        this(10, 20);
+                        System.out.println("Inside  default constructor \n");
+                    }
+
+                    Values(int a, int b){    // Parameterized constructor
+                        this.a = a;
+                        this.b = b;
+                        System.out.println("Inside parameterized constructor");
+                    }
+
+                    public static void main(String[] args){
+                        Values object = new Values();
+                    }
+                }
+
+        -> To Return the Current Class Instance 
+            Ex: class Values {
+                    int a;
+                    int b;
+
+                    Values(){        // Default constructor
+                        a = 10;
+                        b = 20;
+                    }
+
+                    Values get() {   // Method that returns current class instance
+                        return this; 
+                    }
+
+                    void display(){ // Displaying value of variables a and b
+                        System.out.println("a = " + a + "  b = " + b);
+                    }
+
+                    public static void main(String[] args){
+                        Values object = new Values();
+                        object.get().display();
+                    }
+                }
+
+        -> As a Method Parameter
+            Ex: class Values {
+                    int a;
+                    int b;
+                    
+                    Values(){    // Default constructor
+                        a = 10;
+                        b = 20;
+                    }
+                    
+                    void display(Values obj){    // Method that receives "this" keyword as parameter
+                        System.out.println("a = " + obj.a + "  b = " + obj.b);
+                    }
+
+                    void get() {    // Method that returns current class instance
+                        display(this); 
+                    }
+
+                    public static void main(String[] args){
+                        Values object = new Values();
+                        object.get();
+                    }
+                }
+
+        -> To Invoke the Current Class Method 
+            Ex: class Message {
+
+                    void display(){
+
+                        this.show();        // calling function show()
+
+                        System.out.println("Inside display function");
+                    }
+
+                    void show(){
+                        System.out.println("Inside show function");
+                    }
+
+                    public static void main(String args[]){
+                        Message g1 = new Message();
+                        g1.display();
+                    }
+                }
+
+        -> As an Argument in the Constructor Call
+            Ex: class A {
+                    B obj;
+                    A(B obj){   // Parameterized constructor with object of B as a parameter
+                        this.obj = obj;
+
+                        
+                        obj.display();  // calling display method of class B
+                    }
+                }
+
+                class B {
+                    int x = 5;
+                                // Default Constructor that create an object of A with passing this as an argument in the constructor
+                    B() { A obj = new A(this); }
+
+                    void display(){ // method to show value of x
+                        System.out.println("Value of x in Class B : " + x);
+                    }
+
+                    public static void main(String[] args){
+                        B obj = new B();
+                    }
+                }
