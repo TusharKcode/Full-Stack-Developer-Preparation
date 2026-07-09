@@ -1,0 +1,22 @@
+A PriorityQueue in Java is a queue where elements are ordered based on their priority, rather than the 
+    order of insertion.
+    - By default, it uses natural ordering (min-heap), but a custom comparator can be used to define 
+        different priorities.
+    - Elements are processed based on priority rather than insertion order.
+    - Supports standard queue operations like add(), poll(), and peek().
+    - Automatically grows as elements are added and null insertion is not possible .
+    - Uses a heap data structure internally to ensure efficient insertion and removal of the 
+        highest-priority element.
+
+=> Declaration : public class PriorityQueue<E> extends AbstractQueue<E> implements Serializable, Iterable<E>
+
+=> Constructors: 
+    -> PriorityQueue(): PriorityQueue<E> pq = new PriorityQueue<E>();
+    -> PriorityQueue(int initialCapacity): PriorityQueue<E> pq = new PriorityQueue<E>(initialCapacity);
+    -> PriorityQueue(Comparator<E> comparator): 
+                        Comparator<Integer> c = (a, b) -> b - a; // max-heap
+                        PriorityQueue<Integer> pq = new PriorityQueue<>(c);
+    -> PriorityQueue(int initialCapacity, Comparator<E> comparator): 
+                    PriorityQueue<E> pq = new PriorityQueue<E>(int initialCapacity, Comparator<E> comparator);
+
+=> Operations & Methods : (https://www.geeksforgeeks.org/java/priority-queue-in-java/)
