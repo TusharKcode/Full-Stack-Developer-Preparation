@@ -1,0 +1,25 @@
+An Iterator in Java is one of the most commonly used cursors in the Java Collections Framework.
+    - used to traverse or iterate through elements of a collection one by one.
+    - traverse elements in the forward direction only.
+    - Removes elements safely during traversal using remove().
+    - Iterator is a universal cursor that applies to most collection types such as List, Set, and Queue.
+    - iterators can still be used with Map through keySet(), values(), or entrySet().
+
+-> Java Iterator supports only forward direction iteration, so it is known as a uni-directional cursor.
+-> ListIterator is bi-directional, allowing traversal in both directions.
+
+=> Declaration: public interface Iterator<E>
+
+=> Creation: Collection<String> names = new ArrayList<>();
+                Iterator<String> itr = names.iterator();
+
+=> Methods: 
+    -> hasNext(): Returns true if the iteration has more elements.
+    -> next(): Returns the next element in the iteration. It throws NoSuchElementException if no more 
+                element is present.
+
+    -> remove(): Removes the last element returned by next(). This method can be called only once per 
+                    call to next(). 
+            - throw two exceptions: 
+                UnsupportedOperationException : if the remove operation is not supported by this iterator
+                IllegalStateException : if remove() is called before next() or more than once per next() call

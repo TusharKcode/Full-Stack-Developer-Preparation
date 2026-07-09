@@ -1,0 +1,17 @@
+The Comparable interface in Java is used to define the natural ordering of objects of a class.
+    - enables objects to be compared and sorted automatically without using an external Comparator.
+    - contains the compareTo() method, which compares the current object with another object.
+    - used with Collections.sort() and Arrays.sort() for sorting custom objects.
+
+Syntax: class MyClass implements Comparable<MyClass> {
+        @Override
+            public int compareTo(MyClass obj) {
+                // comparison logic
+                return 0;
+            }
+        }
+
+=> compareTo() Return Values
+    -> Returns a negative value if the current object is smaller than the specified object.
+    -> Returns 0 if both objects are equal.
+    -> Returns a positive value if the current object is greater than the specified object.
