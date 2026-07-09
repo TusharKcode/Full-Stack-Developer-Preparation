@@ -1,0 +1,68 @@
+Type Erasure is the process by which the Java compiler removes all generic type information and replaces 
+    type parameters with their upper bounds (or Object if unbounded).
+    
+    -> During compilation, the compiler performs:
+        - Replacing type parameters with their upper bound or Object.
+        - Inserting casts where needed to maintain type safety.
+        - Generating bridge methods to preserve method overriding in generic hierarchies.
+
+        After compilation, no generic type exists in the bytecode. Only raw types remain.
+
+    -> The JVM loses information of the generic type at runtime, that's why we can not use instanceof or 
+        create new instances of generic types.   
+    -> When we work with raw types, the compiler will give warning.
+    -> We can not create array of generic types directly.
+
+=> How Type Erasure Works?
+    -> Unbounded Type Example
+        // Here, T is unbounded (default bound: Object)
+            class GFG<T>{
+                T obj;
+
+                GFG(T o) {
+                    obj = o;
+                }
+
+                T getob() {
+                    return obj;
+                }
+            }
+
+        // After Type Erasure: T has no explicit bound, it is replaced with Object.
+            class GFG{
+                Object obj;
+
+                GFG(Object o){
+                    obj = o;
+                }
+
+                Object getob(){
+                    return obj;
+                }
+            }
+
+    -> Bounded Type Example
+            class GFG<T extends String>{
+                T str;
+
+                GFG(T o) {
+                    str = o;
+                }
+
+                T getob() {
+                    return str;
+                }
+            }
+
+        // After Type Erasure: T is bounded by String, so it is replaced with String.
+            class GFG{
+                String str;
+
+                GFG(String o){
+                    str = o;
+                }
+
+                String getob(){
+                    return str;
+                }
+            }
