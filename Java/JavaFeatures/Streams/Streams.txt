@@ -1,0 +1,68 @@
+Java 8 introduced the Stream API, which allows developers to process collections of data in a functional 
+    and declarative way.
+
+Streams make it easier to perform operations such as filtering, mapping, reducing and collecting data 
+    without writing complex loops.
+
+=> A Stream is a sequence of elements that supports functional-style operations.
+    Stream does not store data it only processes it.
+
+    -> Features: 
+        - Supports parallel streams to leverage multi-core processors.
+        - Supports chaining of operations like map(), filter(), sorted().
+        - Streams don’t store data; they only process it.
+        - Operations are executed only when needed (terminal operation).
+
+    -> Internal Working
+        - Create a Stream: From collections, arrays or static methods.
+        - Apply Intermediate Operations: Transform data (e.g., filter(), map(), sorted()).
+        - Apply Terminal Operation: Produce a result (e.g., forEach(), collect(), reduce()).
+
+=> Creation of Streams:
+    -> From a Collection - Create a stream directly from a List, Set or any Collection using stream()
+    -> From a Array - Use Arrays.stream(array) to convert an array into a stream.
+    -> Using Stream.of() - Create a stream from a fixed set of values using Stream.of().
+    -> Infinite Stream - Generate an unbounded sequence using Stream.iterate() or Stream.generate()
+
+=> Stream Pipeline: 
+    -> defines how data flows through different stages. 
+    -> 3 parts: 
+        - Source - provides the data for the stream, can be a collection, array, file or even an infinite 
+                    generator.
+                Ex: List<Integer> numbers = Arrays.asList(10, 20, 30, 40);
+                    Stream<Integer> stream = numbers.stream(); // Source
+
+        - Intermediate operations - transform a stream into another stream
+                It includes: filter(), map(), sorted(), distinct(), skip()
+
+        - Terminal operations - operations that on execution return a final result as an absolute value.
+                It includes: forEach(), collect(Collectors.toList()), reduce(), count(), 
+                                anyMatch() / allMatch() / noneMatch(), findFirst() / findAny()
+
+=> Types of Streams:
+    -> Sequential Streams
+        - Processes elements one by one in a single thread.
+        - Created by default when you call stream().
+
+    -> Parallel Streams
+        - perform operations concurrently on multiple threads
+        - Using the parallel() method on a stream
+        - Using parallelStream() on a Collection
+
+    -> Infinite Streams
+        - Streams can also generate unbounded sequences
+        - Use limit() to avoid infinite execution
+
+    -> Primitive Streams
+        - IntStream -> for int values
+        - LongStream -> for long values
+        - DoubleStream -> for double values
+
+=> Stream V/S Collection
+    - Collection stores data in memory & Stream does not store data.
+    - Collection represents a data structure (e.g., List, Set, Map) & Stream processes data from a source 
+        (like a collection) in a functional, declarative way.
+
+=> Stream : File Operations
+    -> File Read Operation
+    -> File Write Operation

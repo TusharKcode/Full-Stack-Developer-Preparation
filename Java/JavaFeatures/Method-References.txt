@@ -1,0 +1,88 @@
+Java Method References are a shorthand way to refer to an existing method without invoking it.
+    - introduced in Java 8 to make lambda expressions shorter, cleaner, and more readable
+    - use the double colon (::) operator and are mainly used with functional interfaces.
+
+    -> Method references work only with functional interfaces, which contain exactly one abstract method.
+
+Syntax: ClassName::methodName
+        objectReference::methodName
+        ClassName::new
+
+Types: 
+    -> Reference to a Static Method
+        - used to refer to a static method of a class
+        - replaces a lambda expression that simply calls a static method.
+        - Uses class name to access the method, Method must be static
+        - used with utility methods
+
+        Syntax:    ClassName::staticMethodName
+        Ex: class MathUtil{
+                static void square(int n) {
+                    System.out.println(n * n);
+                }
+            }
+
+            class GFG{
+                public static void main(String[] args) {
+                    List<Integer> list = Arrays.asList(2, 3, 4);
+                    list.forEach(MathUtil::square);
+                }
+            }
+
+    -> Reference to an Instance Method of a Particular Object
+        - refers to an instance method of a specific object
+        - object is already created, and its method is referenced directly.
+        - Method must be non-static
+
+        Syntax: objectReference::instanceMethod
+        Ex: class Printer{
+                void print(String msg) {
+                    System.out.println(msg);
+                }
+            }
+
+            class GFG{
+                public static void main(String[] args) {
+                    Printer printer = new Printer();
+                    List<String> data = Arrays.asList("Java", "Spring", "Boot");
+                    data.forEach(printer::print);
+                }
+            }
+
+    -> Reference to an Instance Method of an Arbitrary Object
+        - refers to an instance method of any object of a particular class.
+        - actual object is determined at runtime.
+        - Uses class name instead of object
+        - Mostly used with Stream API
+        - Method is called on each element
+
+        Syntax: ClassName::instanceMethod
+        Ex: class GFG{
+                public static void main(String[] args){
+                    List<String> names = Arrays.asList("java", "spring", "microservice");
+                    names.stream()
+                        .map(String::toUpperCase)
+                        .forEach(System.out::println);
+                }
+            }
+
+    -> Reference to a Constructor
+        - used to create a new object using a functional interface. 
+        - replaces a lambda expression that calls a constructor.
+        - Uses new keyword
+        - Commonly used with Supplier, Function
+        - Helps in object creation logic
+
+        Syntax: ClassName::new
+        Ex: class Student {
+                Student() {
+                    System.out.println("Student object created");
+                }
+            }
+
+            class GFG{
+                public static void main(String[] args) {
+                    Supplier<Student> supplier = Student::new;
+                    supplier.get();
+                }
+            }
