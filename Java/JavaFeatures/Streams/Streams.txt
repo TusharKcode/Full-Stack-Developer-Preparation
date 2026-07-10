@@ -66,3 +66,11 @@ Streams make it easier to perform operations such as filtering, mapping, reducin
 => Stream : File Operations
     -> File Read Operation
     -> File Write Operation
+
+Examples: 
+    -> Streams are widely used in real-world applications for processing collections of data in a cleaner 
+        and faster way.
+
+        - Filtering Employees by Salary
+        - Streams in a Grocery store
+        - Grouping Books by Author
