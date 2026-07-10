@@ -1,0 +1,81 @@
+Lambda Expressions, introduced in Java 8, allow developers to write concise, functional-style code by 
+    representing anonymous functions.
+    - They enable passing code as parameters or assigning it to variables.
+    - implement a functional interface (An interface with only one abstract function)
+    - can access only final or effectively final variables from the enclosing scope.
+    - cannot throw checked exceptions unless the functional interface declares them.
+
+=> Syntax: (parameters) -> {
+                // multiple statements
+            }
+
+    Ex: interface Add{
+            int addition(int a, int b);
+        }
+
+        public class GFG{
+            public static void main(String[] args){
+                Add add = (a, b) -> a + b;  // Lambda expression to add two numbers
+                int result = add.addition(10, 20);
+                System.out.println("Sum: " + result);
+            }
+        }
+
+=> "Functional interface"
+    - has exactly one abstract method, can have multiple default and static methods.
+    - Lambda expressions provide its implementation
+    - @FunctionalInterface annotation is optional but recommended to enforce this rule at compile time.
+
+    Ex: interface FuncInterface{
+            void abstractFun(int x);
+            default void normalFun(){
+                System.out.println("Hello");
+            }
+        }
+
+        public class GFG{
+            public static void main(String[] args){
+                FuncInterface fObj = (int x) -> System.out.println(2 * x);
+                fObj.abstractFun(5);
+            }
+        }
+
+=> Types of Lambda parameters: 
+    -> Lambda with Zero Parameters
+        Syntax: () -> System.out.println("Zero parameter lambda");
+
+    -> Lambda with a Single Parameter
+        - not mandatory to use parentheses if the type of that variable can be inferred from the context.
+        Syntax: (p) -> System.out.println("One parameter: " + p);
+
+        Ex: ArrayList<Integer> list = new ArrayList<>();
+                list.add(1);
+                list.add(2);
+                list.add(3);
+
+                System.out.println("All elements:");
+                list.forEach(n -> System.out.println(n));
+
+                System.out.println("Even elements:");
+                list.forEach(n -> {
+                    if (n % 2 == 0)
+                        System.out.println(n);
+                });
+
+    -> Lambda Expression with Multiple Parameters
+        - parentheses are required.
+        Syntax: (p1, p2) -> System.out.println("Multiple parameters: " + p1 + ", " + p2);
+        
+        Ex: @FunctionalInterface
+            interface Functional {
+                int operation(int a, int b);
+            }
+
+            public class Test {
+                public static void main(String[] args) {
+                    Functional add = (a, b) -> a + b;   // Using lambda expressions to define the operations
+                    Functional multiply = (a, b) -> a * b;
+                    System.out.println(add.operation(6, 3));    // Using the operations
+                    System.out.println(multiply.operation(4, 5));  
+                }
+            }

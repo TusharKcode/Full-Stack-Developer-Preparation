@@ -1,0 +1,38 @@
+The Predicate<T> interface is a functional interface introduced in Java 8 and available in the 
+    java.util.function package.
+    - represents a boolean-valued function that accepts a single input argument and returns either true or 
+        false based on a specified condition.
+    - Supports lambda expressions and method references.
+
+=> Syntax: @FunctionalInterface
+            public interface Predicate<T>
+
+=> Methods: 
+    -> test() Method
+        - evaluates the given condition on an input value and returns a boolean result.
+        - Used for validation and filtering.
+        - Syntax:   boolean test(T t)
+
+    -> and() Method
+        - combines two predicates using the logical AND (&&) operation.
+        - Supports predicate chaining.
+        - Both conditions must be true.
+        - Syntax:   default Predicate<T> and(Predicate<? super T> other)
+
+    -> or() Method
+        - combines two predicates using the logical OR (||) operation. Returns a new predicate.
+        - Uses short-circuit evaluation.
+        - At least one condition must be true.
+        - Syntax:   default Predicate<T> or(Predicate<? super T> other)
+
+    -> negate() Method
+        - returns a predicate that represents the logical opposite of the current predicate.
+        - Useful for opposite conditions.
+        - Syntax:   default Predicate<T> negate()
+
+    -> isEqual() Method
+        - returns a predicate that tests whether two objects are equal using Objects.equals().
+        - Performs null-safe comparison.
+        - Useful for equality checks
+        - Syntax:   static <T> Predicate<T>
+                    isEqual(Object targetRef)

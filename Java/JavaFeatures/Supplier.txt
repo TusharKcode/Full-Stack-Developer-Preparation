@@ -1,0 +1,17 @@
+The Supplier<T> interface is a functional interface introduced in Java 8 and available in the 
+    java.util.function package
+    - represents a supplier of results that does not accept any input arguments but returns a value of a 
+        specified type.
+    - Useful for lazy value generation and object creation.
+    - Supports lambda expressions and method references.
+
+=> Syntax:  @FunctionalInterface
+            public interface Supplier<T>
+
+=> Method: 
+    -> get() Method 
+        - functional method of the Supplier interface.
+        - generates and returns a value without taking any input parameters.
+        - Returns a value of type T.
+        - Syntax: T get()
+    

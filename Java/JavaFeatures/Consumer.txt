@@ -1,0 +1,20 @@
+The Consumer Interface is a functional interface available in the java.util.function package, introduced in 
+    Java 8.
+    - represents an operation that accepts a single input argument and performs an action on it without 
+        returning any result.
+    - used for operations such as printing values, modifying collections, logging data, and performing 
+        side effects.
+    - used with Lambda Expressions and Streams.
+
+=> Syntax:  @FunctionalInterface
+            public interface Consumer<T>
+
+=> Method: 
+    -> accept() Method
+        - accepts a single argument and performs the specified operation
+        - Consumer is designed for side effects, this method does not return any value.
+        - Syntax: void accept(T t)
+    -> andThen() Method 
+        - combines two Consumer operations into a single Consumer.
+        - current Consumer executes first, followed by the Consumer passed as an argument.
+        - Syntax: default Consumer<T> andThen(Consumer<? super T> after)
