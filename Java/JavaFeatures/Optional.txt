@@ -1,0 +1,42 @@
+Java 8 introduced the Optional class to handle null values safely. 
+    - It is a container object that may or may not contain a value. 
+    - It helps avoid NullPointerException
+
+-> Traditionally, developers relied on null to represent the absence of a value, which often caused 
+    NullPointerException.
+    To avoid abnormal termination, we use the Optional class.
+
+=> Creating Optional Objects
+    -> Optional.empty(): Returns an empty Optional.
+    -> Optional.of(value): Returns an Optional containing the given non-null value.
+
+    Ex: import java.util.Optional;          // Using empty() and of()
+        String[] str = new String[5];
+        str[2] = "Geeks Classes are coming soon";
+
+        Optional<String> empty = Optional.empty();
+        System.out.println(empty); 
+
+        Optional<String> value = Optional.of(str[2]);
+        System.out.println(value);
+
+=> Methods: 
+    -> empty(): Returns an empty Optional instance
+    -> of(T value): Returns an Optional with the specified present non-null value.
+    -> ofNullable(T value): Returns an Optional describing the specified value if non-null, else empty
+    -> equals(Object obj): Checks if another object is "equal to" this Optional.
+    -> filter(Predicate<? super T> predicate): value is present and matches the predicate, returns an 
+                                                Optional with the value; else returns empty.
+    -> flatMap(Function<? super T, Optional<U>> mapper): value is present, applies a mapping function that 
+                                                            returns an Optional; otherwise returns empty.
+    -> get(): Returns the value if present, else throws NoSuchElementException.
+    -> hashCode(): Returns the hash code of the value if present, otherwise returns 0.
+    -> ifPresent(Consumer<? super T> consumer): Returns true if a value is present, else false.
+    -> map(Function<? super T, ? extends U> mapper): value is present, applies the mapping function and 
+                                                    returns an Optional describing the result (if non-null).
+    -> orElse(T other): Returns the value if present, otherwise returns the provided default value.
+    -> orElseGet(Supplier<? extends T> other): Returns the value if present, otherwise invokes the supplier 
+                                                and returns its result.
+    -> orElseThrow(Supplier<? extends X> exceptionSupplier): Returns the value if present, otherwise throws 
+                                                                an exception provided by the supplier
+    -> toString(): Returns a non-empty string representation of this Optional for debugging.
