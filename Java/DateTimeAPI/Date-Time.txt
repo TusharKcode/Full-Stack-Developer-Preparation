@@ -1,0 +1,45 @@
+Java 8 introduced the New Date-Time API in the java.time package to provide a modern, immutable, and 
+    thread-safe way of handling dates and times
+    - replaces the limitations of the older java.util.Date and java.util.Calendar classes
+
+-> Date-time objects cannot be modified after creation, making them safe for concurrent applications.
+    - Supports formatting, parsing, arithmetic operations, comparisons, and time-zone handling.
+    - Clearly separates date, time, date-time, and timezone concepts into different classes.
+    - Uses the international ISO-8601 standard by default.
+
+=> Local Date-Time classes:
+    -> Used when timezone information is not required.
+        - LocalDate -> Represents a date (year, month, day).
+        - LocalTime –> Represents a time (hour, minute, second).
+        - LocalDateTime –> Represents both date and time.
+
+=> Zoned Date-Time Classes
+    -> Used when working with different time zones.
+        - ZonedDateTime –> Represents date and time with timezone.
+        - ZoneId –> Identifies a specific timezone.
+        - ZoneOffset –> Represents the UTC offset from GMT.
+
+=> Period and Duration
+    -> Used to measure differences between dates and times.
+        - Period measures years, months, and days.
+        - Duration measures hours, minutes, seconds, and nanoseconds.
+            Accepts both positive and negative minute values.
+        - Useful for calculating elapsed time.
+
+=> ChronoUnit Enum
+    -> Provides predefined units for date and time calculations.
+        - Includes units such as DAYS, WEEKS, MONTHS, and YEARS.
+        - Used with methods like plus() and minus().
+        - Improves readability and type safety.
+
+=> TemporalAdjusters
+    -> Provides utility methods for common date adjustments.
+        - Find the first or last day of a month.
+        - Get the next or previous weekday.
+        - Simplifies complex date calculations.
+
+=> DateTimeFormatterBuilder Class
+    - used to create date-time formatters.
+    - DateTimeFormatter object, then java.time.format.DateTimeFormatterBuilder 
+
+    Syntax: public final class DateTimeFormatterBuilder extends Object
