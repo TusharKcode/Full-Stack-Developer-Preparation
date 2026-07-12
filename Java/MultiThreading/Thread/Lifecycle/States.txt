@@ -1,0 +1,44 @@
+The lifecycle of a thread in Java defines the various states a thread goes through from its creation to 
+    termination.
+
+    - The thread scheduler controls state transitions
+    - Helps in efficient thread management and debugging
+
+=> Multiple States: 
+    -> New  
+        - A thread is in the new state when it is created but has not yet started execution
+        - public static final Thread.State NEW
+
+    -> Runnable
+        - A thread in the runnable state is executing in the Java virtual machine but it may be waiting 
+            for other resources from the operating system such as a processor. 
+        - public static final Thread.State RUNNABLE
+
+    -> Blocked
+        - A thread is in the blocked state when it is waiting to acquire a lock that is currently held by 
+            another thread.
+        - public static final Thread.State BLOCKED
+
+    -> Waiting
+        - A thread is in the waiting state due to calling one of the following methods: 
+            Object.wait with no timeout
+            Thread.join with no timeout
+            LockSupport.park
+        - public static final Thread.State WAITING
+
+    -> Timed Waiting 
+        - Thread state for a waiting thread with a specified waiting time.
+        - A thread is in the timed waiting state due to calling one of the following methods with a 
+            specified positive waiting time: 
+                                        Thread.sleep
+                                        Object.wait with timeout
+                                        Thread.join with timeout
+                                        LockSupport.parkNanos
+                                        LockSupport.parkUntil
+        - public static final Thread.State TIMED_WAITING
+
+    -> Terminated
+        - The thread has completed execution. 
+        - public static final Thread.State TERMINATED
+
+=> Example:  (TicketSystem.java)
