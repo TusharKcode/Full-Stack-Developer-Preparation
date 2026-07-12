@@ -1,0 +1,48 @@
+=> Thread scheduling refers to the mechanism that decides which thread will run and access system resources 
+    at a particular time. 
+    - It ensures efficient CPU utilization and smooth execution of multiple threads.
+    - Thread scheduling is influenced by factors such as thread priority, scheduling algorithms, and system 
+        load.
+
+    -> It operates at 2 Levels: 
+        - The first level involves mapping user-level threads (ULT) to kernel-level threads (KLT) using 
+            lightweight processes (LWP), usually handled by the application or runtime system.
+        - The second level involves the operating system scheduler, which manages kernel-level threads and 
+            assigns CPU time to perform various system tasks.
+
+-> Lightweight Process (LWP)
+    - are threads in the user space that acts as an interface for the ULT to access the physical CPU resources
+    - Thread library schedules which thread of a process to run on which LWP and how long.
+    - The number of LWPs created by the thread library depends on the type of application. 
+    - If an LWP is blocked during an I/O operation, it cannot execute its thread. To run other ULTs, the 
+        thread library creates and schedules another LWP.
+    - Therefore, in I/O-bound applications, the number of LWPs is equal to the number of ULTs
+    - In CPU-bound applications, the number of LWPs depends on the application requirements.
+        not necessary to have one LWP for each ULT in CPU-bound cases.
+    - Each LWP is associated with a separate kernel-level thread (KLT).
+
+    In real-time, the first boundary of thread scheduling is beyond specifying the scheduling policy and 
+        the priority.
+        It requires two controls to be specified for the User level threads:
+        
+        1.Contention scope
+            - refers to the competition or fight among the User level threads to access the kernel resources.
+            - defined by the application developer using the thread library.
+            - Classified as: Process Contention Scope (PCS): takes place among threads within a same process. 
+                                                                thread library schedules the high-prioritized
+                                                                PCS thread to access the resources via 
+                                                                available LWPs.
+                             System Contention Scope (SCS): takes place among all threads in the system.
+                                                            every SCS thread is associated to each LWP by 
+                                                            the thread library and are scheduled by the 
+                                                            system scheduler to access the kernel resources. 
+
+        2.Allocation domain
+            - is a set of one or more resources for which a thread is competing.
+            - In a multi-core system, there may be one or more allocation domains where each consists of 
+                one or more cores.
+
+            - One ULT can be a part of one or more allocation domain.
+            - Due to this high complexity in dealing with hardware and software architectural interfaces, 
+                this control is not specified.
+            - The multi-core system will have an interface that affects the allocation domain of a thread. 
