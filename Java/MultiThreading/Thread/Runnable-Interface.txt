@@ -1,0 +1,38 @@
+The Runnable interface is used to define a task that can be executed by a thread.
+    - It contains a single method, run(), which holds the code to be executed.
+    - Separates task logic from thread creation.
+    - Supports multiple inheritance since it is an interface.
+
+-> A class implements Runnable and the task runs when a thread executes its run() method.
+
+    Syntax: class MyTask implements Runnable {
+                public void run() {
+                        // task to perform
+                }
+            }
+
+            Thread t = new Thread(new MyTask());
+            t.start();
+
+=> Using Lambda Expressions
+    - allow defining the thread task directly without creating a separate class.
+
+    Syntax: Thread t = new Thread(() -> {
+                    // task to perform
+            });
+            t.start();
+
+=> Using ExecutorService (for Managing Thread Pools)
+    - a framework that manages and executes threads through a thread pool.
+    - Uses a pool of reusable threads.
+    - Simplifies thread management.
+    - Suitable for executing multiple tasks concurrently.
+
+    -> manages thread creation and execution automatically, improving performance and resource usage.
+
+    Syntax: import java.util.concurrent.*;
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+                executor.execute(() -> {
+                        // task to perform
+            });
+            executor.shutdown();
