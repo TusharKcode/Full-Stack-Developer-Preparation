@@ -1,0 +1,28 @@
+"Multithreading" in Java is a feature that enables a program to run multiple threads simultaneously, 
+    allowing tasks to execute in parallel and utilize the CPU more efficiently.
+
+-> A thread is a lightweight, independent unit of execution inside a program (process).
+-> Threads within the same process share memory and resources, avoiding duplication.
+-> Applications (like GUIs) remain responsive while performing background tasks.
+
+=> Ways to create Threads: 
+    -> Extending the Thread class
+        - create a class that extends Thread and override its run() method to define the task.
+        - then, we make an object of this class and call start(), which automatically calls run() and begins 
+            the thread’s execution.
+        - The order of thread execution may vary on each run because thread scheduling is non-deterministic.
+
+    -> Implementing the Runnable Interface
+        - create a new class which implements java.lang.Runnable interface and define the run() method
+        - Then we instantiate a Thread object and call start() method on this object. 
+
+"Multiprocessing"
+    - is a system that has more than one or two processors.
+    - CPUs are added to increase the computing speed of the system
+    - There are many processes are executed simultaneously.
+    - Process creation is time-consuming.
+    - Each process has its own address space, which can lead to higher memory usage.
+
+    -> Two categories: 
+        - Symmetric Multiprocessing
+        - Asymmetric Multiprocessing
