@@ -1,0 +1,21 @@
+"Process"
+    - a program that is currently in execution within an operating system.
+    - operates in an independent environment and is managed by the OS for proper scheduling and execution.
+    - Processes form the basis of program execution in a multitasking system.
+    - Each process has a unique Process ID (PID) for identification.
+    - Every process moves through different states such as new, ready, running, waiting, and terminated.
+    - Processes communicate with each other using Inter-Process Communication (IPC) methods.
+
+
+"Thread"
+    - a smallest unit of execution within a process.
+    - enables a program to perform multiple tasks concurrently while sharing the same memory and resources.
+    - improve application performance and responsiveness in multitasking environments.
+    - Each thread has its own Thread ID (TID) for identification.
+    - A thread also moves through states such as new, runnable, running, waiting, and terminated.
+    - Threads within the same process share memory and resources, enabling faster communication.
+    - Context switching can occur between threads to allow multiple tasks to execute efficiently.
+
+-> Both are scheduled by the operating system for fair CPU allocation, and can be preempted for multitasking.
+-> Each has its own execution context, including program counter, CPU registers, and stack space.
+-> Both can create child entities during their execution lifecycle.

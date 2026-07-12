@@ -1,0 +1,28 @@
+A Java thread is the smallest unit of execution within a program.
+    It is a lightweight subprocess that runs independently but shares the same memory space as the process,
+    allowing multiple tasks to execute concurrently.
+
+=> Ways to create Threads: 
+    -> Extending the Thread class
+        - create a class that extends Thread and override its run() method to define the task.
+        - then, we make an object of this class and call start(), which automatically calls run() and begins 
+            the thread’s execution.
+        - The order of thread execution may vary on each run because thread scheduling is non-deterministic.
+
+    -> Implementing the Runnable Interface
+        - create a new class which implements java.lang.Runnable interface and define the run() method
+        - Then we instantiate a Thread object and call start() method on this object. 
+
+=> Life Cycle of a Thread:  
+    - new State
+    - Runnable State
+    - Blocked State
+    - Waiting State
+    - Timed Waiting State
+    - Terminated State
+
+-> Two Methods used for running Threads in Java:
+    - run() Method: Contains the code for the thread. Calling it directly behaves like a normal method call.
+                    If we call run() directly, it works like a normal method call and no new thread is 
+                    created.
+    - start() Method: Launches a new thread and internally calls run() concurrently.
