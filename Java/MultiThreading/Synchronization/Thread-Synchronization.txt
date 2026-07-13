@@ -44,3 +44,30 @@ It used to control the access of multiple threads to shared resources to avoid d
 
 
     -> Inter-Thread Communication
+        - known as Cooperation in Java.
+        - enables threads to coordinate their execution by signaling each other during runtime
+        - used when multiple threads depend on shared resources or need to work in a specific sequence.
+        - avoid busy waiting and improves resource utilization
+        
+        - "Polling": process of repeatedly checking a condition in a loop until it becomes true.
+                        used when one thread waits for another to produce or update data.
+
+                    Wastes CPU cycles due to continuous condition checking
+                    Reduces efficiency and slows down overall execution
+                    Keeps the thread busy instead of allowing other tasks to run
+            
+            Handling this: using built-in communication methods, defined in the Object class and must be 
+                            used within a synchronized context. 
+                - wait(): Releases the lock and puts the thread into a waiting state until notified
+                            (public final void wait() throws InterruptedException)
+                            Exceptions: InterruptedException, IllegalMonitorStateException
+                            
+                - notify(): Wakes up one waiting thread (does not release the lock immediately)
+                - notifyAll(): Wakes up all waiting threads on the same object
+
+            Producer-Consumer Problem:  
+                - involves two threads where one (producer) adds data to a shared queue
+                - other (consumer) removes data from it.
+                - Proper coordination is required to ensure the producer doesn’t add when the queue is full
+                    & consumer doesn’t remove when it’s empty.
+                - ses wait(), notify(), and notifyAll() for synchronization
