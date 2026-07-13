@@ -19,3 +19,19 @@ Synchronization is used to control the execution of multiple processes or thread
     -> Static Synchronization
         - used when static data or methods need to be protected in a multithreaded environment.
         - ensures that only one thread can access the class-level resource at a time.
+
+=> Types of Synchronization:    
+    -> Process Synchronization: 
+        - ensures multiple processes or threads can execute safely while sharing common resources.
+        - technique used to coordinate the execution of multiple processes
+        - ensures that the shared resources are safe and in order.
+        - Uses mechanisms like semaphores, mutex locks, and monitors for coordination.
+
+    -> Thread Synchronization in Java:
+        - used to coordinate and ordering of the execution of the threads in a multi-threaded program
+
+        -> 2 Types: 
+            - Mutual Exclusive
+            - Cooperation (Inter-thread communication in Java)
+
+
