@@ -1,0 +1,21 @@
+Synchronization is used to control the execution of multiple processes or threads so that shared resources 
+    are accessed in a proper and orderly manner.
+    - It controls the access of shared resources.
+    - It avoids data inconsistency.
+    - It ensures proper execution of processes.
+
+=> Ways to achieve Synchronization: 
+    -> Synchronized Methods:
+        - used to lock an entire method so that only one thread can execute it at a time for a particular 
+            object.
+        - safe access to shared data but may reduce performance due to full method locking
+        - Uses the object-level lock (instance lock).
+
+
+    -> Synchronized Block: 
+        - allow locking only a specific section of code instead of the entire method.
+        - reducing the locking overhead.
+
+    -> Static Synchronization
+        - used when static data or methods need to be protected in a multithreaded environment.
+        - ensures that only one thread can access the class-level resource at a time.
