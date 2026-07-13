@@ -34,4 +34,10 @@ Synchronization is used to control the execution of multiple processes or thread
             - Mutual Exclusive
             - Cooperation (Inter-thread communication in Java)
 
-
+=> Volatile Keyword:    
+    - ensures that all threads have a consistent view of a variable's value.
+    - prevents caching of the variable's value by threads, ensuring that updates to the variable are 
+        immediately visible to other threads.
+    - It applies only to variables.
+    - It does not guarantee atomicity, meaning operations like count++ (read-modify-write operations) can 
+        still result in inconsistent values
