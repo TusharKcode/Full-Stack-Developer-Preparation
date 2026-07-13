@@ -1,0 +1,46 @@
+It used to control the access of multiple threads to shared resources to avoid data inconsistency
+    - ensures that only one thread executes a critical section at a time, preventing race conditions.
+    - Achieved using synchronized keyword, locks, and other concurrency utilities.
+    - Helps prevent thread interference and memory consistency errors.
+    - Supports coordination using methods like wait(), notify(), and notifyAll().
+
+    => Examples:    
+        -> If two computers send print jobs simultaneously, the printer might mix their outputs and that 
+            leads to invalid results.
+        -> Similarly, threads accessing the same resource without coordination can produce inconsistent data.
+
+=> Thread Priorities:   
+    It determine the execution order, allowing higher-priority threads to preempt lower ones and access 
+        resources first
+    When threads of equal priority compete for the same resource, conflicts can lead to inconsistent or 
+    erroneous outcomes.
+
+=> Mechanisms for Thread Synchronization
+    - Thread synchronization ensures only one thread executes at a time while others wait.
+    - It helps prevent thread interference and data inconsistency issues.
+    - Implemented using locks/monitors in Java.
+    - A monitor (object lock) allows only one thread to access a resource at a time.
+    - When a thread acquires a lock, other threads are blocked until the lock is released.
+    - Other threads remain in a waiting state until the current thread exits the critical section.
+
+=> Types:   
+    -> Mutual Exclusion: 
+        - While sharing any resource, this will keep the thread interfering with one another i.e. mutual 
+            exclusive.
+        - Achieve from: 
+            Synchronized Method: using the 'synchronized' keyword, code written inside the method thread-safe 
+                                    so that no other thread will execute while the resource is shared.
+
+            Synchronized Block: If we declare a block as synchronized, only the code which is written 
+                                inside that block is executed sequentially not the complete code.
+                                Syntax: synchronized (object reference) {}
+
+            Static Synchronization: synchronized method is declared as "static" which means the lock or 
+                                    monitor is applied on the class not on the object, only one thread will 
+                                    access the class at a time.
+
+        - When a class has both synchronized and static synchronized methods they can run parallel
+            as those two methods require different locks.
+
+
+    -> Inter-Thread Communication
