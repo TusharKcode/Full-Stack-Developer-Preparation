@@ -1,0 +1,35 @@
+Java supports multithreading, where multiple threads run concurrently and the Thread Scheduler decides 
+    their execution order.
+
+    - Each thread is assigned a priority (1–10) that influences scheduling but does not guarantee execution 
+        order.
+    - Changing priority does not guarantee faster execution or immediate scheduling
+    - Higher-priority threads are generally preferred by the scheduler
+    - Actual execution order depends on the JVM and underlying OS
+
+    -> If multiple threads have the same priority, their execution order is decided by the thread scheduler. 
+
+=> Constant values of Thread priority:
+    -> Thread.MIN_PRIORITY (1)  : Lowest possible priority for a thread.
+    -> Thread.NORM_PRIORITY (5) : Default priority assigned to a thread.
+    -> Thread.MAX_PRIORITY (10) : Highest possible priority for a thread.
+
+=> Setting & getting Thread priority:   
+    - setPriority(int newPriority): This method is used to set the priority of a thread.
+    - getPriority(): This method is used to returns the current priority of the thread.
+
+=> Naming & fetching name of current thread:
+    - By default, threads are named as Thread-0, Thread-1, etc., but we can customize these names.
+    - Names can be set during creation or later using methods
+    
+    -> Methods:  
+        - Using Constructor: direct method of naming threads in Java, Thread-0, Thread-1, Thread-2,....so on. 
+        - Using setName() method of Thread class: can set(change) the thread's name by calling the setName 
+                                                    method on that thread object
+
+            Syntax: public final void setName(String name)
+
+    - fetch the current thread name at the time of creating the thread and bypassing the thread’s name as 
+        an argument.
+
+        Syntax: public static Thread currentThread()
