@@ -1,0 +1,62 @@
+=> start() method
+    - create a separate call stack for the thread.
+    - A separate call stack is created by it, and then run() is called by JVM.
+
+    -> When start() is invoked:
+        - JVM creates a new thread.
+        - A separate call stack is allocated for that thread.
+        - The JVM internally calls the run() method.
+
+
+=> suspend() method
+    - a thread needs to pause its execution for a specific period of time before continuing its work.
+    - can be done using the Thread.sleep() method, which temporarily suspends the current thread.
+    - The time is provided in milliseconds.
+    - It throws an InterruptedException, so it must be handled using try-catch.
+
+    -> deprecated in the latest Java version.
+
+
+=> stop() method
+    - A Thread in Java stops automatically after run() completes, but sometimes we need to stop it manually.
+    - Deprecated methods like stop(), suspend(), and resume() are unsafe
+    - Proper thread termination helps avoid memory leaks and deadlocks
+    -> Modern ways to stop thread:
+        - Using Boolean Flag: used to control thread execution, but when the flag is shared between multiple 
+                                threads it should be declared volatile. Otherwise, thread may not see 
+                                updates made by another thread.
+                              Suitable when thread is doing continuous work in loop
+
+        - Using Volatile Boolean Flag: used when multiple threads access the same variable. It ensures that 
+                                        changes made by one thread are immediately visible to others. 
+                                        Without this, threads may cache the variable value locally, causing 
+                                        visibility issues. 
+        - Using Thread.interrupt():  used to signal a thread that it should stop its execution. It sets an 
+                                        internal interrupt flag, which the thread can check and handle 
+                                        appropriately.
+
+=> sleep() method
+    - used to pause the execution of the currently running thread for a specified amount of time.
+    - After the sleep duration ends, the thread becomes runnable again and continues execution based 
+        on thread scheduling.
+    - Throws InterruptedException if another thread interrupts during sleep.
+    - Actual sleep duration may vary based on system load; higher load increases sleep time.
+
+    -> Syntax:  public static void sleep(long millis)
+                public static void sleep(long millis, int nanos)
+
+=> join() method
+    - used to pause the execution of the current thread until the thread on which it is called completes.
+    - The current thread goes into a waiting state
+    - It waits until the target thread finishes execution
+    - Execution resumes after the thread is terminated
+    - Helps in maintaining proper sequence between threads
+
+    -> Syntax: public final void join()
+    -> Versions of join() method:
+        - join(): used to make the current thread wait until the target thread completely finishes its 
+                    execution
+        - join(long millis): put the current thread on wait until the thread on which it is called is dead 
+                                or wait for the specified time.
+        - join(long millis, int nanos): put the current thread on wait until the thread on which it is 
+                                        called is dead or wait for the specified time (milliseconds + nanos).
