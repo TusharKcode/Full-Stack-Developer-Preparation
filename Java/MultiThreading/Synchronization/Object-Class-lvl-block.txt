@@ -1,0 +1,41 @@
+"Object Level Lock"
+    - controls concurrent access at the instance level
+    - allows threads to coordinate execution when working on the same object. 
+    - Applied using synchronized on non-static methods or blocks
+    - Ensures mutual exclusion only for threads accessing the same object
+    - Other threads must wait until the lock is released
+
+    -> Methods:
+        - Method 1: public class ObjLvl{   
+                        public synchronized void Method(){}
+                    }
+
+        - Method 2: public class ObjLvl{   
+                        public void Method(){
+                            synchronized (this){ // other thread safe code }   
+                        }
+                    }
+
+        - Method 3: public class ObjLvl{
+                        private final Object lock = new Object();      
+                        public void Method(){
+                            synchronized (lock){ // other thread safe code } 
+                        }
+                    }
+
+
+"Class Level Lock"
+    - a lock on the Class object
+    - Used when working with static synchronized methods or blocks
+    - Only one thread can execute any static synchronized code of a class at a time, regardless of number 
+        of objects.
+    - used to protect shared static data.
+    - Other threads must wait until the lock is released
+
+    -> Methods:
+        - Using the synchronized static method:
+            automatically acquires the class-level lock when a thread enters it. Only one thread can execute 
+                any static synchronized method of the class at a time.
+
+        - Using synchronized block method:
+            uses a block where the class object is explicitly locked using ClassName.class.
