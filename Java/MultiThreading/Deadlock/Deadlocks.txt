@@ -1,0 +1,53 @@
+Deadlock is a situation in multithreading where two or more threads are permanently blocked because each 
+    one is waiting for the other to release a required lock
+    - threads get stuck forever, and the program never continues.
+
+    -> Each thread holds a lock and waits for another lock held by a different thread. This creates a 
+        circular wait, causing the application to freeze indefinitely.
+
+    -> In Java, locks are mechanisms used to control access to shared resources in a multithreaded 
+        environment.
+
+=> Detecting Deadlocks
+    1. List the active Java processes:  (jps -l)
+        - list the running Java processes
+        - also mention there is a deadlock if we want to generate a thread dump.
+    
+    2. Identify the process ID (PID) of the target program and run:
+        - jcmd <PID> Thread.print          // replace PID with the process ID 
+        - outputs the state of the threads, which you can then analyze for deadlocks.
+
+=> Preventing Deadlocks:
+    -> Avoid Nested Locks: Mainly happens when we give locks to multiple threads.
+    -> Avoid Unnecessary Locks: lock only those members who are required
+    -> Using thread join: when one thread is waiting for the other to finish.
+
+=> Prevention Techniques:   
+    -> Mutual Exclusion - Eliminate it, 
+        - Some resources, like a printer, are inherently non-sharable, so this condition is difficult to 
+            break.
+        - sharable resources like read-only files can be accessed by multiple processes at the same time.
+        - For non-sharable resources, prevention through this method is not possible.
+
+    -> Hold and Wait - Eliminate it, 
+        - a condition in which a process holds one resource while simultaneously waiting for another 
+            resource that is being held by a different process.
+        - The process cannot continue until it gets all the required resources.
+        - Two ways to eliminate:    
+            - By eliminating wait:
+            - By eliminating hold:
+
+    -> No Preemption - Eliminate it, 
+        - resources can’t be taken away once allocated.
+        - Processes must release resources voluntarily: process gives up resources once it finishes using 
+                                                        them.
+        - Avoid partial allocation: If a process requests resources that are unavailable, it must release 
+                                    all currently held resources and wait until all required resources are 
+                                    free.
+
+    -> Circular Wait - Eliminate it, 
+        - happens when processes form a cycle, each waiting for a resource held by the next.
+        - Impose a strict ordering on resources.
+        - Assign each resource a unique number.
+        - Processes can only request resources in increasing order of their numbers.
+        - This prevents cycles, as no process can go backwards in numbering.
