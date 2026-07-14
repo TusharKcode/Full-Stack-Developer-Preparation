@@ -1,0 +1,13 @@
+"Callable Interface"
+    - represents a task that can return a result and throw checked exceptions.
+    - alternative to Runnable when a task needs to produce an output.
+    - Defines the call() method for task execution
+    - Allows checked exceptions during execution
+    - Commonly used with Future to retrieve results
+
+"Future Interface"
+    - represents the outcome of an asynchronous task and allows you to interact with it after submission to 
+        an ExecutorService.
+    - Acts as a handle to track task status
+    - get() retrieves the result (blocks until completion)
+    - isDone() checks if the task has finished

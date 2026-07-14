@@ -1,0 +1,45 @@
+The Executor interface in Java provides a high-level mechanism to execute tasks asynchronously without 
+    directly managing threads.
+    - It acts as a replacement for manually creating and controlling Thread objects.
+    - Executors submit Runnable tasks for execution and manage the underlying threads efficiently.
+    - Can execute tasks in a new thread, pooled thread, or the calling thread.
+    - Forms the foundation for higher-level concurrency utilities like ExecutorService and 
+        ScheduledExecutorService.
+
+    -> Syntax:  public interface Executor {
+                        void execute(Runnable command);
+                }
+
+    -> Implementing Sub-Interfaces of Executor
+        1. ExecutorService
+            - Provides methods to manage thread life cycle, submit tasks, and get results.
+            - Allows submitting both Runnable and Callable tasks.
+
+        2. ScheduledExecutorService
+            - Extends ExecutorService to allow scheduling tasks with a delay or at fixed intervals.
+            - Useful for periodic tasks like timers, scheduled updates, or repeated background jobs.
+
+    -> Method:
+        - execute(Runnable command): Submits a task for execution. The task may run in a new thread, a 
+                                        thread pool, or the calling thread.
+
+    Ex: import java.util.concurrent.Executor;
+
+        public class MultiTaskExecutorDemo {
+            public static void main(String[] args) {
+                Executor executor = new SimpleExecutor();
+
+                // Submitting three tasks to executor
+                executor.execute(() -> System.out.println("Task 1 executed"));
+                executor.execute(() -> System.out.println("Task 2 executed"));
+                executor.execute(() -> System.out.println("Task 3 executed"));
+            }
+        }
+
+        // Custom executor implementing Executor interface
+        class SimpleExecutor implements Executor {
+            @Override
+            public void execute(Runnable task) {
+                new Thread(task).start(); // Runs each task in a separate thread
+            }
+        }
