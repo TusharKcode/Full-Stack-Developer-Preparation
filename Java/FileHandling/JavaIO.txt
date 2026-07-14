@@ -1,0 +1,78 @@
+Java I/O (Input/Output) is a collection of classes and streams in the java.io package that handle reading 
+    data from sources (like files, keyboard, or network) and 
+    writing data to destinations (like files, console or sockets).
+
+    - It provides both byte and character streams to support all types of data.
+
+=> Default/Standard Streams:
+    -> System.in 
+        - standard input stream that is used to read characters from the keyboard or any other standard 
+            input device.
+        - an InputStream, provides methods from the InputStream class
+        - System.in is wrapped with classes like Scanner or BufferedReader for easier input handling.
+
+        - int read()                            : reads one byte of data.   
+        - int read(byte[] b)                    : reads bytes into an array.   
+        - int read(byte[] b, int off, int len)  : reads bytes into part of an array.
+        - void close()                          : closes the input stream.
+        - int available()                       : returns the number of bytes that can be read without 
+                                                    blocking.
+   
+    -> System.out
+        - print() : displays text on the console, keeping the cursor at the end of the printed text so the 
+                    next output continues from the same line.
+                        Syntax: System.out.print(parameter);
+
+        - println(): This method in Java is also used to display a text on the console. prints the text on 
+                        the console and the cursor moves to the start of the next line at the console.
+                        next printing takes place from the next line.
+                            System.out.println(parameter);
+
+        - printf(): used for formatted output and can take multiple arguments, making it more flexible than 
+                        print() or println().
+
+    -> System.err
+        - used to display the error messages
+        - similarly to System.out with print(), println(), and printf() methods.
+
+=> Types of Streams:    
+    -> Input Stream: 
+        - used to read data that must be taken as an input from a source array or file or any peripheral device
+        - For eg., FileInputStream, BufferedInputStream, ByteArrayInputStream etc.
+
+    -> Output Streams:
+        - used to write data as outputs into an array or file or any output peripheral device.
+        - For eg., FileOutputStream, BufferedOutputStream, ByteArrayOutputStream etc.
+
+=> Types of Streams Depending on type of data
+    -> Byte Stream
+        - used to perform input and output of 8-bit bytes
+        - suitable for handling raw binary data such as images, audio, and video, using classes like 
+            InputStream and OutputStream.
+
+        Various classes: 
+            - BufferedInputStream	Used to read data more efficiently with buffering.
+            - DataInputStream	    Provides methods to read Java primitive data types.
+            - FileInputStream	    This is used to read from a file.
+            - InputStream	        This is an abstract class that describes stream input.
+            - PrintStream	        This contains the most used print() and println() method
+            - BufferedOutputStream	This is used for Buffered Output Stream.
+            - DataOutputStream	    This contains method for writing java standard data types.
+            - FileOutputStream	    This is used to write to a file.
+            - OutputStream	        This is an abstract class that describes stream output.
+
+    -> Character Stream
+        - used to perform input and output of 16-bit Unicode characters
+        - suited for handling text data, using classes like Reader and Writer
+        - automatically handle character encoding and decoding.
+
+        Various classes: 
+            - BufferedReader	    It is used to handle buffered input stream.
+            - FileReader	        This is an input stream that reads from file.
+            - InputStreamReader	    This input stream is used to translate byte to character.
+            - OutputStreamWriter	Converts character stream to byte stream.
+            - Reader	            This is an abstract class that define character stream input.
+            - PrintWriter	        This contains the most used print() and println() method
+            - Writer	            This is an abstract class that define character stream output.
+            - BufferedWriter	    This is used to handle buffered output stream.
+            - FileWriter	        This is used to output stream that writes to file.
