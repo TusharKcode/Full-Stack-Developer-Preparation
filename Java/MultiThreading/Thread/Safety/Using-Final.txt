@@ -1,0 +1,66 @@
+In Java, the final keyword is used to restrict changes and make code more secure and predictable.
+    - applied to variables, methods, and classes to prevent modification, overriding, or inheritance.
+    - helps in creating constant values, stable methods, and immutable classes.
+    - Final method cannot be overridden
+    - Final class cannot be inherited
+
+    -> A static final variable must be initialized either at the point of declaration or in a static 
+        initialization block.
+
+=> Types:   
+    -> final Variable
+        - hold a value that cannot be reassigned after initialization.
+        - final int THRESHOLD = 5;
+
+    -> Blank final Variable 
+        - declared without initialization and must be assigned once before use.
+        - final int THRESHOLD;
+
+    -> Static final Variable 
+        - represent constants shared across all objects.
+        - static final double PI = 3.141592653589793;
+
+    -> Static Blank final Variable
+        -   static final double PI;
+            static {
+                PI = 3.141592653589793;
+            }
+
+    -> Reference Final Variable
+        - final reference cannot refer to a new object though the object it points to can change internally.
+                    final StringBuilder sb = new StringBuilder("Geeks");
+                    System.out.println(sb);
+                    sb.append("ForGeeks");
+                    System.out.println(sb);
+
+    -> Local Final Variable
+        - must be assigned once.
+                final int i;
+                i = 20;
+                System.out.println(i);
+
+    -> Final class
+        - cannot be extended
+        - cannot be inherited
+        - used for security or when the implementation should remain unchanged
+        - useful for such as String or wrapper classes.
+
+                    final class A {
+                        // fields and methods
+                    }
+                    class B extends A { }       // Illegal
+
+    -> Final method
+        - declared with final keyword
+        - can be inherited but cannot be overridden by subclasses
+        - original implementation remains intact.
+
+                    class A {
+                        final void m1() {
+                            System.out.println("Final method");
+                        }
+                    }
+                    class B extends A {
+                        void m1() { }   // compile-time error
+                    }
+

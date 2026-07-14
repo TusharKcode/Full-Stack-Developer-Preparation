@@ -1,0 +1,45 @@
+The volatile keyword in Java is used to ensure that changes made to a variable are immediately visible to 
+    all threads.
+
+    - used in multithreading to maintain data consistency without full synchronization.
+    - Ensures visibility of shared variables across threads by preventing caching issues.
+    - Does not provide atomicity, so it is not suitable for operations like increment (count++).
+
+    -> Syntax: volatile dataType variableName;
+
+-> When to use?
+    - For boolean flags (e.g., stop thread signal)
+    - For status indicators
+    - When only one thread writes and others read
+    - When no compound operations are involved (like increment)
+
+
+Ex: class SharedData {
+        volatile boolean flag = false;
+    }
+
+    class MyThread extends Thread {
+        SharedData data;
+
+        MyThread(SharedData data) {
+            this.data = data;
+        }
+
+        public void run() {
+            while (!data.flag) {
+                // waiting
+            }
+            System.out.println("Flag changed!");
+        }
+    }
+
+    public class Main{
+        public static void main(String[] args) throws Exception {
+            SharedData data = new SharedData();
+            MyThread t = new MyThread(data);
+            t.start();
+
+            Thread.sleep(1000);
+            data.flag = true;
+        }
+    }

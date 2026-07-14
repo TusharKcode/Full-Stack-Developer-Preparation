@@ -1,0 +1,47 @@
+Atomic is a type of variable that performs read, write and update in a single uninterruptible step, 
+    ensuring thread-safe operations and preventing race conditions
+
+    - It ensures data consistency without using synchronization or locks.
+    - It improves performance through non-blocking, lock-free operations.
+    - Simplify thread-safe programming for common operations like increment and compare-and-set.
+
+=> How Atomic Variables Work
+    - Atomic variables internally use a hardware-supported algorithm called Compare-And-Swap (CAS). 
+    -> CAS works in three steps:
+        - Read the current value.
+        - Compare it with the expected value.
+        - If both values match, update the value atomically.
+
+    - If another thread changes the value before the update occurs, the operation fails and is retried 
+        automatically.
+    - This allows atomic variables to provide thread safety without using explicit locks.
+
+=> Types of Atomic Variables:   
+    -> AtomicInteger 
+        - provides atomic operations (increment, decrement, add, etc.) on integer values without synchronization.
+
+    -> AtomicLong
+        - supports atomic operations on long values for thread-safe numeric computations.
+
+    -> AtomicBoolean
+        - represents a boolean value that can be atomically updated for safe flag-based operations.
+
+    -> AtomicReference
+        - allows atomic read and write of object references, useful for non-primitive data.
+
+    -> AtomicIntegerArray
+        - enables atomic operations on elements of an integer array for thread-safe updates.
+
+=> Methods: 
+    - get()	                          :  Returns the current value.
+    - set(value)	                  :  Sets the value to the given value.
+    - getAndSet(value)	              :  Atomically sets a new value and returns the old one.
+    - incrementAndGet()	              :  Increments the value by one and returns the updated value.
+    - getAndIncrement()	              :  Increments the value by one and returns the previous value.
+    - decrementAndGet()	              :  Decrements the value by one and returns the updated value.
+    - addAndGet(delta)	              :  Adds the specified value and returns the updated result.
+    - getAndAdd(delta)	              :  Adds the specified value and returns the previous result.
+    - compareAndSet(expected, update) :	 Atomically updates the value only if it equals the expected value.
+    - lazySet(value)	              :  Eventually sets the value (may be delayed for performance).
+
+
