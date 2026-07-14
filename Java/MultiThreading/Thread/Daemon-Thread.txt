@@ -1,0 +1,23 @@
+"User Threads" are main threads that perform the core operations of a program.
+    - JVM continues execution as long as at least one user thread is running.
+    - Created by default when a thread is instantiated
+
+    Ex: Main thread, worker threads
+
+
+"Daemon threads" are background threads that provide support services to user threads.
+    - do not prevent the JVM from exiting when all user threads have completed execution
+    - Created using setDaemon(true) method
+
+    - Daemon threads should not be used for tasks requiring completion, such as writing to a file or 
+        updating a database.
+
+    Ex: Garbage Collector, background services
+
+    -> Syntax:  Thread t = new Thread();
+                t.setDaemon(true); // Mark thread as daemon
+                t.start();
+
+    -> Methods:
+        - void setDaemon(boolean on): Marks a thread as daemon or user thread. Must be called before start().
+        - boolean isDaemon(): Checks whether a thread is daemon.
