@@ -1,0 +1,50 @@
+A Thread Pool is a collection of reusable worker threads managed by an Executor Service.
+    - may maintain a fixed number of threads, dynamically create threads as needed, 
+        use a single worker thread, or schedule tasks for future execution.
+
+    - When a task is submitted:
+        If a thread is free, it immediately picks up the task and runs it.
+        If all threads are busy, the task waits in a queue until a thread becomes available.
+        After finishing a task, the thread does not die. It goes back to the pool and waits for the next task.
+
+Example: 
+    Think of a call center:
+        - A company has 10 operators (thread pool size = 10).
+        - When customers call, available operators handle them.
+        - If all operators are busy, new customers wait in a queue until someone is free.
+        - Operators don’t leave after one call, they stay and handle more calls.
+
+=> Types: 
+    -> Fixed Thread Pool	  :  Uses a fixed number of worker threads.
+    -> Cached Thread Pool	  :  Creates threads as needed and reuses idle threads.
+    -> Single Thread Executor :	 Uses only one worker thread.
+    -> Scheduled Thread Pool  :	 Executes tasks after a delay or periodically.
+    -> Work-Stealing Pool	  :  Uses multiple queues to improve parallel task execution.
+
+-> Initialization:
+    - A fixed number of worker threads are created (e.g., 3).
+    - These threads are kept idle, waiting for tasks.
+    - A task queue is set up to hold submitted tasks until a worker is free.
+
+-> Working: 
+    Step 1: Idle State
+            - Tasks are submitted and placed in the Task Queue.
+            - Worker threads exist but are idle until work arrives.
+
+    Step 2: Task Assignment
+            - Each idle thread picks a task from the queue.
+            - Example: Thread 1 -> Task 1, Thread 2 -> Task 2, Thread 3 -> Task 3
+            - Remaining tasks (Task 4, Task 5) wait in the queue.
+
+    Step 3: Thread Reuse
+            - Once a thread completes its current task, it becomes idle again.
+            - It immediately takes the next waiting task from the queue.
+            - Example: Thread 1 -> Task 4, Thread 2 -> Task 5, Thread 3 -> Idle (no tasks left)
+
+=> Methods: 
+    -> submit(Runnable task)        : Adds a task into the queue for execution by worker threads.
+    -> shutdown()                   : Gracefully stops the thread pool → no new tasks accepted, workers 
+                                        stop after finishing current tasks.
+    -> shutdownNow() (optional)     : Immediately interrupts workers and clears pending tasks.
+    -> getQueueSize() (optional)    : Returns how many tasks are waiting in the queue.
+    -> getActiveCount() (optional)  : Returns number of threads currently executing tasks.
