@@ -1,0 +1,80 @@
+In Java, file handling means working with files like creating them, reading data, writing data or deleting 
+    them.
+        - It helps a program save and use information permanently on the computer.
+
+        - To store data permanently instead of keeping it only in memory.
+        - To read and write data from/to files for later use.
+        - To share data between different programs or systems.
+        - To organize and manage large data efficiently.
+
+    -> To support file handling, Java provides the File class in the java.io package.
+
+    -> File class:  
+        - used to represent the name and path of a file or directory
+        - provides methods to create, delete, and get information about files and directories.
+
+            Ex: import java.io.File;
+                File obj = new File("myfile.txt");
+                System.out.println("File Created!");
+
+=> I/O Streams in Java
+    - handling input and output operations
+
+    -> 2 Types: 
+        - Byte Streams: used to handle raw binary data such as images, audio files, videos or any non-text 
+                        file, work with data in the form of 8-bit bytes.
+                2 Abstract classes (cannot be used directly) for Byte Streams:
+                    - InputStream: for reading data (input)
+                    - OutputStream: for writing data (output)
+                     
+                    ** use their implementation classes to perform actual I/O operations **
+                        - FileInputStream: reads raw bytes from a file.
+                        - FileOutputStream: writes raw bytes to a file.
+                        - BufferedInputStream / BufferedOutputStream: use buffering for faster performance.
+                        - ByteArrayInputStream: reads data from a byte array as if it were an input stream.
+                        - ByteArrayOutputStream: writes data into a byte array, which grows automatically.
+
+        - Character Streams: used to handle text data, work with 16-bit Unicode characters, suitable for 
+                                international text and language support.
+                2 Abstract classes (cannot be used directly) for Byte Streams:
+                    - Reader: Base class for all character-based input streams (reading).
+                    - Writer: Base class for all character-based output streams (writing).
+                     
+                    ** use their implementation classes to perform actual I/O operations **
+                        - FileReader: reads characters from a file.
+                        - FileWriter: writes characters to a file.
+                        - BufferedReader: reads text efficiently using buffering; also provides readLine() 
+                                            for reading lines.
+                        - BufferedWriter: writes text efficiently using buffering.
+                        - StringReader: reads characters from a string.
+                        - StringWriter: writes characters into a string buffer.
+
+=> File Operations: 
+    -> Create a File
+        - use the createNewFile() method.
+        - If the file is successfully created, it will return a Boolean value true and false if the file 
+            already exists.
+
+    -> Write to a File
+        - use FileWriter class along with its write() method in order to write some text to the file.
+
+    -> Read from a File
+        - read() method is used with classes like FileReader or InputStream to read data from a file one 
+            character or byte at a time.
+        - returns an integer value representing the character or byte read.
+        - When the end of the file is reached, the method returns -1 indicating no more data is available.
+
+    -> canRead a File
+        - canRead() check if the file is readable.
+
+    -> canWrite a File
+        - canWrite() checks whether the file can be written to by the program.
+
+    -> Existence of a File
+        - exists() checks whether the specified file or directory exists on the file system.
+
+    -> Getting a path
+        - getAbsolutePath() returns the full path of the file or directory in the file system.
+
+    -> Delete a File
+        - We use the delete() method in order to delete a file.
