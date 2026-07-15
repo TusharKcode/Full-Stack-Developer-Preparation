@@ -1,0 +1,1 @@
+BufferedWriter makes writing more efficient.\nIt reduces disk I/O by using a buffer.Welcome to Full Stack Java DevelopmentBufferedWriter makes writing more efficient.\nIt reduces disk I/O by using a buffer.
