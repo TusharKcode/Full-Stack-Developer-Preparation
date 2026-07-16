@@ -1,0 +1,70 @@
+Java Networking is the concept of connecting two or more computing devices to exchange data and resources.
+    - allows Java applications to communicate over the internet or local networks
+    - All communications in Java networking happen at the application layer
+    - The java.net package provides APIs for protocols, sockets, IP addresses, and URLs.
+    - designed with networking in mind, making distributed computing simpler.
+    - provides classes and interfaces to handle low-level communication, socket programming, and access to 
+        network resources.
+
+=> Network Protocols:   
+    -> TCP (Transmission Control Protocol)
+        - connection-oriented protocol that ensures data is delivered accurately and in the correct order
+        - establishes a connection before communication and verifies successful data transfer.
+        - Reliable and error-checked data transmission
+        - Maintains data order using acknowledgements
+        - Used for web applications, file transfer, and emails
+
+    -> UDP (User Datagram Protocol)
+        - connection-less protocol designed for fast data transmission without delivery guarantees.
+        - sends data packets independently, making it suitable for real-time communication.
+        - Faster but unreliable compared to TCP
+        - No connection setup or acknowledgement
+        - Used in streaming, gaming, and video conferencing
+
+=> Network terminology:
+    - IP Address:                   Logical address that identifies a device on a network (e.g., 192.168.0.1).
+                                        Range: 0.0.0.0 – 255.255.255.255.
+    - Port Number:                  Identifies applications uniquely on a device. Range: 0 – 65,535.
+    - Protocol:                     Set of rules for communication (e.g., TCP, FTP, HTTP).
+    - MAC Address:                  Unique identifier assigned to a network interface card, written in 
+                                        hexadecimal.
+    - Socket:                       Endpoint for two-way communication between devices.
+    - Connection-Oriented Protocol: Requires connection setup (e.g., TCP).
+    - Connection-less Protocol:     No prior connection setup, data sent directly (e.g., UDP).
+
+=> Java Networking Classes
+    - CacheRequest:             Used to store resources in ResponseCache. Provides an OutputStream to write 
+                                    resource data into cache.
+    - CookieHandler:            Provides a callback mechanism to manage HTTP cookies during client-server 
+                                    communication.
+    - CookieManager:            A concrete implementation of CookieHandler that manages cookies using 
+                                    CookieStore and CookiePolicy.
+
+    - DatagramPacket:           Represents a data packet used in UDP-based, connectionless communication.
+    - InetAddress:              Represents IP addresses and hostnames, supporting both IPv4 and IPv6.
+
+    - ServerSocket:             Implements the server side of a TCP connection and listens for client 
+                                    requests on a port.
+    - Socket:                   Represents a client-side TCP connection used to send and receive data.
+    - DatagramSocket:           Used for sending and receiving UDP packets and supports broadcast 
+                                    communication.
+    - Proxy:                    Represents proxy settings for a connection. Useful for network security 
+                                    and anonymity.
+    - URL:                      Represents a Uniform Resource Locator pointing to a web resource such as a 
+                                    file or web page.
+    - URLConnection:            Represents a communication link between a Java application and a URL resource.
+    - HttpURLConnection:        A subclass of URLConnection that supports HTTP-specific operations like 
+                                    GET and POST.
+
+    - URLEncoder / URLDecoder:  Encode and decode strings to make them safe for transmission in URLs.
+    - MulticastSocket:          A specialized UDP socket used for group communication (multicasting).
+    - Authenticator:            Provides a mechanism to handle authentication when accessing protected 
+                                    network resources.
+
+=> Java Networking Interfaces
+    - CookiePolicy:         Defines rules for accepting or rejecting HTTP cookies.
+    - CookieStore:          Stores and manages cookies used during HTTP communication.
+    - FileNameMap:          Maps file names or extensions to corresponding MIME types.
+    - SocketOption:         Used to configure socket behavior such as timeout and buffer size.
+    - SocketImplFactory:    Allows creation of custom socket implementation classes.
+    - ProtocolFamily:       Represents a family of communication protocols.
