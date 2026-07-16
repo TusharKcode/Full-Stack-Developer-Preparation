@@ -1,0 +1,69 @@
+The File class in Java is used to represent the path of a file or folder.
+    - helps in creating, deleting, and checking details of files or directories, but not in reading or 
+        writing data.
+
+    - It acts as an abstract representation of file and directory names in the system.
+
+    - Can retrieve parent directories using the getParent() method.
+    - A File object is created by passing a file or directory name to its constructor.
+    - File systems may impose access permissions (read, write, execute).
+    - File objects are immutable. Once created, their pathname cannot change.
+
+-> Creation:    File file = new File("path_to_file");
+
+=> Constructors: 
+    -> File(File parent, String child)
+    -> File(String pathname)
+    -> File(String parent, String child)
+    -> File(URI uri)
+
+-> Fields:  
+    - pathSeparator     String  character or string used to separate individual paths in a list of file 
+                                    system paths
+    - pathSeparatorChar Char    character used to separate individual paths in a list of file system paths
+    - separator         String  default name separator character represented as a string
+    - separatorChar     Char    default name separator character
+
+=> Methods: 
+        Methods                     Description                         Return Type
+    -> canExecute()	            Checks if the file is executable	        boolean
+    -> canRead()	            Checks if the file is readable	            boolean
+    -> canWrite()	            Checks if the file is writable	            boolean
+    -> compareTo(File other)	Lexicographically compares pathname	        int
+    -> createNewFile()	        Atomically creates a new empty file	        boolean
+
+    -> createTempFile(String prefix, String suffix)	Creates a temp file in default temp directory	File
+
+    -> delete()	            Deletes this file or directory	                boolean
+    -> exists()	            Checks if the file/directory exists	            boolean
+    -> equals(Object obj)	Compares pathname for equality	                boolean
+    -> getAbsolutePath()	Returns absolute pathname as a string	        String
+    -> getCanonicalPath()	Returns canonical (distinct) pathname	        String
+    -> getName()	        Returns name of file or directory	            String
+    -> getParent()	        Returns parent pathname string	                String
+    -> getParentFile()	    Returns parent as a File object	                File
+    -> getPath()	        Returns the original pathname string	        String
+    -> getFreeSpace()	    Returns unallocated bytes in partition	        long
+    -> length()	            Returns file size in bytes	                    long
+    -> isDirectory()	    Checks if it’s a directory	                    boolean
+    -> isFile()	            Checks if it’s a normal file	                boolean
+    -> isHidden()	        Checks if file is hidden	                    boolean
+
+    -> lastModified()	Returns last modification time (ms since epoch)	    long
+
+    -> list()	                        Returns names of all entries in directory	      String[]
+    -> listFiles()	                    Returns File objects for entries in directory	  File[]
+    -> listFiles(FileFilter filter)	    Filters entries via FileFilter	                  File[] 
+    -> listFiles(FilenameFilter filter)	Filters entries via FilenameFilter	              File[]
+    -> mkdir()	                        Creates a directory	                              boolean
+    -> mkdirs()	                        Creates directory including parent dirs	          boolean
+    -> renameTo(File dest)	            Renames or moves file/directory	                  boolean
+    -> setReadOnly()	                Marks file/directory as read-only	              boolean
+    -> setExecutable(boolean exec)	    Sets owner's execute permission	                  boolean
+    -> setReadable(boolean read)	    Sets owner's read permission	                  boolean
+
+    -> setReadable(boolean read, boolean ownerOnly)	Sets read permission for owner or all	boolean
+
+    -> setWritable(boolean write)	Sets owner's write permission	        boolean
+    -> toURI()	                    Converts pathname to a URI object	    URI
+    -> toString()	                Returns pathname string	                String
