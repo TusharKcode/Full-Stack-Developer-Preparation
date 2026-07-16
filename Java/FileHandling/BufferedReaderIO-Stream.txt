@@ -1,0 +1,56 @@
+"BufferedReader Input Class"
+    - helps read text efficiently from files or user input
+    - stores data in a buffer
+    - reading faster and smoother instead of reading one character at a time
+    - Reads large chunks of data at once, reducing the number of read operations.
+    - Can read text line by line using the readLine() method.
+    
+    -> Declaration:     public class BufferedReader extends Reader
+    
+    -> Constructor: 
+        1. BufferedReader(Reader in): Creates a buffered character input stream using the specified reader.
+                        BufferedReader br = new BufferedReader(new FileReader("file.txt"));
+
+        2. BufferedReader(Reader in, int size): Creates a buffered character input stream with a custom 
+                                                buffer size.
+                        BufferedReader br = new BufferedReader(new FileReader("file.txt"), 8192);
+
+    -> Methods: 
+        - close()	                            Closes the stream and releases system resources. Further 
+                                                    read/mark/reset/skip calls throw IOException.
+        - mark(int readAheadLimit)	            Marks the current position in the stream for later reset.
+        - markSupported()	                    Checks if this stream supports the mark() operation 
+                                                    (always true for BufferedReader).
+        - read()	                            Reads and returns a single character or -1 if end of stream 
+                                                    is reached.
+        - read(char[] cBuf, int off, int len)	Reads characters into a portion of an array.
+        - readLine()	                        Reads a line of text, terminated by \n, \r or \r\n.
+        - ready()	                            Returns true if the stream is ready to be read without 
+                                                    blocking.
+        - reset()	                            Resets the stream to the most recent mark.
+        - skip(long n)	                        Skips the specified number of characters.
+
+
+"BufferedReader Output Class"
+    - used to write data to an output stream more efficiently
+    - adds a buffer to another output stream, reducing the number of I/O operations by temporarily storing 
+        data in memory
+    - belongs to the java.io package and extends the FilterOutputStream class.
+    - buffer to reduce direct disk access.
+    - Helps in writing byte data, such as images, text files, and binary data.
+
+    -> Declaration:     public class BufferedOutputStream extends FilterOutputStream
+    
+    -> Constructor: 
+        1. BufferedOutputStream(OutputStream out): 
+            Creates a buffered output stream with a default buffer size of 8192 bytes.
+
+        2. BufferedOutputStream(OutputStream out, int size): 
+            Creates a buffered output stream with the specified buffer size.
+
+    -> Methods: 
+        - void write(int b)	                        Writes a single byte to the output stream.
+        - void write(byte[] b, int off, int len)	Writes a portion of the byte array to the output stream.
+        - void flush()	                            Flushes the buffer and forces any buffered output bytes 
+                                                        to be written.
+        - void close()	                            Closes the stream, flushing it first.
