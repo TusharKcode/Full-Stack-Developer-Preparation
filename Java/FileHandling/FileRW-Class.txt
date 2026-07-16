@@ -1,0 +1,88 @@
+"File Reader Class"
+    - used to read data from a file in the form of characters.
+    - character-oriented stream that makes it ideal for reading text files
+    - If you want to read binary data (like images or videos), use FileInputStream instead.
+    - Reads data as 16-bit Unicode characters.
+    - Automatically handles character encoding.
+    - Platform Independent
+
+    -> Declaration :    public class FileReader extends InputStreamReader
+
+    -> Constructors:    
+        - 1. FileReader(String fileName)
+            Creates a new FileReader object to read data from a file with the given name.
+
+                        FileReader fr = new FileReader("example.txt");
+
+        - 2. FileReader(File file)
+            Creates a new FileReader object to read from the specified File object.
+
+                        File file = new File("example.txt");
+                        FileReader fr = new FileReader(file);
+
+        - 3. FileReader(FileDescriptor fdObj)
+            Creates a FileReader using the specified file descriptor. It is often used when working with 
+                low-level file handling.
+
+                        FileDescriptor fd = FileDescriptor.in;
+                        FileReader fr = new FileReader(fd); 
+
+    -> Methods: 
+        - read()	Reads a single character and returns it, or -1 if the end of the stream is reached.
+        - read(char[] charBuffer, int offset, int length)	Reads characters into the given buffer starting 
+                                                                at offset up to length characters. 
+                                                            Returns the number of characters read or -1 if 
+                                                                the stream ends.
+        - ready()	    Checks if the stream is ready to be read (i.e., input buffer is not empty).
+        - getEncoding()	Returns the name of the character encoding used by the stream.
+        - close()	    Closes the stream and releases system resources.
+
+
+"File Writer Class"
+    - used to write character data to files
+    - extends OutputStreamWriter and handles characters directly
+    - for writing text files with either the default or a specified encoding.
+    - Works with char, String and char[].
+    - Can open a file in append mode to add content.
+
+    -> Declaration :    public class FileWriter extends OutputStreamWriter
+
+    -> Constructors:    
+        - 1. FileReader(String fileName)
+            Creates a FileWriter for the given file name.
+
+                FileWriter fw = new FileWriter("example.txt");
+
+        - 2. FileWriter(String fileName, boolean append): Creates a FileWriter for a given File. If append 
+                                                            is true, data is added to the end instead of 
+                                                            overwriting.
+                FileWriter fw = new FileWriter("example.txt", true); // append mode
+
+        - 3. FileReader(File file)
+            Creates a FileWriter for a given File. Throws IOException if the file is a directory, cannot 
+                be created, or opened.
+                        File file = new File("example.txt");
+                        FileReader fr = new FileReader(file);
+
+        - 4. FileWriter(File file, boolean append): Creates a FileWriter for a given File. If append is 
+                                                    true, data is added to the end instead of overwriting.
+                    FileWriter fw = new FileWriter(file, true);
+
+        - 5. FileReader(FileDescriptor fdObj)
+            Creates a FileWriter linked to the given file descriptor.
+
+                    FileWriter fw = new FileWriter(FileDescriptor.out);
+
+    -> Methods: 
+        - write(int c)	                                Writes a single character.
+        - write(char[] cBuf)	                        Writes an array of characters.
+        - write(char[] cBuf, int off, int len)	        Writes a portion of a character array.
+        - write(String str)	                            Writes a string.
+        - write(String str, int off, int len)	        Writes a portion of a string.
+        - append(char c)	                            Appends the specified character to the writer.
+        - append(CharSequence csq)	                    Appends the specified character sequence.
+        - append(CharSequence csq, int start, int end)	Appends a subsequence of the specified character 
+                                                            sequence.
+        - flush()	                                    Flushes the writer (forces any buffered characters to 
+                                                            be written).
+        - close()	                                    Closes the writer, flushing it first.
