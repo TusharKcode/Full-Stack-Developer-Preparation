@@ -1,0 +1,47 @@
+The java.io.FileDescriptor class represents an open file, device, or socket handle provided by the 
+    underlying operating system
+    - acts as a bridge between Java I/O streams and native system resources.
+    - Provides low-level access to native file system objects
+    - Commonly used internally by Java I/O streams
+
+    -> Actions: 
+        - read: Grants permission to read the file.
+        - write: Grants permission to modify/write to the file.
+        - delete: Grants permission to delete the file using File.delete().
+        - readlink: Grants permission to read symbolic links.
+        - execute: Grants permission to execute the file.
+
+    -> Declaration :    public final class FileDescriptor extends Object
+
+    -> Constructor:     FileDescriptor fd = new FileDescriptor();
+
+            - FileDescriptor.in: Represents the standard input (keyboard)
+            - FileDescriptor.out: Represents the standard output (console)
+            - FileDescriptor.err: Represents the standard error (error output)
+
+    -> Methods:
+        - void sync(): Ensures that all buffered data is written to the underlying storage device, method 
+                        forces synchronization between system buffers and the physical device.
+                Syntax:     public void sync()
+                Exception:  SyncFailedException
+
+                Ex: FileOutputStream fos = new FileOutputStream("example.txt");
+                    FileDescriptor fd = fos.getFD();
+
+                    System.out.println("Is FileDescriptor valid? " + fd.valid());
+
+                    fos.close();
+                    System.out.println("Is FileDescriptor valid after close? " + fd.valid());
+
+        - java.io.File.valid(): Checks whether the FileDescriptor object is currently valid, returns true 
+                                if the descriptor is associated with an open file or socket.
+                Syntax: public boolean valid()
+                
+                Ex: FileOutputStream fos = new FileOutputStream("syncDemo.txt");
+                    FileDescriptor fd = fos.getFD();
+
+                    fos.write("GeeksForGeeks FileDescriptor Example".getBytes());
+                    fd.sync();  // Ensures data is written to disk
+
+                    System.out.println("Data synchronized successfully.");
+                    fos.close();
