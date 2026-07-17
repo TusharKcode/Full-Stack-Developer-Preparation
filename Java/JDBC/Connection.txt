@@ -1,0 +1,76 @@
+Before performing database operations in Java, a JDBC connection must be established.
+    -> acts as a communication link between the application and the database to send queries and receive 
+        results.
+
+        - Load the appropriate database driver
+        - Specify the database URL
+        - Provide username and password for authentication
+
+    -> Since JDBC 4.0 (Java 6+), drivers are auto-loaded if present in the classpath, so manual loading is 
+        usually unnecessary.
+
+=> Steps to establish JDBC connection:
+    -> Import the JDBC Package - import java.sql.*;
+    -> Load or Register the Driver 
+        - Registration is to be done once in your program.
+        - register a driver in one of two ways:
+            1. Class.forName() : load the driver’s class file into memory at the runtime, No need to create 
+                                    objects
+                                Ex: Class.forName(“oracle.jdbc.driver.OracleDriver”);
+
+            2. DriverManager.registerDriver() : Java inbuilt class with a static member register, call the 
+                                                constructor of the driver class at runtime
+                                Ex: DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver())
+
+    -> Establish a Connection
+                            Connection con = DriverManager.getConnection(url,user,password)
+                            String url = “jdbc:mysql://localhost:3306/testdb”
+        
+        - user: Username from which your SQL command prompt can be accessed.
+        - password: password from which the SQL command prompt can be accessed.
+        - con: It is a reference to the Connection interface.
+        - Url: Uniform Resource Locator which is created as shown below.
+
+    -> Create a Statement 
+        - Statement, PreparedStatement and CallableStatement interfaces define methods that enable you to 
+            send SQL commands and receive data from your database.
+
+                    Statement st = con.createStatement();
+        - In real-world application, recommended to use PreparedStatement or CallableStatement
+
+    -> Execute SQL Query 
+        - The query for updating/inserting a table in a database.
+        - The query for retrieving data.
+
+        - executeQuery(): method of Statement interface, used to execute queries of retrieving values from the 
+                            database
+                        returns the object of ResultSet that can be used to get all the records of a table. 
+
+        - executeUpdate(sql query): method of Statement interface, used to execute queries of updating/inserting
+        
+            Ex: ResultSet rs = stmt.executeQuery("SELECT * FROM students");
+                while (rs.next()) {
+                    System.out.println(rs.getString("name"));
+                }
+
+    -> Close the Connections
+        - objects of Statement and ResultSet will be closed automatically
+        - close() method of the Connection interface is used to close the connection.
+
+                con.close();
+
+        - recommended to use try-with-resources to automatically close resource like Connection, Statement 
+            and ResultSet.
+
+=> Java Program for "MySQL JDBC Connection"
+    Before writing JDBC code, make sure you have:
+
+        1. Database Installed and Running:
+                Install a relational database (e.g., PostgreSQL, MySQL).
+                Create a database and a user.
+
+        2. JDBC Driver (Connector JAR):
+                JDBC requires a driver to connect with the database.
+                Download the JAR or add Maven dependency.
+
+    Ex : 

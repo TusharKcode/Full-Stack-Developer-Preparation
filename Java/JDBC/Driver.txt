@@ -1,0 +1,72 @@
+JDBC drivers enable Java applications to communicate with different databases by converting JDBC calls into 
+    database-specific commands.
+
+    - essential for connecting and interacting with databases.
+    - JDBC classes are available in java.sql and javax.sql packages
+    - Used to connect to databases like MySQL, Oracle, PostgreSQL
+    - Allows executing SQL queries and retrieving results
+
+=> Structure:
+    - shows how a Java application interacts with a database using the JDBC API.
+    - API communicates with the DriverManager, which selects the appropriate driver to establish the 
+        connection.
+    
+    - Application -> JDBC API -> DriverManager Database
+    - DriverManager manages multiple database drivers
+    - Enables connection to databases like MySQL, Oracle, SQL Server
+
+=> Types of JDBC Driver:
+    -> JDBC-ODBC Bridge Driver - Type 1 Driver 
+        - uses ODBC driver to connect to the database
+        - converts JDBC method calls into the ODBC function calls
+        - called Universal driver because it can be used to connect to any of the databases.
+        - driver software is built-in with JDK so no need to install separately.
+        - database independent driver.
+
+        - driver introduces additional layers (JDBC -> ODBC), which increases complexity and may lead to 
+            performance overhead and potential misconfiguration issues
+        - ODBC bridge driver is needed to be installed in individual client machines.
+        - Type-1 driver isn't written in java, that's why it isn't a portable driver.
+        - removed from JDK 8 onwards and is now considered obsolete
+
+        - Best when for development and testing not for production environments due to performance limitations
+
+    -> Native-API Driver - Type 2 Driver ( Partially Java Driver)
+        - uses the client -side libraries of the database
+        - driver converts JDBC method calls into native calls of the database API
+        - to interact with different database, driver needs their local API, data transfer is much more 
+            secure
+        - driver is not fully written in Java that is why it is also called Partially Java driver.
+        - better performance than Type-1 driver due to direct interaction with native database APIs.
+        - Driver needs to be installed separately in individual client machines
+        - Vendor client library needs to be installed on client machine.
+        - isn't a portable driver
+        - database dependent driver.
+        
+        - Best when Type 3 or Type 4 drivers are not available, requires native database libraries on the 
+            client machine.
+
+    -> Network Protocol Driver - Type 3 Driver (Fully Java Driver)
+        - uses middleware (application server) that converts JDBC calls directly or indirectly into the 
+            vendor-specific database protocol
+        - all the database connectivity drivers are present in a single server
+        - no need of individual client-side installation.
+        - portable drivers.
+        - Easy to switch databases
+        - Network support is required on client machine.
+        - Maintenance of Network Protocol driver becomes costly, requires database-specific coding to be done 
+            in the middle tier.
+
+        - Best when application connects to multiple databases, uses middleware server to handle different 
+            database requests
+
+    -> Thin Driver - Type 4 Driver (Fully Java Driver)
+        - called native protocol driver.
+        - driver interact directly with database
+        - does not require any native database library and Middleware server
+        - no client-side or server-side installation.
+        - portable drivers.
+        - If the database changes, a new driver may be needed.
+
+        - Best when working with a single database (like Oracle, MySQL, etc.), for production due to high 
+            performance and direct communication

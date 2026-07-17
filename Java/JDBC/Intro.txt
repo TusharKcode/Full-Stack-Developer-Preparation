@@ -1,0 +1,35 @@
+JDBC (Java Database Connectivity) is a standard Java API that enables Java applications to connect and 
+    interact with relational databases.
+    - provides methods to execute SQL queries, retrieve results
+    - perform database operations such as inserting, updating, and deleting data.
+    - Supports SQL operations such as SELECT, INSERT, UPDATE, and DELETE.
+    - Works with multiple relational databases like MySQL, Oracle, PostgreSQL, and SQL Server.
+    - Uses JDBC drivers to establish communication between Java applications and databases.
+
+=> Architecture:    
+    -> Application : can be a Java application or servlet that communicates with a data source.
+    -> JDBC API : allows Java programs to execute SQL queries and get results from the database
+                    It includes: 
+                        - Interfaces like Driver, ResultSet, RowSet, PreparedStatement, and Connection that 
+                            help manage different database tasks.
+                        - Classes like DriverManager, Types, Blob, and Clob that help manage database 
+                            connections.
+
+    -> Driver Manager : uses database-specific drivers to establish connections between Java applications 
+                        and databases.
+    -> JDBC drivers : adapters that convert requests from Java programs into a protocol that the DBMS can 
+                        understand.
+
+    => 2-tier Architecture: 
+        - Application communicates directly with the database using a JDBC driver
+        - sends queries to the database and then the result is sent back to the application.
+        
+        Ex: client/server setup, the user's system acts as a client that communicates with a remote database 
+            server. 
+                    Client Application (Java) -> JDBC Driver -> Database 
+    
+    => 3-tier Architecture:
+        - user queries are sent to a middle-tier services, which interacts with the database
+        - database results are processed by the middle tier and then sent back to the user.
+
+        Ex: Client Application -> Application Server -> JDBC Driver -> Database
