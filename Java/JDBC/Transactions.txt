@@ -1,0 +1,126 @@
+Transactions in JDBC are used to manage a group of SQL operations as a single unit to ensure data 
+    consistency and reliability
+    - help maintain data integrity by applying all changes together or rolling them back in case of failure.
+    - Groups multiple SQL operations into a single unit of execution
+    - Ensures reliable and controlled database operations
+    - Helps manage changes using commit and rollback mechanisms
+
+=> ACID Properties:
+    -> Atomicity    : Ensures that all operations within a transaction are treated as a single unit 
+                        (all succeed or none). If any part fails, the entire transaction is rolled back.
+    -> Consistency  : Guarantees that the database remains in a consistent state before and after the 
+                        transaction.
+    -> Isolation    : Ensures that transactions are executed independently, without interference from other 
+                        concurrent transactions.
+    -> Durability   : Once a transaction is committed, changes are permanent even in case of a system crash.
+
+=> Auto Commit in JDBC:
+    - By default JDBC Connection is in auto-commit mode, hen every SQL statement is committed to the database upon its completion.
+    - fine for simple applications
+    - Reasons to turn off the auto-commit and manage your own transactions:
+        To increase performance.
+        To maintain the integrity.
+        To use distributed transactions.
+
+=> Manual Transaction Management
+    - manually by turning off auto-commit and using commit() and rollback() methods.
+
+        Ex: Connection conn = DriverManager.getConnection(url, user, password);
+            conn.setAutoCommit(false); // Disable auto-commit
+                                // Execute multiple SQL statements using PreparedStatement
+            conn.commit();      // Commit all changes if successful
+            conn.rollback();    // Rollback if any error occurs
+
+=> Commit & Rollback:
+    - commit() saves all changes made during the transaction to the database.
+             conn.commit( );
+    - rollback() discards all changes made since the last commit, ensuring atomicity.   
+            conn.rollback( );
+
+=> Implementation Example: 
+    Step 1: Create a data base table
+        CREATE DATABASE jdbc_Transaction;
+        USE jdbc_Transaction;
+
+        CREATE TABLE employee(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(100),
+            email VARCHAR(100),
+            Address VARCHAR(100)
+        );
+
+        INSERT INTO employee (name, email, address) VALUES
+        ('John', 'John@example.com', 'Sweden'),
+        ('Sam', 'Sam@example.com', 'New York'),
+        ('Bob', 'Bob@example.com', 'Australia');
+
+    Step 2: Add MySQL JDBC Driver to Your Project (For Maven)
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+
+    Step 3. Create EmployeeTransactionDemo class
+        import java.sql.Connection;
+        import java.sql.DriverManager;
+        import java.sql.PreparedStatement;
+        import java.sql.SQLException;
+
+        public class EmployeeTransactionDemo {
+
+            private static final String url = "jdbc:mysql://localhost:3306/jdbc_Transaction";
+            private static final String user = "root";
+            private static final String pass = "password"; // Change this if needed
+
+            public static void main(String[] args) {
+                Connection conn = null;
+
+                try {
+                    conn = DriverManager.getConnection(url, user, pass);    // Connect to the database
+                    conn.setAutoCommit(false);                              // Start transaction
+
+                    String updateAddress = "UPDATE employee SET Address = ? WHERE name = ?";    // Update John's address
+                    PreparedStatement stmt1 = conn.prepareStatement(updateAddress);
+                    stmt1.setString(1, "USA");
+                    stmt1.setString(2, "John");
+                    stmt1.executeUpdate();
+
+                    String updateEmail = "UPDATE employee SET email = ? WHERE name = ?";    // Update Sam's email
+                    PreparedStatement stmt2 = conn.prepareStatement(updateEmail);
+                    stmt2.setString(1, "sam_updated@example.com");
+                    stmt2.setString(2, "Sam");
+                    stmt2.executeUpdate();
+
+                    conn.commit();  // Commit transaction
+                    System.out.println("Transaction committed successfully.");
+
+                    stmt1.close();  // Close statements
+                    stmt2.close();
+                }
+                catch (SQLException e) {
+                    System.out.println("Error occurred. Rolling back changes");
+                    try {
+                        if (conn != null)
+                            conn.rollback();
+                    }
+                    catch (SQLException rollbackEx) {
+                        rollbackEx.printStackTrace();
+                    }
+                    e.printStackTrace();
+                }
+                finally {
+                    try {               // Close connection
+                        if (conn != null)
+                            conn.close();
+                        System.out.println("Database connection closed.");
+                    }
+                    catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+
+    Step 4: Run Program
+        the console will display a message confirming whether the transaction was committed or rolled back

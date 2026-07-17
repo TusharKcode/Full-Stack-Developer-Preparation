@@ -1,0 +1,39 @@
+Statement objects are used to send SQL commands to a database and process the results.
+
+=> 3 types of statements in JDBC:
+    -> Statement
+        - used for general-purpose access to databases
+        - useful for executing static SQL statements at runtime.
+        
+            Syntax :    Statement statement = connection.createStatement();
+            Methods:
+                - execute(String sql): Executes any SQL (SELECT, INSERT, UPDATE, DELETE). Returns true if a 
+                                        ResultSet is returned.
+                - executeUpdate(String sql): Executes DML (INSERT, UPDATE, DELETE). Returns number of rows 
+                                                affected.
+                - executeQuery(String sql): Executes SELECT queries. Returns a ResultSet.
+
+    -> Prepared Statement
+        - precompiled SQL statement
+        - supports parameters (?) which can be set dynamically, making it faster and safer than Statement
+
+            Syntax :    String query = "INSERT INTO people(name, age) VALUES (?, ?)";
+                        PreparedStatement pStmt = con.prepareStatement(query);
+            Methods:
+                - execute(): returns a boolean value and executes a static SQL statement that is present in 
+                                the prepared statement object
+                - executeUpdate(): returns a ResultSet from the current prepared statement.
+                - executeQuery(): returns the number of rows affected by the DML statements such as INSERT, 
+                                    DELETE & present in the current Prepared Statement.
+
+    -> Callable Statement 
+        - used to execute stored procedures in the database
+        - Stored procedures are precompiled SQL logic stored on the server, often used for complex operations.
+
+            Syntax :    CallableStatement cStmt = con.prepareCall("{call ProcedureName(?, ?)}");
+            Methods:
+                - execute(): Executes the stored procedure and returns a boolean indicating whether the 
+                                result is a ResultSet (true) or an update count (false).
+                - executeUpdate(): Executes a stored procedure that returns a ResultSet.
+                - executeQuery(): Executes a stored procedure that performs an update and returns the number 
+                                    of rows affected.
