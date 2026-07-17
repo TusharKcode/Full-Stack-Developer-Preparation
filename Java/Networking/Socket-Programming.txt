@@ -1,0 +1,48 @@
+Socket programming in Java enables communication between two devices over a network by establishing a 
+    connection between a client and a server using the java.net package.
+    - Uses classes like Socket and ServerSocket to establish communication endpoints.
+    - Supports two-way data exchange between client and server.
+    - used in applications such as chat systems, file transfer, and client-server architectures.
+
+=> Client Side Programming
+    -> Establish a Socket Connection
+        - To connect to another machine we need a socket connection.
+        - means both machines know each other’s IP address and TCP port.
+        - java.net.Socket class is used to create a socket.
+        - First (IP Address os Server), Second (TCP Port number to run server)
+
+        Ex: Socket socket = new Socket(“127.0.0.1”, 5000)
+
+    -> Communication
+        - To exchange data over a socket connection, streams are used for input and output
+        - Input Stream: Reads data coming from the socket.
+        - Output Stream: Sends data through the socket.
+
+        Ex: InputStream input = socket.getInputStream();    // to read data
+            OutputStream output = socket.getOutputStream(); // to send data
+
+    -> Closing the Connection
+        - The socket connection is closed explicitly once the message to the server is sent.
+        
+        
+=> Server Side Programming 
+    -> Establish a Socket Connection 
+        - To create a server application two sockets are needed. 
+        - Server Socket: waits for incoming client requests, listens for connections on a specific port.
+        - Socket: Once a connection is established, the server uses this socket to communicate with the 
+                    client.
+
+    -> Communication
+        - Once the connection is established, you can send and receive data through the socket using streams.
+        - The getOutputStream() method is used to send data to the client.
+
+    -> Close the Connection
+        - Once communication is finished, it's important to close the socket and the input/output streams 
+            to free up resources.
+
+Example while running: 
+    - Compile both of them on two different terminals or tabs
+    - Run the Server program first
+    - Then run the Client program
+    - Type messages in the Client Window which will be received and shown by the Server Window simultaneously.
+    - Type Over to end.
