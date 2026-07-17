@@ -1,0 +1,60 @@
+The Java URL class, available in the java.net package, is used to represent and work with 
+    Uniform Resource Locators (URLs).
+
+    - helps to identify internet resources and access their components such as protocol, host, and path.
+    - Used to locate and access internet resources
+    - Supports protocols like HTTP, HTTPS, and FTP
+
+=> Components of URL:   
+    - Protocol:     "http" is the protocol here.
+    - Host Machine: Name of the machine on which the resource lives (www.google.com)
+    - File Name:    The pathname to the file on the machine.
+    - Port Number:  Port number to which to connect (typically optional).
+
+=> URL Class:
+    - core Java networking class used to access internet-based resources
+    - point to static files, dynamic content, and APIs
+    - Provides constructors to create URL objects
+    - Offers methods to extract different parts of a URL
+
+=> Constructors:
+    -> URL(String address)
+        - creates a URL object from the specified String.
+        - URL url = new URL("https://www.example.com/");
+
+    -> URL(String protocol, String host, String file)
+        - Creates a URL object from the specified protocol, host, and file name.
+        - URL url = new URL("http", "www.example.com", "/path/to/resource");
+
+    -> URL(String protocol, String host, int port, String file)
+        - Creates a URL object from protocol, host, port, and file name.
+        - URL url = new URL("https", "www.example.com", 443, "/path/to/resource");
+
+    -> URL(URL context, String spec)
+        - Creates a URL object by parsing the given spec in the given context. 
+        -   URL baseUrl = new URL("https://www.example.com/");
+            URL relativeUrl = new URL(baseUrl, "/path/to/resource");
+
+    -> URL(String protocol, String host, int port, String file, URLStreamHandler handler)
+        - Creates a URL object from the specified protocol, host, port number, file, and handler.
+        - URL url = new URL("http", "www.example.com", 80, "/path/to/resource", new MyCustomHandler());
+
+    -> URL(URL context, String spec, URLStreamHandler handler)
+        - Creates a URL by parsing the given spec with the specified handler within a specified context.
+        -   URL baseUrl = new URL("https://www.example.com/");
+            URL relativeUrl = new URL(baseUrl, "/path/to/resource", new MyCustomHandler());
+
+=> URL Methods:
+    - getAuthority()	Returns the authority part of URL or null if empty
+    - getDefaultPort()	Returns the default port used
+    - getFile()	        Returns the file name.
+    - getHost()	        Return the hostname of the URL in IPv6 format
+    - getPath()	        Returns the path of the URL, or null if empty
+    - getPort()	        Returns the port associated with the protocol specified by the URL
+    - getProtocol()	    Returns the protocol used by the URL
+    - getQuery()	    Return the query part of the URL, which is the portion following the ? character, 
+                            used to pass parameters to a web application.
+    - getRef()	        Return the reference part of the URL, which is the portion following the # 
+                            character, typically used to navigate to a specific section within a web page.
+    - toString()	    As in any class, toString() returns the string representation of the given URL 
+                            object.
