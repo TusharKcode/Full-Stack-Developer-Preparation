@@ -1,0 +1,55 @@
+SQL operators are symbols or keywords used to perform operations on data in SQL queries.
+    - Perform operations like calculations, comparisons, and logical checks.
+    - Enable filtering, calculating, and updating data in databases.
+    - Essential for query optimization and accurate data management.
+    - 
+
+-> Arithmetic Operators
+    - Symbols: + - * /%
+    - used to perform mathematical operations on numeric data types in SQL queries
+    Ex: 
+        -- Using Arithmetic Operators
+        SELECT
+            EmpName,
+            Salary,
+            Bonus,
+            Salary + Bonus AS Total_Income,          -- Addition
+            Salary - Bonus AS After_Bonus_Deduction, -- Subtraction
+            Salary * 0.10 AS Ten_Percent_Salary,     -- Multiplication
+            Salary / 12 AS Monthly_Salary,           -- Division
+            Salary % 10000 AS Salary_Remainder       -- Modulus
+        FROM Employees;
+
+-> Comparison Operators 
+    - Symbols: = != <> < > <= >= 
+    - used to compare one expression's value to other expressions
+    Ex: -- Using comparison operators
+        SELECT *
+        FROM Students
+        WHERE Marks >= 70;   -- Students who scored 70 or more
+
+-> Logical Operators 
+    - Symbols: AND OR NOT
+    - used to combine or manipulate conditions in SQL queries to retrieve or manipulate data
+    Ex: -- Using logical operators
+        SELECT *
+        FROM Students
+        WHERE Marks >= 70 AND Age >= 18;  -- Both conditions must be true
+
+-> Bitwise Operators
+    - Symbols: & | ^ ~ << >>
+    - used to perform bitwise operations on binary values in SQL queries
+    - manipulating individual bits to perform logical operations at the bit level.
+    Ex: (BitwiseOperator.sql)
+
+-> Compound Operators
+    - Symbols: += -= *= /= %=
+    - combine an operation with assignment
+    - modify the value of a column and store the result in the same column in a single step.
+    Ex: (CompoundOperator.sql)
+
+-> Special Operators
+    - Symbols: BETWEEN ... AND ... IN(...) LIKE IS NULL EXISTS
+    - serve specific functions such as filtering data based on a range, checking for existence, and 
+        comparing sets of values.
+    Ex: (SpecialOperator.sql)
