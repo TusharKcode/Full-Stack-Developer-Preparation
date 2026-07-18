@@ -1,0 +1,28 @@
+SQL wildcard characters are special symbols used to represent one or more unknown characters in a string.
+    - help in searching and filtering text data based on patterns instead of exact matches.
+    - used with the LIKE and NOT LIKE operators to perform flexible searches.
+
+    -> Syntax:  SELECT column1,column2 FROM table_name
+                WHERE column LIKE wildcard_operator;
+
+    -> Types:
+        - %: Represents zero or more characters.
+        - _: Represents exactly one character.
+        - [ ]: Represents a range of characters, used to match any single character within the range.
+        - [ ] with ^ or !: Matches any character that is NOT in the specified range.
+ 
+    -> Using the % Wildcard
+        - used to substitute for zero or more characters
+        - flexible & used for matching partial strings.
+
+    -> Using the _ Wildcard
+        - used to substitute for exactly one character
+        - useful when we know part of the string but need to match one specific unknown character.
+
+    -> Using the [ ] Wildcard
+        - used to match a single character from a specified set or range of characters.
+        - useful for searching values that contain characters from a defined group.
+
+    -> Combining Both % and _ Wildcard
+        - to create more accurate search patterns
+        - % matches many characters and _ matches one, helping filter data more precisely.
