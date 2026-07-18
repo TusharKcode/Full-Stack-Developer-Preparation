@@ -1,0 +1,27 @@
+SQL comments are written inside SQL code to help developers understand what the code is doing.
+    - not executed by the database and are used to explain queries
+
+    - Make the code more readable and easier to maintain.
+    - Allow developers to temporarily disable parts of a query for testing or debugging.
+
+=> Types: 
+    -> Single-line comments
+        - used for short explanations in SQL and start with --
+            Syntax : -- single line comment
+            Query : SELECT * FROM Students;  -- This gets all student records
+
+    -> Multi-line comments
+        - used for longer notes or multiple lines of SQL code, enclosed between /* and */.
+            Syntax : /* multi line comment
+                        another comment */
+            Query : SELECT * FROM orders WHERE YEAR(order_date) = 2022;  
+                    /* This query retrieves all orders
+                    that were placed in the year 2022 */
+
+    -> In-line comments
+        - used to add brief notes within an SQL statement, enclosed between /* and */.
+            Syntax : SELECT * FROM Customers; /* Fetching all customer records */
+            Query : SELECT 
+                        customer_name,  -- Name of the customer
+                        order_date      -- Date when the order was placed
+                    FROM orders;
