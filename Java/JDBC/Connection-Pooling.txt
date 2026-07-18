@@ -1,0 +1,23 @@
+A technique to reuse existing database connections instead of creating new ones for each request.
+    -> When an application needs to perform a database operation:
+        - It borrows a connection from the pool.
+        - Uses it for queries/updates.
+        - Returns it to the pool for reuse.
+
+    -> Prerequisites
+        - Database setup (e.g., MySQL)
+        - JDBC driver (Connector/J for MySQL)
+        - Connection Pooling Library (e.g., HikariCP)
+        - Java development environment (JDK + IDE like Eclipse/IntelliJ)
+        - Project configuration with dependencies
+
+=> Steps to handle Connection Pooling:
+    -> Step 1: Create a Table in Your Database
+    -> Step 2: Set Up Project in Eclipse IDE
+        - Open Eclipse IDE. Create one Java project and name it as JDBCWithHikariCP.
+        - Add HikariCP Dependency to the Java project.
+        - Create two Class files in a Java project and name it as ConnectionManager and Main respectively.
+
+    -> Step 3: Implement the Code
+    -> Step 4: Use ConnectionManager in Main Class
+    -> Step 5: Run the Code
