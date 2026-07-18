@@ -1,0 +1,30 @@
+DatabaseMetaData is an interface in Java Programming, and it is part of JDBC also.
+    - used to obtain information about the database, including its structure, properties, and supported 
+        features.
+    - Retrieves details like database name, version, and driver information.
+    - Provides information about tables, columns, primary keys, and foreign keys.
+    - Helps determine supported SQL syntax and database capabilities.
+
+        DatabaseMetaData metaData = con.getMetaData();
+
+=> Programs to Extract Database Metadata using JDBC:
+    -> Database product name and version:
+        - Retrieve the database product name using the DatabaseMetaData object
+        - provides the getDatabaseProductName() method to access this information.
+        - database product version by using getDatabaseProductVersion() from DatabaseMetaData. 
+
+    -> Driver name and version:
+        - Get the database driver name using the DatabaseMetaData interface
+        - provides the getDriverName() method to retrieve and display the driver information.
+        - provides the getDriverVersion() method to get and display the driver version information.
+
+    -> Connection and user information:
+        - getConnection() method helps access the connection object and related information like the JDBC 
+            driver.
+        - getUserName() method returns the name of the current database user.
+
+    -> Database URL details:
+        - getURL() method provides details like host name, database name, and port number.
+
+    -> Supported date and time functions:
+        - getDateTimeFunctions() method returns the list of available functions.
