@@ -1,0 +1,105 @@
+SQL commands are fundamental building blocks used to perform given operations on database. 
+    - include queries of data
+    - Creating a table, adding data to tables, dropping the table, modifying the table and setting 
+        permissions for users
+
+    Terms:
+        - Database:         A collection of organized data.
+        - Table:            Stores data in rows and columns.
+        - Row (Record):     A single entry in a table.
+        - Column (Field):   An attribute of the data.
+        - Primary Key:      Uniquely identifies each record.
+        - Query:            A request to access or modify data.
+        - Constraint:       Rules applied to ensure valid data.
+
+=> Commands:
+    -> DDL - Data Definition Language
+        - used for defining, altering and deleting database structures such as tables, indexes and schemas
+        - used to create and modify the structure of database objects in the database
+        
+        CREATE	    Create database or its objects (table, index,       CREATE TABLE table_name (column1 
+                    function, views, stored procedure and triggers)	    data_type, column2 data_type, ...);
+
+        DROP	    Delete objects from the database	                DROP TABLE table_name;
+        ALTER	    Alter the structure of the database	                ALTER TABLE table_name ADD COLUMN 
+                                                                        column_name data_type;
+
+        TRUNCATE	Remove all records from a table, including all      TRUNCATE TABLE table_name;
+                    spaces allocated for the records are removed	
+        COMMENT	    Add comments to the data dictionary	                COMMENT ON TABLE table_name IS 
+                                                                        'comment_text';
+        RENAME	    Rename an object existing in the database	        RENAME TABLE old_table_name TO 
+                                                                        new_table_name;
+
+    -> DQL - Data Query Language
+        - used to fetch data from the database
+        - main command is SELECT, which retrieves records based on the query
+        - returned as a result set (a temporary table) that can be viewed or used in applications.
+        - Other terms like FROM, WHERE, GROUP BY, HAVING, ORDER BY, DISTINCT and LIMIT are clauses of SELECT,
+            not separate commands.
+
+        SELECT      It is used to retrieve data from the    SELECT column1, column2, ...FROM table_name 
+                        database                                WHERE condition;
+
+        FROM        Indicates the table(s) from which to    SELECT column1 FROM table_name;
+                        retrieve data.
+
+        WHERE       Filters rows before any grouping or     SELECT column1 FROM table_name WHERE condition;
+                        aggregation
+        
+        GROUP BY    Groups rows that have the same values   SELECT column1, AVG_FUNCTION(column2) FROM
+                        in specified columns.                   table_name GROUP BY column1;
+         
+        HAVING      Filters the results of GROUP BY         SELECT column1, AVG_FUNCTION(column2) FROM
+                                                                table_name GROUP BY column1 HAVING condition;
+
+        DISTINCT    Removes duplicate rows from the         SELECT DISTINCT column1, column2, ...
+                        result set                              FROM table_name;
+
+        ORDER BY    Sorts the result set by one or          SELECT column1 FROM table_name ORDER BY
+                        more columns                            column1 [ASC | DESC];
+
+        LIMIT       Used to restrict the number of          SELECT * FROM table_name LIMIT number;
+                    rows returned in a SELECT query
+                    (commonly supported in MySQL and 
+                        PostgreSQL).
+
+    -> DML - Data Manipulation Language 
+        - used to manipulate the data stored in database tables
+        - can insert new records, update existing ones, delete unwanted data or retrieve information.
+        
+        INSERT	    Insert data into a table	    INSERT INTO table_name (column1, column2, ...) VALUES 
+                                                        (value1, value2, ...);
+        UPDATE	    Update existing data within     UPDATE table_name SET column1 = value1, column2 = value2 
+                        a table	                        WHERE condition;
+        DELETE	    Delete records from a database  DELETE FROM table_name WHERE condition;
+                        table	
+
+    -> DCL - Data Control Language
+        - includes commands such as GRANT and REVOKE which mainly deal with the rights, permissions and other 
+            controls of the database system.
+        - used to control access to data in the database by granting or revoking permissions.
+
+        GRANT       Assigns new privileges to a user account,   GRANT privilege_type [(column_list)] ON 
+                    allowing access to specific database            [object_type] object_name TO user 
+                    objects, actions or functions.                  [WITH GRANT OPTION];
+
+        REVOKE      Removes previously granted privileges       REVOKE [GRANT OPTION FOR] privilege_type 
+                    from a user account, taking away their          [(column_list)] ON [object_type] 
+                    access to certain database objects or           object_name FROM user [CASCADE];
+                    actions.
+
+    -> TCL - Transaction Control Language
+        - group a set of tasks into a single execution unit
+        - Each transaction begins with a specific task and ends when all the tasks in the group are 
+            successfully completed
+        - If any of the tasks fail, transaction fails. 
+        - only two results: success or failure.
+        
+        BEGIN TRANSACTION	Starts a new transaction	          BEGIN TRANSACTION [transaction_name];
+        COMMIT	            Saves all changes made during         COMMIT;
+                                the transaction	
+        ROLLBACK	        Undoes all changes made during        ROLLBACK;
+                                the transaction	
+        SAVEPOINT	        Creates a savepoint within the        SAVEPOINT savepoint_name;
+                                current transaction	
