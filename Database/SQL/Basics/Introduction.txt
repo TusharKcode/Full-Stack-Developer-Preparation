@@ -1,0 +1,31 @@
+Structured Query Language (SQL) is the standard language used to interact with relational databases.
+    - Allows users to store, retrieve, update and manage data efficiently through simple commands.
+    - Known for its user-friendly syntax and powerful capabilities, SQL is widely used across industries.
+    - Supports advanced features like PL/SQL, T-SQL and stored procedures.
+    - Can manage both small and large amounts of data.
+
+=> Components of a SQL System
+    - Database:                 A structured collection of data stored in tables with rows and columns.
+    - Tables:                   Store data and apply rules to keep it accurate and consistent.
+    - Indexes:                  Help the database find data faster without scanning the whole table.
+    - Views:                    Virtual tables created from SELECT queries for easy access to data.
+    - Stored Procedures:        Pre-saved SQL code that runs tasks and improves performance and security.
+    - Transactions:             Group of SQL actions that either all succeed or all fail to keep data safe.
+    - Security & Permissions:   Control who can view, change or manage database data.
+    - Joins:                    Combine data from different tables based on relationships.
+
+=> Rules:
+    - Semicolon (;)
+    - Case-Insensitive
+    - Whitespace
+    - Reserved Words
+
+    -> Comments:
+        Single-line: -- comment
+        Multi-line: /* comment */
+
+    -> Data Constraints: Use NOT NULL, UNIQUE, PRIMARY KEY, etc., to ensure data accuracy.
+    -> String Values: Enclose strings in single quotes ('text').
+        - We Start with a letter.
+        - We can only use Max 30 characters.
+        - We only use letters, numbers and underscores (_).

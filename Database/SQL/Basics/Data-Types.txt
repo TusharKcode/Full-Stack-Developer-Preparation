@@ -1,0 +1,68 @@
+In SQL, each column must be assigned a data type that defines the kind of data it can store, such as 
+    integers, dates, text or binary values.
+
+    -> Numeric Data Types
+        - used to store integer and decimal values
+        - support mathematical operations
+        - used for financial, scientific and analytical data
+        
+        - Exact numeric types are used when precise numeric values are needed, such as for financial data, 
+            quantities and counts. 
+
+            BIGINT	    Large integer numbers	                                -9,223,372,036,854,775,808 
+                                                                                to 9,223,372,036,854,775,807
+            INT	        Standard integer values	                                -2,147,483,648 to 2,147,483,647
+            SMALLINT	Small integers	                                        -32,768 to 32,767
+            TINYINT	    Very small integers	                                    0 to 255
+            DECIMAL	    Exact fixed-point numbers (e.g., for financial values)	-10^38 + 1 to 10^38 - 1
+            NUMERIC	    Similar to DECIMAL, used for precision data	            -10^38 + 1 to 10^38 - 1
+
+        - Approximate Numeric Datatype used to store approximate values, such as scientific measurements or 
+            large ranges of data that don't need exact precision.
+
+            FLOAT	Approximate numeric values	                -1.79E+308 to 1.79E+308
+            REAL	Similar to FLOAT, but with less precision	-3.40E+38 to 3.40E+38
+
+        CHAR	        Stores fixed-length non-Unicode characters with a maximum length of 8000 characters
+        VARCHAR	        Stores variable-length non-Unicode characters with a maximum length of 8000 
+                            characters
+        VARCHAR(MAX)	Stores variable-length non-Unicode data with a maximum size of 2³¹ − 1 characters 
+                            (introduced in SQL Server 2005)
+        TEXT	        Stores variable-length non-Unicode data with a maximum size of 2,147,483,647 characters
+
+    -> Character and String Data Types
+        - used to store text or character-based data
+        - choice between fixed-length and variable-length data types depends on the nature of your data
+        - Unicode Character String Data Types used to store characters from any language, supporting a wider 
+            variety of characters.
+
+            Nchar         The maximum length of 4000 characters(Fixed-Length Unicode Characters)
+            Nvarchar      The maximum length of 4000 characters.(Variable-Length Unicode Characters)
+            Nvarchar(max) The maximum length of 2^31 - 1 characters(SQL Server 2005 only). (Variable Length 
+                            Unicode data)
+
+    -> Date and Time Data Type
+        - for storing date and time information
+        - managing timestamps, events and time-based queries
+
+            DATE        Stores the data of date (year, month, day)                              3 Bytes
+            TIME        Stores the data of time (hour, minute,second)                           3 Bytes
+            DATETIME    Stores both the data and time (year, month, day, hour, minute, second)  8 Bytes
+
+    -> Binary Data Types
+        - used to store binary data such as images, videos or other file types
+
+            Binary	    Fixed-length binary data.	    8000 bytes
+            VarBinary	Variable-length binary data.	8000 bytes
+            Image	    Stores binary data as images.	2,147,483,647 bytes
+
+    -> Boolean Data Type
+        - store logical values such as TRUE and FALSE
+        - In SQLite, these values are typically represented using integers
+        - 1 represents TRUE
+        - 0 represents FALSE
+
+    -> Special Data Types
+        - XML Data Type: Used to store XML data and manipulate XML structures in the database
+        - Spatial Data Type (Geometry): stores planar spatial data, such as points, lines and polygons, in a 
+            database table.
