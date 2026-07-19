@@ -1,0 +1,64 @@
+The SQL INSERT INTO statement is used to add new records into a table.
+    - allows inserting data into all columns or specific ones, depending on the requirement.
+    - Can insert a single row or multiple rows at once.
+    - Supports inserting data directly or from another table using a subquery.
+
+    1. Inserting Data into All Columns
+        Syntax:     INSERT INTO table_name VALUES (value1, value2, value3, ...); 
+
+        Ex:         INSERT INTO Student (ROLL_NO, NAME, ADDRESS, PHONE, AGE) 
+                    VALUES  (1, 'Liam', 'New York', 'xxxxxxxxxx', 18),
+                            (2, 'Sophia', 'Berlin', 'xxxxxxxxxx', 18),
+                            (3, 'James', 'Tokyo', 'xxxxxxxxxx', 20),
+                            (4, 'Carlos', 'Tokyo', 'xxxxxxxxxx', 18);
+
+    2. Inserting Data into Specific Columns
+        Syntax:     INSERT INTO table_name (column1, column2, column3, ...)
+                    VALUES (value1, value2, value3, ...); 
+
+        Ex:         INSERT INTO Student (ROLL_NO, NAME, AGE) 
+                    VALUES (6, 'Nick', 19);
+
+    3. Inserting Multiple Rows at Once
+        Syntax:     INSERT INTO table_name (column1, column2, ...)
+                    VALUES (value1, value2, ...), (value1, value2, ...), (value1, value2, ...);
+
+        Ex:         INSERT INTO Student (ROLL_NO, NAME, ADDRESS, PHONE, AGE) 
+                    VALUES  (7, 'Mat Garcia', 'Madrid', 'xxxxxxxxxx', 15),
+                            (8, 'Bo Suzuki', 'Osaka', 'xxxxxxxxxx', 18),
+                            (9, 'Oliver Jensen', 'Copenhagen', 'xxxxxxxxxx', 17),
+                            (10, 'Amelia Brown', 'London', 'xxxxxxxxxx', 17);
+    
+    4. Inserting Data from One Table into Another Table
+        Syntax:     1. INSERT INTO target_table SELECT * FROM source_table;
+                    2. INSERT INTO target_table (col1, col2, ...) SELECT col1, col2, ... FROM source_table;
+                    3. INSERT INTO target_table SELECT * FROM source_table WHERE condition;
+
+        Ex:         1. INSERT INTO Student SELECT * FROM OldStudent;
+                    2. INSERT INTO Student (Name, Age) SELECT Name, Age FROM OldStudent;
+                    3. INSERT INTO Student SELECT * FROM OldStudent WHERE Age > 20;
+
+=> Using INSERT INTO ... SELECT for Inserting Multiple Rows
+    - used to insert multiple rows into a table by selecting data from another table or query result
+    - used when copying, filtering, or transforming data before insertion.
+    - Transfers data from one table to another without manually writing values.
+    - Allows inserting only selected or condition-based records into the target table.
+    - The number of values in each row must match the number of specified columns, otherwise the query will 
+        result in an error.
+
+    Ex: INSERT INTO Employees (EmployeeID, EmployeeName, Age, Department)
+        SELECT EmployeeID, EmployeeName, Age, Department FROM NewEmployees WHERE Age > 30;
+
+=> Inserting Data Using Transactions
+    - When inserting large amounts of data, you can use SQL transactions to ensure that all rows are 
+        inserted correctly.
+    - A transaction groups multiple SQL operations into a single unit, so if one operation fails, the 
+        entire transaction is rolled back.
+
+    Ex: BEGIN TRANSACTION;
+            INSERT INTO Employees (EmployeeID, EmployeeName, Age, Department)
+            VALUES (10, 'Jack Brown', 29, 'HR');
+            
+            INSERT INTO Employees (EmployeeID, EmployeeName, Age, Department)
+            VALUES (11, 'Amelia Wilson', 34, 'Finance');
+        COMMIT;
