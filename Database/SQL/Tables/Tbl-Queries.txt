@@ -1,0 +1,113 @@
+=> CREATE
+    - CREATE TABLE statement in SQL is used to define a new table in a database.
+    - table structure including column names and their data types.
+    - can also define constraints like NOT NULL, UNIQUE and DEFAULT.
+    
+        Syntax:  CREATE TABLE table_name(
+                        Column1 datatype (size),
+                        column2 datatype (size),
+                        .
+                        .
+                    columnN datatype(size));
+
+        Ex: CREATE TABLE Customer(
+                CustomerID INT PRIMARY KEY,
+                FirstName VARCHAR(50),
+                LastName VARCHAR(50),
+                Country VARCHAR(50),
+                Age INT CHECK (Age >= 0 AND Age <= 99),
+                Phone int(10)
+            );
+
+    -> Create Table from Existing Table
+        - CREATE TABLE ... AS SELECT does NOT copy constraints, indexes or keys
+
+        Syntax:     CREATE TABLE new_table_name AS
+                    SELECT column1, column2, ...
+                    FROM existing_table_name
+                    WHERE ...;
+
+        Ex: CREATE TABLE SubTable AS
+            SELECT CustomerID, CustomerName
+            FROM customer;
+
+
+=> DROP
+    - permanently removes a table from the database.
+    - Deletes all rows and dependent objects, including indexes, constraints and triggers.
+    - Recovery is possible only through a backup or database recovery mechanism.
+    - Using DROP TABLE IF EXISTS prevents errors by ensuring the table is dropped only if it exists.
+
+    Syntax:     DROP TABLE table_name
+                DROP TABLE IF EXISTS categories;
+    
+=> RENAME (ALTER)
+    - structural change required during database maintenance or schema updates
+    - provides the ALTER TABLE command to rename tables without affecting existing data.
+
+    Syntax: 1. Renaming a Table:                ALTER TABLE table_name
+                                                RENAME TO new_table_name;
+            2. Renaming a Column:               ALTER TABLE table_name
+                                                RENAME COLUMN old_column_name TO new_column_name;
+            3. Adding a New Column:             ALTER TABLE table_name
+                                                ADD column_name datatype;
+            4. Modifying a Column Data Type:    ALTER TABLE table_name
+                                                MODIFY COLUMN column_name new_datatype; 
+    Additional Use Cases: 
+        1. Removing a Column:   ALTER TABLE Student_Details
+                                DROP COLUMN marks;
+
+        2. Changing a Column's Default Value:   ALTER TABLE Student_Details
+                                                ALTER COLUMN age SET DEFAULT 18;
+
+        3. Renaming a Table or Column in Different Databases:
+            (MySQL/MariaDB):    ALTER TABLE Student
+                                CHANGE COLUMN old_column_name new_column_name datatype;
+
+            (Oracle):   ALTER TABLE Student 
+                        RENAME COLUMN old_column_name TO new_column_name;
+
+=> TRUNCATE
+    - used to remove all records from a table while preserving its structure.
+    - useful when working with large tables.
+    - Executes faster than DELETE because it does not log individual row deletions.
+    - operation cannot be rolled back once executed.
+
+    Syntax:  TRUNCATE TABLE table_name;
+
+=> COPY
+    - Cloning or copying a table in SQL is used to create a duplicate of an existing table for various purposes.
+    - Helps create backup copies of important data.
+    - Allows testing and analysis without affecting the original table.
+
+    Methods: 
+        -> Simple Cloning:  
+            - clone table creates a copy of the original table’s structure and data,
+            - constraints like primary keys, unique keys, and auto-increment properties are not preserved.
+            - Reapply them manually after cloning if needed.
+            
+            Syntax: CREATE TABLE clone_table SELECT * FROM original_table;
+
+            Ex: CREATE TABLE STUDENT_COPY AS SELECT * FROM STUDENT;
+                SELECT * FROM STUDENT_COPY;
+
+        -> Deep Cloning:    
+            - creates a copy of a table along with all its data, preserving both the structure and records 
+                of the original table.
+
+            Syntax: CREATE TABLE clone_table LIKE original_table;
+                    INSERT INTO clone_table SELECT * FROM original_table;
+
+            Ex: CREATE TABLE STUDENT_DEEP_CLONE LIKE STUDENT;
+                INSERT INTO STUDENT_DEEP_CLONE SELECT * FROM STUDENT;
+                SELECT * FROM STUDENT_DEEP_CLONE;
+
+        -> Shallow Cloning: 
+            - creates a new table with the same structure as the original table but without copying any data
+            - preserves constraints such as primary keys, unique keys, indexes, and auto-increment settings.
+            - It does not copy all properties (like triggers, foreign keys, permissions, metadata)
+
+            Syntax: CREATE TABLE clone_table  LIKE original_table;
+
+            Ex: CREATE TABLE STUDENT_SHALLOW_CLONE LIKE STUDENT;
+                SELECT * FROM STUDENT_SHALLOW_CLONE; 

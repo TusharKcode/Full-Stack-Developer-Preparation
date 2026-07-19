@@ -1,0 +1,181 @@
+=> TEMP
+    - temporary table in SQL is a special table used to store data temporarily during query execution.
+    - helps hold intermediate results without affecting permanent tables
+    - Stored in the system’s temporary database (like TempDB in SQL Server).
+    - Automatically deleted when the session or transaction ends.
+    - Useful for calculations or data processing without changing permanent data.
+    
+    Syntax: 
+        - To Create a Temporary Table:  CREATE TABLE EmpDetails (id INT, name VARCHAR(25)) 
+        - To Insert Values Into Temporary Table  :  INSERT INTO EmpDetails VALUES (01, 'James'), (02, 'Mike') 
+        - To Select Values from the Temporary Table:    SELECT * FROM EmpDetails 
+
+    Types: 
+        -> Local Temporary Table : used to store intermediate data during query execution or processing.
+                                    created using a single # prefix (e.g., #TempTable).
+                Ex: CREATE PROCEDURE ProcTemp
+                    AS
+                    BEGIN
+                                                -- Added '#' prefix to make it a local temporary table
+                        CREATE TABLE #EmpDetails (
+                            EmpID INT,
+                            EmpName VARCHAR(50)
+                        );
+                        
+                        INSERT INTO #EmpDetails (EmpID, EmpName)
+                        VALUES (1, 'Sam'), (2, 'Steve');
+
+                        SELECT * FROM #EmpDetails;
+                    END;
+                    GO
+
+                    EXEC ProcTemp;
+
+        -> Global Temporary Table: used to store temporary data that can be shared across multiple operations.
+                                    created using a double ## prefix (e.g., ##TempTable).
+                Ex: CREATE TABLE #EmpDetails (
+                        EmpID INT,
+                        EmpName VARCHAR(50)
+                    );
+
+=> ALTER
+    - used to modify an existing table’s structure without deleting it.
+    - helps update the design of a database as requirements change.
+    - Can add, delete or modify columns in a table.
+    - Can also rename a table or change data types and constraints.
+    - Useful for adjusting database structure without losing data.
+
+    Syntax :    ALTER TABLE table_name [ADD | DROP | MODIFY] column_name datatype;
+
+    Use Cases: 
+        -> ADD : used to add a new column to an existing table.
+            Syntax :    ALTER TABLE table_name ADD column_name datatype;
+            Ex:         ALTER TABLE Staff ADD Email VARCHAR(100);
+
+        -> MODIFY: (or ALTER COLUMN in some databases like SQL Server) clause is used to modify the 
+                    definition of an existing column, such as changing its data type or size.
+                
+            Syntax :    ALTER TABLE table_name MODIFY COLUMN column_name datatype;
+            Ex:         ALTER TABLE Staff MODIFY COLUMN Address VARCHAR(100);
+
+        -> DROP: allows you to remove a column from a table
+            Syntax :    ALTER TABLE table_name DROP COLUMN column_name;
+            Ex:         ALTER TABLE Staff DROP COLUMN Grade;
+
+        -> RENAME: change the name of a column while preserving its data type and content.
+            Syntax :    ALTER TABLE table_name RENAME COLUMN old_name TO new_name;
+            Ex:         ALTER TABLE Staff RENAME COLUMN Name TO EmployeeName;
+
+        -> RENAME TO: rename an entire table using the RENAME TO clause while preserving its structure and data.
+            Syntax :    ALTER TABLE table_name RENAME TO new_table_name;
+            Ex:         ALTER TABLE Staff RENAME RENAME TO Employees;
+
+=> Auto Increment
+    - used to automatically generate unique values for a column usually a primary key,
+    - Support databases like SQL Server, MySQL, PostgreSQL, MS Access and Oracle.
+
+    1. SQL Server Auto Increment
+        - implemented using the IDENTITY property, automatically generates unique values for new records.
+        - starting_value: The value from which numbering begins (e.g., 101).
+        - increment_value: The amount by which the value increases for each new record (e.g., 1).
+
+        Ex: CREATE TABLE Students(
+                Student_ID int IDENTITY(101, 1) PRIMARY KEY, 
+                First_Name varchar(255),
+                Last_Name varchar(255)
+            );
+            INSERT INTO Students(First_Name, Last_Name ) 
+            VALUES ('John', 'Jain');
+
+    2. MySQL Auto Increment
+        - used to set a column as Auto Increment.
+        - By default, the counter starts at 1 and increases by 1 for each new row inserted.
+        - To change the default starting value we can use ALTER TABLE command as follows:
+            ALTER TABLE Students AUTO_INCREMENT = new_value;
+        
+        - Adjusting the Increment Interval: SET @@auto_increment_increment = new_interval_value;
+
+        Ex: CREATE TABLE Students(
+                Student_ID int AUTO_INCREMENT PRIMARY KEY, 
+                First_Name varchar(255),
+                Last_Name varchar(255)
+            ); 
+            INSERT INTO Students(First_Name, Last_Name ) 
+            VALUES ('Sam', 'Jones');
+    
+    3. PostgreSQL Auto Increment
+        - SERIAL keyword is used for auto-incrementing a column
+        - shorthand for creating an integer column that automatically increments.
+        
+        Ex: CREATE TABLE Students(
+                Student_ID int SERIAL PRIMARY KEY, 
+                First_Name varchar(255),
+                Last_Name varchar(255)
+            ); 
+            INSERT INTO Students(First_Name, Last_Name ) 
+            VALUES ('Sam', 'Jones');
+
+    4. MS Access Auto Increment
+        - AUTOINCREMENT keyword is used to define a column that automatically generates unique numeric values
+        - default value starts at 1 and increments by 1.
+        - Changing Auto Increment Starting Value: AUTOINCREMENT(starting_value, increment_value)
+        
+        Ex: CREATE TABLE Students(
+                Student_ID int AUTOINCREMENT PRIMARY KEY, 
+                First_Name varchar(255),
+                Last_Name varchar(255)
+            ); 
+            INSERT INTO Students(First_Name, Last_Name ) 
+            VALUES ('Sam', 'Jones');
+
+    5. Oracle Auto Increment
+        - auto-increment is implemented using a SEQUENCE object,
+        - generates a series of unique numbers for primary key values.
+        - To insert a new record into the Students table, use the NEXTVAL function to get the next value 
+            from the seq_students sequence. 
+
+        Syntax: CREATE SEQUENCE sequence_name
+                MINVALUE 1
+                START WITH 1
+                INCREMENT BY 1
+                CACHE 10; 
+        
+        Ex: CREATE SEQUENCE seq_students
+            MINVALUE 1
+            START WITH 101
+            INCREMENT BY 1
+            CACHE 20; 
+
+            INSERT INTO Students(Student_ID, First_Name, Last_Name)
+            VALUES (seq_students.nextval, 'Deeksha', 'Jain');
+
+=> Sequences
+    - used to generate unique numbers automatically for things like primary keys and IDs. 
+    - Customized using START, INCREMENT, MIN and MAX.
+    - Sequence values are not reused, even after rollback.
+    - When creating a sequence, we set the start value, increment and limits. It can also restart (cycle) 
+        when it reaches the maximum.
+    - CACHE stores sequence values in memory to improve performance and reduce disk access.
+
+    Syntax: CREATE SEQUENCE sequence_name
+            START WITH initial_value
+            INCREMENT BY increment_value
+            MINVALUE min_value
+            MAXVALUE max_value
+            CYCLE | NOCYCLE;
+
+    Ex: In Ascending Order: 
+                            CREATE SEQUENCE sequence_1
+                            start with 1
+                            increment by 1
+                            minvalue 0
+                            maxvalue 100
+                            cycle;
+
+        In Descending Order:
+                            CREATE SEQUENCE sequence_2
+                            start with 100
+                            increment by -1
+                            min value 1
+                            max value 100
+                            cycle;
