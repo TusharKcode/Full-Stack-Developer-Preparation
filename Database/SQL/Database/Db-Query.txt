@@ -1,0 +1,65 @@
+=> CREATE Database
+
+    To create a new database in MySQL, we use CREATE DATABASE command followed by the database name. 
+        - Database names cannot contain spaces; if needed, an underscore (_) can be used instead.
+
+        Syntax: CREATE DATABASE database_name;
+
+        - If you try to create a database with a name that already exists, error occurs.
+            To avoid this, either choose a new name or use IF NOT EXISTS clause to only create database if it 
+            doesn't already exist.
+
+        Syntax: CREATE DATABASE IF NOT EXISTS database_name;
+
+    -> Verifying Database Creation - SHOW DATABASES;
+
+    -> Switching to a Database (USE Command) - USE database_name;
+
+    -> Deleting a Database - DROP DATABASE database_name;
+        - Once dropped, all data inside the database will be lost permanently.
+
+=> SELECT Database
+
+    The USE DATABASE statement in SQL sets a specific database as the default for the current session.
+        - helps users run queries and manage objects within that selected database.
+        - Supported by MySQL and SQL Server.
+
+        Syntax: USE database_name;
+
+    -> The SELECT statement in SQL is used to query and retrieve data from the tables within the selected 
+        database.
+
+        -> Basic SELECT Statement   : SELECT * FROM Employees;
+            - used to retrieve all columns and rows from a table.
+
+        -> Selecting Specific Columns   : SELECT name, age FROM Employees;
+            - select specific columns instead of retrieving all columns.
+
+=> Rename Database
+
+    Renaming a database in SQL Server is done to update or change the database name without affecting its 
+        data or structure
+
+    -> Issues to check before renaming database
+        - Ensure you have admin or required privileges.
+        - Close all active connections before renaming.
+        - Follow DBMS naming conventions and avoid reserved words.
+
+    -> Query:   ALTER DATABASE old_database_name
+                MODIFY NAME = new_database_name;
+
+        Ex:     ALTER DATABASE Test MODIFY NAME = Example;
+
+=> SQL DROP Database
+
+    - permanently deletes a database and all its objects such as tables, views, indexes and stored 
+        procedures from the DBMS
+
+    - action is irreversible, important to back up the database beforehand
+    - Only users with administrative privileges can execute it.
+    - A database can be dropped in any state offline, read-only or suspect.
+    - Dropping a snapshot deletes it along with its associated sparse files.
+
+    - use the IF EXISTS clause, which will delete the database only if it exists in the system.
+
+    -> Syntax:  DROP DATABASE IF EXISTS Database_Name;
