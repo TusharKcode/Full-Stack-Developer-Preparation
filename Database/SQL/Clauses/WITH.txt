@@ -1,0 +1,52 @@
+The SQL WITH clause (Common Table Expression or CTE) defines a temporary result set that can be used within 
+    a query.
+    or modify only the required records.
+    
+    - WITH:         Starts the CTE definition, creating a temporary result set. 
+    - QueryName:    User-defined name to reference the CTE later. 
+    - AS:           Connects the CTE name with its subquery. 
+    - ( ) :         Encloses the subquery (e.g., a SELECT statement). 
+    - Subquery:     Provides data for the CTE, improving readability and reuse. 
+    - Flow:         Syntax , WITH QueryName AS (Subquery) followed by the main query. 
+
+    Syntax: WITH cte_name (column1, column2, ...)
+            AS (
+                SELECT column1, column2, ...
+                FROM table_name
+                WHERE condition
+            )
+            SELECT * FROM cte_name;
+
+    Examples:
+        -> Finding Employees with Above-Average Salary
+            
+            WITH AvgSalaryCTE (averageValue) AS (
+                SELECT AVG(Salary) FROM Employees
+            )
+            SELECT EmployeeID, Name, Salary FROM Employees 
+            WHERE Salary > (SELECT averageValue FROM AvgSalaryCTE);
+
+        -> Finding Employees with the Lowest Salary
+
+            WITH MinSalaryCTE (min_salary) AS (
+                SELECT MIN(Salary) FROM Employees       -- 1. Calculate the single lowest salary value
+            )
+            SELECT e.EmployeeID, e.Name,  e.Salary 
+            FROM Employees e WHERE e.Salary = (SELECT min_salary FROM MinSalaryCTE);
+
+=> Nested (Chained) WITH Clauses
+    - defines multiple Common Table Expressions (CTEs) within a single query where a later CTE references 
+        the result of a previous CTE
+    - break down a complex, multi-step calculation into logical, readable parts.
+
+    Ex: WITH DeptAvg AS (
+            SELECT Department, AVG(Salary) AS AvgSalary FROM Employees
+            GROUP BY Department
+        ),
+        RankedEmployees AS (
+            SELECT e.EmployeeID, e.Name, e.Department, e.Salary,
+                RANK() OVER (PARTITION BY e.Department ORDER BY e.Salary DESC) AS SalaryRank
+            FROM Employees e
+            JOIN DeptAvg d ON e.Department = d.Department
+        )
+        SELECT * FROM RankedEmployees WHERE SalaryRank = 1;
