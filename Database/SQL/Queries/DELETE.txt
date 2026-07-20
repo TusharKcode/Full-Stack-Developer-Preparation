@@ -1,0 +1,105 @@
+The SQL DELETE statement is used to remove specific rows from a table while keeping the table structure 
+    intact.
+
+    - different from DROP, which deletes the entire table
+    - It removes rows based on conditions.
+    - Retains table schema, constraints and indexes.  
+    - Can delete a single row or all rows.
+    - The use of an asterisk (*) with DELETE is invalid in SQL.
+
+    Syntax: DELETE FROM table_name 
+            WHERE some_condition;
+
+    -> If WHERE clause omitted, all records in the table are removed.
+
+    Ex:
+        -> Deleting Single Record
+                                DELETE FROM Employees 
+                                WHERE NAME = 'Ethan';
+        -> Deleting Multiple Records
+                                   DELETE FROM Employees 
+                                WHERE department = 'Development'; 
+        -> Delete All Records from a Table
+                                DELETE FROM Employees;          
+
+=> Rolling Back DELETE Operations
+    - DELETE statement is a DML operation, it can be rolled back when executed in a statement.
+    - If you accidentally delete records or need to repeat the process, you can use the ROLLBACK command.
+    - ROLLBACK command will undo the changes made by the DELETE statement, restoring the records that were 
+        deleted during the transaction
+
+    Query : BEGIN TRANSACTION;
+            DELETE FROM Employees
+            WHERE department = 'Development';
+
+            ROLLBACK;   -- If needed, you can rollback the deletion
+
+=> Delete Duplicate Rows
+    - Duplicate rows in a database can cause inconsistent results and affect performance.
+    - Removing them helps maintain data accuracy and efficiency.
+    - Caused by import errors or missing constraints.
+    - Lead to wasted storage and slower queries.
+    - Can be removed using SQL functions like ROW_NUMBER() or COUNT().
+
+    -> Identify Duplicate Rows
+        - Use the GROUP BY clause with the COUNT(*) function to find rows with duplicate values.
+
+            Query:  SELECT Name, Department, COUNT(*)
+                    FROM Employee
+                    GROUP BY Name, Department
+                    HAVING COUNT(*) > 1;
+
+    -> Methods: 
+        - Using GROUP BY and COUNT(): identifies the first occurrence of each duplicate combination based on 
+                                        the SN (serial number) and deletes the other duplicate rows.
+            Query: DELETE FROM Employees
+                    WHERE EmployeeID NOT IN (
+                        SELECT MIN(EmployeeID)
+                        FROM Employees
+                        GROUP BY Name, Department
+                    );
+
+                    SELECT * FROM Employees;
+
+        - Using ROW_NUMBER(): function assigns a unique number to each row within a partition (group of duplicates)
+            
+            Query:  WITH CTE AS (
+                        SELECT EmployeeID, Name, Department,
+                                ROW_NUMBER() OVER (PARTITION BY Name, Department ORDER BY EmployeeID) AS RowNum
+                        FROM Employees
+                    )
+                    DELETE FROM Employees
+                    WHERE EmployeeID IN (SELECT EmployeeID FROM CTE WHERE RowNum > 1);
+
+        - Using Common Table Expressions (CTEs): allowing us to define a temporary result set that can be 
+                                                    referenced within the DELETE statement.
+            Query:  WITH CTE AS (
+                        SELECT EmployeeID,
+                            ROW_NUMBER() OVER (PARTITION BY Name, Department ORDER BY EmployeeID) AS RowNum
+                        FROM Employees
+                    )
+                    DELETE FROM Employees
+                    WHERE EmployeeID IN (SELECT EmployeeID FROM CTE WHERE RowNum > 1);
+
+        - Using Temporary Tables: create a temporary table to hold unique records and then replace the 
+                                    original table with the new, clean data.
+            Query:  DROP TEMPORARY TABLE IF EXISTS DistinctEmployees;
+
+                    CREATE TEMPORARY TABLE DistinctEmployees AS
+                    SELECT * FROM Employees e
+                    WHERE e.EmployeeID IN (
+                        SELECT MIN(EmployeeID) FROM Employees GROUP BY Name, Department);
+
+                    DELETE FROM Employees;
+
+                    INSERT INTO Employees
+                    SELECT * FROM DistinctEmployees;
+
+                    DROP TEMPORARY TABLE DistinctEmployees;
+
+        - Using DISTINCT with INSERT INTO: select only unique rows and then insert them back into the 
+                                            original table
+            Query:  WITH DistinctEmployees AS (SELECT DISTINCT Name, Department FROM Employees)
+                    DELETE FROM Employees;
+                    INSERT INTO Employees (Name, Department)
+                    SELECT Name, Department FROM DistinctEmployees;

@@ -1,0 +1,25 @@
+The SQL UPDATE statement is used to modify existing data in a table by changing the values of one or more 
+    columns.
+
+    - The WHERE clause specifies which rows should be updated.
+    - Without WHERE, all rows in the table are modified.
+
+    Syntax: UPDATE table_name 
+            SET column1 = value1, column2 = value2,... 
+            WHERE condition;
+
+    -> The SET keyword assigns new values to columns, while the WHERE clause selects which rows to update.
+
+    Ex:
+        -> Update Single Column
+                                UPDATE Customer SET  Age = 25
+                                WHERE CustomerName = 'Isabella';
+        
+        -> Updating Multiple Columns
+                                UPDATE Customer 
+                                SET CustomerName = 'John', Country = 'Spain' 
+                                WHERE CustomerID = 1;
+
+        -> Omitting WHERE Clause in UPDATE Statement (all the rows in the table will be updated)
+                                UPDATE Customer
+                                SET CustomerName = 'Mike';

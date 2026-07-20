@@ -1,0 +1,32 @@
+Dynamic SQL is a technique where SQL statements are built and executed at runtime instead of being fixed.
+    -> Useful in: 
+        - Table names or column names are not known in advance
+        - Filters depend on user input
+        - Queries need to change dynamically
+
+        - Dynamic SQL can be slower because queries are built at runtime.
+        - Poor handling of user input can lead to SQL injection risks.
+
+    -> Syntax: EXEC sp_executesql N'SELECT statement';
+        (N prefix indicates that the SQL statement is treated as a Unicode string.)
+        (Use sp_executesql to prevent SQL injection.)
+
+=> Steps:   
+    -> 1. Declare Variables:
+                            DECLARE 
+                            @var1 NVARCHAR(MAX), 
+                            @var2 NVARCHAR(MAX);
+
+    -> Assign Values to Variables: SET @var1 = N'table_name';
+
+    -> Construct the SQL Statement: SET @var2= N'SELECT * FROM ' + @var1;
+
+    -> Execute the SQL Statement: EXEC sp_executesql @var2;
+
+Example:    DECLARE @tab NVARCHAR(128);
+            DECLARE @st NVARCHAR(MAX);
+
+            SET @tab = N'geektable';
+            SET @st = N'SELECT * FROM ' + QUOTENAME(@tab);
+
+            EXEC sp_executesql @st;
