@@ -1,0 +1,44 @@
+The SQL HAVING clause filters the results of grouped data after using the GROUP BY clause.
+    - used with aggregate functions such as SUM(), COUNT(), or AVG() to display only those groups that meet 
+        specific conditions.
+    - When HAVING is used without GROUP BY, the entire table is treated as a single group. This works only 
+        with aggregate functions.
+    
+    Syntax: SELECT column_name, AGGREGATE_FUNCTION(column_name)
+            FROM table_name
+            GROUP BY column_name
+            HAVING condition;
+
+    Examples:   
+        -> Filter Total Salary:
+            - GROUP BY (SELECT 1) treats the entire table as one single group.
+                
+                SELECT SUM(Salary) AS Total_Salary
+                FROM Employee
+                GROUP BY (SELECT 1)
+                HAVING SUM(Salary) >= 250000;
+
+        -> Filter Average Salary
+                
+                SELECT Department, AVG(Salary) AS AverageSalary
+                FROM Employee
+                GROUP BY Department
+                HAVING AVG(Salary) > 55000;
+
+        -> Filter Maximum Salary
+                
+                SELECT MAX(Salary) AS Max_Salary
+                FROM Employee
+                HAVING MAX(Salary) > 70000;
+
+        -> Filter Minimum Experience
+                
+                SELECT MIN(Experience) AS Min_Experience
+                FROM Employee
+                HAVING MIN(Experience) < 3;
+
+        -> Multiple Conditions
+
+                SELECT SUM(Salary) AS Total_Salary, AVG(Salary) AS Average_Salary
+                FROM Employee
+                HAVING SUM(Salary) >= 250000 AND AVG(Salary) > 55000;

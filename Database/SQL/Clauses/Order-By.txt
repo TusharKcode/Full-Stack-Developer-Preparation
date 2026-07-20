@@ -1,0 +1,20 @@
+SQL ORDER BY is used to sort the result set of a query in either ascending (ASC) or descending (DESC) order. 
+    - By default, ORDER BY sorts in ascending order.
+    - Sorting can be applied to one or more columns
+
+    Syntax: SELECT * FROM table_name ORDER BY column_name ASC | DESC; 
+
+    Examples:   
+        -> Sort by a Single Column:     SELECT * FROM students ORDER BY ROLL_NO DESC;
+        -> Sort by Multiple Columns:    SELECT * FROM students ORDER BY age DESC , name ASC; 
+
+        -> Sorting By Column Number
+            - Instead of using column names, you can sort results using the position of a column in the 
+                SELECT list. 
+            - The number must be greater than 0 and not exceed the number of selected columns.
+                
+                Syntax: ORDER BY Column_Number asc/desc;
+
+                Ex: SELECT Roll_no, Name, Address
+                    FROM studentinfo
+                    ORDER BY 1          -- First column in SELECT list
