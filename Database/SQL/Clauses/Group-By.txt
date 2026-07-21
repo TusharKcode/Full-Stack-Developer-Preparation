@@ -1,0 +1,35 @@
+The SQL GROUP BY clause is used to arrange identical data into groups based on one or more columns.
+    - used with aggregate functions like COUNT(), SUM(), AVG(), MAX() and MIN() to perform calculations on 
+        each group of data.
+    
+    Syntax: SELECT column1, aggregate_function(column2)
+            FROM table_name
+            WHERE condition
+            GROUP BY column1, column2;
+    
+    Examples: 
+            -> Group By Single Column
+
+                    SELECT subject, COUNT(*) AS Student_Count
+                    FROM Student
+                    GROUP BY subject;
+
+            -> Group By Multiple Columns
+
+                    SELECT subject, year, COUNT(*)
+                    FROM Student
+                    GROUP BY subject, year;
+    
+        // HAVING Clause in GROUP BY Clause
+            -> Filter by Total Salary
+                
+                SELECT age, SUM(sal) FROM Employees
+                GROUP BY age
+                HAVING SUM(sal)>50000; 
+
+            -> Filter by Average Salary
+
+                SELECT age, AVG(sal) AS Average_Salary
+                FROM Employees
+                GROUP BY age
+                HAVING AVG(sal) > 60000;

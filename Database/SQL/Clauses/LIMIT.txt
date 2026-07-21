@@ -1,0 +1,50 @@
+The SQL LIMIT clause is used to control the number of records returned by a query.
+    - retrieve only a specific portion of data instead of the entire result set
+
+    - The LIMIT clause cannot be used when defining a view.
+    - It is not allowed in nested SELECT statements
+
+    Syntax: SELECT column1, column2, ...
+            FROM table_name WHERE condition
+            ORDER BY column LIMIT [offset,] row_count; 
+
+        - offset: number of rows to skip before returning the result set.
+        - row_count: number of rows to return in the result set.
+
+    Examples:
+        -> Basic LIMIT Usage : SELECT * FROM student LIMIT 3;
+
+        -> LIMIT with ORDER BY Clause: SELECT * FROM Student ORDER BY age DESC LIMIT 3;
+
+
+=> SQL LIMIT with OFFSET
+    - The OFFSET clause skips a specified number of rows before displaying the result. It is used with the 
+        ORDER BY clause.
+
+        Syntax:
+                SELECT * FROM table_name ORDER BY column_name LIMIT X OFFSET Y; 
+                OR
+                SELECT * FROM table_name ORDER BY column_name LIMIT Y,X; 
+
+            - X: Number of rows to return.
+            - Y: Number of rows to skip.
+    
+    Examples:       
+        -> Skipping First 2 Rows & Fetching 2 Rows: SELECT * FROM Student ORDER BY age LIMIT 2 OFFSET 2;
+
+=> Using LIMIT to Get the nth Highest or Lowest Value
+
+    Syntax:
+            SELECT column_list FROM table_name  
+            ORDER BY expression [ASC | DESC]  
+            LIMIT n-1, 1;
+
+    Examples:
+        -> Fetching the 3rd Highest Age: SELECT age FROM Student ORDER BY DESC age LIMIT 2, 1;  
+
+=> Using LIMIT with WHERE Clause
+
+    Example: 
+        -> Fetching a Limited Set of Students Based on ID
+                
+                SELECT age FROM Student WHERE id<4 ORDER BY age LIMIT 2, 1;

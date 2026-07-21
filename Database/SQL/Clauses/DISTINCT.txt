@@ -1,0 +1,26 @@
+The SQL DISTINCT clause is used to remove duplicate values from query results. 
+    - output shows only unique records for the specified column(s).
+    - If used on multiple columns, DISTINCT returns unique combinations of values across those columns.
+
+    Syntax: SELECT DISTINCT column1, column2 FROM table_name;
+
+    Examples: 
+        -> Fetch Unique Names from the NAME Field: SELECT DISTINCT NAME FROM students; 
+
+        -> Fetching Unique Combinations of Multiple Columns: SELECT DISTINCT NAME, AGE FROM students;
+
+        -> Using DISTINCT with the ORDER BY Clause: SELECT DISTINCT AGE FROM students ORDER BY AGE;  
+
+        -> Using DISTINCT with Aggregate Functions (e.g., COUNT()): 
+                        
+                        SELECT COUNT(DISTINCT ROLL_NO) FROM Students ;
+
+        -> DISTINCT with NULL Values: 
+            - In SQL, the DISTINCT keyword treats all NULL values as the same, not as separate unique values.
+            - even if multiple rows contain NULL, DISTINCT will return NULL only once in the result set.
+
+                INSERT INTO students (ROLL_NO, NAME, ADDRESS, PHONE, AGE)
+                VALUES  (13, 'John Doe', '123 Unknown Street', '9876543216', NULL),
+                        (14, 'James Brown', '129 Unknown Street', '9876554317', NULL);
+
+                SELECT DISTINCT AGE FROM students;
