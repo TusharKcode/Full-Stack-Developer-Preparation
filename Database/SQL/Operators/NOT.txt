@@ -1,0 +1,37 @@
+=> The SQL NOT operator is used to reverse the boolean result of a condition in SQL.
+    - helps in retrieving records that do not match a specific condition
+    - used to specify what should not be included in the results table.
+    - NOT operator returns opposite results or negative results. 
+    - It can also be combined with other operators like- LIKE, BETWEEN, and IN.
+    
+    Syntax: SELECT column1, column2, …  FROM table_name WHERE NOT condition;
+
+    Example: 
+        -> Using SQL NOT to Exclude a Specific Value: SELECT * FROM Customers WHERE NOT Country = 'UK';
+
+        -> Using SQL NOT with IN Operator: SELECT * FROM Customers WHERE NOT Country IN ('USA', 'UK');
+
+        -> Using SQL NOT with LIKE Operator: SELECT * FROM Customers WHERE NOT CustomerName LIKE 'M%';
+
+        -> Using SQL NOT with NULL Values: SELECT * FROM Customers WHERE NOT PostalCode IS NULL;
+
+        -> Using NOT with AND Operator: SELECT * FROM Customers WHERE NOT Country = 'USA' AND NOT Country = 'UK';
+
+=> The SQL NOT EQUAL operator compares two values and returns true if they are not equal.
+    - used to filter out matching records in queries
+    - If the values are equal, it returns false; if either value is NULL, it returns NULL.
+    - NOT EQUAL comparison is case-sensitive for strings.
+    - <> and != perform the same operation i.e. check inequality.
+    
+    Syntax: SELECT * FROM table_name WHERE column_name != value;
+
+    Example: 
+        -> SQL NOT EQUAL Operator For String: SELECT * FROM students WHERE name != 'Sofia';
+
+        -> SQL NOT EQUAL Operator with Multiple Condition:  SELECT * FROM candidate 
+                                                            WHERE contest_score != 98 AND rank != 3
+                                                            AND coding_streak >= 100;
+
+        -> SQL NOT EQUAL Operator with GROUP BY Clause: SELECT rank, COUNT(*) as count_score
+                                                        FROM coding WHERE contest_score != 100
+                                                        GROUP BY rank;

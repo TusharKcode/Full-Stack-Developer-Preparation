@@ -1,0 +1,73 @@
+SQL Logical Operators are used to test conditions in queries, returning results as TRUE, FALSE or UNKNOWN.
+    - help in combining, negating and comparing conditions
+    - enabling precise data retrieval and filtering.
+    
+    -> AND Operator
+        - combines multiple conditions in an SQL query
+        - returns only the records that satisfy all the specified conditions.
+        
+        Ex: SELECT * FROM employee WHERE emp_city = 'London' AND emp_country = 'UK';
+    
+    -> IN Operator
+        - checks whether a value matches any value in a specified list
+        - concise alternative to multiple OR conditions.
+        - used to compare a value to a list of literal values that have been specified.
+
+        Ex: SELECT * FROM employee WHERE emp_city IN ('London', 'Rome');
+
+    
+    -> NOT Operator
+        - used to reverse the result of a condition, returning TRUE when the condition is FALSE
+        - useful for filtering out unwanted data.
+
+        Ex: SELECT * FROM employee WHERE emp_city NOT LIKE 'S%';
+
+    -> OR Operator
+        - combines multiple conditions in a SQL query and returns TRUE if at least one of the conditions is 
+            satisfied.
+
+        Ex: SELECT * FROM employee WHERE emp_country = 'UK' OR emp_country = 'USA';
+
+    
+    -> LIKE Operator
+        - used in the WHERE clause to search for a specified pattern in a column,
+        - using % to match any number of characters and _ to match a single character.
+
+        Ex: SELECT * FROM employee WHERE emp_city LIKE 'M%';
+
+    
+    -> BETWEEN Operator
+        - checks whether a value lies within a specified range, including both the lower and upper limits.
+
+        Ex: SELECT * FROM employee WHERE emp_id BETWEEN 102 AND 105;
+
+    -> ALL Operator
+        - compares a value with all values returned by a subquery and returns TRUE only if the condition is 
+            satisfied for every value.
+
+        Ex: SELECT * FROM employee
+            WHERE emp_id > ALL (
+                SELECT emp_id FROM employee WHERE emp_city = 'London');
+
+    -> ANY Operator
+        - compares a value with the results of a subquery and returns TRUE if the condition is satisfied by 
+            at least one value.
+
+        Ex: SELECT * FROM employee
+            WHERE emp_id = ANY (
+                SELECT emp_id FROM employee WHERE emp_city = 'Rome');
+
+    -> EXISTS Operator
+        - checks whether a subquery returns any rows and returns TRUE if at least one matching row exists.
+
+        Ex: SELECT emp_name FROM employee 
+            WHERE EXISTS (
+                SELECT emp_id FROM employee WHERE emp_city = 'London');
+
+    -> SOME Operator
+        - compares a value with the results of a subquery and returns TRUE if the condition is satisfied for 
+            at least one value returned by the subquery.
+
+        Ex: SELECT * FROM employee 
+            WHERE emp_id < SOME (
+                SELECT emp_id FROM employee WHERE emp_city = 'London');

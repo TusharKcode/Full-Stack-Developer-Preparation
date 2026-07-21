@@ -1,0 +1,26 @@
+The IN operator in SQL is used to filter query results by checking whether a column’s value matches any 
+    value in a specified list.
+    - shorthand for writing multiple OR conditions, making queries cleaner and easier to read.
+
+    - The IN operator returns TRUE if a value matches any item in the given list or subquery result.
+
+    Syntax: SELECT column_name ... FROM table_name WHERE column_name IN (value1, value2, .....);
+
+    Example: 
+        -> Basic Use of the IN Operator:    SELECT Fname, Lname FROM Employee 
+                                            WHERE Address IN ('Tokyo, Japan', 'Paris, France');
+
+
+        -> SQL IN and NOT IN Operators: SELECT Fname FROM Employee 
+                                        WHERE Address NOT IN ('Tokyo, Japan', 'London, UK');
+
+
+        -> IN Operator with Subquery:  SELECT * FROM employee WHERE Ssn IN (SELECT Ssn FROM manager);
+
+
+        -> Using LIKE with AND for Complex Conditions:  SELECT SupplierID, Name, Address FROM Supplier 
+                                                        WHERE Address LIKE '%Madrid%' AND Name LIKE 'C%';
+
+
+        -> Using NOT LIKE for Exclusion:    SELECT SupplierID, Name, Address FROM Supplier 
+                                            WHERE Name NOT LIKE '%Co%';

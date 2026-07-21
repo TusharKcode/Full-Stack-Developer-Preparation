@@ -1,0 +1,40 @@
+The SQL LIKE operator is used to search for a specific pattern within a column’s text data.
+    - works with wildcard characters to match partial strings, making it useful for flexible filtering.
+    - % represents any sequence of characters
+    - _ represents a single character
+
+    Syntax: SELECT column1, column2, ... FROM table_name WHERE column_name LIKE pattern;
+
+    Wildcard Characters:
+        -> % (Percent): Represents zero or more characters.
+        -> _ (Underscore): Represents a single character.
+        -> [] (Square Brackets): Represents any single character within brackets.
+        -> - (Hyphen): Specify a range of characters inside brackets.
+
+        Patterns                Meaning
+        'a%'	            Match strings that start with 'a'
+        '%a'	            Match strings that end with 'a'
+        'a%t'	            Match strings that contain the start with 'a' and end with 't'.
+        '%wow%'	            Match strings that contain the substring 'wow' in them at any position.
+        '_wow%'	            Match strings that contain the substring 'wow' in them at the second position.
+        '_a%'	            Match strings that contain 'a' at the second position.
+        'a_ _%'	            Match strings that start with 'a and contain at least 2 more characters.
+
+    Example: 
+        -> Match Names Starting with 'Ca':  SELECT SupplierID, Name, Address FROM Supplier 
+                                            WHERE Name LIKE 'Ca%';
+
+
+        -> Match Addresses Containing 'Kungsgatan': SELECT * FROM Supplier WHERE Address LIKE '%Kungsgatan%';
+
+
+        -> Match Names Where 'afé' Appears in the Second Position:  SELECT SupplierID, Name, Address
+                                                                    FROM Supplier WHERE Name LIKE '_afé%';
+
+
+        -> Using LIKE with AND for Complex Conditions:  SELECT SupplierID, Name, Address FROM Supplier 
+                                                        WHERE Address LIKE '%Madrid%' AND Name LIKE 'C%';
+
+
+        -> Using NOT LIKE for Exclusion:    SELECT SupplierID, Name, Address FROM Supplier 
+                                            WHERE Name NOT LIKE '%Co%';
