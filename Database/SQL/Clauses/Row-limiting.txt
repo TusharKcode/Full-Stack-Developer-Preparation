@@ -1,0 +1,50 @@
+The SQL TOP, LIMIT, and FETCH FIRST clauses are used to restrict the number of rows returned by a query.
+    - help in retrieving only a small portion of data from a large table, faster and easier to read
+    
+    - SQL TOP Clause is used in SQL Server and Sybase to limit the number of records returned.
+    - SQL LIMIT Clause is utilized in MySQL, PostgreSQL, and SQLite. (In LIMIT.txt file)
+    - SQL FETCH FIRST Clause is supported by Oracle, DB2, PostgreSQL, and SQL Server via OFFSET-FETCH.
+
+=> SQL SELECT TOP Clause
+    - only returns the specified number of rows from the table
+    - valuable on enormous tables with a large number of records
+    - Returning countless records can affect execution.
+    - In SQL Server, MS Access
+    
+    -> Syntax:  SELECT column1, column2, ... TOP count
+                FROM table_name [WHERE conditions]
+                [ORDER BY expression [ ASC | DESC ]];
+
+    Examples:
+        -> Using SELECT TOP Clause in SQL: SELECT TOP 4* FROM Employee;
+        
+        -> SQL SELECT TOP with ORDER BY Clause: SELECT TOP 4* FROM Employee ORDER BY Salary DESC;
+        
+        -> SQL SELECT TOP Clause with WHERE Clause: 
+                
+                SELECT TOP 2* FROM Employee WHERE Salary>2000 ORDER BY Salary;
+        
+        -> SQL SELECT TOP PERCENT Clause: 
+            - PERCENT keyword is utilized to select the primary and percent of all-out rows
+                
+                SELECT TOP 50 PERCENT* FROM Employee;
+        
+        -> SQL TOP PERCENT with WHERE Clause: SELECT TOP 50 PERCENT* FROM Employee WHERE Salary<50000;
+
+=> SQL FETCH FIRST Clause
+    - fetches the first given number of rows from the table. 
+    - supported in IBM DB2, Oracle, PostgreSQL
+    - not supported in MySQL.
+
+    -> Syntax:  SELECT columns FROM table WHERE condition FETCH FIRST n ROWS ONLY;
+
+    Examples:
+        -> SQL FETCH FIRST Clause: SELECT * FROM Employee FETCH FIRST 3 ROWS ONLY;
+        
+        -> SQL FETCH FIRST PERCENT: SELECT * FROM Employee
+                                    FETCH FIRST (SELECT CEIL(COUNT(*) / 2) FROM Employee) ROWS ONLY;
+        
+        -> SQL FETCH FIRST with WHERE Clause: 
+            - correct syntax for limiting the number of rows in MySQL is by using the LIMIT clause.
+                
+                SELECT * FROM Employee WHERE Salary = 45000 FETCH FIRST 1 ROW ONLY;

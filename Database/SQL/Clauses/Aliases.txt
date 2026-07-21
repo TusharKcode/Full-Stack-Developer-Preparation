@@ -1,0 +1,26 @@
+In SQL, aliases provide temporary names for columns or tables to make queries cleaner and easier to 
+    understand.
+
+=> Types: 
+    -> Column Aliases
+        - used to rename a column just for the output of a query
+        - Displaying aggregate data
+        - Making results more readable
+        - Performing calculations
+        
+        Syntax: SELECT column_name AS alias_name FROM table_name;
+
+        Example: SELECT CustomerID AS id FROM Customer;
+
+    -> Table Aliases
+        - used when you want to give a table a temporary name for the duration of a query.
+        - helpful in JOIN operations to simplify queries
+        - when the same table is referenced multiple times (like in self-joins).
+
+        Example:    SELECT c1.CustomerName, c1.Country FROM Customer AS c1, Customer AS c2 
+                    WHERE c1.Age = c2.Age AND c1.Country = c2.Country;
+
+=> Combining Column and Table Aliases
+
+    Ex: SELECT c.CustomerName AS Name, c.Country AS Location 
+        FROM Customer AS c WHERE c.Age >= 21;
