@@ -1,0 +1,74 @@
+SQL Statistical Functions are built-in functions that help analyze numeric data by performing calculations 
+    like averages, totals and variations. 
+
+    - Perform calculations like AVG, SUM, COUNT, MIN, MAX
+    - Help measure data spread using STDDEV and VAR
+    - Used for quick data analysis and reporting
+
+        -> AVG() Function
+            - calculates the average or arithmetic mean for a group of numbers or a numeric column.
+
+            Syntax: SELECT AVG(column_name) FROM table_name;
+            Example:    SELECT AVG(marks) AS average_marks FROM studentDetails;
+
+        -> SUM() Function
+            - returns the total of all numeric values in a column.
+
+            Syntax: SELECT SUM(column_name) FROM table_name;
+            Example:    SELECT SUM(marks) AS total_marks FROM studentDetails;
+
+        -> COUNT() Function
+            - counts the number of rows in a result set or the number of non-NULL numeric values in a column.
+
+            Syntax: SELECT COUNT(*) FROM table_name;     // counts all rows, including rows with NULL values.
+                    SELECT COUNT(column_name) FROM table_name;  // counts only non-NULL values in that column.
+            Example:    SELECT COUNT(studentID) AS total_students FROM studentDetails;
+                        SELECT COUNT(*) FROM studentDetails;   
+
+        -> Max() Function
+            - returns the largest value from a numeric or date column.
+
+            Syntax: SELECT MAX(column_name) FROM table_name;
+            Example:    SELECT MAX(marks) AS highest_marks FROM studentDetails;
+
+        -> MIN() Function
+            - returns the smallest value from a numeric or date column.
+
+            Syntax: SELECT MIN(column_name) FROM table_name;
+            Example:    SELECT MIN(marks) AS lowest_marks FROM studentDetails;
+
+        -> VAR() / VARIANCE() Function
+            - calculate the variance of numeric data, measuring how much the values spread out from the 
+                average.
+
+            Syntax: SELECT VAR(column_name) FROM table_name;
+            Example:    SELECT VARIANCE(marks) AS variance_marks FROM studentDetails;
+
+        -> STDDEV() / STDDEV_POP() Function
+            - calculate the standard deviation of numeric data to measure how much the values deviate from 
+                the average.
+
+            Syntax: SELECT STDDEV(column_name) FROM table_name;
+            Example:    SELECT STDDEV(marks) AS stddev_marks FROM studentdetails;
+
+        -> PERCENTILE_CONT() Function
+            - returns a continuous percentile value (such as the median) by interpolating results within an 
+                ordered dataset.
+
+            Syntax: SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY column_name) FROM table_name;
+            Example:    SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary) AS median_salary
+                        FROM employees;
+
+        -> CORR() Function
+            - calculates the correlation coefficient between two numeric columns, showing the strength and 
+                direction of their linear relationship.
+
+            Syntax: SELECT CORR(column1, column2) FROM table_name;
+            Example: SELECT CORR(sales, profit) AS correlation_coefficient FROM sales_data;
+
+        -> .COVAR_POP() Function
+            - computes the population covariance between two numeric columns, helping measure how the values 
+                change in relation to each other.
+
+            Syntax: SELECT COVAR_POP(column1, column2) FROM table_name;
+            Example: SELECT COVAR_POP(revenue, expenses) AS population_covariance FROM financial_data;
