@@ -1,0 +1,47 @@
+=> The SQL CASE statement is used to add conditional logic inside SQL queries.
+    - checks conditions one by one and returns a value as soon as a matching condition is found.
+    - Works like an IF-THEN-ELSE statement inside SQL.
+    - Helps categorize data or transform values dynamically.
+    - Can be used in SELECT, UPDATE, ORDER BY and other clauses.
+
+    -> In databases without INTERSECT, use INNER JOIN as an alternative.
+
+    Syntax: CASE case_value
+                WHEN value1 THEN result1        // Compares a column or expression with fixed values.
+                WHEN value2 THEN result2        // Returns the result of the first matching value.
+                ...
+                ELSE result
+            END
+
+            CASE
+                WHEN condition1 THEN result1    // Evaluates multiple logical conditions.
+                WHEN condition2 THEN result2    // Returns the result of the first true condition.
+                ...
+                ELSE result
+            END
+
+    Example: 
+        -> Simple CASE Expression:  SELECT CustomerName, Country, Age,
+                                    CASE
+                                        WHEN Country = 'United Kingdom' THEN 'British'
+                                        WHEN Country = 'Australia' THEN 'Australian'
+                                        WHEN Country = 'Japan' THEN 'Japanese'
+                                        WHEN Country = 'Austria' THEN 'Austrian'
+                                        WHEN Country = 'Spain' THEN 'Spanish'
+                                        ELSE 'Other'
+                                    END AS Nationality FROM Customer;
+
+        -> SQL CASE When Multiple Conditions:   SELECT CustomerName, Age,
+                                                CASE
+                                                    WHEN Age = 21 THEN 'Age is 21'
+                                                    WHEN Age = 22 THEN 'Age is 22'
+                                                    WHEN Age > 22 THEN 'Age is greater than 22'
+                                                    ELSE 'Age is below 21'
+                                                END AgeDescription FROM Customer;
+
+        -> CASE Statement With ORDER BY Clause: SELECT CustomerName, Country,
+                                                    CASE
+                                                        WHEN Country = 'Japan' THEN 0
+                                                        ELSE 1
+                                                    END AS SortPriority
+                                                FROM Customer ORDER BY SortPriority, Country;

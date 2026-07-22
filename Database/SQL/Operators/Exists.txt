@@ -1,0 +1,34 @@
+=> SQL provides the EXISTS operator to check whether a subquery returns at least one row.
+    - useful for filtering data based on the presence of related records.
+    - It checks if a subquery returns one or more rows.
+    - It returns TRUE if data exists, otherwise FALSE.
+    - It is commonly used with subqueries.
+
+    -> In databases without INTERSECT, use INNER JOIN as an alternative.
+
+    Syntax: SELECT column_name(s) FROM table_name WHERE EXISTS
+            (SELECT column_name(s) FROM subquery_table WHERE condition);
+
+    Example: 
+        -> Using EXISTS with SELECT:   SELECT c1.* FROM Customers c1 WHERE EXISTS(
+                                        SELECT 1 FROM Customers c2  WHERE c2.website = c1.website
+                                            AND c2.customer_id <> c1.customer_id);
+                                    
+
+        -> Using NOT with EXISTS:   SELECT c.lname, c.fname FROM Customers c WHERE NOT EXISTS(
+                                        SELECT 1 FROM Orders o WHERE o.CustomerID = c.customer_id);
+
+        -> Using EXISTS Condition with DELETE Statement:  DELETE FROM Orders WHERE EXISTS(
+                                                            SELECT 1 FROM Customers c  
+                                                            WHERE c.customer_id = Orders.CustomerID
+                                                            AND c.website = 'abc.com');
+
+        -> Using EXISTS Condition with UPDATE Statement:  UPDATE Customers SET lname = 'Martin' WHERE EXISTS(
+                                                            SELECT 1 FROM Customers c2
+                                                            WHERE c2.customer_id = 401 
+                                                            AND c2.customer_id = Customers.customer_id);
+
+        -> Using EXISTS Condition with DELETE Statement:  DELETE FROM Orders WHERE EXISTS(
+                                                            SELECT 1 FROM Customers c  
+                                                            WHERE c.customer_id = Orders.CustomerID
+                                                            AND c.website = 'abc.com');

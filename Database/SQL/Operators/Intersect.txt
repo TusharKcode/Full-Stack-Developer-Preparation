@@ -1,0 +1,25 @@
+=> The INTERSECT operator in SQL is used to return only the records that appear in both of two SELECT query 
+    results.
+    - acts like the intersection of two sets, showing only the common rows shared between them.
+    - Returns rows present in both SELECT statements
+    - Automatically removes duplicates
+    - Useful for finding overlapping or matching data across tables or queries.
+
+    -> In databases without INTERSECT, use INNER JOIN as an alternative.
+
+    Syntax: SELECT column1 , column2 .... FROM table1 WHERE condition
+            INTERSECT
+            SELECT column1 , column2 .... FROM table2 WHERE condition;
+
+    Example: 
+        -> Basic INTERSECT Query:   SELECT CustomerID FROM Customers
+                                    INTERSECT
+                                    SELECT CustomerID FROM Orders;
+
+        -> Using INTERSECT with BETWEEN Operator:   SELECT CustomerID FROM Customers
+                                                    WHERE CustomerID BETWEEN 3 AND 8 INTERSECT
+                                                    SELECT CustomerID FROM Orders;
+
+        -> Using INTERSECT with LIKE Operator:  SELECT CustomerID FROM Customers
+                                                WHERE FirstName LIKE 'J%' INTERSECT
+                                                SELECT CustomerID FROM Orders;

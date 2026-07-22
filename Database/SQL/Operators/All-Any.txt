@@ -1,0 +1,57 @@
+In SQL, the ALL and ANY operators are used to compare a value against a set of values returned by a subquery
+    - help filter results based on conditions evaluated over multiple values.
+    - ALL checks if a condition is true for every value in the subquery result.
+    - Must be used with comparison operators like >, <, >=, <=.
+    - Used in SELECT, WHERE and HAVING for advanced filtering.
+
+=> "SQL ALL"
+    -> compares a value to every value returned by a subquery.
+        - condition using ALL is TRUE only if it holds for all values in the subquery result.
+        - with comparison operators: >, <, >=, <=.
+        - Useful for filtering data based on comparisons with multiple records.
+        - used in conjunction with SELECT, WHERE and HAVING statements
+
+    Syntax: SELECT column_name(s) FROM table_name
+            WHERE column_name comparison_operator ALL 
+                (SELECT column_name FROM table_name WHERE condition(s));
+
+    Example: 
+        -> Retrieve all product names from the Products table:
+            SELECT ALL ProductName FROM Products WHERE TRUE;
+
+        -> Retrieve product names if all records in the OrderDetails table have a quantity of 6 or 2:
+            SELECT ALL ProductName FROM Products WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails
+                                                                        WHERE Quantity = 6 OR Quantity = 2);
+
+        -> Find the OrderIDs where the maximum quantity in the order exceeds the average quantity of all 
+            orders
+            SELECT OrderID FROM OrderDetails GROUP BY OrderID HAVING MAX(Quantity) > ALL 
+                                                                                    (SELECT AVG(Quantity) 
+                                                                                        FROM OrderDetails 
+                                                                                        GROUP BY OrderID);
+
+=> "SQL ANY"
+    -> compares a value with the values returned by a subquery and evaluates to TRUE if at least one value 
+        satisfies the given condition.
+        - with comparison operators such as =, >, <, >=, <= or <>.
+        - The subquery used with ANY must return a single column of values.
+
+    Syntax: SELECT column_name(s) FROM table_name
+            WHERE column_name comparison_operator ANY 
+                (SELECT column_name FROM table_name WHERE condition(s));
+
+    Example: 
+        -> Find distinct category IDs of products that appear in the OrderDetails table:
+            SELECT DISTINCT CategoryID FROM Products WHERE ProductID = ANY (SELECT ProductID 
+                                                                            FROM OrderDetails);
+
+        -> Find product names with a quantity of 9 in the OrderDetails table:
+            SELECT ProductName FROM Products WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails
+                                                                    WHERE Quantity 9);
+
+        -> Find the OrderIDs where the maximum quantity in the order exceeds the average quantity of all 
+            orders
+            SELECT OrderID FROM OrderDetails GROUP BY OrderID HAVING MAX(Quantity) > ALL 
+                                                                                    (SELECT AVG(Quantity) 
+                                                                                        FROM OrderDetails 
+                                                                                        GROUP BY OrderID);
