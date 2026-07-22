@@ -1,0 +1,130 @@
+SQL string functions help manipulate and format text data efficiently. 
+    
+    Operations: 
+        -> CONCAT()
+            - used to concatenate (combine) two or more strings into one string
+            - useful when we want to merge fields like first and last names into a full name.
+
+            Example:    SELECT CONCAT('John', ' ', 'Doe') AS FullName;
+
+        -> CHAR_LENGTH() / CHARACTER_LENGTH()
+            - returns the length of a string in characters.
+            - for validating or manipulating text data
+
+            Example:    SELECT CHAR_LENGTH('Hello') AS StringLength;
+
+        -> UPPER() and LOWER()
+            - convert the text to uppercase or lowercase
+            - useful for normalizing the case of text in a database.
+
+            Example:    SELECT UPPER('hello') AS UpperCase;
+                        SELECT LOWER('HELLO') AS LowerCase; 
+
+        -> REPLACE()
+            - replaces occurrences of a substring within a string with another substring.
+            - replacing invalid characters or formatting errors.
+
+            Example:    SELECT REPLACE('Hello World', 'World', 'SQL') AS UpdatedString;
+
+        -> SUBSTRING() / SUBSTR()
+            - used to extract a substring from a string, starting from a specified position.
+
+            Example:    SELECT SUBSTRING('Hello World', 1, 5) AS SubStringExample;
+
+        -> LEFT() and RIGHT()
+            - extract a specified number of characters from the left or right side of a string
+            - used for truncating strings for display.
+
+            Example:    SELECT LEFT('Hello World', 5) AS LeftString;
+                        SELECT RIGHT('Hello World', 5) AS RightString;
+
+        -> INSTR()
+            - used to find the position of the first occurrence of a substring within a string
+            - returns the position (1-based index) of the substring
+            - If the substring is not found, it returns 0.
+
+            Example:    SELECT INSTR('Hello World', 'World') AS SubstringPosition;
+
+        -> TRIM()
+            - removes leading and trailing spaces (or other specified characters) from a string
+            - By default, it trims spaces but can also remove specific characters using TRIM(character FROM 
+                string).
+
+            Example:    SELECT TRIM(' ' FROM '  Hello World  ') AS TrimmedString;
+
+        -> REVERSE()
+            - SELECT TRIM(' ' FROM '  Hello World  ') AS TrimmedString;
+            - useful in need to process data backward, such as for password validation or certain pattern 
+                matching.
+
+            Example:    REVERSE('Hello') AS ReversedString;
+
+        -> RTRIM()
+            - removes trailing characters from the right side of a string
+            - By default, it removes spaces, but you can specify other characters as well.
+
+            Example:    SELECT RTRIM('geeks   ');
+
+        -> SPACE()
+            - generates a string consisting of a specified number of spaces
+            - need to format output or create padding in your queries.
+
+            Example:    SELECT SPACE(7);
+
+        -> ASCII()
+            - returns the ASCII value of a single character.
+            - need to find the numeric code corresponding to a character, often used in encoding and 
+                decoding text.
+
+            Example:    SELECT ascii('t');
+
+        -> CONCAT_WS()
+            - stands for "Concatenate With Separator"
+            - allows us to join multiple strings with a specific separator between them
+            - need to merge columns like first name and last name with a custom separator.
+
+            Example: SELECT CONCAT_WS('_', 'geeks', 'for', 'geeks');
+
+        -> FORMAT()
+            - used to format a number as a string in a specific way
+            - with commas for thousands or with a specific number of decimal places
+
+            Example: SELECT FORMAT(0.981 * 100, 'N2') + '%' AS PercentageOutput;
+
+        -> LOCATE()
+            - allows you to find the nth occurrence of a substring in a string
+
+            Example: SELECT LOCATE('code', 'codeJavaSql', 1);
+
+        -> LPAD()
+            - used to pad a string to a certain length by adding characters to the left side of the 
+                original string
+            - useful when you need to format data to a fixed length.
+
+            Example: SELECT LPAD('codes', 8, '0');
+
+        -> POSITION()
+            - finds the position of the first occurrence of a specified character in a string.
+
+            Example: SELECT POSITION('i' IN 'programming');
+
+        -> REPEAT()
+            - repeats a string a specified number of times.
+            - useful to duplicate a string or pattern for certain operations.
+
+            Example: SELECT REPEAT('codes', 2);
+
+        -> RPAD()
+            - pads the right side of a string with specified characters to a fixed length
+            - used to format text or numbers to a desired size.
+
+            Example: SELECT RPAD('geeks', 8, '0');
+
+        -> STRCMP()
+            - compares two strings and returns an integer value based on their lexicographical comparison.
+            - useful for sorting or checking equality between two strings
+            - 0 if both strings are equal.
+            - A negative value if string1 is less than string2.
+            - A positive value if string1 is greater than string2.
+
+            Example: SELECT STRCMP('google.com', 'programming.com');

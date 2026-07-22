@@ -1,0 +1,79 @@
+SQL Numeric Functions are built-in operations used to perform mathematical calculations on numeric data
+
+        -> ABS() – Absolute Value
+            - returns the absolute value of a number, which is the number without its sign 
+            - it converts negative numbers to positive
+
+            Syntax: SELECT ABS(number);
+            Example:    SELECT ABS(-25);
+
+        -> CEIL() or CEILING() – Round Number Up
+            - rounds a number up to the nearest integer
+            - regardless of whether the decimal part is greater than or less than 0.5.
+
+            Syntax: SELECT CEIL(number);
+            Example:    SELECT CEIL(12.34);
+
+        -> FLOOR() – Round Number Down
+            - rounds a number down to the nearest integer, ignoring the decimal part
+
+            Syntax: SELECT FLOOR(number);
+            Example:    SELECT FLOOR(12.98);
+                        
+
+        -> ROUND() – Round a Number to a Specified Decimal Place
+            - rounds a number to a specified number of decimal places
+            - useful for financial calculations or whenever precise rounding is necessary.
+
+            Syntax: SELECT ROUND(number, decimal_places);
+            Example:    SELECT ROUND(15.6789, 2);
+
+        -> TRUNCATE() – Remove Decimal Places
+            - used to remove the decimal portion of a number without rounding
+            - truncates the number to the specified number of decimal places.
+
+            Syntax: SELECT TRUNCATE(number, decimal_places);
+            Example:    SELECT TRUNCATE(12.98765, 2);
+
+        -> MOD() – Modulo or Remainder
+            - returns the remainder of a division operation (i.e., it computes the modulus)
+            - useful for tasks like determining even/odd numbers or finding remainders
+
+            Syntax: SELECT MOD(dividend, divisor);
+            Example:    SELECT MOD(10, 3);
+                        
+
+        -> POWER() – Raise a Number to the Power of Another
+            - used to raise a number to the power of another number
+            - used in mathematical calculations like compound interest or growth rate
+
+            Syntax: SELECT POWER(base, exponent);
+            Example:    SELECT POWER(2, 3);
+
+        -> SQRT() – Square Root
+            - returns the square root of a number, involving geometry or statistical analysis.
+
+            Syntax: SELECT SQRT(number);
+            Example:    SELECT SQRT(16);
+
+        -> EXP() – Exponential Function
+            - returns the value of e raised to the power of a specified number
+            - e is the base of the natural logarithm (approximately 2.71828).
+
+            Syntax: SELECT EXP(number);
+            Example:    SELECT EXP(1);
+
+        -> LOG() – Logarithm
+            - returns the natural logarithm (base e) of a number.
+            - LOG(base, number) to calculate the logarithm of a number with a custom base.
+
+            Syntax: SELECT LOG(number); / SELECT LOG(base, number);
+            Example:    SELECT LOG(100);
+                        
+
+        -> RAND() – Random Number
+            - generates a random floating-point number between 0 and 1
+            - used for simulations, lotteries or generating random samples.
+
+            Syntax: SELECT RAND();
+            Example:  SELECT RAND();
