@@ -1,0 +1,22 @@
+The SQL IS NULL operator checks whether a column contains a NULL (missing or unknown) value. 
+    - NULL is not the same as zero or an empty string
+    - IS NULL is used in the WHERE clause to filter rows where a value is absent.
+    - check multiple columns using OR.
+    - COUNT(column) ignores NULL values; use COUNT(*) with WHERE column IS NULL to count them.
+    - rows are first filtered using IS NULL and then updated or deleted using UPDATE or DELETE statements.
+    
+    Syntax: SELECT column_name FROM table_name WHERE column_name IS NULL;
+
+    Example: 
+        -> IS NULL with WHERE clause: SELECT * FROM students WHERE email IS NULL;
+
+        -> IS NULL Operator on Multiple Columns:    SELECT * FROM students WHERE email IS NULL 
+                                                    OR coding_score IS NULL;
+
+        -> IS NULL with COUNT() Function:   SELECT COUNT(*) AS count_empty_coding_score
+                                            FROM students WHERE coding_score IS NULL;
+
+        -> IS NULL with UPDATE Statement:   UPDATE students SET email = 'default@gmail.com'
+                                            WHERE email IS NULL;
+
+        -> IS NULL with DELETE Statement:   DELETE FROM students WHERE coding_score IS NULL;

@@ -1,0 +1,30 @@
+=> The SQL UNION operator is used to combine the result sets of two or more SELECT queries into a single output.
+    - removes duplicate rows and returns only unique records from all combined queries.
+    - UNION ALL includes all rows, even duplicates.
+    - Queries must have matching columns and data types.
+    - Helpful for combining data from different sources.
+    
+    Syntax: SELECT column_name FROM table1 UNION SELECT column_name FROM table2;
+
+    Example: 
+        -> SQL UNION Operator:  SELECT Country FROM Emp1 UNION
+                                SELECT Country FROM Emp2 ORDER BY Country;
+
+=> The SQL UNION ALL operator combines the result sets of two or more SELECT statements into a single output.
+    - it does not remove duplicate rows, making it faster when duplicates are acceptable.
+    - Includes all records, even duplicate rows, from the combined queries
+    - Requires the same number of columns with compatible data types in each SELECT
+    - More performant than UNION since no duplicate elimination is performed
+    
+    Syntax: SELECT column_name FROM table1 UNION SELECT column_name FROM table2;
+
+    Example: 
+        -> Single Field With Same Name: SELECT NAME FROM Students UNION ALL
+                                        SELECT NAME FROM Trip_Details;
+
+        -> Different Field Names:   SELECT ROLL_NO AS Identifier FROM Students UNION ALL
+                                    SELECT ROLL_NO AS Identifier FROM Trip_Details;
+
+        -> SQL UNION ALL with WHERE:    SELECT NAME, AGE FROM Students WHERE AGE > 16
+                                        UNION ALL
+                                        SELECT NAME, AGE FROM Trip_Details WHERE AGE >= 18;

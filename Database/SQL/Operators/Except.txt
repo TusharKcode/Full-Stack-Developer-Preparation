@@ -1,0 +1,25 @@
+The SQL EXCEPT operator returns rows from the first query that do not appear in the second.
+    - works like subtracting one result set from another
+    - useful for identifying unmatched or missing records between tables.
+    - Returns only rows unique to the first SELECT.
+    - Removes duplicates automatically.
+    - Helps compare datasets and find non-overlapping records.
+
+    -> To retain duplicates, you can use EXCEPT ALL instead, supported in databases like PostgreSQL and Oracle
+
+    Syntax: SELECT column1, column2, ... FROM table1
+            EXCEPT
+            SELECT column1, column2, ... FROM table2
+
+    Example: 
+        -> Filter Students: SELECT Name FROM Students 
+                            EXCEPT 
+                            SELECT Name FROM Teaching_Assistant;
+
+        -> Retaining Duplicates with EXCEPT ALL:    SELECT Name FROM Students 
+                                                    EXCEPT ALL
+                                                    SELECT Name FROM Teaching_Assistant;
+
+        -> Filter Students: SELECT Name FROM Students 
+                            EXCEPT 
+                            SELECT Name FROM Teaching_Assistant;
