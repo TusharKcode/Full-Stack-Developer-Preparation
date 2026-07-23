@@ -1,0 +1,54 @@
+=> "LTRIM"
+    - an inbuilt string function used to remove leading spaces from the left side of a string.
+    - used to remove specific characters from the beginning of the string.
+    - Data administrators use it to streamline data cleaning tasks efficiently in one go.
+    - If we don't specify any characters to remove, the LTRIM function removes the white spaces for data 
+        cleaning and manipulation in SQL.
+    
+    -> Syntax:  LTRIM(Input_String, [Trim_Characters])
+
+    Example: 
+        -> Remove Specific Characters Using LTRIM Function
+            SELECT LTRIM('----Coding', '-') AS TrimmedString;
+
+        -> Remove a Substring from a String Using LTRIM Function
+            SELECT LTRIM('CodingDatabase', 'Coding') AS TrimmedString;
+
+        -> Use LTRIM on a Table Column
+            SELECT  LTRIM(Name) AS TrimmedNames FROM Users;
+
+
+=> "RTRIM"
+
+    - used in SQL to remove extra spaces from the right end of a string
+    - Does not remove leading (left-side) spaces.
+    - Supported by major databases like MySQL, SQL Server, Oracle and Azure SQL.
+    
+    Syntax:     RTRIM( input_text,[Trim_Characters]);
+                OR
+                RTRIM(column_name) AS trimmed_name  FROM table_name;
+
+    Example: 
+        -> Using RTRIM Function to Remove Trailing Spaces from a String
+            SELECT
+                '[' || '          Coding databases          ' || ']' AS Before_RTRIM,
+                '[' || RTRIM('          Coding databases          ') || ']' AS After_RTRIM;
+
+        -> Using RTRIM Function on Table Column
+            SELECT
+                id, '[' || name || ']' AS name, '[' || RTRIM(name) || ']' AS trimmed_name
+            FROM GFG;
+
+           
+        -> Using RTRIM Function With a Variable
+        DELIMITER //
+
+        CREATE PROCEDURE RTRIM_Example()
+        BEGIN
+            DECLARE input_string VARCHAR(15);   -- Declare a variable
+            SET input_string = 'Hello          ';    -- Assign a value to the variable
+            SELECT CONCAT(RTRIM(input_string), ' World') AS result; -- Use the variable in a query
+        END //
+        DELIMITER ;
+
+        CALL RTRIM_Example();   -- Call the stored procedure           
