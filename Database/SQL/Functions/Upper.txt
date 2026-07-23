@@ -1,0 +1,29 @@
+The UPPER() function is a commonly used SQL string function that converts all lowercase letters in a string 
+    to uppercase.
+    - performing case-insensitive string comparisons.
+    - Numbers and special characters (like @, -, /, &) remain unchanged.
+    - UPPER() and UCASE() perform the same operation in most modern databases.
+
+    Syntax: UPPER(input_text);
+            OR
+            UPPER(column_name);
+
+    Examples:   
+        -> Convert Character Literal to Uppercase Using SQL Upper Function
+
+            SELECT  "x" as  "BEFORE UPPER() Function" ,  UPPER("x")  as  "AFTER UPPER() Function";
+
+        -> Convert string to Uppercase using SQL UPPER Function
+
+            SELECT  "Microsoft"  as  "BEFORE UPPER() Function" ,  UPPER("Microsoft")  as  "AFTER UPPER() 
+            Function";
+
+        -> Using UPPER Function on Mixed Character String
+            
+            SELECT  "12@tEsla"  as  "BEFORE UPPER() Function" ,  UPPER("12@tEsla")  as  "AFTER UPPER() 
+            Function" ;
+
+        -> Using SQL UPPER function on a Column
+
+            SELECT ID AS "BEFORE UPPER() Function", UPPER(ID) AS "AFTER UPPER() Function"
+            FROM CompanyData;

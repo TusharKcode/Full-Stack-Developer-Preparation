@@ -1,0 +1,88 @@
+Regular expressions (regex) are powerful tools used to search, match, extract and replace text based on 
+    specific patterns.
+    - In SQL, regex helps manage and manipulate textual data more efficiently
+
+    => Types:   
+
+        -> REGEXP_LIKE
+            - checks whether a string matches a given regular expression and returns TRUE or FALSE
+            -  used in WHERE clauses to filter rows that match a specific text pattern.
+
+            Syntax: REGEXP_LIKE(column_name, 'pattern')
+            Query:  SELECT product_name FROM products WHERE REGEXP_LIKE(product_name, '^A');
+
+        -> REGEXP_REPLACE
+            - used to find a pattern in a string and replace it with another value.
+            - clean and format data by removing or changing unwanted characters.
+
+            Syntax: REGEXP_REPLACE(string, 'pattern', 'replacement')
+            Query:  SELECT REGEXP_REPLACE(phone_number, '[^0-9]', '') AS cleaned_number FROM contacts;
+
+        -> REGEXP_SUBSTR
+            - extracts a part of a string that matches a given regular expression
+            - useful for pulling specific patterns like emails or numbers.
+
+            Syntax: REGEXP_SUBSTR(string, 'pattern', start_position, occurrence, match_parameter)
+            Query: SELECT REGEXP_SUBSTR(email, '@[^.]+') AS domain FROM users;
+
+    => Regular expression Syntax table:
+        .	    Matches any single character (except newline)	h.t	        hat, hit, hot
+        ^	    Matches the start of a string	                ^A	        Apple, Apricot
+        $	    Matches the end of a string	                    ing$	    sing, bring
+        |	    Acts as logical OR	                            cat|dog	    cat, dog
+        *	    Zero or more of previous character	            ab*	        a, ab, abb
+        +	    One or more of previous character	            ab+	        ab, abb
+        ?	    Zero or one of previous character	            colou?r	    color, colour
+        {n}	    Exactly n times	                                a{3}	    aaa
+        {n,}	n or more times	                                a{2,}	    aa, aaa
+        {n,m}	Between n and m times	                        a{2,4}	    aa, aaa, aaaa
+        [abc]	Any one character inside	                    [aeiou]	    a, e, i, o, u
+        [^abc]	Any character not inside	                    [^aeiou]	any non-vowel
+        [a-z]	Character range	                                [0-9]	        0–9
+        \	    Escapes special character	                    \.	            .
+        \b	    Word boundary	                                \bcat\b	    cat (not scatter)
+        \B	    Non-word boundary	                            \Bcat	    scatter
+        (abc)	Grouping	                                    (ha)+	    ha, haha
+        \1	    Back-reference	                                (ab)\1	    abab
+
+    => Regex patterns   
+
+      ^[A-Za-z0-9._%+-]+@[A-        Validates an email          john.doe@gmail.com      Valid email addresses
+      Za-z0-9.-]+\\.[A-Za-z]{2,}$   address.
+
+      ^[0-9]+$                      Matches a numeric           123456                  123, 456, 7890
+                                    string only.
+
+      https?://[^ ]+                Matches a URL starting      https://example.com/    URLs
+                                    with http or https.
+
+      ^[A-Za-z0-9]+$                Matches alphanumeric        User123                 abc123, xyz789
+                                    strings.
+
+    => Examples:    
+        -> Extracting URLs from Text:   
+            - Extracts URLs from text by matching links that start with http:// or https://.
+                SELECT REGEXP_SUBSTR(message, 'https?://[^ ]+') AS url FROM messages;
+
+
+        -> Validating Email Addresses:  
+            - ensures that the email follows the standard format.
+                SELECT email FROM users WHERE REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+
+
+        -> Cleaning Up Phone Numbers: 
+            - Removes all non-numeric characters from phone numbers
+                SELECT REGEXP_REPLACE(phone_number, '[^0-9]', '') AS cleaned_number FROM contacts;
+
+
+        -> Finding Specific Patterns: 
+            - Find all product names in the products table that contain digits
+                SELECT product_name FROM products WHERE REGEXP_LIKE(product_name, '[0-9]');
+
+        -> Extracting Subdomains: 
+            - Extract the subdomain from URLs in the web_logs table
+                SELECT REGEXP_SUBSTR(url, '^[^.]+') AS subdomain FROM web_logs;
+
+        -> Validating Numeric Strings: 
+            - Find records where a field contains only numbers in the data_table
+                SELECT record_id FROM data_table WHERE REGEXP_LIKE(field_name, '^[0-9]+$');
