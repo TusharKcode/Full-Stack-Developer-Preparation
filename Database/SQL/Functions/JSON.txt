@@ -1,0 +1,81 @@
+JSON (JavaScript Object Notation) is a lightweight and widely used data format for storing and exchanging 
+    data
+    - SQL Server supports JSON handling through built-in functions.
+    - Stored in NVARCHAR columns in SQL Server
+    - Provides compatibility with OLTP, temporal tables and columnstore indexes
+    - Treated as structured text (plain text format with JSON structure)
+    - Supported on the client side as a JavaScript object without a separate data type
+    - Available in SQL Server starting from version 2016
+
+    Examples: 
+        -> ISJSON (JSON string)
+            - used to check whether the given input JSON string is in JSON format or not. 
+            - If it is in JSON format, it returns 1 as output or else 0.
+
+            Query:  SELECT ISJSON(@JSONData) AS VALIDJSON
+
+        -> JSON_VALUE (JSON string, path)
+            - '$' - reference entire JSON object
+                '$.Example1' - reference Example1in JSON object
+            - '$[4]' - reference 4th element in JSON array
+                '$.Example1.Example2[2].Example3' - reference nested property in JSON object
+
+            Query:  SELECT JSON_VALUE(@JSONData,'$.Information.SchoolDetails[0].Name') as SchoolName
+
+        -> JSON_QUERY(JSON string, path)
+            - Used to extract an array of data or objects from the JSON string.
+            Query:  SELECT JSON_QUERY(@JSONData,'$.Information.SchoolDetails') AS LISTOFSCHOOLS
+
+        -> JSON_MODIFY
+            - a Transact-SQL function used to update, insert or delete values inside a JSON string without 
+                changing the entire document structure
+            - allows you to dynamically modify specific properties within complex JSON data.
+
+            Query:  SET @JSONData= JSON_MODIFY(@JSONData, '$.Information.SchoolDetails[2].Name', 'Adhyapana');
+                    SELECT modifiedJson = @JSONData;
+
+        -> FOR JSON
+            - used for Exporting SQL Server data as JSON format
+            - AUTO: As it is nested JSON sub-array is created based on the table hierarchy.
+            - PATH:  By using this we can define the structure of JSON in a customized way.
+
+            Query:  SELECT * FROM Authors FOR JSON AUTO;
+                    SELECT * FROM Authors FOR JSON AUTO, ROOT ('AuthorInfo')
+
+        -> OPENJSON
+            - used for importing JSON as String data. 
+            - import JSON as a text file by using OPENROWSET function and in that the BULK option should 
+                be enabled.
+            - returns a single string field with BulkColumn as its column name.
+            - SINGLE_BLOB, SINGLE_NCLOB and SINGLE_CLOB control how external files are read (binary, 
+                Unicode text or plain text)
+            - OPENJSON then parses the JSON text and converts it into a relational table format by iterating 
+                through JSON elements.
+
+            Query:  DECLARE @JSON VARCHAR(MAX)
+                                        --Syntax to get json data using OPENROWSET  
+                    SELECT @JSON = BulkColumn FROM OPENROWSET  
+                    (BULK '<pathname\jsonfilename with .json extension>', SINGLE_CLOB)  AS j
+                                        --To check  json valid or not, we are using this ISJSON
+                    SELECT ISJSON(@JSON)
+                                        --If ISJSON is true, then display the json data
+                    If (ISJSON(@JSON)=1)
+                    SELECT @JSON AS 'JSON Text'
+
+                    SELECT @JSON = BulkColumn
+                    FROM OPENROWSET 
+                    (BULK '<location of json file>', SINGLE_CLOB) 
+                    AS j
+                                                --If the retrieved JSON is a valid one
+                    If (ISJSON(@JSON)=1)
+                    Select * FROM OPENJSON (@JSON)
+
+        -> Changing JSON values
+            - JSON_MODIFY allows updating specific properties inside a JSON string and returns the modified JSON
+
+            Query:  DECLARE @json NVARCHAR(MAX);
+                    SET @json = '{"Information": {"SchoolDetails": [
+                        {"Name": "VidhyaMandhir"}, {"Name": "Chettinad"}, {"Name":"PSSenior"}
+                    ]}}';
+                    SET @json = JSON_MODIFY(@json, '$.Information.SchoolDetails[2].Name', 'Adhyapana');
+                    SELECT modifiedJson = @json;

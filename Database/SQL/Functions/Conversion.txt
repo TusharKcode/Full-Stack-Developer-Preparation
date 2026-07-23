@@ -1,0 +1,89 @@
+SQL provides data type conversion functions to transform data between different formats such as numbers, 
+    text and dates.
+
+=> Types:
+    -> Implicit Data-Type Conversion
+        - also known as automatic type casting
+        - occurs when SQL automatically converts one data type to another without requiring any intervention 
+            from the user.
+
+            VARCHAR2 or CHAR	NUMBER
+            VARCHAR2 or CHAR	DATE
+            DATE	            VARCHAR2
+            NUMBER	            VARCHAR2
+
+            Example: 
+                -> Using a Numeric Value:   SELECT employee_id, first_name, salary FROM employees
+                                            WHERE salary > 15000;
+
+
+                -> Using a String Value:    SELECT employee_id, first_name, salary FROM employees
+                                            WHERE salary > '15000';
+
+    -> Explicit Data-Type Conversion
+        - manual conversion of a value from one data type to another.
+        - Functions:
+                    TO_CHAR(): Converts numbers or dates to a string.
+                    TO_NUMBER(): Converts a string to a numeric type.
+                    TO_DATE(): Converts a string to a date.
+        Example:
+            -> TO_CHAR Function:    TO_CHAR(expression, 'format_model') 
+                                    TO_CHAR(date, 'format_model')       // for dates, case sensitive, single 
+                                                                            quotation
+
+                    SELECT employee_id, TO_CHAR(hire_date, 'MM/YY') Month_Hired FROM employees
+                    WHERE last_name = 'Higgins';
+
+                    SELECT last_name, hire_date FROM employees 
+                    WHERE hire_date = TO_DATE('June 20, 2004', 'fxMonth DD, YYYY');
+
+=> Elements of the Date Format Model
+    
+            YYYY	Full-year in Numbers
+            YEAR	Year spelled out
+            YY      Two-digit value of year
+
+            MM	    Two-digit value for the month
+            MONTH	Full name of the month
+            MON	    Three Letter abbreviation of the month
+            D       Number of Days in a Week
+
+            DY	    Three-letter abbreviation of the day of the week
+            DAY	    Full Name of the Day
+            DD	    Numeric day of the month
+
+=> Date Format Elements - Time Formats
+
+            AM or PM	        Meridian indicator
+            A.M. or P.M.	    Meridian indicator with periods
+            HH or HH12 or HH24	Hour of day or hour (1-12) or hour (0-23)
+            MI	                Minute 0-59
+            SS	                Second 0-59
+            SSSSS	            Second past Mid Night 0-86399
+
+=> Other formats:   
+
+    / . ,	        Punctuation is reproduced in the result
+    "of the"	    The quoted string is reproduced in the result
+    TH	Ordinal     Number (for example DDTH for 4TH)
+    SP	Spelled     outnumber (for example DDSP for FOUR)
+    SPTH or THSP	spelled out ordinal numbers (for example DDSPTH for FOURTH)
+
+    Example:
+        - Has an fm element to remove padded blanks or suppress leading zeros
+            
+            SELECT last_name, TO_CHAR(hire_date, 'fmDD Month YYYY') AS HIREDATE FROM employees;
+
+=> TO_CHAR Function with Numbers
+
+    Syntax:     TO_CHAR(number, 'format_model')
+
+        9	Represent a number
+        0	Forces a zero to be displayed
+        $	places a floating dollar sign
+        L	It uses the floating local currency symbol
+        .	Print a decimal point
+        ,	Prints a Thousand indicator
+
+    Example: 
+        SELECT TO_CHAR(salary, '$99,999.00') SALARY FROM employees WHERE last_name = 'Clark';
