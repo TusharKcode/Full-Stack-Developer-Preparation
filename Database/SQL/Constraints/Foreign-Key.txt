@@ -1,0 +1,29 @@
+A FOREIGN KEY constraint is a concept in SQL that enforces a valid relationship between two tables by 
+    ensuring that the values stored in the child table correspond to existing values in the parent 
+    table.
+    - protects the database from inconsistent or invalid relational data.
+    - Uses CASCADE or RESTRICT rules to control related data changes.
+    - 
+
+    Syntax:
+            -> to create a foreign key in CREATE TABLE statement is:
+                CREATE TABLE table_name (column1 data_type, column2 data_type, . . . . , 
+                CONSTRAINT fk_constraint_name FOREIGN KEY (column1, column2, ...)
+                REFERENCES parent_table(column1, column2, ...));
+
+            -> to add a foreign key with ALTER TABLE statement is:
+                ALTER TABLE table_name ADD CONSTRAINT fk_constraint_name
+                FOREIGN KEY (column1, column2, ...) REFERENCES parent_table(column1, column2, ...);
+
+    Examples:
+        -> Insert Value in Foreign Key Table
+            - If a corresponding value in the foreign table does not exist, a record in the child table 
+                cannot be inserted.
+
+            INSERT INTO courses (course_name, instructor, reference_id) VALUES ('physics', 'Dr. Green', 5);
+
+        -> Delete a value in Foreign Key Table
+            - When a record in the master table is deleted and the corresponding record in the child table 
+                exists, an error message is displayed and prevents the DELETE operation from going through.
+
+            DELETE FROM student WHERE student_id = 1;

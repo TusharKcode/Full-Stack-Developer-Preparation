@@ -1,0 +1,40 @@
+In SQL, NOT NULL constraint in SQL ensures a column must always contain a value and cannot be left empty.
+    - NOT NULL only enforces the presence of data without requiring uniqueness.
+    - It prevents NULL values from being inserted or updated.
+    - It is applicable at the column level.
+    - 
+
+    Syntax: CREATE TABLE table_Name(
+                column1 data_type(size) NOT NULL,
+                column2 data_type(size) NOT NULL,
+                ....);
+
+=> Constraint Syntax
+    -> During Table Creation:
+
+        Syntax: CREATE TABLE table_Name(
+                column1 data_type(size) NOT NULL,
+                column2 data_type(size) NOT NULL,
+                ....);
+
+    -> Modifying an Existing Table:
+        - add a NOT NULL constraint to an existing column in a table using the ALTER TABLE statement
+
+        Syntax: ALTER TABLE table_name MODIFY column_name data_type(size) NOT NULL;
+
+    Examples:
+        -> Applying NOT NULL in Table Creation
+            CREATE TABLE Emp (
+                EmpID INT NOT NULL PRIMARY KEY,
+                Name VARCHAR(50),
+                Country VARCHAR(50),
+                Age INT(2),
+                Salary INT(10)
+            );                  -- Insert valid rows (EmpID has values, so inserts succeed)
+            INSERT INTO Emp (EmpID, Name, Country, Age, Salary) VALUES
+            (1, 'John', 'USA', 28, 35000),
+            (2, 'Emma', 'Canada', 32, 55000),
+            (3, 'Lucas', 'Germany', 26, 42000);
+
+        -> Adding NOT NULL to an Existing Table
+            ALTER TABLE Student MODIFY COLUMN StuID SET NOT NULL;

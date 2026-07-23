@@ -1,0 +1,32 @@
+The PRIMARY KEY constraint in SQL uniquely identifies each record in a table and ensures strong data integrity.
+    - prevents duplicate and NULL values
+    - Only one primary key per table (can be composite).
+    - Automatically creates a unique index for faster searches.
+
+    Syntax:
+            -> SQL primary key syntax with CREATE TABLE statement is:
+                CREATE TABLE table_name (column1 data_type, column2 data_type, . . . . , 
+                                            PRIMARY KEY (column1, column2));
+
+            -> SQL primary key syntax with ALTER TABLE statement is:
+                ALTER TABLE table_name ADD CONSTRAINT constraint_name 
+                PRIMARY KEY (column1, column2, . . . . , Column_n);
+
+=> Types:
+    -> Simple Primary Key:      A primary key that consists of a single column.
+    -> Composite Primary Key:   A primary key that consists of multiple columns.
+
+    Examples:
+        -> Create PRIMARY KEY in SQL
+            CREATE TABLE Persons (PersonID INT PRIMARY KEY, LastName varchar(255), FirstName varchar(255),
+                                    Age INT);
+
+        -> Verify SQL Primary key creation
+            -- Duplicate primary key value (PersonID = 1 already exists)
+            INSERT INTO Persons VALUES (1, 'Brown', 'Olivia', 27);
+
+            -- NULL not allowed in primary key column
+            INSERT INTO Persons VALUES (NULL, 'Miller', 'Ethan', 32);
+
+        -> Add PRIMARY KEY to a Existing Table
+            ALTER TABLE Person ADD CONSTRAINT PK_Person PRIMARY KEY (PersonID);
