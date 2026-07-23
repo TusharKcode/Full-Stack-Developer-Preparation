@@ -1,0 +1,27 @@
+The UNIQUE constraint in SQL prevents duplicate entries in specified column(s) while still allowing multiple 
+    NULL values.
+    - helps maintain data accuracy without the strict non-NULL requirement of a PRIMARY key.
+    - Supports single or multi-column definitions.
+    - Can be added or removed using ALTER TABLE.
+    - Index creation depends on the database.
+
+    Syntax:  CREATE TABLE table_name (column1 datatype UNIQUE, column2 datatype, ...);
+
+    Example:    
+        -> Creating a Table with UNIQUE Constraints
+            CREATE TABLE Customers (CustomerID INT PRIMARY KEY, Name VARCHAR(100), Email VARCHAR(100) UNIQUE,
+                                    Country VARCHAR(50));
+
+            --Insert data into Customers table
+            INSERT INTO Customers (CustomerID, Name, Email, Country) VALUES 
+            (1, 'John Doe', 'john.doe@example.com', 'USA'),
+            (2, 'Jane Smith', 'jane.smith@example.com', 'Canada');
+
+        -> Using UNIQUE with Multiple Columns
+            CREATE TABLE Orders (OrderID INT PRIMARY KEY, CustomerID INT, ProductID INT, OrderDate DATE, 
+                                UNIQUE (CustomerID, ProductID));
+
+            --Insert data into Orders table
+            INSERT INTO Orders (OrderID, CustomerID, ProductID, OrderDate) VALUES
+            (1, 101, 501, '2024-01-10'),
+            (2, 102, 501, '2024-01-12');

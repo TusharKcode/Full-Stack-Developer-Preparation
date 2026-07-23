@@ -1,0 +1,27 @@
+An Alternate Key is a candidate key that is not chosen as the Primary Key but can still uniquely identify a 
+    record in a table.
+    - When multiple attributes can uniquely identify records, only one is selected as the Primary Key.
+    - The remaining unique attributes act as Alternate Keys, providing alternative ways to identify records.
+
+    Syntax: The ALTERNATE Keys in SQL are defined using the SQL constraint UNIQUE:
+
+        CREATE TABLE CustomerInfo(column_1 datatype PRIMARY KEY, column_2 datatype, column_3 datatype UNIQUE,
+        column_4 datatype UNIQUE, . . . ,);
+
+    Creating an Alternate Key in SQL:
+        CREATE TABLE Product (
+            ProductID INT PRIMARY KEY, ProductName VARCHAR(50),
+            ProductCode VARCHAR(20) UNIQUE      -- Alternate Key
+        );
+        CREATE TABLE Orders (
+            OrderID INT PRIMARY KEY,
+            OrderNumber VARCHAR(30) UNIQUE,     -- Alternate Key
+            ProductID INT, Quantity INT,
+            FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+        );
+        
+        INSERT INTO Product VALUES      -- Insert data into Product table
+        (101, 'Wireless Mouse', 'WMX-100'), (102, 'Bluetooth Speaker', 'BTS-250');
+
+        INSERT INTO Orders VALUES   -- Insert data into Order table
+        (1, 'ORD-9001', 101, 2), (2, 'ORD-9002', 102, 1);

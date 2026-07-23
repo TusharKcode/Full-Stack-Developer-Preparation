@@ -1,0 +1,16 @@
+A composite key is a primary key made from two or more columns that together uniquely identify each record 
+    in a table.
+    - columns may not be unique, but their combined values ensure uniqueness.
+
+    Syntax: CREATE TABLE table_name (column1 datatype, column2 datatype, column3 datatype, ...,
+                                    PRIMARY KEY (column1, column2));
+
+    Example:    
+            // Creating a table with a composite key:
+            CREATE TABLE student(rollNumber INT, name VARCHAR(30), class VARCHAR(30), section VARCHAR(1), 
+                                    mobile VARCHAR(10), PRIMARY KEY (rollNumber, mobile));
+
+        - rollNumber + mobile together act as the composite key, ensuring each student record is uniquely 
+            identified.
+        - The INSERT command adds multiple rows where each combined pair of rollNumber and mobile must be 
+            unique.
