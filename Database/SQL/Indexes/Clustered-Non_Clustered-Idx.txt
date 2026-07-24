@@ -1,0 +1,22 @@
+=> Clustered Index
+    -> A Clustered Index defines the physical order of rows in a table. 
+        - When you create a clustered index on a column, SQL Server rearranges the actual data rows to match 
+            the index order. 
+        - a table can have only one clustered index
+        - Requires less memory for operations.
+        - Leaf nodes contain the actual table data.
+        - Ideal for range queries and ordered data retrieval.
+
+    -> Created when both the conditions are satisfied: 
+        - The data can be stored in a sequential or sorted manner.
+        - The column used as the key must contain unique values.
+
+=> Non-Clustered Index
+    -> A non-clustered index stores indexed values separately from the table and uses pointers to locate the 
+        actual rows.
+        - Multiple non-clustered indexes can be created to improve query performance.
+        - Stores index data separately from the table.
+        - Better for specific lookups on non-key columns.
+        - Requires additional storage for the index structure.
+        - Leaf nodes contain index values and row pointers
+        - Suitable for optimizing searches, filters and joins on non-primary columns.
