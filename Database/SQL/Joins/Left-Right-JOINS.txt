@@ -1,0 +1,36 @@
+=> In SQL, the LEFT JOIN (also called LEFT OUTER JOIN) retrieves all records from the left table and only the 
+    matching records from the right table
+    - If no match is found, NULL values are returned for the right table columns.
+
+    Syntax: SELECT column_name(s) FROM tableA 
+            LEFT JOIN tableB ON tableA.column_name = tableB.column_name;
+
+Examples:
+    -> Performing a LEFT JOIN
+
+        Query:  SELECT Emp.EmpID, Emp.Name, department.department_name, department.department_head, 
+                department.location FROM Emp
+                LEFT JOIN department ON Emp.department_id = department.department_id;
+
+    -> SQL LEFT JOIN with WHERE Clause
+        
+        Query:  SELECT e.EmpID, e.Name, d.department_name, d.department_head, d.location FROM Emp e
+                LEFT JOIN department d ON e.department_id = d.department_id
+                WHERE d.location = 'London';
+
+    -> SQL LEFT JOIN as Aliases
+        
+        Query:  SELECT e.EmpID, e.Name, d.department_name, d.department_head, d.location FROM Emp e
+                LEFT JOIN department d ON e.department_id = d.department_id;
+
+=> In SQL, the RIGHT JOIN (also called RIGHT OUTER JOIN) is used to combine rows from two tables based on a 
+    related column.
+    - returns all records from the right table and only the matching records from the left table.
+    - If there is no match in the left table, the result will show NULL values for the left table’s columns.
+
+    Syntax: SELECT column_name(s) FROM tableA 
+            RIGHT JOIN tableB ON tableA.column_name = tableB.column_name;
+
+Example:
+    -> SELECT e.emp_no, e.emp_name, d.d_name, d.location FROM employee e
+        RIGHT JOIN dept d ON e.dept_no = d.dept_no;
