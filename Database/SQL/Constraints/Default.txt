@@ -1,0 +1,23 @@
+The DEFAULT constraint in SQL automatically assigns a predefined value to a column when no value is provided 
+    during insertion. 
+    - Fills the column with a preset value when omitted.
+    - Ensures consistent data without manual input.
+
+    Syntax: CREATE TABLE table_name (column1 datatype DEFAULT default_value, 
+                                    column2 datatype DEFAULT default_value);
+
+=> Dropping the DEFAULT Constraint
+    - If you no longer want a column to use a default value, you can drop the DEFAULT constraint.
+    - only apply to new rows and will not affect existing data in the table.
+
+    Syntax: ALTER TABLE table_name ALTER COLUMN column_name DROP DEFAULT;
+
+    Example: 
+        ALTER TABLE Geeks
+        ALTER COLUMN Location
+        DROP DEFAULT;
+
+        INSERT INTO Geeks VALUES (8, 'John', 24, 'New York'); --Let us add 2 new rows in the Geeks table 
+        INSERT INTO Geeks VALUES (9, 'Jane', 26,NULL);
+
+        Select * from Geeks;

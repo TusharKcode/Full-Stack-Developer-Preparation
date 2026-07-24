@@ -1,0 +1,36 @@
+The CHECK constraint in SQL ensures that only valid data enters a column by enforcing specific conditions.
+    - If a value doesn’t satisfy the defined rule, the insert or update operation is blocked.
+    - Can be defined while creating a table or added later using ALTER TABLE.
+    - Works with other constraints like PRIMARY KEY, FOREIGN KEY, and NOT NULL.
+    - Can check multiple columns at once as a row-level condition.
+
+    Syntax:
+        -> Using CHECK with CREATE TABLE:
+            CREATE TABLE table_name (column1 datatype, column2 datatype CHECK (condition), ...);
+
+        -> Using CHECK with ALTER TABLE:
+            ALTER TABLE table_name ADD CONSTRAINT constraint_name CHECK (condition);
+
+    Examples:
+        -> Applying CHECK on a Single Column
+            CREATE TABLE Customers (CustomerID INT PRIMARY KEY, Name VARCHAR(50),
+                Age INT CHECK (Age >= 18 AND Age <= 120));
+
+            INSERT INTO Customers (CustomerID, Name, Age) VALUES (1, 'John Doe', 25);   -- Valid insert
+
+            INSERT INTO Customers (CustomerID, Name, Age) VALUES (2, 'Jane Smith', 15); -- Invalid insert
+                                                            -- This will fail due to the CHECK constraint
+
+        -> CHECK Constraint with Multiple Columns
+            CREATE TABLE Employee (
+                EmployeeID INT PRIMARY KEY, Name VARCHAR(50), Age INT, Salary DECIMAL(10, 2), 
+                CHECK (Age >= 18 AND Salary > 0));
+
+            INSERT INTO Employee (EmployeeID, Name, Age, Salary) VALUES (1, 'Alice Johnson', 30, 50000),
+            (2, 'Bob Lee', 27, 47000);              -- Valid insert
+
+            INSERT INTO Employee (EmployeeID, Name, Age, Salary) VALUES (2, 'Bob Lee', 16, 45000);  
+                        -- Invalid insert (age < 18) -- This will fail due to the CHECK constraint
+
+        -> Adding a CHECK Constraint with ALTER TABLE
+            ALTER TABLE Employee ADD CONSTRAINT chk_salary CHECK (Salary >= 30000);
