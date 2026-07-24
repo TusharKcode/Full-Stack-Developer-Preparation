@@ -1,0 +1,37 @@
+When an index becomes unnecessary, it can be removed using the DROP INDEX statement to improve overall 
+    performance.
+    - Reduces maintenance overhead and storage use.
+    - PRIMARY KEY / UNIQUE indexes need constraint removal first.
+    - IF EXISTS avoids errors when index is missing.
+
+    Syntax: DROP INDEX index_name ON table_name;
+
+    Example:    
+        -> Create the EMPLOYEE Table
+            CREATE TABLE EMPLOYEE( EMP_ID INT, EMP_NAME VARCHAR(20), AGE INT, DOB DATE, SALARY DECIMAL(7,2)); 
+
+        -> Create an Index on the EMPLOYEE Table
+            CREATE INDEX EMP ON EMPLOYEE(EMP_ID, EMP_NAME);
+
+        -> Dropping an Index: SQL DROP INDEX with IF EXISTS
+            DROP INDEX IF EXISTS EMP ON EMPLOYEE;
+
+        -> Verifying the DROP INDEX:    SHOW INDEXES FROM EMPLOYEE;
+
+The SHOW INDEXES statement allows users to view and manage the existing indexes of a table.
+    
+    Syntax: SHOW INDEXES FROM table_name;
+
+    Example: 
+        -> Create the orders Table: 
+            CREATE TABLE orders ( order_id INT AUTO_INCREMENT, customer_id INT NOT NULL, 
+                order_date DATE NOT NULL, total_amount DECIMAL(10, 2),
+                PRIMARY KEY(order_id),
+                INDEX idx_customer_id (customer_id),                        -- Regular index on customer_id
+                UNIQUE INDEX unique_order_date (order_date),                -- Unique index on order_date
+                INDEX invisible_index (total_amount) INVISIBLE,             -- Invisible index on total_amount
+                INDEX composite_index (customer_id, order_date) COMMENT 
+                'By customer and order date'                        -- Composite index on multiple columns
+            );
+
+        -> Show Indexes on the orders Table:    SHOW INDEXES FROM orders;

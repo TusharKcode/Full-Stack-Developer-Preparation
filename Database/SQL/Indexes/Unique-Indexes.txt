@@ -1,0 +1,51 @@
+A SQL Unique Index enforces uniqueness by ensuring that no duplicate values exist in specified column(s), 
+    - helping maintain data integrity.
+    - used to prevent duplicate entries
+
+    Syntax: CREATE UNIQUE INDEX index_name ON table_name (column1, column2, ..., columnN);
+    
+    Example: 
+        -> Creating a Unique Index on a Single Column: 
+
+                CREATE UNIQUE INDEX UNIQUE_NAME ON CUSTOMERS(NAME);
+
+        -> Creating a Unique Index on Multiple Columns:
+
+                CREATE UNIQUE INDEX MUL_UNIQUE_INDEX ON CUSTOMERS(NAME, AGE);
+
+        -> Attempting to Create a Unique Index on a Column with Duplicate Values:
+
+                CREATE UNIQUE INDEX UNIQUE_SALARY ON CUSTOMERS(SALARY);     // Error
+
+        -> Verifying Indexes in a Table:    SHOW INDEX FROM CUSTOMERS;
+
+        -> Handling Duplicate Entries in Indexed Columns:
+
+            --Firstly, create a UNIQUE INDEX on ADDRESS Column
+                CREATE UNIQUE INDEX ADD_UNIQUE_INDEX ON CUSTOMERS(ADDRESS);
+
+            -- Attempts to assign a duplicate value to a column that has a UNIQUE index
+                UPDATE CUSTOMERS SET ADDRESS = 'London' WHERE ADDRESS = 'Sydney';   // Error
+
+=> Removing an Index
+    - Indexes take up storage and add overhead on write operations (INSERT, UPDATE, DELETE). If an index is 
+        no longer needed, it can be removed.
+
+    Syntax: DROP INDEX index_name ON table_name;
+
+    Example: DROP INDEX idx_product_quantity ON Sales; 
+
+=> Altering an Index
+    - If an index requires adjustments, such as reorganizing or rebuilding, it can be altered without 
+        affecting the data. 
+
+    Syntax: ALTER INDEX IndexName ON TableName REBUILD;
+
+    Example: ALTER INDEX idx_product_id ON Sales REBUILD;
+
+=> Renaming an Index
+    - SQL does not directly support renaming indexes, we can use a combination of commands to achieve this.
+
+    Syntax: EXEC sp_rename 'old_index_name', 'new_index_name', 'INDEX';
+
+    Example: EXEC sp_rename 'idx_product_quantity', 'idx_prod_qty', 'INDEX';

@@ -1,0 +1,32 @@
+Indexes in SQL are special database structures that improve query performance by allowing faster access to 
+    data instead of scanning the entire table. 
+    - Primary Key and Unique constraints automatically create indexes.
+
+=> Creating an Index
+    - Does not modify the table's structure or data.
+
+    -> Single Column Indexes
+        - single-column index is created on just one column. 
+        - helps speed up queries
+
+            Syntax: CREATE INDEX index_name ON table_name (column);
+
+    -> Multi Column Indexes
+        - multi-column index is created on two or more columns.
+        - queries filter or join based on multiple columns together
+
+            Syntax: CREATE INDEX index_name ON table_name (column1, column2,.....);
+
+    -> Unique Column Indexes
+        - ensures that all values in a column (or combination of columns) are unique preventing duplicates
+
+            Syntax: CREATE UNIQUE INDEX index_name ON table_name (column_name);
+
+Steps:  Create an Index:
+            CREATE INDEX idx ON Students(NAME);
+
+            CREATE UNIQUE INDEX idx_student_id ON Students(student_id); --Creating a Unique Index
+            
+        Retrieve Data Using the Index: SELECT * FROM Students USE INDEX(idx_name);
+        
+        Verifying the Index Creation: SHOW INDEXES FROM Students;
