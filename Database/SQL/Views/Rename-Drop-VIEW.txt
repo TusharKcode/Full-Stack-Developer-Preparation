@@ -1,0 +1,30 @@
+The RENAME VIEW operation is used to change the name of an existing view without affecting its structure or 
+    data.
+    - keeping its contents unchanged.
+
+    Syntax:     EXEC sp_rename 'old_view_name', 'new_view_name';
+
+    Example: 
+        -> Create the sales_report View
+
+            CREATE VIEW sales_report AS
+            SELECT product_id, SUM(quantity) AS total_quantity FROM Sales GROUP BY product_id;
+
+            SELECT * FROM sales_report;
+
+        -> Rename the sales_report View: EXEC sp_rename 'sales_report', 'monthly_sales_report';
+
+
+Dropping a view removes only the view definition, not the actual data stored in the base tables.
+    - safe to delete views without affecting the original tables or their contents
+    - DROP VIEW command is used.
+
+    Syntax:     DROP VIEW view_name;
+
+    Example: 
+        -> Create the HighSalaryEmployees View
+
+            CREATE VIEW HighSalaryEmployees AS
+            SELECT * FROM Employees WHERE Salary > 50000;
+
+        -> Deleting a View:    DROP VIEW HighSalaryEmployees; 
