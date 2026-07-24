@@ -1,0 +1,26 @@
+SQL provides recursive joins using recursive CTEs to work with hierarchical data such as employee-manager or 
+    parent-child relationships.
+    - Recursive joins are also used for traversing graphs or networks, such as social networks or 
+        transportation networks.
+
+    Syntax: WITH RECURSIVE cte_name AS (
+                                        -- Anchor Query: Select the root or starting point
+                SELECT columns FROM table WHERE condition
+                UNION ALL
+                                        -- Recursive Query: Join the CTE with the table to fetch related data
+                SELECT t.columns FROM table t INNER JOIN cte_name cte ON t.column = cte.column)
+
+    Example:
+        -> 
+            WITH RECURSIVE employee_hierarchy AS (
+                -- Anchor query: Start with Michael  (employee_id = 1)
+                SELECT employee_id, employee_name, manager_id, age
+                FROM employees WHERE employee_id = 1
+                
+                UNION ALL
+                
+                -- Recursive query: Join the employees table with itself to get the employees reporting to each manager
+                SELECT e.employee_id, e.employee_name, e.manager_id, e.age
+                FROM employees e INNER JOIN employee_hierarchy eh ON e.manager_id = eh.employee_id
+            )
+            SELECT * FROM employee_hierarchy;
