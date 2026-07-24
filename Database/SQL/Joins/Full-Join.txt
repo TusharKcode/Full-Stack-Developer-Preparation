@@ -1,0 +1,18 @@
+The FULL JOIN (or FULL OUTER JOIN) in SQL returns all rows from both tables, combining matched rows and 
+    filling unmatched rows with NULL values
+    - combination of LEFT JOIN and RIGHT JOIN.
+
+    Syntax: SELECT columns FROM table1 FULL JOIN table2 ON table1.column = table2.column;
+
+    Example:
+        -> FULL JOIN on Multiple Tables
+            SELECT b.BOOK_ID, b.BOOK_NAME, a.AUTHOR_NAME, p.PUBLISHER_NAME FROM Books b
+            FULL JOIN Authors a ON b.AUTHOR_ID = a.AUTHOR_ID
+            FULL JOIN Publishers p ON b.PUBLISHER_ID = p.PUBLISHER_ID;
+
+        -> FULL JOIN with WHERE Clause
+
+            SELECT b.BOOK_ID, b.BOOK_NAME, a.AUTHOR_NAME, p.PUBLISHER_NAME FROM Books b
+            FULL JOIN Authors a ON b.AUTHOR_ID = a.AUTHOR_ID
+            FULL JOIN Publishers p ON b.PUBLISHER_ID = p.PUBLISHER_ID;
+            WHERE b.BOOK_NAME LIKE '%Smith%';
