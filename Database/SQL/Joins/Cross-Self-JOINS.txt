@@ -1,0 +1,29 @@
+=> SQL CROSS JOIN creates a Cartesian product of two tables, meaning it returns every possible combination of 
+    rows from both tables.
+    - does not use a join condition
+    - useful for generating all combinations of data.
+    - total number of rows in the result is the number of rows in the first table multiplied by the number 
+        of rows in the second table.
+
+    Syntax: SELECT * FROM table1 CROSS JOIN table2;
+
+    Example:   
+        -> SELECT * FROM Customer CROSS JOIN Orders;
+
+        // CROSS JOIN combines every row from the Customer table with every row from Orders table. Since 
+            there are 2 customers and 2 orders, result contains 2 × 2 = 4 rows.
+
+=> SQL Self Join is used when a table needs to be joined with itself to compare rows within the same table. 
+    - helps in finding relationships between records in a single table
+    - treating it as two separate instances using table aliases.
+    - A self join is not a new join type. It simply means joining the same table twice with aliases.
+    - 
+
+    Syntax: SELECT columns
+            FROM table AS alias1
+            JOIN table AS alias2 
+            ON alias1.column = alias2.related_column;
+
+    Example:    SELECT e.teacher_name AS employee, m.teacher_name AS manager
+                FROM SchoolEmp AS e 
+                JOIN SchoolEmp AS m ON e.teacher_id = m.teacher_id;

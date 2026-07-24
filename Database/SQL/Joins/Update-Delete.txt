@@ -1,0 +1,58 @@
+=> SQL UPDATE with JOIN allows updating records in one table using related data from another table through a 
+    join condition.
+    - useful for syncing data, correcting values or modifying columns based on matching rows across tables.
+    - RIGHT JOIN can also be used similarly by swapping the table order
+
+    Syntax: UPDATE target_table
+            SET column_name = source_table.column_name
+            FROM target_table
+            INNER JOIN source_table
+            ON target_table.id = source_table.id
+            WHERE condition;
+    
+    Example: 
+        -> SQL UPDATE with JOIN Using Two Tables
+            UPDATE Geeks1  
+            SET col2 = Geeks2.col2,  
+            col3 = Geeks2.col3  
+            FROM Geeks1  
+            INNER JOIN Geeks2 
+            ON Geeks1.col1 = Geeks2.col1  
+            WHERE Geeks1.col1 IN (21, 31);
+
+        -> SQL UPDATE with JOIN Using LEFT JOIN
+
+            Syntax: UPDATE target_table
+                    SET target_table.column_name = source_table.column_name
+                    FROM target_table
+                    LEFT JOIN source_table
+                    ON target_table.column_name = source_table.column_name;
+
+            Query:  UPDATE Geeks1
+                    SET col2 = ISNULL(Geeks2.col2, 0)
+                    FROM Goknlm,eeks1
+                    LEFT JOIN Geeks2
+                    ON Geeks1.col1 = Geeks2.col1;
+
+=> The SQL DELETE JOIN statement allows you to delete rows from one table based on matching conditions in 
+    another related table.
+    - useful for managing linked data across multiple tables while ensuring database consistency.
+    - Deletes rows from only one table even when multiple tables are joined.
+    - Uses joins to apply conditions based on related table data.
+    - Supports INNER JOIN, LEFT JOIN, and USING to match rows.
+    - Allows precise deletion using the WHERE clause.
+    
+    Syntax: DELETE table1 
+            FROM table1 
+            JOIN table2 
+            ON table1.attribute_name = table2.attribute_name
+            WHERE condition;
+
+    Example: 
+        ->  DELETE Orders
+            FROM Orders
+            JOIN Customers
+            ON Orders.customer_id = Customers.customer_id
+            WHERE Customers.status = 'inactive';
+
+            SELECT * FROM Orders;
