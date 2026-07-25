@@ -1,0 +1,6 @@
+Converting an Entity-Relationship (ER) diagram to a Relational Model is an important step in database design.
+
+-> Relational Model is a physical representation that can be directly implemented using a Relational 
+    Database Management System (RDbms) like Oracle or MySQL.
+
+Read it from here: (http://geeksforgeeks.org/dbms/mapping-from-er-model-to-relational-model/)

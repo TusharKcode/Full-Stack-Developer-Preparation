@@ -1,0 +1,56 @@
+An Entity Relationship Diagram (ERD) is a graphical representation of a database that shows entities, 
+    attributes, and relationships between them.
+    - Serves as a blueprint for database design.
+    - Improves communication between designers, developers, and users.
+
+Sample ER Diagram:
+    -> Entity Relationship Diagram for BANK
+        - An entity is a real-world object, either physical or conceptual, represented by a rectangle in an 
+            ER diagram.
+        - Entities for Bank: Bank, Branch, Employee, customer, loan, account.
+
+    -> Adding Attributes
+        - Attributes are the kind of properties that describe the entities. They are represented by ovals.
+        - Attributes for Bank are:
+                For Bank Entity the Attributes are Bname, code.
+                For Branch Entity the Attributes are Blocation, Bname.
+                For Employee Entity the Attributes are Eid, Designation, salary.
+                For Customer Entity the Attributes are Cid, Cname, Address, DOB.
+                For Loan Entity the Attributes are Loan_no, amount, rate.
+                For Account Entity the Attributes are acc_no, type.
+
+    -> Establishing Relationships
+        - Entities have some relationships with each other. Relationships define how entities are associated 
+            with each other.
+
+                The Bank has branches.
+                The Branch provides loan.
+                The Employee works in branch.
+                The Branch contains customers.
+                The Customers has account.
+                The Branch maintains account.
+                The Customer avails loan.
+
+    -> Specifying Cardinality
+        - numerical constraints on the relationships between entities.
+        - tells the ERD reader whether there are one, many or some combination of those factors between 
+            each entity.
+
+            Bank        →       Branch      : One-to-Many (One bank has many branches)
+            Branch      →       Loan        : One-to-Many (One branch provides many loans)
+            Branch      →       Employee    : One-to-Many (One branch employs many employees)
+            Branch      →       Account     : One-to-Many (One branch maintains many accounts)
+            Branch      →       Customer    : One-to-Many (One branch has many customers)
+            Customer    →       Account     : One-to-Many (One customer has many accounts)
+            Customer    →       Loan        : One-to-Many (One customer can take many loans)
+    
+    -> Identify Primary Keys
+        - unique identifier for each record in database table
+        - denoted by an underline under the attribute name.
+
+            The Primary key of Bank is code.
+            The Primary key of Branch is Bcode.
+            The Primary key of Employee is Eid.
+            The Primary key of Customer is Cid.
+            The Primary key of Loan is loan_no.
+            The Primary key of Account is acc_no.
