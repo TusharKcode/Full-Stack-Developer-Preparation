@@ -1,0 +1,75 @@
+A subquery in SQL is a query nested inside another SQL query.
+    - allows complex filtering, aggregation and data manipulation by using the result of one query inside 
+        another.
+    - Apply aggregate functions like SUM, COUNT or AVG dynamically.
+    - Update data using values from other tables.
+    - Delete rows based on conditions returned by another query.
+
+    -> Subqueries do not have a single fixed syntax, as they can be used in different clauses like SELECT, 
+        WHERE, FROM and HAVING
+
+    Syntax: SELECT column_name FROM table_name
+            WHERE column_name operator
+                (SELECT column_name FROM table_name WHERE condition);
+    
+    Types:
+        -> Single-Row Subquery
+            - a subquery that returns only one value.
+            - Returns exactly one row as the result.
+            - Commonly used with comparison operators such as =, >, <
+
+            Example: SELECT * FROM Employees WHERE Salary = (SELECT MAX(Salary) FROM Employees);
+
+        -> Multi-Row Subquery
+            - a subquery that returns more than one value.
+            - Returns multiple rows as the result.
+            - Requires operators that can handle multiple values, such as IN, ANY or ALL
+
+            Example:    SELECT * FROM Employees
+                        WHERE DepartmentID IN (SELECT DepartmentID FROM Departments WHERE Location = 'New 
+                        York');
+
+        -> Correlated Subquery
+            - a subquery that depends on the outer query for its values.
+            - A dependent subquery: it references columns from the outer query.
+            - Executed once for each row of the outer query, making it slower for large datasets.
+            
+            Example:    SELECT e.Name, e.Salary FROM Employees e
+                        WHERE e.Salary > (SELECT AVG(Salary) FROM Employees 
+                        WHERE DepartmentID = e.DepartmentID);
+
+
+    => Examples: 
+        -> Fetching Data Using Subquery in WHERE Clause
+
+            SELECT NAME, LOCATION, PHONE_NUMBER FROM Student_Info WHERE ROLL_NO IN (SELECT ROLL_NO 
+                FROM Student_Section  WHERE SECTION = 'A');
+
+        -> Using Subquery with DELETE
+
+            DELETE FROM Student_Info
+            WHERE ROLL_NO IN (
+                SELECT ROLL_NO FROM (
+                    SELECT ROLL_NO FROM Student_Info WHERE ROLL_NO <= 101 OR ROLL_NO = 201
+                ) AS temp
+            );
+
+        -> Using Subquery with UPDATE
+
+            UPDATE Student_Info SET NAME = 'Geeks'
+            WHERE LOCATION IN (
+                SELECT LOCATION FROM Student_Info WHERE LOCATION IN ('London', 'Berlin'));
+
+        -> Simple Subquery in the FROM Clause
+
+            SELECT NAME, PHONE_NUMBER
+            FROM (
+                SELECT NAME, PHONE_NUMBER, LOCATION FROM Student_Info WHERE LOCATION LIKE 'T%'
+            ) AS subquery_table;
+
+        -> Subquery with JOIN
+
+            SELECT s.NAME, s.LOCATION, ns.SECTION FROM Student_Info s
+            INNER JOIN (
+                SELECT ROLL_NO, SECTION FROM Student_Section  WHERE SECTION = 'A') ns
+            ON s.ROLL_NO = ns.ROLL_NO;

@@ -1,0 +1,46 @@
+A nested query (or subquery) is a SQL query written inside another query to solve complex data problems. 
+    - The inner query executes first and passes its result to the main query.
+    - Used for filtering, updating and retrieving data from related tables.
+    
+    Types:      
+        -> Independent Nested Queries
+            - the execution of the inner query is independent of the outer query.
+            - inner query runs first and its result is used directly by the outer query.
+            - Operators like IN, NOT IN, ANY and ALL are commonly used
+
+        -> Correlated Nested Queries
+            - depends on the outer query and is executed once for each row processed by it.
+            - inner query references columns from the outer query and is often used with the EXISTS keyword.
+    
+    Examples with Operators:    
+        -> IN Operator
+            - checks whether a column value matches any value returned by a subquery, eliminating the need 
+                for multiple OR conditions.
+
+            Query:  SELECT S_NAME FROM STUDENT
+                    WHERE S_ID IN (SELECT S_ID FROM STUDENT_COURSE
+                        WHERE C_ID IN ( SELECT C_ID FROM COURSE WHERE C_NAME IN ('DSA', 'DBMS') ) );
+
+        -> NOT IN Operator
+            - excludes rows whose values match those returned by a subquery, helping filter out unwanted 
+                records.
+
+            Query:  SELECT S_ID FROM STUDENT
+                    WHERE S_ID NOT IN (SELECT S_ID FROM STUDENT_COURSE
+                        WHERE C_ID IN ( SELECT C_ID FROM COURSE WHERE C_NAME IN ('DSA', 'DBMS') ));
+
+        -> ANY Operator
+            - compares a value with the results of a subquery and returns TRUE if the condition is satisfied 
+                for at least one value.
+            - commonly used with comparison operators such as =, >, <, >=, <= and <>.
+
+            Query:  SELECT S_NAME FROM Student_Details s
+                    WHERE EXISTS ( SELECT 1 FROM Student_Details d
+                    WHERE d.S_ADDRESS = 'LONDON' AND s.S_AGE > d.S_AGE );
+
+        -> ALL Operator
+            - compares a value with all values returned by the subquery
+            - condition is satisfied only if it is true for every value.
+
+            Query:  SELECT S_NAME FROM Student_Details
+                    WHERE S_AGE > ( SELECT MAX(S_AGE) FROM Student_Details WHERE S_ADDRESS = 'London' );
