@@ -1,0 +1,138 @@
+The Entity-Relationship Model (ER Model) is a conceptual model for designing a database. 
+    - model represents the logical structure of a database, including entities, their attributes, and 
+        relationships between them.
+    
+    -> Entity: An object that is stored as data. E.g: Student, Course, or Company. 
+    -> Attribute: Properties that describe an entity. E.g: StudentID, CourseName, or EmployeeEmail. 
+    -> Relationship: A connection between entities. E.g: Student enrolls in a Course. 
+
+=> Use of ER diagrams:  
+    - ER diagrams represent the E-R model in a database, making them easy to convert into relations (tables).
+    - These diagrams serve the purpose of real-world modeling of objects which makes them intently useful.
+    - Unlike technical schemas, ER diagrams require no technical knowledge of the underlying DBMS used.
+    - They visually model data and its relationships, making complex systems easier to understand.
+
+=> Symbols Used in ER Model
+    -> Rectangle         - Entities in ER Model
+    -> Ellipse           - Attributes in ER Model
+    -> Diamond           - Relationships among Entities
+    -> Line              - Attributes to entities & Entity set with other Relationship types
+    -> Double Ellipse    - Multi-valued Attributes
+    -> Double Rectangle  - Weak Entity
+
+=> Entity
+    - It represents a real-world object, concept or thing about which data is stored in a database.
+    - act as a building block of a database
+    - Tables in relational database represent these entities.
+
+    -> Types: 
+        - Strong entity: has a key Attribute that can uniquely identify each instance of the entity.
+                        does not depend on any other Entity in the Schema for its identification.
+                        has a primary key that ensures its uniqueness and is represented by a rectangle in 
+                        an ER diagram.
+
+        - Weak entity: cannot be uniquely identified by its own attributes alone, depends on a strong entity 
+                        to be identified. represented by a double rectangle.
+
+    -> Entity Set:
+        - Refers to an individual object of an entity type, and the collection of all entities of a 
+            particular type is called an entity set.
+        - We can represent the entity sets in an ER Diagram but we can't represent individual entities
+        - because an entity is like a row in a table, and an ER diagram shows the structure and 
+            relationships of data, not specific data entries (like rows and columns)
+        - An ER diagram is a visual representation of the data model, not the actual data itself.
+
+=> Attributes
+    - properties that define the entity type.
+    - In ER diagram, the attribute is represented by an oval.
+    
+    Example: Student entity Roll_No, Name, DOB, Age, Address, and Mobile_No are the attributes that define 
+                entity type Student.
+
+    -> Types: 
+        - Key Attribute:    attribute which uniquely identifies each entity in the entity set 
+                            In ER diagram, the key attribute is represented by an oval with an underline.
+                            Ex: Roll_No will be unique for each student.
+
+        - Composite Attribute:  attribute composed of many other attributes
+                                ER diagram, the composite attribute is represented by an oval comprising 
+                                    of ovals.
+                                Ex: Address attribute of the student Entity type consists of Street, City, 
+                                    State, and Country.
+                                
+        - Multi-valued Attribute:   attribute consisting of more than one value for a given entity
+                                    In ER diagram, a multi-valued attribute is represented by a double oval.
+                                    Ex: Phone_No (can be more than one for a given student)
+          
+        - Derived Attribute:    attribute that can be derived from other attributes of the entity type
+                                In ER diagram, the derived attribute is represented by a dashed oval.
+                                Ex: Age (can be derived from DOB)
+
+Relationship Type:
+    - represents the association between entity types. 
+    - In ER diagram, the relationship type is represented by a diamond and connecting the entities with lines.
+    - Ex:  ‘Enrolled in’ is a relationship type that exists between entity type Student and Course
+
+Relationship Set:
+    - set of relationships of the same type
+    - Ex: S1 as enrolled in C2, S2 as enrolled in C1, and S3 as registered in C3.
+    - number of different entity sets participating in a relationship set is called the degree of a relationship set.
+
+    Includes:
+        -> Unary/Recursive Relationship
+            - When there is only ONE entity set participating in a relation
+            - Ex: one person is married to only one person.
+
+        -> Binary Relationship
+            - When there are TWO entities set participating in a relationship.
+            - Ex: a Student is enrolled in a Course.
+
+        -> Ternary Relationship
+            - When there are three entity sets participating in a relationship.
+            - Ex: Student is enrolled in a Course1 & Instructor assigned Course1.
+
+        -> N-ary Relationship
+            - When there are n entities set participating in a relationship
+
+Cardinality of ER Model:
+    -> maximum number of times an entity of an entity set participates in a relationship set
+
+    Types:
+        -> One-to-One
+            - When each entity in each entity set can take part only once in the relationship
+            - the relationship will be One-to-One (1 : 1)
+
+            Ex:  one person can be issued only one passport AND one passport is issued to only one person 
+
+        -> One-to-Many
+            - one entity can be associated with multiple entities
+            - relationship is 1 to M
+
+            Ex:  one department can have many doctors.
+
+        -> Many-to-One
+            - When entities in one entity set can take part only once in the relationship set
+            - entities in other entity sets can take part more than once in the relationship set
+            - cardinality will be M to 1
+
+            Ex:  many surgeries can be done by a single surgeon, but each surgery is done by only one surgeon.
+
+        -> Many-to-Many
+            - When entities in all entity sets can take part more than once in the relationship
+            - relationship will be many-to-many (M:N)
+
+            Ex:  one employee may be associated with several projects, and one project may involve several 
+                    employees.
+
+=> Participation Constraints:
+    - applied to the entity participating in the relationship set
+
+    1. Total Participation:
+        - Each entity in the entity set must participate in the relationship.
+        - Total participation is shown by a double line in the ER diagram.
+        Ex: If each student must enroll in a course, the participation of students will be total
+
+    2. Partial Participation:
+        - The entity in the entity set may or may NOT participate in the relationship.
+        Ex: If some courses are not enrolled by any of the students, the participation in the course will be 
+            partial.
