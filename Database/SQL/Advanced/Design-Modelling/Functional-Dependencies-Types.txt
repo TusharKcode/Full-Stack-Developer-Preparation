@@ -1,0 +1,48 @@
+A functional dependency occurs when one attribute uniquely determines another attribute within a relation. 
+
+=> Types: 
+    -> Trivial Functional Dependency
+        - a dependent is always a subset of the determinant
+        - If X → Y and Y is the subset of X, then it is called a trivial functional dependency.
+        - Symbolically: A→B is a trivial functional dependency if B is a subset of A.
+
+            Example:
+                    ABC -> AB
+                    ABC -> A
+                    ABC -> ABC
+
+    -> Non-trivial Functional Dependency
+        - the dependent is strictly not a subset of the determinant.
+        - If X → Y and Y is not a subset of X, then it is called Non-trivial functional dependency.
+
+            Example:
+                    Id -> Name
+                    Name -> DOB
+
+    -> Semi Non Trivial Functional Dependencies 
+        -  occurs when part of the dependent attribute (right-hand side) is included in the determinant 
+            (left-hand side), but not all of it.
+        - This is a middle ground between trivial and non-trivial functional dependencies.
+        - X -> Y is called semi non-trivial when X intersect Y is not NULL. 
+
+    -> Multi-valued Functional Dependency    
+        - entities of the dependent set are not dependent on each other
+        - If a → {b, c} and there exists no functional dependency between b and c
+        
+            Example: Both color & accessory are independent for bike model
+                    bike_model →→ color  
+                    bike_model →→ accessory
+
+    -> Transitive Functional Dependency
+        - dependent is indirectly dependent on determinant.
+        - If a → b & b → c, then according to axiom of transitivity, a → c.
+
+    -> Fully Functional Dependency
+        - an attribute or a set of attributes uniquely determines another attribute or set of attributes
+        - If a relation R has attributes X, Y, Z with the dependencies X->Y and X->Z which states that those
+            dependencies are fully functional.
+
+    -> Partial Functional Dependency
+        - a non key attribute depends on a part of the composite key, rather than the whole key.
+        - If a relation R has attributes X, Y, Z where X and Y are the composite key and Z is non key attribute
+        - Then X->Z is a partial functional dependency in RDBMS.
