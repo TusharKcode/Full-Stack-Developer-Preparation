@@ -1,0 +1,26 @@
+Functional dependency and attribute closure are essential for maintaining data integrity and building 
+    effective, organized, and normalized databases.
+    The attribute closure of an attribute set can be defined as a set of attributes that can be functionally 
+        determined from it.
+
+    - Helps to identify all possible attributes that can be derived from a set of given attributes.
+    - It can be computationally expensive, especially for large datasets.
+    - Helps in database design by showing how attributes and tables are related, which can improve query 
+        performance.
+    - It becomes complex to manage as the number of attributes and tables increases.
+
+-> Find the Attribute Closure of an Attribute Set
+    - Add elements of the attribute set to the result set.
+    - Recursively add elements to the result set that can be functionally determined from the elements of 
+        the result set.
+
+-> Find Candidate Keys and Super Keys Using Attribute Closure
+    - If attribute closure of an attribute set contains all attributes of relation, the attribute set will 
+        be super key of the relation.
+    - If no subset of this attribute set can functionally determine all attributes of the relation, the set 
+        will be candidate key as well. For Example, using FD set of table 1
+
+Prime and Non-Prime Attributes
+    -> Attributes which are parts of any candidate key of relation are called as prime attribute, others are 
+        non-prime attributes
+    -> For Example, STUD_NO in STUDENT relation is prime attribute, others are non-prime attribute. 
