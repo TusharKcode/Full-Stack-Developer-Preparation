@@ -1,0 +1,121 @@
+Rules of inference are logical patterns used to derive valid conclusions from given premises.
+    - They form the foundation of formal reasoning in mathematics, logic, and artificial intelligence by 
+        ensuring each step in a proof is logically correct.
+    - They are mainly divided into two categories: propositional logic and predicate logic
+
+=> For Propositional Logic
+    - These rules operate on propositions (statements that are either true or false).
+    - They work on whole propositions using logical connectives like AND (∧), OR (∨), NOT (¬), and 
+        implication, ensuring each reasoning step is logically valid.
+
+        -> Modus Ponens (Law of Detachment)
+            - If a conditional statement is true and its condition is satisfied, the conclusion must be true.
+            - Form: If p → q and p, then q.
+
+                Example:
+                        Premise: If it rains, the ground will be wet.
+                        Premise: It is raining.
+                        Conclusion: The ground is wet.
+
+        -> Modus Tollens (Law of Contrapositive)
+            - If a conditional statement is true, and its consequent is false, then its antecedent must also 
+                be false.
+            - Form: If p → q and ¬q, then ¬p.
+
+                Example:
+                        Premise: If it rains, the ground will be wet.
+                        Premise: The ground is not wet.
+                        Conclusion: It is not raining.
+
+        -> Hypothetical Syllogism
+            - If two conditional statements are true, where the consequent of the first is the antecedent of 
+                the second
+            - then a third conditional statement combining the antecedent of the first and the consequent of 
+                the second is also true.
+            - Form: If p → q and q → r, then p → r.
+
+                Example:
+                        Premise: If it rains, the ground will be wet.
+                        Premise: If the ground is wet, the plants will grow.
+                        Conclusion: If it rains, the plants will grow.
+
+        -> Disjunctive Syllogism
+            - If a disjunction (an "or" statement) is true, and one of the disjuncts (the parts of the "or" 
+                statement) is false, then the other disjunct must be true.
+            - Form: If p ∨ q and ¬p, then q.
+
+                Example:
+                        Premise: It is either raining or sunny.
+                        Premise: It is not raining.
+                        Conclusion: It is sunny.
+
+        -> Conjunction
+            - If two statements are true, then their conjunction (an "and" statement) is also true.
+            - Form: If p and q, then p ∧ q.
+
+                Example:
+                        Premise: It is raining.
+                        Premise: It is windy.
+                        Conclusion: It is raining and windy.
+
+        -> Simplification
+            - If a conjunction (an "and" statement) is true, then each of its conjuncts is also true.
+            - Form: If p ∧ q, then p
+
+                Example:
+                        Premise: It is raining and windy.
+                        Conclusion: It is raining.
+
+        -> Addition
+            - If a statement is true, then the disjunction (an "or" statement) of that statement with any 
+                other statement is also true.
+            - Form: If p, then p ∨ q
+            
+                Example:
+                        Premise: It is raining.
+                        Conclusion: It is raining or sunny.
+
+        -> Absorption(Abs)
+            - If a conditional statement (an "if-then" statement) is true, then the antecedent implies a 
+                conjunction of itself and the consequent.
+            - Form: If P→Q, then P→(P∧Q)
+
+                Example:
+                        Premise: If it is raining, then the ground is wet.
+                        Conclusion: If it is raining, then it is raining and the ground is wet.
+
+        -> Resolution
+            - If two disjunctions ("or" statements) are true, and one contains a proposition (P) while the 
+                other contains its negation (¬P), then the disjunction of the remaining parts is true.
+            - Form: If P∨Q and ¬P∨R, then Q∨R.
+
+                Example: It is raining or snowing and not raining or cold, so it is snowing or cold.
+
+=> For Predicate Logic
+    - Predicate logic uses all the propositional rules above, plus additional rules for handling quantifiers.
+    - These rules help derive valid conclusions from statements containing variables, predicates, and quantifiers.
+
+        -> Universal Instantiation
+            - If a statement is true for all objects in a domain, it is true for any specific object.
+            - Form: ∀x P(x) ⟹ P(c)
+
+                Example: If all humans are mortal, then Socrates is mortal.
+
+        -> Universal Generalization
+            - If a property holds for an arbitrary object, it holds for all objects.
+            - Form: P(c) ⟹ ∀x P(x)
+
+                Example: If a randomly chosen number is even, then all numbers are even (under a given proof 
+                    condition).
+
+        -> Existential Instantiation
+            - If something exists in a domain, we can assign a name to it.
+            - Form: ∃x P(x) ⟹ P(c)
+
+                Example: If there exists a student who passed, then we can call that student “A”.
+
+        -> Existential Generalization
+            - If a property holds for a specific object, then something exists with that property.
+            - Form: P(c) ⟹ ∃x P(x)
+
+                Example: If Ram is intelligent, then there exists someone who is intelligent.
