@@ -1,0 +1,50 @@
+Database design is a systematic process that involves a set of procedures and tasks to implement a database 
+    effectively.
+    - It focuses on organizing and structuring data in a way that ensures efficiency, accuracy, and usability.
+    - Ensure low redundancy to avoid unnecessary duplication of data
+    - Enable faster searching through the proper use of indexes
+    - Implement security measures by enforcing integrity constraints
+
+Primary Terminologies Used in Database design:
+    - Redundancy        – Duplication of data in a database system; should be minimized to prevent 
+                            inconsistency and storage wastage.
+    - Schema            – The logical structure of a database that defines tables, columns, data types, and 
+                            relationships.
+    - Record / Tuple    – A single row in a table that stores related data values.
+    - Indexing          – A data structure technique used to improve the speed of data retrieval operations.
+    - Data Integrity    – Accuracy, validity, and reliability of stored data in a database.
+    - Consistency       – Ensures data remains correct, uniform, and logically valid across the database.
+    - Data Model        – A structured visual representation of data and relationships (e.g., Hierarchical, 
+                            Network, Relational, Object-Oriented).
+    - Normalization     – Systematic process of organizing data into smaller tables to reduce redundancy and 
+                            dependency.
+
+    - Functional Dependency – A relationship where one attribute uniquely determines another attribute (A → B).
+    - Transaction           – A single logical unit of work in a database system that follows ACID/BASE 
+                                properties.
+    - Schedule              – The defined sequence or order in which transactions are executed.
+
+    - Concurrency – Allowing multiple transactions to execute simultaneously without causing conflicts.
+    - Constraints – Defined rules such as NOT NULL, UNIQUE, PRIMARY KEY, and FOREIGN KEY used to maintain 
+                    data integrity and accuracy.
+
+Database Design Lifecycle:
+    -> Requirement Analysis:
+        - Planning 
+        - Use Cases
+        - Take References
+
+    -> Logical & Physical Design:
+        - Logical Data Model Design: creates a high-level structure of the database, identifies entities, 
+                                        attributes, keys, relationships, and constraints without considering 
+                                        physical storage
+                                     Techniques like ER modeling and normalization are used to organize data 
+                                        and remove redundancy.
+
+        - Physical Data Model Design: implements the logical design in a DBMS, Tables are created, 
+                                        relationships and constraints are defined, and storage details are 
+                                        set to generate the actual working database.
+
+    -> Data Insertion and testing for various integrity Constraints:
+        - input the data
+        - test our integrity
