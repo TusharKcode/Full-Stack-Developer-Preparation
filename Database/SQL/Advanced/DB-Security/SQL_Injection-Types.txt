@@ -1,0 +1,43 @@
+-> Error-Based SQL Injections
+    - obtain information about the database structure from error messages issued by the database server
+    - In rare circumstances, an attacker may enumerate an entire database using only error-based SQL 
+        injection.
+    
+    Ex: In SQL Injections labs, if you type ?id=1 in the URL and press enter, it gives you the login name 
+        and password.
+        But if we type ?id=1’ it gives an error. 
+
+        This error will now assist us in locating the backend query. If we remove the first and last quote 
+        from “1” LIMIT 0,1', then it becomes '1” LIMIT 0,1.
+
+            Query: select * from table_name where id='1
+
+        which is syntactically incorrect. Now, we will fix this query by giving input ?id=1' --+. --+ will 
+        comment out all that comes after it.
+
+            Query: select * from table_name where id='1' --+'
+
+        and again we get the login name and password.
+
+-> Union-Based SQL Injections 
+    - use the UNION SQL operator to aggregate the results of two or more SELECT queries into a single result
+    - returned as part of the HTTP response.
+
+        Ex: ( https://www.geeksforgeeks.org/ethical-hacking/types-of-sql-injection-sqli/ )
+
+
+-> Blind Boolean-based SQL Injections
+    - works by submitting a SQL query to the database and forcing the application to produce a different 
+        response depending on whether the query returns TRUE or FALSE.
+
+        Ex: ( https://www.geeksforgeeks.org/ethical-hacking/types-of-sql-injection-sqli/ )
+
+-> Blind Time-Based SQL Injections
+    - works by sending a SQL query to the database and forcing it to wait for a predetermined length of time 
+        (in seconds) before answering
+    - The response time will tell the attacker if the query result is TRUE or FALSE.
+
+        Ex: And SLEEP(10) if sleep then Vulnerable
+            OR SLEEP(10) if sleep then vulnerable
+
+    - Depending on the outcome, an HTTP response will either be delayed or returned immediately
