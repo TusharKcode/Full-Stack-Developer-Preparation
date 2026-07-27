@@ -1,0 +1,93 @@
+SQL Injection (SQLi) is a web application vulnerability where attackers inject malicious SQL queries through 
+    user inputs to manipulate backend database operations, potentially leading to unauthorized access, 
+    modification, or deletion of data.
+
+    - It is one of the most critical and widely exploited security flaws in web applications.
+    - Can expose sensitive data such as passwords, emails and financial records
+    - Enables bypass of authentication mechanisms
+    - May result in full database or server compromise
+    - Prevented through secure coding and input sanitization practices
+
+=> SQL Injection Security Levels (DVWA)
+    DVWA (Damn Vulnerable Web Application) provides different security levels for SQL Injection to help 
+        learners understand how security measures affect vulnerability and exploitation techniques.
+
+    -> Low Security
+        - At this level, user input is directly included in the SQL query without any validation or 
+            sanitization
+        - highly vulnerable to SQL injection attacks.
+
+            Ex: $id = $_GET['id'];
+                $query = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+
+        - Input ': Breaks the query and causes a database error, revealing vulnerability
+        - Input 1' OR '1'='1: Always true condition, returns all user records
+        - Input 1' UNION SELECT user, password FROM users: Extracts sensitive data like usernames and 
+                    passwords
+
+    -> Medium Security
+        - At this level, basic input sanitization is applied using functions like addslashes(), which escapes 
+            special characters such as '.
+
+            Ex: $id = addslashes($_GET['id']);
+                $query = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+
+        - Simple injection using ' is neutralized (converted to \')
+        - However, attackers may still bypass protection using numeric-based injections
+
+    -> High Security
+        - At this level, the application uses prepared statements (parameterized queries), which separate 
+            SQL logic from user input.
+
+            Ex: $stmt = $pdo->prepare("SELECT first_name, last_name FROM users WHERE user_id = ?");
+                $stmt->execute([$id]);  
+
+        - Input is treated strictly as data, not executable SQL code
+        - Common injection attempts like ', OR 1=1, or UNION SELECT are ineffective
+        - Prevents unauthorized data extraction and query manipulation.
+
+=> Impacts: 
+    - Unauthorized access to sensitive data
+    - Data integrity issues
+    - Privilege escalation
+    - Service downtime
+    - Reputation damage
+
+=> Preventing SQL Injection Attacks:    
+    -> Use Prepared Statements and Parameterized Queries
+        - Treats user input as data, not executable SQL code
+        - Prevents attackers from modifying query structure
+        - 
+
+        Ex - PHP (using MySQLi): 
+                $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+                $stmt->bind_param("ss", $username, $password);
+                $stmt->execute();
+
+    -> Employ Stored Procedures
+        - Predefined SQL queries stored in the database
+        - Reduces risk of dynamic query manipulation
+        - Helps separate application logic from SQL code
+
+        Ex: CREATE PROCEDURE GetUserByUsername (IN username VARCHAR(50))
+            BEGIN
+            SELECT * FROM users WHERE username = username;
+            END;
+
+    -> Whitelist Input Validation
+        - Allow only valid input formats (e.g., letters, numbers)
+        - Blocks malicious characters like ', --, or ;
+        - Commonly used for fields like usernames and emails
+
+    -> Use ORM Frameworks
+        - Tools like Hibernate or Entity Framework generate safe queries automatically
+        - Reduces direct SQL query writing and injection risk
+
+    -> Restrict Database Privileges
+        - Give users only necessary permissions (e.g., SELECT, INSERT)
+        - Prevent dangerous actions like DROP or DELETE where not needed
+
+    -> Error Handling
+        - Avoid showing detailed database errors to users
+        - Display generic error messages instead
+        - Log technical errors securely for developers
