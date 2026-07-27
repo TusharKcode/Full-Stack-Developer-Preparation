@@ -1,0 +1,83 @@
+SQL Data Encryption converts sensitive database information into an unreadable format to protect it from 
+    unauthorized access.
+    - Protects confidential information such as passwords, financial records and personal data.
+    - Ensures that data remains secure during storage and transmission.
+    - Helps organizations comply with security and privacy regulations.
+    - Reduces the risk of data theft and unauthorized disclosure.
+
+-> The SQL database supports various encryption methods, each with its unique characteristics and 
+    applications. Modern SQL databases support various encryption techniques.
+
+=> Types of SQL Data Encryption:
+    -> Transparent Data Encryption (TDE)
+        - encrypts the entire database, including the data and log files stored at rest, process runs 
+            seamlessly in the background without affecting user applications.
+        - Provides a transparent layer of security over the database with no significant changes required 
+            to the database schema.
+        - Operates at the file level, encrypting the database files stored on disk.
+        - Encryption and decryption occur automatically when data is read from or written to the database.
+        - Uses a symmetric key to secure the database.
+
+        Steps: 
+            -> Demo Table: CREATE TABLE Student (
+                                StudentID INT PRIMARY KEY, StudentName VARCHAR(30) NOT NULL, 
+                                RollNumber VARCHAR(10) NOT NULL);
+
+                            INSERT INTO Student VALUES
+                            (1, 'John', '1234'), (2, 'Michael', '4321'), (3, 'Emily', '4554'), 
+                            (4, 'Sophia', '7896');
+
+            - Create a Database Master Key: secures the encryption hierarchy
+                Query:  USE dba;
+                        Go
+                        Create MASTER KEY ENCRYPTION BY PASSWORD = "ABC@123"
+                        Go
+
+            - Create a Certificate: used to protect the encryption keys.
+                Query:  USE dba;
+                        Go
+                        CREATE CERTIFICATE TDE_Certificate WITH SUBJECT = 'Certificate for TDE'
+                        Go
+
+            - Create an Encryption Key: Define the database encryption key using a specific algorithm
+                Query:  USE dba
+                        GO
+                        CREATE DATABASE ENCRYPTION KEY
+                        WITH ALGORITHM = AES_256
+                        ENCRYPTION BY SERVER CERTIFICATE TDE_Certificate
+
+            - Enable Encryption: Configure the database to enable encryption using the below command
+                Query: ALTER DATABASE dba SET ENCRYPTION ON
+
+    -> Column-Level Encryption (CLE)
+        - method of encryption involves encrypting specific columns within a table rather than the whole 
+            table or the database.
+        - method allows organizations to selectively secure their data.
+        - useful while dealing with databases that stores a combination of both sensitive and unsensitive data.
+        - CLE also operates on the file level which encrypts the database files on the disk.
+        - CLE uses also use the asymmetric key for data encryption.
+
+        Steps: 
+            -> Demo Table:  CREATE TABLE Student (StudentID INT PRIMARY KEY, StudentName VARCHAR(30) NOT NULL,
+                                                    RollNumber VARCHAR(10) NOT NULL);
+                            INSERT INTO Student VALUES (1, 'John', '1234'), (2, 'Michael', '4321'), 
+                                                        (3, 'Emily', '4554'), (4, 'Sophia', '7896');
+
+            - Create a Database Master Key:
+                Query:  USE Student;
+                        GO
+                        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '123@4321';
+
+            - Create a Self-Signed Certificate:
+                Query:  USE Student;
+                        GO
+                        CREATE CERTIFICATE Certificate_test WITH SUBJECT = 'Protect my data';
+                        GO
+
+            - Configure a Symmetric Key:
+                Query:  CREATE SYMMETRIC KEY SymKey_test WITH ALGORITHM = AES_256 ENCRYPTION BY 
+                        CERTIFICATE Certificate_test;
+
+            - Encrypt Specific Columns:
+                Query:  ALTER TABLE Student
+                        ADD RollNumber_encrypt varbinary(MAX)
