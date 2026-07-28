@@ -1,0 +1,92 @@
+Object-relational mapping (ORM) is a key concept in the field of Database Management Systems (DBMS)
+    - bridge between the object-oriented programming approach and relational databases
+    - useful in data interaction simplification, code optimization, and smooth blending of applications and 
+        databases.
+
+=> Object-Relational Database Management System (ORDBMS)
+    -> stands for an object-relational database management system that further enhances the functionalities 
+        of a relational database by incorporating object-oriented principles.
+        - ORDBMS deals with complex data types, encapsulation, and inheritance.
+        - It supports applications that require both relational and object-oriented abilities.
+       
+    -> Entities:
+        - In the realm of ORM, entities are synonymous with the objects or classes in object-oriented 
+            programming that are bound to tables in relational databases.
+        - They serve as abstractions of business objects or the concepts within the application, and their 
+            definition is in the code.
+        - It provides smooth communication between the application and the database beneath it.
+
+    -> Relationship:
+        - relationships in ORM map how entities are related to each other, which describes relationships 
+            between tables in a database
+        - define the way different elements relate to each other, and these relationships are the essence of 
+            data integrity and also serve as a mirror between various components that are implemented in 
+            the application.
+
+    -> Persistence:
+        - refers to the capability to keep data after an application is ended.
+        - use of ORM causes data to persist even when the application is closed or restarted because it is 
+            stored in a relational database.
+        - secure and available even when the application is off.
+
+=> ORM in DBMS
+    -> it acts as a translator, translating data between the database and the application without any hitch.
+        - enables developers to work with objects in their programming language, mapped to corresponding 
+            database entities, such as tables, views, or stored procedures.
+        - ORM frameworks is used for the generation of SQL queries and management of data flow between the 
+            application and the database.
+
+        Object-Oriented Paradigm: focuses on OOP principles that data and behavior are encapsulated within 
+                                    objects, database entities are mapped to objects and developers use 
+                                    objects to interact and manipulate data in a fairly easy way.
+        Mapping: object mapping to database tables and back, mapping is defined through the metadata which 
+                    represents interconnections between objects and the corresponding database schemas
+
+    -> Popular libraries: TypeORM , Sequelize (Node.js), SQLAlchemy (Python), Entity Framework (C#)
+
+    -> Entity Mapping
+        - first step in the ORM process is to identify entities from the object-oriented model, match them 
+            with corresponding tables in the relational database.
+        - Each feature in the class maps to a new column in the table, and instances of the class turn into 
+            rows in the table.
+
+    -> Relationship Mapping
+        - Having entities mapped, next step to provide relations between them and structuring the relational 
+            database schema accordingly.
+        - provide functions that enable us to represent the relationship between entities like one-to-one, 
+            one-to-many, and many-to-many.
+        - Relationships are transformed into foreign keys, which allow the data to be kept both consistent 
+            and valid even when stored in tables that could be related.
+
+    -> Data Type Mapping
+        - practice of an object-oriented model mapping the data type to the database.
+        - Enable the objects of the application to align with the data types .
+        - ensures cohesion and preventing data type mismatches that will result in errors.
+
+    -> CRUD Operations
+        - Crud (Create, Read, Update, Delete) operations
+        - use of ORM libraries simplifies the process of the implementation of these operations by 
+            implementing the high-level abstractions.
+        - Developers can make changes to entities in their program and then the ORM allows for translation 
+            of these operations into corresponding SQL queries.
+
+    -> Query Language
+        - ORM framework is usually a query language designed with object-oriented features for interacting 
+            with the database.
+        Ex: Hibernate Package which is a Java-based ORM framework, makes use of Hibernate Query Language (HQL)
+
+
+ODM (Object-Document Mapping) is used for designing NoSQL databases, suited for unstructured or 
+    semi-structured data.
+    - NoSQL databases allow for flexible schemas.
+    - Data is stored as documents (similar to JSON objects)
+
+=> Usage
+    -> ODMs are ideal for building prototypes or evolving databases because they do not require predefined 
+        schemas. 
+    -> Applications with high read-write demands, like IoT or large-scale data services, often use ODMs with 
+        NoSQL databases such as MongoDB.
+    -> used in large-scale applications with unstructured data or less rigid schemas , such as social-media 
+        platforms, content-management systems and real-time analytics services.
+
+=> Popular libraries: Mongoose (Node.js), MongooKit (Python), Spring Data MongoDB (Java)

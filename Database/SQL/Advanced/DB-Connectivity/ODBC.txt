@@ -1,0 +1,26 @@
+Open Database Connectivity is an important technology in the database to access and managing databases.
+    - enables a developer to make connections with tabular data in an ODBC server.
+    - It's an open standard Application Programming Interface, also known as API, which is used for 
+        accessing a database.
+    - With the help of an ODBC statement in a program and access different files in a number of different or 
+        common databases. 
+
+=> Components of ODBC
+    -> Application:     This component basically calls the ODBC function and submits SQL statements. 
+    -> Driver Manager:  The role of this component is to load the driver for each application. 
+    -> Driver:          The role of this component is to handle all function calls and then submit each SQL 
+                            request to a data source. 
+    -> Data Source:     Role of this component to access data. 
+
+=> Features of ODBC
+    - ODBC basically supports error code mechanism to show issues which caused error to occur while 
+        processing SQL statements. 
+    - also provides different types of functions to get details of attributes and functions that are used in
+        drivers. 
+    - provides huge support to data about data also known as metadata, provides different functions to get 
+        data about both functions and data types used
+    - ODBC is its interoperability that means using ODBC driver we can develop different applications that 
+        can communicate with different DB also known as Database Management System, switching our 
+        application from one database to another will not create any problem. 
+    - ODBC basically implements SQL syntax for easy understanding of user because SQL syntax are easily 
+        understood by end-user.
