@@ -1,0 +1,42 @@
+Spring Initializr is a popular tool for quickly generating Spring Boot projects with essential dependencies.
+    - It helps developers set up a new application with minimal effort, supporting Maven and Gradle builds.
+    - web-based tool provides simple web UI to generate the Spring Boot project structure means builds the 
+        skeleton of the Spring-based application. 
+
+    - It provides extensible APIs for creating JVM (Java Virtual Machine) based projects.
+
+=> System Requirements:
+    - An IDE (Spring Tool Suite(STS), IntelliJ IDEA Ultimate and IntelliJ IDEA Community Edition(Limited 
+        Configuration options), Netbeans, and VSCode) OR CLI.
+    - Java 17 or later Version
+    - Build tool (Maven repository or Gradle repository) to build the application.
+    - Spring Boot version (Dependencies are added based on the version)
+    - Dependencies required for the project.
+    - Project Metadata like name, packaging (Jar or War), package name, etc.
+
+=> Using Spring Initializr Web UI
+    - navigating to start.spring.io to get it
+
+    -> Project: 
+        - Using this one can create Maven or Gradle project i.e; Maven or Gradle can be used as a build tool. 
+        - default option is Maven Project
+
+    -> Language:
+        - Spring Initializr provide Java, Kotlin and Groovy as a programming language 
+        - Java is the default option.
+
+    -> Spring Boot Version: 
+        - Using this one can select the Spring Boot version for their project
+        - Spring Boot latest Version is 3.1.5.
+        - SNAPSHOT versions are under development and are not stable.
+
+    -> Project Dependencies: Dependencies are artifacts that we can add to the project.
+    -> Project Metadata: information about the project
+        - Group ID: It is the ID of the project group.
+        - Artifact: It is the name of the Application.
+        - Name: Application name.
+        - Description: About the project.
+        - Package name: It is the combination of Group and Artifact Id.
+        - Packaging: Using this Jar or War packaging can be selected
+        - Generate: When generate option is clicked, the project is downloaded in zip format.
+        - Explore: This allows to see and makes changes in the generated project. 
