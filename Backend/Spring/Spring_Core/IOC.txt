@@ -1,0 +1,20 @@
+Spring IoC (Inversion of Control) Container is the core component of the Spring Framework
+    - for creating, managing, and configuring application objects (beans)
+
+    -> Using Dependency Injection:
+        - Automatically injects required dependencies into beans.
+        - Manages bean creation, initialization, and destruction.
+        - Supports XML, annotation-based, and Java-based configuration.
+        - Separates object creation from business logic, making applications more flexible and testable.
+
+=> Types of IOC Containers:
+    -> BeanFactory: 
+        - basic IoC container that provides fundamental features like dependency injection and bean 
+            lifecycle management.   
+        Syntax: Resource resource = new ClassPathResource("beans.xml");
+                BeanFactory factory = new XmlBeanFactory(resource);
+
+    -> ApplicationContext: 
+        - advanced IoC container that extends BeanFactory
+        - additional features such as event handling, internationalization, and annotation-based configuration.
+        Syntax: ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
