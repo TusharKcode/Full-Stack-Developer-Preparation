@@ -1,0 +1,33 @@
+"Spring"
+    - lightweight framework.
+    - Modular, portable, and testable Java applications can be formed using the open-source Spring framework
+    - standard for developing web apps and can be used over J2EE aka Java to Enterprise Edition applications. 
+    - handles the infrastructure 
+    - works on an inversion of control IoC and dependency injection
+    - used to decrease the coupling between the modules of the program.
+    - modules can be broadly categorized into four main areas: Core Container, Data Access/Integration, 
+        Web, and Miscellaneous
+    - architecture containing 5 layers for presentation, business, data access, integration, and 
+        aspect-oriented programming(AOP).
+    - It does not support a tag library.
+
+
+"Struts"
+    - heavyweight framework
+    - framework based on MVC architecture that stands for model view and Controller architecture
+    - open-source platform and is used to develop enterprise edition web applications
+    - has a request handler and response handler 
+    -  AJAX, REST and SOAP are supported by Struts.
+    
+    -> Working:
+        - Client Request: The client sends an HTTP request, which is received by the File Dispatcher 
+                            (typically the Struts front controller, such as struts.xml).
+        - Action Invocation: The File Dispatcher processes the request and invokes the appropriate Action 
+                                class, passing through Interceptors for preprocessing (e.g., validation, 
+                                logging, authentication).
+        - Action Processing: The Action class executes the business logic and interacts with the model 
+                                layer to process data.
+        - Result Generation: The Action returns a Result, which determines the view (e.g., a JSP page) 
+                                to be displayed to the client.
+        - Response to Client: The HTTP response is generated and sent back to the client, rendering the 
+                                final view.
