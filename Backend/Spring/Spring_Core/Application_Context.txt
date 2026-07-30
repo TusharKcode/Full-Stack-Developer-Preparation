@@ -1,0 +1,63 @@
+ApplicationContext is an advanced interface in the Spring Framework that acts as a powerful IoC container 
+    for managing beans and their lifecycle  
+    - extends BeanFactory and provides additional enterprise-level features like event handling, 
+        internationalization, and annotation-based configuration
+    - used in modern Spring applications for efficient and scalable development.
+    - Supports advanced features like event publishing, i18n, and AOP integration.
+    - Enables easy integration with annotation-based configuration like @Component and @Autowired.
+    - Due to its advanced features, developers generally prefer using ApplicationContext over BeanFactory.
+   
+=> AnnotationConfigApplicationContext   
+    - Spring container that manages beans using Java-based configuration with classes annotated like 
+        @Configuration and @Component, eliminating the need for XML.
+    - Supports multiple config classes (later beans can override earlier ones)
+    - used in standalone and Spring Boot apps
+
+    Syntax: ApplicationContext context =  new AnnotationConfigApplicationContext(
+                                                AppConfig.class, AppConfig1.class);
+
+=> AnnotationConfigWebApplicationContext   
+    - Spring container for web applications that manages beans using annotation-based configuration and 
+        integrates with servlet components like DispatcherServlet.
+    - initializes web application context using classes annotated with @Configuration and @Component.
+    - Supports register() and scan() for configuration
+
+    Syntax: AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+            context.register(AppConfig.class);   // Register config class
+            context.setServletContext(container); // Set servlet context
+
+=> XmlWebApplicationContext
+    - Spring container for web applications that manages beans using XML configuration files and 
+        integrates with servlet components like DispatcherServlet.
+    - initializes web context using XML files such as applicationContext.xml.
+    - Suitable for traditional Spring MVC (XML-based setup)
+
+    Syntax: XmlWebApplicationContext context = new XmlWebApplicationContext();
+            context.setConfigLocation("/WEB-INF/spring/applicationContext.xml");
+            context.setServletContext(container);
+            context.refresh();
+
+=> FileSystemXmlApplicationContext
+    - Spring container that loads bean configuration from XML files using a file system path or URL instead 
+        of the classpath
+    - used in standalone applications and testing environments.
+    - Allows direct access to beans via ApplicationContext
+    
+    Syntax: String path = "path/to/applicationContext.xml";
+            ApplicationContext context = new FileSystemXmlApplicationContext(path);
+
+    Example:    String path = "Documents/demoProject/src/main/resources/applicationcontext/student-bean-config.xml"; 
+                ApplicationContext context = new FileSystemXmlApplicationContext(path);
+                StudentService studentService = context.getBean("studentService", StudentService.class);
+
+=> ClassPathXmlApplicationContext
+    - Spring container that loads bean configuration from XML files located in the classpath 
+        (e.g., src/main/resources).
+    - used in standalone and testing environments.
+    - Avoids using absolute file system paths
+    
+    Syntax: ApplicationContext context = new ClassPathXmlApplicationContext(
+                                            "applicationcontext/student-bean-config.xml");
+
+    Example:    ApplicationContext context = new ClassPathXmlApplicationContext("applicationcontext/student-bean-config.xml"); 
+                StudentService studentService = context.getBean("studentService", StudentService.class);
