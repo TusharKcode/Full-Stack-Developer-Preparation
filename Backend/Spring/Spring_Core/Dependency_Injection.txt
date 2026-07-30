@@ -1,0 +1,49 @@
+Spring Dependency Injection (DI) is a fundamental concept in the Spring Framework
+    - allows objects to receive their dependencies from an external source rather than creating them 
+        internally.
+    - Eliminates the need for classes to create their own dependencies
+    - Supports constructor, setter, and field injection
+    - Works with XML configuration, annotations, or Java-based configuration
+    
+Example:    - The IoC (Inversion of Control) Container is responsible for creating and managing objects 
+                (called Beans).
+            - Bean 1 and Bean 2 are created by the container instead of being manually instantiated.
+            - If Bean 1 depends on Bean 2, the container automatically injects Bean 2 into Bean 1 (this is 
+                Dependency Injection).
+            - The configuration for this process is defined using XML or Java Annotations. 
+
+Need of Dependency Injection:
+    => because directly creating dependencies inside classes can lead to several problems:
+        -> Tight Coupling
+            - Classes that create their own dependencies are tightly coupled to specific implementations.
+            - Changes in one class may break dependent classes.
+
+        -> Reduced Testability 
+            - Directly created dependencies make unit testing difficult.
+            - DI allows injecting mock objects for testing individual components.
+
+        -> Poor Maintainability
+            - Updating or replacing a dependency requires changes in multiple classes.
+            - DI centralizes dependency management in the Spring container, simplifying maintenance.
+
+        -> Lack of Flexibility and Reusability 
+            - Classes cannot easily switch to alternative implementations of a dependency.
+            - DI allows using interfaces or multiple implementations without modifying the dependent class.
+
+        -> Centralized Object Management
+            - Spring IoC container handles object creation, configuration, and lifecycle
+            - reducing boilerplate code and ensuring consistency across the application.
+
+=> Types of Dependency Injection:
+    -> Setter Dependency Injection (SDI):
+        - Setter DI involves injecting dependencies via setter methods. 
+        - To configure SDI, the @Autowiredannotation is used along with setter methods
+        - property is set through the <property> tag in the bean configuration file.
+        - It results in circular dependencies or partial dependencies.
+        - Creates mutable objects. Dependencies can be modified after creation.
+
+    -> Constructor Dependency Injection (CDI):
+        - Constructor DI involves injecting dependencies through constructors. 
+        - To configure CDI, the <constructor-arg> tag is used in the bean configuration file.
+        - It too can have circular dependencies, it just fails faster and more explicitly.
+        - Creates immutable objects. Dependencies can't be modified after creation.
