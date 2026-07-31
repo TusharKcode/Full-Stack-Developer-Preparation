@@ -9,8 +9,12 @@ Spring IoC (Inversion of Control) Container is the core component of the Spring 
 
 => Types of IOC Containers:
     -> BeanFactory: 
+        - lightweight container
         - basic IoC container that provides fundamental features like dependency injection and bean 
             lifecycle management.   
+        - Beans are created lazily, meaning they are instantiated only when requested.
+        - Typically used for low-memory or resource-constrained environments.
+        - lacks advanced functionalities such as event handling and AOP.
         Syntax: Resource resource = new ClassPathResource("beans.xml");
                 BeanFactory factory = new XmlBeanFactory(resource);
 
