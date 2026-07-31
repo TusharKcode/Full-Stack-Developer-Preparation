@@ -1,0 +1,38 @@
+The Bean Life Cycle in Spring describes the sequence of steps a bean goes through, from its creation and 
+    initialization to its destruction. 
+
+Life Cycle
+    -> Container Initialization
+        - The Spring IoC container starts and loads configuration metadata (XML, annotations, or Java config).
+        - Bean definitions are registered, and infrastructure components (like processors) are prepared.
+
+    -> Bean Instantiation
+        - The container creates the bean object using a constructor or factory method.
+        - At this stage, the bean exists in memory but dependencies are not yet injected.
+
+    -> Dependency Injection
+        - The container resolves required dependencies from the IoC container.
+        - Dependencies are injected via constructor, setter, or field injection.
+
+    -> Custom Init Method
+        - The custom init() method is called once all dependencies are injected.
+        - It is used to perform additional setup like initializing resources, validating properties, or 
+            starting connections.
+
+    -> Bean Ready for Use
+        - The bean is completely initialized.
+        - Business methods are called by the application
+
+    -> Destruction
+        - Cleanup logic is executed using @PreDestroy, destroy(), or custom destroy methods.
+        - Resources such as database connections or threads are released before bean removal.
+
+Ways to Implement Bean Life Cycle in Spring
+    => XML Configuration
+    => Programmatic Approach (Interfaces)
+    => Annotations
+
+When to Use Custom Scopes
+    - When a bean needs to live beyond a single HTTP request but less than a singleton.
+    - When managing resources per thread, user, or tenant.
+    - When the built-in scopes do not provide the required lifecycle behavior.
