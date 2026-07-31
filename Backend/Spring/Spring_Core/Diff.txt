@@ -1,0 +1,54 @@
+=> Row Mapper
+    -> It is used to map each row of data from the resultSet to a Java object.
+        - used when the query returns multiple rows, and each row needs to be mapped to a corresponding 
+            object.
+
+        - Single Row Mapping: Maps one row at a time using the mapRow()method.
+        - Simplified Code: Converts rows into objects, improving readability and maintainability.
+        - Common Use Case: Often used with JdbcTemplate.query() for automatic mapping of ResultSet rows.
+    
+    -> Use RowMapper for straightforward row-to-object mapping, ideal for simple queries.
+    
+    Ex: public class EmployeeRowMapper implements RowMapper<Employee> {
+            @Override
+            public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Employee employee = new Employee();
+                employee.setId(rs.getInt("id"));
+                employee.setName(rs.getString("name"));
+                employee.setSalary(rs.getDouble("salary"));
+                return employee;
+            }
+        }
+
+        // Usage with JdbcTemplate
+        List<Employee> employees = jdbcTemplate.query("SELECT * FROM employee", new EmployeeRowMapper());
+
+
+=> Result Set Extractor
+    -> It is the object that stores and allows navigation through the data retrieved from the database.
+        - designed to process the entire ResultSet at once
+
+        - Entire ResultSet Processing: Processes the whole ResultSet for complex operations or aggregations.
+        - Custom Logic: Allows implementation of custom logic for advanced use cases.
+        - Common Use Case: Used with JdbcTemplate.query() for custom processing beyond simple row mapping.
+    
+    -> Use ResultSetExtractor for complex processing, like aggregating data or mapping multiple rows to a 
+        single object.
+
+    Ex: public class EmployeeResultSetExtractor implements ResultSetExtractor<List<Employee>> {
+            @Override
+            public List<Employee> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                List<Employee> employees = new ArrayList<>();
+                while (rs.next()) {
+                    Employee employee = new Employee();
+                    employee.setId(rs.getInt("id"));
+                    employee.setName(rs.getString("name"));
+                    employee.setSalary(rs.getDouble("salary"));
+                    employees.add(employee);
+                }
+                return employees;
+            }
+        }
+
+        // Usage with JdbcTemplate
+        List<Employee> employees = jdbcTemplate.query("SELECT * FROM employee", new EmployeeResultSetExtractor());
