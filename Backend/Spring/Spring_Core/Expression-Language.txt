@@ -1,0 +1,75 @@
+Spring Expression Language (SpEL) is a feature in the Spring Framework used to evaluate expressions and 
+    manipulate objects at runtime.
+    - dynamically configuring beans, accessing properties, and invoking methods within Spring applications.
+    - Provides operators (arithmetic, logical, relational) for expression evaluation
+
+Syntax: 
+    - #{}: Used for evaluating expressions dynamically in Spring bean definitions.
+    - ${}: Used for property placeholders (externalized configuration).
+    
+Features:
+    - Property Access:          Access object properties using a simple syntax.
+    - Method Invocation:        Call methods on beans or objects dynamically.
+    - Arithmetic Operations:    Perform calculations like addition, subtraction, multiplication, and division.
+    - Logical and Relational Operators: Evaluate boolean expressions using ==, >, <, &&, ||.
+    - Collection Support:           Access arrays, lists, maps, and sets.
+    - Bean References:              Reference Spring beans by their ID.
+    - Ternary Operator:             Use ? : for conditional expressions.
+    - Regular Expression Matching:  Supports matches for pattern matching.
+
+Example: 
+    <bean id="exampleBean" class="com.example.Person">
+        <property name="age" value="#{30 + 5}" />
+        <property name="name" value="#{'John Doe'}" />
+    </bean>
+
+    // Using SpEL with Annotations
+        @Component
+        public class Employee {
+            @Value("#{10 * 2}")                 // Arithmetic operation
+            private int salary;
+
+            @Value("#{'John'.toUpperCase()}")   // Method invocation
+            private String name;
+
+            public int getSalary() { return salary; }
+            public String getName() { return name; }
+        }
+
+    // Accessing Beans in SpEL
+        @Component("myBean")
+        public class MyBean {
+            private String value = "Spring SpEL";
+            public String getValue() { return value; }
+        }
+
+        @Component
+        public class Demo {
+            @Value("#{myBean.value}")  // Access property of another bean
+            private String val;
+        }
+
+    // Working with Collections
+        - Projection (.![]): Transforms each element in a collection by applying an expression.
+        - Selection (.?[]): Filters collection elements based on a specified condition.
+                
+                @Value("#{{1, 2, 3, 4}.?[#this > 2]}")  // Selection
+                private List<Integer> filteredList;
+
+                @Value("#{{'a':'A', 'b':'B'}}")  // Map initialization
+                private Map<String, String> map;
+
+=> SpEL Operators:
+    +	        Addition / Concatenation	#{2 + 3} → 5
+    -	        Subtraction	                #{10 - 4} → 6
+    *	        Multiplication	            #{5 * 2} → 10
+    /	        Division	                #{10 / 2} → 5
+    %	        Modulus	                    #{10 % 3} → 1
+    ==	        Equals	                    #{5 == 5} → true
+    !=	        Not equals	                #{5 != 2} → true
+    >	        Greater than	            #{10 > 5} → true
+    <	        Less than	                #{3 < 7} → true
+    and / &&	Logical AND	                #{true and false} → false
+    `or /		                                `
+    !	        Logical NOT	                #{!true} → false
+    ?:	        Ternary	                    #{1 > 0 ? 'Yes' : 'No'} → "Yes"
