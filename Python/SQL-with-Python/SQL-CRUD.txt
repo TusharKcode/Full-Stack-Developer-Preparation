@@ -1,0 +1,77 @@
+CRUD means - Create, Read, Update & Delete
+
+    SQL maps directly to these operations
+        Create          ->      INSERT
+        Read            ->      SELECT
+        Update          ->      UPDATE
+        Delete          ->      DELETE
+
+-> SQL Create
+    - CREATE TABLE  = Creates a new table
+    - id            = ID is an Integer and Primary Key              (unique value)
+    - name          = Name must contain a value                     (can't be empty)
+    - email         = Email must be provided & cannot be duplicated (can't be empty but unique)
+    - age           = Stores an Integer                             (number)
+
+    Ex: CREATE TABLE users(
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            age INTEGER
+        );
+
+-> SQL Insert
+    Ex: INSERT INTO users (name, email, age) VALUES ('John', 'john@example.com', 22);
+
+-> SQL Select - use to read data
+    - * = means all Columns
+    - can select specific columns
+    
+    Ex: SELECT * FROM users;
+                            OR
+        SELECT name, email FROM users;
+
+-> SQL Update - to modify or update data
+    Ex: UPDATE users SET age = 24 WHERE id = 1;
+
+-> SQL Delete - use to delete records
+    Ex: DELETE FROM users WHERE id = 2;     # for single record
+                                        OR
+        DELETE FROM users;                  # for full record
+
+-> SQL Conditions with operators: =, !=, >, <, <=, >=
+    Ex: SELECT * FROM users WHERE age >= 18
+
+-> WHERE - to find record on basis of particular condition.
+    Ex: SELECT * FROM users WHERE id = 1;       # To find user with Id 1
+        SELECT * FROM users WHERE age > 18      # To find user with greater than 18
+
+-> ORDER BY - use to sort results
+    Ex: SELECT * FROM users ORDER BY age;       # sort full table result
+        SELECT * FROM users ORDER BY age DESC;  # sort result in descending order
+
+-> LIMIT - Get only a certain number of records, useful for pagination
+    Ex: SELECT * FROM users LIMIT 5;
+
+-> AND / OR
+    Ex: SELECT * FROM users WHERE age > 18 AND name = 'John';   # return record when both condition true
+        SELECT * FROM users WHERE age > 18 OR name = 'John';    # return record when any condition true
+
+-> LIKE - useful for searching text
+   - % = means any number of characters
+    Ex: SELECT * FROM users WHERE name LIKE 'Jo%';
+        SELECT * FROM users WHERE email LIKE '%@gmail.com';
+
+
+=> Aggregate Functions
+    -> Count
+        Ex: SELECT COUNT(*) FROM users;
+
+    -> AVG (Average)        
+        Ex: Ex: SELECT AVG(age) FROM users;
+
+    -> MAX (Maximum)       
+        Ex: Ex: SELECT MAX(age) FROM users;
+
+    -> MIN (Minimum)       
+        Ex: Ex: SELECT MIN(age) FROM users;

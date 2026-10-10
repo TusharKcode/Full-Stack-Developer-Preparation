@@ -1,0 +1,68 @@
+A Database is a structured place where application data is stored so it can be saved 
+    - permanently
+    - searched
+    - updated
+    - deleted
+    - organized
+    - related to other data
+
+Ex: Imagine a user registration system, 
+        Without Database:   users = [
+                                {"id": 1, "name": "Tushar", "email": "tushar@example.com"}
+                            ]
+            This data only exists while Python program is running.
+            When the program stops, the data disappear unless we save it somewhere.
+
+        With Database: Python App -> Database -> Users table -> Data stored permanently
+
+    # Almost every backend application needs persistent data.
+
+    It works like: 
+        React Frontend              |   Receive request
+            ↓                       |       ↓
+        HTTP request                |   Query Database
+            ↓                       |       ↓
+        Python / FastAPI backend    |   Find user ID 10
+            ↓                       |       ↓
+        Database                    |   Convert result to JSON
+            ↓                       |       ↓
+        Data                        |   Send response
+
+->> Database Design 
+
+    Suppose Creating an LMS: 
+        Students can enroll in multiple courses & courses can have multiple students.
+
+    We might design:
+
+        (students)
+                    | id | name   | email                                         |
+                    | -: | ------ | ----------------------------------------------|
+                    |  1 | Alice  | [alice@example.com](mailto:alice@example.com) |
+                    |  2 | John   | [john@example.com] (mailto:john@example.com)  |
+
+        (courses)
+                    |  id | title          |
+                    | --: | -------------- |
+                    | 101 | Python Backend |
+                    | 102 | React          |
+
+        (enrollments)
+                    | id | student_id | course_id |
+                    | -: | ---------: | --------: |
+                    |  1 |          1 |       101 |
+                    |  2 |          1 |       102 |
+                    |  3 |          2 |       101 |
+
+    => Relationships types: 
+        -> One to One   = One user -> One profile
+        -> One to Many  = One user -> Many orders
+        -> Many to Many = Students <--> Courses
+        
+    => Normalization
+        - Avoid unnecessary duplication of data and organize into appropriate tables.
+
+    => ORM - Object Relational Mapping
+        - With ORM , work with Python objects / classes and ORM translates our operation into SQL.
+        - ORM will handle much SQL interaction
+        - Python ORM is 'SQLAlchemy'

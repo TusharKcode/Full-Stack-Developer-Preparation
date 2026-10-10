@@ -1,0 +1,102 @@
+ORM means Object Relational Mapping, it handles the SQL generation.
+    Ex:
+        cursor.execute(                         | user = session.get(user, 1)
+            "SELECT * FROM users WHERE id = ?", | 
+            (1,)                                | 
+        )                                       | 
+
+-> Python ORM libraries are 'SQLAlchemy' with databases such as SQLite, MySQL, PostgreSQL, Oracle, 
+    Microsoft SQL Server.
+
+->> Installation - pip install sqlalchemy
+->> To verify - pip show sqlalchemy
+
+->> Architecture
+    - Engine = manages communication with databases
+
+        Ex: from sqlalchemy import create_engine
+            engine = create_engine("sqlite:///app.db")
+
+    - Session
+
+    - Model = is a Python class representing a database table
+        Python class -> (maps to) -> database table
+
+        Ex: class User:     |   users    
+                id          |   ---------
+                name        |   id
+                email       |   name  
+                age         |   email
+                            |   age
+
+    - Modern SQLAlchemy commonly uses a declarative style
+        
+        Ex: from sqlalchemy.orm import DeclarativeBase
+            class Base(DeclarativeBase):
+                pass
+
+        # With Python : 
+            from sqlalchemy import String
+            from sqlalchemy.orm import Mapped, mapped_column
+
+            class User(Base):
+                __tablename__ = "users"
+                id: Mapped[int] = mapped_column(primary_key=True)
+                id: Mapped[int] = mapped_column(primary_key=True)
+                id: Mapped[int] = mapped_column(primary_key=True)
+                age: Mapped[int]
+
+        # creating tables when we have Base, User, Engine
+            Base.metadata.create_all(engine)
+
+->> Session - means how we interact with the database through ORM.
+
+        Engine -> Session -> CRUD Operations -> Database
+
+            Ex: from sqlalchemy.orm import Session
+                with Session(engine) as session:
+                    ...
+
+        # Raw SQL: 
+            INSERT INTO users (name, email, age)
+            VALUES ('Ash', 'ash@example.com', 22);
+
+        # Create with SQLAlchemy:
+            user = User(
+                name="Ash"
+                email="ash@example.com"
+                age=22
+            )
+
+            with Session(engine) as session:
+                session.add(user)
+                session.commit()
+
+        # To retrieve user:
+            from sqlalchemy import select
+            with Session(engine) as session:
+                statement = select(User)            # SELECT * FROM users
+                users = session.scalars(statement).all()
+
+                for user in users:
+                    print(user.name)
+
+        # Read by ID
+            with Session(engine) as session:
+            user = session.get(User, 1)     # SELECT * FROM users WHERE id = 1;
+            if user:
+                print(user.name)
+
+        # Update
+            with Session(engine) as session:
+            user = session.get(User, 1)     
+            if user:
+                user.age = 26
+                session.commit()
+
+        # Delete
+            with Session(engine) as session:
+            user = session.get(User, 1)     
+            if user:
+                session.delete(user)
+                session.commit()

@@ -1,0 +1,25 @@
+MySQL is a database server designed for multi-user applications and larger production workloads.
+
+Python Package for MySQL:   python -m pip install mysql-connector-python
+
+    # To connect with MySQL:
+        import mysql.connector
+
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="your_password",
+            database="db_name"
+        )
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM users")
+
+        users = cursor.fetchall()
+
+        for user in users:
+            print(user)
+
+        cursor.close()
+        connection.close()

@@ -1,0 +1,86 @@
+                        (Students Table)
+                            | id | name   | email             |
+                            | -: | ------ | ----------------- |
+                            |  1 | Nick   | nick@example.com  |
+                            |  2 | John   | john@example.com  |
+                            |  3 | Alice  | alice@example.com |
+
+                        (Courses Table)
+                            |  id | name     |
+                            | --: | -------- |
+                            |   1 | Python   |
+                            |   2 | Java     |
+                            |   3 | Database |
+
+                        (Enrollment Table)
+                            |  id | |  student_id | |  course_id |     
+                            | --  | | ----------- | | ---------- | 
+                            |   1 | |   1         | |   1        | 
+                            |   2 | |   1         | |   3        | 
+                            |   3 | |   2         | |   2        | 
+                            |   4 | |   3         | |   1        | 
+
+-> These tables are connected using foreign key.
+
+->> INNER JOIN - only matching records
+
+    Syntax: SELECT columns
+            FROM table1
+            INNER JOIN table2
+            ON table1.column = table2.column;
+
+    Ex: SELECT students.name, enrollment.course_id
+        FROM students
+        INNER JOIN enrollment
+        ON student.id = enrollment.student_id;
+
+    # Join 3 tables
+
+        SELECT students.name, courses.name
+        FROM students
+        INNER JOIN enrollment
+            ON student.id = enrollment.student_id
+        INNER JOIN courses
+            ON enrollment.courses_id = course.id;
+
+->> LEFT JOIN - keeps all records from the left table, even when there is no matching record.
+
+    Ex: SELECT
+            students.name, courses.name
+        FROM students
+        LEFT JOIN enrollments
+            ON students.id = enrollments.student_id
+        LEFT JOIN courses
+            ON enrollments.course_id = courses.id;
+
+->> RIGHT JOIN - keep all records from right table
+
+->> JOIN with WHERE - used to filtering records.
+
+    Ex: SELECT students.name, courses.name
+        FROM students
+        INNER JOIN enrollment
+            ON student.id = enrollment.student_id
+        INNER JOIN courses
+            ON enrollment.courses_id = course.id
+        WHERE courses.name = "Python";
+
+->> JOIN with ORDER BY - used to filtering records.
+
+    Ex: SELECT students.name, courses.name
+        FROM students
+        INNER JOIN enrollment
+            ON student.id = enrollment.student_id
+        INNER JOIN courses
+            ON enrollment.courses_id = course.id
+        ORDER BY students.name;
+
+->> JOIN with COUNT() - count records
+->> JOIN with GROUP BY - group records
+    Ex: SELECT 
+                students.name, 
+                COUNT(enrollments.course_id) AS course_count
+        FROM students
+        LEFT JOIN enrollment
+            ON student.id = enrollment.student_id
+        GROUP BY students.id, students.name;

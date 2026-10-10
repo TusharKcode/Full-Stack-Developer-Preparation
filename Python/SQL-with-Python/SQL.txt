@@ -1,0 +1,33 @@
+SQL - Structured Query Language, is used to communicate with relational databases.
+
+    -> Python can send SQL commands to a database.
+
+->> Relational Database - stores data primarily in tables.
+        -> Table like a spreadsheet
+        -> Rows - Each row represent a (one) record.
+        -> Columns - Each column represents an attribute.
+            
+            (User Table)
+                | id | name   | email                                           | age |  <-- 'Columns'
+                | -: | ------ | ----------------------------------------------- | --: |
+    'Rows' -->  |  1 | Nick   | [nick@example.com]  (mailto:nick@example.com)   |  25 |
+                |  2 | John   | [john@example.com]  (mailto:john@example.com)   |  24 |
+                |  3 | Alice  | [alice@example.com] (mailto:alice@example.com)  |  26 |
+
+            (Order Table)
+                |  id | user_id | product  |
+                | --: | ------: | -------- |
+                | 101 |       1 | Laptop   |
+                | 102 |       1 | Mouse    |
+                | 103 |       2 | Keyboard |
+
+
+    -> Primary Key - uniquely identifies each row
+
+            Ex: In above table, 'id' is the primary key. It should uniquely identify a user.
+
+    -> Foreign Key - creates a relationship between tables
+
+            Ex: In above table, 
+                    (orders.user_id) refers to (users.id)
+                So, users -> id = 1 -> orders.user_id = 1, This is a relationship.
