@@ -1,0 +1,39 @@
+Module 1: System & DevOps Fundamentals 
+    1. Linux Essentials 
+        a. Introduction to Linux 
+        b. Essential Linux Commands 
+        c. User, Groups and Permissions 
+        d. Network Configuration & Troubleshooting 
+        e. Package Management 
+        f. Investigating & Managing Processes 
+        g. Finding & Processing Files 
+        h. Introduction to Bash Scripting 
+
+    2. Cloud Fundamentals 
+        a. Cloud Computing Overview: SaaS, PaaS, IaaS 
+        b. Infrastructure as a Service (IaaS) Explained 
+        c. Introduction to AWS Services 
+        d. AWS EC2, S3, RDS 
+        e. AWS Networking (VPC, Security Groups, IAM) 
+        f. Introduction to Containers & Kubernetes 
+
+    3. DevOps Fundamentals 
+        a. Introduction to DevOps Concepts & Benefits 
+        b. DevOps Lifecycle & Tools: Jenkins, Git, Docker, Kubernetes 
+
+Module 2: DevSecOps Basics 
+    1. Continuous Integration (CI) Pipeline 
+        a. AWS Code Commit 
+        b. AWS Code Build 
+        c. AWS Code Pipelines 
+
+    2. Continuous Deployment (CD) Pipeline 
+        a. AWS Code Deploy 
+
+    3. Infrastructure as Code (IaC) Pipeline 
+        a. Terraform 
+
+    4. Application Pipeline 
+        a. Containerization 
+        b. AWS ECR 
+        c. AWS EKS

@@ -1,0 +1,186 @@
+Python Fundamentals
+    - What is Python & why it is popular
+    - Applications (web, data science, automation, AI)
+    - Installing Python & IDE setup (VS Code / PyCharm)
+    - Running first Python program
+    - Understanding Python execution flow
+
+    - Variables & data types
+    - Operators (arithmetic, logical, comparison)
+    - Input/output operations
+    - Control statements (if, else, loops)
+    - Writing basic programs
+
+Python Data Structures & String Manipulation
+    - Lists, tuples, sets, dictionaries
+    - String manipulation
+    - Indexing & slicing
+    - Built-in functions
+    - Data structure operations
+
+Python Functions
+    - Defining & calling functions
+    - Parameters & return values
+    - Lambda functions
+    - Recursion
+    - Code reusability concepts    
+
+Python File Handling & Data Parsing
+    - Reading & writing files
+    - Working with CSV/JSON files
+    - File modes & operations
+    - Data parsing techniques
+
+Python Exception Handling & Debugging
+    - Types of errors
+    - try/except blocks
+    - finally & else usage
+    - Custom exceptions
+    - Debugging techniques
+
+Python OOP
+    - Classes & objects
+    - Constructors
+    - Inheritance
+    - Encapsulation
+    - Polymorphism
+    - Real-world OOP implementation
+
+Python Advanced Fundamentals
+    - Sets, stacks, queues
+    - List comprehensions
+    - Generators & iterators
+    - Decorators basics
+    - Pythonic coding practices
+
+Python Modules, Packages, Virtual Environments, pip & Code Organization
+    - Creating modules
+    - Importing packages
+    - Virtual environments (venv)
+    - Package management (pip)
+    - Code organization
+
+Python Regular Expressions (Regex)
+    - Pattern matching with regex
+    - Searching & replacing text
+    - Data extraction
+    - Validation patterns
+
+Python HTTP Requests, APIs, JSON & REST API
+    - HTTP requests (GET, POST)
+    - Working with APIs
+    - JSON parsing
+    - REST API basics
+    - Data fetching applications
+
+Python + SQL + Database Connectivity
+    - SQL basics
+    - SQLite / MySQL connection
+    - CRUD operations
+    - ORM basics (intro)
+    - Database design basics
+
+Python Web Development- Flask, Django, REST APIs & Backend Architecture
+    - Introduction to Django
+    - Routing & views
+    - Templates & forms
+    - REST API development
+    - Backend architecture basics
+
+Python Advanced Programming - Threading, Multiprocessing, Asyncio & Performance Optimization
+    - Threading & multiprocessing
+    - Asyncio basics
+    - Non-blocking programming
+    - Performance optimization
+
+Python Testing, Debugging, Logging & Error Tracking
+    - Unit testing (pytest)
+    - Writing test cases
+    - Debugging tools
+    - Logging systems
+    - Error tracking
+
+Python for Data Analysis & Visualization
+    - NumPy basics
+    - Pandas data handling
+    - Data cleaning
+    - Matplotlib & Seaborn
+    - Data visualization techniques
+
+Introduction to Machine Learning
+    - Introduction to ML
+    - scikit-learn basics
+    - Supervised vs unsupervised learning
+    - Simple ML models
+    - Real-world use cases
+
+Git, GitHub, Version Control, Collaboration Practices & Code Management
+    - Git basics
+    - GitHub workflow
+    - Version control
+    - Collaboration practices
+    - Code management
+
+CLI Projects, File Handling, Data Structures & Error Handling
+    - CLI-based project (e.g., task manager, automation script)
+    - File handling & logic building
+    - Data structures usage
+    - Error handling
+
+Flask/ Django Web App, API Integration, Database Connectivity & Authentication Basics
+    - Flask/Django web app
+    - API integration
+    - Database connectivity
+    - Authentication basics
+
+Backend Logic + Database, API Integration, Clean Architecture & Deployment-Ready Project
+    - Backend logic + database
+    - API integration
+    - Clean architecture
+    - Deployment-ready project
+
+Python Application Deployment, Environment Variables, Production Setup, CI/CD & Performance Optimization
+    - Deploy Python apps (Render / AWS / VPS)
+    - Environment variables
+    - Production setup
+    - Basic CI/CD
+    - Performance optimization
+
+Python Development Career & Professional Portfolio
+    - Python developer resume
+    - GitHub portfolio
+    - Project documentation
+    - LinkedIn optimization
+
+Python Interview Preparation
+    - Python interview questions
+    - OOP & DSA questions
+    - Coding round preparation
+    - Backend & API questions
+    - Mock interviews
+
+Advanced Python Backend Development - FastAPI, Microservices, Docker, AI Automation & Cloud
+    - FastAPI (modern backend framework)
+    - Microservices basics
+    - Docker basics
+    - AI integration (OpenAI APIs, automation)
+    - Automation scripting (Selenium, bots)
+    - Cloud basics
+
+
+--------------------------------------------------------------------------------------------------------
+
+Django Advanced Topics
+
+- Django Relationships & Advanced ORM
+- Django Authentication & Authorization
+- Django Sessions, Messages & Cookies
+- Django Static Files & Media Files
+- Django Class-Based Views
+- Django REST Framework (DRF)
+- Django Authentication for APIs
+- Django Testing & Security
+- Django Production & Deployment
+
+--------------------------------------------------------------------------------------------------------
+
