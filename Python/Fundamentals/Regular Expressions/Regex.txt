@@ -1,0 +1,45 @@
+Regular Expressions, called Regex, are used to find, match, extract, replace and validate text based on 
+    patterns.
+
+    It is useful for validating emails/API/input data, checking password/usernames formats, extracting
+        phone numbers, finding URLs, processing logs, extracting information from text, cleaning input data.
+
+    -> Python provides built-in 're' module, part of Python Standard library.
+
+Ex: Suppose we have, 
+                    text = "My phone number is 9876543210"
+    
+    To find number without regex, need to manually inspect the string
+    But with Regex, 
+                    import re
+                    pattern = r"\d{10}"             -> \d (digit) & {10} (exactly 10 times)
+                    result = re.search(pattern, text)
+                    print(result.group)             # 9876543210
+
+->> Raw Strings - r""
+
+->> Groups
+    -> Capturing groups () - Parentheses create a group
+
+        Ex: Suppose, we want both name and age
+            
+            text = "Name: Alice, Age: 22"
+            pattern = r"Name: (\w+), Age: (\d+)"
+            result = re.search(pattern, text)
+            print(result.group(1))
+            print(result.group(2))
+                                    OR
+            pattern = r"Name: (?P<name>\w+), Age: (?P<age>\d+)"     # Naming groups for complicated
+            result = re.search(pattern, text)                           extracted data
+            print(result.group("name"))
+            print(result.group("age"))
+
+->> Regex Flags - modify regex behavior
+
+    -> re.IGNORECASE
+        Ex: import re
+
+            text = "Python PYTHON python"
+
+            matches = re.findall(r"python", text, re.IGNORECASE)
+            print(matches)

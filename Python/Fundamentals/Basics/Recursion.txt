@@ -1,0 +1,66 @@
+Recursion means a function call itself.
+    It solves a problem by breaking into smaller versions of the same problem.
+
+    It is useful in Tree Traversal, Folder/directory structures, Nested Data, Divide & Conquer Algorithm,
+        Backtracking, Searching/Sorting Algorithm, Mathematical Problem.
+
+->> Recursion Pattern: 
+                        def function(value):
+                            if stopping_condition:      # Base case
+                                return result
+                            
+                            return function(smaller_value)  # Recursive case
+
+->> 2 Parts:
+    -> Base case: The condition that stops recursion.
+    -> Recursive case: The part where the function call itself with a smaller/simpler input.
+
+    Ex: def countdown(number):
+            if number == 0          --> This is Base Case (where to stop)
+                return
+
+            print(number)
+            countdown(number - 1)   --> This is Recursive Case (where to call itself in smaller)
+
+        countdown(5)
+
+    # Factorial (Recursion Example)
+
+        Let's take Factorial of 5: 5! -> 5 x 4 x 3 x 2 x 1 -> 120
+
+        Define it recursively:  5! = 5 x 4!
+                                4! = 4 x 3!
+                                3! = 3 x 2!
+                                2! = 2 x 1!
+                                1! = 1
+
+        Pattern will be: factorial(n) = n x factorial(n - 1)
+
+        Implementing: 
+                    def factorial(number):
+                        if number == 1:
+                            return 1
+
+                        return number * factorial(number - 1)
+                    print(factorial(5))
+
+    # with Strings
+        def print_characters(text, index=0):
+            if index == len(text):
+                return
+
+            print(text[index])
+            print_characters(text, index + 1)
+
+        print_characters("Python")
+
+    # with List
+        def print_characters(items, index=0):
+            if index == len(items   ):
+                return
+
+            print(items[index])
+            print_characters(items, index + 1)
+
+        products = ["Laptop", "Mouse", "Keyboard"]
+        print_characters(products)

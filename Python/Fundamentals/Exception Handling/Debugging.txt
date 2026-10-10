@@ -1,0 +1,55 @@
+Exception handling & Debugging are related, but not the same thing.
+
+    Exception handling - What should my program do when an expected runtime problem occur?
+    Debugging - Why is my program behaving incorrectly and where is the problem?
+
+Some Techniques for Debugging:
+    
+    -> Read the Traceback:
+            Ex: Traceback (most recent call last):
+                File "app.py", line 8, in <module>
+                    result = calculate_total(price, quantity)
+                File "app.py", line 4, in calculate_total
+                    return price * quantity
+                TypeError: can't multiply sequence by non-int of type 'float'
+
+            # Read from bottom to upward:
+                                        TypeError
+                                            ↑
+                                        what happened
+
+                                        line 4
+                                            ↑
+                                        where it happened
+
+                                        calculate_total()
+                                            ↑
+                                        which function
+
+    -> Identify the Exception type:
+        Ex: age = int(user_input)       # produce ValueError
+
+    -> Inspect Variables: Use temporary 'print' statements
+
+    -> Use breakpoint() - built-in debugger entry point.
+                            When execution reaches breakpoint(), Python pauses and lets you inspect 
+                            the program interactively.
+                            Powerful than print().
+
+    -> Step Over - executes the current line and moves to the next line without entering a called 
+                    function.
+    -> Step Into - enters a function call.
+    -> Step Out - if you're inside function and don't need to inspect, it finishes the function and returns 
+                    the caller.
+
+    -> Assertion - useful for detecting assumptions during development.
+                    Python raise AssertionError (If condition fails).
+
+    -> Logging - provides structural information about application behavior and problems.
+            
+            Ex: import logging
+
+                logging.basicConfig(level=logging.INFO)
+                logging.info("User created")
+                logging.warning("Invalid login attempt")
+                logging.error("Database connection failed")

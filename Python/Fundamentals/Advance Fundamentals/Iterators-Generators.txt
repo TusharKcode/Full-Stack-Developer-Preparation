@@ -1,0 +1,54 @@
+An Iterator is an object that allows you to access elements one at a time.
+
+    ->> Iterable - An object that provide an iterator. Ex: list, tuple, set, dictionary, string.
+    ->> Iterator - object that produces values one at a time. It remembers its current position.
+                    Once an iterator reaches the end, it stays exhausted.
+
+    ->> 2 important functions are: 
+        -> iter() - can convert an iterable such as list into and iterator.
+        -> next() - gets the next available value from an iterator.
+
+            Ex: numbers = [10, 20, 30, 40]
+
+                iterator = iter(numbers)
+
+                print(next(iterator))
+                print(next(iterator))
+                print(next(iterator))
+                print(next(iterator))
+
+A Generator is a special type of iterator that produces value lazily, one at a time.
+    Instead of creating and storing all results in memory, it generates a value when needed.
+
+    ->> Lazy generation can significantly reduces memory usage in very large data.
+
+        Generator expression = using () -> Ex:  squares = (x ** 2 for x in range(5))
+                                                print(next(squares))
+                                                print(next(squares))
+                                                print(next(squares))
+
+    ->> Way to create generator : use 'yield'
+
+    ->> Working:
+                def count():
+                    yield 1
+                    yield 2
+                    yield 3
+
+                numbers = count()   # function does not immediately execute everything
+        # then
+                print(next(numbers))    # starts / resumes function until yield 1 gives 1 and pauses.
+        
+        # same with other next
+                print(next(numbers))    # starts / resumes function until yield 2 gives 2 and pauses.
+
+        # so on.....
+
+    -> with loops (for) - automatically gets the values from the generator
+
+        Ex: def count_to_five():
+                for number in range(1, 6):
+                    yield number
+
+            for number in count_to_five():
+                print(number)

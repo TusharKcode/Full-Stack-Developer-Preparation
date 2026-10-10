@@ -1,0 +1,32 @@
+A Stack follows LIFO - Last In, First Out.
+    Python List can be used as stacks.
+
+    ->> Creating a stack -              stack = []
+
+    ->> Adding item to stack (Push) -   stack.append(10)
+                                        stack.append(20)
+                                        stack.append(30)
+                                        stack.append(40)
+
+                                        print(stack)
+
+    ->> Removing last item from stack - item = stack.pop()
+                                        print(item)
+                                        print(stack)
+
+A Queue follows FIFO - First In, First Out.
+
+    For Python, recommended structure for a Queue is 'deque'.
+
+                                from collections import deque
+
+->> Creating Queue -            queue = deque()
+->> Adding an item to right -   queue.append("John")
+    (Enqueue)                   queue.append("Nick")
+                                queue.append("Bob")
+
+                                print(queue)        # deque(['John', 'Nick', 'Bob'])
+
+->> Remove first item -         person = queue.popleft()
+    (Dequeue)                   print(person)
+                                print(queue)

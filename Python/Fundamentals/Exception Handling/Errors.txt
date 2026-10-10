@@ -1,0 +1,38 @@
+An error is a problem that prevents program from behaving as intended.
+
+->> Types of Errors: 
+    -> Syntax Error - occurs when Python's grammar / rules are violated.
+                        It prevents Python from starting / executing the code normally.
+            Ex: if age => 18
+                    print("Adult")      # Missing :
+
+    -> Runtime Error (Exception) - occurs while the program is executing.
+                                    They are called Exceptions.
+            Ex: number = 10
+                result = number / 0     # raise ZeroDivisionError
+
+                numbers = [10, 20, 30]
+                print(numbers[5])       # raise IndexError
+
+                age = int("hello")      # raise ValueError
+
+    -> Logical Error - means the program run, but produces the wrong result.
+                        Solution is Debugging.
+            Ex: price = 100
+                quantity = 5
+                total = price + quantity        # Calculation Error but program runs.
+                print(total)
+
+Common Python Exceptions:
+| Exception             | Typical situation                       |
+| --------------------- | --------------------------------------- |
+| `ValueError`          | Invalid value/conversion                |
+| `TypeError`           | Wrong type used                         |
+| `IndexError`          | Invalid list/sequence index             |
+| `KeyError`            | Missing dictionary key                  |
+| `ZeroDivisionError`   | Division by zero                        |
+| `FileNotFoundError`   | File doesn't exist                      |
+| `AttributeError`      | Object doesn't have requested attribute |
+| `NameError`           | Variable/name doesn't exist             |
+| `ImportError`         | Import problem                          |
+| `ModuleNotFoundError` | Module/package cannot be found          |

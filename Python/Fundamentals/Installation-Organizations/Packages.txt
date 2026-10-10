@@ -1,0 +1,52 @@
+A package is way of organizing related modules into a directory.
+
+    Ex: my_project/
+        │
+        ├── main.py
+        │
+        └── utils/          -> package
+            ├── __init__.py
+            ├── calculator.py   -> modules
+            └── formatter.py    -> modules
+
+->> What is __init__.py?
+    It is used to define / package-initialize a package.
+    It tells Python / tools that the directory is intended to behave as Python package.
+
+    -> Modern Python recognize it as 'namespace packages' without __init__.py
+
+->> What is pip?
+    It is Python's standard package installer, used to install third-party Python packages.
+
+        Ex: pip install package_name / python -m pip install package_name
+
+    -> Check installed packages:    python -m pip list
+                                    python -m pip show package_name # to inspect specific package
+
+    -> Updating package: python -m pip install --upgrade package_name
+    -> Uninstalling: python -m pip uninstall package_name
+
+    Suppose our project uses: fastAPI, uvicorn, etc...
+    -> Generate a dependency list - python -m pip freeze > requirements.txt
+
+    Someone clone your project and run above command, this installs the listed dependencies.
+
+    # Workflow becomes:     Developer
+                                ↓
+                            Create venv
+                                ↓
+                            Install packages
+                                ↓
+                            Develop project
+                                ↓
+                            pip freeze
+                                ↓
+                            requirements.txt
+                                ↓
+                            GitHub
+                                ↓
+                            Another developer/server
+                                ↓
+                            Create venv
+                                ↓
+                            pip install -r requirements.txt

@@ -1,0 +1,88 @@
+Loops allow program to repeat code automatically.
+
+->> Two main Loops are: 
+    -> 'for' loop: use when you want to iterate through a collection or a known sequence of value. 
+        
+        Syntax: for variable in sequence:
+                    # repeated code
+
+        Ex: for number in range(5):     # auto moves to next value
+                print(number)
+
+            # for loop with String (useful with list / dictionaries)
+                Ex: name = "Python"
+                    for character in name:
+                        print(character)  # Output: P y t h o n
+
+            # for loop with if condition
+                Ex: for number in range(1, 11):
+                        if number % 2 == 0:
+                            print(number)
+
+    -> 'while' loop: use when you want to continue while a condition remains True.
+
+        Syntax: while condition:
+                    # repeated code
+
+        Ex: count = 1           # This condition can be Infinite Loop if count not increases by 1.    
+            while count <=5:    # not auto moves to next value
+                print(count)
+                count +=1
+
+=> 'range()': used with loops. Can be: range(stops), range(start, stop), range(start, stop, step)
+
+    Ex: range(5), generates 0,1,2,3,4 - Ending number will not be included.
+
+        for number in range(1, 6):  , Start from 1 stops before 6
+            print(number)
+
+        for number in range(0, 11, 2):  , moves by 2 each time. 
+            print(number)
+
+            Explanation: start  -> 0
+                                    + 2 -> 2
+                                -> 2
+                                    + 2 -> 4
+                                -> 4
+                                    + 2 -> 6... Similarly so on.
+
+=> 'break': immediately stops the entire loop.
+                                                        _ No -> Continue -> Next Value
+    Flow: Loop Start -> Next Value -> Condition met? 
+                                                        _ Yes -> break -> Loop Ends
+
+    Ex: for number in range(1, 11):
+            if number == 6:
+                break
+            print(number)
+
+=> 'continue': skips the current iteration and moves to the next one.
+
+    Ex: for number in range(1, 6):  # If condition met True, skips the condition and continue to next.
+            if number == 3:
+                continue
+            print(number)
+
+=> 'pass': do nothing (continue normally) for now, it does not skips anything
+
+    Ex: When you don't want to write implementation code for condition, This is a valid code.
+
+        if True:
+            pass
+
+=> Nested Loops: loop inside another loop
+
+    Ex: for row in range(1, 4):
+            for column in range(1, 4):
+                print(f"Row: {row}, Column: {column}")
+
+        # Output
+            Row: 1, Column: 1
+            Row: 1, Column: 2
+            Row: 1, Column: 3
+            Row: 2, Column: 1
+            Row: 2, Column: 2
+            Row: 2, Column: 3
+            Row: 3, Column: 1
+            Row: 3, Column: 2
+            Row: 3, Column: 3

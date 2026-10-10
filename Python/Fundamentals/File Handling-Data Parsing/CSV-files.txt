@@ -1,0 +1,60 @@
+CSV means Comma Separated Value.
+    It is used for datasets, excel exports, reports, importing users/products and data analysis.
+
+    Python has built-in 'csv' module.
+
+->> Reading CSV: csv value are read as string.
+
+    Ex: Suppose 'students.csv' contains: 
+                                    name,age,course
+                                    Alice,22,Python
+                                    Bob,23,Java
+                                    Charlie,21,Python
+
+        # Code
+            import csv
+
+            with open("students.csv", "r", encoding="utf-8") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    print(row)
+
+        # Output
+            ['name', 'age', 'course']
+            ['Alice', '22', 'Python']
+            ['Bob', '23', 'Java']
+            ['Charlie', '21', 'Python']
+
+->> CSV with DictReader
+    Ex: # Code
+            import csv
+
+            with open("students.csv", "r", encoding="utf-8") as file:
+                reader = csv.DictReader(file)
+                for student in reader:
+                    print(student)
+
+        # Output
+            {
+                "name": "Alice",
+                "age": "22",
+                "course": "Python"
+            }
+
+->> Writing CSV - use csv.writer()
+
+    Ex: # Code
+            import csv
+
+            students = [
+                ["Alice", 22, "Python"],
+                ["Bob", 23, "Java"],
+                ["Charlie", 21, "Python"]
+            ]
+
+            with open("students.csv", "w", newline="", encoding="utf-8") as file:
+                writer = csv.writer(file)
+                writer.writerow(["name", "age", "course"])
+
+                for student in students:
+                    writer.writerow(student)

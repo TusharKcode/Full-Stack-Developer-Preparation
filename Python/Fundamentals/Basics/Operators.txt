@@ -1,0 +1,113 @@
+Operators are the symbols or keywords we use to perform the operations on values and variables.
+
+    Ex: a (operand) 
+        + (operator) 
+        b (operand)
+
+=> Python follows mathematical precedence rules.
+    
+    Ex: result = 10 + 5 * 2
+        print(result)
+
+        -> Human will think it will be 30, But Python gives 20. Because Multiplication will happen before 
+            addition.
+            It follows BODMAS (Brackets, Orders, Division/Multiplication, Addition/Subtraction).
+
+        -> Use parentheses when you want to make the order explicit.
+
+            Ex: result = (10 + 5) * 2
+                print(result)
+
+Types of Operators:
+
+    -> 1. Arithmetic Operators : Performs mathematical operations.
+
+            | Operator | Meaning           | Example   |
+            | -------- | ----------------- | --------- |
+            | `+`      | Addition          | `10 + 5`  |
+            | `-`      | Subtraction       | `10 - 5`  |
+            | `*`      | Multiplication    | `10 * 5`  |
+            | `/`      | Division          | `10 / 5`  |
+            | `//`     | Floor division    | `10 // 3` |    -> useful when dealing with things like pagination.
+            | `%`      | Modulus/remainder | `10 % 3`  |    -> gives remainder
+            | `**`     | Exponent/power    | `10 ** 2` |    -> Used for powers
+
+        Ex: a = 10
+            b = 5
+            result = a + b          # 15
+            result = a - b          # 5
+            result = a * b          # 50
+            result = a / b          # 2.0
+            result = a // b         # 2
+            result = a % b          # 0
+            result = a ** b         # 100,000
+
+    -> 2. Comparison Operators : Compares 2 values. Result either be True or False.
+
+            | Operator | Meaning               |
+            | -------- | --------------------- |
+            | `==`     | Equal to              |
+            | `!=`     | Not equal to          |
+            | `>`      | Greater than          |
+            | `<`      | Less than             |
+            | `>=`     | Greater than or equal |
+            | `<=`     | Less than or equal    |
+
+        Ex: age = 25
+            print(age == 25)    # True
+            print(age == 30)    # False
+            print(age != 30)    # True
+            print(age > 30)    # False
+            print(age < 30)    # True
+            print(age <= 30)    # True
+            print(age >= 30)    # False
+
+    -> 3. Assignment Operators : used to assign or update the values.
+
+            | Operator | Example   | Equivalent   |
+            | -------- | --------- | ------------ |
+            | `=`      | `x = 10`  | `x = 10`     |
+            | `+=`     | `x += 5`  | `x = x + 5`  |
+            | `-=`     | `x -= 5`  | `x = x - 5`  |
+            | `*=`     | `x *= 5`  | `x = x * 5`  |
+            | `/=`     | `x /= 5`  | `x = x / 5`  |
+            | `//=`    | `x //= 5` | `x = x // 5` |
+            | `%=`     | `x %= 5`  | `x = x % 5`  |
+            | `**=`    | `x **= 5` | `x = x ** 5` |
+
+    -> 4. Logical Operators : allow us to combine conditions. Includes 'and', 'or', 'not'.
+
+            - 'and' requires both conditions to be True.
+                
+                Ex: age = 25
+                    has_id = True
+
+                    result = age >= 18 and has_id == True
+                    print(result)   # True
+
+            - 'or' requires at least one condition to be True.
+
+                Ex: is_admin = False
+                    is_moderator = True
+
+                    can_manage_users = is_admin or is_moderator
+                    print(can_manage_users) # True
+
+            - 'not' reverse a boolean values
+
+                Ex: is_logged_in = True
+                    print(not is_logged_in) # False
+
+    -> 5. Membership Operators : check whether something exists inside a collection. Includes in, not in.
+
+            Ex: name = "John"
+                print("o" in name)  # True (means 'o' exists in name)
+
+                print("s" not in name) # True (means 'z' not exists in name)
+
+    -> 6. Identity Operators : check whether two variables refer to the same object. Includes is, is not.
+
+            Ex: a = None
+                print(a is None)    # True
+
+    -> 7. Bitwise Operators        

@@ -1,0 +1,35 @@
+A Module is simply a python file '.py' containing reusable code.
+
+    Syntax to import files: module_name.function_name()
+
+    Ex: Suppose In folder (Project), We have 2 files (main.py), (calculator.py) -> module file contains 
+        calculation logic.
+
+                            import calculator
+
+                            print(calculator.add(10, 20))
+
+
+        # Importing a specific function
+
+            from calculator import add
+            print(add(10, 20))
+
+        # Importing a multiple function
+
+            from calculator import add, subtract
+
+            print(add(10, 20))
+            print(subtract(20, 10))
+
+        # Import using Aliases (useful when module names are long)
+
+            import calculator as calc
+            print(calc.add(10, 20))
+
+->> Python's built-in modules
+    -> math
+    -> random
+    -> datetime
+    -> os
+    -> json

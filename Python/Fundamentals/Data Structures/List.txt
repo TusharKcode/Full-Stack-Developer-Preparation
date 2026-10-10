@@ -1,0 +1,110 @@
+A list is an ordered collection of multiple values stores in a single variable.
+
+    Features:   Mutable             - can modify after creating list.
+                Ordered
+                Uses Indexing       - Uses zero-based indexing, also supports negative indexing.
+                Allows duplicate
+                Allow different data types
+
+    Ex: data = [10, "Alice", 50.5, True]
+
+        numbers = [10, 20, 30]
+        numbers[0] = 15
+        print(numbers)      # [15, 20, 30]
+
+        languages = ["Python", "C", "Java", "Go"]
+        print(languages[0])      # Python
+        print(languages[-1])     # Go
+
+        Positions: Python      C       Java       Go
+        Positive    0          1         2         3
+        Negative   -4         -3        -2        -1
+
+# Adding Element:   append() - Adds an element at the end.
+    
+                            Ex: languages = ["Python", "Java"]
+                                languages.append("JavaScript")
+                                print(languages)                # ['Python', 'Java', 'JavaScript']
+
+                    insert() - Adds an element at a specific position.
+                            Syntax: list.insert(index, value)
+
+                            Ex: languages = ["Python", "Java"]
+                                languages.insert(1, "JavaScript")   
+                                print(languages)                # ['Python', 'JavaScript', 'Java']
+
+# Removing Element: remove() - Removes a specific value. It removes by value, not index.
+
+                            Ex: languages = ["Python", "Java", "JavaScript"]
+                                languages.remove("Java")   
+                                print(languages)        # ['Python', 'JavaScript']
+
+                    pop() - Removes an element using its index.
+                            It removes last element when no index provided.
+
+                            Ex: languages = ["Python", "Java", "JavaScript"]
+                                languages.pop(1)   
+                                print(languages)        # ['Python', 'JavaScript']
+
+# len() - It tells how many element are in a list.
+
+        Ex: languages = ["Python", "Java", "JavaScript"]
+            print(len(languages))        # 3
+
+# Checking Membership - 'in' operator
+
+    Ex: languages = ["Python", "Java", "JavaScript"]
+        print("Python" in languages)   # True
+        print("R" in languages)        # False
+
+# List with Loops:  
+
+    Ex: languages = ["Python", "Java", "JavaScript"]
+        for language in languages:
+            print(language)         #   Python
+                                        Java
+                                        JavaScript
+
+# List with Dictionaries:
+
+    Ex: users = [
+            {"name": "Alice", "age": 25},
+            {"name": "Bob", "age": 30},
+            {"name": "Charlie", "age": 22}
+        ]
+
+# Nested Lists: A list can contain another list.
+
+    Ex: numbers = [
+                    0  1  2   (indexing)
+                    ↓  ↓  ↓
+              0 →  [1, 2, 3],
+(indexing)    1 →  [4, 5, 6]
+        ]
+
+        print(numbers[0])   # [1, 2, 3]
+        print(numbers[0], [1])   # 2
+
+# Important List Methods:
+
+    Ex: numbers = [50, 10, 40, 20, 30]
+
+-> clear()
+-> index()
+-> count()
+-> sort()    -  numbers.sort()
+-> reverse() -  numbers.reverse()   
+-> copy() 
+
+# sort() v/s sorted()
+
+    -> sort()   - Changes the original list.
+                    Ex: numbers = [30, 10, 20]
+                        numbers.sort()
+                        print(numbers)      # [10, 20, 30]
+
+    -> sorted() - Creates a sorted result without changing original
+                    Ex: numbers = [30, 10, 20]
+                        sorted_numbers = sorted(numbers)
+                        print(sorted_numbers)           # [10, 20, 30]
+                        print(numbers)                  # [30, 10, 20]

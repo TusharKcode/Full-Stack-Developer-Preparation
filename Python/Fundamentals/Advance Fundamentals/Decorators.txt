@@ -1,0 +1,75 @@
+A Decorator is a function that allows to add or modify behavior of another function without changing
+    its code.
+
+-> Functions are objects in Python can be treated like values. 
+    Also can pass them as arguments, known as Higher order function.
+    A function is inside another function, also can return another function called Nested Function.
+
+    Ex: def greet():        
+            print("Hello")  
+
+        message = greet     | # without () it stores the function itself.
+        print(message)      | # with () executes the function and stores its return value.
+
+-> Decorator Syntax: @decorator
+
+Ex: 
+    def decorator(function):
+        def wrapper():
+            print("Before function")
+            function()
+            print("After function")
+
+        return wrapper
+
+    def greet():                        |   @decorator
+        print("Hello")                  |   def greet():
+                                        |        print("Hello")
+    greet = decorator(greet)            |            
+    greet()                             |   greet()
+
+->> With arguments
+    -> *args - Handles positional arguments
+                Ex: def add(a, b)
+                        return a + b
+
+    -> **kwargs - Handles keyword arguments
+                Ex: def welcome(name, message="Hello")
+                        print(message, name)
+
+    Ex: def decorator(function):
+            def wrapper(*args, **kwargs):
+                print("Before function")
+                function(*args, **kwargs)
+                print("After function")
+
+            return wrapper
+
+        @decorator
+        def greet(name):
+            print(f"Hello, {name}!")
+                  
+        greet("John")
+
+->> When we declare a function, the wrapper can replace information about the original function.
+    Python provides : from functools import wraps
+
+    -> @wraps(function) prevents metadata such as original function's name and documentation.
+
+    Ex: from functools import wraps
+
+        def decorator(function):
+
+            @wraps(function)
+            def wrapper(*args, **kwargs):
+                print("Before function")
+                result = function(*args, **kwargs)
+                print("After function")
+                return result
+
+            return wrapper
+
+        @decorator
+        def greet(name):
+            """Greets a user."""
+            print(f"Hello, {name}!")

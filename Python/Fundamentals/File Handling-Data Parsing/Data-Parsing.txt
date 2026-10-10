@@ -1,0 +1,69 @@
+Parsing means taking raw data and converting / extracting it into a useful structure.
+
+Ex: Raw input
+        ↓
+    " Alice,22,Python "
+        ↓
+    split / strip
+        ↓
+    ["Alice", "22", "Python"]
+        ↓
+    convert age
+        ↓
+    {"name": "Alice", "age": 22, "course": "Python"}
+
+    # Code
+        data = "Alice,22,Python"
+
+        parts = data.split(",")
+
+        name = parts[0].strip()
+        age = int(parts[1].strip())
+        course = parts[2].strip()
+
+        student = {
+            "name": name,
+            "age": age,
+            "course": course
+        }
+
+        print(student)
+
+    # Output
+        {
+            "name": "Alice",
+            "age": 22,
+            "course": "Python"
+        }
+
+->> Parsing JSON data:
+    Suppose: 
+            json_string = '''
+            {
+                "name": "Alice",
+                "age": 22,
+                "skills": ["Python", "FastAPI"]
+            }
+            '''
+
+        # Code
+            import json
+
+            data = json.loads(json_string)
+            print(data["name"])             # Alice
+            print(data["age"])              # 22
+            print(data["course"])           # ['Python', 'FastAPI']
+
+->> Parsing CSV data:
+
+    # Code
+        import csv
+
+        with open("student.csv", "r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+
+            for student in students:
+                name = student["name"]
+                age = int(student["age"])
+
+                print(f"{name} is {age} years old")

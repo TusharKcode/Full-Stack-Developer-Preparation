@@ -1,0 +1,55 @@
+->> Regex Functions
+    -> re.search() - looks for a pattern anywhere in the string.
+
+            Ex: import re 
+                text = "I am learning Python"
+                result = re.search(r"Python", text)
+                if result: 
+                    print("Python Found")
+
+
+    -> re.match() - checks from the beginning of the string
+                        If it matches return the result, if gets fail to match return 'None'
+            Ex: text = "Python is powerful"
+                result = re.match(r"Python", text)
+                print(result.group())
+
+    -> re.fullmatch() - requires the entire string to match the pattern, specially for Validation
+                        If the string contains both text and numeric, it won't work.
+                        It has to be one either full text or full numeric.
+
+            Ex: text = "1234"
+                result = re.fullmatch(r"\d+", text)
+                if result:
+                    print("Only digits")
+
+    -> re.findall() - returns all matching pieces, useful for data extraction
+
+            Ex: text = "Python 3, Java 17, Node 24"
+                numbers = re.findall(r"\d+", text)
+                print(numbers)
+
+    -> re.sub() - Search & Replace, replaces text matching a pattern
+
+            Ex: text = "Python   Full    Stack"
+                cleaned = re.sub(r"\s+", " ", text)
+                print(cleaned)
+            OR
+                text = "9876543210"
+                masked = re.sub(r"\d{6}", "******", text)
+                print(masked)                           # Contact: ******43210
+            OR with groups
+                masked = re.sub(r"(\d{2})\d{6}(\d{2})", "\1******\2", text)
+                print(masked)                           # Contact: 98******10
+
+    -> re.split() - used to split text
+                    Separators are - , ; space
+
+            Ex: text = "Python,FastAPI;React MySQL"
+                skills = re.split(r"[,; ]+", text)
+                print(skills)
+
+    -> re.compile() - Create reusable compiled pattern
+        Ex: pattern = re.compile(r"\d+")
+            print(pattern.findall("Order 101"))
+            print(pattern.findall("Order 202"))

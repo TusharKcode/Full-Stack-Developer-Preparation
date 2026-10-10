@@ -1,0 +1,59 @@
+JSON stands for JavaScript Object Notation.
+    Heavily used for communication between: frontend, backend and database.
+
+    Python provides built-in 'json' module.
+
+->> Reading JSON: 
+
+    Ex: Suppose 'user.json' contains: 
+                                    {
+                                        "name": "Alice",
+                                        "age": 22,
+                                        "course": "Python Full Stack"
+                                    }
+        # Code
+            import json
+
+            with open("user.json", "r", encoding="utf-8") as file:
+                reader = json.load(file)
+            print(reader)
+
+        # Output
+            {
+                'name': 'Alice',
+                'age': 22,
+                'course': 'Python Full Stack'
+            }
+
+->> Writing JSON
+
+    Suppose we have: 
+                    user = {
+                        "name": "Alice",
+                        "age": 22,
+                        "course": "Python Full Stack"
+                    }
+
+    Ex: # Code
+            import json
+
+            with open("user.json", "w", encoding="utf-8") as file:
+                json.dump(user, file, indent=4)
+    
+-> load()   - reads JSON from a file
+-> loads()  - reads JSON from a string
+
+-> dump()   - Python Object -> JSON file
+-> dumps()  - Python Object -> JSON string
+
+
+->> JSON <-> Data types
+                    | JSON   | Python      |
+                    | ------ | ------------|
+                    | object | dict        |
+                    | array  | list        |
+                    | string | str         |     
+                    | number | int / float |
+                    | true   | True        |
+                    | false  | False       |
+                    | null   | None        |

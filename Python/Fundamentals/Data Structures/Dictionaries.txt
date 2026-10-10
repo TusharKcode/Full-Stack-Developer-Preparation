@@ -1,0 +1,221 @@
+A Dictionary store data in key-value pair.
+    It is mutable.
+    It is Ordered.
+    It uses key to access value.
+    It can contains different data types.
+    Values can be duplicates but Key must be unique.
+
+    -> Modern python dictionaries preserve insertion order means Python remembers insertion order.
+
+    Syntax: dictionary = {
+                "key": "value",
+                "key": "value"
+            }
+
+    Ex: user = {              |       key       value
+            "name": "Alice",  |       ----------------
+            "age": 25,        |       name  →   Alice
+            "city": "Delhi"   |       age   →   25
+        }                     |       city  →   Delhi
+
+->> Accessing value
+
+    Ex: user = {
+            "name": "Alice",
+            "age": 25,
+            "city": "Delhi"
+        }
+
+        print(user["name"])
+        print(user["age"])
+
+        # print(user[0]), not valid b/s dictionaries not work like List.
+
+        # For Avoiding Error use 'get()'
+
+            print(user.get("email"))    # return None rather than error
+        
+        # Also, can provide a default value in get(), it is useful in backend where the field is missing
+
+            email = user.get("email", "Not provided")
+            print(email)    # Not provided
+
+->> Adding / Updating new key-value pair
+
+    Ex: user = {
+            "name": "Alice",
+            "age": 25,
+        }
+
+        user["city"] = "Delhi" 
+        user["age"] = 26    # same way to modify existing value
+        print(user)
+
+    # Updating with Multiple values
+
+        user.update({
+            "age": 26,
+            "city": "delhi"
+        })
+        print(user)
+
+->> len() with dictionaries - counts number of key-value pair
+
+    Ex: user = {
+            "name": "Alice",
+            "age": 25,
+            "city": "Delhi"
+        }
+
+        print(len(user))    # 3
+
+->> Membership (in / not in)
+
+    Ex: user = {
+            "name": "Alice",
+            "age": 25,
+            "city": "Delhi"
+        }
+
+        print("name" in user)       # True  (It check the keys)
+        print("email" in user)      # False
+
+        if "email" not in user:
+            print("Email is not available")
+
+->> Removing data 
+
+    -> pop() - removes and can return the value
+        Ex: user = {
+                "name": "Alice",
+                "age": 25,
+                "city": "Delhi"
+            }
+
+            user.pop("age")
+            print(user)
+
+    -> del() - removes the key-value pair
+
+        Ex: user = {
+                "name": "Alice",
+                "age": 25,
+                "city": "Delhi"
+            }
+
+            del user["age"]
+            print(user)
+
+    -> clear() - removes everything
+
+        Ex: user = {
+                "name": "Alice",
+                "age": 25,
+                "city": "Delhi"
+            }
+
+            user.clear()
+            print(user)     # {}
+
+->> Getting Keys & Values: Use '.keys()'  & Use '.values()'
+
+    Ex: user = {
+                "name": "Alice",
+                "age": 25,
+                "city": "Delhi"
+            }
+
+            print(user.keys())
+                                OR
+
+            for key in user.keys():
+                print(key)              # name age city
+
+            print(user.values())
+                                OR
+
+            for value in user.values():
+                print(value)            # Alice 25 Delhi
+            
+->> Getting Both Keys and Values: Use '.items()'
+
+    # same with looping in Dictionary
+
+    Ex: for key, value in user.items()
+            print(f"{key}: {value}")
+
+->> Nested dictionaries: A dictionary can contain another dictionary, common in JSON/API data.
+
+    Ex: user = {
+            "name": "Alice",
+            "age": 25,
+            "address": {
+                "city": "Delhi",
+                "state": "Delhi",
+                "pincode": 110043
+            }
+        }
+
+    # Accessing nested data
+
+        print(user["address"]["city"])      # Delhi
+        print(user["address"]["pincode"])   # 110043
+
+->> List in Dictionary
+
+    Ex: user = {
+            "name": "Alice",
+            "skills": ["Python", "FastAPI", "React"]
+        }
+
+    # Accessing list & individual element
+        print(user["skills"])     
+        print(user["skills"][0])    # Python
+
+->> List of Dictionary
+
+    Ex: users = [
+            {
+                "name": "Alice",
+                "age": 25
+            },
+            {
+                "name": "Bob",
+                "age": 28
+            },
+            {
+                "name": "Charlie",
+                "age": 23
+            }
+        ]
+
+    # Accessing
+        print(users[0])         # {"name": "Alice", "age": 25}
+        print(users[0]["name"]) # Alice
+
+        for user in users:
+            print(user["name"])
+
+->> Dictionary with Conditional Statements
+
+    Ex: user = {
+            "name": "Alice",
+            "is_verified": True,
+            "age": 25
+        }
+
+        if user["is_verified"]:
+            print("Account verified")
+        else:
+            print("Account not verified")
+
+->> Dictionary with Loops
+
+    Ex: products = {
+            "Laptop": 60000,
+            "Mouse": 800,
+            "Keyboard": 2500
+        }
+
+        for product, price in products.items():
+            print(f"{product}: ₹{price}")

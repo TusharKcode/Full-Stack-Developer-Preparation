@@ -1,0 +1,35 @@
+A virtual environment creates an isolated Python environment for a project.
+    Each projects can have its own packages.
+
+    Ex: Computer
+        │
+        ├── System Python
+        │
+        ├── Project A
+        │   └── Virtual Environment
+        │       └── Project A dependencies
+        │
+        └── Project B
+            └── Virtual Environment
+                └── Project B dependencies
+
+->> Creating a venv
+    -> Suppose your project is -                  python_backend/
+        Open terminal inside project directory.
+
+    (Windows) - python -m venv venv | (modern projects) - python -m venv .venv
+
+    -> This creates:    python_backend/
+                        │
+                        └── venv/
+
+->> Activating virtual environment
+
+    -> Windows command prompt - venv\Scripts\activate
+    -> Windows PowerShell -     .\venv\Scripts\Activate.ps1
+
+    # on successful activation terminal shows : (venv) C:\Users\John\python_backend>
+
+    -> To deactivate - deactivate       # (venv) disappears
+
+->> Never commit (venv) to GitHub, keep it in '.gitignore'

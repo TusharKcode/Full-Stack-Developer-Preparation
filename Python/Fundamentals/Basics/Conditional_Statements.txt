@@ -1,0 +1,63 @@
+A conditional statement allows Python to execute different code depending on whether a condition is True
+    or False.
+
+    ->> Careful with Indentation b/s it is necessary.
+
+    ->> When conditions overlap, generally put more specific/stricter conditions first.
+
+
+=> 'if' block:
+    
+    Syntax: if condition:
+                # code to execute
+
+    Ex: temperature = 35
+        if temperature > 30:
+            print("Its too hot")
+
+=> 'else' block:
+
+    Syntax: if condition:
+                # condition is True
+            else: 
+                # condition is False
+
+    Ex: age = 16
+        if age >= 18:
+            print("You can Vote")
+        else:
+            print("You cannot Vote")
+
+=> 'elif' block: means (else if), can have multiple statements
+
+    Syntax: if condition:
+                # runs if condition is True
+
+            elif another_condition:
+                # runs if first condition was False
+                # and this condition is True
+
+            else:
+                # runs if all conditions were False
+
+    Ex: marks = 75
+
+        if marks >= 90:
+            print("Grade A+")
+        elif marks >= 75:
+            print("Grade A")
+        elif marks >= 60:
+            print("Grade B")
+        else:
+            print("Grade C")
+
+=> 'Nested if' block: An if inside another if.
+
+    Ex: is_logged_in = True
+        is_verified = True
+
+        if is_logged_in:
+            print("User is logged in")
+
+            if is_verified:
+                print("User is verified")

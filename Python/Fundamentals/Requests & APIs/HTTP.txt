@@ -1,0 +1,105 @@
+HTTP (Hyper Text Transfer Protocol) is the communication protocol commonly used between clients and web
+    servers.
+
+    React frontend  
+        │
+        │ HTTP Request
+        ▼
+    Python / Fast API backend  
+        │
+        │ HTTP Response
+        ▼
+    React frontend
+
+->> Client - is the application makes the Request
+
+->> Server - receives the Request, processes it and sends a Response.
+
+->> HTTP Request - It contains Method, URL, Headers, Body (optional).
+
+        Ex: GET /users/101 HTTP/1.1
+            Host: example.com
+            Accept: application/json
+
+    -> Methods: GET, POST, PUT, PATCH, DELETE
+    -> URL : https://example.com/users
+    -> Header: Additional information about Request
+                Ex: Content-type: application/json
+                    Authorization:  Bearer <token>
+
+    -> Body: Data sent to server, used with POST, PUT, PATCH
+
+                Ex: {
+                        "name": "John"
+                        "email": "john@example.com"
+                    }
+
+->> HTTP Response - The Server responds with Status Code, Headers, Body.
+        Ex: HTTP/1.1 200 OK
+            Content-type: application/json
+
+    -> Response Body:   {
+                            "id": 101,
+                            "name": "John"
+                        }
+
+->> HTTP Status Codes
+
+    -> Success
+        - 200 OK         = Request succeeded 
+                            Ex: GET /users
+        - 201 Created    = Resource was successfully created
+                            Ex: POST /users
+        - 204 No Content = Request succeeded but there is no response body, commonly used for deletion
+
+    -> Client Error
+        - 400 Bad Request   = Request is invalid
+                                Ex: Missing required data / invalid input
+        - 401 Unauthorized  = Authentication is required or failed
+                                Ex: Missing / Invalid authentication credentials
+        - 403 Forbidden     = The server understands the Request but refuses access
+                                Ex: Normal user -> Admin endpoint
+        - 404 No Content    = Requested resource doesn't exists
+                                Ex: GET /users/9999
+
+    -> Server Error 
+        - 500 Internal Error Server = Something went wrong on the sever
+
+->> HTTP Methods
+    -> GET      - Retrieve data
+    -> POST     - Create data
+    -> PUT      - Replace / Update data
+    -> PATCH    - Partially Update data
+    -> DELETE   - Delete data
+
+    Ex: GET    /users       → Get users
+        GET    /users/101   → Get user 101
+
+        POST   /users       → Create user
+
+        PUT    /users/101   → Replace user 101
+
+        PATCH  /users/101   → Partially update user 101
+
+        DELETE /users/101   → Delete user 101
+
+->> HTTP Header - provides additional information
+    Ex: 
+        headers = {
+            "Authorization": "Bearer YOUR_TOKEN"
+        }   
+
+
+->> PUT / PATCH - Both can update resources but, 
+
+    -> PUT usually represents replacing the resource representation
+        Ex: {
+                "name": "Alice",
+                "email": "alice@example.com",
+                "role": "developer"
+            }
+
+    -> PATCH usually represents a partial update
+        Ex: {
+                "role": "admin"
+            }

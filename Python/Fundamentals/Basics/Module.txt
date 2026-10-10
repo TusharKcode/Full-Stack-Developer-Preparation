@@ -1,0 +1,17 @@
+A Module is essentially a Python file containing reusable code.
+
+Built-in modules: Python itself provide reusable codes.
+
+    Ex: import math
+        
+        print(math.sqrt(25))
+        print(math.pi)
+
+    # Way of Importing a function
+
+        Ex: import math     OR  from math import sqrt
+                                print(math.sqrt(25))
+
+
+One reusable function uses another reusable function. This is called Function Composition.
+    It allows you to build larger operations from smaller pieces.    

@@ -1,0 +1,102 @@
+It allows the program to respond to expected runtime problems instead of crashing unexpectedly.
+
+    Syntax: try: 
+                # risky code
+            except:
+                # handle exception
+
+        -> 'Try' block - contains code that might raise an exception. Python attempts to execute it.
+                            Can also have else block, only executes if try block succeeds.
+
+                Syntax: try: 
+                            # risky code
+                        except SomeError:
+                            # handle exception
+                        else: 
+                            # if no error occurs
+
+        -> 'except' block - handles an exception. 
+                            Can handle multiple exception separately.
+                            Can be store as object.
+
+        -> finally - executes whether an exception occurs or not.
+                        Commonly used for cleanup operations such as closing flies / connections, 
+                        releasing resources, cleanup after operations.
+
+    Ex: 
+        try:
+            age = int(input("Enter age: "))
+        except ValueError:
+            print("Invalid age.")
+
+        try:
+            number = int(input("Enter number: "))
+            result = 100 / number
+            print(result)
+
+        except ValueError:                          |   except (ValueError, ZeroDivisionError):
+            print("Please enter a valid integer.")  |       print("Invalid Calculation")
+                                                    |       
+        except ZeroDivisionError:                   |
+            print("Number cannot be zero.")         |
+
+        
+        try:
+            number = int("hello")
+        except ValueError as error:
+            print("Error:", error)
+
+        try:
+            number = int(input("Enter a number: "))
+        except ValueError:
+            print("Invalid number.")
+        else:
+            print("Valid number:", number)
+
+        try:
+            number = int(input("Enter number: "))
+        except ValueError:
+            print("Invalid number.")
+        finally:
+            print("Program finished.")
+
+->> Nested try: 
+
+    Ex: try:
+            try:
+                number = int("abc")
+            except ValueError:
+                print("Inner handler")
+        except:
+            print("Outer handler")
+
+->> Raise Exceptions - using 'raise', important for validation.
+
+        Ex: age = -5
+            if age < 0:
+                raise ValueError("Age cannot be negative")
+
+->> Custom Exceptions: create own exceptions
+
+    Syntax: class CustomException(Exception):
+                pass
+
+    Ex: class InsufficientBalanceError(Exception):
+            pass
+
+    # Proper way: 
+        class InsufficientBalanceError(Exception):
+            pass
+
+        def withdraw(balance, amount):
+            if amount > balance:
+                raise InsufficientBalanceError(
+                    "Insufficient balance"
+                )
+            return balance - amount
+
+        try:
+            balance = withdraw(5000, 7000)
+            print(balance)
+        except InsufficientBalanceError as error:
+            print(error)

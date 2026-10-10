@@ -1,0 +1,37 @@
+->> Quantifiers - specify how many times something could occur.
+
+    -> * - zero or more times
+        Ex: can match "", "a", "aa", "aaa"
+
+    -> + - one or more times (no empty strings)
+        Ex: can match "a", "aa", "aaa"
+
+    -> ? - zero or one occurrence 
+        Ex: colou?r can match color , colour (because 'u' is optional)
+
+    -> {n} - exactly 'n' occurrence
+        Ex: text = "Year: 2026"
+            result = re.search(r"\d{4}", text)  # exactly 4 digits
+            print(result.group())
+
+    -> {n, m} - between 'n' & 'm' occurrence
+        Ex: \d{4} means 2 to 4 digits
+
+->> Anchors - specify where a match should occur
+    -> ^ - Beginning
+
+        Ex: text = "Python is powerful"
+            pattern = r"^Python"
+            if re.search(pattern, text):
+                print("Starts with Python")
+            else:
+                print("Not starts with Python")
+
+    -> $ - End
+
+        Ex: text = "Python is powerful"
+            pattern = r"powerful$"
+            if re.search(pattern, text):
+                print("Ends with powerful")
+            else:
+                print("Not ends with powerful")

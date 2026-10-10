@@ -1,0 +1,81 @@
+Encapsulation means building data and the methods that operate on that data inside a class, while controlling
+how that data is accessed or modified.
+
+It is important b/s it teaches us how to control access to an object's data instead of allowing every part
+of a program to freely modify it.
+
+    "Encapsulation isn't just making variables private."
+        Encapsulation means keeping related data and behavior together and controlling how the internal 
+        state is accessed or changed.
+
+            Ex: BankAccount
+                |
+                ├── internal state
+                |        |__ __balance
+                |
+                |__ controlled operations
+                        ├── deposit()
+                        ├── withdraw()
+                        |__ get_balance()
+
+    - Through methods we can control the changes, as it enforce rules around data.
+
+->> Python doesn't have access modifiers like Java (private, public, protected) in same strict way.
+    Python uses 'Naming convention' such as: public, _protected, ___private.
+
+    -> Public attributes: A normal attribute considered as Public, means it can be access directly.
+
+        Ex: class User:
+                def __init__(self, name):
+                    self.name = name
+
+            user = User("Alice")
+            print(user.name)
+
+    -> Protected convention: _variable
+        _(underscore) means it is intended for internal / protected use, doesn't access it directly unless you
+            know what you're doing.
+            But its not truly private.                                
+
+        Ex: class BankAccount(self):
+                def __init__(self, balance):
+                    self._balance = balance
+
+            account = BankAccount(10000)
+            print(account._balance)
+
+    -> Private attributes: __variable
+        Python provides name mangling for attributes beginning with 2 underscores.
+
+        In simple, Python internally transforms the name secretly with 2 underscore, this is called
+        'Name Mangling'.
+
+        Ex: class BankAccount(self):
+                def __init__(self, balance):
+                    self._balance = balance         # secretly becomes _BankAccount_balance
+
+            account = BankAccount(10000)
+            print(account.__balance)                # result an error: AttributeError 
+
+->> Getter - A method used to retrieve a value is commonly called a Getter.
+
+        Ex: def get_balance(self):
+                return self.balance
+
+            account.get_balance()   # return balance
+
+->> Setter - A method used to modify a value is commonly called a Setter.
+
+        Ex: account.set_balance(20000)
+
+->> Python's @property - To implement controlled access using @property.
+
+    Ex: @property           # creates a controlled way to read the value
+        def price(self):
+            return self.__price 
+
+        @price.setter       # creates a controlled way to change it
+        def price(self, price):
+
+        So, product.price           # invokes a getter
+            product.price = 1500    # invokes a setter

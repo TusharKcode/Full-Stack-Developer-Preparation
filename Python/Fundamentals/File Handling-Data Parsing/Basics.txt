@@ -1,0 +1,81 @@
+File Handling means using Python to create , read, write, modify and manage files.
+    Python can read data from files and process it.
+
+->> File Modes: 
+                | Mode | Meaning         |
+                | ---- | --------------- |
+                | r    | Read            |  # file must already exist
+                | w    | Write           |  # overwrite existing content
+                | a    | Append          |  # existing content remains, new content added at end
+                | x    | Create new file |  # creates new file, if exists raises FileExistsError
+                | rb   | Read binary     |
+                | wb   | Write binary    |
+
+
+->> Opening a File - Built-in function: open()
+                        Python automatically closes the files after the 'with' block.
+
+    Syntax: file = open("filename.txt", "mode")
+        
+        Ex: file = open("user.txt", "r")
+                                        OR
+
+            with open("user.txt", "r") as file:     
+                data = file.read()
+            print(data)
+
+            with open("user.txt", "w") as file:     
+                file.write("Alice")
+
+            with open("user.txt", "a") as file:     
+                file.append("\nDavid")
+
+            with open("new_file.txt", "x") as file: 
+                file.write("Hello")
+            
+->> Encoding
+    -> 'UTF-8' is a standard encoding that supports many languages and characters.
+        For modern Python applications, explicitly specifying: 
+            encoding = "utf-8"
+
+        Ex: # read file
+                with open("file.txt", "r", encoding="utf-8") as file:
+                    data = file.read()
+
+            # write file
+                with open("file.txt", "w", encoding="utf-8") as file:
+                    file.write("Hello")
+
+->> File Operations
+    Python provides file-system, functionality through modules such as 'os' & 'pathlib'.
+    For modern Python, use 'pathlib'.
+
+    Ex: 
+        from pathlib import Path
+
+        file_path = Path("users.txt")           # creates path
+        print(file_path.exists())               # check whether it exist
+        print(file_path.is_file())              # check whether it is a file
+
+        data = file_path.read_text()            # read directly
+        file_path.write_text("Alice\nBob\n")    # write directly
+
+->> File & Exception Handling
+
+    Ex: 
+        try:
+            with open("users.txt", "r", encoding="utf-8") as file:
+                data = file.read()
+        except FileNotFoundError:
+            print("File not found.")
+
+    # JSON
+        import json
+
+        try:
+            with open("users.json", "r", encoding="utf-8") as file:
+                user = json.load(file)
+        except FileNotFoundError:
+            print("File not found.")
+        except json.JSONDecodeError:
+            print("Invalid JSON.")

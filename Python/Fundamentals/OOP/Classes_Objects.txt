@@ -1,0 +1,72 @@
+OOP - Object Oriented Programming
+    -> It is a Programming approach where we organize our program around objects.
+
+    -> An Object represents something that has:
+        Data:       properties / attributes
+        Behavior:   functions / methods
+
+    -> Example: Think about a User in Web application.
+
+        A User might have: 
+            User
+                |__ name
+                |__ age
+                |__ email
+                |__ password
+
+            Behavior
+                |__ login()
+                |__ logout()
+                |__ update_profile()
+
+    -> Instead of keeping them separately, OOP allow us to group related data and behavior together.
+
+
+->> Class - A class is a blueprint / template for creating objects.
+            Normally, uses PascalCase.
+
+    # Creating a class: 
+
+        Syntax - class ClassName:
+                    # attributes
+                    # methods
+                    pass
+
+        Ex: class User:
+                    pass
+
+->> Object - An object is an actual instance of a class.
+
+    # Adding objects: Syntax - object.attribute
+            
+        Ex: class User: # Class
+                pass
+
+            user1 = User()  # Object
+            user2 = User()  # Another object can have different values
+
+            user1.name = "Alice"
+            user1.email = "alice@example.com"
+            user1.age = 23
+
+        # Verify objects - It tells that user1 is an object of User class.
+
+            print(type(user1))      # <class '__main__.User'>
+
+            print(user1.name)       # Alice
+            print(user1.email)      # alice@example.com
+            print(user1.age)        # 23
+
+->> Methods - A function defined inside a class called a Method.
+
+    --> Self - It represents the current object. It allows a method to access the data belonging to that
+                particular object.
+        
+    Ex: class User:
+            def greet(self):
+                print("Hello, {self.name}!")     # Using with attributes
+
+        user1 = User()
+        user1.name = "Alice"
+        
+        user1.greet()   # Hello, Alice!           

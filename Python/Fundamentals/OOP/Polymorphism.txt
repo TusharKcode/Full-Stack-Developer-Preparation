@@ -1,0 +1,38 @@
+Polymorphism means "One Interface, many forms".
+    In simple terms, the same method name or operation can behave differently depending on the object
+    using it.
+
+        Ex: dog.speak()     # both objects uses same method speak()
+            cat.speak()
+
+            Dog → Woof!     # But behavior is different
+            Cat → Meow!
+
+    ->> Method Overriding is one common way to achieve Polymorphism.
+
+-> Without Inheritance, Using Duck Typing
+    - If an object behaves like required type, Python can use it.
+
+    Ex: class Dog:
+            def speak(self):
+                print(Woof!)
+                                # They don't inherit from parent class
+        class Robot:
+            def speak(self):
+                print(Hello!)
+
+        def make_speak(obj):
+            obj.speak()
+
+        dog = Dog()
+        robot = Robot()
+                                # Python doesn't care about the class, It cares that object has 'speak()'
+        make_speak(dog)
+        make_speak(robot)
+
+-> Example of built-in Polymorphism:
+    len() - print(len("Python"))                        # 6     str      → length of characters
+            print(len([10, 20, 30]))                    # 3     list     → number of elements
+            print(len({"name": "Alice", "age": 25}))    # 2     dict     → number of keys
+
+    Same function 'len()' with different objects, this is polymorphic behavior.

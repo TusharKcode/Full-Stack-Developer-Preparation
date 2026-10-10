@@ -1,0 +1,67 @@
+In Python, variables are like labeled boxes for storing and referencing data of different types.
+    Python variables are references to objects.
+
+Syntax: variable_name = value
+
+Example: 
+    
+    name (variable) = (assignment operator) "John" (value)
+    age = 25
+
+-> Python stores the value and lets you access it using the variable name.
+
+    Ex: print(name)
+        print(age)
+
+=> Rules when naming variables in Python:
+    - Variable names can only start with a letter or an underscore (_), not a number.
+    - Variable names can only contain alphanumeric characters (a-z, A-Z, 0-9) and underscores (_).
+    - Variable names are case-sensitive: age, Age, and AGE are all considered unique.
+    - Variable names cannot be one of Python's reserved keywords such as if, class, or def.
+
+-> Creating a Variable:
+    - Python does not require you to declare the data type first. It automatically determines the type.
+
+        Ex: name = "John"       # str
+            age = 25            # int
+            salary = 45000.50   # float
+            is_student = True   # bool
+
+    - Check the type by using type():
+        
+        Ex: print(type(name))      <class 'str'> 
+            print(type(age))       <class 'int'> 
+            print(type(salary))    <class 'float'> 
+            print(type(is_student))<class 'bool'> 
+
+=> Python is dynamically type means a variable can refer to values of different type at different times.
+    Ex: x = 10
+        x = "Hello"
+        x = 3.14
+
+    -> You can also assign multiple variables in one line:
+        Ex: name, age, city = "John", 25, "Delhi"
+
+    -> You can also assign the same value to multiple variables:
+        Ex: x = y = z = 100
+
+=> Python Naming Conventions:
+    -> Variable names should be in lowercase, with words separated by an underscore, called Snake case.
+    -> Use descriptive names for variables
+    -> Avoid using single-letter variable names
+
+=> Variables and Strings
+    -> Can combine variable with strings
+
+        Ex: name = "John"
+            age = 25
+
+            print("My name is", name)
+            print("I am", age, "years old")
+
+    -> Modern way, use f-String
+
+        Ex: name = "John"
+            age = 25
+
+            print(f"My name is {name} and I am {age} years old")

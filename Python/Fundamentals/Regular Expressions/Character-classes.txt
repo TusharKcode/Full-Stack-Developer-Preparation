@@ -1,0 +1,54 @@
+->> Regex Character classes
+    -> \d - Digit, matches (0-9)
+
+        Ex: import re
+            text = "Order ID: 12345"
+            result = re.search(r"\d+", text)
+            print(result.group())
+
+    -> \D - Not a Digit
+
+        Ex: text = "ABC123"
+            result = re.findall(r"\D", text)
+            print(result)
+
+    -> \w - Word Character, matches (letters, digits, underscore)
+
+        Ex: text = "user_123"
+            result = re.findall(r"\w", text)
+            print(result)
+
+    -> \W - No Word Character
+
+        Ex: text = "hello@example.com"
+            result = re.findall(r"\W", text)
+            print(result)                   # @ .
+
+    -> \s - Whitespaces, matches (space, tab, newline)
+
+        Ex: text = "Python Full Stack"
+            result = re.findall(r"\s", text)
+            print(result)
+
+    -> . - Any Character, matches almost any character except newline by default.
+
+        Ex: text = "cat"
+            result = re.findall(r"c.t", text)   # middle character can vary, could be (c9t, cot, etc...)
+            print(result)
+
+    -> [] - Character Set, specify allowed characters
+
+        Ex: text = "cat"
+            result = re.findall(r"[abc]", text) 
+            print(result)                   # c
+
+    -> Range [a-z] / [A-Z] / [0-9] - lowercase / uppercase / digits
+        
+        Ex: text = "Python123"
+            result = re.findall(r"[0-9]", text) 
+            print(result)
+
+    -> Negated Character Set - ^ (means not)
+        Ex: text = "Python123"
+            result = re.findall(r"[^0-9]", text)    # Any character that is not a digit
+            print(result)

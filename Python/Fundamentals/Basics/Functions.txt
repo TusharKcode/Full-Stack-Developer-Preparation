@@ -1,0 +1,90 @@
+A Function is a reusable block of code that performs a specific tasks.
+    In simple words, write logic once, reuse it whenever needed.
+
+    It can work with conditions and any data types.
+    A Function can call another Function
+
+    -> Defining a function means creating a function
+    -> Calling a function means run the function
+
+    ->> Features are Reusability, Organization, Maintainability
+    ->> Use snake_case when naming function
+
+    -> Use """...""" for Function Documentation
+
+=> Creating a function - uses keyword 'def'
+
+        Syntax: def function_name():
+                    # code
+
+        Ex: def greet():
+                print("Hello")
+            greet()             # To execute the function, we need to call it
+
+            def calculate_subtotal(price, quantity):
+                return price * quantity
+
+            def calculate_final_price(price, quantity, discount):
+                subtotal = calculate_subtotal(price, quantity)
+                return subtotal - discount
+
+            final_price = calculate_final_price(500, 3, 100)
+            print(final_price)
+
+=> Parameter - A function can receive information (variable) is a Parameter.
+=> Argument - Actual value passed when calling the function.
+            
+    ->> Can also provide default arguments to parameters but it must come after non-default parameter.
+
+    ->> A function can have multiple parameters.
+
+    ->> Can pass arguments by position, also can explicitly specify the parameter names, is called Keyword 
+        Arguments.
+
+    ->> Can combine Positional (must come before keyword args.) and Keyword arguments.
+
+    Ex: def greet(name="Guest"):
+            print(f"Hello, {name}!")
+        greet()         # call default value 
+        greet("John")
+        greet("Alice")
+
+        def sum(a, b):
+            result = a + b
+            print(f"Sum is: {result}")
+        sum(2, 5)
+
+=> What 'return' does?
+    It sends a value from the function back to the code that called it. 
+    Function stops at return, because it immediately exists the function.
+
+    Function can return almost anything such as different data types (int, string, float, etc...)
+
+    Function without return, python implicitly return None data type. 
+    Python allows multiple return values.
+
+    Ex: def sum(a, b):
+            result = a + b
+            return result
+            print("Calculation Done")
+
+        total = sum(2, 5)
+        print(f"Sum is: {total}")
+
+-> Scope: It determines where a variable can be accessed.
+
+    - Same variable name in Local & Global are different
+
+    ->> Local Variable: Variable created inside a specific function or code block. 
+
+        Ex: def greet():
+                message = "Hello"
+                print(message)
+            greet()
+
+    ->> Global Variable: Variable created outside a function is in the global scope.
+
+        Ex: message = "Hello"
+            def greet():
+                print(message)
+            greet()

@@ -1,0 +1,109 @@
+A Tuple, another collection type in Python, similar to list with one difference:
+    "It is immutable - once created, its element cannot be changed."
+
+    This is helpful when you have a collection of values that should remain fixed.
+
+    List    ->  []
+    Tuples  ->  ()
+
+    Features:   Ordered
+                Immutable
+                Allows Duplicate
+                Indexing
+                Slicing
+                Can contains different data types
+                Can be Nested Tuple but with ()
+
+    Ex: languages = ("Python", "Java", "JavaScript")
+        print(languages[0])
+
+        languages[0] = "C++"
+        print(languages)    # TypeError: 'tuple' object does not support item assignment
+
+# Tuple supports Indexing like List:
+
+    Ex: 
+        languages = ("Python", "C", "Java", "Go")
+        print(languages[0])      # Python
+        print(languages[-1])     # Go
+        
+        Positions: Python      C       Java       Go
+        Positive    0          1         2         3
+        Negative   -4         -3        -2        -1
+
+# Tuple Slicing:    [start : stop]
+
+    Ex: languages = ("Python", "Java", "JavaScript", "C++", "Go")
+        print(languages[1:4])   # ('Java', 'JavaScript', 'C++')
+        print(languages[:3])    # ('Python', 'Java', 'JavaScript')
+        print(languages[2:])    # ('JavaScript', 'C++', 'Go')
+
+# len() with Tuples
+
+        Ex: languages = ("Python", "Java", "JavaScript")
+            print(len(languages))        # 3
+
+# Checking Membership - 'in' operator
+
+    Ex: languages = ("Python", "Java", "JavaScript")
+        print("Python" in languages)   # True
+        print("R" in languages)        # False
+
+# Tuples with Loops:  
+
+    Ex: languages = ("Python", "Java", "JavaScript")
+        for language in languages:
+            print(language)         #   Python
+                                        Java
+                                        JavaScript
+
+# Methods:
+    -> count() - count how many times a value occurs
+
+                    Ex: numbers = (10, 20, 10, 30, 10)
+                        print(numbers.count(10))        # 3
+
+    -> index() - finds the first index of a value
+
+                    Ex: languages = ("Python", "Java", "JavaScript")
+                        print(numbers.index("Java"))        # 1
+
+->> Tuple Packing: Python allows to create a tuple without explicitly writing parentheses.
+
+        Ex: user = "Alice", 25, "Norway"
+    
+    But Python will treat as: user = ("Alice", 25, "Norway")
+
+->> Tuple Unpacking:
+
+        Ex: user = ("Alice", 25, "Norway")
+    Unpack it: 
+        name, age, city = user
+        print(name)
+        print(age)
+        print(city)
+
+# Tuple with functions:
+    Ex: def get_user()
+            return "Alice", 25, "Norway"
+
+        name, age, city = get_user()
+    
+    # returns : ("Alice", 25, "Delhi")
+
+->> Single-Element Tuple:
+
+    number = (10) # It's a simply Integer not tuple.
+
+    You need comma for tuple: 
+        number = (10,)
+        print(type(number))     # <class 'tuple'>
+
+
+->> A Tuple can contain a list.
+    Tuple immutability applies to tuple's references/elements themselves. It doesn't magically make mutable
+    objects stored inside it immutable.
+
+    Ex: data = ("Alice", [10, 20, 30])
+        data[1].append(40)
+        print(data)

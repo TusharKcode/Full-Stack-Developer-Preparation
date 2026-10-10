@@ -1,0 +1,31 @@
+The Constructor allows us to initialize an object's data when the object is created.
+
+    "A Constructor is a special method that runs automatically when an object is created."
+        - It can have any parameters.
+        - Used together with methods.
+        - Can have default arguments.
+
+            Use: __init__()     # don't need to call it manually.
+
+Normal Method       -> regular method, called explicitly, used to perform behavior. Ex: def method_name(...)
+__init__() Method   -> special method, runs automatically during object initialization, used to initialize 
+                        data. Ex: def __init__(...) 
+
+Conceptually:   Student("Alice", 22, "Python Full Stack")
+                            ↓
+                        __init__()
+                            ↓
+                self.name = "Alice"
+                self.age = 22
+                self.course = "Python Full Stack"
+
+Ex: class Student:
+                        ↓ # parameter
+    def __init__(self, name, age, course):
+
+            ↓ # Object's attribute
+        self.name = name
+        self.age = age
+        self.course = course
+
+    student1 = Student("Alice", 22, "Python Full Stack")

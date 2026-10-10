@@ -1,0 +1,40 @@
+->> Reading Files
+    -> read()       - reads entire file
+    -> readline()   - reads one line
+    -> readlines()  - reads all lines and returns a List
+
+        Ex: 
+            with open("user.txt", "r") as file:
+                data = file.read()
+            print(data)
+
+            with open("user.txt", "r") as file:
+                print(file.readline())
+                print(file.readline())
+
+            with open("user.txt", "r") as file:
+                lines = file.readlines()
+            print(lines)
+
+    # Reading line by line
+        - For large files, generally don't need to load everything into memory.
+            We can iterate over file.
+        
+        - strip() removes whitespaces, including the new line.
+        Ex: with open("user.txt", "r") as file:
+                for line in file:
+                    print(line.strip())
+
+->> Writing Files - use write()
+
+    Ex: with open("user.txt", "r") as file:
+            file.write("Alice")
+
+            file.write("John\n")
+            file.write("Bob\n")         # for multiple lines
+            file.write("David\n")
+
+        users = ["John", "Bob", "David"]    # with loop
+        with open("user.txt", "r") as file:
+            for user in users:
+                file.write(user + "\n")

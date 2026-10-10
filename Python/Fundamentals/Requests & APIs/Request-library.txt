@@ -1,0 +1,116 @@
+Installing the 'requests' Library
+
+    -> python -m pip install requests   - (to install)
+    -> python -m pip show requests      - (to verify)
+
+    -> import requests
+
+->> GET Request - used to retrieve data
+    Syntax: 
+            import requests
+
+            response = requests.get("https://example.com")
+            print(response.status_code)
+            print(response.text)
+
+            data = response.json()      # converts a json response to Python objects
+            print(data)
+            print(data["name"])
+    
+->> POST Request - used to send data to the server to create a resource
+    Syntax: 
+            import requests
+
+            user = {
+                "name": "Alice",
+                "email": "alice@example.com"
+            }
+            response = requests.post("https://api.example.com/users", json=user)
+            print(response.status_code)
+            print(response.json())
+
+->> DELETE 
+    Ex: import requests
+
+        response = requests.delete("https://api.example.com/users/101")
+        print(response.status_code)
+
+->> Query Parameters - Sometimes data is passed through the URL
+
+        Ex: /users?role=developer
+
+            import requests
+            params = {
+                "role": "developer"
+            }
+            response = requests.post("https://api.example.com/users", params=params)
+
+    # Multiple query Parameters
+        Ex: /users?role=developer&active=True&page=1
+
+        import requests
+        params = {
+            "role": "developer",
+            "active": True,
+            "page": 1
+        }
+        response = requests.post("https://api.example.com/users", params=params)
+
+->> HTTP Header
+    Ex: headers = {
+            "Accept": "application/json"
+        }
+
+        response = requests.get("https://api.example.com/users", headers=headers)
+
+    # POST with Header
+        Ex: import requests
+
+            headers = {
+                "Content-Type": "application/json"
+            }
+
+            user = {
+                "name": "Alice",
+                "email": "alice@example.com"
+            }
+
+            response = requests.post("https://api.example.com/users", json=user, headers=headers)
+
+->> Handling API Error
+
+    Ex: import requests
+
+        response = requests.get("https://api.example.com/users")
+        if response.status_code == 200:
+            data = response.json()
+            print(data)
+        else:
+            print("Request failed:", response.status_code)
+
+    # raise_for_status() - If the response indicates HTTP error, raise an exception.
+
+        Ex: import requests
+
+            response = requests.get("https://api.example.com/users")
+            response.raise_for_status()
+            data = response.json()
+            print(data)
+
+            OR 
+
+            import requests
+
+            try:
+                response = requests.get("https://api.example.com/users")
+                response.raise_for_status()
+                data = response.json()
+                print(data)
+            except requests.RequestException as error:
+                print("API request failed:", error)
+
+->> Request Timeout - request has a Timeout limit, never let an application wait indefinitely for a 
+                        network request.
+
+                    In real backend applications, Timeouts are important because external services contains
+                    become slow or unavailable.

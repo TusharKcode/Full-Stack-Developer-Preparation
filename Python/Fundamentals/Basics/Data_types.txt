@@ -1,0 +1,77 @@
+A data type describes the kind of value a variable holds, for example, a number or a piece of text.
+
+                | Type    | Meaning        | Example    |
+                | ------- | -------------- | ---------- |
+                | `int`   | Whole number   | `25`       |
+                | `float` | Decimal number | `25.5`     |
+                | `str`   | Text           | `"John"`   |
+                | `bool`  | True/False     | `True`     |
+                | `None`  | No value       | `None`     |
+
+    => int - Integer
+        - Represents a whole number, without decimal point. Ex: 10 or -5.
+        - Can be Positive, negative and zero.
+
+            Ex: my_integer_var = 10
+                print('Integer:', my_integer_var)           # Integer: 10
+                print('Integer:', type(my_integer_var))     # <class 'int'>
+
+    => float - Float
+        - Represents a number containing decimal value. Ex: 4.41 or -0.4
+
+            Ex: my_float_var = 4.50
+                print('Float:', my_float_var)               # Float: 4.5
+                print('Integer:', type(my_integer_var))     # <class 'float'>
+
+    => str - String
+        - Represents sequence of characters enclosed in single or double quotation.
+        - Can contains numbers as well but in String (text format)
+
+            Ex: my_string_var = 'hello'
+                print('String:', my_string_var)             # String: hello
+                print('String:', type(my_string_var))       # <class 'str'>
+
+    => bool - Boolean
+        - Represents true or false type, written as True or False.
+
+            Ex: my_boolean_var = True
+                print('Boolean:', my_boolean_var)           # Boolean: True
+                print('Boolean:', type(my_boolean_var))     # <class 'bool'>
+
+    => None - No Value
+        - Represents no value.
+
+            Ex: user = None
+                print('User:', user)            # User: None
+                print('User:', type(user))      # <class 'NoneType'>
+
+Type Conversion:
+    -> Convert to Integer: int()
+
+        Ex: age = "25"
+            age = int(age)
+
+            print(age)          # 25
+            print(type(age))    # <class 'int'>
+
+    -> Convert to Float: float()
+
+        Ex: price = "499.99"
+            price = float(price)
+
+            print(price)        # 499.99
+            print(type(price))  # <class 'float'>
+
+    -> Convert to String: str()
+
+        Ex: age = 25
+            age_text = str(age)
+
+            print(age_text)          # 25
+            print(type(age_text))    # <class 'str'>
+
+    -> Convert to Boolean: bool()
+
+        Ex: value = 10
+            
+            print(bool(value))  # True

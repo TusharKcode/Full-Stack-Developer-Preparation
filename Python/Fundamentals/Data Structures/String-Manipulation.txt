@@ -1,0 +1,180 @@
+A String is a sequence of characters.
+    It uses either single or double quotes - '' / "".
+
+    -> Strings are immutable. Once created, cannot directly change an individual character.
+
+    -> String methods generally returns new string rather than modifying original.
+
+    -> Can combine string methods - such strip wih lower/upper case.
+
+->> String Indexing - can access individual character by index, starts from 0.
+                        allows negative indexing
+
+        Ex: name = "Python"
+
+            print(name[0])  # P
+            print(name[1])  # y
+            print(name[2])  # t
+            print(name[-1]) # n
+            print(name[-2]) # o
+            print(name[-3]) # h
+
+->> String Slicing - can extract a part of string.
+                        start is included, stop is excluded.
+        Syntax: string[start:stop]
+
+        Ex: text = "Python"
+
+            print(text[0:3])    # Pyt (Index: 0 1 2 included, 3 excluded)
+            print(text[:3])     # Pyt
+            print(text[2:])     # thon
+            print(text[1:5])    # ytho
+            
+    # Slicing with step
+
+        Syntax: string[start:stop:step]
+
+        Ex: text = "Python"
+
+            print(text[::2])    # Pto
+            print(text[::-1])   # nohtyP
+
+->> len(): 
+
+    Ex: text = "Python"
+        print(len(text))    # 6
+
+        text = "Hello World"
+        print(len(text))    # 7 (space also count)
+
+->> Converting case:
+    -> upper()
+        Ex: text = "python"
+            print(text.upper())    # PYTHON
+
+    -> lower()
+        Ex: text = "PYTHON"
+            print(text.lower())    # python
+    
+    -> capitalize() - Makes first character uppercase.
+        Ex: text = "python programming"
+            print(text.capitalize())    # Python programming
+
+    -> title() - Capitalize the first letter of each word.
+        Ex: text = "python full stack developer"
+            print(text.title())    # Python Full Stack Developer
+
+    -> strip() - removes whitespaces from the beginning and end.
+                    Important for form / input validation
+        Ex: username = "  Alice  "
+            print(username.strip())     # Alice
+
+    -> lstrip() - removes whitespaces from the left.
+        Ex: username = "  Alice  "
+            print(username.lstrip())
+
+    -> rstrip() - removes whitespaces from the right.
+        Ex: username = "  Alice  "            
+            print(username.rstrip())
+
+->> Searching with 'in' - returns boolean value (True / False).
+
+    Ex: email = "alice@example.com"
+        print("@example.com" in email)  
+
+->> find() - returns the index where substring first appears.
+                If text not found, returns -1.
+                Counts spaces as well.
+
+    Ex: text = "Hello Python"
+        print(text.find("Python"))  # 6
+        print(text.find("Java"))    # -1
+
+->> index() - uses to find text similar to find() but If text not found, raise error (ValueError).
+
+->> count() - counts how many times something appears.
+
+    Ex: text = "banana"
+        print(text.count("a"))  # 3
+
+->> replace() - replace one piece of text with another.
+
+    Ex: text = "I like Java"
+        new_text = text.replace("Python") | text.replace("Java", "Python")
+        print(new_text)  # I like Python
+
+    # uses in removing characters
+
+        Ex: phone = "987-654-3210"
+            clean_phone = phone.replace("-", "")
+            print(clean_phone)      # 9876543210
+
+->> split() - breaks a string into list.
+                By default, whitespaces used as separators.
+
+    Ex: text = "Python FastAPI React"
+        skills = text.split()
+        print(skills)       # ["Python", "FastAPI", "React"]
+
+->> join() - opposite of split(), start with list, join them.
+
+    Ex: skills = ["Python", "FastAPI", "React"]
+        result = ", ".join("skills")
+        print(result)           # Python, FastAPI, React
+
+->> startswith() - checks whether a string starts with something.
+    Ex: url = "https://example.com"
+        print(url.startswith("https"))   # True
+
+->> endswith() - checks whether a string ends with something.
+    Ex: filename = "profile.jpg"
+        print(filename.endswith(".jpg")) # True
+
+->> String Validation methods
+
+    -> isdigit() - Checks whether all characters are digits.
+        Ex: value = "12345"
+            print(value.isdigit())  # True
+
+    -> isalpha() - Checks whether all characters are alphabetic.
+        Ex: name = "Alice"
+            print(name.isalpha())  # True
+
+    -> .isalnum() - Checks whether all characters are letters or numbers.
+        Ex: username = "Alice123"
+            print(username.isalnum())  # True
+
+    -> .isspace() - Checks whether the string contains only whitespace.
+        Ex: text = "   "
+            print(text.isspace())  # True
+
+->> f-string
+    Ex: name = "Alice"
+        age = 25
+
+        message = f"My name is {name} and I am {age} years old."
+        print(message)  # My name is Alice and I am 25 years old.
+
+        price = 1000
+        quantity = 3
+
+        message = f"Total: ₹{price * quantity}"
+        print(message)  # Total: ₹3000
+
+->> Escape characters
+
+    -> New line — \n
+
+        Ex: message = "Hello\nPython"
+            print(message)          # Hello 
+                                      Python  
+
+    -> Tab — \t
+
+        Ex: message = "Name:\tAlice"
+            print(message)          # Name:   Alice
+
+    -> Quote inside a string
+
+        Ex: message = "She said, \"Hello\""
+            print(message)          # She said, "Hello"

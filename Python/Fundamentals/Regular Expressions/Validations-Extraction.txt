@@ -1,0 +1,66 @@
+Email Validation:
+                import re
+
+                email = "alice@example.com"
+
+                pattern = r"^[\w.-]+@[\w.-]+\.\w+$"
+
+                if re.fullmatch(pattern, email):
+                    print("Valid email")
+                else:
+                    print("Invalid email")
+
+Phone number validation:
+                        phone = "9876543210"
+
+                        if re.fullmatch(r"\d{10}", phone):
+                            print("Valid phone number")
+                        else:
+                            print("Invalid phone number")
+
+Password Validation: 
+    Rules:  - at least 8 characters
+            - at least one uppercase letter
+            - at least one lowercase letter
+            - at least one digit
+
+        Ex: import re
+
+            password = "Python123"
+
+            pattern = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$"
+
+            if re.fullmatch(pattern, password):
+                print("Valid password format")
+            else:
+                print("Invalid password format")
+
+URL Extraction:
+                text = """
+                Visit https://example.com
+                or https://api.example.com/users
+                """
+
+    # A simple URL pattern:
+
+                pattern = r"https?://[^\s]+"
+                urls = re.findall(pattern, text)
+                print(urls)
+
+->> Server Log Processing 
+    Ex: 
+        # Extract user IDs:
+
+                            import re
+
+                            log = """
+                            2026-09-26 10:15:32 INFO User 101 logged in
+                            2026-09-26 10:16:02 ERROR User 102 authentication failed
+                            2026-09-26 10:17:45 INFO User 103 logged in
+                            """
+
+                            user_ids = re.findall(r"User (\d+)", log)
+                            print(user_ids)
+
+                            errors = re.findall(r"ERROR.*", log)
+                            print(errors)

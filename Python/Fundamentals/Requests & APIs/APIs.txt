@@ -1,0 +1,28 @@
+API - Application Programming Interface
+    It provides a way for one software application to communicate with another.
+
+    Ex: Python Application (Request) --> Weather API --> (JSON Response) --> Python Application
+
+    -> API endpoint is a specific URL through which an API provides functionality.
+
+        Ex: https://api.example.com/users       (represents users endpoint)
+            https://api.example.com/products    (represents products endpoint)
+
+=> REST API - Representational State Transfer
+    It is an API designed around resources and standard HTTP method.
+    It commonly uses HTTP methods to express operations.
+
+    Ex: GET    /users
+        POST   /users
+        DELETE /users/101
+        PATCH  /users/101
+
+    ->> REST API CRUD
+        - CRUD means Create, Read, Update & Delete
+
+            | CRUD   | HTTP      | Example           |
+            | ------ | --------- | ------------------|
+            | Create | POST      | POST /users       |
+            | Read   | GET       | GET /users        |
+            | Update | PUT/PATCH | PATCH /users/101  |
+            | Delete | DELETE    | DELETE /users/101 |

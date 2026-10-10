@@ -1,0 +1,97 @@
+Inheritance allows one class to reuse properties and methods of another class.
+    It follows code reusability principle.
+
+    -> It should represent a genuine 'is-a' relationship.
+
+->> Parent Class: The class whose properties and methods are inherited. 
+                    Also called Base class / Super class.
+
+->> Child Class: The class that inherits from the parent.
+                    Also called Derived class / Subclass.
+                    A child class doesn't only inherit. It can also add new functionality.
+
+    Syntax: class childClass(ParentClass):
+                pass
+
+    (Combined) Ex:  class User:                 # Parent class
+                        def login(self):
+                            print("User logged in")
+
+                    class Admin(User):          # Child class - Admin inherits from the User
+                        def delete_user(self):  # child class own functionality
+                            print("User deleted")
+
+                    admin = Admin()
+                    admin.login()       # User logged in 
+                    admin.delete_user() # User deleted
+
+    -> Child constructor: 
+                            # This will works, but has been duplicated.
+        Ex: class User:
+                def __init__(self, name, email):
+                    self.name = name
+                    self.email = email
+
+            class Admin(User):
+                def __init__(self, name, email, permissions):
+                    self.name = name
+                    self.email = email
+                    self.permissions = permissions
+
+        # To avoid repeating parent's initialization logic using super()
+
+        ->> super() - It allows a child class to access functionality from its parent class.
+
+            Ex: class User:
+                def __init__(self, name, email):
+                    self.name = name
+                    self.email = email
+
+                class Admin(User):
+                    def __init__(self, name, email, permissions):
+                        super().__init__(name, email)   # It call parent's __init__()
+                        self.permissions = permissions
+
+    ->> Method Overriding 
+        - A child class can also replace / override a method inherited from its parent.
+        - We use to add additional behavior when needed.
+
+            Ex: class User:
+                    def login(self):
+                        print("User login")
+
+                class Admin(User):
+                    def login(self):
+                        print("Admin login")
+
+                user = User()   # User login
+                admin = Admin() # Admin login
+
+Types of Inheritance- 
+    -> Single Inheritance : One parent -> One child 
+                                    A
+                                    │
+                                    B
+
+    -> Multilevel Inheritance : A → B → C
+
+    -> Multiple Inheritance : One child inherits from multiple parents.
+                                   A       B
+                                    \     /
+                                     \   /
+                                       C
+
+    -> Hierarchical Inheritance : One parent -> Multiple children (Reverse of Multiple Inheritance)
+
+    # Common Ex: 
+        class Animal:
+            pass
+
+        class Dog(Animal):
+            pass
+
+        class Cat(Animal):
+            pass
+
+        class GermanShepard(Dog):
+            pass

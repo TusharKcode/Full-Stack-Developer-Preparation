@@ -1,0 +1,29 @@
+
+my_project/                             
+│
+├── app/                                
+│   ├── __init__.py                             
+│   ├── main.py                         | -> Application entry point
+│   │
+│   ├── routes/                         | -> contains API endpoints
+│   │   ├── __init__.py
+│   │   ├── users.py                    |       # files become : /users , /products , /auth
+│   │   └── products.py                  
+│   │
+│   ├── services/                       | -> contains business logic
+│   │   ├── __init__.py                 
+│   │   ├── user_service.py             
+│   │   └── product_service.py          
+│   │
+│   ├── models/                         | -> contains data / database models or related models definitions
+│   │   ├── __init__.py                 
+│   │   └── user.py                     
+│   │
+│   └── utils/                          | -> reusable helper function
+│       ├── __init__.py                 
+│       └── helpers.py                  
+│
+├── .venv/
+├── .gitignore
+├── requirements.txt
+└── README.md

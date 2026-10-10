@@ -1,0 +1,65 @@
+A Lambda function is small and anonymous function.
+    - Anonymous means it does not have a regular function name.
+    - Used for short operations.
+    - Can accept parameters and only one expression.
+    - Automatically returns the result of its expression.
+    - Written using 'lambda' keyword.
+
+    Syntax: lambda parameter: expression
+
+    Ex: def square(number)          |   # Single parameter 
+            return number * number  |   Using Lambda:   square = lambda number: number * number                
+        print(square(5))            |                   print(square(5))
+
+
+    # Multiple parameter
+        add = lambda a, b: a + b
+        print(add(10, 20))
+
+        calculate_price = lambda price, quantity: price * quantity
+        print(calculate_price(500, 3))
+
+    # Conditions can be used in Lambda, also called Conditional expression.
+
+        Syntax: value_if_true if condition else value_if_false
+
+        Ex: def check_age(age)          |   # Single parameter 
+                if age >= 18:           |   Using Lambda:
+                    return "Adult"      |       check_age = lambda age: "Adult" if age >= 18 else "Minor"
+                else:                   |       print(check_age(25))
+                    return "Minor"      |       print(check_age(15))
+
+    # Used with built-in functions
+
+        ->> sorted() in descending order
+            Ex: 
+                users = [
+                    {"name": "Alice", "age": 25},
+                    {"name": "John", "age": 20},
+                    {"name": "Bob", "age": 30}
+                ]
+
+                sorted_users = sorted(
+                    users, 
+                    key=lambda user: user["age"], 
+                    reverse=True
+                )
+                print(sorted_users)
+
+        ->> map(): applies a function to every item in an iterable.
+                    In Python 3, map() returns a map object, so we use list() to convert into list.
+            Ex: 
+                numbers = [1, 2, 3, 4, 5]
+                squared_numbers = list(
+                    map(lambda numbers: numbers ** 2, numbers)
+                )
+                print(squared_numbers)
+
+        ->> filter(): keeps only the item for which a condition is True
+
+            Ex: 
+                numbers = [1, 2, 3, 4, 5]
+                even_numbers = list(
+                    filter(lambda numbers: numbers % 2 == 0, numbers)
+                )
+                print(even_numbers)

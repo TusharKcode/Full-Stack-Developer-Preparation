@@ -1,0 +1,117 @@
+A Set is a collection of unique values.
+    They are especially useful when you need to remove duplicates or perform mathematical operations such
+    as union, intersection and difference.
+
+    It does not allow duplicate values, auto removes duplicates.
+    It is mutable.
+    It is unordered, doesn't support indexing (TypeError).
+
+    Set -> {}
+
+        Ex: numbers = {10, 20, 30, 40}
+            print(numbers)
+
+    -> Empty Set
+        empty_set = {}  # This is an empty dictionary
+
+        # To create empty set - 
+
+            empty_set = set()
+            print(empty_set)
+
+-> Auto removing duplicates
+    numbers = {10, 20, 10, 30, 20, 40}
+    print(numbers)
+
+    # from List
+        numbers = [10, 20, 10, 30, 20, 40]
+        unique_numbers = set(numbers)
+        print(unique_numbers)
+
+->> Adding Elements
+
+    -> add() - To add one element (single)
+                If you try to add which already exists, nothing changes b/s it contains only unique values.
+
+                Ex: skills = {"Python", "Java"}
+                    skills.add("FastAPI")
+                    print(skills)
+
+    -> update() - To add multiple elements, can use another set as well.
+
+                Ex: skills = {"Python", "Java"}
+                    skills.update(["FastAPI", "MySQL", "MongoDB"])
+                    print(skills)
+
+->> Removing Elements
+
+    -> remove() - Ex:   skills = {"Python", "Java"}
+                        skills.remove("Java")
+                        print(skills)
+    
+    -> discard() - Unlike remove(), if no element exists it doesn't produce error.
+                
+                Ex: skills = {"Python", "Java"}
+                    skills.discard("Java")
+                    print(skills)
+
+    -> pop() - removes an (arbitrary) element from set, should not assume which element will be removed.
+
+                Ex: skills = {"Python", "Java", "React"}
+                    skills.pop()
+                    print(skills)
+
+    -> clear() - removes everything.
+
+                Ex: skills = {"Python", "Java", "React"}
+                    skills.clear()
+                    print(skills)   # set()
+
+->> Checking Membership - in / not in
+
+    Ex: skills = {"Python", "Java", "React"}
+        
+        print("Python" in skills)   # True
+        print("Java" in skills)     # False
+        print("Java" not in skills) # True
+
+->> len() with sets, don't count duplicates.
+
+    Ex: skills = {"Python", "Java", "React"}
+        print(len(skills))
+
+->> Looping through Set, don't depend on order as Sets are unordered.
+
+    Ex: skills = {"Python", "Java", "React"}
+        for skill in skills:
+            print(skills)
+
+Set Operations - 
+    # Suppose we have 2 groups: 
+
+        python_developers = {"Alice", "Bob", "Charlie"}
+        java_developers = {"Bob", "David", "Eve"}
+
+    => Union : combines both sets. Auto removes duplicates
+        Operator = '|' (union) -> all_developers = python_developers | java_developers
+
+        all_developers = python_developers.union(java_developers)
+        print(all_developers)
+
+    => Intersection : find element that exists in both sets.
+        Operator = '&' (intersection) -> common = python_developers & java_developers
+
+        common = python_developers.intersection(java_developers)
+        print(common)   # {"Bob"}
+
+    => Difference : find element that exists in first set but not the second.
+        Operator = '-' (difference) -> only_python = python_developers - java_developers
+
+        only_python = python_developers.difference(java_developers)
+        print(only_python)   # {"Alice", "Charlie"}
+
+    => Symmetric Difference : gives element that exists in either set, but not both.
+        Operator = '^' (symmetric_difference) -> result = python_developers ^ java_developers
+        
+        result = python_developers.symmetric_difference(java_developers)
+        print(result)   # {"Alice", "Charlie", "David", "Eve"}, Bob excluded as it exist in both.
