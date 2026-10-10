@@ -27,10 +27,12 @@
         "startproject",
         "tablename",
         "truncatewords",
+        "tuln",
         "urlpatterns",
         "uvicorn",
         "VARCHAR",
         "venv",
+        "whereis",
         "wsgi"
     ],
     "cSpell.ignoreWords": [

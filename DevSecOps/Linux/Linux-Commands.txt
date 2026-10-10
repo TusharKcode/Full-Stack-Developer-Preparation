@@ -1,0 +1,129 @@
+Linux Command Syntax : command [option] [arguments]
+        - command   : The program to execute.
+        - option    : Changes how the command behaves.
+        - arguments : The file, directory, or target on which it operates.
+
+->> Directory Navigation Commands
+    - . means the current directory.
+    - .. means the parent directory.
+    - ~ represents the current user's home directory.
+    - Hidden files generally begin with a dot, such as .bashrc.
+
+    Command	        Purpose	                                Example
+        pwd	        Print current directory	                pwd
+        ls	        List files and directories	            ls
+        ls -l	    Show detailed listing	                ls -l
+        ls -a	    Include hidden entries	                ls -a
+        ls -lah	    Detailed, human-readable listing    	ls -lah
+                    including hidden entries
+        cd	        Change directory	                    cd /etc
+        cd ..	    Move to parent directory	            cd ..
+        cd ~	    Move to your home directory	            cd ~
+        cd -	    Return to the previous directory	    cd -
+
+->> Creating, copying, moving, and deleting files
+
+    Command	            Purpose	                                        Example
+        mkdir	    Create a directory	                            mkdir devops-practice
+        mkdir -p	Create nested directories	                    mkdir -p projects/python/app
+        touch	    Create an empty file or update its timestamp	touch notes.txt
+        cp	        Copy a file	                                    cp notes.txt backup.txt
+        cp -r	    Copy a directory recursively	                cp -r app app-backup
+        mv	        Move or rename files	                        mv notes.txt linux-notes.txt
+        rm	        Delete a file	                                rm linux-notes.txt
+        rmdir	    Remove an empty directory	                    rmdir empty-dir
+
+    - 'rm' can permanently remove files.
+
+->> Viewing and reading file contents
+
+    Command	            Purpose                                 Example
+        cat	        Display file contents	                cat notes.txt
+        less	    Read long files page by page	        less /etc/os-release
+        head	    Display first 10 lines by default	    head notes.txt
+        tail	    Display last 10 lines by default	    tail notes.txt
+        tail -f	    Follow a file as new lines appear	    tail -f app.log
+        wc -l	    Count lines	                            wc -l notes.txt
+        file	    Identify a file's type	                file notes.txt
+
+->> Searching for files and text
+
+    Command	            Purpose                                 Example
+        find	    Find files and directories	find . -    name "*.py"
+        grep	    Search text patterns	                grep "ERROR" app.log
+        grep -i	    Search without case sensitivity	        grep -i "error" app.log
+        grep -n	    Include matching line numbers	        grep -n "ERROR" app.log
+        grep -r	    Search recursively through files	    grep -r "DEBUG" logs/
+        which	    Locate a command executable in PATH	    which python3
+        whereis	    Locate common binary, source, and   	whereis python3
+                    manual paths
+
+    - >     : redirects text into a file
+    - <<'EOF': allows to enter multiple lines until the ending marker
+
+->> File permissions and ownership commands
+
+    Command	            Purpose                                 Example
+        whoami	    Display current username	                whoami
+        id	        Display user and group IDs	                id
+        groups	    Display group memberships	                groups
+        chmod	    Change file permissions	                    chmod 640 notes.txt
+        chown	    Change file owner	                        sudo chown user:group notes.txt
+        sudo	    Run a command with elevated privileges	    sudo apt update
+
+    - 'chmod 700': gives owner read, write & execute permissions, while group members and others 
+                    receives no permissions
+
+->> System information commands
+
+        Command	                    Purpose                               
+    uname -a	                Display kernel and system information
+    cat /etc/os-release	        Display Linux distribution information
+    hostname	                Display the system hostname
+    uptime	                    Show uptime and load averages
+    free -h	                    Display memory usage
+    df -h	                    Display file system disk usage
+    du -sh directory/	        Estimate a directory's total disk usage
+    lsblk	                    List block storage devices
+    lscpu	                    Display CPU information
+
+    Ex: If a server runs out of disk space, 'df -h' identifies full file systems.
+        'du -sh' helps estimate which directories are consuming space.
+
+->> Help commands
+
+        Command	            Purpose
+        man ls	        Open the manual for ls
+        ls --help	    Show command usage and options
+        help cd	        Show Bash's built-in help for cd
+        history	        Show previously entered commands
+        clear	        Clear the terminal display
+
+    - Press 'q' to exit most manual or pager screens.
+
+->> Combining commands: pipes and redirection
+    - Important for automation & log analysis
+
+    -> >    - Write output to a file, Creates the file or replaces its existing contents.
+                Ex: echo "Hello Linux" > output.txt
+
+    -> >>   - Append output, Adds text to the end of the file.
+                Ex: echo "Learning DevOps" >> output.txt
+
+    -> |    - Pipe output to another command, Sends the first command's standard output to the 
+                next command's standard input.
+                Ex: cat output.txt | grep "DevOps"
+
+->> Intro to process & network commands
+
+    Command	                    Purpose
+        ps aux	            List running processes
+        top	Monitor         processes and resource usage
+        kill PID	        Send a termination signal to a process
+        ip addr	Inspect     network interfaces and addresses
+        ping hostname	    Test basic network reachability
+        curl URL	        Make an HTTP request or transfer data
+        ss -tuln	        Inspect listening TCP/UDP sockets
+
+    - 'ping' may be blocked by firewalls, so a failed ping does not necessarily mean a server is 
+        unavailable.
