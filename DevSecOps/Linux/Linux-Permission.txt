@@ -1,0 +1,147 @@
+Linux is a multi-user operating system. Each user account has its own identity & permissions.
+
+=> Users    
+    - UID - user ID
+    - GID - group ID
+    - sudo - runs an authorized command with elevated privileges
+
+    -> Root user     - The Administrator with UID 0 & extensive system privileges.
+    -> Regular user  - An account used for normal activities & developments.
+    -> System user   - An account used to run services & applications, such as web server.
+
+=> Groups
+    - A group is a collection of users. Groups make it easier to grant shared access to files &
+        directories.
+
+    -> Commands:
+        - groups : display your group membership
+        - id : display your UID, primary GID, supplementary groups
+        - getent group : display group records available through the system's configured
+                            identity sources.
+
+->> Linux provides several account files.
+
+            Files           Purpose
+        /etc/passwd	    User account information
+        /etc/shadow	    Protected password hashes and password-aging information
+        /etc/group	    Group information
+        /etc/gshadow	Protected group administration information
+
+    - Avoid displaying or sharing '/etc/shadow' contents. It contains sensitive authentication data.
+
+->> Linux File Permissions
+    It determines which user can read, modify or execute files or directories.
+
+    -> 3 Permissions classes: 
+        - Owner  (u) the user who owns the file. 
+        - Group  (g) users associated with the file's group.
+        - Others (o) everyone else
+
+        ** Directory permissions behave differently from file permissions **
+
+    -> 3 basic permissions:
+        - r	(Read)	    View contents	        List directory entries
+        - w	(Write)	    Modify contents         Create, delete, or rename entries, subject to 
+                                                    other restrictions
+        - x	(Execute)	Run the file as a       Enter or traverse the directory
+                            program/script
+        - s (special permission bits)
+
+    Ex: The owner can read, modify & execute the file. Group members can read & execute it.
+        Others can only read it. (drwxr-xr-x)
+        d   : directory usually with this.
+        -   : It indicates a Regular file.
+        rwx : Owner
+        r-x : Group
+        r-- : Others
+
+->> Numeric permissions
+
+    -> r	(Read)	  -  4
+    -> w	(Write)	  -  2       
+    -> x	(Execute) -  1
+
+                    Permission	    Calculation	        Result
+                        rwx	        4 + 2 + 1	            7
+                        rw-	        4 + 2	                6
+                        r-x	        4 + 1	                5
+                        r--	        4	                    4
+                        ---	        No permissions	        0
+
+    Ex: 755 means: 
+                    Owner - 7 = rwx
+                    Group - 5 = r-x
+                    Others - 5 = r-x
+
+    Command	                    Owner	Group	Others
+    chmod 755 script.sh	        rwx	    r-x	    r-x
+    chmod 644 config.txt	    rw-	    r--	    r--
+    chmod 600 secret.txt	    rw-	    ---	    ---
+    chmod 700 private.sh	    rwx	    ---	    ---
+    chmod 750 deploy.sh	        rwx	    r-x	    ---
+
+    ** Never use chmod 777 as a routine fix for permission errors. It grants read, write, and 
+        execute permissions to everyone and can expose systems to unnecessary risk. **
+
+->> Symbolic permissions
+    
+    - u+x: Add execute permission for the owner.
+    - g-w: Remove write permission for the group.
+    - o-r: Remove read permission for others.
+
+    Ex: chmod u-x <file name>
+
+->> Changing File Ownership (chown) - Decides which user & group the file belongs to.
+
+    -> Syntax: sudo chown USER:GROUP FILE
+        Ex: sudo chown developer1:devteam deploy.sh
+
+    - 'chgrp'	To change Group ownership
+
+->> Creating & Managing users & groups
+
+    ** aG - combination appends supplementary group without replacing user's existing
+                supplementary group membership **
+
+        sudo adduser developer1	                Create a user on Ubuntu
+        sudo usermod -aG devteam developer1	    Add a user to a supplementary group
+        sudo groupadd devteam	                Create a group
+        sudo passwd developer1	                Set or change a user's password
+        sudo userdel developer1	                Delete a user account
+        sudo groupdel devteam	                Delete a group
+        getent passwd developer1	            Check whether the account exists
+        getent group devteam	                Check group details
+
+->> Shared Directory permission for development team
+    
+    -> Linux supports Setgid directory bit, helps newly created files & subdirectories inherit 
+        directory's group on Linux file system.
+
+        - 2 : Setgid bit on the directory.
+        - 7 : Owner has full permissions.
+        - 7 : Group has full permissions.
+        - 0 : Others have no permissions.
+
+    Ex: sudo groupadd devteam
+        sudo mkdir -p /opt/devteam
+        sudo chown root:devteam /opt/devteam
+        sudo chmod 2770 /opt/devteam
+
+->> 'sudo' & its privileges
+    - It allows an authorized users to execute a command with elevated privileges.
+    - On Ubuntu, membership in 'sudo' group grants administrative privileges, depending on system's
+        configuration.
+
+        Ex: sudo apt update
+
+->> Default permissions & 'unmask'
+    - When program creates files or directories, the umask influences which permissions are 
+        removed from the initial permissions.
+    - common result is 0022.
+
+    With 0022 unmask
+    ->  Files (666) : 644 (rw-r--r--)
+    ->  Directories (777): 755 (rwxr-xr-x)
+
+    -> 600 (files) & 700 (directories), useful when creating private files containing sensitive 
+        information.
