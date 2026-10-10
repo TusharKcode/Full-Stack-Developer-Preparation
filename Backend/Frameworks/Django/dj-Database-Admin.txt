@@ -1,0 +1,19 @@
+By default, new Django project uses SQLite.
+
+    Check into project config/settings.py:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",
+            }
+        }
+
+->> Django Admin - built-in Admin interface
+    - In admin.py can register our model so that we can manage products through admin.
+
+    - First create admin user using commands ask info, then run server.
+    - Then, go to http://127.0.0.1:8000/admin/ and do log in.
+
+->> Django Shell - Opens a Python Shell with Django configured
+    Command - python manage.py shell
+    Key to stop - Ctrl + Z, hit Enter

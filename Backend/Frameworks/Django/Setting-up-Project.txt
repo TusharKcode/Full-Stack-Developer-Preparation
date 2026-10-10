@@ -1,0 +1,54 @@
+# Steps to Create Django Project
+
+    -> Create folders - mkdir django-practice
+                        cd django-practice
+
+    -> Create VM (windows)  -   python -m venv .venv
+                                .venv\Scripts\activate (to activate VM)
+
+    -> Install Django   - pip install Django
+    -> Check version    - django-admin --version
+
+    -> Create Django project (run) - django-admin startproject config .
+
+    # manage.py commands
+
+        -> 'python manage.py runserver'         (to run django server)
+            http://127.0.0.1:8000/              (development server, default port 8000)
+
+            # To change PORT number - 'python manage.py runserver <port-number>'
+
+        -> 'python manage.py startapp users'    (to create apps, here users)
+            Then, register this app to 'config/settings.py' in INSTALLED_APPS=[..]
+
+        -> 'python manage.py makemigrations'    (to records schema update)
+
+        -> 'python manage.py migrate'           (applies migrations to the database)
+
+        -> 'python manage.py createsuperuser'   (to create admin user)
+
+-> structure will be like this: 
+                                django-practice/
+                                    │
+                                    ├── .venv/
+                                    │
+                                    ├── manage.py
+                                    │
+                                    └── config/
+                                    |   ├── __init__.py
+                                    |   ├── settings.py
+                                    |   ├── urls.py
+                                    |   ├── asgi.py
+                                    |   └── wsgi.py
+                                    │
+                                    └── users/
+                                        ├── __init__.py
+                                        ├── urls.py
+                                        ├── admin.py
+                                        ├── apps.py
+                                        ├── migrations/
+                                        │   └── __init__.py
+                                        ├── models.py
+                                        ├── tests.py
+                                        └── views.py
+

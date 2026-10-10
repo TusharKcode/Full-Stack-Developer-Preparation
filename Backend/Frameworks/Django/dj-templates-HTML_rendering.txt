@@ -1,0 +1,92 @@
+Django Template
+    - It is usually an HTML file containing normal HTML, dynamic data, conditions, loops, template tags, 
+        template filters.
+    - It allows Python Backend to generate dynamic HTML.
+
+        Ex: <h1>Welcome, {{name}}</h1>
+
+            # If django sends : name = "John"
+            # Browser receives: <h1>Welcome, John</h1>
+
+    ->> Steps to Create & Use of Templates
+
+        - Create a separate Template for different apps, prevents naming conflicts.
+        - Inside Template, create HTML file.
+        - Render Template from a View, using 'render()'
+        - Then, it will receives the request -> finds template -> render it -> returns HTTP response
+
+    ->> Django searches configured template location and finds HTML file. This works b/s Django's app 
+        template discovery is enabled in default project configuration (config).
+
+        In settings.py, see something like: 
+                                            TEMPLATES = [
+                                                {...
+                                                    "APP_DIRS": True,
+                                                   ...
+                                                },]
+
+        "APP_DIRS": True, tells django to look for templates inside installed apps.
+
+    ->> Passing data from View to Template, 3rd argument called as Context.
+    
+    ->> Template Variable
+        - can access multiple variables as well.
+        - can access dictionary using dot notation.
+
+        Ex: <h1>Product: {{name}}</h1>, This is called Template Variable syntax
+
+            # In views.py: 
+                            product = {
+                                "name": "Laptop",
+                                "price": 50000,
+                                "brand": "Dell"
+                            }
+
+                            return render(
+                                request, "products/home.html", {"product": product})
+            
+            # In HTML file:
+                            <h1>{{ product.name }}</h1>
+                            <p>Brand: {{ product.brand }}</p>
+                            <p>Price: ₹{{ product.price }}</p>
+
+    ->> Template {% %} syntax
+        - called as Template tags, used for logic or control structure
+
+            {{ ... }} -> Display Data (used for variables)
+
+            {% ... %} -> Template Logic
+            
+            # In view.py & HTML file:
+                    -> for Loop
+                            products = [ "Laptop", "Keyboard", "Mouse", "Monitor"]
+                            <ul>
+                                {% for product in products %}
+                                    <li>{{ product }}</li>
+                                {% endfor %}
+                            </ul>
+
+                    -> if/else conditions
+                            products = {"name": "Laptop", "price": 50000, "available": True}
+                            {% if product.available %}
+                                <p>Available</p>
+                            {% else %}
+                                <p>Out of stock</p>
+                            {% endif %}
+
+                    -> filters : {{ value|filter }}
+                            {{ name|upper }}
+                            {{ name|lower }}
+                            {{ name|title }}
+                            {{ description|truncatewords:10 }}
+                            {{ products|length }}
+
+                        if name = "laptop", result "LAPTOP"
+
+                    -> Default values
+                        {{ name|default:"Guest" }}
+                            If name is missing, show 'Guest' value as default
+
+    ->> Template Inheritance
+            Instead of copying same HTML into every page, create one file called base.html.
+            Used to combines multiple template into single HTML file

@@ -1,0 +1,55 @@
+->> Django URL Routing and View
+    
+    => URL Routing means django handles which view should handle a particular URL.
+        Performs mapping though 'urls.py' file
+            - Django supports URL parameters, don't have to manually create.
+        
+        -> 'request' object contains information about incoming HTTP request
+            Ex: request.method
+                request.GET
+                request.POST
+                request.headers
+                request.user
+
+        -> Common URL converters for common types, important for URL-level validations
+            Integer - <int:int>
+            String  - <str:str>
+            Slug    - <slug:slug>     (contains letters, numbers, hyphens & underscore)
+            UUID    - <uuid:uuid>  (used as identifiers, for APIs and system)
+            Path    - <path:filepath> (can capture a PATH containing /)
+
+        -> Query parameters, can accessed through request object
+            Ex: /users/?age=25
+
+                Here,   /users/ -> is a URL path
+                        ?age=25 -> is a query parameter
+
+        -> Django allows Naming URLs
+            Ex: path("profile/", profile, name="profile")
+
+        Ex: /users/         -> home()
+            /users/profile  -> profile()
+            /users/settings -> settings()
+
+            Here, if  users/1/    gives user_id = 1  
+                      users/25/   gives user_id = 25
+
+        # urls.py: 
+                    from .views import home, profile, about, user_detail
+
+                    urlpatterns = [
+                        path("", home),
+                        path("profile/", profile),
+                        path("about/", about)
+                        path("<int:user_id>/", user_detail)
+                    ]
+
+        # Urls gets import from 'views.py'
+
+            Ex: def home(request)
+                    return HttpResponse("Welcome Home, User")
+
+                def user_detail(request, user_id):
+                    return HttpResponse(f"User ID: {user_id}")
+    
+    => View can also interact with Database, JSON response and request objects.

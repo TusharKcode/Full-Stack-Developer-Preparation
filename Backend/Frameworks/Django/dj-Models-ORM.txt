@@ -1,0 +1,135 @@
+Django Model - is a Python class that represents data stored in the database
+
+    Ex: We have product data as, products_list = [
+                                    {"name": "Laptop", "price": 50000, "available": True},
+                                    {"name": "Keyboard", "price": 2000, "available": True},
+                                ]
+
+        This data disappears when server stops.
+
+        So, We want: Product Model -> Database Model -> Rows -> Django ORM -> View -> Template
+
+    # Django Model looks like: 
+            Ex: class Product(models.Model):
+                name = models.CharField(max_length=100)
+                price = models.IntegerField()
+                brand = models.CharField(max_length=100)
+                available = models.BooleanField(default=True)
+
+        Django creates database table based on this model.
+
+    According to concept Django creates: 
+    - Django auto adds Primary key, so Product id is auto generated
+                                    products_product
+                                    ------------------------------------------------
+                                    id          INTEGER PRIMARY KEY
+                                    name        VARCHAR(100)
+                                    price       INTEGER
+                                    brand       VARCHAR(100)
+                                    available   BOOLEAN
+
+=> Model types: 
+    - CharField     (to store text)
+    - IntegerField  (to store numbers)
+    - BooleanField  (to store True/False)
+    - DecimalField  (to store decimal values)
+    - TextField     (to store large text)
+
+    -> blank=True - Controls whether a field is allowed to be empty during validation/forms.
+    -> null=True - Controls whether the database can store SQL null.
+    -> unique=True - similar to SQL UNIQUE constraints.
+
+            Ex: sku = models.CharField(max_length=20, unique=True)
+
+                # unique value will be stored such as LAP001, LAP002, etc.
+
+=> Models don't automatically change the database, means database table does not automatically appears.
+    Django uses 'Migrations'
+
+    Process is - models.py -> makemigrations -> Migration File -> migrate -> Database Table
+
+    ->> Migration files contains instructions describing database changes.
+    ->> makemigrations - to records schema update
+
+Django ORM - Object Relational Mapping, allows you to work with database records using Python instead
+                of writing SQL for every operation.
+
+    # Django CRUD summary
+        CREATE
+        Product.objects.create(...)
+
+        READ
+        Product.objects.all()
+        Product.objects.get(...)
+        Product.objects.filter(...)
+
+        UPDATE
+        product.save()
+        Product.objects.filter(...).update(...)
+
+        DELETE
+        product.delete()
+        Product.objects.filter(...).delete()
+
+    Ex: SELECT * FROM products_product;
+
+    Django ORM looks like - Product.objects.all()
+
+    # SQL Insert -  INSERT INTO products_product
+                    (name, price, brand)
+                    VALUES
+                    ('Laptop', 50000, 'Dell');
+
+    # Django ORM -  Product.objects.create(
+                        name="Laptop",
+                        price=50000,
+                        brand="Dell"
+                    )
+
+    # To Read - Product.object.all()        # return QuerySet
+
+    ->> QuerySet - represents a collection of database objects returned by Django ORM.
+                    It can also be chained.
+
+                    Ex: Product.object.filter(
+                            available=True
+                        ).order_by("price")
+
+        - get() - expects exactly one object.
+                    Ex: Product.objects.get(id=1)
+
+            # If no record exists or multiple records matches, will return 
+                Product.DoesNotExists / Product.MultipleObjectsReturned
+
+        - filter() - zero or more objects
+                        Ex: Product.objects.filter(brand="Dell")
+                            Product.objects.filter(
+                                brand="Dell",
+                                available=True
+                            )
+
+        - order_by() - sort records, by ascending / descending (-)
+                        Ex: Product.objects.filter(name__icontains="lap")
+                            Product.objects.all().order_by("-price")
+
+
+->> Django Lookup Expressions
+
+        | Django lookup | Meaning                   |
+        | ------------- | ------------------------- |
+        | exact         | equals                    |
+        | iexact        | case-insensitive equals   |
+        | contains      | contains                  |
+        | icontains     | case-insensitive contains |
+        | gt            | greater than              |
+        | gte           | greater than or equal     |
+        | lt            | less than                 |
+        | lte           | less than or equal        |
+        | in            | value exists in list      |
+
+    Ex: Product.objects.filter(price__gt=10000)
+        Product.objects.filter(price__lte=5000)
+        Product.objects.filter(name__icontains="lap")
+
+
+Implementation of Concept - models.py , (see changes in migrations folder)

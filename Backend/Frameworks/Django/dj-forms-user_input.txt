@@ -1,0 +1,97 @@
+A Form is an interface that allows a user to submit data.
+    
+    Django also provides its own Forms frameworks. It helps with defining fields, receiving submitted data,
+    validation, displaying validation errors, cleaning data, reusable form definition.
+
+=> HTTP methods:
+    -> GET - used ot retrieve data, send up to 1024 characters only.
+                
+                # In Django - request.GET
+
+    -> POST - used to submit data that causes some action
+
+                # In Django - request.POST
+
+        Ex: Suppose user enters:    Name: Laptop
+                                    Price: 50000
+            
+            Browser send like this:     POST /products/add/
+            
+            with,   name=Laptop
+                    price=50000
+
+            Django can access this value:   request.POST.get("name")
+                                            request.POST.get("price")
+
+        # When using POST forms in Django, important to include CSRF (built-in Django protection),
+            - It stands for 'Cross Site Request Forgery', type of attack where another website attempts
+                to trick a user's browser into sending an unwanted request to your application
+            
+                {% csrf_token %}, use it into forms
+        
+        # With large forms, to ensure errors safety, can create forms in python file, then use {{ form }}
+            in HTML.
+            Django will generate HTML corresponding to your fields
+
+            Ex: Implementation in Products app - Check Files: views.py, urls.py, product_form.html, 
+                forms.py
+
+            Ex: <form method="POST">
+                    {% csrf_token %}
+
+                    <p>
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </p>
+                    <p>
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </p>
+
+                    <button type="submit">Add Product</button>
+                </form>
+
+=> Form labels  - Django auto creates labels on field names.
+
+    Ex: name = forms.CharField(), Django generate - Name
+
+    # Customization of labels - name = forms.CharField(max_length=100, label="Product Name")
+
+=> Form field types:    
+    - CharField     (Text)                      -> name = forms.CharField()
+    - IntegerField  (Integer)                   -> age = forms.IntegerField()
+    - EmailField    (Email validation)          -> email = forms.EmailField() 
+    - BooleanField  (Checkbox/Boolean value)    -> is_active = forms.BooleanField()
+    - ChoiceField                               -> category = forms.ChoiceField(
+                                                        choices=[
+                                                            ("electronics", "Electronics"),
+                                                            ("books", "Books"),
+                                                            ("clothing", "Clothing"),
+                                                        ]                       
+                                                    )
+    - DateField                                 -> date = forms.DateField()
+
+=> Custom Validations
+
+    Ex: if price < 0:
+            raise forms.ValidationError(
+                "Price cannot be negative."
+        )
+
+    # clean_<field>() - used to perform Custom Validations for fields
+
+        Ex: def clean_name(self):
+                name = self.cleaned_data["name"]
+
+                if len(name) < 3:
+                    raise forms.ValidationError(
+                        "Product name must contain at least 3 characters.")
+                return name
+
+=> Form errors: display errors in templates
+
+    Ex: {% if form.name.errors %}
+            <div>
+                {{ form.name.errors }}
+            </div>
+        {% endif %}

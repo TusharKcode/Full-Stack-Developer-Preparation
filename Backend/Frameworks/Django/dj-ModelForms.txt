@@ -1,0 +1,75 @@
+=> A Model Form is a Django form that is automatically connected to Django model.
+
+    Developer don't have manually create form, instead of Developer can use ModelForm.
+
+        Ex: from django import forms
+            from .models import Product
+
+            class ProductForm(forms.ModelForm):
+                class Meta:
+                    model = Product
+                    fields = "__all__"
+
+        - This part tells Django build this form using the Product model
+            Django generate form fields for them.
+
+    -> Why fields = "__all__"? - To get all fields from Product model.
+        But in real applications, explicitly listing fields is often safer.
+
+        Ex: fields = [
+                "name",
+                "price",
+                "brand",
+                "description",
+                "available",
+                "category",
+            ]
+
+    -> Django automatically maps model fields to appropriate form fields.
+        Validation is also tightly connected
+        Ex: 
+            | Model          | Form                               |
+            | -------------- | ---------------------------------- |
+            |  CharField     |  CharField                         |
+            |  IntegerField  |  IntegerField                      |
+            |  TextField     |  CharField  + textarea-like widget |
+            |  BooleanField  |  BooleanField  / checkbox          |
+            |  DateField     |  DateField                         |
+            |  EmailField    |  EmailField                        |
+            |  ForeignKey    |  ModelChoiceField                  |
+
+    -> GET & POST method working will remain same in View.
+    
+    -> form.save() - creates or updates a database model instance using the validated data from a ModelForm.
+        Ex: Django validate submitted data, create a Product model object & save it to database
+
+            After successful saving use redirect. This follows PRG pattern
+                'POST/Redirect/GET'
+
+            This prevents from a problem which is refreshing the success page can cause the browser to submit
+            the POST again.
+            'Redirecting' gives us a clean GET request after successful submission.
+
+    -> Another feature useful in ModelForm = 'commit=False'
+        - It is a way to pause saving a form to database so you can add extra information behind the scene 
+            first.
+        - gives a temporary "in-memory" object so we can safely attach missing information before sending
+            to database.
+        
+        Ex: product = form.save(commit=False)
+
+    -> 'instance'
+        - used when updating existing records
+        - Without this Django thinks that we are trying to create new record.
+
+        Ex: form = ProductForm(request.POST, instance=product)
+            form.save()
+
+    So our CRUD architecture becomes: 
+        CREATE  -   ModelForm                   → form.save()
+
+        READ    -   Product.objects.all()
+
+        UPDATE  -   ModelForm(instance=product) → form.save()
+
+        DELETE  -   product.delete()

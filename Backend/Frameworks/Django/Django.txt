@@ -1,0 +1,97 @@
+Django is a high-level Python Web framework designed for building web applications and backend system.
+    It follows a philosophy by providing many components out of the box.
+
+    It includes URL Routing, Views, Templates, ORM, Forms, Authentication, Admin Panel, Security features
+        Middleware, Sessions.
+
+    Applications include LMS, E-commerce website, Blog, Social Media Platform, Job Portal, Dashboard, 
+        Banking apps, REST API backend.
+
+    - It is also known as 'batteries-included framework' means it provides many things commonly need.
+        Ex: Authentication - login, logout, sessions, password hashing, user management.
+            Database - ORM, Models, Migrations, Querying, Relationships
+            Web App - URL Routing, Views, Templates, Forms, Middleware
+
+->> Django's MVT Architecture
+    -> Model    - Handles data or database representation, act as interface of our data.
+            Ex: class User:
+                    name
+                    email
+
+    -> View     - Handles request processing application logic
+                    View receives request and return response, what we see in browser when render a website
+            Ex: def users(request):
+                    ...
+
+    -> Template - Controls HTML presentation, receive data from View, tells how dynamic content will be 
+                    inserted
+            Ex: <h1>Users</h1>
+
+->> Django Request Flow:
+                            Suppose we have: GET /students/
+    Browser                             /users/
+        │                                  ↓
+        │ GET /users/                   urls.py            
+        ▼                                  ↓
+    Django                              students_view()
+        │                                  ↓
+        ▼                               Student.objects.all()
+    URL Router                             ↓    
+        │                               Database
+        ▼                                  ↓
+    View                                students
+        │                                  ↓
+        ▼                               Template
+    Model / Database                       ↓            
+        │                               HTML
+        ▼                               
+    View
+        │
+        ▼
+    Template
+        │
+        ▼
+    HTTP Response
+        │
+        ▼
+    Browser
+
+->> Django's
+    -> Project is a overall application configuration
+    -> App is a component that handles a particular feature / domain
+
+        Ex: Here, LMS is Project & users, courses, assignments, payments are Apps.
+
+    # Project Structure 
+        myproject/
+            │
+            ├── manage.py            -> Django's command line utility             
+            │                       
+            └── config/         
+                ├── __init__.py         
+                ├── settings.py     -> contains project configuration      
+                ├── urls.py         -> controls URL routing
+                ├── asgi.py         
+                └── wsgi.py         
+
+        -> ASGI - stands for Asynchronous Server Gateway Interface
+                    used as interface b/w Django and ASGI-compatible servers
+
+        -> WSGI - stands for Web Server Gateway Interface
+                    used as interface b/w Python Web Application and web servers
+
+    # App Structure 
+        users/
+            ├── __init__.py         
+            ├── admin.py        -> Django Admin configuration      
+            ├── apps.py         -> Application configuration
+            ├── migrations/     -> database schema change history
+            ├── models.py       -> Database models (Structure)  
+            ├── tests.py        -> Application test
+            └── views.py        -> request handling / application logic 
+
+        -> ASGI - stands for Asynchronous Server Gateway Interface
+                    used as interface b/w Django and ASGI-compatible servers
+
+        -> WSGI - stands for Web Server Gateway Interface
+                    used as interface b/w Python Web Application and web servers
