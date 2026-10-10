@@ -1,0 +1,102 @@
+Linux is a open-source, Unix like operating system kernel that manages communication between
+    computer hardware & software.
+
+    It is multi-user operating system.
+    
+    It helps you run applications, manage files, use memory, connect to networks & control 
+    computer resources.
+
+    It is flexible, secure when properly configured, stable customizable and supported by large
+    community.
+
+    Ex of OS: Windows, macOS, Linux (Ubuntu, etc.)
+
+->> Open Source means open-source software makes it source code available under a license that 
+    permits people to inspect, use, modify & redistribute it according to that license.
+
+->> Linux Kernel: Kernel is the core of operating system. It connects applications with hardware
+                    resources & manages essential system operations.
+                    
+                    - Kernel as the manager that coordinates how software uses computer's resources.
+                    - Linux technically refers to Kernel.
+
+        It includes 
+            Process management: Controls running programs and CPU scheduling.
+            Memory management:  Allocates and manages RAM.
+            Device management:  Coordinates hardware through device drivers.
+            File systems:       Supports storing and accessing files.
+            Networking:         Handles network communication.
+
+->> Linux Distribution (distro) combines the kernel with system utilities, package management, 
+    libraries & often a desktop environment.
+    Ex: Linux is teh kernel, use by distributions such as Ubuntu, Debian, Kali Linux, etc..
+
+->> Linux Architecture:
+                        User Applications
+                Browser, Python, Django, database
+
+                                ⇅
+
+                        Shell & System Utilities
+                Bash, terminal commands, system tools
+
+                                ⇅
+
+                            Linux Kernel
+                Processes, memory, devices, networking
+
+                                ⇅
+
+                    Hardware / Virtual Hardware
+                CPU, RAM, storage, network devices
+
+    Ex: When we run a python application, the os provides resources the application needs.
+        The kernel manages those resources.
+
+-> Terminal - Interface where you type and view commands.    
+-> Shell    - The program that interprets commands & run scripts.
+-> Bash     - A popular Unix Shell used extensively in Linux administration & automation.
+-> GUI      - Graphical User Interface, where you interact using windows, icons & menus.
+-> CLI      - Command Line Interface, where you interact by entering text commands.
+
+->> Linux File System, organizes files in hierarchical structure starting from the root directory /.
+
+    Directory	        Purpose
+        /	        Root of the entire file system
+        /home	    Regular users home directories
+        /root	    Home directory of the root administrator
+        /etc	    System and application configuration
+        /var	    Frequently changing data, including logs
+        /tmp	    Temporary files
+        /usr	    Many installed programs, libraries, and utilities
+        /bin	    Essential command binaries, often linked to /usr/bin on modern systems
+        /dev	    Device files
+        /proc	    Virtual file system exposing process and kernel information
+
+
+->> User & Root privileges
+    - Multiple user accounts can have different permissions.
+    - Regular User: performs normal daily work
+    - Root User:    has extensive administrative privileges
+    - 'sudo':       allows authorized users to execute commands with elevated privileges.
+
+->> Linux is widely used to host applications, manage infrastructure, automate deployments &
+    run cloud workloads.
+
+    Server administration       - Manage users, permissions, services, logs, and system resources.
+    Containers and deployment   - Work with Docker, Kubernetes, CI/CD pipelines, and application 
+                                    hosting.
+    Security                    - Apply least privilege, inspect logs, manage access, update 
+                                    packages, and investigate suspicious processes.
+    Automation                  - Use Bash scripts and scheduled tasks to automate repetitive 
+                                    operations.
+
+->> Linux environment commands
+    - 'cat /etc/os-release' : Check your Linux distribution, such as the distribution name and 
+                                version
+    - 'uname -r'            : Check the kernel, prints the running Linux kernel version
+    - 'whoami'              : Check the current user
+    - 'pwd'                 : Check your current directory
+    - 'uname -m'            : Check system architecture, results include x86_64 for 64-bit x86 
+                                systems and aarch64 for 64-bit ARM systems
+
