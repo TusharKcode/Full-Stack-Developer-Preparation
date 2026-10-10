@@ -1,0 +1,41 @@
+# Project Installation
+
+    1. Create Project Folder -  mkdir task-management-system
+                                cd task-management-system
+
+    2. Create Virtual Environment - python -m venv .venv
+
+        Activate (Windows): .venv\Scripts\activate
+
+    3. Install Django - pip install django
+
+        Verify: django-admin --version
+
+
+    4. Create Django Project -  django-admin startproject config .
+
+    5. Create Main App -    python manage.py startapp tasks
+
+    6. Register App - In config/settings.py:
+                        INSTALLED_APPS = [
+                            # ...
+                            "tasks",
+                        ]
+
+    7. Run Initial Migrations -     python manage.py migrate
+
+    8. Start Development Server -   python manage.py runserver
+
+        Open:   http://127.0.0.1:8000/
+
+    9. Recommended Initial Structure
+        task-management-system/
+        ├── .venv/
+        ├── config/
+        ├── tasks/
+        ├── manage.py
+        ├── db.sqlite3
+        └── requirements.txt
+
+    10. Save Dependencies - pip freeze > requirements.txt
+
