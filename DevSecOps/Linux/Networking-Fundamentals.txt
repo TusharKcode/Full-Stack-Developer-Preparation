@@ -1,0 +1,101 @@
+A Computer network allows devices & applications to communicate with each other.
+    Ex: When open an application into browser, networking allows the browser to communicate with 
+        the server running application.
+
+    IP address	Identifies a network interface on an IP network	        192.168.1.10
+    Interface	A network connection exposed to the operating system    eth0, wlan0
+    Gateway	    Router used to reach other networks	                    192.168.1.1
+    DNS	        Translates domain names into IP addresses	            example.com
+    Port	    Identifies a service endpoint on a host	                80, 443, 8000
+    Protocol	Rules for communicating between systems	                TCP, UDP, ICMP
+    Subnet	    A defined range of IP addresses	                        192.168.1.0/24
+    Firewall	Controls network traffic according to rules	            UFW, cloud security groups
+
+->> How a website connection works?
+
+                            Your browser
+                        Requests a website
+                                ↓
+                            DNS lookup
+                    Finds the server's IP address
+                                ↓
+                            Network connection
+            Connects to the server, usually over TCP port 443 for HTTPS
+                                ↓
+                        Web server / application
+                Processes the request and returns a response
+
+->> IP Addresses:
+    -> IPv4 - uses 32-bit addresses. Ex: 192.168.1.10
+    -> IPv6 - uses 128-bit addresses & provides much larger addresses space. Ex: 2001:db8::10
+
+    IPv4 ranges:
+                10.0.0.0/8	        Private networks
+                172.16.0.0/12	    Private networks
+                192.168.0.0/16	    Private networks
+                127.0.0.0/8	        Loopback addresses
+                169.254.0.0/16	    Link-local addresses
+
+        - Loopback address  127.0.0.1 refers to your own computer.
+        - Special IPv4 address 0.0.0.0 has context-dependent means, when used as a server bind
+            address, generally means listening on all available IPv4 interfaces.
+
+->> Inspecting Network interface & addresses
+
+    - ip addr : Display network interface & their IP addresses such as eth0, ens33 or lo.
+    - ip link : Display network interface & their link state.
+    - ip route : Display routing table.
+                    A route beginning with default via identifies default gateway used for 
+                    destinations without more specific route.
+    - hostname -I : Display IP addresses assigned to the host. Can display multiple addresses, 
+                    result can differ b/w Ubuntu on WSL, VMware, physical linux computer.
+
+->> Domain Name System (DNS)
+    It translates domain name into IP addresses so application can locate server.
+
+    -> DNS commands
+        - getent hosts example.com	Resolve a hostname using the system's configured name-service 
+                                    sources
+        - nslookup example.com	    Query DNS information
+        - dig example.com	        Inspect DNS query results, if installed
+        - cat /etc/resolv.conf	    Inspect resolver configuration
+
+->> Testing Network connectivity
+    To check whether a destination is reachable & whether services are responding.
+
+    - ping (Basic reachability) : Sends 4 ICMP echo requests & reports the responses
+                                Ex: ping -c 4 example.com
+        ** A failed 'ping' does not prove a server is down, Firewalls may block ICMP while allowing 
+            HTTPS traffic **
+
+    - traceroute (Network path) : Shows the route toward a destination, if the command is 
+                                    installed and intermediate devices respond.
+                                Ex: traceroute example.com
+
+    - curl (Test an HTTP service) : Requests HTTP response headers, which helps check whether a 
+                                    web service responds
+                                Ex: curl -I https://example.com
+    
+    - ss (Inspect sockets and listening ports) : Lists listening TCP and UDP sockets with numeric 
+                                                    addresses and ports.
+                                                Ex: ss -tuln
+
+->> Ports & Services
+
+        22	    SSH
+        53	    DNS
+        80	    HTTP
+        443	    HTTPS
+        3306	MySQL
+        5432	PostgreSQL
+        8000	Common Django development server port
+        8080	Common alternative web/application port
+
+-> On many Ubuntu Desktop system, Network Manager manages network connection. On many Ubuntu
+    server installations, 'Netplan' is used to defined network configuration, often with
+    "system-networkd" or Network Manager as the backend.
+
+-> On Ubuntu, one common Firewall Management tool is UWF (Uncomplicated Firewall)
+
+    - To check status : sudo ufw status
+                        sudo ufw status verbose
