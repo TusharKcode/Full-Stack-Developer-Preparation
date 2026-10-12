@@ -1,0 +1,38 @@
+Package Management is the process of installing, updating, configuring & removing software on a 
+    Linux system.
+
+    - It is a collection of files & metadata needed to install a program. It includes program 
+        itself, configuration files, version information & dependency details.
+
+-> APT (Advanced Package Tool) (1st choice)
+    Used for everyday package management, downloads packages from configured repositories & 
+    handles dependencies automatically.
+    Ex: apt install, apt update, apt upgrade
+
+    Commands: 
+        sudo apt update	        Refresh available package information
+        sudo apt upgrade	    Upgrade installed packages where possible
+        sudo apt install tree	Install the tree package
+        sudo apt remove tree	Remove the package but generally retain its system-wide 
+                                    configuration files
+
+        sudo apt purge tree	    Remove the package and its package-managed system-wide 
+                                    configuration files
+
+        sudo apt autoremove	    Remove automatically installed packages no longer needed
+        apt search tree	        Search available packages
+        apt show tree	        View package details
+        dpkg -l	                List installed packages
+        dpkg -s tree	        Inspect the installed package status
+        dpkg -L tree	        List files installed by the package
+
+-> DPKG (Debian Package Manager)
+    Works directly with local .deb package files and report information about installed packages.
+    Doesn't automatically resolves dependencies like APT.
+    Ex: dpkg -l, dpkg -s, dpkg -i package.deb
+
+-> Repository - A software source from which linux downloads packages.
+-> Dependency - Another package that software requires to work correctly.
+-> Package List - Local information about available package versions & their repository location.
+-> Update - Package information may be refreshed independently of actually upgrading installed
+            software.
