@@ -1,0 +1,70 @@
+In Linux, 
+    Finding Files means locating files or directories by name, type, location, or other properties.
+    Processing files means reading, filtering, transforming, sorting, or extracting information 
+        from their contents.
+
+->> 'find' command searches for files and directories within a specified location.
+
+        find . -name "app.py"	    Find a file named app.py under the current directory
+        find . -name "*.log"	    Find files with a .log extension
+        find . -type f	            Find regular files
+        find . -type d	            Find directories
+        find /var/log -type f	    Find regular files under /var/log
+        find . -iname "readme.md"	Search by name, ignoring letter case
+
+        ** . means the current directory **
+        ** * in "*.log" is a wildcard matching any number of characters **
+
+    -> Search by size and modification time
+        find . -type f -size +10M   Finds regular files larger than 10 MB.
+        find . -type f -mtime -1    Finds regular files modified within approximately the last 24 hrs.
+        find . -type f -mmin -30    Finds regular files modified within approximately the last 30 min.
+
+    -> Searching file content with 'grep'
+        - searches text for matching patterns
+        Ex: grep "ERROR" app.log : Displays lines containing ERROR
+
+        grep -i "error" app.log         | Ignore case 
+        grep -n "ERROR" app.log         | Show matching line numbers 
+        grep -v "INFO" app.log          | Show lines that do not contain INFO 
+        grep -c "ERROR" app.log         | Count matching lines 
+        grep -r "DEBUG" .               | Search recursively in files under the current directory
+        grep -E "ERROR|WARNING" app.log | Match either ERROR or WARNING
+
+    -> Viewing and extracting file content
+
+        cat app.log         Prints the file's contents
+        head -n 10 app.log  Displays the first 10 lines
+        tail -n 20 app.log  Displays the last 20 lines
+        tail -f app.log     Continuously displays new lines appended to the file
+        less app.log        Opens a file in a scrollable viewer
+
+        ** tail -f is useful when watching application logs while reproducing an error **
+
+    -> Processing text with pipes and filters
+        - A pipe (|) passes the output of one command to another command.
+            Ex: grep "ERROR" app.log | wc -l : Count error lines in a log
+
+        sort names.txt                          Sorts lines alphabetically
+        sort names.txt | uniq                   Removes adjacent duplicate lines after sorting
+        sort names.txt | uniq -c                Counts occurrences of each distinct line after sorting
+        cut -d ':' -f 1 /etc/passwd             Extracts the first colon-separated field from each 
+                                                    line, commonly the username
+        awk -F ':' '{print $1}' /etc/passwd     Also prints the first colon-separated field, 
+                                                    using awk for field-based text processing
+
+    -> Redirecting output to files
+
+            > overwrites a file
+            >> appends to a file
+            2> redirects standard error
+            | sends one command's output to another command
+
+        grep "ERROR" app.log > errors.txt       Saves matching lines to errors.txt, replacing its 
+                                                    existing contents
+        grep "WARNING" app.log >> errors.txt    Appends matching lines to the end of errors.txt
+        find . -name "*.log" 2> find-errors.txt Saves standard error messages to find-errors.txt
+    
+    -> File permissions and safe searches
+        find . -type f -empty           To find empty files
+        find . -type f -user "$USER"    To find files owned by your user

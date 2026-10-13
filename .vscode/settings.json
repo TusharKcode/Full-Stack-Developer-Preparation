@@ -23,6 +23,7 @@
         "IGNORECASE",
         "lstrip",
         "makemigrations",
+        "mmin",
         "myproject",
         "Netplan",
         "networkd",
