@@ -1,0 +1,85 @@
+A 'process' is a running instance of a program. When you execute a command or start an application, 
+    Linux may create a process to run it.
+
+A 'program' is a set of instructions stored on disk.
+
+->> Process concepts:
+    - PID (Process ID) : Unique numeric identifier assigned to a process.
+    - PPID (Parent Process ID) : PID of the process that started another process.
+    - Foreground process : Runs interactively in terminal.
+    - Background process : Runs without occupying the terminal in usual way.
+    - Daemon/service : A Background process that provides a system or application service.
+    - Signal : A notification sent to a process, often to request termination or other action.
+
+->> Commands to Investigate processes
+    -> ps - View running processes
+        ps aux - Displays a broad list of running processes.
+        ps -ef - Displays processes in another commonly used format, including parent process IDs.
+
+                Column	            Meaning
+                USER	        User running the process
+                PID	Process     ID
+                %CPU	        CPU usage
+                %MEM	        Memory usage
+                STAT	        Process state
+                COMMAND	        Command that started the process
+
+    -> top - Monitor processes in real time
+                Press 'q' to quit.
+                Observe CPU and memory usage.
+                Look for processes consuming unusually high resources.
+        htop - provides a more interactive interface
+
+    -> pgrep - Find a particular process
+        Ex: pgrep python            ** Finds process IDs matching python **
+            ps aux | grep python    ** Searches the process list for text matching python **
+            pgrep -a python         ** Shows matching process IDs and their command lines **
+
+    -> Inspect a process 
+        ps -p PID -f ** First, find its PID. Then, run. Replace PID with the actual number, 
+                        such as 1234. ** 
+
+        Ex: cat /proc/PID/status 
+            - The /proc filesystem exposes live information about processes and the Linux kernel.
+
+->> Managing Process
+    # Run a command in the background
+        - sleep 300 & ** & runs the command in the background. The terminal usually displays 
+                        its job number and PID ** 
+        - jobs ** Lists background jobs associated with your current shell **
+        - fg   ** Brings a background job into the foreground **  
+        - bg   ** Continues a suspended job in the background **  
+
+    # Stop a process using signals
+        - kill PID              Sends the default SIGTERM signal
+        - kill -15 PID          Explicitly requests graceful termination
+        - kill -9 PID           Sends SIGKILL for forced termination
+        - pkill process_name    Sends a signal to matching processes
+        
+        ** Try SIGTERM first. Use SIGKILL only when necessary because the process cannot catch 
+            it or clean up before termination. Avoid killing unfamiliar system processes **
+
+->> CPU & Memory Investigation
+    - free -h ** Shows memory usage in human-readable units **
+    - uptime  ** Shows how long the system has been running, along with load averages **
+    - ps aux --sort=-%cpu | head ** Lists processes near the top of the CPU-usage ranking **
+    - ps aux --sort=-%mem | head ** Lists processes near the top of the memory-usage ranking **
+
+
+A 'service' is a system function or application typically managed by a service manager such as
+    'systemd'.
+
+    The SSH service may be named ssh, while its server process is commonly named sshd.
+
+    - On Ubuntu, inspect a service with : systemctl status ssh
+    - List active services : systemctl list-units --type=service --state=running
+    - Check a service's processes using : pgrep -a sshd
+
+->> Service Management commands                
+    - sudo systemctl start SERVICE
+    - sudo systemctl stop SERVICE
+    - sudo systemctl restart SERVICE
+    - sudo systemctl enable SERVICE
+
+    ** Replace SERVICE with the correct service name **
+    ** enable configures automatic startup at boot **
