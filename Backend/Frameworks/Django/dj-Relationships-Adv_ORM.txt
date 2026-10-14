@@ -1,0 +1,89 @@
+Model Relationships
+    Ex: Suppose your TaskFlow application needs to store users, tasks, and categories.
+
+        A user can create multiple tasks, and multiple tasks can belong to the same category. 
+        Instead of duplicating user and category information in every task record, 
+        we connect models through relationships.
+
+    -> Foreign Key - One to Many Relationship
+        It connects one model to another when one record can be associated with many records
+        in the related model.
+
+        Ex: In Task Flow:
+                One user can own multiple tasks.
+                Each task has one owner.
+
+            # Code: 
+                    owner = models.ForeignKey(
+                        User, 
+                        on_delete=models.CASCADE,
+                        related_name="tasks"
+                    )
+
+                - ForeignKey(User) : Connects a task to a user.
+                - on_delete=models.CASCADE : Delete's a user's related tasks if that user is deleted
+                - related_name="tasks" : Allows reverse access from a user to their tasks
+
+            ** CASCADE is a deletion rule, not a permission rule. It doesn't control which users 
+                can view tasks **
+
+    -> Forward & Reverse Relationship
+        Django let us navigate a relationship in both directions.
+        
+        (Forward) - From a task to its owner 'Retrieves the user who owns that task'.
+        (Reverse) - From a user to their tasks 'Retrieves all tasks associated with that user 
+                    because we defined related_name="tasks"'.
+
+    -> One to One Field - One to One Relationship
+        It connects one record to exactly one record in another model & vice-versa.
+
+            Ex: A user has one profile and each profile belongs to one user.
+
+        Works in both directions:
+            - Profile to user: profile.user
+            - User to profile: user.profile
+
+    -> Many to Many Field - Many to Many Relationship
+        It connects multiple records on both sides.
+        It automatically manages a separate intermediary table that records the connections
+            Ex: One task can have categories such as Work and Urgent.
+                The Work category can contain many tasks.
+
+    # methods improve query efficiency by avoiding unnecessary repeated database queries
+        -> select_related()
+            - Use it for ForeignKey and OneToOneField relationships
+            - It uses SQL joins to retrieve related objects together
+                    
+                    # Useful when displaying tasks along with their owners
+                Ex: tasks = Task.objects.select_related("owner")
+
+        -> prefetch_related()
+            - Use it for ManyToManyField and reverse ForeignKey relationships
+            - It fetches related records separately and joins them in Python
+
+                    # Useful when displaying multiple users and their tasks
+                Ex: users = User.objects.prefetch_related("tasks")
+        
+        ** This matters when displaying many records: without these methods, accessing related 
+            objects repeatedly can cause the N+1 query problem **
+
+    -> Adv. QuerySets (Acc. to Task Management Sys.)
+        - Filtering and ordering
+            Ex: Task.objects.filter(priority=Task.PriorityChoices.HIGH)
+                Task.objects.order_by("due_date")
+                Task.objects.filter(
+                    status=Task.StatusChoices.PENDING
+                ).order_by("-created_at")
+        
+        - Aggregation : returns a single calculated result, such as a count or average.
+
+                # returns a dictionary containing the total number of tasks.
+            Ex: from django.db.models import Count
+
+                Task.objects.aggregate(total=Count("id"))
+        
+        - Annotation : calculate a value for each record.
+
+            Ex: from django.db.models import Count
+
+                User.objects.annotate(task_count=Count("tasks"))
