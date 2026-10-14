@@ -1,0 +1,67 @@
+Authentication : verify who the user is
+Authorization : Determines what the user is allowed to do
+
+Django's built-in authentication system framework:
+    - User model: Stores user accounts and credentials.
+    - Login: Authenticates users.
+    - Logout: Ends the authenticated session.
+    - Sessions: Keep users logged in across requests.
+    - Password hashing: Stores password hashes instead of plain-text passwords.
+    - Permissions and groups: Control access to specific actions and resources.
+
+->> Protecting views with '@login_required'
+    It is a decorator prevents unauthenticated users from accessing a view.
+
+        Ex: from django.contrib.auth.decorators import login_required
+
+            @login_required
+            def dashboard_view(request):
+                return render(request, "dashboard.html")
+
+        - A logged-in user can access the dashboard.
+        - An anonymous user is redirected to the login page.
+        - After login, Django can redirect the user to the originally requested page using the 
+            next parameter.
+
+->> request.user
+    Django attaches the current user to the request.
+
+    - request.user — the current user object.
+    - request.user.is_authenticated — checks whether the user is logged in.
+    - request.user.is_staff — checks whether the user can access the admin site, subject to other requirements.
+    - request.user.is_superuser — indicates superuser status.
+
+->> Object-level Authorization
+    -> Protecting User data : A logged-in user must not be able to access another user's tasks 
+        simply by changing a task ID in the URL.
+        Ex: # unsafe
+                task = get_object_or_404(Task, id=task_id)
+
+            # safe
+                task = get_object_or_404(Task, id=task_id, owner=request.user)
+            # returns a 404 if the task doesn't exist or doesn't belong to that user.
+
+->> Permissions & groups
+    -> Default model permission
+        Can be checked with 'user.has_perm()' & enforced in views using permission decorators
+        or mixins.
+        Ex: 
+            add_task    — add tasks
+            view_task   — view tasks
+            change_task — modify tasks
+            delete_task — delete tasks
+
+    -> Groups let us assign Permissions to multiple users at once
+        Ex: In a larger task platform, you might create groups such as Managers and Team Members, 
+            then give them different permissions.
+
+-> Session - Django maintains login state across requests, commonly using a session cookie and 
+                server-side session data.
+-> Password Hashing - Django hashes passwords and provides password-validation tools. Never store 
+                        passwords as plain text.
+-> CSRF protection - Protects state-changing requests against cross-site request forgery. Keep 
+                        CSRF middleware enabled and include {% csrf_token %} in internal POST forms.
+-> POST for changes - Use POST for actions such as deleting or completing tasks; avoid changing 
+                        data through GET requests.
+-> Logout - Use a POST-based logout flow for safer state-changing behavior.
+-> Redirect validation - Be careful with next URLs and only redirect to trusted destinations.
