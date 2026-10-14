@@ -1,0 +1,56 @@
+Cloud computing is the delivery of computing resources—such as servers, storage, databases, 
+    networking, and software over the internet or a private network, usually on demand.
+
+    Instead of purchasing and maintaining all your own physical servers, you can use resources 
+    from a cloud provider such as AWS, Microsoft Azure, or Google Cloud.
+
+    - Costs, availability, and security depend on architecture and configuration.
+
+
+        Traditional IT	                        Cloud Computing
+    Buy and maintain physical servers	    Provision virtual servers on demand
+    Large upfront hardware cost	            Often pay for resources consumed
+    Hardware scaling takes time	            Resources can often scale quickly
+    You maintain physical infrastructure	Provider manages the underlying cloud infrastructure
+
+Cloud Service Models:
+    -> IaaS - Infrastructure as a Service
+        - Provides fundamental computing infrastructure, including virtual machines, storage, and 
+            networking.
+        - We manages Operating system, installed software, application, and data.
+        - Provider manages Physical servers, data center, and underlying infrastructure.
+        - Ex: Amazon EC2, Azure Virtual Machines, Google Compute Engine.
+
+    -> PaaS - Platform as a Service
+        - Provides a managed platform for building, deploying, and running applications.
+        - We manages Application code, application configuration, and data.
+        - Provider manages Operating system, runtime, infrastructure, and much of the platform 
+            maintenance.
+        - Ex: Azure App Service, Google App Engine, AWS Elastic Beanstalk.
+
+    -> SaaS - Software as a Service
+        - Provides a ready-to-use software application, usually accessed through a web browser or app.
+        - We manages our account, usage, data we enter, and available settings.
+        - Provider managesThe application and its underlying platform and infrastructure.
+        - Ex: Gmail, Microsoft 365, Salesforce
+
+Shared Responsibility Model
+    - Cloud security is a shared responsibility between the provider and the customer.
+        The exact division depends on the service and configuration.
+
+Features: 
+    - Scalability:          Increasing or decreasing resources to meet demand.
+
+    - Elasticity:           Automatically or dynamically adjusting resources as demand changes.
+
+    - High availability:    Designing systems to remain accessible despite certain failures.
+
+    - Pay-as-you-go:        Paying based on usage or the selected pricing model.
+
+    - Region:               A geographic area containing cloud infrastructure.
+
+    - Availability Zone:    An isolated location within a cloud region, used to improve resilience.
+
+    - Virtualization:       Running isolated virtual computing environments on shared physical 
+                            hardware.
+
