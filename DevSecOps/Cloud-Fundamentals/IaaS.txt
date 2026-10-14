@@ -1,0 +1,66 @@
+IaaS is a cloud service model that provides computing infrastructure such as virtual machines, 
+    storage, and networking on demand.
+
+    Ex: as a DevOps engineer, you could create an Ubuntu virtual machine on AWS, install Nginx 
+        and Python, deploy a Django application, and configure security rules.
+
+->> Components
+    -> Compute (Virtual Machines)
+        - Provides processing power, CPU, and RAM for applications.
+        - Ex: Amazon EC2 or Azure Virtual Machines.
+
+    -> Storage
+        - Stores operating systems, application files, backups, and other data.
+        - Ex: Amazon EBS (virtual machine disks), Amazon S3 (object storage).
+
+    -> Networking
+        - Connects cloud resources and controls network traffic.
+        - Ex: Amazon VPC, subnets, route tables, security groups, and IP addresses. 
+
+    -> Identity & Access Management
+        - Controls who can access cloud resources and what actions they can perform.
+        - Ex: Giving a deployment role permission to upload application files without allowing it 
+                to administer the entire cloud account.
+
+->> Working
+                        Choose a cloud provider
+                AWS, Microsoft Azure, or Google Cloud
+                                
+                                ↓
+
+                        Provision infrastructure
+                VM, storage, network, and access rules
+                                
+                                ↓
+
+                        Configure the operating system
+                Install Ubuntu updates and required packages
+                                
+                                ↓
+
+                        Deploy the application
+                Django, Nginx, database connectivity, etc.
+                                
+                                ↓
+
+                        Secure and monitor
+                Patching, logs, backups, alerts, and access control
+
+->> IaaS Common AWS Services:
+
+        Amazon EC2	            Virtual servers
+        Amazon EBS	            Persistent block storage for EC2
+        Amazon VPC	            Isolated virtual network
+        AWS IAM	                Users, roles, and permissions
+        Amazon S3	            Object storage for files, logs, and backups
+        EC2 Security Groups	    Rules controlling inbound and outbound traffic
+
+->> IaaS Security
+    - Least privilege : Give IAM users and roles only the permissions they need
+    - Network Security : Open only necessary ports. Avoid exposing SSH (port 22) to the entire 
+                            internet where possible
+    - OS hardening : Apply security updates, remove unnecessary software, and restrict privileges
+    - Secrets Management : Don't store passwords or cloud access keys in source code
+    - Monitoring : Review system logs, cloud activity, and security alerts
+    - Backups : Maintain appropriate backups and periodically test restoration
+    - Cost Control : Shut down unused resources and monitor usage
