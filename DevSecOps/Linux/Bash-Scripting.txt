@@ -1,0 +1,109 @@
+Bash stands for Bourne Again Shell. It is a command-line shell commonly used on Linux.
+    A Bash script is a file containing commands that Bash executes in sequence. It helps 
+    automate repetitive tasks instead of typing each command manually.
+
+-> Create a bash script file : Ex: hello.sh
+
+        #!/bin/bash             -> the shebang; specifies the Bash interpreter.
+
+        echo "Hello, DevSecOps!"
+        echo "Today I am learning Bash scripting."
+
+-> Execute script: Ex: bash hello.sh
+
+->> Variables - store values for reuse. 
+    $0	    Script name or invocation path
+    $1, $2	First and second arguments`
+    $#	    Number of arguments
+    "$@"	All arguments, preserving individual argument boundaries when quoted
+    $?	    Exit status of the most recently executed command
+
+    ** An exit status of 0 usually means success; a nonzero status indicates failure or another 
+        condition **
+
+        Ex: #!/bin/bash
+
+            name="John"
+            role="DevSecOps Engineer"
+
+            echo "Name: $name"
+            echo "Role: $role"
+
+    $(...) executes a command and substitutes its output
+        Ex: current_user=$(whoami)
+            current_directory=$(pwd)
+
+            echo "User: $current_user"
+            echo "Directory: $current_directory"
+
+->> Take user Input
+    Use 'read' to accept input.
+    
+    read - receives input
+    -r prevents backslashes from being interpreted specially.
+    -p displays a prompt.
+
+        Ex: #!/bin/bash
+
+            read -r -p "Enter your name: " name
+            echo "Welcome, $name!"
+
+->> Conditional Statements (if/else)
+
+        Ex: #!/bin/bash
+
+            read -r -p "Enter a number: " number
+
+            if [[ "$number" -gt 10 ]]; then
+                echo "Number is greater than 10"
+            else
+                echo "Number is 10 or less"
+            fi
+
+    Operators: 
+        -eq	        Equal to
+        -ne	        Not equal to
+        -gt	        Greater than
+        -lt	        Less than
+        -ge	        Greater than or equal to
+        -le	        Less than or equal to
+
+->> Loops
+    -> 'for' loop
+        Ex: #!/bin/bash
+
+            for service in nginx ssh cron; do
+                echo "Checking service: $service"
+            done
+
+    -> 'while' loop
+        Ex: #!/bin/bash
+
+            count=1
+            while [[ "$count" -le 5 ]]; do
+                echo "Count: $count"
+                count=$((count + 1))
+            done
+
+->> Arguments passed to scripts
+    Scripts can receive values from the command line
+    
+    Ex: #!/bin/bash
+
+        echo "Hello, $1!"
+        echo "Second argument: $2"
+        echo "Number of arguments: $#"
+
+    # Run: bash greet.sh John DevOps
+    # Output:   Hello, John!
+                Second argument: DevOps
+                Number of arguments: 2
+
+->> Error Handling
+
+    command : set -euo pipefail
+
+    This enables stricter error-handling behavior:
+        - -e:       generally exits on an unhandled command failure.
+        - -u:       treats unset variables as errors.
+        - pipefail: makes a pipeline fail if a command within it fails.

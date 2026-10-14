@@ -31,6 +31,7 @@
         "oneline",
         "pgrep",
         "pincode",
+        "pipefail",
         "PPID",
         "py",
         "Pythonic",
