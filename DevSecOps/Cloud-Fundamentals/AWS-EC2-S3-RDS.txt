@@ -1,0 +1,119 @@
+=> Amazon EC2 - Virtual Servers
+    EC2 - Elastic Compute Cloud, lets you rent virtual servers in the AWS cloud.
+            Instead of purchasing a physical server, you launch an EC2 instance, choose an operating 
+            system such as Ubuntu Linux, and install your application.
+
+        Includes:
+            - Instance: A virtual server.
+            - AMI: A template used to launch an instance, including an operating system.
+            - Instance type: Determines CPU, memory, and other computing capacity.
+            - Key pair: Used for secure SSH access to Linux instances.
+            - Security Group: A virtual firewall controlling allowed network traffic.
+            - EBS: Block storage that can persist data for an EC2 instance.
+
+        Ex: Imagine you have built a Task Management System using Django.
+            1. Launch an EC2 instance
+                Choose an Ubuntu Server AMI and an appropriate instance type.
+
+            2. Connect using SSH
+                Install Python, create a virtual environment, and configure the application.
+            
+            3. Deploy your application
+                Configure a production web server and serve the application over HTTPS.
+
+        Ex: ssh -i my-key.pem ubuntu@YOUR_EC2_PUBLIC_IP
+
+            'my-key.pem' is your private key file. Keep it secret and restrict its file permissions.
+
+=> Amazon S3 - Object Storage
+    S3 - Simple Storage Service, stores files as objects inside containers called buckets. 
+            It is designed for scalable, durable object storage.
+
+        Ex: User profile images and uploaded documents
+            Product images and other media
+            Application logs and backups
+            Static website files, such as HTML, CSS and JavaScript
+
+        Includes: 
+            - Bucket: A container for stored objects.
+            - Object: A file and its associated metadata.
+            - Object key: The name or path used to identify an object.
+            - Bucket policy / IAM policy: Rules that control access to objects.
+            - Versioning: Keeps multiple versions of an object when enabled.
+
+        Ex: Task Management System - 
+            Suppose users can upload attachments to their tasks. You can store those files in an 
+                S3 bucket instead of keeping them on your EC2 server.
+            - User uploads a PDF
+                Django receives the upload and checks authorization.
+
+            - File is stored in S3
+                The application can save the object's key in its database.
+
+            Object Key: task-attachments/report.pdf, For private files, use appropriate IAM 
+                            permissions or time-limited presigned URLs. 
+                            Do not make a bucket public just to make uploads work.
+
+        Ex: After installing and configuring the AWS CLI with suitable credentials:
+            
+            aws s3 ls                                               # List buckets            
+            aws s3 cp report.pdf s3://my-task-files/report.pdf      # Upload a file
+            aws s3 cp s3://my-task-files/report.pdf ./report.pdf    # Download a file
+
+            'my-task-files' is an example bucket name; choose a globally unique bucket name for your
+                own bucket.
+
+=> Amazon RDS - Managed Relational Databases
+    RDS - Relational Database Service, makes it easier to create, operate and maintain relational 
+            databases without managing all the underlying database infrastructure yourself.
+
+        It supports database engines such as MySQL, PostgreSQL, MariaDB, Oracle, and Microsoft 
+            SQL Server.
+        RDS handles many routine infrastructure and database-management tasks, depending on the 
+            engine and configuration.
+
+        Ex: Managed backups and recovery options
+            Database software maintenance
+            Monitoring and operational management
+            Optional Multi-AZ deployment for higher availability
+            Storage scaling options, depending on configuration
+
+        Ex: Store task records
+            # Django Task Management System might use MySQL or PostgreSQL on RDS.
+
+                Task field	    Example value
+                    id	        101
+                    title	    Finish Django project
+                    status	    IN_PROGRESS
+                    priority	HIGH
+
+            # Django connects to the database to create, retrieve, update and delete these records.
+
+            # Working:
+                - Create an RDS database instance using MySQL or PostgreSQL.
+                - Configure network access so the database accepts connections from your 
+                    application server only.
+                - Store credentials securely, such as in a secrets manager or protected environment 
+                    configuration.
+                - Configure Django's database settings and apply migrations.
+                - Test database connectivity and backups.
+
+            ** A database endpoint is not the same as a public website URL, Keep the database 
+                private where possible, and never expose its port to all internet addresses **
+
+=> Working of EC2, S3, RDS (Task Management System)
+
+                                User's browser
+                        Requests the Task Management System
+                                    ↓
+                                    EC2
+                    Runs Django and handles application logic
+                    ↓                                       ↓
+                    RDS                                     S3
+            Task and user records                  Uploaded files and media
+
+    - A user opens the website.
+    - Django runs on EC2 and processes the request.
+    - Django reads or updates task records in RDS.
+    - If the user uploads a file, Django stores it in S3.
+    - Django returns the result to the browser.
