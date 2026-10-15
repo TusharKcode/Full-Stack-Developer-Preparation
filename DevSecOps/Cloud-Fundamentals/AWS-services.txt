@@ -1,0 +1,61 @@
+Amazon Web Services (AWS) is a cloud computing platform that provides services for computing, 
+    storage, databases, networking, security, monitoring, and more.
+
+    Instead of buying physical servers, you can provision cloud resources as needed and pay 
+    according to the service's pricing model and your usage.
+
+->> AWS Services are:
+    -> Amazon EC2 (Compute)
+        - Runs virtual servers in the cloud. You choose an operating system, instance size, and 
+            networking configuration.
+        Ex: Run Ubuntu, install Nginx, and deploy a Django application.
+
+    -> Amazon S3 (Storage)
+        - Stores objects such as files, images, logs, and backups inside buckets.
+        Ex: Store application backups and deployment artifacts.
+
+    -> Amazon RDS (Databases)
+        - Runs managed relational databases such as MySQL and PostgreSQL. AWS manages many routine 
+            database administration tasks.
+        Ex: Store your Django application's users and tasks.
+
+    -> Amazon VPC (Networking)
+        - Provides a logically isolated virtual network for cloud resources, with subnets and routing.
+        Ex: Separate public-facing application resources from a private database subnet.
+
+    -> AWS IAM (Security & Access)
+        - Controls who can access AWS and which actions they can perform using users, roles, and 
+            policies.
+        Ex: Give a deployment process permission to upload files to a specific S3 bucket without 
+            granting administrator access.
+
+    -> Security Groups (Network Security)
+        - Act as virtual firewalls controlling allowed inbound and outbound traffic for supported 
+            resources.
+        Ex: Allow HTTPS to a web server while restricting SSH access to trusted sources.
+
+->> Working 
+    Ex: Imagine deploying Task Management System to AWS
+
+                            Users
+                        Browser → HTTPS
+                                ↓
+                        VPC + Security Groups
+                Network isolation and traffic rules
+                                ↓
+                    EC2 — Django application
+                  Runs your backend application
+                                ↓
+                    RDS — MySQL or PostgreSQL
+            Stores application data in a private network
+                                ↓
+                            S3 + IAM
+                Object storage and controlled permissions
+
+->> AWS Security Rules:
+    - Never expose access keys or passwords in source code or public GitHub repositories.
+    - Avoid using the AWS account root user for everyday work.
+    - Apply least privilege to IAM permissions.
+    - Restrict SSH (port 22) to trusted IP addresses or use a managed access method.
+    - Don't expose database ports publicly when private connectivity is appropriate.
+    - Monitor resource usage and spending, and remove resources you no longer need.
