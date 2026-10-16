@@ -1,0 +1,112 @@
+=> Sessions
+    -> A session allows Django to remember information about a user across multiple HTTP requests.
+
+        HTTP is stateless: each request is independent by default.
+        Without a mechanism such as sessions, a website would not automatically remember that you 
+            logged in on the previous page.
+
+    - Session keys and values should be serializable using Django’s configured session serializer.
+        Avoid storing sensitive information such as passwords in sessions.
+
+    - The SESSION_COOKIE_AGE setting controls the session cookie's age in seconds. 
+        Ex: 1209600 represents 14 days.
+
+    -> A standard Django project usually has these enabled in 'settings.py':
+        - django.contrib.sessions in INSTALLED_APPS
+        - django.contrib.sessions.middleware.SessionMiddleware in MIDDLEWARE
+        - django.contrib.auth.middleware.AuthenticationMiddleware for authentication support
+
+        Working: 
+                                    User logs in
+                            Django validates the credentials.
+                                        ↓
+                            Django creates or updates the session
+                The session data is stored using the configured session backend.
+                                        ↓
+                            Browser receives a session cookie
+                Usually contains a session identifier, not the session data itself.
+                                        ↓
+                            Later requests send the cookie
+                Django uses it to identify the session and maintain authentication.
+
+        Using Session in View:
+            Django exposes session data through request.session
+                Ex: def save_layout(request):
+                        request.session["dashboard_layout"] = "compact"
+
+                    layout = request.session.get("dashboard_layout", "default")
+
+                    request.session.pop("dashboard_layout", None)
+
+
+=> Messages
+    -> The messages framework displays short-lived notifications to users after an action.
+        - Messages are useful when you redirect users after completing an action.
+
+    Messages includes:
+        'success' ->    Action completed	            Ex: Task saved successfully
+        'info'	  ->    General information	            Ex: Your profile is up to date
+        'warning' ->    Something needs attention	    Ex: Your task is overdue
+        'error'	  ->    Action failed	                Ex: Unable to save the task
+
+    Django's messages framework typically consumes a message when it is iterated over, so the 
+        notification generally appears once.
+
+    -> A standard Django project includes:
+        - django.contrib.messages in INSTALLED_APPS
+        - django.contrib.messages.middleware.MessageMiddleware in MIDDLEWARE
+        - django.contrib.messages.context_processors.messages in the template context processors
+
+    Ex: from django.contrib import messages             # Adding / Importing a message
+
+        messages.success(request, "Task created successfully!") # success message
+        return redirect("task_list")
+
+        # Template:
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+=> Cookies
+    -> A cookie is a small piece of data that a website asks the browser to store.
+        The browser can send it back to the website with later requests when its domain, path, 
+        security, and expiration rules permit.
+
+    Includes: 
+        - Session identification
+        - User preferences
+        - Language preferences
+        - Consent preferences
+
+    Security Options:
+        - HttpOnly=True:        prevents JavaScript from reading the cookie.
+        - Secure=True:          sends the cookie only over HTTPS.
+        - SameSite:             helps control cross-site cookie sending.
+        - max_age or expires:   controls how long the cookie persists.
+
+    Ex:  
+        # Setting a Cookies - Django views can set cookies on an HTTP response.
+
+            from django.http import HttpResponse
+
+            def set_theme(request):
+                response = HttpResponse("Theme preference saved")
+                response.set_cookie("theme", "dark", max_age=86400)
+                return response
+
+        # Reading a Cookie
+            - If the browser has no theme cookie, the example uses "light" as the default.
+            def show_theme(request):
+                theme = request.COOKIES.get("theme", "light")
+                return HttpResponse(f"Current theme: {theme}")
+
+        # Deleting a Cookie - 
+
+            def clear_theme(request):
+                response = HttpResponse("Theme preference cleared")
+                response.delete_cookie("theme")
+                return response
