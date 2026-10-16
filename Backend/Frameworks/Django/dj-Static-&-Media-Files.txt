@@ -1,0 +1,49 @@
+                Static Files            |       Media Files 
+            Files provided by developer |   Files uploaded or managed by users
+                - CSS                   |       - Profile Pictures
+                - JS files              |       - Task attachments
+                - Logo & UI icons       |       - PDF documents
+                - Fixed Website images  |       - Uploaded images
+
+=> Django Static File
+    -> Static files are resources Django serves to the browser, such as CSS and JavaScript.
+        Django provides the django.contrib.staticfiles application to help find and collect 
+        these files.
+
+    - In settings.py, Django normally has django.contrib.staticfiles in INSTALLED_APPS.
+        Key is 'STATIC_URL' — URL prefix used for static assets, commonly /static/.
+
+    - Load CSS in template : {% load static %}
+    - Then reference your CSS file: <link rel="stylesheet" href="{% static 'tasks/css/style.css' %}">
+
+    # Can reference JavaScript Files in Same way.
+
+    -> Development  - Run the Django development server
+        When DEBUG=True and django.contrib.staticfiles is installed, Django's development tooling 
+            can serve static files for local testing.
+
+    -> Production   - Collect and serve static files
+        Run python manage.py collectstatic to gather files into the directory configured by 
+            STATIC_ROOT. A production web server, static hosting service, or CDN can then serve them.
+
+        STATIC_URL	        URL prefix for static files
+        STATICFILES_DIRS	Additional directories where Django looks for static files
+        STATIC_ROOT	        Destination directory for collectstatic output
+
+=> Django Media files
+    - Media files are uploaded by users or generated dynamically by the application.
+
+        Ex: Suppose TaskFlow lets users attach a screenshot to a task. 
+            Django receives the uploaded file, validates it, and saves it through a model field 
+                such as FileField or ImageField.
+
+        MEDIA_URL	        URL prefix for media files, commonly /media/.
+        MEDIA_ROOT	        filesystem directory where uploaded files are stored.
+
+    -> Process 
+        - Add a FileField or ImageField to a model.
+        - Include the field in the relevant form.
+        - Set the HTML form's encoding type to multipart/form-data.
+        - Pass both request.POST and request.FILES to the form
+        - Validate the form before saving.
+        - Configure media storage and access appropriately.
