@@ -1,0 +1,68 @@
+A Class-Based View (CBV) is a Django view defined as a Python class.
+    It handles HTTP requests through methods such as get() and post().
+
+    - CBVs provide an alternative approach that can reduce repeated code and reuse common behavior.
+
+    Already used Function-Based Views (FBVs), such as task_list_view() and task_create_view() in 
+        Task Management System.
+
+-> Basic CBVs
+    Ex: Suppose TaskFlow has a dashboard page. Here is a simple CBV that responds to a GET request.
+
+        from django.http import HttpResponse
+        from django.views import View
+
+        class DashboardView(View):
+            def get(self, request):
+                return HttpResponse("Welcome to TaskFlow!")
+
+        # Register the view in urls.py
+        from django.urls import path
+        from .views import DashboardView
+
+        urlpatterns = [
+            path("dashboard/", DashboardView.as_view(), name="dashboard"),
+        ]
+
+    # Working
+        - View is Django's base class for class-based views.
+        - DashboardView inherits its request-handling behavior.
+        - get() runs when the view receives a GET request.
+        - as_view() converts the class into a callable that Django can use in URL configuration.
+
+In a CBV, you can define separate methods for different HTTP methods.
+    - get()     — displays a page or retrieves information.
+    - post()    — processes submitted data or performs an action.
+
+    Ex: class TaskActionView(View):
+            def get(self, request):
+                return HttpResponse("Display the task form")
+
+            def post(self, request):
+                return HttpResponse("Process submitted task data")
+
+=> Django Generic Class-Based View
+    - provides built-in generic views
+
+    Includes:
+        -> ListView - Displays a collection of objects, such as all tasks belonging to the 
+                        logged-in user.
+        -> DetailView - Displays one object, such as a task's title, description, priority, and 
+                        due date.
+        -> CreateView - Displays a form and creates an object after valid submission.
+        -> UpdateView - Displays a form pre-filled with an existing object's data and saves valid 
+                        changes.
+        -> DeleteView - Provides a confirmation page and deletes an object after a valid POST request.
+
+=> form_valid()
+    - Django calls this method when the submitted form passes validation.
+    Ex: We assign the current user as the task owner before saving. This prevents a user from 
+            choosing another owner through submitted form data.
+        super().form_valid(form) then saves the object and redirects to success_url.
+
+=> Mixins (Reusing behavior in CBVs)
+    - A mixin is a class that adds reusable behavior to another class.
+
+    Ex: LoginRequiredMixin — requires authentication.
+        PermissionRequiredMixin — checks Django permissions.
+        UserPassesTestMixin — applies a custom access test.
