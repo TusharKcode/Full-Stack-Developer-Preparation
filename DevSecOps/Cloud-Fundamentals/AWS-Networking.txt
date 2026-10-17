@@ -1,0 +1,51 @@
+=> VPC (Virtual Private Cloud)
+    - A logically isolated virtual network in AWS where you can launch resources such as EC2 
+        instances and RDS databases.
+
+    - Think of a VPC as your own private network inside AWS.
+
+    - A VPC is the network boundary; subnets divide its IP range and organize resources.
+
+    Includes:
+        - CIDR block: Defines the IP address range for your VPC, such as 10.0.0.0/16.
+        - Subnet: A smaller IP address range inside a VPC.
+        - Public subnet: Has a route to an internet gateway; resources need suitable public 
+                            addressing and security rules to be reachable from the internet.
+
+        - Private subnet: Typically used for resources that should not be directly reachable from 
+                            the public internet.
+
+        - Internet Gateway (IGW): Enables internet connectivity for a VPC when routing and 
+                                    resource configuration allow it.
+
+        - Route table: Determines where network traffic goes.
+        - NAT Gateway: Allows resources in private subnets to initiate outbound IPv4 internet 
+                        connections without accepting unsolicited inbound connections through that 
+                        gateway.
+
+=> Security Groups (Virtual Firewalls)
+    - A Security Group controls inbound and outbound network traffic for supported AWS resources, 
+        such as EC2 instances and RDS databases.
+    - Security groups are stateful: when an allowed connection is established, its return traffic 
+        is automatically permitted.
+
+    -> Ports
+        - 22    (SSH)           Allow only trusted administrator IPs
+        - 80    (HTTP)          Allow if serving HTTP or redirecting to HTTPS
+        - 443   (HTTPS)         Allow website traffic
+        - 3306  (MySQL)         Allow from the application security group
+        - 5432  (PostgreSQL)    Allow from the application security group
+
+=> IAM (Identity & Access Management)
+    - IAM controls who or what can access AWS resources and which actions they can perform.
+    - VPC and Security Groups control network connectivity. IAM controls permissions to use AWS 
+        services and resources.
+    - IAM policies use JSON to describe permissions.
+
+    Includes: 
+        - User:             An identity for a person or workload when a user identity is appropriate.
+        - Group:            A collection of IAM users with shared permissions.
+        - Role:             An identity with permissions that can be assumed by an authorized person 
+                                or service.
+        - Policy:           A document defining allowed or denied actions on resources.
+        - Least privilege:  Grant only the permissions required to do the job.
