@@ -1,0 +1,87 @@
+Django REST Framework
+    - A toolkit built on Django that makes it easier to build web APIs.
+    - Commonly returns JSON
+    - Uses serializers for API validation and conversion
+    - Uses DRF's Response
+
+    Ex: Existing Django application (Task Management) renders HTML templates.
+        An API can instead return structured data that a React frontend, mobile application, or 
+            another backend can consume.
+
+=> REST is an architectural style for designing network APIs. In a typical REST-style API, 
+    resources are identified by URLs and HTTP methods describe the intended operation.
+
+=> JSON is a data format. It doesn't contain the HTML layout or styling that your browser needs 
+    to render a complete page.
+
+    -> Installation & Configure DRF
+        - Package - 'pip install djangorestframework'
+
+        # In settings.py, add DRF to INSTALLED_APPS:
+            INSTALLED_APPS = [
+                # Existing Django apps...
+                "rest_framework",
+                "tasks",
+            ]
+
+=> Creating Serializer
+    -> A serializer converts Django model instances into Python data that can be rendered as JSON.
+        It also validates incoming data before it is saved.
+
+        - 'ModelSerializer' automatically generates serializer fields based on the model.
+
+        Ex: # tasks/serializers.py
+                from rest_framework import serializers
+                from .models import Task
+
+                class TaskSerializer(serializers.ModelSerializer):
+                    class Meta:
+                        model = Task
+                        fields = [ "id", "title", "description", "status", "priority", "due_date", 
+                                    "created_at", "updated_at",]
+                        read_only_fields = [
+                            "id", "created_at", "updated_at",]
+
+=> Build API with ModelViewSet
+    -> DRF provides ModelViewSet, which supplies standard list, retrieve, create, update, 
+        partial-update and delete actions.
+
+        Ex: # tasks/views.py
+                from rest_framework import viewsets
+                from rest_framework.permissions import IsAuthenticated
+                from .models import Task
+                from .serializers import TaskSerializer
+
+                class TaskViewSet(viewsets.ModelViewSet):
+                    serializer_class = TaskSerializer
+                    permission_classes = [IsAuthenticated]
+
+                    def get_queryset(self):
+                        return Task.objects.filter(
+                            owner=self.request.user
+                        ).order_by("-created_at")
+
+                    def perform_create(self, serializer):
+                        serializer.save(owner=self.request.user)
+
+=> Configure API URLs using a router
+    -> DRF routers automatically generate URL patterns for a ViewSet.
+
+        Ex: # tasks/api_urls.py
+                from rest_framework.routers import DefaultRouter
+                from .views import TaskViewSet
+
+                router = DefaultRouter()
+                router.register("tasks", TaskViewSet, basename="api-task")
+
+                urlpatterns = router.urls
+
+            # Then, open config/urls.py and include the API routes
+                from django.contrib import admin
+                from django.urls import path, include
+
+                urlpatterns = [
+                    path("admin/", admin.site.urls),
+                    path("", include("tasks.urls")),
+                    path("api/", include("tasks.api_urls")),
+                ]

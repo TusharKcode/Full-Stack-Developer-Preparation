@@ -10,6 +10,7 @@
         "collectstatic",
         "createsuperuser",
         "devteam",
+        "djangorestframework",
         "DPKG",
         "drwxr",
         "endfor",
@@ -36,6 +37,7 @@
         "PPID",
         "py",
         "Pythonic",
+        "queryset",
         "resolv",
         "runserver",
         "rwxr",
@@ -53,6 +55,7 @@
         "uvicorn",
         "VARCHAR",
         "venv",
+        "viewsets",
         "whereis",
         "wlan",
         "wsgi"
