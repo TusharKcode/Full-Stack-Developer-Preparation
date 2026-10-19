@@ -1,0 +1,43 @@
+Docker files    
+    - It's a text file containing instructions Docker uses to build an image.
+
+    ->> Instructions
+        FROM	    Selects a base image	                        FROM python:3.12-slim
+        WORKDIR	    Sets the working directory	                    WORKDIR /app
+        COPY	    Copies files into the image	                    COPY app.py .
+        RUN	        Executes a command during image building	    RUN pip install django
+        CMD	        Specifies the default runtime command	        CMD ["python", "app.py"]
+        EXPOSE	    Documents the port the application listens on	EXPOSE 8000
+        ENV	        Sets environment variables	                    ENV PYTHONUNBUFFERED=1
+        ENTRYPOINT	Defines the main executable for the container	ENTRYPOINT ["python"]
+
+    Ex: Building Python Image
+
+        # Create a project folder:  mkdir docker-python-demo
+                                    cd docker-python-demo
+
+        # Create app.py:            print("Hello from my custom Docker image!")
+
+        # Create Docker File (no extension):    FROM python:3.12-slim
+                                                WORKDIR /app
+                                                COPY app.py .
+                                                ENV PYTHONUNBUFFERED=1
+                                                CMD ["python", "app.py"]
+
+        # Build Image:              docker build -t my-python-app:1.0 .
+        # Run container:            docker run --rm my-python-app:1.0
+
+        # Install dependencies during build
+            - Create 'requirements.txt' file:    Django
+        
+        # Update Docker File:                   FROM python:3.12-slim
+                                                WORKDIR /app
+                                                ENV PYTHONUNBUFFERED=1
+                                                COPY requirements.txt .
+                                                RUN pip install --no-cache-dir -r requirements.txt
+                                                COPY . .
+                                                CMD ["python", "app.py"]
+        
+        # Build Image (again):      docker build -t my-python-app:1.1 .
+
+        # Add .dockerignore file: .git, .venv/, venv/, __pycache__/, *.py[cod], .env, db.sqlite3
