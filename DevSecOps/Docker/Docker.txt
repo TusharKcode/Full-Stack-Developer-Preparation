@@ -1,0 +1,60 @@
+"Container" is an isolated environment for running an application with the files, libraries, and 
+    dependencies it needs.
+
+        Ex: Django project might require: Python 3.12, Django, Specific Python package, Application 
+            configuration, etc.
+
+    - Without containers, another machine may have a different Python version or missing 
+        dependencies, causing the application to behave differently.
+
+        Container                       |          Virtual Machines
+- Isolated application processes        |   Isolated Virtual Machine 
+- Share host kernel                     |   Runs its own guest OS kernel    
+- Usually smaller in size               |   Usually larger in size    
+- Usually fast startup                  |   Usually smaller startup    
+- For packaging & running application   |   running separate OS or stronger VM-level isolation
+
+"Docker" is a platform for building, disturbing, running application in containers.
+
+    ->> Components
+        - Docker Engine: software that builds and runs containers, includes Docker daemon, which 
+                            manages container operations.
+        - Docker Image: packaged template containing the application, dependencies, and 
+                            instructions needed to create a container
+        - Docker Container: running instance of an image, with its own isolated process environment.
+        - Docker Hub: public container image registry where you can find and share images.
+
+    ->> Workflow
+                        Dockerfile
+                Instructions for building an image
+                            ↓
+                        Docker Image
+            Application and dependencies packaged together
+                            ↓
+                        Docker Container
+                The application running in isolation
+
+    ->> Docker Verify commands
+                                docker --version
+                                docker info
+
+    ->> Docker commands
+        docker --version	        Check the installed Docker version
+        docker pull nginx	        Download an Nginx image
+        docker images	            List locally stored images
+        docker run nginx	        Create and run an Nginx container
+        docker ps	                List running containers
+        docker ps -a	            List all containers, including stopped ones
+        docker stop CONTAINER_ID	Stop a running container
+        docker start CONTAINER_ID	Start an existing stopped container
+        docker rm CONTAINER_ID	    Remove a stopped container
+        docker rmi IMAGE_NAME	    Remove an image if it is no longer in use
+        docker logs CONTAINER_ID	View container logs
+
+    -> Ex: Running a Web Server : docker run -d --name my-web -p 8080:80 nginx
+        - -d: Run in the background.
+        - --name my-web: Give the container a readable name.
+        - -p 8080:80: Map host port 8080 to container port 80.
+        - nginx: The image to use.
+
+        Then, open:  http://localhost:8080
