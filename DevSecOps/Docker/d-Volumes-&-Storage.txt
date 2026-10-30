@@ -1,0 +1,34 @@
+Containers run applications, persistent storage keeps important data independent of container replacement.
+
+=> A Docker volume is a storage location managed by Docker that can be attached to one or more containers.
+
+    The data in a volume exists independently of an individual container's lifecycle. Removing the container 
+        normally leaves the volume intact.
+
+    Volume removal can permanently destroy data. Inspect volumes carefully before removing or pruning them.
+
+Ex: 
+    Suppose your application stores database files in /var/lib/mysql.
+
+    You can create a named volume and attach it to a MySQL container:
+
+                docker volume create mysql-data
+
+                docker run -d \
+                --name mysql-db \
+                -e MYSQL_ROOT_PASSWORD='ChangeThisLocalPassword123!' \
+                -e MYSQL_DATABASE=taskdb \
+                -v mysql-data:/var/lib/mysql \
+                mysql:8.4
+
+->> Docker Volume Commands:
+
+    docker volume create mydata	        Create a named volume
+    docker volume ls	                List volumes
+    docker volume inspect mydata	    Inspect a volume
+    docker volume rm mydata	            Remove a volume if unused
+    docker volume prune	                Remove unused anonymous and named volumes after confirmation
+
+=> Bind Mount - connects a specific directory or file on your host machine to a location inside a container.
+                Unlike a named volume, the host chooses the source path.
+
