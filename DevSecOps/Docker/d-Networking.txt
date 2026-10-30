@@ -1,0 +1,77 @@
+Docker networking allows containers to communicate with each other, communicate with external systems, 
+    and expose application services to users.
+
+    Ex: The browser accesses Django through a published port. Django communicates with MySQL over the 
+        Docker network.
+
+                            Your browser
+                        http://localhost:8000
+
+
+            Django container
+    Host port 8000 → Container port 8000
+                                                ↕
+                                        Docker network communication
+
+            MySQL container
+        Container port 3306
+
+=> Docker network drivers
+    -> Bridge network 
+        - Common for local development
+        - allows containers on the same Docker network to communicate with each other.
+        - Docker provides a default bridge network, but for application development
+        - 'user-defined bridge networks' are generally recommended because they provide automatic DNS 
+            resolution between containers.
+
+        Ex: 
+                docker network create task-network          # creating network
+
+            # runs 2 containers on same network:
+                docker run -d --name web --network task-network nginx
+
+                docker run -d --name app --network task-network alpine sleep 3600
+
+            # app container can communicate with the web container using its container name
+                docker exec app ping -c 3 web
+
+            
+            # web resolves to the web container's network address through Docker's embedded DNS
+                docker rm -f web app
+                docker network rm task-network
+
+    -> Host network
+        - The container shares the host's network namespace rather than getting its own isolated network 
+            namespace.
+        
+        Command - docker run --network host nginx
+
+        - There is no normal host-to-container port mapping with -p.
+        - The application uses the host's network interfaces and ports.
+        - Port conflicts can occur.
+        - Host networking behaves differently on Docker Desktop compared with native Linux.
+
+    -> None network
+        - Disables normal external networking for the container, leaving only loopback networking.
+        - Useful for workloads that do not need network communication.
+        
+        Command - docker run --network none alpine
+
+    -> Overlay network
+        - Connects containers across multiple Docker hosts, commonly in Docker Swarm environments.
+        - Useful when an application runs across multiple machines.
+
+=> Port Mapping - allows external traffic to reach a service running inside a container.
+
+    Format:     -p HOST_PORT:CONTAINER_PORT
+    Ex:         docker run -d -p 8080:80 nginx
+
+=> Networking Commands
+    docker network ls	                        List Docker networks
+    docker network create NAME	                Create a network
+    docker network inspect NAME	                Inspect network details
+    docker network connect NAME CONTAINER	    Connect a container to a network
+    docker network disconnect NAME CONTAINER	Disconnect a container
+    docker network rm NAME	                    Remove a network
+    docker port CONTAINER	                    Display published port mappings
+    docker inspect CONTAINER	                Inspect container configuration
