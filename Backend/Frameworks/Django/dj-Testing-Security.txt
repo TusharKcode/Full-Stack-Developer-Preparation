@@ -1,0 +1,86 @@
+=> Django Testing
+    -> Includes a testing framework built on Python’s unittest
+        - Catch bugs before deployment
+        - Verify views, models, forms, and permissions
+        - Prevent previously fixed bugs from returning
+    
+    -> Test types
+        - Model tests: field defaults, model methods, relationships
+        - View tests: response status, templates, redirects, access control
+        - Form tests: valid and invalid input
+        - Integration tests: verify multiple components work together
+
+    Ex: 
+
+        from django.test import TestCase
+        from django.urls import reverse
+        from django.contrib.auth import get_user_model
+        from .models import Task
+
+        User = get_user_model()
+        class TaskModelTest(TestCase):
+            def setUp(self):
+                self.user = User.objects.create_user(
+                    username="tushar",
+                    password="test-password"
+                )
+
+            def test_task_default_status(self):
+                task = Task.objects.create(
+                    title="Learn testing",
+                    owner=self.user
+                )
+                self.assertEqual(task.status, Task.StatusChoices.PENDING)
+
+        class TaskViewTest(TestCase):
+            def test_task_list_requires_login(self):
+                response = self.client.get(reverse("task_list"))
+                self.assertEqual(response.status_code, 302)
+
+=> Django Security
+    Unauthorized access	                login_required, permission checks, owner-filtered querysets
+    Cross-site request forgery (CSRF)	{% csrf_token %} in POST forms; keep CSRF middleware enabled
+    Cross-site scripting (XSS)	        Django templates escape variables by default; avoid safe for 
+                                            untrusted input
+    SQL injection	                    Use Django ORM or parameterized queries; don’t build SQL by string 
+                                            concatenation
+    Password exposure	                Use Django’s password hashing; never store plaintext passwords
+    Sensitive settings exposed	        Keep SECRET_KEY and credentials out of source control
+    Unsafe deployment	                Set DEBUG = False, configure ALLOWED_HOSTS, use HTTPS
+
+    ->> CSRF (Cross-Site Request Forgery)
+        - CSRF tricks a logged-in user’s browser into sending an unwanted request to your site.
+        
+        Django protection: Keep CsrfViewMiddleware enabled and include {% csrf_token %} in internal POST 
+                            forms.
+
+        Ex: <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Save</button>
+            </form>
+
+    ->> XSS (Cross-Site Scripting)
+        - occurs when untrusted content is interpreted as executable browser code.
+        
+        Django protection: Template variables are auto-escaped by default.
+
+        Ex: <p>{{ task.description }}</p>
+
+    ->> SQL Injection
+        - happens when untrusted input is inserted into SQL commands.
+        
+        Django protection: use Django ORM
+            Ex: Task.objects.filter(title=search_text)
+
+        Avoid constructing SQL by concatenating user input
+            Ex: # Unsafe pattern - query = "SELECT * FROM tasks_task WHERE title = '" + search_text + "'"
+
+    ->> Secure settings
+        - Keep SECRET_KEY and database credentials out of source control, load them from environment variables.
+        - Use HTTPS and secure cookie settings in production.
+        - Keep Django and dependencies updated.
+        - Run Django’s deployment checks: python manage.py check --deploy
+
+        Ex: DEBUG = False
+            ALLOWED_HOSTS = ["your-domain.com"]
