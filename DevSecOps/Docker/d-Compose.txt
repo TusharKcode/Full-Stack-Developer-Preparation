@@ -1,0 +1,84 @@
+Docker Compose lets you define and run a multi-container application using a YAML configuration file.
+    - Compose is especially useful for local development and testing.
+    - Also be used in some deployments, though production environments may need additional orchestration 
+        and operational controls.
+
+    Ex: For an application (Task Management System), Compose can run:
+            - Django application
+            - MySQL database
+            - A shared network
+            - Persistent database storage
+
+=> Working
+    - Describe the application in a file named compose.yaml
+    - Compose reads that file and creates the containers, networks, and volumes.
+
+=> File (compose.yaml)
+    - Compose automatically creates a network for the application. 
+    - Services on that network can reach each other using their service names.
+
+    - ${DB_PASSWORD} and ${DB_ROOT_PASSWORD} are placeholders, define them in your local environment or a 
+        protected .env file
+
+    Ex: 
+        -> Compose file with a MySQL service:
+            services:                               # Defines the containers that make up the application
+                db:                                 # Compose service name
+                    image: mysql:8.4                # The image to run
+                    environment:                    # Environment variables passed to the container
+                    MYSQL_DATABASE: taskdb          
+                    MYSQL_USER: taskuser
+                    MYSQL_PASSWORD: ${DB_PASSWORD}
+                    MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+                    volumes:                                # Declares the named volume mysql_data
+                    - mysql_data:/var/lib/mysql
+
+                volumes:                            # Mounts persistent storage for MySQL's data
+                mysql_data:
+
+            # Extended
+        -> defines both Django and MySQL:
+            services:
+                web:
+                    build: .
+                    command: python manage.py runserver 0.0.0.0:8000
+                    ports:
+                    - "8000:8000"
+                    environment:
+                    DB_HOST: db
+                    DB_NAME: taskdb
+                    DB_USER: taskuser
+                    DB_PASSWORD: ${DB_PASSWORD}
+                    depends_on:
+                    - db
+
+                db:
+                    image: mysql:8.4
+                    environment:
+                    MYSQL_DATABASE: taskdb
+                    MYSQL_USER: taskuser
+                    MYSQL_PASSWORD: ${DB_PASSWORD}
+                    MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+                    volumes:
+                    - mysql_data:/var/lib/mysql
+
+                volumes:
+                mysql_data:
+
+-> 'db' is the compose service name.
+    Compose provides DNS so the Django container can find the database using that name.
+
+-> 'depends_on' controls service startup order.
+    It does not guarantee that MySQL is ready to accept connections when Django starts.
+
+->> Commands
+    docker compose up	            Create and start the services
+    docker compose up -d	        Start services in the background
+    docker compose up --build	    Build images and start services
+    docker compose ps	            Show Compose services and status
+    docker compose logs	            View service logs
+    docker compose logs -f web	    Follow Django logs
+    docker compose exec web sh	    Open a shell in the running Django container
+    docker compose stop	            Stop services without removing them
+    docker compose down	            Stop and remove containers and the default network
+    docker compose down -v          removes the Compose-managed volumes

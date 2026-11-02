@@ -53,6 +53,8 @@
         "staticfiles",
         "stylesheet",
         "tablename",
+        "taskdb",
+        "taskuser",
         "traceroute",
         "truncatewords",
         "tuln",
