@@ -1,0 +1,108 @@
+Authentication: identifies the user making the request.
+Permissions: decide whether that user is allowed to perform the requested action.
+
+        How Django REST Framework processes a request:
+            - DRF authenticates the request.
+            - DRF checks the configured permissions.
+            - The view runs if access is allowed.
+            - The view applies object-level or ownership checks where needed.
+            - DRF returns a response.
+
+->> Session Authentication
+    - uses Django’s existing login session
+    - useful when the frontend and API are part of the same Django site
+    - The browser sends its session cookie with requests.
+    - For unsafe methods (POST, PUT, PATCH, DELETE) session authentication also requires CSRF protection.
+
+    Ex: /in Config:
+        REST_FRAMEWORK = {
+            "DEFAULT_AUTHENTICATION_CLASSES": [
+                "rest_framework.authentication.SessionAuthentication",
+            ],
+        }
+
+->> Token Authentication
+    - uses a token that the client sends with each request
+    - commonly in the Authorization header
+    - does not provide built-in token expiry or refresh-token behavior
+
+    # To enable it, Add rest_framework.authtoken to INSTALLED_APPS.
+                    Run migrations, Configure TokenAuthentication.
+
+    Ex: /in Config:
+        REST_FRAMEWORK = {
+            "DEFAULT_AUTHENTICATION_CLASSES": [
+                "rest_framework.authentication.TokenAuthentication",
+            ],
+        }
+
+->> JWT Authentication
+    - JSON Web Token is a signed token format commonly used when a frontend and backend are separate 
+        applications.
+    - DRF does not include JWT authentication in its core package.
+    - JWT is not automatically more secure than sessions or tokens.
+
+    -> Security depends on token storage, expiry, transport security, refresh handling, and application 
+        configuration.
+
+    Flow: 
+        - The user submits credentials to a token endpoint.
+        - The server returns an access token and, depending on the setup, a refresh token.
+        - The client sends the access token with API requests.
+        - The server validates the token and identifies the user.
+        - The client can use the refresh token to obtain a new access token when appropriate.
+
+    Ex: 
+        # For a separate React frontend, you might configure JWT authentication with Simple JWT:
+            
+            - pip install djangorestframework-simplejwt
+
+        # settings.py
+
+            REST_FRAMEWORK = {
+                "DEFAULT_AUTHENTICATION_CLASSES": [
+                    "rest_framework_simplejwt.authentication.JWTAuthentication",
+                ],
+                "DEFAULT_PERMISSION_CLASSES": [
+                    "rest_framework.permissions.IsAuthenticated",
+                ],
+            }
+
+        # Add token endpoints in your API URL configuration:
+
+            from django.urls import path
+            from rest_framework_simplejwt.views import (
+                TokenObtainPairView,
+                TokenRefreshView,
+            )
+
+            urlpatterns = [
+                path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+                path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+            ]
+
+->> Object-Level access control
+
+    # According to Task Management system,
+
+        - IsAuthenticated alone is not enough.
+        - It only verifies that the user is logged in—it does not restrict which tasks they can access.
+
+    # Owner-filtered queryset
+        - This ensures list, detail, update, and delete actions only find tasks owned by that user.
+
+        Ex: def get_queryset(self):
+                return Task.objects.filter(owner=self.request.user)
+
+    # Custom object permission
+        - This permission allows read-only access to an object, but only its owner can modify it.
+        - It does not automatically filter list results—list endpoints still need an owner-filtered queryset.
+
+        Ex: from rest_framework.permissions import BasePermission, SAFE_METHODS
+
+            class IsTaskOwnerOrReadOnly(BasePermission):
+                def has_object_permission(self, request, view, obj):
+                    if request.method in SAFE_METHODS:
+                        return True
+
+                    return obj.owner == request.user

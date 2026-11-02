@@ -4,6 +4,7 @@
     "cSpell.words": [
         "Alcehmy",
         "asgi",
+        "authtoken",
         "AUTOINCREMENT",
         "autoremove",
         "chgrp",
@@ -44,6 +45,7 @@
         "runserver",
         "rwxr",
         "Setgid",
+        "simplejwt",
         "sqlalchemy",
         "startapp",
         "startproject",

@@ -108,3 +108,11 @@ Django REST Framework
     - class-based alternative
     - gives you DRF's request parsing, authentication, permission checks, and response handling
     - lets you define HTTP methods separately
+
+=> DRF permissions
+
+    # Built-in
+        AllowAny	                Anyone can access the view
+        IsAuthenticated	            User must be logged in
+        IsAdminUser	                User must have is_staff=True
+        IsAuthenticatedOrReadOnly	Anyone can read; only authenticated users can perform unsafe methods
