@@ -85,3 +85,26 @@ Django REST Framework
                     path("", include("tasks.urls")),
                     path("api/", include("tasks.api_urls")),
                 ]
+
+=> DRF function-based views with @api_view
+    - decorator lets you write an API endpoint as a Python function. You specify which HTTP methods it 
+        accepts.
+
+    Ex: @api_view(["GET", "POST"])
+        def task_list_api(request):
+            if request.method == "GET":
+                tasks = Task.objects.filter(owner=request.user)
+                serializer = TaskSerializer(tasks, many=True)
+                return Response(serializer.data)
+
+            serializer = TaskSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save(owner=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+=> DRF class-based views with APIView
+    - class-based alternative
+    - gives you DRF's request parsing, authentication, permission checks, and response handling
+    - lets you define HTTP methods separately
