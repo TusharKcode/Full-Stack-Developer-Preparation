@@ -1,0 +1,34 @@
+Docker security means protecting the host, containers, images, networks, and secrets from misuse or attack.
+    Containers provide isolation, but they are not a complete security boundary.
+
+-> Run containers with least privilege
+    - Avoid running applications as root inside containers when possible
+    - Create and use a non-root user in your Dockerfile
+
+-> Use trusted, minimal images
+
+-> Protect secrets
+    - Never bake passwords, API keys, or tokens into a Dockerfile or image
+    - They may remain in image layers or build history.
+    - For local development, use .env file that is excluded by .dockerignore and Git.
+    - For production, use a secrets manager or platform-provided secret mechanism.
+
+-> Limit container privileges
+
+    Ex: docker run --rm --cap-drop=ALL --security-opt=no-new-privileges nginx
+
+        --cap-drop=ALL      removes Linux capabilities the container does not need.
+        no-new-privileges   helps prevent processes from gaining additional privileges.
+
+-> Restrict network exposure
+    - Publish only the ports users need. For local development, bind a port to localhost when possible
+    - Avoid publishing database ports to the internet.
+    - In a Compose setup, let the application reach the database through the internal Compose network.
+
+    Ex: docker run -d --name web -p 127.0.0.1:8080:80 nginx
+
+-> Protect Docker access
+    - Access to the Docker daemon is highly privileged.
+    - A user who can control Docker may be able to gain control over the host.
+    - Do not expose the Docker daemon over an unsecured network.
+    - Keep Docker Engine and the host OS patched.
