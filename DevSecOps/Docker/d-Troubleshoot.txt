@@ -1,0 +1,38 @@
+Process - check status → inspect logs → inspect configuration → reproduce → fix → verify
+
+Commands
+    docker ps -a	                    Running and stopped containers
+    docker logs <container>	            Application output and errors
+    docker logs -f <container>	        Follow logs live
+    docker inspect <container>	        Container configuration and state
+    docker exec -it <container> sh	    Open a shell in a running container
+    docker stats	                    Live CPU and memory usage
+    docker port <container>	            Published port mappings
+    docker events	                    Recent Docker events
+
+->> Common Problems
+    -> Container exits immediately 
+        - Check its exit status and logs
+        - Check the Dockerfile’s CMD or ENTRYPOINT, and confirm the application starts correctly
+            Commands:   docker ps -a
+                        docker logs <container>
+
+    -> Port is already in use
+        Ex: docker run -p 8080:80 nginx
+
+        # If host port 8080 is occupied, choose another host port:
+            Ex: docker run -p 8081:80 nginx
+
+    -> Application cannot connect to the database
+        - In Docker Compose, use the database service name as the hostname, such as db, not localhost.
+        - Check that both services share a network, credentials are correct, and the database is ready to 
+            accept connections.
+
+    -> Changes are not appearing
+        - If you changed the image’s source or dependencies, rebuild it: docker compose up --build
+        - If you use a bind mount, verify that it maps the correct host directory to the expected container 
+            path.
+
+    -> Container runs out of memory or CPU
+        - Check resource usage: docker stats
+        - Investigate application logs and resource limits before increasing them
