@@ -28,6 +28,7 @@
         "makemigrations",
         "mmin",
         "myproject",
+        "myuser",
         "Netplan",
         "networkd",
         "nslookup",

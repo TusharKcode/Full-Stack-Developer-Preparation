@@ -1,0 +1,32 @@
+A Docker image is the packaged template used to create containers.
+A registry stores and distributes images, so you can push images from one machine and pull them on another.
+
+
+-> Registry:    A service that stores Docker images, such as Docker Hub or a private registry.
+-> Repository:  A collection of related images, usually organized by name and tags.
+-> Tag:         A label for a specific image version, such as 1.0 or latest.
+-> Image ID:    The image’s unique identifier.
+
+
+-> Common Image Commands
+    docker images                 # List local images
+    docker pull nginx:1.27        # Download an image, but does not start a container.
+    docker image inspect nginx:1.27
+    docker image history nginx:1.27
+    docker tag task-app:1.0 myuser/task-app:1.0
+
+-> Push an Image to docker hub
+    - Create a repository on Docker Hub
+    
+    - Sign in from your terminal:     docker login
+
+    - Tag your local image with your Docker Hub username and repository: 
+        docker tag task-app:1.0 YOUR_DOCKERHUB_USERNAME/task-app:1.0
+
+    - Push it:  docker push YOUR_DOCKERHUB_USERNAME/task-app:1.0
+
+    - On another machine, pull and run it:  docker pull YOUR_DOCKERHUB_USERNAME/task-app:1.0
+                                            docker run --rm YOUR_DOCKERHUB_USERNAME/task-app:1.0
+
+    - Remove unused images: docker image rm task-app:1.0
+                            docker image prune          # removes dangling images by default
