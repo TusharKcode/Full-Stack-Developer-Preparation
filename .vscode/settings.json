@@ -4,6 +4,7 @@
     "cSpell.words": [
         "Alcehmy",
         "asgi",
+        "Asyncio",
         "authtoken",
         "AUTOINCREMENT",
         "autoremove",
@@ -20,6 +21,7 @@
         "fullmatch",
         "functools",
         "getent",
+        "getpid",
         "gshadow",
         "icontains",
         "iexact",

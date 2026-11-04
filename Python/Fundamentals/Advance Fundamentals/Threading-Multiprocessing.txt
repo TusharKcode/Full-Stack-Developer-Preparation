@@ -1,0 +1,88 @@
+Concurrency: 
+        - It helps a program make progress on multiple tasks during the same period
+    
+    -> Threading: useful for I/O-bound work—waiting for network requests, files, or database responses.
+                    Threads share the same process memory, so shared data needs care.
+
+                - start() begins the thread.
+                - sleep() represents waiting for a network response.
+                - join() waits for that thread to finish.
+
+            Ex: I/O-bound tasks
+                # simulates downloading data from several URLs.
+
+                    import threading, time
+
+                    def download(item):
+                        print(f"Starting {item}")
+                        time.sleep(2)
+                        print(f"Finished {item}")
+                    
+                    image = ["image-1", "image-2", "image-3"]
+                    thread = []
+
+                    for item in items:
+                        threads = threading.Thread(target=download, args=(item,))
+                        threads.append(thread)
+                        thread.start()
+
+                    for thread in threads:
+                        thread.join()
+
+                    print("All download finished")
+
+    -> Multiprocessing: useful for CPU-bound work—heavy calculations that can use multiple CPU cores.
+
+            Ex: CPU-bound tasks
+                # runs a calculation in a separate process
+                # Each process has its own Python interpreter and memory space. This can use multiple CPU 
+                    cores for CPU-heavy work.
+
+                    from multiprocessing import Process
+                    import os
+
+                    def calculate(number):
+                        total = sum(i * i for i in range(number))
+                        print(f"PID {os.getpid()}: total = {total}")
+                    
+                    if __name__ == "__main__":
+                    processes = [
+                        Process(target=calculate, args=(2_000_000,)),
+                        Process(target=calculate, args=(2_000_000,))
+                    ]
+
+                    for process in processes:
+                        process.start()
+
+                    for process in processes:
+                        process.join()
+
+                    print("Calculations finished")
+
+
+    -> Asyncio: useful for handling many I/O operations without creating a thread for each one.
+
+                - asyncio.gather(): runs multiple awaitable tasks together.
+                - asyncio.run(): starts the event loop.
+
+            Ex: # The tasks overlap and finish in about two seconds.
+                import asyncio
+
+                async def fetch(name):
+                    print(f"Starting {name}")
+                    await asyncio.sleep(2)  # Simulates asynchronous I/O
+                    print(f"Finished {name}")
+
+                async def main():
+                    await asyncio.gather(
+                        fetch("request-1"),
+                        fetch("request-2"),
+                        fetch("request-3"),
+                    )
+
+                asyncio.run(main())
+
+    -> Non-Blocking means waiting for one operation doesn’t stop the event loop from making progress on 
+        other tasks.
+        - Avoid calling slow, blocking functions directly inside async code. 
+        - Use async-compatible libraries or move blocking work to a thread/process.
